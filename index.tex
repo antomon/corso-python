@@ -43,14 +43,28 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
+\makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
 \fi
 \ifx\subparagraph\undefined\else
   \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
+\makeatother
 
 
 \providecommand{\tightlist}{%
@@ -198,34 +212,15 @@ This is a Quarto book.
 To learn more about Quarto books visit
 \url{https://quarto.org/docs/books}.
 
-\bookmarksetup{startatroot}
-
-\chapter{Introduction}\label{introduction}
-
-This is a book created from markdown and executable code.
-
-See (\textbf{knuth84?}) for additional discussion of literate
-programming.
-
 \part{Prima parte: I fondamenti}
 
-Definiamo alcuni concetti basilari per tutto il corso
-
-\hfill\break
-
-\chapter{I linguaggi di
-programmazione}\label{i-linguaggi-di-programmazione}
-
-Cosa sono, a cosa servono, come sono categorizzati
-
-\hfill\break
-
-\chapter{Introduzione}\label{introduzione}
+\chapter{I linguaggi di programmazione, i programmi e i
+programmatori}\label{i-linguaggi-di-programmazione-i-programmi-e-i-programmatori}
 
 Partiamo da alcuni concetti basilari a cui collegare quelli che
 approfondiremo nel corso.
 
-\section{Cos'è la Programmazione?}\label{cosuxe8-la-programmazione}
+\section{Cosa sono?}\label{cosa-sono}
 
 La programmazione è il processo di progettazione e scrittura di
 istruzioni che un computer può ricevere per eseguire compiti
@@ -233,8 +228,7 @@ predefiniti. Queste istruzioni sono codificate in un linguaggio di
 programmazione, che traduce le idee e gli algoritmi del programmatore in
 un formato che il computer può comprendere ed eseguire.
 
-\section{Cos'è un Programma
-Informatico?}\label{cosuxe8-un-programma-informatico}
+Cos'è un programma informatico?
 
 Un programma informatico è una sequenza di istruzioni scritte per
 eseguire una specifica operazione o un insieme di operazioni su un
@@ -249,8 +243,7 @@ gli ingredienti necessari (dati) e fornisce istruzioni passo-passo
 informatico specifica i dati da usare e le istruzioni da seguire per
 ottenere un risultato desiderato.
 
-\section{Cos'è un Linguaggio di
-Programmazione?}\label{cosuxe8-un-linguaggio-di-programmazione}
+Cos'è un linguaggio di programmazione?
 
 Un linguaggio di programmazione è un linguaggio formale che fornisce un
 insieme di regole e sintassi per scrivere programmi informatici. Questi
@@ -283,8 +276,7 @@ l'italiano o l'inglese) in diversi modi:
   comandi definiti dal linguaggio stesso.
 \end{enumerate}
 
-\section{Come un Programma Produce Azioni in un
-Calcolatore?}\label{come-un-programma-produce-azioni-in-un-calcolatore}
+Come un programma produce azioni in un calcolatore?
 
 Quando un programma è scritto e salvato, il computer deve eseguirlo per
 produrre le azioni desiderate. Questo processo avviene in diverse fasi:
@@ -311,11 +303,11 @@ produrre le azioni desiderate. Questo processo avviene in diverse fasi:
   input/output (come tastiere e monitor).
 \end{enumerate}
 
-\section{L'Impatto dell'Intelligenza Artificiale Generativa sulla
-Programmazione}\label{limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione}
+\section{L'Impatto dell'intelligenza artificiale generativa sulla
+programmazione}\label{limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione}
 
-Con l'avvento dell'intelligenza artificiale generativa, la
-programmazione ha subito una trasformazione significativa. Prima dell'AI
+Con l'avvento dell'intelligenza artificiale (IA) generativa, la
+programmazione ha subito una trasformazione significativa. Prima dell'IA
 generativa, i programmatori dovevano tutti scrivere manualmente ogni
 riga di codice, seguendo rigorosamente la sintassi e le regole del
 linguaggio di programmazione scelto. Questo processo richiedeva una
@@ -330,64 +322,64 @@ sessioni di esecuzione di tali casi. Infine, dovebano scrivere
 documentazione dettagliata per spiegare il funzionamento del codice e
 facilitare la manutenzione futura.
 
-\subsection{Attività del Programmatore con l'AI
-Generativa}\label{attivituxe0-del-programmatore-con-lai-generativa}
+\subsection{Attività del programmatore con l'IA
+Generativa}\label{attivituxe0-del-programmatore-con-lia-generativa}
 
-L'AI generativa ha introdotto nuovi strumenti e metodologie che stanno
+L'IA generativa ha introdotto nuovi strumenti e metodologie che stanno
 cambiando il modo in cui i programmatori lavorano:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Generazione automatica del codice: Gli strumenti di AI generativa
+  Generazione automatica del codice: Gli strumenti di IA generativa
   possono creare porzioni di codice basate su descrizioni ad alto
   livello fornite dai programmatori. Questo permette di velocizzare
   notevolmente lo sviluppo iniziale e ridurre gli errori di sintassi.
 \item
-  Assistenza nel debugging: L'AI può identificare potenziali bug e
+  Assistenza nel debugging: L'IA può identificare potenziali bug e
   suggerire correzioni, rendendo il processo di debugging più efficiente
   e meno dispendioso in termini di tempo.
 \item
-  Ottimizzazione automatica: Gli algoritmi di AI possono analizzare il
+  Ottimizzazione automatica: Gli algoritmi di IA possono analizzare il
   codice e suggerire o applicare automaticamente ottimizzazioni per
   migliorare le prestazioni.
 \item
-  Generazione di casi di test: L'AI può creare casi di test per
+  Generazione di casi di test: L'IA può creare casi di test per
   verificare la correttezza del codice, coprendo una gamma più ampia di
   scenari di quanto un programmatore potrebbe fare manualmente.
 \item
-  Documentazione automatica: L'AI può generare documentazione leggendo e
+  Documentazione automatica: L'IA può generare documentazione leggendo e
   interpretando il codice, riducendo il carico di lavoro manuale e
   garantendo una documentazione coerente e aggiornata.
 \end{enumerate}
 
-\subsection{L'Importanza di Imparare a Programmare nell'Era dell'AI
-Generativa}\label{limportanza-di-imparare-a-programmare-nellera-dellai-generativa}
+\subsection{L'Importanza di imparare a programmare nell'era dell'IA
+generativa}\label{limportanza-di-imparare-a-programmare-nellera-dellia-generativa}
 
-Nonostante l'avvento dell'AI generativa, imparare a programmare rimane
+Nonostante l'avvento dell'IA generativa, imparare a programmare rimane
 fondamentale per diverse ragioni. La programmazione non è solo una
 competenza tecnica, ma anche un modo di pensare e risolvere problemi.
 Comprendere i fondamenti della programmazione è essenziale per
-utilizzare efficacemente gli strumenti di AI generativa. Senza una
+utilizzare efficacemente gli strumenti di IA generativa. Senza una
 solida base, è difficile sfruttare appieno queste tecnologie. Inoltre,
 la programmazione insegna a scomporre problemi complessi in parti più
 gestibili e a trovare soluzioni logiche e sequenziali, una competenza
 preziosa in molti campi.
 
-Anche con l'AI generativa, esisteranno sempre situazioni in cui sarà
+Anche con l'IA generativa, esisteranno sempre situazioni in cui sarà
 necessario personalizzare o ottimizzare il codice per esigenze
 specifiche. La conoscenza della programmazione permette di fare queste
 modifiche con sicurezza. Inoltre, quando qualcosa va storto, è
 indispensabile sapere come leggere e comprendere il codice per
-identificare e risolvere i problemi. L'AI può assistere, ma la
+identificare e risolvere i problemi. L'IA può assistere, ma la
 comprensione umana rimane cruciale per interventi mirati.
 
 Imparare a programmare consente di sperimentare nuove idee e prototipare
 rapidamente soluzioni innovative. La creatività è potenziata dalla
 capacità di tradurre idee in codice funzionante. Sapere programmare
 aiuta anche a comprendere i limiti e le potenzialità degli strumenti di
-AI generativa, permettendo di usarli in modo più strategico ed efficace.
+IA generativa, permettendo di usarli in modo più strategico ed efficace.
 
 La tecnologia evolve rapidamente, e con una conoscenza della
 programmazione si è meglio preparati ad adattarsi alle nuove tecnologie
@@ -398,9 +390,9 @@ Avere questa competenza amplia notevolmente le opportunità di carriera.
 
 Infine, la programmazione è una porta d'accesso a ruoli più avanzati e
 specializzati nel campo della tecnologia, come l'ingegneria del
-software, la scienza dei dati e la ricerca sull'AI. Conoscere i principi
+software, la scienza dei dati e la ricerca sull'IA. Conoscere i principi
 della programmazione aiuta a comprendere meglio come funzionano gli
-algoritmi di AI, permettendo di contribuire attivamente allo sviluppo di
+algoritmi di IA, permettendo di contribuire attivamente allo sviluppo di
 nuove tecnologie.
 
 \cleardoublepage
