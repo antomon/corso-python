@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Antonio Montano">
-<meta name="dcterms.date" content="2024-05-24">
 
-<title>Corso Python</title>
+<title>Corso Python – 2&nbsp; Paradigmi di programmazione</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -32,7 +50,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./fp.html" rel="next">
+<link href="./references.html" rel="next">
+<link href="./fp-programming-languages.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -79,7 +98,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -88,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fp.html">Prima parte: I fondamenti</a></li><li class="breadcrumb-item"><a href="./fp-programming-paradigms.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Paradigmi di programmazione</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -158,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -179,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fp-programming-paradigms.html" class="sidebar-item-text sidebar-link">
+  <a href="./fp-programming-paradigms.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Paradigmi di programmazione</span></span></a>
   </div>
 </li>
@@ -212,35 +231,27 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#linguaggi-di-programmazione-imperativa" id="toc-linguaggi-di-programmazione-imperativa" class="nav-link active" data-scroll-target="#linguaggi-di-programmazione-imperativa"><span class="header-section-number">2.0.1</span> Linguaggi di programmazione imperativa</a></li>
+  <li><a href="#linguaggi-procedurali" id="toc-linguaggi-procedurali" class="nav-link" data-scroll-target="#linguaggi-procedurali"><span class="header-section-number">2.0.2</span> Linguaggi procedurali</a></li>
+  <li><a href="#linguaggi-orientati-agli-oggetti" id="toc-linguaggi-orientati-agli-oggetti" class="nav-link" data-scroll-target="#linguaggi-orientati-agli-oggetti"><span class="header-section-number">2.0.3</span> Linguaggi Orientati agli Oggetti</a></li>
+  <li><a href="#linguaggi-funzionali" id="toc-linguaggi-funzionali" class="nav-link" data-scroll-target="#linguaggi-funzionali"><span class="header-section-number">2.0.4</span> Linguaggi Funzionali</a></li>
+  <li><a href="#altri-paradigmi-di-programmazione" id="toc-altri-paradigmi-di-programmazione" class="nav-link" data-scroll-target="#altri-paradigmi-di-programmazione"><span class="header-section-number">2.0.5</span> Altri Paradigmi di Programmazione</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/fp-programming-paradigms.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fp.html">Prima parte: I fondamenti</a></li><li class="breadcrumb-item"><a href="./fp-programming-paradigms.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Paradigmi di programmazione</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Corso Python</h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Paradigmi di programmazione</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Antonio Montano </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 24, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -250,11 +261,73 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>I linguaggi di programmazione possono essere classificati in diversi tipi in base al loro scopo e alla loro struttura. Tuttavia, è importante notare che molti linguaggi moderni supportano più di un paradigma di programmazione, rendendo difficile assegnare un linguaggio a una sola categoria. Come ha affermato Bjarne Stroustrup, il creatore di C++, un linguaggio di programmazione “non è semplicemente supportare un certo paradigma, ma abilitare un certo stile di programmazione” <span class="citation" data-cites="stroustrup1997">(<a href="references.html#ref-stroustrup1997" role="doc-biblioref">Stroustrup 1997</a>)</span>.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-stroustrup1997" class="csl-entry" role="listitem">
+Stroustrup, Bjarne. 1997. <em>The c++ Programming Language</em>. 3rd ed. Reading, MA, USA: Addison-Wesley.
+</div></div><section id="linguaggi-di-programmazione-imperativa" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="linguaggi-di-programmazione-imperativa"><span class="header-section-number">2.0.1</span> Linguaggi di programmazione imperativa</h3>
+<p>La programmazione imperativa si concentra sull’esecuzione di istruzioni sequenziali che modificano lo stato del programma. Le istruzioni indicano al computer cosa fare passo dopo passo. Esempi di linguaggi che permettono il paradigma imperativo sono Assembly, C, Go, Python, per diversi casi d’uso:</p>
+<ul>
+<li>Assembly: Utilizzato nella programmazione a basso livello, come nello sviluppo di firmware e driver di dispositivi.</li>
+<li>C: Utilizzato per lo sviluppo di sistemi operativi e software di sistema, dove il controllo dettagliato delle operazioni è cruciale.</li>
+<li>Go: Utilizzato per costruire applicazioni di rete e sistemi scalabili, noto per la sua efficienza e facilità di utilizzo nelle applicazioni concorrenti.</li>
+<li>Python: Utilizzato in vari campi e noto per la sua semplicità e leggibilità, supporta la programmazione imperativa con l’uso di dichiarazioni di controllo e assegnazioni di variabili.</li>
+</ul>
+</section>
+<section id="linguaggi-procedurali" class="level3" data-number="2.0.2">
+<h3 data-number="2.0.2" class="anchored" data-anchor-id="linguaggi-procedurali"><span class="header-section-number">2.0.2</span> Linguaggi procedurali</h3>
+<p>La programmazione procedurale è un sottotipo di programmazione imperativa che organizza il codice in blocchi chiamati procedure o funzioni. Questi blocchi possono essere riutilizzati in diverse parti del programma per evitare ripetizioni e migliorare l’organizzazione del codice.</p>
+<ul>
+<li>Esempi: Fortran, Pascal, C, Go.</li>
+<li>Casi d’uso:
+<ul>
+<li>Fortran: Molto utilizzato in applicazioni scientifiche e di ingegneria per calcoli numerici ad alta precisione.</li>
+<li>Pascal: Storicamente utilizzato nell’educazione per insegnare i fondamenti della programmazione.</li>
+<li>C: Utilizzato per la programmazione di sistemi operativi, software di sistema e applicazioni a basso livello.</li>
+<li>Go: Sviluppato da Google, utilizzato per costruire applicazioni di rete e sistemi scalabili, noto per la sua efficienza e facilità di utilizzo nelle applicazioni concorrenti. Supporta la programmazione procedurale grazie alla possibilità di definire funzioni e organizzare il codice in moduli.</li>
+</ul></li>
+</ul>
+</section>
+<section id="linguaggi-orientati-agli-oggetti" class="level3" data-number="2.0.3">
+<h3 data-number="2.0.3" class="anchored" data-anchor-id="linguaggi-orientati-agli-oggetti"><span class="header-section-number">2.0.3</span> Linguaggi Orientati agli Oggetti</h3>
+<p>Questi linguaggi modellano il problema come un insieme di oggetti che interagiscono tra loro per svolgere un compito. Gli oggetti sono istanze di classi, che possono contenere dati e metodi per manipolare quei dati.</p>
+<ul>
+<li>Esempi: Java, Python, C++, Rust, Scala.</li>
+<li>Casi d’uso:
+<ul>
+<li>Java: Ampiamente utilizzato per lo sviluppo di applicazioni aziendali, applicazioni Android e sistemi di backend.</li>
+<li>Python: Utilizzato in vari campi, dalla scienza dei dati all’intelligenza artificiale, fino allo sviluppo web con framework come Django e Flask.</li>
+<li>C++: Utilizzato in applicazioni ad alte prestazioni come videogiochi, motori grafici e software di simulazione.</li>
+<li>Rust: Concepito per garantire la sicurezza della memoria e la concorrenza, offre anche supporto per la programmazione orientata agli oggetti.</li>
+<li>Scala: Utilizzato per sviluppare applicazioni scalabili e sistemi distribuiti, spesso usato insieme alla piattaforma Apache Spark per l’elaborazione di grandi dati.</li>
+</ul></li>
+</ul>
+</section>
+<section id="linguaggi-funzionali" class="level3" data-number="2.0.4">
+<h3 data-number="2.0.4" class="anchored" data-anchor-id="linguaggi-funzionali"><span class="header-section-number">2.0.4</span> Linguaggi Funzionali</h3>
+<p>Questi linguaggi si concentrano sulla valutazione di espressioni e funzioni, trattandole come equazioni matematiche. La programmazione funzionale enfatizza l’uso di funzioni pure e l’immutabilità dei dati.</p>
+<ul>
+<li>Esempi: Haskell, Lisp, ML, Scala.</li>
+<li>Casi d’uso:
+<ul>
+<li>Haskell: Utilizzato nella ricerca accademica, nello sviluppo di software finanziario e nei sistemi di calcolo parallelo.</li>
+<li>Lisp: Storicamente utilizzato nell’intelligenza artificiale e nello sviluppo di software di simulazione.</li>
+<li>ML: Utilizzato nello sviluppo di compilatori, nell’analisi formale di programmi e in applicazioni finanziarie.</li>
+<li>Scala: Supporta sia la programmazione orientata agli oggetti che la programmazione funzionale, rendendolo un linguaggio versatile per vari tipi di applicazioni.</li>
+</ul></li>
+</ul>
+</section>
+<section id="altri-paradigmi-di-programmazione" class="level3" data-number="2.0.5">
+<h3 data-number="2.0.5" class="anchored" data-anchor-id="altri-paradigmi-di-programmazione"><span class="header-section-number">2.0.5</span> Altri Paradigmi di Programmazione</h3>
+<p>Oltre ai paradigmi principali sopra menzionati, esistono altri paradigmi di programmazione meno comuni ma altrettanto importanti in certi contesti.</p>
+<ul>
+<li>Logico: Linguaggi come Prolog, utilizzati principalmente nell’intelligenza artificiale e nel trattamento del linguaggio naturale.</li>
+<li>Concorrente: Linguaggi come Erlang, utilizzati nello sviluppo di sistemi distribuiti e applicazioni che richiedono alta disponibilità.</li>
+<li>Dichiarativo: Linguaggi come SQL, utilizzati per interrogare e manipolare database.</li>
+</ul>
+<hr>
+<p>Questa versione aggiornata dispone i paradigmi di programmazione in ordine di complessità crescente, iniziando con la programmazione imperativa. Inoltre, include esempi di linguaggi come Rust, Go e Scala e chiarisce la natura multi-paradigma di molti linguaggi di programmazione.</p>
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1><p><img src="red-python.webp" title="Corso Python" class="quarto-cover-image img-fluid" alt="Pitone rosso  "></p>
-<p>This is a Quarto book.</p>
-<p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
 
 
 </section>
@@ -682,10 +755,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./fp-programming-languages.html" class="pagination-link" aria-label="I linguaggi di programmazione, i programmi e i programmatori">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">I linguaggi di programmazione, i programmi e i programmatori</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./fp.html" class="pagination-link" aria-label="Prima parte: I fondamenti">
-        <span class="nav-page-text">Prima parte: I fondamenti</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -694,4 +770,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/fp-programming-paradigms.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
