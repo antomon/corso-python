@@ -1,6 +1,11 @@
-# Scaricare e Installare Python
+---
+reference-location: margin
+citation-location: margin
+---
 
-## Passaggi per Scaricare Python
+# Scaricare e installare Python
+
+## Passaggi per scaricare Python
 
 1. Visita il sito ufficiale di Python: Vai su [python.org](https://www.python.org/).
 2. Naviga alla pagina di download: Clicca su "Downloads" nel menu principale.
@@ -20,38 +25,22 @@
    - Apri il terminale (Command Prompt su Windows, Terminal su macOS e Linux).
    - Digita `python --version` o `python3 --version` e premi Invio. Dovresti vedere la versione di Python installata.
 
-Il contenuto del pacchetto di installazione è dato da:
-
-- L'interprete Python: L'interprete che esegue i tuoi programmi Python.
-
-<div class="alert alert-block alert-info">
-&#x1F4A1; Un interprete è un programma che esegue il codice sorgente direttamente, riga per riga, senza la necessità di compilarlo prima in un file eseguibile. Nel caso di Python, l'interprete legge e esegue il codice Python direttamente, traducendolo in istruzioni macchina che il computer può eseguire. Questo permette di vedere immediatamente i risultati del codice e di testare e modificare il programma in modo interattivo.
-</div>
-
-- IDLE (integrated development and learning environment): Un semplice IDE incluso con Python, utile per iniziare.
-
-<div class="alert alert-block alert-info">
-&#x1F4A1; Un IDE (integrated development environment) è un software che fornisce agli sviluppatori un set completo di strumenti per scrivere, modificare, compilare, eseguire e debugare il codice. Un IDE tipicamente include un editor di testo avanzato, un compilatore o interprete, un debugger e spesso strumenti di gestione del progetto e del codice.
-</div>
-
-- pip: Il gestore dei pacchetti per installare librerie di programmi aggiuntive rispetto a quelle già incluse nel pacchetto di installazione.
-- Documentazione: Documentazione offline per riferimento rapido.
-- Tool di sviluppo: Strumenti come `pyvenv` per la gestione degli ambienti virtuali.
-
-## Esecuzione del Primo Programma: "Hello, World!"
+## Esecuzione del primo programma: "Hello, World!"
 
 È consuetudine eseguire come primo programma la stampa della stringa "Hello, World!". Possiamo farlo in diversi modi e ciò è una delle caratteristiche più apprezzate di Python.
 
 ### REPL
 
-Il primo modo prevede l'utilizzo del REPL di Python: Il REPL (read-eval-print loop) è un ambiente interattivo per eseguire comandi Python generato dall'interprete, secondo il ciclo:
+Il primo modo prevede l'utilizzo del REPL di Python: Il REPL (read-eval-print loop) è un ambiente interattivo di esecuzione di comandi Python generato dall'interprete, secondo il ciclo:
+
 - Read: Legge un input dell'utente.
-- Eval: Valuta (esegue) l'input.
+- Eval: Valuta l'input.
 - Print: Stampa il risultato dell'esecuzione.
 - Loop: Ripete il ciclo.
 
-Eseguiamo il nostro primo "Hello, World!":
-- Avvia il REPL, apri il terminale, esegui l'interprete Python digitando `python` o `python3` e premi il tasto di invio della tastiera.
+Eseguiamo il nostro primo "Hello, World!"[^1]:
+
+- Apri il terminale ed esegui l'interprete Python digitando `python` o `python3` e premi il tasto di invio della tastiera.
 - Scrivi ed esegui il programma:
   
   ```python
@@ -59,6 +48,8 @@ Eseguiamo il nostro primo "Hello, World!":
   ```
 
   Premi il tasto di invio per vedere il risultato immediatamente.
+
+[^1]: La tradizione del programma "Hello, World!" ha una lunga storia che risale ai primi giorni della programmazione. Questo semplice programma è generalmente il primo esempio utilizzato per introdurre i nuovi programmatori alla sintassi e alla struttura di un linguaggio di programmazione. Il programma "Hello, World!" è diventato famoso grazie a Brian Kernighan, che lo ha incluso nel suo libro [@kernighan1988c] pubblicato nel 1978. Tuttavia, il suo utilizzo risale a un testo precedente di Kernighan, [@kernighan1973b], pubblicato nel 1973, dove veniva utilizzato un esempio simile.
 
 <div class="alert alert-block alert-warning">
 &#x026A0; Il REPL e l'interprete Python sono strettamente collegati, ma non sono esattamente la stessa cosa. Quando avvii l'interprete Python senza specificare un file di script da eseguire (digitando semplicemente <code>python</code> o <code>python3</code> nel terminale), entri in modalità REPL. Nel REPL, l'interprete Python legge l'input direttamente dall'utente, lo esegue, stampa il risultato e poi attende il prossimo input. In sintesi, l'interprete può eseguire programmi Python completi salvati in file, il REPL è progettato per un'esecuzione interattiva e immediata di singoli comandi.
