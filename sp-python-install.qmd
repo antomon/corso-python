@@ -27,21 +27,23 @@ citation-location: margin
 
 ## Esecuzione del primo programma: "Hello, World!"
 
-È consuetudine eseguire come primo programma la stampa della stringa "Hello, World!". Possiamo farlo in diversi modi e ciò è una delle caratteristiche più apprezzate di Python.
+È consuetudine eseguire come primo programma la visualizzazione della stringa "Hello, World!"[^1]. Possiamo farlo in diversi modi e ciò è una delle caratteristiche più apprezzate di Python.
+
+[^1]: La tradizione del programma "Hello, World!" ha una lunga storia che risale ai primi giorni della programmazione. Questo semplice programma è generalmente il primo esempio utilizzato per introdurre i nuovi programmatori alla sintassi e alla struttura di un linguaggio di programmazione. Il programma "Hello, World!" è diventato famoso grazie a Brian Kernighan, che lo ha incluso nel suo libro [@kernighan1988c] pubblicato nel 1978. Tuttavia, il suo utilizzo risale a un testo precedente di Kernighan, [@kernighan1973b], pubblicato nel 1973, dove veniva utilizzato un esempio simile.
 
 ### REPL
 
-Il primo modo prevede l'utilizzo del REPL di Python: Il REPL (read-eval-print loop) è un ambiente interattivo di esecuzione di comandi Python generato dall'interprete, secondo il ciclo:
+Il primo modo prevede l'utilizzo del REPL di Python. Il REPL (read-eval-print loop) è un ambiente interattivo di esecuzione di comandi Python generato dall'interprete, secondo il ciclo:
 
 - Read: Legge un input dell'utente.
 - Eval: Valuta l'input.
-- Print: Stampa il risultato dell'esecuzione.
+- Print: Visualizza il risultato dell'esecuzione.
 - Loop: Ripete il ciclo.
 
-Eseguiamo il nostro primo "Hello, World!"[^1]:
+Eseguiamo il nostro primo "Hello, World!":
 
-- Apri il terminale ed esegui l'interprete Python digitando `python` o `python3` e premi il tasto di invio della tastiera.
-- Scrivi ed esegui il programma:
+1. Apri il terminale ed esegui l'interprete Python digitando `python` o `python3` e premi il tasto di invio della tastiera.
+2. Scrivi ed esegui il programma:
   
   ```python
   print("Hello, World!")
@@ -49,15 +51,112 @@ Eseguiamo il nostro primo "Hello, World!"[^1]:
 
   Premi il tasto di invio per vedere il risultato immediatamente.
 
-[^1]: La tradizione del programma "Hello, World!" ha una lunga storia che risale ai primi giorni della programmazione. Questo semplice programma è generalmente il primo esempio utilizzato per introdurre i nuovi programmatori alla sintassi e alla struttura di un linguaggio di programmazione. Il programma "Hello, World!" è diventato famoso grazie a Brian Kernighan, che lo ha incluso nel suo libro [@kernighan1988c] pubblicato nel 1978. Tuttavia, il suo utilizzo risale a un testo precedente di Kernighan, [@kernighan1973b], pubblicato nel 1973, dove veniva utilizzato un esempio simile.
+::: {.callout-warning}
 
-<div class="alert alert-block alert-warning">
-&#x026A0; Il REPL e l'interprete Python sono strettamente collegati, ma non sono esattamente la stessa cosa. Quando avvii l'interprete Python senza specificare un file di script da eseguire (digitando semplicemente <code>python</code> o <code>python3</code> nel terminale), entri in modalità REPL. Nel REPL, l'interprete Python legge l'input direttamente dall'utente, lo esegue, stampa il risultato e poi attende il prossimo input. In sintesi, l'interprete può eseguire programmi Python completi salvati in file, il REPL è progettato per un'esecuzione interattiva e immediata di singoli comandi.
-</div>
+## Attenzione
+
+Il REPL e l'interprete Python sono strettamente collegati, ma non sono esattamente la stessa cosa. Quando avvii l'interprete Python senza specificare un file di script da eseguire (digitando semplicemente `python` o `python3` nel terminale), entri in modalità REPL. Nel REPL, l'interprete Python legge l'input direttamente dall'utente, lo esegue, stampa il risultato e poi attende il prossimo input. In sintesi, l'interprete può eseguire programmi Python completi salvati in file, il REPL è progettato per un'esecuzione interattiva e immediata di singole istruzioni.
+
+:::
+
+### Interprete
+
+Un altro modo per eseguire il nostro programma "Hello, World!" è utilizzare l'interprete Python per eseguire un file di codice sorgente. Questo metodo è utile per scrivere programmi più complessi e per mantenere il codice per usi futuri.
+
+Ecco come fare sui diversi sistemi operativi.
+
+::: {.panel-tabset}
+
+## Windows
+
+1. Crea un file di testo:
+   - Apri il tuo editor di testo preferito, come Notepad.
+   - Scrivi il seguente codice nel file:
+     ```python
+     print("Hello, World!")
+     ```
+   - Salva il file con il nome `hello.txt`.
+2. Rinomina il file (facoltativo):
+   - Se desideri mantenere il file senza estensione `.txt`, puoi rinominarlo in `hello` direttamente dall'Esplora file.
+3. Esegui il file Python:
+   - Apri il Prompt dei comandi.
+   - Naviga fino alla directory in cui hai salvato il file. Ad esempio, se il file si trova nella cartella `Documenti`, puoi digitare:
+     ```plaintext
+     cd %HOMEPATH%\Documenti
+     ```
+   - Esegui l'interprete Python passando come argomento il file che hai creato:
+     ```plaintext
+     python hello.txt
+     ```
+     oppure, se il tuo sistema utilizza `python3`:
+     ```plaintext
+     python3 hello.txt
+     ```
+4. Visualizza il risultato:
+   ```plaintext
+   Hello, World!
+   ```
+
+## macOS
+
+1. Crea un file di testo:
+   - Apri il tuo editor di testo preferito, come TextEdit.
+   - Scrivi il seguente codice nel file:
+     ```python
+     print("Hello, World!")
+     ```
+   - Salva il file con il nome `hello.txt`.
+2. Rinomina il file (facoltativo):
+   - Se desideri mantenere il file senza estensione `.txt`, puoi rinominarlo in `hello` direttamente dal Finder.
+3. Esegui il file Python:
+   - Apri il Terminale.
+   - Naviga fino alla directory in cui hai salvato il file. Ad esempio, se il file si trova nella cartella `Documenti`, puoi digitare:
+     ```bash
+     cd ~/Documents
+     ```
+   - Esegui l'interprete Python passando come argomento il file che hai creato:
+     ```bash
+     python3 hello.txt
+     ```
+4. Visualizza il risultato:
+   ```plaintext
+   Hello, World!
+   ```
+
+## Linux
+
+1. Crea un file di testo:
+   - Apri il tuo editor di testo preferito, come Gedit o Nano.
+   - Scrivi il seguente codice nel file:
+     ```python
+     print("Hello, World!")
+     ```
+   - Salva il file con il nome `hello.txt`.
+2. Rinomina il file (facoltativo):
+   - Se desideri mantenere il file senza estensione `.txt`, puoi rinominarlo in `hello` utilizzando il comando `mv` nel terminale:
+     ```bash
+     mv hello.txt hello
+     ```
+3. Esegui il file Python:
+   - Apri il Terminale.
+   - Naviga fino alla directory in cui hai salvato il file. Ad esempio, se il file si trova nella cartella `Documenti`, puoi digitare:
+     ```bash
+     cd ~/Documenti
+     ```
+   - Esegui l'interprete Python passando come argomento il file che hai creato:
+     ```bash
+     python3 hello.txt
+     ```
+4. Visualizza il risultato:
+   ```plaintext
+   Hello, World!
+   ```
+
+Con queste istruzioni, dovresti essere in grado di eseguire il programma "Hello, World!" utilizzando un file Python su Windows, macOS e Linux.
 
 ### IDE
 
-Utilizzo di un IDE installato sul computer: Esistono molti IDE che puoi installare sul tuo computer. Ecco alcuni dei più comuni:
+Utilizzo di un IDE (integrated development environment) installato sul computer: Esistono molti IDE che puoi installare sul tuo computer. Ecco alcuni dei più comuni:
 
 - IDLE: Incluso con l'installazione di Python.
   - Avvia IDLE.
@@ -92,6 +191,7 @@ Utilizzo di un IDE installato sul computer: Esistono molti IDE che puoi installa
   - Esegui il programma utilizzando il terminale integrato (`Visualizza -> Terminale`) e digitando `python hello_world.py`.
 
 ### Esecuzione nel Browser
+
 Puoi eseguire Python direttamente nel browser utilizzando piattaforme online.
 
 - Repl.it:
