@@ -5,7 +5,7 @@ citation-location: margin
 
 # Scaricare e installare Python
 
-## Passaggi per scaricare Python
+## Scaricamento
 
 1. Visita il sito ufficiale di Python: Vai su [python.org](https://www.python.org/).
 2. Naviga alla pagina di download: Clicca su "Downloads" nel menu principale.
@@ -14,7 +14,7 @@ citation-location: margin
    - Per macOS: Clicca su "Download Python 3.12.x".
    - Per Linux: Python è spesso preinstallato. Se non lo è, usa il gestore di pacchetti della tua distribuzione (ad esempio `apt` per Ubuntu: `sudo apt-get install python3`).
 
-## Installare Python
+## Installazione
 
 1. Esegui il file di installazione:
    - Su Windows: Esegui il file `.exe` scaricato. Assicurati di selezionare l'opzione "Add Python to PATH" durante l'installazione.
@@ -79,7 +79,7 @@ Ecco come fare sui diversi sistemi operativi.
 2. Rinomina il file (facoltativo):
    - Se desideri mantenere il file senza estensione `.txt`, puoi rinominarlo in `hello` direttamente dall'Esplora file.
 3. Esegui il file Python:
-   - Apri il Prompt dei comandi.
+   - Apri il prompt dei comandi.
    - Naviga fino alla directory in cui hai salvato il file. Ad esempio, se il file si trova nella cartella `Documenti`, puoi digitare:
      ```plaintext
      cd %HOMEPATH%\Documenti
@@ -109,7 +109,7 @@ Ecco come fare sui diversi sistemi operativi.
 2. Rinomina il file (facoltativo):
    - Se desideri mantenere il file senza estensione `.txt`, puoi rinominarlo in `hello` direttamente dal Finder.
 3. Esegui il file Python:
-   - Apri il Terminale.
+   - Apri il terminale del sistema operativo.
    - Naviga fino alla directory in cui hai salvato il file. Ad esempio, se il file si trova nella cartella `Documenti`, puoi digitare:
      ```bash
      cd ~/Documents
@@ -138,7 +138,7 @@ Ecco come fare sui diversi sistemi operativi.
      mv hello.txt hello
      ```
 3. Esegui il file Python:
-   - Apri il Terminale.
+   - Apri il terminale del sistema operativo.
    - Naviga fino alla directory in cui hai salvato il file. Ad esempio, se il file si trova nella cartella `Documenti`, puoi digitare:
      ```bash
      cd ~/Documenti
@@ -152,63 +152,106 @@ Ecco come fare sui diversi sistemi operativi.
    Hello, World!
    ```
 
+:::
+
 Con queste istruzioni, dovresti essere in grado di eseguire il programma "Hello, World!" utilizzando un file Python su Windows, macOS e Linux.
 
 ### IDE
 
-Utilizzo di un IDE (integrated development environment) installato sul computer: Esistono molti IDE che puoi installare sul tuo computer. Ecco alcuni dei più comuni:
+Utilizzo di un IDE (integrated development environment) installato sul computer. Ecco alcuni dei più comuni e gratuiti.
 
-- IDLE: Incluso con l'installazione di Python.
-  - Avvia IDLE.
-  - Crea un nuovo file (`File -> New File`).
-  - Scrivi il programma:
-    ```python
-    print("Hello, World!")
-    ```
-  - Salva il file (`File -> Salva`).
-  - Esegui il programma (`Run -> Run Module`).
+::: {.panel-tabset}
 
-- PyCharm:
-  - Scarica e installa PyCharm da [jetbrains.com/pycharm/download](https://www.jetbrains.com/pycharm/download/).
-  - Crea un nuovo progetto associando l'interprete Python.
-  - Crea un nuovo file Python (`File -> New -> Python File`).
-  - Scrivi il programma:
-    ```python
-    print("Hello, World!")
-    ```
-  - Esegui il programma (`Run -> Run...`).
+## IDLE
 
-- Visual Studio Code:
-  - Scarica e installa VS Code da [code.visualstudio.com](https://code.visualstudio.com/).
-  - Installa l'estensione Python.
-  - Apri o crea una nuova cartella di progetto.
-  - Crea un nuovo file Python (`File -> Nuovo file`).
-  - Scrivi il programma:
-    ```python
-    print("Hello, World!")
-    ```
-  - Salva il file con estensione `.py`, ad esempio `hello_world.py`.
-  - Esegui il programma utilizzando il terminale integrato (`Visualizza -> Terminale`) e digitando `python hello_world.py`.
+Incluso con l'installazione di Python.
+- Avvia IDLE.
+- Crea un nuovo file (`File -> New File`).
+- Scrivi il programma:
+  ```python
+  print("Hello, World!")
+  ```
+- Salva il file (`File -> Salva`).
+- Esegui il programma (`Run -> Run Module`).
+
+## PyCharm
+
+- Scarica e installa PyCharm da [jetbrains.com/pycharm/download](https://www.jetbrains.com/pycharm/download/).
+- Crea un nuovo progetto associando l'interprete Python.
+- Crea un nuovo file Python (`File -> New -> Python File`).
+- Scrivi il programma:
+  ```python
+  print("Hello, World!")
+  ```
+- Esegui il programma (`Run -> Run...`).
+
+## Visual Studio Code
+
+- Scarica e installa VS Code da [code.visualstudio.com](https://code.visualstudio.com/).
+- Installa l'estensione Python.
+- Apri o crea una nuova cartella di progetto.
+- Crea un nuovo file Python (`File -> Nuovo file`).
+- Scrivi il programma:
+  ```python
+  print("Hello, World!")
+  ```
+- Salva il file con estensione `.py`, ad esempio `hello_world.py`.
+- Esegui il programma utilizzando il terminale integrato (`Visualizza -> Terminale`) e digitando `python hello_world.py`.
+
+:::
 
 ### Esecuzione nel Browser
 
-Puoi eseguire Python direttamente nel browser utilizzando piattaforme online.
+Puoi eseguire Python direttamente nel browser, senza installare nulla. Anche qui abbiamo diverse alternative, sia eseguendo il codice localmente, che utilizzando piattaforme online.
 
-- Repl.it:
-  - Visita [repl.it](https://repl.it/).
-  - Crea un nuovo progetto selezionando Python.
-  - Scrivi il programma:
-    ```python
-    print("Hello, World!")
-    ```
-  - Clicca su "Run" per eseguire il programma.
+::: {.panel-tabset}
 
-- Google Colab:
-  - Visita [colab.research.google.com](https://colab.research.google.com/).
-  - Crea un nuovo notebook.
-  - In una cella di codice, scrivi:
-    ```python
-    print("Hello, World!")
-    ```
-  - Premi il pulsante di esecuzione accanto alla cella.
+## Repl.it
+
+- Visita [repl.it](https://repl.it/).
+- Crea un nuovo progetto selezionando Python.
+- Scrivi il programma:
+  ```python
+  print("Hello, World!")
+  ```
+- Clicca su "Run" per eseguire il programma.
+
+## Google Colab
+
+- Visita [colab.research.google.com](https://colab.research.google.com/).
+- Crea un nuovo notebook.
+- In una cella di codice, scrivi:
+  ```python
+  print("Hello, World!")
+  ```
+- Premi il pulsante di esecuzione accanto alla cella.
+
+## Pyscript
+
+- Visita il sito ufficiale di [PyScript](https://pyscript.net/) per ulteriori informazioni su come iniziare.
+- Crea un file HTML con il seguente contenuto:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello, World with PyScript</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+    <py-script>
+        print("Hello, World!")
+    </py-script>
+</body>
+</html>
+```
+
+- Salva il file con estensione `.html` (ad esempio, `hello.html`).
+- Apri il file salvato in un browser web. Vedrai l'output `Hello, World!` direttamente nella pagina.
+
+:::
+
+
 
