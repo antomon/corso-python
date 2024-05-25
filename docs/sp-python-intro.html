@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.39">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Da neofita di Python a campione – 3&nbsp; introduzione a Python</title>
+<title>Da neofita di Python a campione – 4&nbsp; introduzione a Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -55,17 +89,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
   }
 }</script>
 <script async="" src="https://hypothes.is/embed.js"></script>
@@ -84,13 +118,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sp.html">Seconda parte: Le basi di Python</a></li><li class="breadcrumb-item"><a href="./sp-python-intro.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">introduzione a Python</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sp.html">Seconda parte: Le basi di Python</a></li><li class="breadcrumb-item"><a href="./sp-python-intro.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">introduzione a Python</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Ricerca" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -104,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Da neofita di Python a campione</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/antomon/corso-python" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/antomon/corso-python" title="Eseguire il codice" class="quarto-navigation-tool px-1" aria-label="Eseguire il codice"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -150,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="Ricerca"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -165,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="sidebar-item-container"> 
             <a href="./fp.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prima parte: I fondamenti</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -182,13 +216,19 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Paradigmi di programmazione</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fp-syntax-algorithm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">fp-syntax-algorithm.html</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./sp.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Seconda parte: Le basi di Python</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -196,13 +236,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sp-python-intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">introduzione a Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">introduzione a Python</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sp-python-install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></span></a>
   </div>
 </li>
       </ul>
@@ -210,8 +250,8 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+ <span class="menu-text">Appendici</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -231,29 +271,38 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">Indice</h2>
    
   <ul>
-  <li><a href="#perché-python-è-un-linguaggio-di-alto-livello" id="toc-perché-python-è-un-linguaggio-di-alto-livello" class="nav-link active" data-scroll-target="#perché-python-è-un-linguaggio-di-alto-livello"><span class="header-section-number">3.1</span> Perché Python è un linguaggio di alto livello?</a></li>
-  <li><a href="#python-come-linguaggio-multiparadigma" id="toc-python-come-linguaggio-multiparadigma" class="nav-link" data-scroll-target="#python-come-linguaggio-multiparadigma"><span class="header-section-number">3.2</span> Python come linguaggio multiparadigma</a></li>
-  <li><a href="#regole-formali-e-esperienziali" id="toc-regole-formali-e-esperienziali" class="nav-link" data-scroll-target="#regole-formali-e-esperienziali"><span class="header-section-number">3.3</span> Regole formali e esperienziali</a></li>
-  <li><a href="#lecosistema" id="toc-lecosistema" class="nav-link" data-scroll-target="#lecosistema"><span class="header-section-number">3.4</span> L’ecosistema</a>
+  <li><a href="#perché-python-è-un-linguaggio-di-alto-livello" id="toc-perché-python-è-un-linguaggio-di-alto-livello" class="nav-link active" data-scroll-target="#perché-python-è-un-linguaggio-di-alto-livello"><span class="header-section-number">4.1</span> Perché Python è un linguaggio di alto livello?</a></li>
+  <li><a href="#python-come-linguaggio-multiparadigma" id="toc-python-come-linguaggio-multiparadigma" class="nav-link" data-scroll-target="#python-come-linguaggio-multiparadigma"><span class="header-section-number">4.2</span> Python come linguaggio multiparadigma</a></li>
+  <li><a href="#regole-formali-e-esperienziali" id="toc-regole-formali-e-esperienziali" class="nav-link" data-scroll-target="#regole-formali-e-esperienziali"><span class="header-section-number">4.3</span> Regole formali e esperienziali</a></li>
+  <li><a href="#lecosistema" id="toc-lecosistema" class="nav-link" data-scroll-target="#lecosistema"><span class="header-section-number">4.4</span> L’ecosistema</a>
   <ul class="collapse">
-  <li><a href="#linterprete" id="toc-linterprete" class="nav-link" data-scroll-target="#linterprete"><span class="header-section-number">3.4.1</span> L’interprete</a></li>
-  <li><a href="#lambiente-di-sviluppo" id="toc-lambiente-di-sviluppo" class="nav-link" data-scroll-target="#lambiente-di-sviluppo"><span class="header-section-number">3.4.2</span> L’ambiente di sviluppo</a></li>
-  <li><a href="#le-librerie-standard" id="toc-le-librerie-standard" class="nav-link" data-scroll-target="#le-librerie-standard"><span class="header-section-number">3.4.3</span> Le librerie standard</a></li>
-  <li><a href="#moduli-di-estensione" id="toc-moduli-di-estensione" class="nav-link" data-scroll-target="#moduli-di-estensione"><span class="header-section-number">3.4.4</span> Moduli di estensione</a></li>
-  <li><a href="#utility-e-strumenti-aggiuntivi" id="toc-utility-e-strumenti-aggiuntivi" class="nav-link" data-scroll-target="#utility-e-strumenti-aggiuntivi"><span class="header-section-number">3.4.5</span> Utility e strumenti aggiuntivi</a></li>
+  <li><a href="#linterprete" id="toc-linterprete" class="nav-link" data-scroll-target="#linterprete"><span class="header-section-number">4.4.1</span> L’interprete</a></li>
+  <li><a href="#lambiente-di-sviluppo" id="toc-lambiente-di-sviluppo" class="nav-link" data-scroll-target="#lambiente-di-sviluppo"><span class="header-section-number">4.4.2</span> L’ambiente di sviluppo</a></li>
+  <li><a href="#le-librerie-standard" id="toc-le-librerie-standard" class="nav-link" data-scroll-target="#le-librerie-standard"><span class="header-section-number">4.4.3</span> Le librerie standard</a></li>
+  <li><a href="#moduli-di-estensione" id="toc-moduli-di-estensione" class="nav-link" data-scroll-target="#moduli-di-estensione"><span class="header-section-number">4.4.4</span> Moduli di estensione</a></li>
+  <li><a href="#utility-e-strumenti-aggiuntivi" id="toc-utility-e-strumenti-aggiuntivi" class="nav-link" data-scroll-target="#utility-e-strumenti-aggiuntivi"><span class="header-section-number">4.4.5</span> Utility e strumenti aggiuntivi</a></li>
+  </ul></li>
+  <li><a href="#lalgoritmo-di-ordinamento-bubble-sort" id="toc-lalgoritmo-di-ordinamento-bubble-sort" class="nav-link" data-scroll-target="#lalgoritmo-di-ordinamento-bubble-sort"><span class="header-section-number">4.5</span> L’algoritmo di ordinamento bubble sort</a>
+  <ul class="collapse">
+  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python"><span class="header-section-number">4.5.1</span> Python</a></li>
+  <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c"><span class="header-section-number">4.5.2</span> C</a></li>
+  <li><a href="#c-1" id="toc-c-1" class="nav-link" data-scroll-target="#c-1"><span class="header-section-number">4.5.3</span> C++</a></li>
+  <li><a href="#java" id="toc-java" class="nav-link" data-scroll-target="#java"><span class="header-section-number">4.5.4</span> Java</a></li>
+  <li><a href="#rust" id="toc-rust" class="nav-link" data-scroll-target="#rust"><span class="header-section-number">4.5.5</span> Rust</a></li>
+  <li><a href="#scala" id="toc-scala" class="nav-link" data-scroll-target="#scala"><span class="header-section-number">4.5.6</span> Scala</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/sp-python-intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/sp-python-intro.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sp.html">Seconda parte: Le basi di Python</a></li><li class="breadcrumb-item"><a href="./sp-python-intro.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">introduzione a Python</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sp.html">Seconda parte: Le basi di Python</a></li><li class="breadcrumb-item"><a href="./sp-python-intro.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">introduzione a Python</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">introduzione a Python</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">introduzione a Python</span></h1>
 </div>
 
 
@@ -273,14 +322,14 @@ ul.task-list li input[type="checkbox"] {
 <p>Python è un linguaggio di programmazione multiparadigma rilasciato da Guido van Rossum nel 1991, dopo il C++ e prima di Java e PHP. È multiparadigma, cioè abilita o supporta più paradigmi di programmazione, e multipiattaforma, potendo essere installato e utilizzato su gran parte dei sistemi operativi e hardware.</p>
 <p>Python offre una combinazione unica di eleganza, semplicità, praticità e versatilità. Questa eleganza e semplicità derivano dal fatto che è stato progettato per essere molto simile al linguaggio naturale inglese, rendendo il codice leggibile e comprensibile. La sintassi di Python è pulita e minimalista, evitando simboli superflui come parentesi graffe e punti e virgola, e utilizzando indentazioni per definire blocchi di codice, il che forza una struttura coerente e leggibile. La semantica del linguaggio è intuitiva e coerente, il che riduce la curva di apprendimento e minimizza gli errori.</p>
 <p>Diventerai rapidamente produttivo con Python grazie alla sua coerenza e regolarità, alla sua ricca libreria standard e ai numerosi pacchetti e strumenti di terze parti prontamente disponibili. Python è facile da imparare, quindi è molto adatto se sei nuovo alla programmazione, ma è anche potente abbastanza per i più sofisticati esperti. Questa semplicità ha attratto una comunità ampia e attiva che ha contribuito sia alle librerie di programmi incluse nell’implementazione ufficiale che a molte librerie scaricabili liberamente, ampliando ulteriormente l’ecosistema di Python.</p>
-<section id="perché-python-è-un-linguaggio-di-alto-livello" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="perché-python-è-un-linguaggio-di-alto-livello"><span class="header-section-number">3.1</span> Perché Python è un linguaggio di alto livello?</h2>
+<section id="perché-python-è-un-linguaggio-di-alto-livello" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="perché-python-è-un-linguaggio-di-alto-livello"><span class="header-section-number">4.1</span> Perché Python è un linguaggio di alto livello?</h2>
 <p>Python è considerato un linguaggio di programmazione di alto livello, cioè utilizza un livello di astrazione elevato rispetto alla complessità dell’ambiente in cui i suoi programmi sono eseguiti. Il programmatore ha a disposizione una sintassi che è più intuitiva rispetto ad altri linguaggi come Java, C++, PHP tradizionalmente anch’essi definiti di alto livello.</p>
 <p>Infatti, consente ai programmatori di scrivere codice in modo più concettuale e indipendente dalle caratteristiche degli hardware, anche molto diversi, su cui è disponibile. Ad esempio, invece di preoccuparsi di allocare e deallocare memoria manualmente, Python gestisce queste operazioni automaticamente. Questo libera il programmatore dai dettagli del sistema operativo e dell’elettronica, permettendogli di concentrarsi sulla logica del problema da risolvere.</p>
 <p>Ciò ha un effetto importante sulla versatilità perché spesso è utilizzato come “interfaccia utente” per linguaggi di livello più basso come C, C++ o Fortran. Questo permette a Python di sfruttare le prestazioni dei linguaggi compilati per le parti critiche e computazionalmente intensive del codice, mantenendo al contempo una sintassi semplice e leggibile per la maggior parte del programma. Buoni compilatori per i linguaggi compilati classici possono sì generare codice binario che gira più velocemente di Python, tuttavia, nella maggior parte dei casi, le prestazioni delle applicazioni codificate in Python sono sufficienti.</p>
 </section>
-<section id="python-come-linguaggio-multiparadigma" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="python-come-linguaggio-multiparadigma"><span class="header-section-number">3.2</span> Python come linguaggio multiparadigma</h2>
+<section id="python-come-linguaggio-multiparadigma" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="python-come-linguaggio-multiparadigma"><span class="header-section-number">4.2</span> Python come linguaggio multiparadigma</h2>
 <p>Python è un linguaggio di programmazione multiparadigma, il che significa che supporta diversi paradigmi di programmazione, permettendo di mescolare e combinare gli stili a seconda delle necessità dell’applicazione. Ecco alcuni dei paradigmi supportati da Python:</p>
 <ul>
 <li>Programmazione imperativa: Python supporta la programmazione imperativa, che si basa sull’esecuzione di istruzioni in una sequenza specifica. Puoi scrivere ed eseguire script Python direttamente dalla linea di comando, permettendo un approccio interattivo e immediato alla programmazione, come se fosse una calcolatrice.</li>
@@ -290,8 +339,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Questa flessibilità rende Python adatto a una vasta gamma di applicazioni e consente ai programmatori di scegliere l’approccio più adatto al problema da risolvere.</p>
 </section>
-<section id="regole-formali-e-esperienziali" class="level2 page-columns page-full" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="regole-formali-e-esperienziali"><span class="header-section-number">3.3</span> Regole formali e esperienziali</h2>
+<section id="regole-formali-e-esperienziali" class="level2 page-columns page-full" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="regole-formali-e-esperienziali"><span class="header-section-number">4.3</span> Regole formali e esperienziali</h2>
 <p>Python non è solo un linguaggio con regole sintattiche precise e ben progettate, ma possiede anche una propria “filosofia”, un insieme di regole di buon senso esperienziali che sono complementari alla sintassi formale. Questa filosofia è spesso riassunta nel “zen di Python”, una raccolta di aforismi che catturano i principi fondamentali del design di Python. Tali principi aiutano i programmatori a comprendere e utilizzare al meglio le potenzialità del linguaggio e dell’ecosistema Python.</p>
 <p>Ecco alcuni dei principi dello “zen di Python”<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;<a href="https://peps.python.org/pep-0020/">PEP 20 – The Zen of Python</a></p></div></div><ul>
@@ -303,11 +352,11 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Questi principi, insieme alle regole sintattiche, guidano il programmatore nell’adottare buone pratiche di sviluppo e nel creare codice che sia non solo funzionale ma anche mantenibile e comprensibile da altri.</p>
 </section>
-<section id="lecosistema" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="lecosistema"><span class="header-section-number">3.4</span> L’ecosistema</h2>
+<section id="lecosistema" class="level2 page-columns page-full" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="lecosistema"><span class="header-section-number">4.4</span> L’ecosistema</h2>
 <p>Fino ad ora abbiamo visto Python come linguaggio, ma è molto di più: Python è anche una vasta collezione di strumenti e risorse a disposizione degli sviluppatori, strutturata in un ecosistema completo, di cui il linguaggio ne rappresenta la parte formale. Questo ecosistema è disponibile completamente e anche come sorgente sul sito ufficiale <a href="https://www.python.org/">python.org</a>.</p>
-<section id="linterprete" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="linterprete"><span class="header-section-number">3.4.1</span> L’interprete</h3>
+<section id="linterprete" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="linterprete"><span class="header-section-number">4.4.1</span> L’interprete</h3>
 <p>L’interprete Python è lo strumento di esecuzione dei programmi. È il software che legge ed esegue il codice Python. Python è un linguaggio interpretato, il che significa che il codice viene eseguito direttamente dall’interprete, senza bisogno di essere compilato in un linguaggio macchina. Esistono diverse implementazioni dell’interprete Python:</p>
 <ul>
 <li>CPython: L’implementazione di riferimento dell’interprete Python, scritta in C. È la versione più utilizzata e quella ufficiale.</li>
@@ -316,8 +365,8 @@ ul.task-list li input[type="checkbox"] {
 <li>IronPython: Un’implementazione di Python integrata col .NET framework della Microsoft.</li>
 </ul>
 </section>
-<section id="lambiente-di-sviluppo" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="lambiente-di-sviluppo"><span class="header-section-number">3.4.2</span> L’ambiente di sviluppo</h3>
+<section id="lambiente-di-sviluppo" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="lambiente-di-sviluppo"><span class="header-section-number">4.4.2</span> L’ambiente di sviluppo</h3>
 <p>IDLE (integrated development and learning environment) è l’ambiente di sviluppo integrato ufficiale per Python. È incluso nell’installazione standard di Python ed è progettato per essere semplice e facile da usare, ideale per i principianti. Offre diverse funzionalità utili:</p>
 <ul>
 <li>Editor di codice: Con evidenziazione della sintassi, indentazione automatica e controllo degli errori.</li>
@@ -325,10 +374,10 @@ ul.task-list li input[type="checkbox"] {
 <li>Strumenti di debug: Include un debugger integrato con punti di interruzione e stepping.</li>
 </ul>
 </section>
-<section id="le-librerie-standard" class="level3" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="le-librerie-standard"><span class="header-section-number">3.4.3</span> Le librerie standard</h3>
-<p>Una delle caratteristiche più potenti di Python è il vasto insieme di librerie utilizzabili in CPython e IDLE, che fornisce moduli e pacchetti per quasi ogni necessità di programmazione. Alcuni esempi includono:</p>
-<ul>
+<section id="le-librerie-standard" class="level3 page-columns page-full" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="le-librerie-standard"><span class="header-section-number">4.4.3</span> Le librerie standard</h3>
+<p>Una delle caratteristiche più potenti di Python è il vasto insieme di librerie<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> utilizzabili in CPython e IDLE, che fornisce moduli e pacchetti per quasi ogni necessità di programmazione. Alcuni esempi, solo allo scopo di illustrare la varietà includono:</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;<a href="https://docs.python.org/3/library/index.html">Documentazione delle librerie standard di Python</a></p></div></div><ul>
 <li>os: Fornisce funzioni per interagire con il sistema operativo.</li>
 <li>sys: Offre accesso a funzioni e oggetti del runtime di Python.</li>
 <li>datetime: Consente di lavorare con date e orari.</li>
@@ -346,8 +395,8 @@ ul.task-list li input[type="checkbox"] {
 <li>wave: Fornisce strumenti per leggere e scrivere file audio WAV.</li>
 </ul>
 </section>
-<section id="moduli-di-estensione" class="level3" data-number="3.4.4">
-<h3 data-number="3.4.4" class="anchored" data-anchor-id="moduli-di-estensione"><span class="header-section-number">3.4.4</span> Moduli di estensione</h3>
+<section id="moduli-di-estensione" class="level3" data-number="4.4.4">
+<h3 data-number="4.4.4" class="anchored" data-anchor-id="moduli-di-estensione"><span class="header-section-number">4.4.4</span> Moduli di estensione</h3>
 <p>Python supporta l’estensione del suo core tramite moduli scritti in C, C++ o altri linguaggi. Questi moduli permettono di ottimizzare parti critiche del codice o di interfacciarsi con librerie e API esterne:</p>
 <ul>
 <li>Cython: Permette di scrivere moduli C estesi utilizzando una sintassi simile a Python. Cython è ampiamente utilizzato per migliorare le prestazioni di parti critiche del codice, specialmente in applicazioni scientifiche e di calcolo numerico. Ad esempio, molte librerie scientifiche popolari come SciPy e scikit-learn utilizzano Cython per accelerare le operazioni computazionalmente intensive.</li>
@@ -355,14 +404,182 @@ ul.task-list li input[type="checkbox"] {
 <li>CFFI (C foreign function interface): Un’altra interfaccia per chiamare librerie C da Python. È progettata per essere facile da usare e per supportare l’uso di librerie C complesse con Python. CFFI è utilizzato in progetti come PyPy e gevent, permettendo di scrivere codice ad alte prestazioni e di gestire le chiamate a funzioni C in modo efficiente.</li>
 </ul>
 </section>
-<section id="utility-e-strumenti-aggiuntivi" class="level3" data-number="3.4.5">
-<h3 data-number="3.4.5" class="anchored" data-anchor-id="utility-e-strumenti-aggiuntivi"><span class="header-section-number">3.4.5</span> Utility e strumenti aggiuntivi</h3>
+<section id="utility-e-strumenti-aggiuntivi" class="level3" data-number="4.4.5">
+<h3 data-number="4.4.5" class="anchored" data-anchor-id="utility-e-strumenti-aggiuntivi"><span class="header-section-number">4.4.5</span> Utility e strumenti aggiuntivi</h3>
 <p>Python include anche una serie di strumenti e utility che facilitano lo sviluppo e la gestione dei progetti:</p>
 <ul>
 <li>pip: Il gestore dei pacchetti di Python. Permette di installare e gestire moduli aggiuntivi, cioè non inclusi nello standard.</li>
 <li>venv: Uno strumento per creare ambienti virtuali isolati, che permettono di gestire separatamente le dipendenze di diversi progetti.</li>
 <li>Documentazione: Python include una documentazione dettagliata, accessibile tramite il comando pydoc o attraverso il sito ufficiale.</li>
 </ul>
+</section>
+</section>
+<section id="lalgoritmo-di-ordinamento-bubble-sort" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="lalgoritmo-di-ordinamento-bubble-sort"><span class="header-section-number">4.5</span> L’algoritmo di ordinamento bubble sort</h2>
+<p>Per chiudere il capitolo sul primo approccio a Python, possiamo confrontare un algoritmo di media complessità in diversi linguaggi di programmazione. Un buon esempio potrebbe essere l’implementazione dell’algoritmo di ordinamento “bubble sort” di una lista di valori. Vediamo come viene scritto in Python, C, C++, e Java.</p>
+<section id="python" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="python"><span class="header-section-number">4.5.1</span> Python</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bubble_sort(arr):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> arr[j] <span class="op">&gt;</span> arr[j<span class="op">+</span><span class="dv">1</span>]:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                arr[j], arr[j<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> arr[j<span class="op">+</span><span class="dv">1</span>], arr[j]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>bubble_sort(arr)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sorted array is:"</span>, arr)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="c" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="c"><span class="header-section-number">4.5.2</span> C</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> bubble_sort<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> i<span class="op">,</span> j<span class="op">,</span> temp<span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span>j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>arr<span class="op">[</span>j<span class="op">]</span> <span class="op">&gt;</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                temp <span class="op">=</span> arr<span class="op">[</span>j<span class="op">];</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                arr<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">];</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> temp<span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> arr<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">};</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> n <span class="op">=</span> <span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">)/</span><span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">[</span><span class="dv">0</span><span class="op">]);</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    bubble_sort<span class="op">(</span>arr<span class="op">,</span> n<span class="op">);</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"Sorted array is: "</span><span class="op">);</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"</span><span class="sc">%d</span><span class="st"> "</span><span class="op">,</span> arr<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="c-1" class="level3" data-number="4.5.3">
+<h3 data-number="4.5.3" class="anchored" data-anchor-id="c-1"><span class="header-section-number">4.5.3</span> C++</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BubbleSort <span class="op">{</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> sort<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="op">(</span>arr<span class="op">[</span>j<span class="op">]</span> <span class="op">&gt;</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">int</span> temp <span class="op">=</span> arr<span class="op">[</span>j<span class="op">];</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                    arr<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">];</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                    arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> temp<span class="op">;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> printArray<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>            cout <span class="op">&lt;&lt;</span> arr<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> arr<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">};</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> n <span class="op">=</span> <span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">)/</span><span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">[</span><span class="dv">0</span><span class="op">]);</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    BubbleSort bs<span class="op">;</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    bs<span class="op">.</span>sort<span class="op">(</span>arr<span class="op">,</span> n<span class="op">);</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Sorted array is: "</span><span class="op">;</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    bs<span class="op">.</span>printArray<span class="op">(</span>arr<span class="op">,</span> n<span class="op">);</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="java" class="level3" data-number="4.5.4">
+<h3 data-number="4.5.4" class="anchored" data-anchor-id="java"><span class="header-section-number">4.5.4</span> Java</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> BubbleSort <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">bubbleSort</span><span class="op">(</span><span class="dt">int</span> arr<span class="op">[])</span> <span class="op">{</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> n <span class="op">=</span> arr<span class="op">.</span><span class="fu">length</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="op">(</span>arr<span class="op">[</span>j<span class="op">]</span> <span class="op">&gt;</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">int</span> temp <span class="op">=</span> arr<span class="op">[</span>j<span class="op">];</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                    arr<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">];</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                    arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> temp<span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span> args<span class="op">[])</span> <span class="op">{</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> arr<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">};</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">bubbleSort</span><span class="op">(</span>arr<span class="op">);</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Sorted array is:"</span><span class="op">);</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> arr<span class="op">.</span><span class="fu">length</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span>arr<span class="op">[</span>i<span class="op">]</span> <span class="op">+</span> <span class="st">" "</span><span class="op">);</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="rust" class="level3" data-number="4.5.5">
+<h3 data-number="4.5.5" class="anchored" data-anchor-id="rust"><span class="header-section-number">4.5.5</span> Rust</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> bubble_sort(arr<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> [<span class="dt">i32</span>]) <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> n <span class="op">=</span> arr<span class="op">.</span>len()<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span>n <span class="op">{</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span>n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span> <span class="op">{</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> arr[j] <span class="op">&gt;</span> arr[j<span class="op">+</span><span class="dv">1</span>] <span class="op">{</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                arr<span class="op">.</span>swap(j<span class="op">,</span> j<span class="op">+</span><span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> arr <span class="op">=</span> [<span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span>]<span class="op">;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    bubble_sort(<span class="op">&amp;</span><span class="kw">mut</span> arr)<span class="op">;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"Sorted array is: {:?}"</span><span class="op">,</span> arr)<span class="op">;</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="scala" class="level3" data-number="4.5.6">
+<h3 data-number="4.5.6" class="anchored" data-anchor-id="scala"><span class="header-section-number">4.5.6</span> Scala</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">object</span> BubbleSort <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">bubbleSort</span><span class="op">(</span>arr<span class="op">:</span> <span class="ex">Array</span><span class="op">[</span><span class="bu">Int</span><span class="op">]):</span> <span class="bu">Unit</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> n <span class="op">=</span> arr<span class="op">.</span>length</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">&lt;-</span> <span class="dv">0</span> until n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> <span class="op">(</span>j <span class="op">&lt;-</span> <span class="dv">0</span> until n <span class="op">-</span> i <span class="op">-</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span><span class="fu">arr</span><span class="op">(</span>j<span class="op">)</span> <span class="op">&gt;</span> <span class="fu">arr</span><span class="op">(</span>j <span class="op">+</span> <span class="dv">1</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>          <span class="kw">val</span> temp <span class="op">=</span> <span class="fu">arr</span><span class="op">(</span>j<span class="op">)</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>          <span class="fu">arr</span><span class="op">(</span>j<span class="op">)</span> <span class="op">=</span> <span class="fu">arr</span><span class="op">(</span>j <span class="op">+</span> <span class="dv">1</span><span class="op">)</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>          <span class="fu">arr</span><span class="op">(</span>j <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">=</span> temp</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">main</span><span class="op">(</span>args<span class="op">:</span> <span class="ex">Array</span><span class="op">[</span><span class="ex">String</span><span class="op">]):</span> <span class="bu">Unit</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> arr <span class="op">=</span> <span class="ex">Array</span><span class="op">(</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">)</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bubbleSort</span><span class="op">(</span>arr<span class="op">)</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span><span class="op">(</span><span class="st">"Sorted array is: "</span> <span class="op">+</span> arr<span class="op">.</span><span class="fu">mkString</span><span class="op">(</span><span class="st">", "</span><span class="op">))</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Confrontando questi esempi, possiamo osservare le differenze sintattiche e di stile tra Python ed altri, importanti, linguaggi. Python si distingue per la sua sintassi concisa e leggibile, mentre C richiede una gestione manuale della memoria e una sintassi più dettagliata.</p>
+<p>Il C++ e Java aggiungono caratteristiche relative agli oggetti e funzionalità di alto livello rispetto a C, al prezzo di una sintassi più complessa e verbosa. Rust e Scala sono linguaggi più moderni e si pongono nel mezzo tra C, C++ e Java e Python.</p>
 
 
 </section>
@@ -413,12 +630,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiato!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiato!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -798,7 +1015,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./sp-python-install.html" class="pagination-link" aria-label="Scaricare e installare Python">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -807,4 +1024,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/sp-python-intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/sp-python-intro.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li></ul></div></div></div></footer></body></html>

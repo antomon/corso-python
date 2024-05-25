@@ -34,7 +34,7 @@ Questa flessibilità rende Python adatto a una vasta gamma di applicazioni e con
 
 Python non è solo un linguaggio con regole sintattiche precise e ben progettate, ma possiede anche una propria "filosofia", un insieme di regole di buon senso esperienziali che sono complementari alla sintassi formale. Questa filosofia è spesso riassunta nel "zen di Python", una raccolta di aforismi che catturano i principi fondamentali del design di Python. Tali principi aiutano i programmatori a comprendere e utilizzare al meglio le potenzialità del linguaggio e dell'ecosistema Python.
 
-Ecco alcuni dei principi dello "zen di Python"[^1]:
+Ecco alcuni dei principi dello "zen di Python"[^1-sp-python-intro]:
 
 - La leggibilità conta: Il codice dovrebbe essere scritto in modo che sia facile da leggere e comprendere.
 - Esplicito è meglio di implicito: È preferibile scrivere codice chiaro e diretto piuttosto che utilizzare scorciatoie criptiche.
@@ -42,7 +42,7 @@ Ecco alcuni dei principi dello "zen di Python"[^1]:
 - Complesso è meglio di complicato: Quando la semplicità non è sufficiente, la complessità è accettabile, ma il codice non dovrebbe mai essere complicato.
 - Pratico batte puro: Le soluzioni pragmatiche sono preferibili alle soluzioni eleganti ma poco pratiche.
 
-[^1]: [PEP 20 – The Zen of Python](https://peps.python.org/pep-0020/)
+[^1-sp-python-intro]: [PEP 20 – The Zen of Python](https://peps.python.org/pep-0020/)
 
 Questi principi, insieme alle regole sintattiche, guidano il programmatore nell'adottare buone pratiche di sviluppo e nel creare codice che sia non solo funzionale ma anche mantenibile e comprensibile da altri.
 
@@ -69,7 +69,7 @@ IDLE (integrated development and learning environment) è l'ambiente di sviluppo
 
 ### Le librerie standard
 
-Una delle caratteristiche più potenti di Python è il vasto insieme di librerie utilizzabili in CPython e IDLE, che fornisce moduli e pacchetti per quasi ogni necessità di programmazione. Alcuni esempi includono:
+Una delle caratteristiche più potenti di Python è il vasto insieme di librerie[^2-sp-python-intro] utilizzabili in CPython e IDLE, che fornisce moduli e pacchetti per quasi ogni necessità di programmazione. Alcuni esempi, solo allo scopo di illustrare la varietà includono:
 
 - os: Fornisce funzioni per interagire con il sistema operativo.
 - sys: Offre accesso a funzioni e oggetti del runtime di Python.
@@ -87,6 +87,8 @@ Una delle caratteristiche più potenti di Python è il vasto insieme di librerie
 - asyncio: Supporta la programmazione asincrona per la scrittura di codice concorrente e a bassa latenza.
 - wave: Fornisce strumenti per leggere e scrivere file audio WAV.
 
+[^2-sp-python-intro]: [Documentazione delle librerie standard di Python](https://docs.python.org/3/library/index.html)
+
 ### Moduli di estensione
 
 Python supporta l'estensione del suo core tramite moduli scritti in C, C++ o altri linguaggi. Questi moduli permettono di ottimizzare parti critiche del codice o di interfacciarsi con librerie e API esterne:
@@ -102,3 +104,185 @@ Python include anche una serie di strumenti e utility che facilitano lo sviluppo
 - pip: Il gestore dei pacchetti di Python. Permette di installare e gestire moduli aggiuntivi, cioè non inclusi nello standard.
 - venv: Uno strumento per creare ambienti virtuali isolati, che permettono di gestire separatamente le dipendenze di diversi progetti.
 - Documentazione: Python include una documentazione dettagliata, accessibile tramite il comando pydoc o attraverso il sito ufficiale.
+
+## L'algoritmo di ordinamento bubble sort
+
+Per chiudere il capitolo sul primo approccio a Python, possiamo confrontare un algoritmo di media complessità in diversi linguaggi di programmazione. Un buon esempio potrebbe essere l'implementazione dell'algoritmo di ordinamento "bubble sort" di una lista di valori. Vediamo come viene scritto in Python, C, C++, e Java.
+
+### Python
+
+```python
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+
+# Esempio di utilizzo
+arr = [64, 34, 25, 12, 22, 11, 90]
+
+bubble_sort(arr)
+
+print("Sorted array is:", arr)
+```
+
+### C
+
+```c
+#include <stdio.h>
+
+void bubble_sort(int arr[], int n) {
+    int i, j, temp;
+    for (i = 0; i < n-1; i++) {
+        for (j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    bubble_sort(arr, n);
+
+    printf("Sorted array is: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+```
+
+### C++
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class BubbleSort {
+public:
+    void sort(int arr[], int n) {
+        for (int i = 0; i < n-1; i++) {
+            for (int j = 0; j < n-i-1; j++) {
+                if (arr[j] > arr[j+1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+    }
+
+    void printArray(int arr[], int n) {
+        for (int i = 0; i < n; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    BubbleSort bs;
+    bs.sort(arr, n);
+
+    cout << "Sorted array is: ";
+    bs.printArray(arr, n);
+
+    return 0;
+}
+```
+
+### Java
+
+```java
+public class BubbleSort {
+
+    public static void bubbleSort(int arr[]) {
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++) {
+            for (int j = 0; j < n-i-1; j++) {
+                if (arr[j] > arr[j+1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+    }
+
+    public static void main(String args[]) {
+        int arr[] = {64, 34, 25, 12, 22, 11, 90};
+
+        bubbleSort(arr);
+
+        System.out.println("Sorted array is:");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+}
+```
+
+### Rust
+
+```rust
+fn bubble_sort(arr: &mut [i32]) {
+    let n = arr.len();
+    for i in 0..n {
+        for j in 0..n-i-1 {
+            if arr[j] > arr[j+1] {
+                arr.swap(j, j+1);
+            }
+        }
+    }
+}
+
+fn main() {
+    let mut arr = [64, 34, 25, 12, 22, 11, 90];
+
+    bubble_sort(&mut arr);
+
+    println!("Sorted array is: {:?}", arr);
+}
+```
+
+### Scala
+
+```scala
+object BubbleSort {
+  def bubbleSort(arr: Array[Int]): Unit = {
+    val n = arr.length
+    for (i <- 0 until n) {
+      for (j <- 0 until n - i - 1) {
+        if (arr(j) > arr(j + 1)) {
+          val temp = arr(j)
+          arr(j) = arr(j + 1)
+          arr(j + 1) = temp
+        }
+      }
+    }
+  }
+
+  def main(args: Array[String]): Unit = {
+    val arr = Array(64, 34, 25, 12, 22, 11, 90)
+
+    bubbleSort(arr)
+
+    println("Sorted array is: " + arr.mkString(", "))
+  }
+}
+```
+
+Confrontando questi esempi, possiamo osservare le differenze sintattiche e di stile tra Python ed altri, importanti, linguaggi. Python si distingue per la sua sintassi concisa e leggibile, mentre C richiede una gestione manuale della memoria e una sintassi più dettagliata. 
+
+Il C++ e Java aggiungono caratteristiche relative agli oggetti e funzionalità di alto livello rispetto a C, al prezzo di una sintassi più complessa e verbosa. Rust e Scala sono linguaggi più moderni e si pongono nel mezzo tra C, C++ e Java e Python.
