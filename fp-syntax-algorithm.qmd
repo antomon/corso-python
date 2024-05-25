@@ -113,10 +113,10 @@ La **semantica** di un linguaggio di programmazione definisce il significato del
   - Inizializzazione: L'inizializzazione di una variabile è il processo di assegnare un valore iniziale alla variabile. L'inizializzazione può avvenire contestualmente alla dichiarazione o in un'istruzione separata successiva.
   - Visibilità: Indica dove la variabile può essere utilizzata all'interno del codice (ad esempio, variabili locali o globali).
   - Durata di Vita: Descrive per quanto tempo la variabile rimane in memoria durante l'esecuzione del programma (ad esempio, automatica, statica, dinamica).
-- Tipi di dati: I tipi di dati definiscono il dominio dei valori che una variabile può assumere e le operazioni che possono essere eseguite su quei valori. Un tipo di dato determina la natura del valore (ad esempio, numero intero, carattere, booleano) e le operazioni che possono essere effettuate su di esso. Generalmente si distinguono in:
-  - Tipi primitivi: I tipi di dati fondamentali forniti da un linguaggio, come integer, float, boolean e character.
-  - Tipi complessi: Tipi di dati costituiti da più tipi primitivi, come array, struct e oggetti.
-  - Tipi di dati utente: Tipi definiti dall'utente, come classi e tipi personalizzati, che permettono di creare strutture dati più complesse e specifiche per il problema da risolvere.
+- Tipo di dati: I tipi di dati definiscono il dominio dei valori che una variabile può assumere e le operazioni che possono essere eseguite su quei valori. Un tipo di dato determina la natura del valore (ad esempio, numero intero, carattere, booleano) e le operazioni che possono essere effettuate su di esso. Generalmente si distinguono in:
+  - Tipo primitivo: I tipi di dati fondamentali forniti da un linguaggio, come integer, float, boolean e character.
+  - Tipo complesso: Tipo di dati costituiti da più tipi primitivi, come array, struct e oggetti.
+  - Tipo di dati utente: Tipo definito dall'utente, come classi e tipi personalizzati, che permette di creare strutture dati più complesse e specifiche per il problema da risolvere.
 - Ambito (in inglese, scope): L'ambito rappresenta la porzione del codice in cui un identificatore (come una variabile o una funzione) è definito e, quindi, esiste. L'ambito determina dove un identificatore può essere dichiarato e utilizzato. Tipicamente gli ambiti sono:
   - Globale: Identificatori dichiarati a livello globale, accessibili ovunque nel programma.
   - Locale: Identificatori dichiarati all'interno di un blocco, come una funzione o un loop, e accessibili solo all'interno di quel blocco.
@@ -170,116 +170,92 @@ La **semantica** di un linguaggio di programmazione definisce il significato del
 
 Questi elementi semantici combinati determinano il comportamento e la logica di un programma, influenzando il modo in cui il codice viene scritto, eseguito e mantenuto. 
 
-## Esempio di Algoritmo
+## Esempio di algoritmo
 
-Consideriamo un esempio semplice di algoritmo per calcolare la somma dei numeri da 1 a n:
-
-1. Input: Un numero intero `n`.
-2. Output: La somma dei numeri da 1 a `n`.
-
-Algoritmo (in pseudocodice):
-```plaintext
-1. Inizializza somma a 0
-2. Per ogni numero i da 1 a n:
-    3. Aggiungi i a somma
-4. Restituisci somma
-
-## Implementazione di un Algoritmo in un Linguaggio di Programmazione
-
-Vediamo come un algoritmo per calcolare la somma dei numeri da 1 a n può essere implementato in un linguaggio di programmazione generico. Esamineremo come gli elementi sintattici si collegano alle componenti semantiche.
-
-### Algoritmo (in pseudocodice)
-
-1. Inizializza `somma` a 0
-2. Per ogni numero `i` da 1 a `n`:
-    - Aggiungi `i` a `somma`
-3. Restituisci `somma`
-
-### Implementazione
+Consideriamo un esempio semplice di algoritmo per calcolare la somma dei numeri da 1 a n. In input si avrà un numero intero `n` e in output il risultato. In pseudocodice si può rappresentare così:
 
 ```plaintext
-funzione somma(n):
-    somma = 0
-    per i da 1 a n:
-        somma = somma + i
-    ritorna somma
+Inizializza somma a 0
+Per ogni numero i da 1 a n:
+  Aggiungi i a somma
+Restituisci somma
 ```
 
-### Analisi degli Elementi Sintattici e Semantici
-
-#### Dichiarazione della Funzione
+O, in alternativa, possiamo definire una funzione che implementa l'algoritmo: 
 
 ```plaintext
-funzione somma(n):
+funzione calcola_somma(n):
+  somma = 0
+  per i da 1 a n:
+    somma = somma + i
+  ritorna somma
 ```
-- **Sintassi**:
+
+Effettuaimo una analisi dettagliata della funzione per indicare quali elementi sintattici e semantici sono presenti. Partiamo dalla prima riga:
+
+```plaintext
+funzione calcola_somma(n):
+```
+
+- Sintassi:
   - `funzione`: Parola chiave che introduce la definizione di una funzione.
-  - `somma`: Identificatore che nomina la funzione.
-  - `(n)`: Parentesi tonde che contengono l'argomento della funzione.
-- **Semantica**:
-  - Definisce una funzione chiamata `somma` che accetta un argomento `n`.
+  - `calcola_somma`: Identificatore della funzione.
+  - `(n)`: Delimitatori che contengono un identificatore.
+- Semantica:
+  - Definisce una funzione chiamata `calcola_somma` che accetta un parametro `n`.
 
-#### Inizializzazione della Variabile
+La seconda riga ha l'inizializzazione della variabile che conterrà il risultato: 
 
 ```plaintext
 somma = 0
 ```
-- **Sintassi**:
+
+- Sintassi:
   - `somma`: Identificatore della variabile.
   - `=`: Operatore di assegnazione.
-  - `0`: Literal (valore costante).
-- **Semantica**:
-  - Inizializza la variabile `somma` a 0.
+  - `0`: Letterale numero intero.
+- Semantica:
+  - Inizializza la variabile `somma` a `0`.
 
-#### Ciclo `for`
+A seguire la definizione di un ciclo: 
 
 ```plaintext
 per i da 1 a n:
 ```
-- **Sintassi**:
+
+- Sintassi:
   - `per`: Parola chiave che introduce il ciclo.
   - `i`: Identificatore della variabile di controllo del ciclo.
   - `da 1 a n`: Espressione di controllo del ciclo che indica l'intervallo.
-- **Semantica**:
-  - Itera la variabile `i` da 1 a `n`.
+- Semantica:
+  - Itera la variabile `i` da `1` a `n`.
 
-#### Espressione Aritmetica
+Un assegnamento per accumulare i valori nella variabile di ritorno:
 
 ```plaintext
 somma = somma + i
 ```
-- **Sintassi**:
+
+- Sintassi:
   - `somma`: Identificatore della variabile.
   - `=`: Operatore di assegnazione.
   - `somma + i`: Espressione aritmetica composta da:
     - `somma`: Identificatore della variabile.
     - `+`: Operatore aritmetico.
     - `i`: Identificatore della variabile.
-- **Semantica**:
+- Semantica:
   - Aggiunge il valore di `i` alla variabile `somma` e assegna il risultato a `somma`.
 
-#### Restituzione del Risultato
+E finalmente il risultato del calcolo viene restituito al chiamante: 
 
 ```plaintext
 ritorna somma
 ```
-- **Sintassi**:
+
+- Sintassi:
   - `ritorna`: Parola chiave che indica la restituzione di un valore.
   - `somma`: Identificatore della variabile.
-- **Semantica**:
+- Semantica:
   - Restituisce il valore della variabile `somma` come risultato della funzione.
 
-### Collegamento agli Elementi Sintattici
-
-Ogni elemento dello pseudocodice è collegato a specifici componenti sintattici e semantici del linguaggio di programmazione:
-
-- **Parole chiave**: `funzione`, `per`, `ritorna`
-- **Operatori**: `=`, `+`
-- **Separatori**: `()`, `:`
-- **Identificatori**: `somma`, `n`, `i`
-- **Literals**: `0`, `1`, `n`
-- **Espressioni**: `somma + i`, `da 1 a n`
-
-### Conclusione
-
-Un algoritmo è la base logica e metodica di un programma. La comprensione della sintassi e della semantica di un linguaggio di programmazione è essenziale per tradurre correttamente un algoritmo in un codice eseguibile. Gli elementi sintattici come parole chiave, operatori, separatori, identificatori, literals ed espressioni sono i mattoni fondamentali che definiscono come scrivere correttamente il codice. La semantica descrive cosa fa effettivamente il codice una volta eseguito, garantendo che l'algoritmo produca i risultati desiderati.
+Abbiamo così dissezionato un algoritmo molto semplice per illustrare come sintassi e semantica di un linguaggio abbiano ruoli distinti e complementari in un programma. È importante comprendere che un buon programmatore deve avere tutte e tre le competenze, cioè conoscere le specificità formali del linguaggio (o di più linguaggi), quindi, la sua sintassi e semantica e saper comporre algoritmi, che potrà realizzare grazie proprio a quelle.

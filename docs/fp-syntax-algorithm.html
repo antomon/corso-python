@@ -246,12 +246,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sintassi" id="toc-sintassi" class="nav-link" data-scroll-target="#sintassi"><span class="header-section-number">3.2.1</span> Sintassi</a></li>
   <li><a href="#semantica" id="toc-semantica" class="nav-link" data-scroll-target="#semantica"><span class="header-section-number">3.2.2</span> Semantica</a></li>
   </ul></li>
-  <li><a href="#esempio-di-algoritmo" id="toc-esempio-di-algoritmo" class="nav-link" data-scroll-target="#esempio-di-algoritmo"><span class="header-section-number">3.3</span> Esempio di Algoritmo</a>
-  <ul class="collapse">
-  <li><a href="#analisi-degli-elementi-sintattici-e-semantici" id="toc-analisi-degli-elementi-sintattici-e-semantici" class="nav-link" data-scroll-target="#analisi-degli-elementi-sintattici-e-semantici"><span class="header-section-number">3.3.1</span> Analisi degli Elementi Sintattici e Semantici</a></li>
-  <li><a href="#collegamento-agli-elementi-sintattici" id="toc-collegamento-agli-elementi-sintattici" class="nav-link" data-scroll-target="#collegamento-agli-elementi-sintattici"><span class="header-section-number">3.3.2</span> Collegamento agli Elementi Sintattici</a></li>
-  <li><a href="#conclusione" id="toc-conclusione" class="nav-link" data-scroll-target="#conclusione"><span class="header-section-number">3.3.3</span> Conclusione</a></li>
-  </ul></li>
+  <li><a href="#esempio-di-algoritmo" id="toc-esempio-di-algoritmo" class="nav-link" data-scroll-target="#esempio-di-algoritmo"><span class="header-section-number">3.3</span> Esempio di algoritmo</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/fp-syntax-algorithm.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li></ul></div></nav>
     </div>
@@ -339,11 +334,11 @@ ul.task-list li input[type="checkbox"] {
 <li>Visibilità: Indica dove la variabile può essere utilizzata all’interno del codice (ad esempio, variabili locali o globali).</li>
 <li>Durata di Vita: Descrive per quanto tempo la variabile rimane in memoria durante l’esecuzione del programma (ad esempio, automatica, statica, dinamica).</li>
 </ul></li>
-<li>Tipi di dati: I tipi di dati definiscono il dominio dei valori che una variabile può assumere e le operazioni che possono essere eseguite su quei valori. Un tipo di dato determina la natura del valore (ad esempio, numero intero, carattere, booleano) e le operazioni che possono essere effettuate su di esso. Generalmente si distinguono in:
+<li>Tipo di dati: I tipi di dati definiscono il dominio dei valori che una variabile può assumere e le operazioni che possono essere eseguite su quei valori. Un tipo di dato determina la natura del valore (ad esempio, numero intero, carattere, booleano) e le operazioni che possono essere effettuate su di esso. Generalmente si distinguono in:
 <ul>
-<li>Tipi primitivi: I tipi di dati fondamentali forniti da un linguaggio, come integer, float, boolean e character.</li>
-<li>Tipi complessi: Tipi di dati costituiti da più tipi primitivi, come array, struct e oggetti.</li>
-<li>Tipi di dati utente: Tipi definiti dall’utente, come classi e tipi personalizzati, che permettono di creare strutture dati più complesse e specifiche per il problema da risolvere.</li>
+<li>Tipo primitivo: I tipi di dati fondamentali forniti da un linguaggio, come integer, float, boolean e character.</li>
+<li>Tipo complesso: Tipo di dati costituiti da più tipi primitivi, come array, struct e oggetti.</li>
+<li>Tipo di dati utente: Tipo definito dall’utente, come classi e tipi personalizzati, che permette di creare strutture dati più complesse e specifiche per il problema da risolvere.</li>
 </ul></li>
 <li>Ambito (in inglese, scope): L’ambito rappresenta la porzione del codice in cui un identificatore (come una variabile o una funzione) è definito e, quindi, esiste. L’ambito determina dove un identificatore può essere dichiarato e utilizzato. Tipicamente gli ambiti sono:
 <ul>
@@ -424,92 +419,64 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 <section id="esempio-di-algoritmo" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="esempio-di-algoritmo"><span class="header-section-number">3.3</span> Esempio di Algoritmo</h2>
-<p>Consideriamo un esempio semplice di algoritmo per calcolare la somma dei numeri da 1 a n:</p>
-<ol type="1">
-<li>Input: Un numero intero <code>n</code>.</li>
-<li>Output: La somma dei numeri da 1 a <code>n</code>.</li>
-</ol>
-<p>Algoritmo (in pseudocodice):</p>
-<pre class="plaintext"><code>1. Inizializza somma a 0
-2. Per ogni numero i da 1 a n:
-    3. Aggiungi i a somma
-4. Restituisci somma
-
-## Implementazione di un Algoritmo in un Linguaggio di Programmazione
-
-Vediamo come un algoritmo per calcolare la somma dei numeri da 1 a n può essere implementato in un linguaggio di programmazione generico. Esamineremo come gli elementi sintattici si collegano alle componenti semantiche.
-
-### Algoritmo (in pseudocodice)
-
-1. Inizializza `somma` a 0
-2. Per ogni numero `i` da 1 a `n`:
-    - Aggiungi `i` a `somma`
-3. Restituisci `somma`
-
-### Implementazione
-
-```plaintext
-funzione somma(n):
-    somma = 0
-    per i da 1 a n:
-        somma = somma + i
-    ritorna somma</code></pre>
-<section id="analisi-degli-elementi-sintattici-e-semantici" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="analisi-degli-elementi-sintattici-e-semantici"><span class="header-section-number">3.3.1</span> Analisi degli Elementi Sintattici e Semantici</h3>
-<section id="dichiarazione-della-funzione" class="level4" data-number="3.3.1.1">
-<h4 data-number="3.3.1.1" class="anchored" data-anchor-id="dichiarazione-della-funzione"><span class="header-section-number">3.3.1.1</span> Dichiarazione della Funzione</h4>
-<pre class="plaintext"><code>funzione somma(n):</code></pre>
+<h2 data-number="3.3" class="anchored" data-anchor-id="esempio-di-algoritmo"><span class="header-section-number">3.3</span> Esempio di algoritmo</h2>
+<p>Consideriamo un esempio semplice di algoritmo per calcolare la somma dei numeri da 1 a n.&nbsp;In input si avrà un numero intero <code>n</code> e in output il risultato. In pseudocodice si può rappresentare così:</p>
+<pre class="plaintext"><code>Inizializza somma a 0
+Per ogni numero i da 1 a n:
+  Aggiungi i a somma
+Restituisci somma</code></pre>
+<p>O, in alternativa, possiamo definire una funzione che implementa l’algoritmo:</p>
+<pre class="plaintext"><code>funzione calcola_somma(n):
+  somma = 0
+  per i da 1 a n:
+    somma = somma + i
+  ritorna somma</code></pre>
+<p>Effettuaimo una analisi dettagliata della funzione per indicare quali elementi sintattici e semantici sono presenti. Partiamo dalla prima riga:</p>
+<pre class="plaintext"><code>funzione calcola_somma(n):</code></pre>
 <ul>
-<li><strong>Sintassi</strong>:
+<li>Sintassi:
 <ul>
 <li><code>funzione</code>: Parola chiave che introduce la definizione di una funzione.</li>
-<li><code>somma</code>: Identificatore che nomina la funzione.</li>
-<li><code>(n)</code>: Parentesi tonde che contengono l’argomento della funzione.</li>
+<li><code>calcola_somma</code>: Identificatore della funzione.</li>
+<li><code>(n)</code>: Delimitatori che contengono un identificatore.</li>
 </ul></li>
-<li><strong>Semantica</strong>:
+<li>Semantica:
 <ul>
-<li>Definisce una funzione chiamata <code>somma</code> che accetta un argomento <code>n</code>.</li>
+<li>Definisce una funzione chiamata <code>calcola_somma</code> che accetta un parametro <code>n</code>.</li>
 </ul></li>
 </ul>
-</section>
-<section id="inizializzazione-della-variabile" class="level4" data-number="3.3.1.2">
-<h4 data-number="3.3.1.2" class="anchored" data-anchor-id="inizializzazione-della-variabile"><span class="header-section-number">3.3.1.2</span> Inizializzazione della Variabile</h4>
+<p>La seconda riga ha l’inizializzazione della variabile che conterrà il risultato:</p>
 <pre class="plaintext"><code>somma = 0</code></pre>
 <ul>
-<li><strong>Sintassi</strong>:
+<li>Sintassi:
 <ul>
 <li><code>somma</code>: Identificatore della variabile.</li>
 <li><code>=</code>: Operatore di assegnazione.</li>
-<li><code>0</code>: Literal (valore costante).</li>
+<li><code>0</code>: Letterale numero intero.</li>
 </ul></li>
-<li><strong>Semantica</strong>:
+<li>Semantica:
 <ul>
-<li>Inizializza la variabile <code>somma</code> a 0.</li>
+<li>Inizializza la variabile <code>somma</code> a <code>0</code>.</li>
 </ul></li>
 </ul>
-</section>
-<section id="ciclo-for" class="level4" data-number="3.3.1.3">
-<h4 data-number="3.3.1.3" class="anchored" data-anchor-id="ciclo-for"><span class="header-section-number">3.3.1.3</span> Ciclo <code>for</code></h4>
+<p>A seguire la definizione di un ciclo:</p>
 <pre class="plaintext"><code>per i da 1 a n:</code></pre>
 <ul>
-<li><strong>Sintassi</strong>:
+<li>Sintassi:
 <ul>
 <li><code>per</code>: Parola chiave che introduce il ciclo.</li>
 <li><code>i</code>: Identificatore della variabile di controllo del ciclo.</li>
 <li><code>da 1 a n</code>: Espressione di controllo del ciclo che indica l’intervallo.</li>
 </ul></li>
-<li><strong>Semantica</strong>:
+<li>Semantica:
 <ul>
-<li>Itera la variabile <code>i</code> da 1 a <code>n</code>.</li>
+<li>Itera la variabile <code>i</code> da <code>1</code> a <code>n</code>.</li>
 </ul></li>
 </ul>
-</section>
-<section id="espressione-aritmetica" class="level4" data-number="3.3.1.4">
-<h4 data-number="3.3.1.4" class="anchored" data-anchor-id="espressione-aritmetica"><span class="header-section-number">3.3.1.4</span> Espressione Aritmetica</h4>
+<p>Un assegnamento per accumulare i valori nella variabile di ritorno:</p>
 <pre class="plaintext"><code>somma = somma + i</code></pre>
 <ul>
-<li><strong>Sintassi</strong>:
+<li>Sintassi:
 <ul>
 <li><code>somma</code>: Identificatore della variabile.</li>
 <li><code>=</code>: Operatore di assegnazione.</li>
@@ -520,46 +487,27 @@ funzione somma(n):
 <li><code>i</code>: Identificatore della variabile.</li>
 </ul></li>
 </ul></li>
-<li><strong>Semantica</strong>:
+<li>Semantica:
 <ul>
 <li>Aggiunge il valore di <code>i</code> alla variabile <code>somma</code> e assegna il risultato a <code>somma</code>.</li>
 </ul></li>
 </ul>
-</section>
-<section id="restituzione-del-risultato" class="level4" data-number="3.3.1.5">
-<h4 data-number="3.3.1.5" class="anchored" data-anchor-id="restituzione-del-risultato"><span class="header-section-number">3.3.1.5</span> Restituzione del Risultato</h4>
+<p>E finalmente il risultato del calcolo viene restituito al chiamante:</p>
 <pre class="plaintext"><code>ritorna somma</code></pre>
 <ul>
-<li><strong>Sintassi</strong>:
+<li>Sintassi:
 <ul>
 <li><code>ritorna</code>: Parola chiave che indica la restituzione di un valore.</li>
 <li><code>somma</code>: Identificatore della variabile.</li>
 </ul></li>
-<li><strong>Semantica</strong>:
+<li>Semantica:
 <ul>
 <li>Restituisce il valore della variabile <code>somma</code> come risultato della funzione.</li>
 </ul></li>
 </ul>
-</section>
-</section>
-<section id="collegamento-agli-elementi-sintattici" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="collegamento-agli-elementi-sintattici"><span class="header-section-number">3.3.2</span> Collegamento agli Elementi Sintattici</h3>
-<p>Ogni elemento dello pseudocodice è collegato a specifici componenti sintattici e semantici del linguaggio di programmazione:</p>
-<ul>
-<li><strong>Parole chiave</strong>: <code>funzione</code>, <code>per</code>, <code>ritorna</code></li>
-<li><strong>Operatori</strong>: <code>=</code>, <code>+</code></li>
-<li><strong>Separatori</strong>: <code>()</code>, <code>:</code></li>
-<li><strong>Identificatori</strong>: <code>somma</code>, <code>n</code>, <code>i</code></li>
-<li><strong>Literals</strong>: <code>0</code>, <code>1</code>, <code>n</code></li>
-<li><strong>Espressioni</strong>: <code>somma + i</code>, <code>da 1 a n</code></li>
-</ul>
-</section>
-<section id="conclusione" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="conclusione"><span class="header-section-number">3.3.3</span> Conclusione</h3>
-<p>Un algoritmo è la base logica e metodica di un programma. La comprensione della sintassi e della semantica di un linguaggio di programmazione è essenziale per tradurre correttamente un algoritmo in un codice eseguibile. Gli elementi sintattici come parole chiave, operatori, separatori, identificatori, literals ed espressioni sono i mattoni fondamentali che definiscono come scrivere correttamente il codice. La semantica descrive cosa fa effettivamente il codice una volta eseguito, garantendo che l’algoritmo produca i risultati desiderati.</p>
+<p>Abbiamo così dissezionato un algoritmo molto semplice per illustrare come sintassi e semantica di un linguaggio abbiano ruoli distinti e complementari in un programma. È importante comprendere che un buon programmatore deve avere tutte e tre le competenze, cioè conoscere le specificità formali del linguaggio (o di più linguaggi), quindi, la sua sintassi e semantica e saper comporre algoritmi, che potrà realizzare grazie proprio a quelle.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
