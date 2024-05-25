@@ -5,11 +5,11 @@ citation-location: margin
 
 # Paradigmi di programmazione
 
-I linguaggi di programmazione possono essere classificati in diversi tipi in base al loro scopo e alla loro struttura. Tuttavia, è importante notare che molti linguaggi moderni supportano più di un paradigma di programmazione, rendendo difficile assegnare un linguaggio a una sola categoria. Come ha affermato Bjarne Stroustrup, il creatore di C++, un linguaggio di programmazione "non è semplicemente supportare un certo paradigma, ma abilitare un certo stile di programmazione" [@stroustrup1997].
+I linguaggi di programmazione possono essere classificati in diversi tipi in base al loro scopo e alla loro struttura. Una delle classificazioni più importanti è quella del **paradigma di programmazione**, che definisce il modello e gli stili di risoluzione dei problemi che un linguaggio supporta. Tuttavia, è importante notare che molti linguaggi moderni supportano più di un paradigma di programmazione, rendendo difficile assegnare un linguaggio a una sola categoria. Come ha affermato Bjarne Stroustrup, il creatore di C++, _un linguaggio di programmazione non è semplicemente supportare un certo paradigma, ma abilitare un certo stile di programmazione_ [@stroustrup1997].
 
 ## Linguaggi di programmazione imperativa
 
-La programmazione imperativa si concentra sull'esecuzione di istruzioni sequenziali che modificano lo stato del programma. Le istruzioni indicano al computer cosa fare passo dopo passo. Esempi di linguaggi che permettono il paradigma imperativo sono Assembly, C, Go, Python, per diversi casi d'uso:
+La **programmazione imperativa** si concentra sull'esecuzione di istruzioni sequenziali che modificano lo stato del programma. Le istruzioni indicano al computer cosa fare passo dopo passo. Esempi di linguaggi che permettono il paradigma imperativo sono Assembly, C, Go, Python, per diversi casi d'uso:
 
 - Assembly: Utilizzato nella programmazione a basso livello, come nello sviluppo di firmware e driver di dispositivi.
 - C: Utilizzato per lo sviluppo di sistemi operativi e software di sistema, dove il controllo dettagliato delle operazioni è cruciale.
@@ -18,7 +18,7 @@ La programmazione imperativa si concentra sull'esecuzione di istruzioni sequenzi
 
 ## Linguaggi procedurali
 
-La programmazione procedurale è un sottotipo di programmazione imperativa che organizza il codice in blocchi chiamati procedure o funzioni. Questi blocchi possono essere riutilizzati in diverse parti del programma per evitare ripetizioni e migliorare l'organizzazione del codice. Esempi sono Fortran, Pascal, C, Go, Python e i relativi casi d'uso:
+La **programmazione procedurale** è un sottotipo di programmazione imperativa che organizza il codice in blocchi chiamati procedure o funzioni. Questi blocchi possono essere riutilizzati in diverse parti del programma per evitare ripetizioni e migliorare l'organizzazione del codice. Esempi sono Fortran, Pascal, C, Go, Python e i relativi casi d'uso:
 
 - Fortran: Molto utilizzato in applicazioni scientifiche e di ingegneria per calcoli numerici ad alta precisione.
 - Pascal: Storicamente utilizzato nei corsi di informativa per insegnare i fondamenti della programmazione.
@@ -27,7 +27,7 @@ La programmazione procedurale è un sottotipo di programmazione imperativa che o
 
 ## Linguaggi orientati agli oggetti
 
-Questi linguaggi modellano il problema come un insieme di oggetti che interagiscono tra loro per svolgere un compito. Gli oggetti sono istanze di classi, che possono contenere dati e metodi per manipolare quei dati. La programmazione orientata agli oggetti è estremamente utile per progettare architetture software complesse grazie ai suoi concetti di modularità, riutilizzabilità, astrazione, ereditarietà e polimorfismo. Alcuni linguaggi ad oggetti sono Java, Python, C++, Rust, Scala e i casi d'uso:
+I **linguaggi orientati agli oggetti** modellano il problema come un insieme di oggetti che interagiscono tra loro per svolgere un compito. Gli oggetti sono istanze di classi, che possono contenere dati e metodi per manipolare quei dati. La programmazione orientata agli oggetti è estremamente utile per progettare architetture software complesse grazie ai suoi concetti di modularità, riutilizzabilità, astrazione, ereditarietà e polimorfismo. Alcuni linguaggi ad oggetti sono Java, Python, C++, Rust, Scala e i casi d'uso:
 
 - Java: Ampiamente utilizzato per lo sviluppo di applicazioni aziendali, applicazioni Android e sistemi di backend.
 - C++: Utilizzato in applicazioni ad alte prestazioni come videogiochi, motori grafici e software di simulazione. Il C++ supporta i template, che permettono la scrittura di codice generico e la metaprogrammazione, consentendo al codice di essere più flessibile e riutilizzabile.
@@ -36,7 +36,7 @@ Questi linguaggi modellano il problema come un insieme di oggetti che interagisc
 
 ## Linguaggi funzionali
 
-Questi linguaggi si concentrano sulla valutazione di espressioni e funzioni, trattandole alla stregua di equazioni matematiche. La programmazione funzionale enfatizza l'uso di funzioni pure (cioè hanno come unico effetto quello di produrre un output) e l'immutabilità dei dati. Alcuni esempi: Haskell, Lisp, ML, Scala e i casi d'uso:
+I **linguaggi funzionali** si concentrano sulla valutazione di espressioni e funzioni, trattandole alla stregua di equazioni matematiche. La programmazione funzionale enfatizza l'uso di funzioni pure (cioè hanno come unico effetto quello di produrre un output) e l'immutabilità dei dati. Alcuni esempi: Haskell, Lisp, ML, Scala e i casi d'uso:
 
 - Haskell: Utilizzato nella ricerca accademica, nello sviluppo di software finanziario e nei sistemi di calcolo parallelo.
 - Lisp: Storicamente utilizzato nell'intelligenza artificiale e nello sviluppo di software di simulazione. ELIZA, uno dei primi chatbot che potevano simulare una conversazione umana, era scritto in Lisp. John McCarthy nel 1959 introdusse la gestione automatica della memoria (garbage collection).
@@ -48,9 +48,9 @@ Questi linguaggi si concentrano sulla valutazione di espressioni e funzioni, tra
 
 Oltre ai paradigmi principali sopra menzionati, esistono altri paradigmi di programmazione meno comuni ma altrettanto importanti in certi contesti.
 
-- Logico: Prolog, che sta per programming in logic, è stato sviluppato nei primi anni '70 da Alain Colmerauer e Robert Kowalski. È uno dei linguaggi più noti per la programmazione logica e ha giocato un ruolo significativo nello sviluppo dell'intelligenza artificiale.
-- Concorrente: Uno dei più diffusi linguaggi abilitanti la programmazione concirrente è l'Erlang, utilizzato nello sviluppo di sistemi distribuiti e applicazioni che richiedono alta disponibilità.
-- Dichiarativo: La programmazione dichiarativa si concentra sul "cosa" deve essere fatto piuttosto che sul "come" farlo. In altre parole, in un linguaggio dichiarativo, il programmatore specifica il risultato desiderato, lasciando al sistema il compito di determinare come ottenerlo. Questo approccio contrasta con la programmazione imperativa, dove il programmatore deve fornire una sequenza dettagliata di passi per raggiungere il risultato. Un esempio è lo structured query language (SQL), standard de facto per interrogare e manipolare database relazionali. Altri ben noti linguaggi dichiarativi sono: CSS, XQuery, VHDL, RegEx, Makefile.
+- **Logico**: Prolog, che sta per programming in logic, è stato sviluppato nei primi anni '70 da Alain Colmerauer e Robert Kowalski. È uno dei linguaggi più noti per la programmazione logica e ha giocato un ruolo significativo nello sviluppo dell'intelligenza artificiale.
+- **Concorrente**: Uno dei più diffusi linguaggi abilitanti la programmazione concirrente è l'Erlang, utilizzato nello sviluppo di sistemi distribuiti e applicazioni che richiedono alta disponibilità.
+- **Dichiarativo**: La programmazione dichiarativa si concentra sul "cosa" deve essere fatto piuttosto che sul "come" farlo. In altre parole, in un linguaggio dichiarativo, il programmatore specifica il risultato desiderato, lasciando al sistema il compito di determinare come ottenerlo. Questo approccio contrasta con la programmazione imperativa, dove il programmatore deve fornire una sequenza dettagliata di passi per raggiungere il risultato. Un esempio è lo structured query language (SQL), standard de facto per interrogare e manipolare database relazionali. Altri ben noti linguaggi dichiarativi sono: CSS, XQuery, VHDL, RegEx, Makefile.
 
 ## In sintesi
 
