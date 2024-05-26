@@ -34,7 +34,7 @@ Gli elementi principali della sintassi includono:
 - Letterali: Rappresentazioni di valori costanti nel codice, come numeri (`123`), stringhe (`"hello"`), caratteri (`'a'`), ecc.
 - Espressioni: Combinazioni di variabili, operatori e funzioni che vengono valutate per produrre un valore.
 
-Questi elementi sintattici sono utilizzati per comporre istruzioni semplici e istruzioni complesse.
+Questi elementi sintattici sono noti anche come **lessemi** (in inglese _token_) e sono utilizzati per comporre istruzioni semplici e istruzioni complesse, che, a loro volta, costituiscono i programmi.
 
 #### Istruzioni Semplici
 
@@ -55,7 +55,6 @@ Le **istruzioni semplici** sono costituite da singole operazioni che possono ess
   `print`: Parola chiave o identificatore di funzione di libreria.
   `"Hello, World!"`: Letterale stringa.
   L'esecuzione dell'istruzione produce `"Hello, World!"` in output.
-
 - Operazioni aritmetiche: Utilizza operatori aritmetici per eseguire operazioni su variabili e valori. Esempio:
     ```plaintext
     y = 7 + 2.3
@@ -66,7 +65,6 @@ Le **istruzioni semplici** sono costituite da singole operazioni che possono ess
   `+`: Operatore aritmetico.
   `2.3`: Letterale numerico decimale.
   L'esecuzione dell'istruzione fa in modo che la variabile `y` sia associato a 9.3.
-
 - Espressioni: Combinazioni di variabili, operatori e valori che producono un risultato. Esempio:
     ```plaintext
     z = (x * 2) + (y / 2)
@@ -89,10 +87,9 @@ Le **istruzioni complesse** sono costituite da più istruzioni semplici e posson
     }
     ```
   `if`: Parola chiave che introduce la condizione.
-  `(x > 0)`: Condizione composta da: `x`: Identificatore della variabile, `>`: Operatore di confronto e `0`: Letterale numerico intero.
+  `(x > 0)`: Condizione composta da: `x` identificatore di variabile, `>` operatore di confronto e `0` letterale numerico intero.
   `{ ... }`: Delimitatori che racchiudono il blocco di codice.
   `print("x è positivo")`: Istruzione di output.
-
 - Cicli: Istruzioni che ripetono un blocco di codice. Esempio:
     ```plaintext
     for (i = 0; i < n; i++) {
@@ -100,7 +97,7 @@ Le **istruzioni complesse** sono costituite da più istruzioni semplici e posson
     }
     ```
   `for`: Parola chiave che introduce il ciclo.
-  `(i = 0; i < n; i++)`: Espressione di controllo del ciclo composta da: - `i = 0`: Assegnazione iniziale, `i < n`: Condizione del ciclo e`i++`: Incremento della variabile `i`.
+  `(i = 0; i < n; i++)`: Espressione di controllo del ciclo composta da: `i = 0` assegnazione iniziale, `i < n` condizione di ciclo e `i++` incremento della variabile `i`.
   `{ ... }`: Delimitatori che racchiudono il blocco di codice.
   `somma = somma + i`: Operazione aritmetica.
 
@@ -124,6 +121,13 @@ La **semantica** di un linguaggio di programmazione definisce il significato del
 - Visibilità: La visibilità si riferisce a dove nel codice un identificatore può essere visto e utilizzato. Anche se correlata all'ambito, la visibilità può essere influenzata da altri fattori come la modularità e i namespace, che organizzano e separano gli identificatori per evitare conflitti di nome. La visibilità è generalmente:
   - Globale: Un identificatore dichiarato con visibilità globale può essere utilizzato in qualsiasi parte del programma.
   - Locale: Un identificatore dichiarato con visibilità locale è visibile solo all'interno del blocco di codice in cui è stato dichiarato.
+- Funzioni e metodi: Le funzioni e i metodi sono blocchi di codice riutilizzabili che eseguono una serie di istruzioni. Alcuni concetti collegati sono:
+  - Parametri e argomenti: Valori passati alle funzioni per influenzarne il comportamento. I parametri sono definiti nella dichiarazione della funzione, mentre gli argomenti sono i valori effettivi passati quando la funzione è chiamata.
+  - Valore di ritorno: Il risultato prodotto da una funzione, che può essere utilizzato nell'istruzione chiamante.
+  - Overloading: Definizione di più funzioni con lo stesso nome ma diversi parametri, consentendo diverse implementazioni basate sui tipi e il numero di argomenti.
+  - Ricorsione: Capacità di una funzione di chiamare se stessa, utile per risolvere problemi che possono essere suddivisi in sottoproblemi simili.
+  - Funzioni di prima classe: Le funzioni possono essere assegnate a variabili, passate come argomenti e ritornate da altre funzioni.
+  - Funzioni di ordine superiore: Funzioni che accettano altre funzioni come argomenti e/o ritornano funzioni come risultati.
 - Durata di vita delle variabili: La durata di vita delle variabili si riferisce a quanto tempo una variabile rimane in memoria durante l'esecuzione del programma. Alcune tipologie di durata:
   - Automatica: Variabili che esistono solo durante l'esecuzione del blocco in cui sono dichiarate.
   - Statica: Variabili che esistono per tutta la durata del programma e mantengono il loro valore tra diverse chiamate di funzione.
@@ -132,13 +136,6 @@ La **semantica** di un linguaggio di programmazione definisce il significato del
   - Funzioni: Le funzioni stesse generalmente hanno una durata di vita che coincide con la durata del programma. Tuttavia, i puntatori a funzione e le chiusure (in inglese, closures) possono avere durate di vita diverse in alcuni linguaggi.
   - Classi e oggetti: Le classi hanno una durata di vita che coincide con la durata del programma, mentre gli oggetti (istanze di classi) hanno durate di vita dinamiche, determinate dalla loro allocazione e deallocazione.
   - Moduli: In linguaggi come Python, i moduli hanno una durata di vita che coincide con la durata del programma o del processo di importazione.
-- Funzioni e metodi: Le funzioni e i metodi sono blocchi di codice riutilizzabili che eseguono una serie di istruzioni. Alcuni concetti collegati sono:
-  - Parametri e argomenti: Valori passati alle funzioni per influenzarne il comportamento. I parametri sono definiti nella dichiarazione della funzione, mentre gli argomenti sono i valori effettivi passati quando la funzione è chiamata.
-  - Valore di ritorno: Il risultato prodotto da una funzione, che può essere utilizzato nell'istruzione chiamante.
-  - Overloading: Definizione di più funzioni con lo stesso nome ma diversi parametri, consentendo diverse implementazioni basate sui tipi e il numero di argomenti.
-  - Ricorsione: Capacità di una funzione di chiamare se stessa, utile per risolvere problemi che possono essere suddivisi in sottoproblemi simili.
-  - Funzioni di prima classe: Le funzioni possono essere assegnate a variabili, passate come argomenti e ritornate da altre funzioni.
-  - Funzioni di ordine superiore: Funzioni che accettano altre funzioni come argomenti e/o ritornano funzioni come risultati.
 - Controllo di flusso: Determina l'ordine in cui le istruzioni vengono eseguite e alcuni esempi sono:
   - Condizionali: Strutture che permettono al programma di prendere decisioni (`if`, `else`, `switch`/`case`).
   - Cicli: Strutture che ripetono un blocco di codice (`for`, `while`, `do`-`while`).
@@ -239,10 +236,7 @@ somma = somma + i
 - Sintassi:
   - `somma`: Identificatore della variabile.
   - `=`: Operatore di assegnazione.
-  - `somma + i`: Espressione aritmetica composta da:
-    - `somma`: Identificatore della variabile.
-    - `+`: Operatore aritmetico.
-    - `i`: Identificatore della variabile.
+  - `somma + i`: Espressione aritmetica composta da: `somma` identificatore di variabile, `+` operatore aritmetico e `i` identificatore di variabile.
 - Semantica:
   - Aggiunge il valore di `i` alla variabile `somma` e assegna il risultato a `somma`.
 

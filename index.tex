@@ -1,0 +1,3358 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrreprt}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Indice}
+\else
+  \newcommand\contentsname{Indice}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Elenco delle Figure}
+\else
+  \newcommand\listfigurename{Elenco delle Figure}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Elenco delle Tabelle}
+\else
+  \newcommand\listtablename{Elenco delle Tabelle}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figura}
+\else
+  \newcommand\figurename{Figura}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Tabella}
+\else
+  \newcommand\tablename{Tabella}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Lista}
+\newcommand*\listoflistings{\listof{codelisting}{Elenco degli Elenchi}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{italian}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Da neofita di Python a campione},
+  pdfauthor={Antonio Montano},
+  pdflang={it},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Da neofita di Python a campione}
+\author{Antonio Montano}
+\date{2024-05-24}
+
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Indice}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\bookmarksetup{startatroot}
+
+\chapter*{Prefazione}\label{prefazione}
+\addcontentsline{toc}{chapter}{Prefazione}
+
+\markboth{Prefazione}{Prefazione}
+
+\part{Prima parte: I fondamenti}
+
+\chapter{I linguaggi di programmazione, i programmi e i
+programmatori}\label{i-linguaggi-di-programmazione-i-programmi-e-i-programmatori}
+
+Partiamo da alcuni concetti basilari a cui collegare quelli che
+approfondiremo nel corso.
+
+\section{Definizioni}\label{definizioni}
+
+La \textbf{programmazione} è il processo di progettazione e scrittura di
+\textbf{istruzioni}, note come \textbf{codice sorgente}, che un computer
+può ricevere per eseguire compiti predefiniti. Queste istruzioni sono
+codificate in un \textbf{linguaggio di programmazione}, che traduce le
+idee e gli algoritmi del programmatore in un formato comprensibile ed
+eseguibile dal computer.
+
+Un \textbf{programma} informatico è una sequenza di istruzioni scritte
+per eseguire una specifica operazione o un insieme di operazioni su un
+computer. Queste istruzioni sono codificate in un linguaggio che il
+computer può comprendere e seguire per eseguire attività come calcoli,
+manipolazione di dati, controllo di dispositivi e interazione con
+l'utente. Pensate a un programma come a una ricetta di cucina. La
+ricetta elenca gli ingredienti necessari (dati) e fornisce istruzioni
+passo-passo (algoritmo) per preparare un piatto. Allo stesso modo, un
+programma informatico specifica i dati da usare e le istruzioni da
+seguire per ottenere un risultato desiderato.
+
+Un linguaggio di programmazione è un linguaggio formale che fornisce un
+insieme di regole e sintassi per scrivere programmi informatici. Questi
+linguaggi permettono ai programmatori di comunicare con i computer e di
+creare software. Alcuni esempi di linguaggi di programmazione includono
+Python, Java, C++ e JavaScript. I linguaggi di programmazione
+differiscono dai linguaggi naturali (come l'italiano o l'inglese) in
+diversi modi:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Precisione e rigidità: I linguaggi di programmazione sono estremamente
+  precisi e rigidi. Ogni istruzione deve essere scritta in un modo
+  specifico affinché il computer possa comprenderla ed eseguirla
+  correttamente. Anche un piccolo errore di sintassi può impedire il
+  funzionamento di un programma.
+\item
+  Ambiguità: I linguaggi naturali sono spesso ambigui e aperti a
+  interpretazioni. Le stesse parole possono avere significati diversi a
+  seconda del contesto. I linguaggi di programmazione, invece, sono
+  progettati per essere privi di ambiguità; ogni istruzione ha un
+  significato preciso e univoco.
+\item
+  Vocabolario limitato: I linguaggi naturali hanno un vocabolario
+  vastissimo e in continua espansione. I linguaggi di programmazione, al
+  contrario, hanno un vocabolario limitato costituito da parole chiave e
+  comandi definiti dal linguaggio stesso.
+\end{enumerate}
+
+Quando un programma viene scritto e salvato in un file di testo, il
+computer deve eseguirlo per produrre le azioni desiderate. Questo
+processo si svolge in diverse fasi:
+
+\begin{itemize}
+\tightlist
+\item
+  Compilazione o interpretazione: Il codice sorgente, scritto in un
+  linguaggio di alto livello leggibile dall'uomo, deve essere
+  trasformato in un linguaggio macchina comprensibile dal computer.
+  Questo avviene attraverso due possibili processi:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Compilazione: In linguaggi come C++ o Java, un compilatore traduce
+    tutto il codice sorgente in linguaggio macchina, creando un file
+    eseguibile. Questo file può poi essere eseguito direttamente dalla
+    CPU.
+  \item
+    Interpretazione: In linguaggi come Python o JavaScript, un
+    interprete legge ed esegue il codice sorgente riga per riga,
+    traducendolo in linguaggio macchina al momento dell'esecuzione.
+  \end{itemize}
+\item
+  Esecuzione: Una volta che il programma è stato compilato (nel caso dei
+  linguaggi compilati) o viene interpretato (nel caso dei linguaggi
+  interpretati), il computer può iniziare ad eseguire le istruzioni. La
+  CPU (central processing unit) legge queste istruzioni dal file
+  eseguibile o dall'interprete e le esegue una per una. Durante questa
+  fase, la CPU manipola i dati e produce i risultati desiderati.
+\item
+  Interazione con i componenti hardware: Durante l'esecuzione, il
+  programma può interagire con vari componenti hardware del computer. Ad
+  esempio, può leggere e scrivere dati nella memoria, accedere ai dischi
+  rigidi per salvare o recuperare informazioni, comunicare attraverso la
+  rete, e interagire con dispositivi di input/output come tastiere e
+  monitor. Questa interazione permette al programma di eseguire compiti
+  complessi e di fornire output all'utente.
+\end{itemize}
+
+\section{L'Impatto dell'intelligenza artificiale generativa sulla
+programmazione}\label{limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione}
+
+Con l'avvento dell'\textbf{intelligenza artificiale generativa} (IA
+generativa), la programmazione ha subito una trasformazione
+significativa. Prima dell'IA generativa, i programmatori dovevano tutti
+scrivere manualmente ogni riga di codice, seguendo rigorosamente la
+sintassi e le regole del linguaggio di programmazione scelto. Questo
+processo richiedeva una conoscenza approfondita degli algoritmi, delle
+strutture dati e delle migliori pratiche di programmazione.
+
+Inoltre, i programmatori dovevano creare ogni funzione, classe e modulo
+a mano, assicurandosi che ogni dettaglio fosse corretto, identificavano
+e correggevano gli errori nel codice con un processo lungo e laborioso,
+che comportava anche la scrittura di casi di test e l'esecuzione di
+sessioni di esecuzione di tali casi. Infine, dovebano scrivere
+documentazione dettagliata per spiegare il funzionamento del codice e
+facilitare la manutenzione futura.
+
+\subsection{Attività del programmatore con l'IA
+Generativa}\label{attivituxe0-del-programmatore-con-lia-generativa}
+
+L'IA generativa ha introdotto nuovi strumenti e metodologie che stanno
+cambiando il modo in cui i programmatori lavorano:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Generazione automatica del codice: Gli strumenti di IA generativa
+  possono creare porzioni di codice basate su descrizioni ad alto
+  livello fornite dai programmatori. Questo permette di velocizzare
+  notevolmente lo sviluppo iniziale e ridurre gli errori di sintassi.
+\item
+  Assistenza nel debugging: L'IA può identificare potenziali bug e
+  suggerire correzioni, rendendo il processo di debugging più efficiente
+  e meno dispendioso in termini di tempo.
+\item
+  Ottimizzazione automatica: Gli algoritmi di IA possono analizzare il
+  codice e suggerire o applicare automaticamente ottimizzazioni per
+  migliorare le prestazioni.
+\item
+  Generazione di casi di test: L'IA può creare casi di test per
+  verificare la correttezza del codice, coprendo una gamma più ampia di
+  scenari di quanto un programmatore potrebbe fare manualmente.
+\item
+  Documentazione automatica: L'IA può generare documentazione leggendo e
+  interpretando il codice, riducendo il carico di lavoro manuale e
+  garantendo una documentazione coerente e aggiornata.
+\end{enumerate}
+
+\subsection{L'Importanza di imparare a programmare nell'era dell'IA
+generativa}\label{limportanza-di-imparare-a-programmare-nellera-dellia-generativa}
+
+Nonostante l'avvento dell'IA generativa, imparare a programmare rimane
+fondamentale per diverse ragioni. La programmazione non è solo una
+competenza tecnica, ma anche un modo di pensare e risolvere problemi.
+Comprendere i fondamenti della programmazione è essenziale per
+utilizzare efficacemente gli strumenti di IA generativa. Senza una
+solida base, è difficile sfruttare appieno queste tecnologie. Inoltre,
+la programmazione insegna a scomporre problemi complessi in parti più
+gestibili e a trovare soluzioni logiche e sequenziali, una competenza
+preziosa in molti campi.
+
+Anche con l'IA generativa, esisteranno sempre situazioni in cui sarà
+necessario personalizzare o ottimizzare il codice per esigenze
+specifiche. La conoscenza della programmazione permette di fare queste
+modifiche con sicurezza. Inoltre, quando qualcosa va storto, è
+indispensabile sapere come leggere e comprendere il codice per
+identificare e risolvere i problemi. L'IA può assistere, ma la
+comprensione umana rimane cruciale per interventi mirati.
+
+Imparare a programmare consente di sperimentare nuove idee e prototipare
+rapidamente soluzioni innovative. La creatività è potenziata dalla
+capacità di tradurre idee in codice funzionante. Sapere programmare
+aiuta anche a comprendere i limiti e le potenzialità degli strumenti di
+IA generativa, permettendo di usarli in modo più strategico ed efficace.
+
+La tecnologia evolve rapidamente, e con una conoscenza della
+programmazione si è meglio preparati ad adattarsi alle nuove tecnologie
+e metodologie che emergeranno in futuro. Inoltre, la programmazione è
+una competenza trasversale applicabile in numerosi settori, dalla
+biologia computazionale alla finanza, dall'ingegneria all'arte digitale.
+Avere questa competenza amplia notevolmente le opportunità di carriera.
+
+Infine, la programmazione è una porta d'accesso a ruoli più avanzati e
+specializzati nel campo della tecnologia, come l'ingegneria del
+software, la scienza dei dati e la ricerca sull'IA. Conoscere i principi
+della programmazione aiuta a comprendere meglio come funzionano gli
+algoritmi di IA, permettendo di contribuire attivamente allo sviluppo di
+nuove tecnologie.
+
+\chapter{Paradigmi di programmazione}\label{paradigmi-di-programmazione}
+
+I linguaggi di programmazione possono essere classificati in diversi
+tipi in base al loro scopo e alla loro struttura. Una delle
+classificazioni più importanti è quella del \textbf{paradigma di
+programmazione}, che definisce il modello e gli stili di risoluzione dei
+problemi che un linguaggio supporta. Tuttavia, è importante notare che
+molti linguaggi moderni supportano più di un paradigma di
+programmazione, rendendo difficile assegnare un linguaggio a una sola
+categoria. Come ha affermato Bjarne Stroustrup, il creatore di C++,
+\emph{un linguaggio di programmazione non è semplicemente supportare un
+certo paradigma, ma abilitare un certo stile di programmazione}
+(Stroustrup 1997).
+
+\section{L'importanza dei paradigmi di
+programmazione}\label{limportanza-dei-paradigmi-di-programmazione}
+
+Comprendere i paradigmi di programmazione è fondamentale per diversi
+motivi:
+
+\begin{itemize}
+\tightlist
+\item
+  Approccio alla risoluzione dei problemi: Ogni paradigma offre una
+  visione diversa su come affrontare e risolvere problemi. Conoscere
+  vari paradigmi permette ai programmatori di scegliere l'approccio più
+  adatto in base al problema specifico. Ad esempio, per problemi che
+  richiedono una manipolazione di stati, la programmazione imperativa
+  può essere più intuitiva. Al contrario, per problemi che richiedono
+  trasformazioni di dati senza effetti collaterali, la programmazione
+  funzionale potrebbe essere più adatta.
+\item
+  Versatilità e adattabilità: I linguaggi moderni che supportano più
+  paradigmi permettono ai programmatori di essere più versatili e
+  adattabili. Possono utilizzare il paradigma più efficiente per diverse
+  parti del progetto, migliorando sia la leggibilità che le prestazioni
+  del codice.
+\item
+  Manutenzione del codice: La comprensione dei paradigmi aiuta nella
+  scrittura di codice più chiaro e manutenibile. Ad esempio, il
+  paradigma orientato agli oggetti può essere utile per organizzare
+  grandi basi di codice in moduli e componenti riutilizzabili,
+  migliorando la gestione del progetto.
+\item
+  Evoluzione professionale: La conoscenza dei vari paradigmi arricchisce
+  le competenze di un programmatore, rendendolo più competitivo nel
+  mercato del lavoro. Conoscere più paradigmi permette di comprendere e
+  lavorare con una gamma più ampia di linguaggi di programmazione e
+  tecnologie.
+\item
+  Ottimizzazione del codice: Alcuni paradigmi sono più efficienti in
+  determinate situazioni. Ad esempio, la programmazione concorrente è
+  essenziale per lo sviluppo di software che richiede alta prestazione e
+  scalabilità, come nei sistemi distribuiti. Comprendere come
+  implementare la concorrenza in vari paradigmi permette di scrivere
+  codice più efficiente.
+\end{itemize}
+
+\section{Paradigma imperativo}\label{paradigma-imperativo}
+
+La \textbf{programmazione imperativa}, a differenza della programmazione
+dichiarativa, è un paradigma di programmazione che descrive l'esecuzione
+di un programma come una serie di istruzioni che cambiano il suo stato.
+In modo simile al modo imperativo nelle lingue naturali, che esprime
+comandi per compiere azioni, i programmi imperativi sono una sequenza di
+comandi che il computer deve eseguire. Un caso particolare di
+programmazione imperativa è quella procedurale.
+
+I linguaggi di programmazione imperativa si contrappongono ad altri tipi
+di linguaggi, come quelli funzionali e logici. I linguaggi di
+programmazione funzionale, come Haskell, non producono sequenze di
+istruzioni e non hanno uno stato globale come i linguaggi imperativi. I
+linguaggi di programmazione logica, come Prolog, sono caratterizzati
+dalla definizione di cosa deve essere calcolato, piuttosto che come deve
+avvenire il calcolo, a differenza di un linguaggio di programmazione
+imperativo.
+
+L'implementazione hardware di quasi tutti i computer è imperativa perché
+è progettata per eseguire il codice macchina, che è scritto in stile
+imperativo. Da questa prospettiva a basso livello, lo stato del
+programma è definito dal contenuto della memoria e dalle istruzioni nel
+linguaggio macchina nativo del processore. I linguaggi imperativi di
+alto livello utilizzano variabili e istruzioni più complesse, ma seguono
+ancora lo stesso paradigma per mantenere la coerenza nella traduzione
+(compilazione o interpretazione) del codice.
+
+\subsection{Esempio in Assembly}\label{esempio-in-assembly}
+
+Assembly è un linguaggio a basso livello strettamente legato
+all'hardware del computer. Ecco un esempio di un semplice programma
+scritto per l'architettura x86, utilizzando la sintassi dell'assembler
+NASM (Netwide Assembler). Il codice somma due numeri e stampa il
+risultato:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{section .data}
+\NormalTok{    num1 db 5           ; Definisce il primo numero}
+\NormalTok{    num2 db 3           ; Definisce il secondo numero}
+\NormalTok{    result db 0         ; Variabile per memorizzare il risultato}
+
+\NormalTok{section .text}
+\NormalTok{    global \_start}
+
+\NormalTok{\_start:}
+\NormalTok{    mov al, [num1]      ; Carica il primo numero in AL}
+\NormalTok{    add al, [num2]      ; Aggiunge il secondo numero a AL}
+\NormalTok{    mov [result], al    ; Memorizza il risultato in result}
+
+\NormalTok{    ; Print result (pseudo{-}syscall for simplicity)}
+\NormalTok{    ; In realtà, si dovrebbe convertire il risultato in ASCII e chiamare le syscall appropriate.}
+    
+\NormalTok{    ; Terminazione del programma}
+\NormalTok{    mov eax, 1          ; Codice di sistema per l\textquotesingle{}uscita}
+\NormalTok{    int 0x80            ; Interruzione per chiamare il kernel}
+\end{Highlighting}
+\end{Shaded}
+
+Le sezioni del codice:
+
+\begin{itemize}
+\tightlist
+\item
+  Dati: La sezione \texttt{.data} è utilizzata per dichiarare variabili
+  statiche inizializzate.
+\item
+  Testo: La sezione \texttt{.text} contiene il codice eseguibile.
+  L'etichetta \texttt{\_start} indica il punto di ingresso del
+  programma.
+\item
+  Registri: I registri come \texttt{al} e \texttt{eax} sono utilizzati
+  per operazioni aritmetiche e per la memorizzazione temporanea dei
+  dati.
+\item
+  Chiamate di sistema: L'interruzione \texttt{int\ 0x80} è usata per
+  eseguire chiamate di sistema in Linux.
+\end{itemize}
+
+L'Assembly x86 è usato nello sviluppo di:
+
+\begin{itemize}
+\tightlist
+\item
+  Sistemi operativi: Utilizzato nello sviluppo di kernel e driver.
+\item
+  Applicazioni embedded (microcontrollori nei dispositivi medici,
+  sistemi di controllo nei veicoli, dispositivi IoT, ecc.): Dove è
+  necessaria un'ottimizzazione estrema delle risorse computazionali.
+\item
+  Applicazioni HPC (high performance computing): Il focus qui è eseguire
+  calcoli intensivi e complessi in tempi relativamente brevi. Queste
+  applicazioni richiedono un numero di operazioni per unità di tempo
+  elevato e sono ottimizzate per sfruttare al massimo le risorse
+  hardware disponibili, come CPU, GPU e memoria.
+\end{itemize}
+
+\subsection{Esempio in Python}\label{esempio-in-python}
+
+All'altro estremo della immediatezza di comprensione del testo del
+codice troviamo Python, un linguaggio di alto livello noto per la
+leggibilità ed eleganza. Ecco il medesimo esempio:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Definizione delle variabili}
+\NormalTok{num1 }\OperatorTok{=} \DecValTok{5}
+\NormalTok{num2 }\OperatorTok{=} \DecValTok{3}
+
+\CommentTok{\# Somma dei due numeri}
+\NormalTok{result }\OperatorTok{=}\NormalTok{ num1 }\OperatorTok{+}\NormalTok{ num2}
+
+\CommentTok{\# Stampa del risultato}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Il risultato è:"}\NormalTok{, result)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Analisi comparativa}\label{analisi-comparativa}
+
+Assembly:
+
+\begin{itemize}
+\tightlist
+\item
+  Basso livello di astrazione: Assembly lavora direttamente con i
+  registri della CPU e la memoria, quindi non astrae granché della
+  complessità dell'hardware.
+\item
+  Versatilità: Il linguaggio è progettato per una ben definita
+  architettura e, quindi, ha una scarsa applicabilità ad altre.
+\item
+  Precisione: Il programmatore ha un controllo dettagliato su ogni
+  singola operazione.
+\item
+  Complessità: Ogni operazione deve essere definita esplicitamente e in
+  sequenza, il che rende il codice più lungo e difficile da leggere.
+\end{itemize}
+
+Python:
+
+\begin{itemize}
+\tightlist
+\item
+  Alto livello di astrazione: Python fornisce un'astrazione più elevata,
+  permettendo di ignorare i dettagli dell'hardware.
+\item
+  Semplicità: Il codice è più breve e leggibile, facilitando la
+  comprensione e la manutenzione.
+\item
+  Versatilità: Il linguaggio è applicabile senza modifiche a un elevato
+  numero di architetture hardware-software.
+\item
+  Produttività: I programmatori possono concentrarsi sulla logica del
+  problema senza preoccuparsi dei dettagli implementativi.
+\end{itemize}
+
+\section{Paradigma procedurale}\label{paradigma-procedurale}
+
+La \textbf{programmazione procedurale} è un paradigma di programmazione,
+derivato da quella imperativa, che organizza il codice in unità chiamate
+procedure o funzioni. Ogni procedura o funzione è un blocco di codice
+che può essere richiamato da altre parti del programma, promuovendo la
+riutilizzabilità e la modularità del codice.
+
+La programmazione procedurale è una naturale evoluzione della imperativa
+e uno dei paradigmi più antichi e ampiamente utilizzati. Ha avuto
+origine negli anni '60 e '70 con linguaggi come Fortan, COBOL e C,
+tutt'oggi rilevanti. Questi linguaggi hanno introdotto concetti
+fondamentali come funzioni, sottoprogrammi e la separazione tra codice e
+dati. Il C, in particolare, ha avuto un impatto duraturo sulla
+programmazione procedurale, diventando uno standard de facto per lo
+sviluppo di sistemi operativi e software di sistema.
+
+I vantaggi principali sono:
+
+\begin{itemize}
+\tightlist
+\item
+  Modularità: La programmazione procedurale incoraggia la suddivisione
+  del codice in funzioni o procedure più piccole e gestibili. Questo
+  facilita la comprensione, la manutenzione e il riutilizzo del codice.
+\item
+  Riutilizzabilità: Le funzioni possono essere riutilizzate in diverse
+  parti del programma o in progetti diversi, riducendo la duplicazione
+  del codice e migliorando l'efficienza dello sviluppo.
+\item
+  Struttura e organizzazione: Il codice procedurale è generalmente più
+  strutturato e organizzato, facilitando la lettura e la gestione del
+  progetto software.
+\item
+  Facilità di debug e testing: La suddivisione del programma in funzioni
+  isolate rende più facile individuare e correggere errori, oltre a
+  testare parti specifiche del codice.
+\end{itemize}
+
+D'altro canto, presenta anche degli svantaggi che hanno spinto i
+ricercatori a continuare l'innovazione:
+
+\begin{itemize}
+\tightlist
+\item
+  Scalabilità limitata: Nei progetti molto grandi, la programmazione
+  procedurale può diventare difficile da gestire. La mancanza di
+  meccanismi di astrazione avanzati, come quelli offerti dalla
+  programmazione orientata agli oggetti, può complicare la gestione
+  della complessità.
+\item
+  Gestione dello stato: La programmazione procedurale si basa spesso su
+  variabili globali per condividere stato tra le funzioni, il che può
+  portare a bug difficili da individuare e risolvere.
+\item
+  Difficoltà nell'aggiornamento: Le modifiche a una funzione possono
+  richiedere aggiornamenti in tutte le parti del programma che la
+  utilizzano, aumentando il rischio di introdurre nuovi errori.
+\item
+  Meno Adatta per Applicazioni Moderne: Per applicazioni complesse e
+  moderne che richiedono la gestione di eventi, interfacce utente
+  complesse e modellazione del dominio, la programmazione procedurale
+  può essere meno efficace rispetto ad altri paradigmi come quello
+  orientato agli oggetti.
+\end{itemize}
+
+\subsection{Funzioni e procedure}\label{funzioni-e-procedure}
+
+Nella programmazione procedurale, il codice è suddiviso in unità
+elementari chiamate \textbf{funzioni} e \textbf{procedure}. La
+differenza principale tra le due è la seguente:
+
+\begin{itemize}
+\item
+  Funzione: Una funzione è un blocco di codice che esegue un compito
+  specifico e restituisce un valore. Le funzioni sono utilizzate per
+  calcoli o operazioni che producono un risultato. Ad esempio, una
+  funzione che calcola la somma di due numeri:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ somma}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ a}\OperatorTok{,} \DataTypeTok{int}\NormalTok{ b}\OperatorTok{)} \OperatorTok{\{}
+    \ControlFlowTok{return}\NormalTok{ a }\OperatorTok{+}\NormalTok{ b}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+\item
+  Procedura: Una procedura è simile a una funzione, ma non restituisce
+  un valore. È utilizzata per eseguire azioni o operazioni che non
+  necessitano di un risultato. Ad esempio, una procedura che stampa un
+  messaggio:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{procedure}\NormalTok{ stampaMessaggio;}
+\KeywordTok{begin}
+\NormalTok{    writeln(}\StringTok{\textquotesingle{}Ciao, Mondo!\textquotesingle{}}\NormalTok{);}
+\KeywordTok{end}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+\end{itemize}
+
+\subsection{Creazione di librerie}\label{creazione-di-librerie}
+
+Un altro aspetto importante della programmazione procedurale è la
+possibilità di creare \textbf{librerie}, che sono collezioni di funzioni
+e procedure riutilizzabili. Le librerie permettono di organizzare e
+condividere codice comune tra diversi progetti, aumentando la
+produttività e riducendo la duplicazione del codice.
+
+Esempio di una semplice libreria in C:
+
+\begin{itemize}
+\item
+  File header (\texttt{mialibreria.h}): ```c \#ifndef MIALIBRERIA\_H
+  \#define MIALIBRERIA\_H
+
+  int somma(int a, int b); void stampaMessaggio(const char* messaggio);
+
+  \#endif ```
+\item
+  File di implementazione (\texttt{mialibreria.c}): ```c \#include
+  ``mialibreria.h'' \#include \textless stdio.h\textgreater{}
+
+  int somma(int a, int b) \{ return a + b; \}
+
+  void stampaMessaggio(const char* messaggio) \{ printf(``\%s\n'',
+  messaggio); \} ```
+\item
+  File principale (\texttt{main.c}): ```c \#include ``mialibreria.h''
+
+  int main() \{ int risultato = somma(5, 3); stampaMessaggio(``Il
+  risultato è:''); printf(``\%d\n'', risultato); return 0; \} ```
+\end{itemize}
+
+\section{Paradigma di orientamento agli
+oggetti}\label{paradigma-di-orientamento-agli-oggetti}
+
+La \textbf{programmazione orientata agli oggetti} (in inglese
+object-oriented programming, OOP) è un paradigma di programmazione che
+organizza il software in termini di \emph{oggetti}, ciascuno dei quali
+rappresenta un'istanza di una ``classe''. Una classe definisce un tipo
+di dato che include attributi (dati) e metodi (funzionalità). Gli
+oggetti interagiscono tra loro attraverso messaggi, permettendo una
+struttura modulare e intuitiva.
+
+L'OOP è emersa negli anni '60 e '70 con il linguaggio Simula, il primo
+linguaggio di programmazione a supportare questo paradigma. Tuttavia, è
+stato con Smalltalk, sviluppato negli anni '70 da Alan Kay e altri
+presso Xerox PARC, che l'OOP ha guadagnato popolarità. Il paradigma è
+stato ulteriormente consolidato con il linguaggio C++ negli anni '80 e
+con Java negli anni '90, rendendolo uno dei più utilizzati per lo
+sviluppo software moderno. Oggi numerosi sono i linguaggi a oggetti, ad
+esempio Python, C\#, Ruby, Swift, Javascript, ecc. ed altri lo
+supportano come PHP (dalla versione 5) e financo il Fortran nella
+versione 2003.
+
+Rispetto ai paradigmi precedenti, l'OOP introduce diversi concetti
+chiave che ineriscono al disegno architetturale di software:
+
+\begin{itemize}
+\tightlist
+\item
+  Classe e oggetto: La classe è un modello o schema per creare oggetti.
+  Contiene definizioni di attributi e metodi. L'oggetto è un'istanza di
+  una classe e rappresenta un'entità concreta con stato e comportamento.
+\item
+  Incapsulamento: Nasconde i dettagli interni di un oggetto e mostra
+  solo le interfacce necessarie. Migliora la modularità e protegge
+  l'integrità dei dati.
+\item
+  Ereditarietà: Permette a una classe di estenderne un'altra,
+  ereditandone attributi e metodi. Favorisce il riuso del codice e
+  facilita l'estensione delle funzionalità.
+\item
+  Polimorfismo: Consente a oggetti di classi diverse di essere trattati
+  come oggetti di una classe comune. Facilita l'uso di un'interfaccia
+  uniforme per operazioni diverse.
+\item
+  Astrazione: Permette di definire interfacce di alto livello per
+  oggetti, senza esporre i dettagli implementativi. Facilita la
+  comprensione e la gestione della complessità del sistema.
+\end{itemize}
+
+I vantaggi principali dell'OOP sono:
+
+\begin{itemize}
+\tightlist
+\item
+  Modularità: Le classi e gli oggetti favoriscono la suddivisione del
+  codice in moduli indipendenti, migliorando la manutenibilità e la
+  riusabilità del software.
+\item
+  Riutilizzabilità: L'uso di classi e l'ereditarietà consentono di
+  riutilizzare il codice in nuovi progetti senza riscriverlo.
+\item
+  Facilità di manutenzione: L'incapsulamento e l'astrazione riducono la
+  complessità e facilitano la manutenzione del codice.
+\item
+  Estendibilità: Le classi possono essere estese per aggiungere nuove
+  funzionalità senza modificare il codice esistente.
+\item
+  Affidabilità: Il polimorfismo e l'ereditarietà migliorano
+  l'affidabilità del codice, poiché le modifiche possono essere fatte in
+  una classe base e propagate alle classi derivate.
+\end{itemize}
+
+Anche se sussistono dei caveat:
+
+\begin{itemize}
+\tightlist
+\item
+  Complessità iniziale: L'OOP può essere complesso da apprendere e
+  implementare correttamente per i nuovi programmatori.
+\item
+  Overhead di prestazioni: L'uso intensivo di oggetti può introdurre un
+  overhead di memoria e prestazioni rispetto alla programmazione
+  procedurale.
+\item
+  Abuso di ereditarietà: L'uso improprio dell'ereditarietà può portare a
+  gerarchie di classi troppo complesse e difficili da gestire.
+\end{itemize}
+
+\subsection{Template}\label{template}
+
+I template, o generics, non sono specifici dell'OOP, anche se sono
+spesso associati a essa. I template permettono di scrivere funzioni,
+classi, e altri costrutti di codice in modo generico, cioè indipendente
+dal tipo dei dati che manipolano. Questo concetto è particolarmente
+utile per creare librerie e moduli riutilizzabili e flessibili.
+
+Ad esempio, definiamo la classe \texttt{Box} nel modo seguente:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{template} \OperatorTok{\textless{}}\KeywordTok{typename}\NormalTok{ T}\OperatorTok{\textgreater{}}
+\KeywordTok{class}\NormalTok{ Box }\OperatorTok{\{}
+\NormalTok{    T value}\OperatorTok{;}
+\KeywordTok{public}\OperatorTok{:}
+    \DataTypeTok{void}\NormalTok{ setValue}\OperatorTok{(}\NormalTok{T val}\OperatorTok{)} \OperatorTok{\{}\NormalTok{ value }\OperatorTok{=}\NormalTok{ val}\OperatorTok{;} \OperatorTok{\}}
+\NormalTok{    T getValue}\OperatorTok{()} \OperatorTok{\{} \ControlFlowTok{return}\NormalTok{ value}\OperatorTok{;} \OperatorTok{\}}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+Essa può contenere un valore di qualsiasi tipo specificato al momento
+della creazione dell'istanza per mezzo del template \texttt{T}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// Box contiene un intero}
+\NormalTok{Box}\OperatorTok{\textless{}}\DataTypeTok{int}\OperatorTok{\textgreater{}}\NormalTok{ intBox}\OperatorTok{;}
+\NormalTok{intBox}\OperatorTok{.}\NormalTok{setValue}\OperatorTok{(}\DecValTok{123}\OperatorTok{);}
+\DataTypeTok{int}\NormalTok{ x }\OperatorTok{=}\NormalTok{ intBox}\OperatorTok{.}\NormalTok{getValue}\OperatorTok{();}
+
+\CommentTok{// Box contiene una stringa}
+\NormalTok{Box}\OperatorTok{\textless{}}\BuiltInTok{std::}\NormalTok{string}\OperatorTok{\textgreater{}}\NormalTok{ stringBox}\OperatorTok{;}
+\NormalTok{stringBox}\OperatorTok{.}\NormalTok{setValue}\OperatorTok{(}\StringTok{"Hello, World!"}\OperatorTok{);}
+\BuiltInTok{std::}\NormalTok{string str }\OperatorTok{=}\NormalTok{ stringBox}\OperatorTok{.}\NormalTok{getValue}\OperatorTok{();}
+\end{Highlighting}
+\end{Shaded}
+
+Anche nei linguaggi non orientati agli oggetti, i template trovano
+applicazione. Ad esempio, in Rust, un linguaggio di programmazione
+sistemistica non puramente OOP, il codice seguente restituisce il valore
+più grande di una lista:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ largest}\OperatorTok{\textless{}}\NormalTok{T}\OperatorTok{:} \BuiltInTok{PartialOrd}\OperatorTok{\textgreater{}}\NormalTok{(list}\OperatorTok{:} \OperatorTok{\&}\NormalTok{[T]) }\OperatorTok{{-}\textgreater{}} \OperatorTok{\&}\NormalTok{T }\OperatorTok{\{}
+    \KeywordTok{let} \KeywordTok{mut}\NormalTok{ largest }\OperatorTok{=} \OperatorTok{\&}\NormalTok{list[}\DecValTok{0}\NormalTok{]}\OperatorTok{;}
+    \ControlFlowTok{for}\NormalTok{ item }\KeywordTok{in}\NormalTok{ list }\OperatorTok{\{}
+        \ControlFlowTok{if}\NormalTok{ item }\OperatorTok{\textgreater{}}\NormalTok{ largest }\OperatorTok{\{}
+\NormalTok{            largest }\OperatorTok{=}\NormalTok{ item}\OperatorTok{;}
+        \OperatorTok{\}}
+    \OperatorTok{\}}
+\NormalTok{    largest}
+\OperatorTok{\}}
+
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ numbers }\OperatorTok{=} \PreprocessorTok{vec!}\NormalTok{[}\DecValTok{34}\OperatorTok{,} \DecValTok{50}\OperatorTok{,} \DecValTok{25}\OperatorTok{,} \DecValTok{100}\OperatorTok{,} \DecValTok{65}\NormalTok{]}\OperatorTok{;}
+    \KeywordTok{let}\NormalTok{ max }\OperatorTok{=}\NormalTok{ largest(}\OperatorTok{\&}\NormalTok{numbers)}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"The largest number is \{\}"}\OperatorTok{,}\NormalTok{ max)}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Metaprogrammazione}\label{metaprogrammazione}
+
+La metaprogrammazione è un paradigma che consente al programma di
+trattare il codice come dati, permettendo al codice di generare,
+manipolare o eseguire altro codice. Anche questo concetto non è
+esclusivo dell'OOP. In C++, la metaprogrammazione è strettamente legata
+ai template. Un esempio classico è la template metaprogramming (TMP),
+che permette di eseguire calcoli a tempo di compilazione. Un esempio è
+il codice seguente di calcolo del fattoriale:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{template}\OperatorTok{\textless{}}\DataTypeTok{int}\NormalTok{ N}\OperatorTok{\textgreater{}}
+\KeywordTok{struct}\NormalTok{ Factorial }\OperatorTok{\{}
+    \AttributeTok{static} \AttributeTok{const} \DataTypeTok{int}\NormalTok{ value }\OperatorTok{=}\NormalTok{ N }\OperatorTok{*}\NormalTok{ Factorial}\OperatorTok{\textless{}}\NormalTok{N }\OperatorTok{{-}} \DecValTok{1}\OperatorTok{\textgreater{}::}\NormalTok{value}\OperatorTok{;}
+\OperatorTok{\};}
+\KeywordTok{template}\OperatorTok{\textless{}\textgreater{}}
+\KeywordTok{struct}\NormalTok{ Factorial}\OperatorTok{\textless{}}\DecValTok{0}\OperatorTok{\textgreater{}} \OperatorTok{\{}
+    \AttributeTok{static} \AttributeTok{const} \DataTypeTok{int}\NormalTok{ value }\OperatorTok{=} \DecValTok{1}\OperatorTok{;}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+La metaprogrammazione è presente anche in linguaggi non OOP come Lisp,
+che utilizza le macro per trasformare e generare codice. Nel codice soto
+proposto è definita la macro \texttt{when} che prende due parametri in
+input cioè \texttt{test} e \texttt{body}, ove \texttt{test} è
+un'espressione comdizionale e \texttt{body} un insieme di iestruzioni da
+eeseguire se la condizione è vera:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\KeywordTok{defmacro}\FunctionTok{ when }\NormalTok{(test \&}\KeywordTok{rest}\NormalTok{ body)}
+\NormalTok{  \textasciigrave{}(}\KeywordTok{if}\NormalTok{ ,test}
+\NormalTok{       (}\KeywordTok{progn}\NormalTok{ ,@body)))}
+\end{Highlighting}
+\end{Shaded}
+
+Vediamo un esempio pratico di come si utilizza la macro \texttt{when}.
+Il test è valutare se \texttt{x} è maggiore di \texttt{10} e, nel caso,
+stampare \texttt{"x\ is\ greater\ than\ 10"} e poi assegnare \texttt{x}
+a \texttt{0}. Chiamiamo la macro con i due parametri:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\KeywordTok{when}\NormalTok{ (}\OperatorTok{\textgreater{}}\NormalTok{ x }\DecValTok{10}\NormalTok{)}
+\NormalTok{  (}\KeywordTok{print} \StringTok{"x is greater than 10"}\NormalTok{)}
+\NormalTok{  (}\KeywordTok{setf}\NormalTok{ x }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Questo viene espanso in:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\KeywordTok{if}\NormalTok{ (}\OperatorTok{\textgreater{}}\NormalTok{ x }\DecValTok{10}\NormalTok{)}
+\NormalTok{    (}\KeywordTok{progn}
+\NormalTok{      (}\KeywordTok{print} \StringTok{"x is greater than 10"}\NormalTok{)}
+\NormalTok{      (}\KeywordTok{setf}\NormalTok{ x }\DecValTok{0}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Esempio in Java}\label{esempio-in-java}
+
+In questo esempio, la classe \texttt{Animale} rappresenta una classe
+base con un attributo \texttt{nome} e un metodo \texttt{faiVerso}. La
+classe \texttt{Cane} estende \texttt{Animale} e sovrascrive il metodo
+\texttt{faiVerso} per fornire un'implementazione specifica. La classe
+\texttt{Main} crea un'istanza di \texttt{Cane} e chiama il metodo
+\texttt{faiVerso}, dimostrando il polimorfismo e l'ereditarietà:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// Definizione della classe base}
+\KeywordTok{class}\NormalTok{ Animale }\OperatorTok{\{}
+    \BuiltInTok{String}\NormalTok{ nome}\OperatorTok{;}
+
+    \FunctionTok{Animale}\OperatorTok{(}\BuiltInTok{String}\NormalTok{ nome}\OperatorTok{)} \OperatorTok{\{}
+        \KeywordTok{this}\OperatorTok{.}\FunctionTok{nome} \OperatorTok{=}\NormalTok{ nome}\OperatorTok{;}
+    \OperatorTok{\}}
+
+    \DataTypeTok{void} \FunctionTok{faiVerso}\OperatorTok{()} \OperatorTok{\{}
+        \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\StringTok{"L\textquotesingle{}animale fa un verso"}\OperatorTok{);}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+
+\CommentTok{// Definizione della classe derivata}
+\KeywordTok{class}\NormalTok{ Cane }\KeywordTok{extends}\NormalTok{ Animale }\OperatorTok{\{}
+
+    \FunctionTok{Cane}\OperatorTok{(}\BuiltInTok{String}\NormalTok{ nome}\OperatorTok{)} \OperatorTok{\{}
+        \KeywordTok{super}\OperatorTok{(}\NormalTok{nome}\OperatorTok{);}
+    \OperatorTok{\}}
+
+    \AttributeTok{@Override}
+    \DataTypeTok{void} \FunctionTok{faiVerso}\OperatorTok{()} \OperatorTok{\{}
+        \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\StringTok{"Il cane abbaia"}\OperatorTok{);}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+
+\CommentTok{// Classe principale}
+\KeywordTok{public} \KeywordTok{class}\NormalTok{ Main }\OperatorTok{\{}
+    \KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{main}\OperatorTok{(}\BuiltInTok{String}\OperatorTok{[]}\NormalTok{ args}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{        Animale mioCane }\OperatorTok{=} \KeywordTok{new} \FunctionTok{Cane}\OperatorTok{(}\StringTok{"Fido"}\OperatorTok{);}
+\NormalTok{        mioCane}\OperatorTok{.}\FunctionTok{faiVerso}\OperatorTok{();} \CommentTok{// Stampa: Il cane abbaia}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Vediamo come implementare il medesimo esempio con una classe astratta in
+Java. \texttt{Animale} è la classe astratta, cioè che non può essere
+istanziata in un oggetto e \texttt{Cane} è una classe concreta che la
+estende:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// Definizione della classe astratta}
+\KeywordTok{abstract} \KeywordTok{class}\NormalTok{ Animale }\OperatorTok{\{}
+    \BuiltInTok{String}\NormalTok{ nome}\OperatorTok{;}
+
+    \FunctionTok{Animale}\OperatorTok{(}\BuiltInTok{String}\NormalTok{ nome}\OperatorTok{)} \OperatorTok{\{}
+        \KeywordTok{this}\OperatorTok{.}\FunctionTok{nome} \OperatorTok{=}\NormalTok{ nome}\OperatorTok{;}
+    \OperatorTok{\}}
+
+    \CommentTok{// Metodo astratto}
+    \KeywordTok{abstract} \DataTypeTok{void} \FunctionTok{faiVerso}\OperatorTok{();}
+
+    \CommentTok{// Metodo concreto}
+    \DataTypeTok{void} \FunctionTok{descrizione}\OperatorTok{()} \OperatorTok{\{}
+        \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\StringTok{"L\textquotesingle{}animale si chiama "} \OperatorTok{+}\NormalTok{ nome}\OperatorTok{);}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+
+\CommentTok{// Definizione della classe derivata}
+\KeywordTok{class}\NormalTok{ Cane }\KeywordTok{extends}\NormalTok{ Animale }\OperatorTok{\{}
+
+    \FunctionTok{Cane}\OperatorTok{(}\BuiltInTok{String}\NormalTok{ nome}\OperatorTok{)} \OperatorTok{\{}
+        \KeywordTok{super}\OperatorTok{(}\NormalTok{nome}\OperatorTok{);}
+    \OperatorTok{\}}
+
+    \AttributeTok{@Override}
+    \DataTypeTok{void} \FunctionTok{faiVerso}\OperatorTok{()} \OperatorTok{\{}
+        \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\StringTok{"Il cane abbaia"}\OperatorTok{);}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+
+\CommentTok{// Classe principale}
+\KeywordTok{public} \KeywordTok{class}\NormalTok{ Main }\OperatorTok{\{}
+    \KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{main}\OperatorTok{(}\BuiltInTok{String}\OperatorTok{[]}\NormalTok{ args}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{        Animale mioCane }\OperatorTok{=} \KeywordTok{new} \FunctionTok{Cane}\OperatorTok{(}\StringTok{"Fido"}\OperatorTok{);}
+\NormalTok{        mioCane}\OperatorTok{.}\FunctionTok{descrizione}\OperatorTok{();} \CommentTok{// Stampa: L\textquotesingle{}animale si chiama Fido}
+\NormalTok{        mioCane}\OperatorTok{.}\FunctionTok{faiVerso}\OperatorTok{();}    \CommentTok{// Stampa: Il cane abbaia}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Paradigma dichiarativo}\label{paradigma-dichiarativo}
+
+La \textbf{programmazione dichiarativa} è un paradigma di programmazione
+che si focalizza sul \emph{cosa} deve essere calcolato piuttosto che sul
+\emph{come} calcolarlo. In altre parole, i programmi dichiarativi
+descrivono il risultato desiderato senza specificare esplicitamente i
+passaggi per ottenerlo. Questo è in netto contrasto con la
+programmazione imperativa, dove si fornisce una sequenza dettagliata di
+istruzioni per modificare lo stato del programma.
+
+La programmazione dichiarativa ha radici nella logica e nella
+matematica, ed è emersa come un importante paradigma negli anni '70 e
+'80 con l'avvento di linguaggi come Prolog (per la programmazione
+logica) e SQL (per la gestione dei database). La programmazione
+funzionale, con linguaggi come Haskell, è anch'essa una forma di
+programmazione dichiarativa.
+
+I concetti principali associati alla programazione dichiarativa sono:
+
+\begin{itemize}
+\tightlist
+\item
+  Descrizione del risultato: I programmi dichiarativi descrivono le
+  proprietà del risultato desiderato senza specificare l'algoritmo per
+  ottenerlo. Esempio: In SQL, per ottenere tutti i record di una tabella
+  con un certo valore, si scrive una query che descrive la condizione,
+  non un algoritmo che scorre i record uno per uno.
+\item
+  Assenza di stato esplicito: La programmazione dichiarativa evita l'uso
+  esplicito di variabili di stato e di aggiornamenti di stato. Ciò
+  riduce i rischi di effetti collaterali e rende il codice più facile da
+  comprendere e verificare.
+\item
+  Idempotenza: Le espressioni dichiarative sono spesso idempotenti, cioè
+  possono essere eseguite più volte senza cambiare il risultato. Questo
+  è particolarmente utile per la concorrenza e la parallelizzazione.
+\end{itemize}
+
+Il vantaggio principale è relativo alla sua chiarezza perché ci si
+concentra sul risultato desiderato piuttosto che sui dettagli di
+implementazione.
+
+La programmazione imperativa specifica come ottenere un risultato
+mediante una sequenza di istruzioni, modificando lo stato del programma.
+La programmazione dichiarativa, al contrario, specifica cosa deve essere
+ottenuto senza descrivere i dettagli di implementazione. In termini di
+livello di astrazione, la programmazione dichiarativa si trova a un
+livello superiore rispetto a quella imperativa.
+
+\subsection{Linguaggi}\label{linguaggi}
+
+Ecco una lista di alcuni linguaggi di programmazione dichiarativi:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  SQL (Structured Query Language): Utilizzato per la gestione e
+  l'interrogazione di database relazionali.
+\item
+  Prolog: Un linguaggio di programmazione logica usato principalmente
+  per applicazioni di intelligenza artificiale e linguistica
+  computazionale.
+\item
+  HTML (HyperText Markup Language): Utilizzato per creare e strutturare
+  pagine web.
+\item
+  CSS (Cascading Style Sheets): Utilizzato per descrivere la
+  presentazione delle pagine web scritte in HTML o XML.
+\item
+  XSLT (Extensible Stylesheet Language Transformations): Un linguaggio
+  per trasformare documenti XML in altri formati.
+\item
+  Haskell: Un linguaggio funzionale che è anche dichiarativo, noto per
+  la sua pura implementazione della programmazione funzionale.
+\item
+  Erlang: Un linguaggio utilizzato per sistemi concorrenti e
+  distribuiti, con caratteristiche dichiarative.
+\item
+  VHDL (VHSIC Hardware Description Language): Utilizzato per descrivere
+  il comportamento e la struttura di sistemi digitali.
+\item
+  Verilog: Un altro linguaggio di descrizione hardware usato per la
+  modellazione di sistemi elettronici.
+\item
+  XQuery: Un linguaggio di query per interrogare documenti XML.
+\end{enumerate}
+
+Questi linguaggi rappresentano diversi ambiti di applicazione, dai
+database alla descrizione hardware, e sono accomunati dall'approccio
+dichiarativo nel quale si specifica cosa ottenere piuttosto che come
+ottenerlo.
+
+\subsection{Esempi}\label{esempi}
+
+Esempio di una query SQL che estrae tutti i nomi degli utenti con età
+maggiore di 30:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT}\NormalTok{ nome}
+\KeywordTok{FROM}\NormalTok{ utenti}
+\KeywordTok{WHERE}\NormalTok{ età }\OperatorTok{\textgreater{}} \DecValTok{30}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+In Prolog, si definiscono fatti e regole che descrivono relazioni
+logiche. Il motore di inferenza di Prolog utilizza queste definizioni
+per risolvere query, senza richiedere un algoritmo dettagliato. Di
+seguito, sono definiti due fatti (le prime due righe) e due regole (la
+terza e la quarta) e quindi si effettua una query che dà coem risultato
+\texttt{true}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{genitore(padre}\KeywordTok{,}\NormalTok{ figlio)}\KeywordTok{.}
+\NormalTok{genitore(madre}\KeywordTok{,}\NormalTok{ figlio)}\KeywordTok{.}
+\NormalTok{antenato(}\DataTypeTok{X}\KeywordTok{,} \DataTypeTok{Y}\NormalTok{) }\KeywordTok{:{-}}\NormalTok{ genitore(}\DataTypeTok{X}\KeywordTok{,} \DataTypeTok{Y}\NormalTok{)}\KeywordTok{.}
+\NormalTok{antenato(}\DataTypeTok{X}\KeywordTok{,} \DataTypeTok{Y}\NormalTok{) }\KeywordTok{:{-}}\NormalTok{ genitore(}\DataTypeTok{X}\KeywordTok{,} \DataTypeTok{Z}\NormalTok{)}\KeywordTok{,}\NormalTok{ antenato(}\DataTypeTok{Z}\KeywordTok{,} \DataTypeTok{Y}\NormalTok{)}\KeywordTok{.}
+
+\FunctionTok{?{-}}\NormalTok{ antenato(padre}\KeywordTok{,}\NormalTok{ figlio)}\KeywordTok{.}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Paradigma funzionale}\label{paradigma-funzionale}
+
+La \textbf{programmazione funzionale} è un paradigma di programmazione
+che tratta il calcolo come la valutazione di funzioni matematiche ed
+evita lo stato mutabile e i dati modificabili. I programmi funzionali
+sono costruiti applicando e componendo funzioni. Questo paradigma è
+stato ispirato dal calcolo lambda, una formalizzazione matematica del
+concetto di funzione. La programmazione funzionale è un paradigma
+alternativo alla programmazione imperativa, che descrive la computazione
+come una sequenza di istruzioni che modificano lo stato del programma.
+
+La programmazione funzionale ha radici storiche che risalgono agli anni
+'30, con il lavoro di Alonzo Church sul calcolo lambda. I linguaggi di
+programmazione funzionale hanno iniziato a svilupparsi negli anni '50 e
+'60 con Lisp, ma è stato negli anni '70 e '80 che linguaggi come ML e
+Haskell hanno consolidato questo paradigma. Haskell, in particolare, è
+stato progettato per esplorare nuove idee in programmazione funzionale e
+ha avuto un impatto significativo sulla ricerca e sulla pratica del
+software.
+
+La programmazione funzionale è una forma di programmazione dichiarativa
+che si basa su funzioni pure e immutabilità. Entrambi i paradigmi
+evitano stati mutabili e si concentrano sul risultato finale, ma la
+programmazione funzionale utilizza funzioni matematiche come unità
+fondamentali di calcolo.
+
+Concetti fondamentali:
+
+\begin{itemize}
+\tightlist
+\item
+  Immutabilità: I dati sono immutabili, il che significa che una volta
+  creati non possono essere modificati. Questo riduce il rischio di
+  effetti collaterali e rende il codice più prevedibile.
+\item
+  Funzioni di prima classe e di ordine superiore: Le funzioni possono
+  essere passate come argomenti a altre funzioni, ritornate da funzioni,
+  e assegnate a variabili. Le funzioni di ordine superiore accettano
+  altre funzioni come argomenti o restituiscono funzioni.
+\item
+  Purezza: Le funzioni pure sono funzioni che, dato lo stesso input,
+  restituiscono sempre lo stesso output e non causano effetti
+  collaterali. Questo rende il comportamento del programma più facile da
+  comprendere e prevedere.
+\item
+  Trasparenza referenziale: Un'espressione è trasparentemente
+  referenziale se può essere sostituita dal suo valore senza cambiare il
+  comportamento del programma. Questo facilita l'ottimizzazione e il
+  reasonig sul codice.
+\item
+  Ricorsione: È spesso utilizzata al posto di loop iterativi per
+  eseguire ripetizioni, poiché si adatta meglio alla natura immutabile
+  dei dati e alla definizione di funzioni.
+\item
+  Composizione di Funzioni: Consente di costruire funzioni complesse
+  combinando funzioni più semplici. Questo favorisce la modularità e la
+  riusabilità del codice.
+\end{itemize}
+
+Il paradigma funzionale ha diversi vantaggi:
+
+\begin{itemize}
+\tightlist
+\item
+  Prevedibilità e facilità di test: Le funzioni pure e l'immutabilità
+  rendono il codice più prevedibile e più facile da testare, poiché non
+  ci sono stati mutabili o effetti collaterali nascosti.
+\item
+  Concorrenza: La programmazione funzionale è ben adatta alla
+  programmazione concorrente e parallela, poiché l'assenza di stato
+  mutabile riduce i problemi di sincronizzazione e competizione per le
+  risorse.
+\item
+  Modularità e riutilizzabilità: La composizione di funzioni e la
+  trasparenza referenziale facilitano la creazione di codice modulare e
+  riutilizzabile.
+\end{itemize}
+
+E qualche svantaggio:
+
+\begin{itemize}
+\tightlist
+\item
+  Curva di Apprendimento: La programmazione funzionale può essere
+  difficile da apprendere per chi proviene da paradigmi imperativi o
+  orientati agli oggetti, a causa dei concetti matematici sottostanti e
+  della diversa mentalità necessaria.
+\item
+  Prestazioni: In alcuni casi, l'uso intensivo di funzioni ricorsive può
+  portare a problemi di prestazioni, come il consumo di memoria per le
+  chiamate ricorsive. Tuttavia, molte implementazioni moderne offrono
+  ottimizzazioni come la ricorsione di coda.
+\item
+  Disponibilità di Librerie e Strumenti: Alcuni linguaggi funzionali
+  potrebbero non avere la stessa ampiezza di librerie e strumenti
+  disponibili rispetto ai linguaggi imperativi più diffusi.
+\end{itemize}
+
+\subsection{Esempio in Haskell}\label{esempio-in-haskell}
+
+Di seguito due funzioni, la prima \texttt{sumToN} è pura e somma i primi
+\texttt{n} numeri. \texttt{(*2)} è una funzione che prende un argomento
+e lo moltiplica per 2 e ciò rende la seconda funzione
+\texttt{applyFunction} una vera funzione di ordine superiore, poiché
+accetta \texttt{(*2)} come argomento oltre ad una lista, producendo come
+risultato il raddoppio di tutti i suoi elementi.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{{-}{-} Definizione di una funzione pura che calcola la somma dei numeri da 1 a n}
+\OtherTok{sumToN ::} \DataTypeTok{Integer} \OtherTok{{-}\textgreater{}} \DataTypeTok{Integer}
+\NormalTok{sumToN n }\OtherTok{=} \FunctionTok{sum}\NormalTok{ [}\DecValTok{1}\OperatorTok{..}\NormalTok{n]}
+
+\CommentTok{{-}{-} Funzione di ordine superiore che accetta una funzione e una lista}
+\OtherTok{applyFunction ::}\NormalTok{ (a }\OtherTok{{-}\textgreater{}}\NormalTok{ b) }\OtherTok{{-}\textgreater{}}\NormalTok{ [a] }\OtherTok{{-}\textgreater{}}\NormalTok{ [b]}
+\NormalTok{applyFunction f lst }\OtherTok{=} \FunctionTok{map}\NormalTok{ f lst}
+
+\CommentTok{{-}{-} Utilizzo delle funzioni}
+\NormalTok{main }\OtherTok{=} \KeywordTok{do}
+    \FunctionTok{print}\NormalTok{ (sumToN }\DecValTok{10}\NormalTok{) }\CommentTok{{-}{-} Stampa 55}
+    \FunctionTok{print}\NormalTok{ (applyFunction (}\OperatorTok{*}\DecValTok{2}\NormalTok{) [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{]) }\CommentTok{{-}{-} Stampa [2, 4, 6, 8]}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Linguaggi}\label{linguaggi-1}
+
+Oltre a Haskell, ci sono molti altri linguaggi funzionali, tra cui:
+
+\begin{itemize}
+\tightlist
+\item
+  Erlang: Utilizzato per sistemi concorrenti e distribuiti.
+\item
+  Elixir: Costruito a partire da Erlang, è utilizzato per applicazioni
+  web scalabili.
+\item
+  F\#: Parte della piattaforma .NET, combina la programmazione
+  funzionale con lo OOP.
+\item
+  Scala: Anch'esso combina programmazione funzionale e orientata agli
+  oggetti ed è interoperabile con Java.
+\item
+  OCaml: Conosciuto per le sue prestazioni e sintassi espressiva.
+\item
+  Lisp: Uno dei linguaggi più antichi, multi-paradigma con forti
+  influenze funzionali.
+\item
+  Clojure: Dialetto di Lisp per la JVM, adatto alla concorrenza.
+\item
+  Scheme: Dialetto di Lisp spesso usato nell'educazione.
+\item
+  ML: Linguaggio influente che ha portato allo sviluppo di OCaml e F\#.
+\item
+  Racket: Derivato da Scheme, usato nella ricerca accademica.
+\end{itemize}
+
+\chapter{Sintassi dei linguaggi di programmazione e algoritmi dei
+programmi}\label{sintassi-dei-linguaggi-di-programmazione-e-algoritmi-dei-programmi}
+
+\section{Che cos'è un algoritmo?}\label{che-cosuxe8-un-algoritmo}
+
+Una definizione informale di \textbf{algoritmo} è un insieme di
+istruzioni precise e finite che descrivono come eseguire un compito
+specifico o risolvere un problema. Pensate a un algoritmo come a una
+ricetta di cucina: la ricetta fornisce una serie di passaggi chiari da
+seguire per preparare un piatto.
+
+Formalmente, un algoritmo è una sequenza ben definita di passi o
+operazioni che, a partire da un input, produce un output in un tempo
+finito. Le proprietà principali di un algoritmo includono:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Finitudine L'algoritmo deve terminare dopo un numero finito di passi.
+\item
+  Determinismo: Ogni passo dell'algoritmo deve essere definito in modo
+  preciso e non ambiguo.
+\item
+  Input L'algoritmo riceve zero o più dati in ingresso.
+\item
+  Output L'algoritmo produce uno o più risultati.
+\item
+  Effettività: Ogni operazione dell'algoritmo deve essere fattibile ed
+  eseguibile in un tempo finito.
+\end{enumerate}
+
+\section{Sintassi e semantica dei linguaggi di
+programmazione}\label{sintassi-e-semantica-dei-linguaggi-di-programmazione}
+
+I linguaggi di programmazione sono strumenti utilizzati per implementare
+algoritmi in modo che possano essere eseguiti da un computer. Un
+linguaggio di programmazione ha due componenti principali: la
+\textbf{sintassi} e la \textbf{semantica}.
+
+\subsection{Sintassi}\label{sintassi}
+
+La \textbf{sintassi} di un linguaggio di programmazione è l'insieme di
+regole che definiscono come devono essere scritte le istruzioni, cioè le
+unità logiche di esecuzione del programma. È come la grammatica in una
+lingua naturale e stabilisce quali combinazioni di simboli sono
+considerate costrutti validi nel linguaggio.
+
+Gli elementi principali della sintassi includono:
+
+\begin{itemize}
+\tightlist
+\item
+  Parole chiave: Sono termini riservati del linguaggio che hanno
+  significati specifici e non possono essere utilizzati per altri scopi,
+  come \texttt{if}, \texttt{else}, \texttt{while}, \texttt{for}, ecc.
+\item
+  Operatori: Simboli utilizzati per eseguire operazioni su variabili e
+  valori, come \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/},
+  \texttt{=}, \texttt{==}, ecc.
+\item
+  Separatori e delimitatori: Caratteri utilizzati per separare elementi
+  del codice, come punto e virgola (\texttt{;}), parentesi tonde
+  (\texttt{()}), parentesi quadre (\texttt{{[}{]}}), parentesi graffe
+  (\texttt{\{\}}), ecc.
+\item
+  Identificatori: Nomi utilizzati per identificare variabili, funzioni,
+  classi, e altri oggetti definiti dall'utente.
+\item
+  Letterali: Rappresentazioni di valori costanti nel codice, come numeri
+  (\texttt{123}), stringhe (\texttt{"hello"}), caratteri
+  (\texttt{\textquotesingle{}a\textquotesingle{}}), ecc.
+\item
+  Espressioni: Combinazioni di variabili, operatori e funzioni che
+  vengono valutate per produrre un valore.
+\end{itemize}
+
+Questi elementi sintattici sono noti anche come \textbf{lessemi} (in
+inglese \emph{token}) e sono utilizzati per comporre istruzioni semplici
+e istruzioni complesse, che, a loro volta, costituiscono i programmi.
+
+\subsubsection{Istruzioni Semplici}\label{istruzioni-semplici}
+
+Le \textbf{istruzioni semplici} sono costituite da singole operazioni
+che possono essere eseguite direttamente. Queste istruzioni sono
+fondamentali e spesso coinvolgono i seguenti elementi:
+
+\begin{itemize}
+\item
+  Assegnazione: Utilizza un operatore di assegnazione (\texttt{=}) per
+  attribuire un valore a una variabile, che possiamo pensare come un
+  nome simbolico rappresentante una posizione dove è memorizzato un
+  valore. Esempio:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x = 5}
+\end{Highlighting}
+\end{Shaded}
+
+  \texttt{x}: Identificatore (nome) della variabile. \texttt{=}:
+  Operatore di assegnazione. \texttt{5}: Letterale numerico intero.
+\item
+  Input/output: Utilizza parole chiave o funzioni di libreria per
+  leggere valori dall'input o scrivere valori all'output. Esempio:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{print("Hello, World!")}
+\end{Highlighting}
+\end{Shaded}
+
+  \texttt{print}: Parola chiave o identificatore di funzione di
+  libreria. \texttt{"Hello,\ World!"}: Letterale stringa. L'esecuzione
+  dell'istruzione produce \texttt{"Hello,\ World!"} in output.
+\item
+  Operazioni aritmetiche: Utilizza operatori aritmetici per eseguire
+  operazioni su variabili e valori. Esempio:
+  \texttt{plaintext\ \ \ \ \ y\ =\ 7\ +\ 2.3} \texttt{y}: Identificatore
+  della variabile. \texttt{=}: Operatore di assegnazione del risultato
+  della valutazione dell'operazione a destra. \texttt{7}: Letterale
+  numerico intero. \texttt{+}: Operatore aritmetico. \texttt{2.3}:
+  Letterale numerico decimale. L'esecuzione dell'istruzione fa in modo
+  che la variabile \texttt{y} sia associato a 9.3.
+\item
+  Espressioni: Combinazioni di variabili, operatori e valori che
+  producono un risultato. Esempio:
+  \texttt{plaintext\ \ \ \ \ z\ =\ (x\ *\ 2)\ +\ (y\ /\ 2)} \texttt{z}:
+  Identificatore della variabile. \texttt{=}: Operatore di assegnazione.
+  \texttt{(x\ *\ 2)}: Espressione che moltiplica \texttt{x} per
+  \texttt{2}. \texttt{(y\ /\ 2)}: Espressione che divide \texttt{y} per
+  \texttt{2}. \texttt{+}: Operatore aritmetico che somma i risultati
+  delle due espressioni. L'esecuzione dell'istruzione produce un
+  risultato valido solo se \texttt{x} e \texttt{y} sono associate a
+  valori numerici e ciò perché non tutte le istruzioni sintatticamente
+  corrette sono semanticamente corrette. D'altronde ciò non deve essere
+  preso come regola, perché se \texttt{*} fosse un operatore che ripete
+  quanto a sinistra un numero di volte definito dal valore di destra e
+  \texttt{/} la divisione del valore di sinistra in parti di numero pari
+  a quanto a destra, allora \texttt{x} e \texttt{y} potrebbero essere
+  stringhe.
+\end{itemize}
+
+\subsubsection{Istruzioni Complesse}\label{istruzioni-complesse}
+
+Le \textbf{istruzioni complesse} sono costituite da più istruzioni
+semplici e possono includere strutture di controllo del flusso. Esempi
+includono:
+
+\begin{itemize}
+\tightlist
+\item
+  Condizioni: Istruzioni che eseguono un blocco di codice solo se una
+  condizione è vera. Esempio:
+  \texttt{plaintext\ \ \ \ \ if\ (x\ \textgreater{}\ 0)\ \{\ \ \ \ \ \ \ \ \ print("x\ è\ positivo")\ \ \ \ \ \}}
+  \texttt{if}: Parola chiave che introduce la condizione.
+  \texttt{(x\ \textgreater{}\ 0)}: Condizione composta da: \texttt{x}
+  identificatore di variabile, \texttt{\textgreater{}} operatore di
+  confronto e \texttt{0} letterale numerico intero.
+  \texttt{\{\ ...\ \}}: Delimitatori che racchiudono il blocco di
+  codice. \texttt{print("x\ è\ positivo")}: Istruzione di output.
+\item
+  Cicli: Istruzioni che ripetono un blocco di codice. Esempio:
+  \texttt{plaintext\ \ \ \ \ for\ (i\ =\ 0;\ i\ \textless{}\ n;\ i++)\ \{\ \ \ \ \ \ \ \ \ somma\ =\ somma\ +\ i\ \ \ \ \ \}}
+  \texttt{for}: Parola chiave che introduce il ciclo.
+  \texttt{(i\ =\ 0;\ i\ \textless{}\ n;\ i++)}: Espressione di controllo
+  del ciclo composta da: \texttt{i\ =\ 0} assegnazione iniziale,
+  \texttt{i\ \textless{}\ n} condizione di ciclo e \texttt{i++}
+  incremento della variabile \texttt{i}. \texttt{\{\ ...\ \}}:
+  Delimitatori che racchiudono il blocco di codice.
+  \texttt{somma\ =\ somma\ +\ i}: Operazione aritmetica.
+\end{itemize}
+
+\subsection{Semantica}\label{semantica}
+
+La \textbf{semantica} di un linguaggio di programmazione definisce il
+significato delle istruzioni sintatticamente corrette. In altre parole,
+la semantica specifica cosa fa un programma quando viene eseguito,
+descrivendo l'effetto delle istruzioni sullo stato del sistema. Gli
+elementi semantici sono numerosi, possono essere anche molto complessi e
+non tutti presenti in uno specifico linguaggio. Di seguito ne sono
+elencati alcuni tra i più diffusi:
+
+\begin{itemize}
+\tightlist
+\item
+  Variabile: È un nome simbolico associato a locazione di memoria che
+  può contenere uno o più valori. È fondamentale per la manipolazione di
+  dati perché sono un mezzo per astrarre dalla costante memorizzata. Le
+  variabili possono essere associate a diversi tipi di dati e durate di
+  vita. La semantica delle variabili include la loro dichiarazione,
+  inizializzazione, uso e visibilità:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Dichiarazione: La dichiarazione di una variabile è il processo
+    mediante il quale si introduce una variabile nel programma,
+    specificandone il nome e, in molti casi, il tipo di dato che essa
+    può contenere. La dichiarazione informa il compilatore o
+    l'interprete che una certa variabile esiste e può essere utilizzata
+    nel codice.
+  \item
+    Inizializzazione: L'inizializzazione di una variabile è il processo
+    di assegnare un valore iniziale alla variabile. L'inizializzazione
+    può avvenire contestualmente alla dichiarazione o in un'istruzione
+    separata successiva.
+  \item
+    Visibilità: Indica dove la variabile può essere utilizzata
+    all'interno del codice (ad esempio, variabili locali o globali).
+  \item
+    Durata di Vita: Descrive per quanto tempo la variabile rimane in
+    memoria durante l'esecuzione del programma (ad esempio, automatica,
+    statica, dinamica).
+  \end{itemize}
+\item
+  Tipo di dati: I tipi di dati definiscono il dominio dei valori che una
+  variabile può assumere e le operazioni che possono essere eseguite su
+  quei valori. Un tipo di dato determina la natura del valore (ad
+  esempio, numero intero, carattere, booleano) e le operazioni che
+  possono essere effettuate su di esso. Generalmente si distinguono in:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Tipo primitivo: I tipi di dati fondamentali forniti da un
+    linguaggio, come integer, float, boolean e character.
+  \item
+    Tipo complesso: Tipo di dati costituiti da più tipi primitivi, come
+    array, struct e oggetti.
+  \item
+    Tipo di dati utente: Tipo definito dall'utente, come classi e tipi
+    personalizzati, che permette di creare strutture dati più complesse
+    e specifiche per il problema da risolvere.
+  \end{itemize}
+\item
+  Ambito (in inglese, scope): L'ambito rappresenta la porzione del
+  codice in cui un identificatore (come una variabile o una funzione) è
+  definito e, quindi, esiste. L'ambito determina dove un identificatore
+  può essere dichiarato e utilizzato. Tipicamente gli ambiti sono:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Globale: Identificatori dichiarati a livello globale, accessibili
+    ovunque nel programma.
+  \item
+    Locale: Identificatori dichiarati all'interno di un blocco, come una
+    funzione o un loop, e accessibili solo all'interno di quel blocco.
+  \item
+    Statico e dinamico: L'ambito statico è determinato a tempo di
+    compilazione, mentre l'ambito dinamico è determinato a runtime,
+    influenzando come e dove gli identificatori possono essere
+    utilizzati.
+  \end{itemize}
+\item
+  Visibilità: La visibilità si riferisce a dove nel codice un
+  identificatore può essere visto e utilizzato. Anche se correlata
+  all'ambito, la visibilità può essere influenzata da altri fattori come
+  la modularità e i namespace, che organizzano e separano gli
+  identificatori per evitare conflitti di nome. La visibilità è
+  generalmente:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Globale: Un identificatore dichiarato con visibilità globale può
+    essere utilizzato in qualsiasi parte del programma.
+  \item
+    Locale: Un identificatore dichiarato con visibilità locale è
+    visibile solo all'interno del blocco di codice in cui è stato
+    dichiarato.
+  \end{itemize}
+\item
+  Funzioni e metodi: Le funzioni e i metodi sono blocchi di codice
+  riutilizzabili che eseguono una serie di istruzioni. Alcuni concetti
+  collegati sono:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Parametri e argomenti: Valori passati alle funzioni per influenzarne
+    il comportamento. I parametri sono definiti nella dichiarazione
+    della funzione, mentre gli argomenti sono i valori effettivi passati
+    quando la funzione è chiamata.
+  \item
+    Valore di ritorno: Il risultato prodotto da una funzione, che può
+    essere utilizzato nell'istruzione chiamante.
+  \item
+    Overloading: Definizione di più funzioni con lo stesso nome ma
+    diversi parametri, consentendo diverse implementazioni basate sui
+    tipi e il numero di argomenti.
+  \item
+    Ricorsione: Capacità di una funzione di chiamare se stessa, utile
+    per risolvere problemi che possono essere suddivisi in sottoproblemi
+    simili.
+  \item
+    Funzioni di prima classe: Le funzioni possono essere assegnate a
+    variabili, passate come argomenti e ritornate da altre funzioni.
+  \item
+    Funzioni di ordine superiore: Funzioni che accettano altre funzioni
+    come argomenti e/o ritornano funzioni come risultati.
+  \end{itemize}
+\item
+  Durata di vita delle variabili: La durata di vita delle variabili si
+  riferisce a quanto tempo una variabile rimane in memoria durante
+  l'esecuzione del programma. Alcune tipologie di durata:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Automatica: Variabili che esistono solo durante l'esecuzione del
+    blocco in cui sono dichiarate.
+  \item
+    Statica: Variabili che esistono per tutta la durata del programma e
+    mantengono il loro valore tra diverse chiamate di funzione.
+  \item
+    Dinamica: Variabili allocate dinamicamente durante l'esecuzione del
+    programma, solitamente gestite manualmente dall'utente (ad esempio,
+    usando \texttt{malloc}/\texttt{free} in C) o automaticamente tramite
+    garbage collection.
+  \end{itemize}
+\item
+  Durata di vita di altri identificatori:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Funzioni: Le funzioni stesse generalmente hanno una durata di vita
+    che coincide con la durata del programma. Tuttavia, i puntatori a
+    funzione e le chiusure (in inglese, closures) possono avere durate
+    di vita diverse in alcuni linguaggi.
+  \item
+    Classi e oggetti: Le classi hanno una durata di vita che coincide
+    con la durata del programma, mentre gli oggetti (istanze di classi)
+    hanno durate di vita dinamiche, determinate dalla loro allocazione e
+    deallocazione.
+  \item
+    Moduli: In linguaggi come Python, i moduli hanno una durata di vita
+    che coincide con la durata del programma o del processo di
+    importazione.
+  \end{itemize}
+\item
+  Controllo di flusso: Determina l'ordine in cui le istruzioni vengono
+  eseguite e alcuni esempi sono:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Condizionali: Strutture che permettono al programma di prendere
+    decisioni (\texttt{if}, \texttt{else},
+    \texttt{switch}/\texttt{case}).
+  \item
+    Cicli: Strutture che ripetono un blocco di codice (\texttt{for},
+    \texttt{while}, \texttt{do}-\texttt{while}).
+  \item
+    Eccezioni: Meccanismi per gestire errori e condizioni anomale
+    (\texttt{try}, \texttt{catch}, \texttt{throw}), permettendo al
+    programma di continuare l'esecuzione in modo controllato.
+  \end{itemize}
+\item
+  Classi e oggetti: Le classi sono trutture che definiscono proprietà
+  (variabili) e comportamenti (metodi) comuni a tutti gli oggetti di
+  quel tipo. Le classi rappresentano il modello o il blueprint da cui
+  vengono creati gli oggetti. L'oggetto è l'istanza concreta di una
+  classe. Gli oggetti sono entità che combinano dati e comportamenti
+  secondo la struttura definita dalla loro classe. Si applicano i
+  seguenti:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Encapsulamento: Nasconde i dettagli interni di un oggetto e mostra
+    solo le interfacce necessarie, migliorando la modularità e la
+    manutenzione del codice.
+  \item
+    Ereditarietà: Permette di creare nuove classi basate su classi
+    esistenti, riutilizzando e estendendo il comportamento delle classi
+    base.
+  \item
+    Polimorfismo: Consente a metodi di comportarsi diversamente a
+    seconda dell'oggetto su cui vengono invocati, fornendo flessibilità
+    e estendibilità.
+  \end{itemize}
+\item
+  Gestione della memoria utilizzata dal programma: La gestione della
+  memoria è fondamentale per il funzionamento efficiente di un
+  programma. Ne esistono diverse modalità:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Allocazione dinamica: La memoria è allocata e deallocata a runtime,
+    permettendo una gestione flessibile delle risorse.
+  \item
+    Garbage collection: Automatizza la deallocazione della memoria non
+    utilizzata, riducendo il rischio di sfruttamento non ottimale
+    (memory leak) e semplificando la gestione della memoria.
+  \end{itemize}
+\item
+  Spazio di nomi (in inglese namespace): I namespace organizzano
+  variabili, funzioni e altri identificatori per evitare conflitti di
+  nome.
+\item
+  Moduli e librerie: I moduli e le librerie suddividono il codice in
+  unità riutilizzabili e organizzate, da importare in programmi. I
+  moduli possono definire degli spazi di nomi.
+\item
+  Concorrenza: La concorrenza permette l'esecuzione parallela di più
+  sequenze di istruzioni, migliorando le prestazioni e la reattività.
+  Alcuni concetti relativi sono:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Thread: Un thread è la più piccola unità di elaborazione che può
+    essere eseguita in modo indipendente. I thread consentono
+    l'esecuzione parallela di codice all'interno di un programma.
+  \item
+    Sincronizzazione: Meccanismi per gestire l'accesso concorrente alle
+    risorse condivise, prevenendo condizioni di gara e garantendo la
+    consistenza dei dati.
+  \item
+    Lock e mutex: Meccanismi per prevenire condizioni di corsa (in
+    inglese race condition), cioè un fenomeno che si presenta nei
+    sistemi concorrenti quando, in presenza di una sequenza di processi
+    multipli, il risultato finale dell'esecuzione dei processi dipende
+    dalla temporizzazione o dalla sequenza con cui vengono eseguiti.
+    Garantiscono, pertanto, l'accesso sicuro alle risorse condivise.
+  \item
+    Async/await: Gestione di operazioni asincrone, migliorando
+    l'efficienza e la reattività delle applicazioni.
+  \end{itemize}
+\item
+  Input/output (I/O): L'input/output gestisce la comunicazione tra il
+  programma e l'ambiente esterno.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    File I/O: Lettura e scrittura su file per memorizzare e recuperare
+    dati persistenti.
+  \item
+    Network I/O: Comunicazione attraverso reti per inviare e ricevere
+    dati tra sistemi diversi.
+  \item
+    Standard I/O: Interazione con l'utente tramite input da tastiera e
+    output su schermo.
+  \end{itemize}
+\item
+  Annotazioni e metadati: Le annotazioni e i metadati forniscono
+  informazioni aggiuntive al compilatore o al runtime, influenzando il
+  comportamento del programma o fornendo dettagli utili per la
+  documentazione e l'analisi del codice.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Annotazioni: Informazioni extra utilizzate per specificare
+    comportamenti speciali o configurazioni. Ad esempio, in Java, le
+    annotazioni possono essere utilizzate per indicare che un metodo è
+    obsoleto (\texttt{@Deprecated}), per sovrascrivere un metodo della
+    superclasse (\texttt{@Override}), o per specificare la relazione tra
+    entità nel contesto di framework come JPA (\texttt{@Entity},
+    \texttt{@Table}). In Python, le annotazioni sono utilizzate
+    principalmente per indicare i tipi di variabili, parametri di
+    funzione e valori di ritorno (type hint). Non influenzano
+    direttamente il comportamento del programma, ma sono utili per la
+    documentazione e il type checking anche automatico.
+  \item
+    Docstring: Commenti strutturati che documentano il codice, spesso
+    utilizzati per generare documentazione automatica. In Python, ad
+    esempio, le docstring possono essere utilizzate per descrivere il
+    funzionamento di moduli, classi, metodi e funzioni, rendendo il
+    codice più leggibile e comprensibile.
+  \end{itemize}
+\item
+  Macro e metaprogrammazione: Le macro e la metaprogrammazione
+  permettono di scrivere codice che manipola altre porzioni di codice.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Macro: Sequenze di istruzioni predefinite che possono essere
+    inserite nel codice durante la fase di precompilazione. In C, sono
+    utilizzate con il preprocessore per definire costanti, funzioni
+    inline e codice condizionale.
+  \item
+    Metaprogrammazione: Tecniche per scrivere codice che genera o
+    modifica altre parti del codice a runtime o a compile-time,
+    migliorando la flessibilità e il riutilizzo del codice. In Python
+    include l'uso di decoratori, metaclassi e introspezione.
+  \end{itemize}
+\end{itemize}
+
+Questi elementi semantici combinati determinano il comportamento e la
+logica di un programma, influenzando il modo in cui il codice viene
+scritto, eseguito e mantenuto.
+
+\section{Esempio di algoritmo}\label{esempio-di-algoritmo}
+
+Consideriamo un esempio semplice di algoritmo per calcolare la somma dei
+numeri da 1 a n.~In input si avrà un numero intero \texttt{n} e in
+output il risultato. In pseudocodice si può rappresentare così:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Inizializza somma a 0}
+\NormalTok{Per ogni numero i da 1 a n:}
+\NormalTok{  Aggiungi i a somma}
+\NormalTok{Restituisci somma}
+\end{Highlighting}
+\end{Shaded}
+
+O, in alternativa, possiamo definire una funzione che implementa
+l'algoritmo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{funzione calcola\_somma(n):}
+\NormalTok{  somma = 0}
+\NormalTok{  per i da 1 a n:}
+\NormalTok{    somma = somma + i}
+\NormalTok{  ritorna somma}
+\end{Highlighting}
+\end{Shaded}
+
+Effettuaimo una analisi dettagliata della funzione per indicare quali
+elementi sintattici e semantici sono presenti. Partiamo dalla prima
+riga:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{funzione calcola\_somma(n):}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Sintassi:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{funzione}: Parola chiave che introduce la definizione di una
+    funzione.
+  \item
+    \texttt{calcola\_somma}: Identificatore della funzione.
+  \item
+    \texttt{(n)}: Delimitatori che contengono un identificatore.
+  \end{itemize}
+\item
+  Semantica:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Definisce una funzione chiamata \texttt{calcola\_somma} che accetta
+    un parametro \texttt{n}.
+  \end{itemize}
+\end{itemize}
+
+La seconda riga ha l'inizializzazione della variabile che conterrà il
+risultato:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{somma = 0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Sintassi:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{somma}: Identificatore della variabile.
+  \item
+    \texttt{=}: Operatore di assegnazione.
+  \item
+    \texttt{0}: Letterale numero intero.
+  \end{itemize}
+\item
+  Semantica:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Inizializza la variabile \texttt{somma} a \texttt{0}.
+  \end{itemize}
+\end{itemize}
+
+A seguire la definizione di un ciclo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{per i da 1 a n:}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Sintassi:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{per}: Parola chiave che introduce il ciclo.
+  \item
+    \texttt{i}: Identificatore della variabile di controllo del ciclo.
+  \item
+    \texttt{da\ 1\ a\ n}: Espressione di controllo del ciclo che indica
+    l'intervallo.
+  \end{itemize}
+\item
+  Semantica:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Itera la variabile \texttt{i} da \texttt{1} a \texttt{n}.
+  \end{itemize}
+\end{itemize}
+
+Un assegnamento per accumulare i valori nella variabile di ritorno:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{somma = somma + i}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Sintassi:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{somma}: Identificatore della variabile.
+  \item
+    \texttt{=}: Operatore di assegnazione.
+  \item
+    \texttt{somma\ +\ i}: Espressione aritmetica composta da:
+    \texttt{somma} identificatore di variabile, \texttt{+} operatore
+    aritmetico e \texttt{i} identificatore di variabile.
+  \end{itemize}
+\item
+  Semantica:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Aggiunge il valore di \texttt{i} alla variabile \texttt{somma} e
+    assegna il risultato a \texttt{somma}.
+  \end{itemize}
+\end{itemize}
+
+E finalmente il risultato del calcolo viene restituito al chiamante:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ritorna somma}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Sintassi:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{ritorna}: Parola chiave che indica la restituzione di un
+    valore.
+  \item
+    \texttt{somma}: Identificatore della variabile.
+  \end{itemize}
+\item
+  Semantica:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Restituisce il valore della variabile \texttt{somma} come risultato
+    della funzione.
+  \end{itemize}
+\end{itemize}
+
+Abbiamo così dissezionato un algoritmo molto semplice per illustrare
+come sintassi e semantica di un linguaggio abbiano ruoli distinti e
+complementari in un programma. È importante comprendere che un buon
+programmatore deve avere tutte e tre le competenze, cioè conoscere le
+specificità formali del linguaggio (o di più linguaggi), quindi, la sua
+sintassi e semantica e saper comporre algoritmi, che potrà realizzare
+grazie proprio a quelle.
+
+\part{Seconda parte: Le basi di Python}
+
+\chapter{introduzione a Python}\label{introduzione-a-python}
+
+Python è un linguaggio di programmazione multiparadigma rilasciato da
+Guido van Rossum nel 1991, dopo il C++ e prima di Java e PHP. È
+multiparadigma, cioè abilita o supporta più paradigmi di programmazione,
+e multipiattaforma, potendo essere installato e utilizzato su gran parte
+dei sistemi operativi e hardware.
+
+Python offre una combinazione unica di eleganza, semplicità, praticità e
+versatilità. Questa eleganza e semplicità derivano dal fatto che è stato
+progettato per essere molto simile al linguaggio naturale inglese,
+rendendo il codice leggibile e comprensibile. La sintassi di Python è
+pulita e minimalista, evitando simboli superflui come parentesi graffe e
+punti e virgola, e utilizzando indentazioni per definire blocchi di
+codice, il che forza una struttura coerente e leggibile. La semantica
+del linguaggio è intuitiva e coerente, il che riduce la curva di
+apprendimento e minimizza gli errori.
+
+Diventerai rapidamente produttivo con Python grazie alla sua coerenza e
+regolarità, alla sua ricca libreria standard e ai numerosi pacchetti e
+strumenti di terze parti prontamente disponibili. Python è facile da
+imparare, quindi è molto adatto se sei nuovo alla programmazione, ma è
+anche potente abbastanza per i più sofisticati esperti. Questa
+semplicità ha attratto una comunità ampia e attiva che ha contribuito
+sia alle librerie di programmi incluse nell'implementazione ufficiale
+che a molte librerie scaricabili liberamente, ampliando ulteriormente
+l'ecosistema di Python.
+
+\section{Perché Python è un linguaggio di alto
+livello?}\label{perchuxe9-python-uxe8-un-linguaggio-di-alto-livello}
+
+Python è considerato un linguaggio di programmazione di alto livello,
+cioè utilizza un livello di astrazione elevato rispetto alla complessità
+dell'ambiente in cui i suoi programmi sono eseguiti. Il programmatore ha
+a disposizione una sintassi che è più intuitiva rispetto ad altri
+linguaggi come Java, C++, PHP tradizionalmente anch'essi definiti di
+alto livello.
+
+Infatti, consente ai programmatori di scrivere codice in modo più
+concettuale e indipendente dalle caratteristiche degli hardware, anche
+molto diversi, su cui è disponibile. Ad esempio, invece di preoccuparsi
+di allocare e deallocare memoria manualmente, Python gestisce queste
+operazioni automaticamente. Questo libera il programmatore dai dettagli
+del sistema operativo e dell'elettronica, permettendogli di concentrarsi
+sulla logica del problema da risolvere.
+
+Ciò ha un effetto importante sulla versatilità perché spesso è
+utilizzato come \emph{interfaccia utente} per linguaggi di livello più
+basso come C, C++ o Fortran. Questo permette a Python di sfruttare le
+prestazioni dei linguaggi compilati per le parti critiche e
+computazionalmente intensive del codice, mantenendo al contempo una
+sintassi semplice e leggibile per la maggior parte del programma. Buoni
+compilatori per i linguaggi compilati classici possono sì generare
+codice binario che gira più velocemente di Python, tuttavia, nella
+maggior parte dei casi, le prestazioni delle applicazioni codificate in
+Python sono sufficienti.
+
+\section{Python come linguaggio
+multiparadigma}\label{python-come-linguaggio-multiparadigma}
+
+Python è un linguaggio di programmazione multiparadigma, il che
+significa che supporta diversi paradigmi di programmazione, permettendo
+di mescolare e combinare gli stili a seconda delle necessità
+dell'applicazione. Ecco alcuni dei paradigmi supportati da Python:
+
+\begin{itemize}
+\tightlist
+\item
+  Programmazione imperativa: Python supporta la programmazione
+  imperativa, che si basa sull'esecuzione di istruzioni in una sequenza
+  specifica. Puoi scrivere ed eseguire script Python direttamente dalla
+  linea di comando, permettendo un approccio interattivo e immediato
+  alla programmazione, come se fosse una calcolatrice.
+\item
+  Programmazione procedurale: In Python, è possibile organizzare il
+  codice in funzioni e moduli, rendendo più semplice la gestione e la
+  riutilizzabilità del codice. Puoi raccogliere il codice in file
+  separati e importarli come moduli, migliorando la struttura e la
+  leggibilità del programma.
+\item
+  Programmazione orientata agli oggetti: Python supporta pienamente la
+  programmazione orientata agli oggetti, consentendo la definizione di
+  classi e oggetti. Questo paradigma è utile per modellare dati
+  complessi e relazioni tra essi. Le caratteristiche orientate agli
+  oggetti di Python sono concettualmente simili a quelle di C++, ma più
+  semplici da usare.
+\item
+  Programmazione funzionale: Python include funzionalità di
+  programmazione funzionale, come funzioni di prima classe e di ordine
+  superiore, lambda e strumenti come map, filter e reduce. Sfruttando la
+  modularità, si possono creare collezioni di strumenti pronti all'uso.
+\end{itemize}
+
+Questa flessibilità rende Python adatto a una vasta gamma di
+applicazioni e consente ai programmatori di scegliere l'approccio più
+adatto al problema da risolvere.
+
+\section{Regole formali e
+esperienziali}\label{regole-formali-e-esperienziali}
+
+Python non è solo un linguaggio con regole sintattiche precise e ben
+progettate, ma possiede anche una propria filosofia, un insieme di
+regole di buon senso esperienziali che sono complementari alla sintassi
+formale. Questa filosofia è spesso riassunta nel \textbf{zen di Python},
+una raccolta di aforismi che catturano i principi fondamentali del
+design di Python. Tali principi aiutano i programmatori a comprendere e
+utilizzare al meglio le potenzialità del linguaggio e dell'ecosistema
+Python.
+
+Ecco alcuni dei principi dello zen di Python\footnote{\href{https://peps.python.org/pep-0020/}{PEP
+  20 -- The Zen of Python}}:
+
+\begin{itemize}
+\tightlist
+\item
+  La leggibilità conta: Il codice dovrebbe essere scritto in modo che
+  sia facile da leggere e comprendere.
+\item
+  Esplicito è meglio di implicito: È preferibile scrivere codice chiaro
+  e diretto piuttosto che utilizzare scorciatoie criptiche.
+\item
+  Semplice è meglio di complesso: Il codice dovrebbe essere il più
+  semplice possibile per risolvere il problema.
+\item
+  Complesso è meglio di complicato: Quando la semplicità non è
+  sufficiente, la complessità è accettabile, ma il codice non dovrebbe
+  mai essere complicato.
+\item
+  Pratico batte puro: Le soluzioni pragmatiche sono preferibili alle
+  soluzioni eleganti ma poco pratiche.
+\end{itemize}
+
+Questi principi, insieme alle regole sintattiche, guidano il
+programmatore nell'adottare buone pratiche di sviluppo e nel creare
+codice che sia non solo funzionale ma anche mantenibile e comprensibile
+da altri.
+
+\section{L'ecosistema}\label{lecosistema}
+
+Fino ad ora abbiamo visto Python come linguaggio, ma è molto di più:
+Python è anche una vasta collezione di strumenti e risorse a
+disposizione degli sviluppatori, strutturata in un ecosistema completo,
+di cui il linguaggio ne rappresenta la parte formale. Questo ecosistema
+è disponibile completamente e anche come sorgente sul sito ufficiale
+\href{https://www.python.org/}{python.org}.
+
+\subsection{L'interprete}\label{linterprete}
+
+L'interprete Python è lo strumento di esecuzione dei programmi. È il
+software che legge ed esegue il codice Python. Python è un linguaggio
+interpretato, il che significa che il codice viene eseguito direttamente
+dall'interprete, senza bisogno di essere compilato in un linguaggio
+macchina. Esistono diverse implementazioni dell'interprete Python:
+
+\begin{itemize}
+\tightlist
+\item
+  CPython: L'implementazione di riferimento dell'interprete Python,
+  scritta in C. È la versione più utilizzata e quella ufficiale.
+\item
+  PyPy: Un interprete alternativo che utilizza tecniche di compilazione
+  just-in-time (JIT) per migliorare le prestazioni.
+\item
+  Jython: Un'implementazione di Python che gira sulla JVM (Java virtual
+  machine).
+\item
+  IronPython: Un'implementazione di Python integrata col .NET framework
+  della Microsoft.
+\end{itemize}
+
+\subsection{L'ambiente di sviluppo}\label{lambiente-di-sviluppo}
+
+IDLE (integrated development and learning environment) è l'ambiente di
+sviluppo integrato ufficiale per Python. È incluso nell'installazione
+standard di Python ed è progettato per essere semplice e facile da
+usare, ideale per i principianti. Offre diverse funzionalità utili:
+
+\begin{itemize}
+\tightlist
+\item
+  Editor di codice: Con evidenziazione della sintassi, indentazione
+  automatica e controllo degli errori.
+\item
+  Shell interattiva: Permette di eseguire codice Python in modo
+  interattivo.
+\item
+  Strumenti di debug: Include un debugger integrato con punti di
+  interruzione e stepping.
+\end{itemize}
+
+\subsection{Le librerie standard}\label{le-librerie-standard}
+
+Una delle caratteristiche più potenti di Python è il vasto insieme di
+librerie\footnote{\href{https://docs.python.org/3/library/index.html}{Documentazione
+  delle librerie standard di Python}} utilizzabili in CPython e IDLE,
+che fornisce moduli e pacchetti per quasi ogni necessità di
+programmazione. Alcuni esempi, solo allo scopo di illustrarne la
+varietà, includono:
+
+\begin{itemize}
+\tightlist
+\item
+  os: Fornisce funzioni per interagire con il sistema operativo.
+\item
+  sys: Offre accesso a funzioni e oggetti del runtime di Python.
+\item
+  datetime: Consente di lavorare con date e orari.
+\item
+  json: Permette di leggere e scrivere dati in formato JSON.
+\item
+  re: Supporta la manipolazione di stringhe tramite espressioni
+  regolari.
+\item
+  http: Include moduli per l'implementazione di client e server HTTP.
+\item
+  unittest: Fornisce un framework per il testing del codice.
+\item
+  math e cmath: Contengono funzioni matematiche di base e complesse.
+\item
+  itertools, functools, operator: Offrono supporto per il paradigma di
+  programmazione funzionale.
+\item
+  csv: Gestisce la lettura e scrittura di file CSV.
+\item
+  typing: Fornisce supporto per l'annotazione dei tipi di variabili,
+  funzioni e classi.
+\item
+  email: Permette di creare, gestire e inviare email, facilitando la
+  manipolazione di messaggi email MIME.
+\item
+  hashlib: Implementa algoritmi di hash sicuri come SHA-256 e MD5.
+\item
+  asyncio: Supporta la programmazione asincrona per la scrittura di
+  codice concorrente e a bassa latenza.
+\item
+  wave: Fornisce strumenti per leggere e scrivere file audio WAV.
+\end{itemize}
+
+\subsection{Moduli di estensione}\label{moduli-di-estensione}
+
+Python supporta l'estensione del suo core tramite moduli scritti in C,
+C++ o altri linguaggi. Questi moduli permettono di ottimizzare parti
+critiche del codice o di interfacciarsi con librerie e API esterne:
+
+\begin{itemize}
+\tightlist
+\item
+  Cython: Permette di scrivere moduli C estesi utilizzando una sintassi
+  simile a Python. Cython è ampiamente utilizzato per migliorare le
+  prestazioni di parti critiche del codice, specialmente in applicazioni
+  scientifiche e di calcolo numerico. Ad esempio, molte librerie
+  scientifiche popolari come SciPy e scikit-learn utilizzano Cython per
+  accelerare le operazioni computazionalmente intensive.
+\item
+  ctypes: Permette di chiamare funzioni in librerie dinamiche C
+  direttamente da Python. È utile per interfacciarsi con librerie
+  esistenti scritte in C, rendendo Python estremamente versatile per
+  l'integrazione con altre tecnologie. Ciò è utile in applicazioni che
+  devono interfacciarsi con hardware specifico o utilizzare librerie
+  legacy.
+\item
+  CFFI (C foreign function interface): Un'altra interfaccia per chiamare
+  librerie C da Python. È progettata per essere facile da usare e per
+  supportare l'uso di librerie C complesse con Python. CFFI è utilizzato
+  in progetti come PyPy e gevent, permettendo di scrivere codice ad alte
+  prestazioni e di gestire le chiamate a funzioni C in modo efficiente.
+\end{itemize}
+
+\subsection{Utility e strumenti
+aggiuntivi}\label{utility-e-strumenti-aggiuntivi}
+
+Python include anche una serie di strumenti e utility che facilitano lo
+sviluppo e la gestione dei progetti:
+
+\begin{itemize}
+\tightlist
+\item
+  pip: Il gestore dei pacchetti di Python. Permette di installare e
+  gestire moduli aggiuntivi, cioè non inclusi nello standard.
+\item
+  venv: Uno strumento per creare ambienti virtuali isolati, che
+  permettono di gestire separatamente le dipendenze di diversi progetti.
+\item
+  Documentazione: Python include una documentazione dettagliata,
+  accessibile tramite il comando pydoc o attraverso il sito ufficiale.
+\end{itemize}
+
+\section{L'algoritmo di ordinamento bubble
+sort}\label{lalgoritmo-di-ordinamento-bubble-sort}
+
+Per chiudere il capitolo sul primo approccio a Python, possiamo
+confrontare un algoritmo di media complessità in diversi linguaggi di
+programmazione. Un buon esempio potrebbe essere l'implementazione
+dell'algoritmo di ordinamento \emph{bubble sort} di una lista di valori.
+Vediamo come viene scritto in Python, C, C++, e Java.
+
+\subsection{Python}\label{python}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ bubble\_sort(arr):}
+\NormalTok{    n }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(arr)}
+    \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(n):}
+        \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, n}\OperatorTok{{-}}\NormalTok{i}\OperatorTok{{-}}\DecValTok{1}\NormalTok{):}
+            \ControlFlowTok{if}\NormalTok{ arr[j] }\OperatorTok{\textgreater{}}\NormalTok{ arr[j}\OperatorTok{+}\DecValTok{1}\NormalTok{]:}
+\NormalTok{                arr[j], arr[j}\OperatorTok{+}\DecValTok{1}\NormalTok{] }\OperatorTok{=}\NormalTok{ arr[j}\OperatorTok{+}\DecValTok{1}\NormalTok{], arr[j]}
+
+\CommentTok{\# Esempio di utilizzo}
+\NormalTok{arr }\OperatorTok{=}\NormalTok{ [}\DecValTok{64}\NormalTok{, }\DecValTok{34}\NormalTok{, }\DecValTok{25}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{90}\NormalTok{]}
+
+\NormalTok{bubble\_sort(arr)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Sorted array is:"}\NormalTok{, arr)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{C}\label{c}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}stdio.h\textgreater{}}
+
+\DataTypeTok{void}\NormalTok{ bubble\_sort}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ arr}\OperatorTok{[],} \DataTypeTok{int}\NormalTok{ n}\OperatorTok{)} \OperatorTok{\{}
+    \DataTypeTok{int}\NormalTok{ i}\OperatorTok{,}\NormalTok{ j}\OperatorTok{,}\NormalTok{ temp}\OperatorTok{;}
+    \ControlFlowTok{for} \OperatorTok{(}\NormalTok{i }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ i }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)} \OperatorTok{\{}
+        \ControlFlowTok{for} \OperatorTok{(}\NormalTok{j }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ j }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{{-}}\NormalTok{i}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{;}\NormalTok{ j}\OperatorTok{++)} \OperatorTok{\{}
+            \ControlFlowTok{if} \OperatorTok{(}\NormalTok{arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{]} \OperatorTok{\textgreater{}}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{])} \OperatorTok{\{}
+\NormalTok{                temp }\OperatorTok{=}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{];}
+\NormalTok{                arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{]} \OperatorTok{=}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{];}
+\NormalTok{                arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{]} \OperatorTok{=}\NormalTok{ temp}\OperatorTok{;}
+            \OperatorTok{\}}
+        \OperatorTok{\}}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()} \OperatorTok{\{}
+    \DataTypeTok{int}\NormalTok{ arr}\OperatorTok{[]} \OperatorTok{=} \OperatorTok{\{}\DecValTok{64}\OperatorTok{,} \DecValTok{34}\OperatorTok{,} \DecValTok{25}\OperatorTok{,} \DecValTok{12}\OperatorTok{,} \DecValTok{22}\OperatorTok{,} \DecValTok{11}\OperatorTok{,} \DecValTok{90}\OperatorTok{\};}
+    \DataTypeTok{int}\NormalTok{ n }\OperatorTok{=} \KeywordTok{sizeof}\OperatorTok{(}\NormalTok{arr}\OperatorTok{)/}\KeywordTok{sizeof}\OperatorTok{(}\NormalTok{arr}\OperatorTok{[}\DecValTok{0}\OperatorTok{]);}
+
+\NormalTok{    bubble\_sort}\OperatorTok{(}\NormalTok{arr}\OperatorTok{,}\NormalTok{ n}\OperatorTok{);}
+
+\NormalTok{    printf}\OperatorTok{(}\StringTok{"Sorted array is: "}\OperatorTok{);}
+    \ControlFlowTok{for} \OperatorTok{(}\DataTypeTok{int}\NormalTok{ i }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ i }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)} \OperatorTok{\{}
+\NormalTok{        printf}\OperatorTok{(}\StringTok{"}\SpecialCharTok{\%d}\StringTok{ "}\OperatorTok{,}\NormalTok{ arr}\OperatorTok{[}\NormalTok{i}\OperatorTok{]);}
+    \OperatorTok{\}}
+
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{C++}\label{c-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+
+\KeywordTok{class}\NormalTok{ BubbleSort }\OperatorTok{\{}
+\KeywordTok{public}\OperatorTok{:}
+    \DataTypeTok{void}\NormalTok{ sort}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ arr}\OperatorTok{[],} \DataTypeTok{int}\NormalTok{ n}\OperatorTok{)} \OperatorTok{\{}
+        \ControlFlowTok{for} \OperatorTok{(}\DataTypeTok{int}\NormalTok{ i }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ i }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)} \OperatorTok{\{}
+            \ControlFlowTok{for} \OperatorTok{(}\DataTypeTok{int}\NormalTok{ j }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ j }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{{-}}\NormalTok{i}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{;}\NormalTok{ j}\OperatorTok{++)} \OperatorTok{\{}
+                \ControlFlowTok{if} \OperatorTok{(}\NormalTok{arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{]} \OperatorTok{\textgreater{}}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{])} \OperatorTok{\{}
+                    \DataTypeTok{int}\NormalTok{ temp }\OperatorTok{=}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{];}
+\NormalTok{                    arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{]} \OperatorTok{=}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{];}
+\NormalTok{                    arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{]} \OperatorTok{=}\NormalTok{ temp}\OperatorTok{;}
+                \OperatorTok{\}}
+            \OperatorTok{\}}
+        \OperatorTok{\}}
+    \OperatorTok{\}}
+
+    \DataTypeTok{void}\NormalTok{ printArray}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ arr}\OperatorTok{[],} \DataTypeTok{int}\NormalTok{ n}\OperatorTok{)} \OperatorTok{\{}
+        \ControlFlowTok{for} \OperatorTok{(}\DataTypeTok{int}\NormalTok{ i }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ i }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)} \OperatorTok{\{}
+\NormalTok{            cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ arr}\OperatorTok{[}\NormalTok{i}\OperatorTok{]} \OperatorTok{\textless{}\textless{}} \StringTok{" "}\OperatorTok{;}
+        \OperatorTok{\}}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+    \OperatorTok{\}}
+\OperatorTok{\};}
+
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()} \OperatorTok{\{}
+    \DataTypeTok{int}\NormalTok{ arr}\OperatorTok{[]} \OperatorTok{=} \OperatorTok{\{}\DecValTok{64}\OperatorTok{,} \DecValTok{34}\OperatorTok{,} \DecValTok{25}\OperatorTok{,} \DecValTok{12}\OperatorTok{,} \DecValTok{22}\OperatorTok{,} \DecValTok{11}\OperatorTok{,} \DecValTok{90}\OperatorTok{\};}
+    \DataTypeTok{int}\NormalTok{ n }\OperatorTok{=} \KeywordTok{sizeof}\OperatorTok{(}\NormalTok{arr}\OperatorTok{)/}\KeywordTok{sizeof}\OperatorTok{(}\NormalTok{arr}\OperatorTok{[}\DecValTok{0}\OperatorTok{]);}
+
+\NormalTok{    BubbleSort bs}\OperatorTok{;}
+\NormalTok{    bs}\OperatorTok{.}\NormalTok{sort}\OperatorTok{(}\NormalTok{arr}\OperatorTok{,}\NormalTok{ n}\OperatorTok{);}
+
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Sorted array is: "}\OperatorTok{;}
+\NormalTok{    bs}\OperatorTok{.}\NormalTok{printArray}\OperatorTok{(}\NormalTok{arr}\OperatorTok{,}\NormalTok{ n}\OperatorTok{);}
+
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Java}\label{java}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{public} \KeywordTok{class}\NormalTok{ BubbleSort }\OperatorTok{\{}
+
+    \KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{bubbleSort}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ arr}\OperatorTok{[])} \OperatorTok{\{}
+        \DataTypeTok{int}\NormalTok{ n }\OperatorTok{=}\NormalTok{ arr}\OperatorTok{.}\FunctionTok{length}\OperatorTok{;}
+        \ControlFlowTok{for} \OperatorTok{(}\DataTypeTok{int}\NormalTok{ i }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ i }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)} \OperatorTok{\{}
+            \ControlFlowTok{for} \OperatorTok{(}\DataTypeTok{int}\NormalTok{ j }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ j }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{{-}}\NormalTok{i}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{;}\NormalTok{ j}\OperatorTok{++)} \OperatorTok{\{}
+                \ControlFlowTok{if} \OperatorTok{(}\NormalTok{arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{]} \OperatorTok{\textgreater{}}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{])} \OperatorTok{\{}
+                    \DataTypeTok{int}\NormalTok{ temp }\OperatorTok{=}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{];}
+\NormalTok{                    arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{]} \OperatorTok{=}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{];}
+\NormalTok{                    arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{]} \OperatorTok{=}\NormalTok{ temp}\OperatorTok{;}
+                \OperatorTok{\}}
+            \OperatorTok{\}}
+        \OperatorTok{\}}
+    \OperatorTok{\}}
+
+    \KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{main}\OperatorTok{(}\BuiltInTok{String}\NormalTok{ args}\OperatorTok{[])} \OperatorTok{\{}
+        \DataTypeTok{int}\NormalTok{ arr}\OperatorTok{[]} \OperatorTok{=} \OperatorTok{\{}\DecValTok{64}\OperatorTok{,} \DecValTok{34}\OperatorTok{,} \DecValTok{25}\OperatorTok{,} \DecValTok{12}\OperatorTok{,} \DecValTok{22}\OperatorTok{,} \DecValTok{11}\OperatorTok{,} \DecValTok{90}\OperatorTok{\};}
+
+        \FunctionTok{bubbleSort}\OperatorTok{(}\NormalTok{arr}\OperatorTok{);}
+
+        \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\StringTok{"Sorted array is:"}\OperatorTok{);}
+        \ControlFlowTok{for} \OperatorTok{(}\DataTypeTok{int}\NormalTok{ i }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ i }\OperatorTok{\textless{}}\NormalTok{ arr}\OperatorTok{.}\FunctionTok{length}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)} \OperatorTok{\{}
+            \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{print}\OperatorTok{(}\NormalTok{arr}\OperatorTok{[}\NormalTok{i}\OperatorTok{]} \OperatorTok{+} \StringTok{" "}\OperatorTok{);}
+        \OperatorTok{\}}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Rust}\label{rust}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ bubble\_sort(arr}\OperatorTok{:} \OperatorTok{\&}\KeywordTok{mut}\NormalTok{ [}\DataTypeTok{i32}\NormalTok{]) }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ n }\OperatorTok{=}\NormalTok{ arr}\OperatorTok{.}\NormalTok{len()}\OperatorTok{;}
+    \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \DecValTok{0}\OperatorTok{..}\NormalTok{n }\OperatorTok{\{}
+        \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \DecValTok{0}\OperatorTok{..}\NormalTok{n}\OperatorTok{{-}}\NormalTok{i}\OperatorTok{{-}}\DecValTok{1} \OperatorTok{\{}
+            \ControlFlowTok{if}\NormalTok{ arr[j] }\OperatorTok{\textgreater{}}\NormalTok{ arr[j}\OperatorTok{+}\DecValTok{1}\NormalTok{] }\OperatorTok{\{}
+\NormalTok{                arr}\OperatorTok{.}\NormalTok{swap(j}\OperatorTok{,}\NormalTok{ j}\OperatorTok{+}\DecValTok{1}\NormalTok{)}\OperatorTok{;}
+            \OperatorTok{\}}
+        \OperatorTok{\}}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let} \KeywordTok{mut}\NormalTok{ arr }\OperatorTok{=}\NormalTok{ [}\DecValTok{64}\OperatorTok{,} \DecValTok{34}\OperatorTok{,} \DecValTok{25}\OperatorTok{,} \DecValTok{12}\OperatorTok{,} \DecValTok{22}\OperatorTok{,} \DecValTok{11}\OperatorTok{,} \DecValTok{90}\NormalTok{]}\OperatorTok{;}
+
+\NormalTok{    bubble\_sort(}\OperatorTok{\&}\KeywordTok{mut}\NormalTok{ arr)}\OperatorTok{;}
+
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"Sorted array is: \{:?\}"}\OperatorTok{,}\NormalTok{ arr)}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Scala}\label{scala}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{object}\NormalTok{ BubbleSort }\OperatorTok{\{}
+  \KeywordTok{def} \FunctionTok{bubbleSort}\OperatorTok{(}\NormalTok{arr}\OperatorTok{:} \ExtensionTok{Array}\OperatorTok{[}\BuiltInTok{Int}\OperatorTok{]):} \BuiltInTok{Unit} \OperatorTok{=} \OperatorTok{\{}
+    \KeywordTok{val}\NormalTok{ n }\OperatorTok{=}\NormalTok{ arr}\OperatorTok{.}\NormalTok{length}
+    \ControlFlowTok{for} \OperatorTok{(}\NormalTok{i }\OperatorTok{\textless{}{-}} \DecValTok{0}\NormalTok{ until n}\OperatorTok{)} \OperatorTok{\{}
+      \ControlFlowTok{for} \OperatorTok{(}\NormalTok{j }\OperatorTok{\textless{}{-}} \DecValTok{0}\NormalTok{ until n }\OperatorTok{{-}}\NormalTok{ i }\OperatorTok{{-}} \DecValTok{1}\OperatorTok{)} \OperatorTok{\{}
+        \ControlFlowTok{if} \OperatorTok{(}\FunctionTok{arr}\OperatorTok{(}\NormalTok{j}\OperatorTok{)} \OperatorTok{\textgreater{}} \FunctionTok{arr}\OperatorTok{(}\NormalTok{j }\OperatorTok{+} \DecValTok{1}\OperatorTok{))} \OperatorTok{\{}
+          \KeywordTok{val}\NormalTok{ temp }\OperatorTok{=} \FunctionTok{arr}\OperatorTok{(}\NormalTok{j}\OperatorTok{)}
+          \FunctionTok{arr}\OperatorTok{(}\NormalTok{j}\OperatorTok{)} \OperatorTok{=} \FunctionTok{arr}\OperatorTok{(}\NormalTok{j }\OperatorTok{+} \DecValTok{1}\OperatorTok{)}
+          \FunctionTok{arr}\OperatorTok{(}\NormalTok{j }\OperatorTok{+} \DecValTok{1}\OperatorTok{)} \OperatorTok{=}\NormalTok{ temp}
+        \OperatorTok{\}}
+      \OperatorTok{\}}
+    \OperatorTok{\}}
+  \OperatorTok{\}}
+
+  \KeywordTok{def} \FunctionTok{main}\OperatorTok{(}\NormalTok{args}\OperatorTok{:} \ExtensionTok{Array}\OperatorTok{[}\ExtensionTok{String}\OperatorTok{]):} \BuiltInTok{Unit} \OperatorTok{=} \OperatorTok{\{}
+    \KeywordTok{val}\NormalTok{ arr }\OperatorTok{=} \ExtensionTok{Array}\OperatorTok{(}\DecValTok{64}\OperatorTok{,} \DecValTok{34}\OperatorTok{,} \DecValTok{25}\OperatorTok{,} \DecValTok{12}\OperatorTok{,} \DecValTok{22}\OperatorTok{,} \DecValTok{11}\OperatorTok{,} \DecValTok{90}\OperatorTok{)}
+
+    \FunctionTok{bubbleSort}\OperatorTok{(}\NormalTok{arr}\OperatorTok{)}
+
+    \FunctionTok{println}\OperatorTok{(}\StringTok{"Sorted array is: "} \OperatorTok{+}\NormalTok{ arr}\OperatorTok{.}\FunctionTok{mkString}\OperatorTok{(}\StringTok{", "}\OperatorTok{))}
+  \OperatorTok{\}}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Confrontando questi esempi, possiamo osservare le differenze sintattiche
+e di stile tra Python ed altri, importanti, linguaggi. Python si
+distingue per la sua sintassi concisa e leggibile, mentre C richiede una
+gestione manuale della memoria e una sintassi più dettagliata.
+
+Il C++ e Java aggiungono caratteristiche relative agli oggetti e
+funzionalità di alto livello rispetto a C, al prezzo di una sintassi più
+complessa e verbosa. Rust e Scala sono linguaggi più moderni e si
+pongono nel mezzo tra C, C++ e Java e Python.
+
+\chapter{Scaricare e installare
+Python}\label{scaricare-e-installare-python}
+
+\section{Scaricamento}\label{scaricamento}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Visita il sito ufficiale di Python: Vai su
+  \href{https://www.python.org/}{python.org}.
+\item
+  Naviga alla pagina di download: Clicca su \emph{Downloads} nel menu
+  principale.
+\item
+  Scarica il pacchetto di installazione:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Per Windows: Cerca Python 3.12.x e fai partire il download
+    (assicurati di scaricare la versione più recente).
+  \item
+    Per macOS: Come per Windows.
+  \item
+    Per Linux: Python è spesso preinstallato. Se non lo è, usa il
+    gestore di pacchetti della tua distribuzione (ad esempio
+    \texttt{apt} per Ubuntu: \texttt{sudo\ apt-get\ install\ python3}).
+  \end{itemize}
+\end{enumerate}
+
+\section{Installazione}\label{installazione}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Esegui il file di installazione:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Su Windows: Esegui il file \texttt{.exe} scaricato. Assicurati di
+    selezionare l'opzione \texttt{Add\ Python\ to\ PATH} durante
+    l'installazione.
+  \item
+    Su macOS: Apri il file \texttt{.pkg} scaricato e segui le
+    istruzioni.
+  \item
+    Su Linux: Usa il gestore di pacchetti per installare Python.
+  \end{itemize}
+\item
+  Verifica l'installazione:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Apri il terminale (Command Prompt su Windows, Terminal su macOS e
+    Linux).
+  \item
+    Digita \texttt{python\ -\/-version} o \texttt{python3\ -\/-version}
+    e premi Invio. Dovresti vedere la versione di Python installata.
+  \end{itemize}
+\end{enumerate}
+
+\section{Esecuzione del primo programma: ``Hello,
+World!''}\label{esecuzione-del-primo-programma-hello-world}
+
+È consuetudine eseguire come primo programma la visualizzazione della
+stringa ``Hello, World!''\footnote{La tradizione del programma ``Hello,
+  World!'' ha una lunga storia che risale ai primi giorni della
+  programmazione. Questo semplice programma è generalmente il primo
+  esempio utilizzato per introdurre i nuovi programmatori alla sintassi
+  e alla struttura di un linguaggio di programmazione. Il programma
+  ``Hello, World!'' è diventato famoso grazie a Brian Kernighan, che lo
+  ha incluso nel suo libro (Kernighan e Ritchie 1988) pubblicato nel
+  1978. Tuttavia, il suo utilizzo risale a un testo precedente di
+  Kernighan, (Kernighan 1973), pubblicato nel 1973, dove veniva
+  utilizzato un esempio simile.}. Possiamo farlo in diversi modi e ciò è
+una delle caratteristiche più apprezzate di Python.
+
+\subsection{REPL}\label{repl}
+
+Il primo modo prevede l'utilizzo del REPL di Python. Il REPL
+(read-eval-print loop) è un ambiente interattivo di esecuzione di
+comandi Python generato dall'interprete, secondo il ciclo:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Read: Legge un input dell'utente.
+\item
+  Eval: Valuta l'input.
+\item
+  Print: Visualizza il risultato dell'esecuzione.
+\item
+  Loop: Ripete il ciclo.
+\end{enumerate}
+
+Eseguiamo il nostro primo ``Hello, World!'':
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Apri il terminale ed esegui l'interprete Python digitando
+  \texttt{python} o \texttt{python3} e premi il tasto di invio della
+  tastiera.
+\item
+  Scrivi ed esegui il programma:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Premi il tasto di invio per vedere il risultato immediatamente.
+
+\begin{tcolorbox}[enhanced jigsaw, colback=white, opacityback=0, arc=.35mm, titlerule=0mm, left=2mm, coltitle=black, breakable, rightrule=.15mm, leftrule=.75mm, toprule=.15mm, bottomtitle=1mm, toptitle=1mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Attenzione}, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame]
+
+Il REPL e l'interprete Python sono strettamente collegati, ma non sono
+esattamente la stessa cosa. Quando avvii l'interprete Python senza
+specificare un file di script da eseguire (digitando semplicemente
+\texttt{python} o \texttt{python3} nel terminale), entri in modalità
+REPL. Nel REPL, l'interprete Python legge l'input direttamente
+dall'utente, lo esegue, stampa il risultato e poi attende il prossimo
+input. In sintesi, l'interprete può eseguire programmi Python completi
+salvati in file, il REPL è progettato per un'esecuzione interattiva e
+immediata di singole istruzioni.
+
+\end{tcolorbox}
+
+\subsection{Interprete}\label{interprete}
+
+Un altro modo per eseguire il nostro programma ``Hello, World!'' è
+utilizzare l'interprete Python per eseguire un file di codice sorgente.
+Questo metodo è utile per scrivere programmi più complessi e per
+mantenere il codice per usi futuri.
+
+Ecco come fare sui diversi sistemi operativi.
+
+\section{Windows}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Crea un file di testo:
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Apri il tuo editor di testo preferito, come Notepad.
+  \item
+    Scrivi il seguente codice nel file:
+  \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{2}
+  \tightlist
+  \item
+    Salva il file con il nome \texttt{hello.txt}.
+  \end{enumerate}
+\item
+  Rinomina il file (facoltativo): se desideri mantenere il file senza
+  estensione \texttt{.txt}, puoi rinominarlo in \texttt{hello}
+  direttamente dall'Esplora file.
+\item
+  Esegui il file Python:
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Apri il prompt dei comandi.
+  \item
+    Naviga fino alla directory in cui hai salvato il file. Ad esempio,
+    se il file si trova nella cartella \texttt{Documenti}, puoi
+    digitare:
+  \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cd \%HOMEPATH\%\textbackslash{}Documenti}
+\end{Highlighting}
+\end{Shaded}
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{2}
+  \tightlist
+  \item
+    Esegui l'interprete Python passando come argomento il file che hai
+    creato:
+  \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python hello.txt}
+\end{Highlighting}
+\end{Shaded}
+
+  oppure, se il tuo sistema utilizza \texttt{python3}:
+  \texttt{plaintext\ \ \ python3\ hello.txt}
+\item
+  Visualizza il risultato:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Hello, World!}
+\end{Highlighting}
+\end{Shaded}
+\end{enumerate}
+
+\section{macOS}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Crea un file di testo:
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Apri il tuo editor di testo preferito, come TextEdit.
+  \item
+    Scrivi il seguente codice nel file:
+  \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{2}
+  \tightlist
+  \item
+    Salva il file con il nome \texttt{hello.txt}.
+  \end{enumerate}
+\item
+  Rinomina il file (facoltativo): se desideri mantenere il file senza
+  estensione \texttt{.txt}, puoi rinominarlo in \texttt{hello}
+  direttamente dal Finder.
+\item
+  Esegui il file Python:
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Apri il terminale del sistema operativo.
+  \item
+    Naviga fino alla directory in cui hai salvato il file. Ad esempio,
+    se il file si trova nella cartella \texttt{Documenti}, puoi
+    digitare:
+  \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd}\NormalTok{ \textasciitilde{}/Documents}
+\end{Highlighting}
+\end{Shaded}
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{2}
+  \tightlist
+  \item
+    Esegui l'interprete Python passando come argomento il file che hai
+    creato:
+  \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{python3}\NormalTok{ hello.txt}
+\end{Highlighting}
+\end{Shaded}
+\item
+  Visualizza il risultato:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Hello, World!}
+\end{Highlighting}
+\end{Shaded}
+\end{enumerate}
+
+\section{Linux}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Crea un file di testo:
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Apri il tuo editor di testo preferito, come Gedit o Nano.
+  \item
+    Scrivi il seguente codice nel file:
+  \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{2}
+  \tightlist
+  \item
+    Salva il file con il nome \texttt{hello.txt}.
+  \end{enumerate}
+\item
+  Rinomina il file (facoltativo): se desideri mantenere il file senza
+  estensione \texttt{.txt}, puoi rinominarlo in \texttt{hello}
+  utilizzando il comando \texttt{mv} nel terminale:
+  \texttt{bash\ \ \ \ \ \ mv\ hello.txt\ hello}
+\item
+  Esegui il file Python:
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Apri il terminale del sistema operativo.
+  \item
+    Naviga fino alla directory in cui hai salvato il file. Ad esempio,
+    se il file si trova nella cartella \texttt{Documenti}, puoi
+    digitare:
+  \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd}\NormalTok{ \textasciitilde{}/Documenti}
+\end{Highlighting}
+\end{Shaded}
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \setcounter{enumii}{2}
+  \tightlist
+  \item
+    Esegui l'interprete Python passando come argomento il file che hai
+    creato:
+  \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{python3}\NormalTok{ hello.txt}
+\end{Highlighting}
+\end{Shaded}
+\item
+  Visualizza il risultato:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Hello, World!}
+\end{Highlighting}
+\end{Shaded}
+\end{enumerate}
+
+Con queste istruzioni, dovresti essere in grado di eseguire il programma
+``Hello, World!'' utilizzando un file Python su Windows, macOS e Linux.
+
+\subsection{IDE}\label{ide}
+
+Utilizzo di un IDE (integrated development environment) installato sul
+computer. Ecco alcuni dei più comuni e gratuiti.
+
+\section{IDLE}
+
+Incluso con l'installazione di Python.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Avvia IDLE.
+\item
+  Crea un nuovo file (\texttt{File\ -\textgreater{}\ New\ File}).
+\item
+  Scrivi il programma:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Salva il file (\texttt{File\ -\textgreater{}\ Salva}).
+\item
+  Esegui il programma (\texttt{Run\ -\textgreater{}\ Run\ Module}).
+\end{enumerate}
+
+\section{PyCharm}
+
+Proprietario ma con una versione liberamente fruibile.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Scarica e installa PyCharm da
+  \href{https://www.jetbrains.com/pycharm/download/}{jetbrains.com/pycharm/download}.
+\item
+  Crea un nuovo progetto associando l'interprete Python.
+\item
+  Crea un nuovo file Python
+  (\texttt{File\ -\textgreater{}\ New\ -\textgreater{}\ Python\ File}).
+\item
+  Scrivi il programma:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Esegui il programma (\texttt{Run\ -\textgreater{}\ Run...}).
+\end{enumerate}
+
+\section{Visual Studio Code}
+
+Proprietario ma liberamente fruibile.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Scarica e installa VS Code da
+  \href{https://code.visualstudio.com/}{code.visualstudio.com}.
+\item
+  Installa l'estensione Python.
+\item
+  Apri o crea una nuova cartella di progetto.
+\item
+  Crea un nuovo file Python
+  (\texttt{File\ -\textgreater{}\ Nuovo\ file}).
+\item
+  Scrivi il programma:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Salva il file con estensione \texttt{.py}, ad esempio
+  \texttt{hello\_world.py}.
+\item
+  Esegui il programma utilizzando il terminale integrato
+  (\texttt{Visualizza\ -\textgreater{}\ Terminale}) e digitando
+  \texttt{python\ hello\_world.py}.
+\end{enumerate}
+
+\subsection{Esecuzione nel browser}\label{esecuzione-nel-browser}
+
+Puoi eseguire Python direttamente nel browser, senza installare nulla.
+Anche qui abbiamo diverse alternative, sia eseguendo il codice
+localmente, che utilizzando piattaforme online.
+
+\section{Repl.it}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Visita \href{https://repl.it/}{repl.it}.
+\item
+  Crea un nuovo progetto selezionando Python.
+\item
+  Scrivi il programma:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Clicca su ``Run'' per eseguire il programma.
+\end{enumerate}
+
+\section{Google Colab}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Visita
+  \href{https://colab.research.google.com/}{colab.research.google.com}.
+\item
+  Crea un nuovo notebook.
+\item
+  In una cella di codice, scrivi:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Premi il pulsante di esecuzione accanto alla cella.
+\end{enumerate}
+
+\section{PyScript}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Visita il sito ufficiale di \href{https://pyscript.net/}{PyScript} per
+  ulteriori informazioni su come iniziare.
+\item
+  Crea un file HTML con il seguente contenuto:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{\textless{}!DOCTYPE}\NormalTok{ html}\DataTypeTok{\textgreater{}}
+\DataTypeTok{\textless{}}\KeywordTok{html}\OtherTok{ lang}\OperatorTok{=}\StringTok{"en"}\DataTypeTok{\textgreater{}}
+\DataTypeTok{\textless{}}\KeywordTok{head}\DataTypeTok{\textgreater{}}
+    \DataTypeTok{\textless{}}\KeywordTok{meta}\OtherTok{ charset}\OperatorTok{=}\StringTok{"UTF{-}8"}\DataTypeTok{\textgreater{}}
+    \DataTypeTok{\textless{}}\KeywordTok{title}\DataTypeTok{\textgreater{}}\NormalTok{Hello, World with PyScript}\DataTypeTok{\textless{}/}\KeywordTok{title}\DataTypeTok{\textgreater{}}
+    \DataTypeTok{\textless{}}\KeywordTok{link}\OtherTok{ rel}\OperatorTok{=}\StringTok{"stylesheet"}\OtherTok{ href}\OperatorTok{=}\StringTok{"https://pyscript.net/latest/pyscript.css"}\DataTypeTok{\textgreater{}}
+    \DataTypeTok{\textless{}}\KeywordTok{script}\OtherTok{ defer src}\OperatorTok{=}\StringTok{"https://pyscript.net/latest/pyscript.js"}\DataTypeTok{\textgreater{}\textless{}/}\KeywordTok{script}\DataTypeTok{\textgreater{}}
+\DataTypeTok{\textless{}/}\KeywordTok{head}\DataTypeTok{\textgreater{}}
+\DataTypeTok{\textless{}}\KeywordTok{body}\DataTypeTok{\textgreater{}}
+    \DataTypeTok{\textless{}}\KeywordTok{py{-}script}\DataTypeTok{\textgreater{}}
+\NormalTok{        print("Hello, World!")}
+    \DataTypeTok{\textless{}/}\KeywordTok{py{-}script}\DataTypeTok{\textgreater{}}
+\DataTypeTok{\textless{}/}\KeywordTok{body}\DataTypeTok{\textgreater{}}
+\DataTypeTok{\textless{}/}\KeywordTok{html}\DataTypeTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Salva il file con estensione \texttt{.html} (ad esempio,
+  \texttt{hello.html}).
+\item
+  Apri il file salvato in un browser web. Vedrai l'output
+  \texttt{Hello,\ World!} direttamente nella pagina.
+\end{enumerate}
+
+\subsection{Jupyter Notebook}\label{jupyter-notebook}
+
+Jupyter Notebook è un ambiente di sviluppo interattivo per la
+programmazione che permette di creare e condividere documenti contenenti
+codice eseguibile, visualizzazioni, testo formattato e altro ancora.
+Originariamente sviluppato come parte del progetto IPython, Jupyter
+supporta non solo Python, ma anche numerosi altri linguaggi di
+programmazione attraverso i cosiddetti kernel tra cui R, Julia e Scala.
+
+\section{Uso locale}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Assicurati di avere Python e Jupyter installati sul tuo computer. Se
+  non li hai, puoi installarli utilizzando Anaconda o pip:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{pip}\NormalTok{ install notebook}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Avvia Jupyter Notebook dal terminale:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{jupyter}\NormalTok{ notebook}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Crea un nuovo notebook Python.
+\item
+  In una cella di codice, scrivi:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Premi \texttt{Shift\ +\ Enter} per eseguire la cella.
+\end{enumerate}
+
+\section{JupyterHub}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Visita l'istanza di JupyterHub della tua istituzione o azienda
+  (\href{https://jupyter.org/hub}{maggiori informazioni}).
+\item
+  Accedi con le tue credenziali.
+\item
+  Crea un nuovo notebook Python.
+\item
+  In una cella di codice, scrivi:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Premi \texttt{Shift\ +\ Enter} per eseguire la cella.
+\end{enumerate}
+
+\section{Binder}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Visita \href{https://mybinder.org/}{mybinder.org}.
+\item
+  Inserisci l'URL del repository GitHub che contiene il tuo notebook o
+  il tuo progetto Python.
+\item
+  Clicca su ``Launch''.
+\item
+  Una volta avviato l'ambiente, crea un nuovo notebook o apri uno
+  esistente.
+\item
+  In una cella di codice, scrivi:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Premi \texttt{Shift\ +\ Enter} per eseguire la cella.
+\end{enumerate}
+
+Binder è un servizio simile a Colab, anche se quest'ultimo offre
+strumenti generalmente più avanzati in termini di risorse computazionali
+e collaborazione. Binder di contro è basato su GitHub e ciò può essere
+utile in alcuni contesti.
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{part}{Appendici}
+\appendix
+
+\chapter*{Riferimenti}\label{riferimenti}
+\addcontentsline{toc}{chapter}{Riferimenti}
+
+\markboth{Riferimenti}{Riferimenti}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-kernighan1973b}
+Kernighan, Brian W. 1973. {«A Tutorial Introduction to the Programming
+Language B»}. Murray Hill, NJ: Bell Laboratories.
+
+\bibitem[\citeproctext]{ref-kernighan1988c}
+Kernighan, Brian W., e Dennis M. Ritchie. 1988. \emph{The C Programming
+Language}. 2nd ed. Englewood Cliffs, NJ: Prentice Hall.
+
+\bibitem[\citeproctext]{ref-stroustrup1997}
+Stroustrup, Bjarne. 1997. \emph{The C++ Programming Language}. 3rd ed.
+Reading, MA, USA: Addison-Wesley.
+
+\end{CSLReferences}
+
+
+
+\end{document}

@@ -299,7 +299,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Letterali: Rappresentazioni di valori costanti nel codice, come numeri (<code>123</code>), stringhe (<code>"hello"</code>), caratteri (<code>'a'</code>), ecc.</li>
 <li>Espressioni: Combinazioni di variabili, operatori e funzioni che vengono valutate per produrre un valore.</li>
 </ul>
-<p>Questi elementi sintattici sono utilizzati per comporre istruzioni semplici e istruzioni complesse.</p>
+<p>Questi elementi sintattici sono noti anche come <strong>lessemi</strong> (in inglese <em>token</em>) e sono utilizzati per comporre istruzioni semplici e istruzioni complesse, che, a loro volta, costituiscono i programmi.</p>
 <section id="istruzioni-semplici" class="level4" data-number="3.2.1.1">
 <h4 data-number="3.2.1.1" class="anchored" data-anchor-id="istruzioni-semplici"><span class="header-section-number">3.2.1.1</span> Istruzioni Semplici</h4>
 <p>Le <strong>istruzioni semplici</strong> sono costituite da singole operazioni che possono essere eseguite direttamente. Queste istruzioni sono fondamentali e spesso coinvolgono i seguenti elementi:</p>
@@ -318,8 +318,8 @@ ul.task-list li input[type="checkbox"] {
 <h4 data-number="3.2.1.2" class="anchored" data-anchor-id="istruzioni-complesse"><span class="header-section-number">3.2.1.2</span> Istruzioni Complesse</h4>
 <p>Le <strong>istruzioni complesse</strong> sono costituite da più istruzioni semplici e possono includere strutture di controllo del flusso. Esempi includono:</p>
 <ul>
-<li><p>Condizioni: Istruzioni che eseguono un blocco di codice solo se una condizione è vera. Esempio: <code>plaintext     if (x &gt; 0) {         print("x è positivo")     }</code> <code>if</code>: Parola chiave che introduce la condizione. <code>(x &gt; 0)</code>: Condizione composta da: <code>x</code>: Identificatore della variabile, <code>&gt;</code>: Operatore di confronto e <code>0</code>: Letterale numerico intero. <code>{ ... }</code>: Delimitatori che racchiudono il blocco di codice. <code>print("x è positivo")</code>: Istruzione di output.</p></li>
-<li><p>Cicli: Istruzioni che ripetono un blocco di codice. Esempio: <code>plaintext     for (i = 0; i &lt; n; i++) {         somma = somma + i     }</code> <code>for</code>: Parola chiave che introduce il ciclo. <code>(i = 0; i &lt; n; i++)</code>: Espressione di controllo del ciclo composta da: - <code>i = 0</code>: Assegnazione iniziale, <code>i &lt; n</code>: Condizione del ciclo e<code>i++</code>: Incremento della variabile <code>i</code>. <code>{ ... }</code>: Delimitatori che racchiudono il blocco di codice. <code>somma = somma + i</code>: Operazione aritmetica.</p></li>
+<li>Condizioni: Istruzioni che eseguono un blocco di codice solo se una condizione è vera. Esempio: <code>plaintext     if (x &gt; 0) {         print("x è positivo")     }</code> <code>if</code>: Parola chiave che introduce la condizione. <code>(x &gt; 0)</code>: Condizione composta da: <code>x</code> identificatore di variabile, <code>&gt;</code> operatore di confronto e <code>0</code> letterale numerico intero. <code>{ ... }</code>: Delimitatori che racchiudono il blocco di codice. <code>print("x è positivo")</code>: Istruzione di output.</li>
+<li>Cicli: Istruzioni che ripetono un blocco di codice. Esempio: <code>plaintext     for (i = 0; i &lt; n; i++) {         somma = somma + i     }</code> <code>for</code>: Parola chiave che introduce il ciclo. <code>(i = 0; i &lt; n; i++)</code>: Espressione di controllo del ciclo composta da: <code>i = 0</code> assegnazione iniziale, <code>i &lt; n</code> condizione di ciclo e <code>i++</code> incremento della variabile <code>i</code>. <code>{ ... }</code>: Delimitatori che racchiudono il blocco di codice. <code>somma = somma + i</code>: Operazione aritmetica.</li>
 </ul>
 </section>
 </section>
@@ -351,6 +351,15 @@ ul.task-list li input[type="checkbox"] {
 <li>Globale: Un identificatore dichiarato con visibilità globale può essere utilizzato in qualsiasi parte del programma.</li>
 <li>Locale: Un identificatore dichiarato con visibilità locale è visibile solo all’interno del blocco di codice in cui è stato dichiarato.</li>
 </ul></li>
+<li>Funzioni e metodi: Le funzioni e i metodi sono blocchi di codice riutilizzabili che eseguono una serie di istruzioni. Alcuni concetti collegati sono:
+<ul>
+<li>Parametri e argomenti: Valori passati alle funzioni per influenzarne il comportamento. I parametri sono definiti nella dichiarazione della funzione, mentre gli argomenti sono i valori effettivi passati quando la funzione è chiamata.</li>
+<li>Valore di ritorno: Il risultato prodotto da una funzione, che può essere utilizzato nell’istruzione chiamante.</li>
+<li>Overloading: Definizione di più funzioni con lo stesso nome ma diversi parametri, consentendo diverse implementazioni basate sui tipi e il numero di argomenti.</li>
+<li>Ricorsione: Capacità di una funzione di chiamare se stessa, utile per risolvere problemi che possono essere suddivisi in sottoproblemi simili.</li>
+<li>Funzioni di prima classe: Le funzioni possono essere assegnate a variabili, passate come argomenti e ritornate da altre funzioni.</li>
+<li>Funzioni di ordine superiore: Funzioni che accettano altre funzioni come argomenti e/o ritornano funzioni come risultati.</li>
+</ul></li>
 <li>Durata di vita delle variabili: La durata di vita delle variabili si riferisce a quanto tempo una variabile rimane in memoria durante l’esecuzione del programma. Alcune tipologie di durata:
 <ul>
 <li>Automatica: Variabili che esistono solo durante l’esecuzione del blocco in cui sono dichiarate.</li>
@@ -362,15 +371,6 @@ ul.task-list li input[type="checkbox"] {
 <li>Funzioni: Le funzioni stesse generalmente hanno una durata di vita che coincide con la durata del programma. Tuttavia, i puntatori a funzione e le chiusure (in inglese, closures) possono avere durate di vita diverse in alcuni linguaggi.</li>
 <li>Classi e oggetti: Le classi hanno una durata di vita che coincide con la durata del programma, mentre gli oggetti (istanze di classi) hanno durate di vita dinamiche, determinate dalla loro allocazione e deallocazione.</li>
 <li>Moduli: In linguaggi come Python, i moduli hanno una durata di vita che coincide con la durata del programma o del processo di importazione.</li>
-</ul></li>
-<li>Funzioni e metodi: Le funzioni e i metodi sono blocchi di codice riutilizzabili che eseguono una serie di istruzioni. Alcuni concetti collegati sono:
-<ul>
-<li>Parametri e argomenti: Valori passati alle funzioni per influenzarne il comportamento. I parametri sono definiti nella dichiarazione della funzione, mentre gli argomenti sono i valori effettivi passati quando la funzione è chiamata.</li>
-<li>Valore di ritorno: Il risultato prodotto da una funzione, che può essere utilizzato nell’istruzione chiamante.</li>
-<li>Overloading: Definizione di più funzioni con lo stesso nome ma diversi parametri, consentendo diverse implementazioni basate sui tipi e il numero di argomenti.</li>
-<li>Ricorsione: Capacità di una funzione di chiamare se stessa, utile per risolvere problemi che possono essere suddivisi in sottoproblemi simili.</li>
-<li>Funzioni di prima classe: Le funzioni possono essere assegnate a variabili, passate come argomenti e ritornate da altre funzioni.</li>
-<li>Funzioni di ordine superiore: Funzioni che accettano altre funzioni come argomenti e/o ritornano funzioni come risultati.</li>
 </ul></li>
 <li>Controllo di flusso: Determina l’ordine in cui le istruzioni vengono eseguite e alcuni esempi sono:
 <ul>
@@ -480,12 +480,7 @@ Restituisci somma</code></pre>
 <ul>
 <li><code>somma</code>: Identificatore della variabile.</li>
 <li><code>=</code>: Operatore di assegnazione.</li>
-<li><code>somma + i</code>: Espressione aritmetica composta da:
-<ul>
-<li><code>somma</code>: Identificatore della variabile.</li>
-<li><code>+</code>: Operatore aritmetico.</li>
-<li><code>i</code>: Identificatore della variabile.</li>
-</ul></li>
+<li><code>somma + i</code>: Espressione aritmetica composta da: <code>somma</code> identificatore di variabile, <code>+</code> operatore aritmetico e <code>i</code> identificatore di variabile.</li>
 </ul></li>
 <li>Semantica:
 <ul>
