@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Da neofita di Python a campione – 6&nbsp; La struttura lessicale di Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./sp-python-install.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.5.2/core.css">
+<script type="module" src="https://pyscript.net/releases/2024.5.2/core.js"></script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sp.html">Seconda parte: Le basi di Python</a></li><li class="breadcrumb-item"><a href="./sp-python-syntax.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La struttura lessicale di Python</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Ricerca" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Da neofita di Python a campione</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/antomon/corso-python" title="Eseguire il codice" class="quarto-navigation-tool px-1" aria-label="Eseguire il codice"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Da-neofita-di-Python-a-campione.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Da-neofita-di-Python-a-campione.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Ricerca"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefazione</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./fp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prima parte: I fondamenti</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fp-programming-languages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">I linguaggi di programmazione, i programmi e i programmatori</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fp-programming-paradigms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Paradigmi di programmazione</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fp-syntax-algorithm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi e semantica dei linguaggi di programmazione e algoritmi dei programmi</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./sp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Seconda parte: Le basi di Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sp-python-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduzione a Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sp-python-install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sp-python-syntax.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La struttura lessicale di Python</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendici</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Riferimenti</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#righe" id="toc-righe" class="nav-link active" data-scroll-target="#righe"><span class="header-section-number">6.1</span> Righe</a></li>
+  <li><a href="#commenti" id="toc-commenti" class="nav-link" data-scroll-target="#commenti"><span class="header-section-number">6.2</span> Commenti</a></li>
+  <li><a href="#indentazione" id="toc-indentazione" class="nav-link" data-scroll-target="#indentazione"><span class="header-section-number">6.3</span> Indentazione</a></li>
+  <li><a href="#token" id="toc-token" class="nav-link" data-scroll-target="#token"><span class="header-section-number">6.4</span> Token</a>
+  <ul class="collapse">
+  <li><a href="#identificatori" id="toc-identificatori" class="nav-link" data-scroll-target="#identificatori"><span class="header-section-number">6.4.1</span> Identificatori</a></li>
+  <li><a href="#parole-chiave" id="toc-parole-chiave" class="nav-link" data-scroll-target="#parole-chiave"><span class="header-section-number">6.4.2</span> Parole chiave</a></li>
+  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">6.5</span> </a>
+  <ul class="collapse">
+  <li><a href="#classi-riservate-di-identificatori" id="toc-classi-riservate-di-identificatori" class="nav-link" data-scroll-target="#classi-riservate-di-identificatori"><span class="header-section-number">6.5.1</span> Classi riservate di identificatori</a></li>
+  </ul></li>
+  <li><a href="#operatori" id="toc-operatori" class="nav-link" data-scroll-target="#operatori"><span class="header-section-number">6.6</span> Operatori</a>
+  <ul class="collapse">
+  <li><a href="#delimitatori" id="toc-delimitatori" class="nav-link" data-scroll-target="#delimitatori"><span class="header-section-number">6.6.1</span> Delimitatori</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/sp-python-syntax.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sp.html">Seconda parte: Le basi di Python</a></li><li class="breadcrumb-item"><a href="./sp-python-syntax.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La struttura lessicale di Python</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La struttura lessicale di Python</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Per iniziare ad imparare Python come linguaggio, partiamo da una semplificazione della stuttura lessicale, cioè dall’insieme di regole sintattiche più significative, sia per comprendere le regole di composizione di programmi comprensibili all’interprete, sia per sfrutturne appieno tutte le potenzialità.</p>
+<p>Ogni programma Python è costituito da una serie di file di testo contenenti il codice sorgente con una certa codifica, il default è l’UTF-8, ed ogni file si può vedere come una sequenza di istruzioni, righe e token. Le istruzioni danno la granularità dell’algoritmo, le righe definiscono come queste istruzioni sono distribuite nel testo e, infine, i token sono gli elementi atomici che hanno un significato per il linguaggio.</p>
+<section id="righe" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="righe"><span class="header-section-number">6.1</span> Righe</h2>
+<p>Le righe sono di due tipi: logiche e fisiche. Le seconde sono le più facilmente individuabili nel testo di un programma, perché sono terminate da un carattere di a capo. Una o più righe fisiche costituiscono una riga logica che corrisponde ad una istruzione.</p>
+<p>Vi sono due modi per dividere una riga logica in righe fisiche. Il primo è terminare con il backslash (<code class="sourceCode python"><span class="op">\</span></code>, poco usata la traduzione “barra rovesciata” o simili) tutte le righe fisiche meno l’ultima (intendendo con ciò che il backslash precede l’a capo):</p>
+<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> <span class="op">\</span></span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a>     <span class="dv">3</span></span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">5</span> <span class="kw">and</span> <span class="op">\</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a>   x <span class="op">&lt;</span> <span class="dv">9</span>:</span>
+<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"5 &lt; x &lt; 9"</span>) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">L’istruzione di assegnamento è spezzata su due righe fisiche</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="4" data-code-annotation="2">L’istruzione condizionale ha due espressioni che devono essere entrambe vere, ognuna su una riga fisica.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="5" data-code-annotation="3">Non importa quanto sono indentate le righe fisiche successive alla prima e ciò può essere sfruttato per incrementare la leggibilità, ad esempio, allineando le espressioni <code>x &gt; 5</code> e <code>x &lt; 9</code> in colonna.</span>
+</dd>
+</dl>
+<p>Il secondo è per mezzo di parentesi, giacché tutte le righe fisiche che seguono una con parentesi tonda <code class="sourceCode python">(</code>, quadra <code class="sourceCode python">[</code> o graffa <code class="sourceCode python">{</code> aperta, fino a quella con l’analoga parentesi chiusa, sono unite in una logica. Le regole di indentazione, che vedremo nel seguito, si applicano solo alla prima riga fisica.</p>
+<p>Esempi:</p>
+<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> (<span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span></span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>     <span class="op">+</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span>)</span>
+<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a>           <span class="dv">3</span>, <span class="dv">4</span> <span class="op">+</span></span>
+<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a>      <span class="dv">5</span>] </span>
+<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-2-8" class="code-annotation-target"><a href="#annotated-cell-2-8" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span></span>
+<span id="annotated-cell-2-9"><a href="#annotated-cell-2-9" aria-hidden="true" tabindex="-1"></a>     , <span class="dv">3</span>, <span class="dv">4</span>]   </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">L’espressione è spezzata su due righe fisiche e le parentesi tonde rappresentano un’alternativa all’uso del backslash.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="2">Questa riga e la successiva non hanno la stessa indentazione, anche se è da evitare perché poco leggibile.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="8" data-code-annotation="3">La lista è spezzata su due righe fisiche e, anche qui, così è poco leggibile.</span>
+</dd>
+</dl>
+</section>
+<section id="commenti" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="commenti"><span class="header-section-number">6.2</span> Commenti</h2>
+<p>Un commento inizia con un carattere cancelletto (<code class="sourceCode python"><span class="co">#</span></code>) e termina alla fine della riga fisica. I commenti non possono coesistere con il backslash come separatore di riga logica, giacché entrambi devono chiudere la riga fisica:</p>
+<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> \ <span class="co"># Commento</span></span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>     <span class="dv">3</span></span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">5</span> <span class="kw">and</span> <span class="co"># Commento \</span></span>
+<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a>   x <span class="op">&lt;</span> <span class="dv">9</span>: </span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"5 &lt; x &lt; 9"</span>) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Il backslash deve terminare la riga fisica, quindi non può essere seguito da un commento. Se necessario può andare o alla riga successiva, scelta consigliata, o la precedente.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="2">Il commento rende il backslash parte di esso quindi non segnala più la fine della riga fisica e, all’esecuzione, si avrà un <a href="https://docs.python.org/3/library/exceptions.html#SyntaxError">SyntaxError</a> perché <code>and</code> deve essere seguito da un’espressione.</span>
+</dd>
+</dl>
+</section>
+<section id="indentazione" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="indentazione"><span class="header-section-number">6.3</span> Indentazione</h2>
+<p>Indentazione significa che spazi o, in alternativa, tabulazioni precedono un carattere che non sia nessuno dei due. Il numero di spazi ottenuto dopo la trasformazione delle tabulazioni in spazi, si definisce livello di indentazione. L’indentazione del codice è il modo che Python utilizza per raggruppare le istruzioni in un blocco, ove tutte devono presentare la medesima indentazione. La prima riga logica che ha una indentazione minore della precedente, segnala che il blocco è stato chiuso proprio da quest’ultima. Anche le clausole di un’istruzione composta devono avere la stessa indentazione.</p>
+<p>La prima istruzione di un file o la prima inserita al prompt <code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span></code> del REPL non deve presentare spazi o tabulazioni, cioè ha un livello di indentazione pari a 0.</p>
+<p>Alcuni esempi:</p>
+<ul>
+<li><p>Definizione di una funzione:</p>
+<div class="sourceCode" id="annotated-cell-13"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> somma(a, b):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-13-2" class="code-annotation-target"><a href="#annotated-cell-13-2" aria-hidden="true" tabindex="-1"></a>  risultato <span class="op">=</span> a <span class="op">+</span> b</span>
+<span id="annotated-cell-13-3"><a href="#annotated-cell-13-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> risultato </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="1" data-code-annotation="1">Prima riga senza indentazione.</span>
+</dd>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="2" data-code-annotation="2">Questa riga e la successiva appartengono allo stesso blocco e, pertanto, hanno la medesima indentazione.</span>
+</dd>
+</dl></li>
+<li><p>Ciclo e test di condizione:</p>
+<div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-4" class="code-annotation-target"><a href="#annotated-cell-14-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x è negativo"</span>)</span>
+<span id="annotated-cell-14-5"><a href="#annotated-cell-14-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">0</span>: </span>
+<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">"x è zero"</span>) </span>
+<span id="annotated-cell-14-7"><a href="#annotated-cell-14-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: </span>
+<span id="annotated-cell-14-8"><a href="#annotated-cell-14-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"x è positivo"</span>) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-14" data-code-lines="3" data-code-annotation="1">Le tre clausole <code class="sourceCode python"><span class="cf">if</span></code> , <code class="sourceCode python">then</code> e <code class="sourceCode python"><span class="cf">else</span></code> hanno identica indentazione.</span>
+</dd>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-14" data-code-lines="4" data-code-annotation="2">I tre blocchi hanno come unico vincolo quello di avere un livello maggiore della riga precedente. I blocchi corrispondenti alle diverse clausole non devono avere lo stesso livello di indentazione, anche se è buona prassi farlo.</span>
+</dd>
+</dl></li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled" title="Attenzione">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Attenzione
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Non si possono avere sia spazi che tabulazioni per definire il livello di indentazione nello stesso file. Ciò perché renderebbe ambiguo il numero di spazi che si ottiene dopo la trasformazione delle tabulazioni in spazi. Quindi, o si usano spazi, scelta raccomandata, o tabulazioni.</p>
+</div>
+</div>
+</section>
+<section id="token" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="token"><span class="header-section-number">6.4</span> Token</h2>
+<p>Le righe logiche sono composte da token che si categorizzano in parole chiave, identificatori, operatori, delimitatori e letterali. I token sono separati da un numero arbitrario di spazi e tabulazioni. Ad esempio:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span>  <span class="op">+</span>  <span class="dv">2</span>  <span class="op">+</span>  <span class="dv">3</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>    x <span class="op">&gt;</span> <span class="dv">5</span>    <span class="kw">and</span>    x <span class="op">&lt;</span> <span class="dv">9</span>: </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"5 &lt; x &lt; 9"</span>) </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="identificatori" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="identificatori"><span class="header-section-number">6.4.1</span> Identificatori</h3>
+<p>Un identificatore è un nome assegnato ad un oggetto, cioè una variabile, una funzione, una classe, un modulo e altro. Esso è <em>case sensitive</em> cioè <code class="sourceCode python">python</code> e <code class="sourceCode python">Python</code> sono due identificatori diversi.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>intero <span class="op">=</span> <span class="dv">42</span>  <span class="co"># Identificatore di un numero intero</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>decimale <span class="op">=</span> <span class="fl">3.14</span>  <span class="co"># Identificatore di un numero decimale</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>testo <span class="op">=</span> <span class="st">"Ciao, mondo!"</span>  <span class="co"># Identificatore di una stringa</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>lista <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]  <span class="co"># Identificatore di una lista</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>dizionario <span class="op">=</span> {<span class="st">"chiave"</span>: <span class="st">"valore"</span>}  <span class="co"># Identificatore di un dizionario</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mia_funzione(): <span class="co"># Identificatore di funzione</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Questa è una funzione"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Classe</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MiaClasse: <span class="co"># Identificatore di classe</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, valore): <span class="co"># Identificatore di metodo</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.valore <span class="op">=</span> valore  <span class="co"># Identificatore per un attributo</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> metodo(<span class="va">self</span>):</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Questo è un metodo della classe"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math  <span class="co"># Identificatore di un modulo</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mio_generatore(): <span class="co"># Identificatore di un generatore</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">yield</span> <span class="dv">1</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">yield</span> <span class="dv">2</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">yield</span> <span class="dv">3</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>mio_oggetto <span class="op">=</span> MiaClasse(<span class="dv">10</span>)  <span class="co"># Identificatore per un'istanza</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="parole-chiave" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="parole-chiave"><span class="header-section-number">6.4.2</span> Parole chiave</h3>
+<p>Le parole chiave sono parole che non possono essere usate per scopi diversi da quelli predefiniti nel linguaggio e, quindi, non possono essere usate come identificatori. Ad esempio, <code class="sourceCode python"><span class="va">True</span></code> che rappresenta il valore logico di verità, non può essere usato per definire ad esempio una variabile.</p>
+<p>Esistono anche delle parole chiave contestuali, cioè che sono tali solo in alcuni contesti ed altrove possono essee usate come identificatori. Usiamo il codice seguente per ottenere una lista di parole chiave e parole chiave contestuali:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> keyword</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Si ottiene la lista delle parole chiave</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>parole_chiave <span class="op">=</span> keyword.kwlist</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Si ottiene la lista delle parole chiave contestuali</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>parole_chiave_contestuale <span class="op">=</span> keyword.softkwlist</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Stampiamo la lista delle parole chiave</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parole_chiave)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Stampiamo la delle parole chiave contestuali</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parole_chiave_contestuale)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Nella tabella seguente invece un elenco completo con breve descrizione:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 81%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parola chiave</th>
+<th>Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Valori booleani</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="va">False</span></code></td>
+<td>Valore booleano falso</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="va">True</span></code></td>
+<td>Valore booleano vero</td>
+</tr>
+<tr class="even">
+<td>Operatori logici</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="kw">and</span></code></td>
+<td>Operatore logico AND</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="kw">or</span></code></td>
+<td>Operatore logico OR</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="kw">not</span></code></td>
+<td>Operatore logico NOT</td>
+</tr>
+<tr class="even">
+<td>Operatori di controllo di flusso</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="cf">if</span></code></td>
+<td>Utilizzato per creare un’istruzione condizionale</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="cf">elif</span></code></td>
+<td>Utilizzato per aggiungere condizioni in un blocco if</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="cf">else</span></code></td>
+<td>Utilizzato per specificare il blocco di codice da eseguire se le condizioni precedenti sono false</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="cf">for</span></code></td>
+<td>Utilizzato per creare un ciclo for</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="cf">while</span></code></td>
+<td>Utilizzato per creare un ciclo while</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="cf">break</span></code></td>
+<td>Interrompe il ciclo in corso</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="cf">continue</span></code></td>
+<td>Salta l’iterazione corrente del ciclo e passa alla successiva</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="cf">pass</span></code></td>
+<td>Indica un blocco di codice vuoto</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="cf">return</span></code></td>
+<td>Utilizzato per restituire un valore da una funzione</td>
+</tr>
+<tr class="even">
+<td>Gestione delle eccezioni</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="cf">try</span></code></td>
+<td>Utilizzato per definire un blocco di codice da eseguire e gestire le eccezioni</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="cf">except</span></code></td>
+<td>Utilizzato per catturare le eccezioni in un blocco try-except</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="cf">finally</span></code></td>
+<td>Blocco di codice che viene eseguito alla fine di un blocco try, indipendentemente dal fatto che si sia verificata un’eccezione</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="cf">raise</span></code></td>
+<td>Utilizzato per sollevare un’eccezione</td>
+</tr>
+<tr class="odd">
+<td>Definizione delle funzioni e classi</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="kw">def</span></code></td>
+<td>Utilizzato per definire una funzione</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="kw">class</span></code></td>
+<td>Utilizzato per definire una classe</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="kw">lambda</span></code></td>
+<td>Utilizzato per creare funzioni anonime</td>
+</tr>
+<tr class="odd">
+<td>Gestione contesto di dichiarazione di variabili</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="kw">global</span></code></td>
+<td>Utilizzato per dichiarare variabili globali</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="kw">nonlocal</span></code></td>
+<td>Utilizzato per dichiarare variabili non locali</td>
+</tr>
+<tr class="even">
+<td>Operazioni su moduli</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="im">import</span></code></td>
+<td>Utilizzato per importare moduli</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="im">from</span></code></td>
+<td>Utilizzato per importare specifici elementi da un modulo</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="im">as</span></code></td>
+<td>Utilizzato per creare alias, ad esempio negli import</td>
+</tr>
+<tr class="even">
+<td>Operatori di identità e appartenenza</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="kw">in</span></code></td>
+<td>Utilizzato per verificare se un valore esiste in una sequenza</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="kw">is</span></code></td>
+<td>Operatore di confronto di identità</td>
+</tr>
+<tr class="odd">
+<td>Gestione delle risorse</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="cf">with</span></code></td>
+<td>Utilizzato per garantire un’azione di pulizia come il rilascio delle risorse</td>
+</tr>
+<tr class="odd">
+<td>Programmazione asincrona</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="cf">async</span></code></td>
+<td>Utilizzato per definire funzioni asincrone</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="cf">await</span></code></td>
+<td>Utilizzato per attendere un risultato in una funzione asincrona</td>
+</tr>
+<tr class="even">
+<td>Varie</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="kw">del</span></code></td>
+<td>Utilizzato per eliminare oggetti</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="cf">assert</span></code></td>
+<td>Utilizzato per le asserzioni, verifica che un’espressione sia vera</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="cf">yield</span></code></td>
+<td>Utilizzato per restituire un generatore da una funzione</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="va">None</span></code></td>
+<td>Rappresenta l’assenza di valore o un valore nullo</td>
+</tr>
+<tr class="odd">
+<td>Parole chiave contestuali</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python">match</code></td>
+<td>Utilizzato nell’istruzione <code class="sourceCode python">match</code> per il pattern matching</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python">case</code></td>
+<td>Utilizzato nell’istruzione <code class="sourceCode python">match</code> per definire un ramo</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python">_</code></td>
+<td>Utilizzato come identificatore speciale nell’istruzione <code class="sourceCode python">match</code> per indicare un pattern di default o ignorare valori</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="bu">type</span></code></td>
+<td>Utilizzato in specifici contesti per dichiarazioni di tipo</td>
+</tr>
+</tbody>
+</table>
+<p>Esempi di uso di parole chiave contestuali:</p>
+<ul>
+<li><p><code class="sourceCode python">match</code>, <code class="sourceCode python">case</code> e <code class="sourceCode python">_</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definiamo una funzione che utilizza il pattern matching</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_value(value):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">match</span> value:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="dv">1</span>:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Uno"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="dv">2</span>:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Due"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> _:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Altro"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilizzo di `match` come identificatore per una variabile</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>match <span class="op">=</span> <span class="st">"Questo è un identificatore valido"</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Test della funzione</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>process_value(<span class="dv">1</span>)  <span class="co"># Output: Uno</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>process_value(<span class="dv">2</span>)  <span class="co"># Output: Due</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>process_value(<span class="dv">3</span>)  <span class="co"># Output: Altro</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Stampa della variabile `match`</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(match)  <span class="co"># Output: Questo è un identificatore valido</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code class="sourceCode python"><span class="bu">type</span></code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> TypeAlias</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Dichiarazione di un alias di tipo</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span> Point <span class="op">=</span> <span class="bu">tuple</span>[<span class="bu">float</span>, <span class="bu">float</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilizzo dell'alias di tipo</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> distanza(p1: Point, p2: Point) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ((p1[<span class="dv">0</span>] <span class="op">-</span> p2[<span class="dv">0</span>]) <span class="op">**</span> <span class="dv">2</span> <span class="op">+</span> (p1[<span class="dv">1</span>] <span class="op">-</span> p2[<span class="dv">1</span>]) <span class="op">**</span> <span class="dv">2</span>) <span class="op">**</span> <span class="fl">0.5</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Test della funzione con alias di tipo</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>punto1: Point <span class="op">=</span> (<span class="fl">1.0</span>, <span class="fl">2.0</span>) </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>punto2: Point <span class="op">=</span> (<span class="fl">4.0</span>, <span class="fl">6.0</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(distanza(punto1, punto2))  <span class="co"># Output: 5.0</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+</section>
+<section id="section" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="section"><span class="header-section-number">6.5</span> </h2>
+<section id="classi-riservate-di-identificatori" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="classi-riservate-di-identificatori"><span class="header-section-number">6.5.1</span> Classi riservate di identificatori</h3>
+<p>Alcune classi di identificatori (oltre alle parole chiave) hanno significati speciali in Python. Queste classi sono identificate dai pattern di caratteri di sottolineatura (underscore) all’inizio e alla fine dei nomi. Tuttavia, l’uso di questi identificatori non impone limitazioni rigide al programmatore, ma è importante seguire le convenzioni per evitare ambiguità e problemi di compatibilità.</p>
+<ul>
+<li><code>_</code>
+<ul>
+<li><strong>Non importato da <code>from module import *</code></strong>: Gli identificatori che iniziano con un singolo underscore non vengono importati con un’istruzione di importazione globale.</li>
+<li><strong>Pattern nei match</strong>: Nel contesto di un pattern di corrispondenza all’interno di un’istruzione <code>match</code>, <code>_</code> è una soft keyword che denota un wildcard (carattere jolly).</li>
+<li><strong>Interprete interattivo</strong>: L’interprete interattivo rende disponibile il risultato dell’ultima valutazione nella variabile <code>_</code>. Questo risultato è memorizzato nel modulo builtins, insieme alle funzioni built-in come <code>print</code>.</li>
+<li><strong>Altro uso</strong>: Altrove, <code>_</code> è un identificatore regolare. Viene spesso usato per nominare elementi “speciali”, ma non è speciale per Python stesso. Il nome <code>_</code> è comunemente usato in congiunzione con l’internazionalizzazione (vedi la documentazione del modulo gettext per ulteriori informazioni su questa convenzione) ed è anche comunemente utilizzato per variabili non usate.</li>
+</ul></li>
+</ul>
+<section id="esempio" class="level4" data-number="6.5.1.1">
+<h4 data-number="6.5.1.1" class="anchored" data-anchor-id="esempio"><span class="header-section-number">6.5.1.1</span> Esempio</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilizzo di _ come identificatore in vari contesti</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Non importato con from module import *</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>_private_variable <span class="op">=</span> <span class="st">"Questa variabile non verrà importata con 'from module import *'"</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilizzo di _ come wildcard in un'istruzione match</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_value(value):</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">match</span> value:</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="dv">1</span>:</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Uno"</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> _:</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Altro"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>process_value(<span class="dv">2</span>)  <span class="co"># Output: Altro</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Uso di _ nell'interprete interattivo</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="dv">5</span> <span class="op">+</span> <span class="dv">3</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(_)  <span class="co"># Output: 8 (nell'interprete interattivo)</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Uso di _ come variabile regolare</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> <span class="st">"Valore non usato"</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Uso di _ per internazionalizzazione</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gettext</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>gettext.install(<span class="st">'myapplication'</span>)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(_(<span class="st">'Hello, world'</span>))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>__*__</code>
+<ul>
+<li><strong>Nomi definiti dal sistema</strong>: Questi nomi, informalmente noti come nomi “dunder”, sono definiti dall’interprete e dalla sua implementazione (inclusa la libreria standard). I nomi di sistema attuali sono discussi nella sezione dei nomi dei metodi speciali e altrove. Altri potrebbero essere definiti nelle versioni future di Python. Qualsiasi uso di nomi <code>__*__</code>, in qualsiasi contesto, che non segua l’uso esplicitamente documentato, è soggetto a rottura senza preavviso.</li>
+</ul></li>
+</ul>
+</section>
+<section id="esempio-1" class="level4" data-number="6.5.1.2">
+<h4 data-number="6.5.1.2" class="anchored" data-anchor-id="esempio-1"><span class="header-section-number">6.5.1.2</span> Esempio</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilizzo di nomi "dunder"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyClass:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, value):</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.__value <span class="op">=</span> value  <span class="co"># Questo è un nome "dunder" per un attributo privato</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"MyClass con valore </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>__value<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>obj <span class="op">=</span> MyClass(<span class="dv">10</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(obj)  <span class="co"># Output: MyClass con valore 10</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>__*</code>
+<ul>
+<li><strong>Nomi privati della classe</strong>: I nomi in questa categoria, quando utilizzati nel contesto di una definizione di classe, vengono riscritti per utilizzare una forma mangled per evitare conflitti di nome tra attributi “privati” delle classi base e derivate.</li>
+</ul></li>
+</ul>
+</section>
+<section id="esempio-2" class="level4" data-number="6.5.1.3">
+<h4 data-number="6.5.1.3" class="anchored" data-anchor-id="esempio-2"><span class="header-section-number">6.5.1.3</span> Esempio</h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilizzo di nomi privati della classe</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BaseClass:</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.__private_attr <span class="op">=</span> <span class="st">"Base"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DerivedClass(BaseClass):</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.__private_attr <span class="op">=</span> <span class="st">"Derived"</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>base_obj <span class="op">=</span> BaseClass()</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>derived_obj <span class="op">=</span> DerivedClass()</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Accesso ai nomi riscritti (name mangling)</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(base_obj._BaseClass__private_attr)  <span class="co"># Output: Base</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(derived_obj._DerivedClass__private_attr)  <span class="co"># Output: Derived</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In sintesi, Python riserva certe classi di identificatori che hanno significati speciali e seguono regole specifiche, principalmente per garantire l’integrità del codice e la compatibilità tra versioni diverse del linguaggio. Tuttavia, queste convenzioni non pongono limitazioni rigide al programmatore, che può comunque utilizzare questi identificatori secondo necessità, purché consapevole delle loro implicazioni.</p>
+</section>
+</section>
+</section>
+<section id="operatori" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="operatori"><span class="header-section-number">6.6</span> Operatori</h2>
+<p>Gli operatori sono rappresentati da simboli non alfanumerici e, quando applicati a uno o più identificatori, letterali o espressioni (definiti genericamente operandi), producono un risultato. Attenzione a non confondere la definizione di operatore come token, come considerata qui, con quella di operatore come funzionalità algoritmica, poiché alcune parole chiave sono operatori algoritmici e anche le funzioni possono agire come operatori.</p>
+<p>Esempi:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> x <span class="op">+</span> y <span class="co"># Utilizza l'operatore + sugli identificatori x e y</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span> <span class="op">=</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span> <span class="co"># Utilizza l'operatore + su letterali</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> (x <span class="op">*</span> y) <span class="op">+</span> (z <span class="op">/</span> <span class="dv">2</span>) <span class="co"># Utilizza vari operatori su espressioni</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In tabella l’elenco degli operatori:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 16%">
+<col style="width: 61%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tipo di operatore</th>
+<th>Operatore</th>
+<th>Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Aritmetici</td>
+<td><code class="sourceCode python"><span class="op">+</span></code></td>
+<td>Addizione</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code class="sourceCode python"><span class="op">-</span></code></td>
+<td>Sottrazione</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code class="sourceCode python"><span class="op">*</span></code></td>
+<td>Moltiplicazione</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code class="sourceCode python"><span class="op">/</span></code></td>
+<td>Divisione</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code class="sourceCode python"><span class="op">//</span></code></td>
+<td>Divisione intera</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code class="sourceCode python"><span class="op">%</span></code></td>
+<td>Modulo</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code class="sourceCode python"><span class="op">**</span></code></td>
+<td>Esponenziazione</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code class="sourceCode python"><span class="op">@</span></code></td>
+<td>Matrice (operatore di moltiplicazione)</td>
+</tr>
+<tr class="odd">
+<td>Confronto</td>
+<td><code class="sourceCode python"><span class="op">&lt;</span></code></td>
+<td>Minore</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code class="sourceCode python"><span class="op">&gt;</span></code></td>
+<td>Maggiore</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code class="sourceCode python"><span class="op">&lt;=</span></code></td>
+<td>Minore o uguale</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code class="sourceCode python"><span class="op">&gt;=</span></code></td>
+<td>Maggiore o uguale</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code class="sourceCode python"><span class="op">==</span></code></td>
+<td>Uguale</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code class="sourceCode python"><span class="op">!=</span></code></td>
+<td>Diverso</td>
+</tr>
+<tr class="odd">
+<td>Bitwise</td>
+<td><code class="sourceCode python"><span class="op">&amp;</span></code></td>
+<td>AND bit a bit</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code class="sourceCode python"><span class="op">|</span></code></td>
+<td>OR bit a bit</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code class="sourceCode python"><span class="op">^</span></code></td>
+<td>XOR bit a bit</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code class="sourceCode python"><span class="op">~</span></code></td>
+<td>NOT bit a bit</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code class="sourceCode python"><span class="op">&lt;&lt;</span></code></td>
+<td>Shift a sinistra</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code class="sourceCode python"><span class="op">&gt;&gt;</span></code></td>
+<td>Shift a destra</td>
+</tr>
+<tr class="odd">
+<td>Assegnazione</td>
+<td><code class="sourceCode python"><span class="op">:=</span></code></td>
+<td>Operatore di assegnazione (walrus)</td>
+</tr>
+</tbody>
+</table>
+<p>Esempio su <code class="sourceCode python"><span class="op">@</span></code> che illustra un aspetto importante: il comportamento degli operatori può (o meglio, deve) essere definito quando si creano dei tipi di oggetto. Infatti, nel codice seguente, è definita una matrice assieme a una delle operazioni matematiche più comuni che è la moltiplicazione, implementata per mezzo di <code class="sourceCode python"><span class="fu">__matmul__</span></code>:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Matrice:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, righe):</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.righe <span class="op">=</span> righe</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_righe <span class="op">=</span> <span class="bu">len</span>(righe)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_colonne <span class="op">=</span> <span class="bu">len</span>(righe[<span class="dv">0</span>]) <span class="cf">if</span> righe <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__matmul__</span>(<span class="va">self</span>, altra):</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Controlla se le dimensioni sono compatibili per la moltiplicazione</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.num_colonne <span class="op">!=</span> altra.num_righe:</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Non è possibile moltiplicare le matrici: "</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"dimensioni incompatibili."</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Inizializza la matrice risultato con zeri</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        risultato <span class="op">=</span> [[<span class="dv">0</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(altra.num_colonne)]</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>                     <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.num_righe)]</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Esegue la moltiplicazione delle matrici</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.num_righe):</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(altra.num_colonne):</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.num_colonne):</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>                    risultato[i][j] <span class="op">+=</span> (<span class="va">self</span>.righe[i][k] <span class="op">*</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>                                        altra.righe[k][j])</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> Matrice(risultato)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Rappresentazione leggibile della matrice</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>.join([<span class="st">' '</span>.join(<span class="bu">map</span>(<span class="bu">str</span>, riga)) <span class="cf">for</span> riga <span class="kw">in</span> <span class="va">self</span>.righe])</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Definizione di due matrici</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrice([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> Matrice([[<span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>]])</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Moltiplicazione di matrici utilizzando l'operatore @</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> A <span class="op">@</span> B</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Matrice A:"</span>)</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A)</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Matrice B:"</span>)</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(B)</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Risultato di A @ B:"</span>)</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(C)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Infine, <code class="sourceCode python"><span class="op">@</span></code> è anche un delimitatore.</p>
+<section id="delimitatori" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="delimitatori"><span class="header-section-number">6.6.1</span> Delimitatori</h3>
+<p>In Python, alcuni token servono come delimitatori nella grammatica del linguaggio. I delimitatori sono caratteri che separano le varie componenti del codice, come espressioni, blocchi di codice, parametri di funzioni e istruzioni.</p>
+<p>La seguente tabella include tutti i delimitatori e i principali utilizzi:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 73%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Delimitatore</th>
+<th>Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode python">(</code></td>
+<td>Utilizzata per raggruppare espressioni, chiamate di funzione e definizioni di tupla</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python">)</code></td>
+<td>Utilizzata per chiudere le parentesi tonde aperte</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python">[</code></td>
+<td>Utilizzate per definire liste e accedere agli elementi delle liste, tuple, o stringhe</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python">]</code></td>
+<td>Utilizzate per chiudere le parentesi quadre aperte</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python">{</code></td>
+<td>Utilizzate per definire dizionari e set</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python">}</code></td>
+<td>Utilizzate per chiudere le parentesi graffe aperte</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python">,</code></td>
+<td>Utilizzata per separare elementi in liste, tuple, e argomenti nelle chiamate di funzione</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python">:</code></td>
+<td>Utilizzato per definire blocchi di codice (come in <code class="sourceCode python"><span class="cf">if</span></code>, <code class="sourceCode python"><span class="cf">for</span></code>, <code class="sourceCode python"><span class="cf">while</span></code>, <code class="sourceCode python"><span class="kw">def</span></code>, <code class="sourceCode python"><span class="kw">class</span></code>) e per gli slice</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python">.</code></td>
+<td>Utilizzato per accedere agli attributi di un oggetto. Può apparire in letterali decimnali e immaginari</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="op">;</span></code></td>
+<td>Utilizzato per separare istruzioni multiple sulla stessa riga</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="op">@</span></code></td>
+<td>Utilizzato per dichiarare decoratori per funzioni e metodi</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="op">=</span></code></td>
+<td>Operatore utilizzato per assegnare valori a variabili</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="op">-&gt;</span></code></td>
+<td>Annotazione del tipo di ritorno delle funzioni</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="op">+=</span></code></td>
+<td>Assegnazione aumentata con addizione. Aggiunge il valore a destra a quello a sinistra e assegna il risultato alla variabile a sinistra. Come i successivi, è sia un delimitatore che un operatore</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="op">-=</span></code></td>
+<td>Assegnazione aumentata con sottrazione</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="op">*=</span></code></td>
+<td>Assegnazione aumentata con moltiplicazione</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="op">/=</span></code></td>
+<td>Assegnazione aumentata con divisione</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="op">//=</span></code></td>
+<td>Assegnazione aumentata con divisione intera</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="op">%=</span></code></td>
+<td>Assegnazione aumentata con modulo</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="op">@=</span></code></td>
+<td>Assegnazione aumentata con moltiplicazione di matrici</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="op">&amp;=</span></code></td>
+<td>Assegnazione aumentata con AND bit a bit</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="op">|=</span></code></td>
+<td>Assegnazione aumentata con OR bit a bit</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="op">^=</span></code></td>
+<td>Assegnazione aumentata con XOR bit a bit</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="op">&gt;&gt;=</span></code></td>
+<td>Assegnazione aumentata con shift a destra</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="op">&lt;&lt;=</span></code></td>
+<td>Assegnazione aumentata con shift a sinistra</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="op">**=</span></code></td>
+<td>Assegnazione aumentata con esponenziazione</td>
+</tr>
+</tbody>
+</table>
+<p>Una sequenza di tre punti, comunemente indicata come ellissi anche al difuori dei linguaggi di programmazione,<a href="L'ellissi è usata, ad esempio, in C per dichiarare funzioni che accettano un numero variaible di parametri e i Javascript come operatore per espandere gli array o le proprietà di un oggetto.">1^</a> è trattata come un token a sé e corrisponde ad un oggetto predefinito chiamato <a href="https://docs.python.org/3/reference/datamodel.html#ellipsis">Ellipsis</a>, con applicazioni in diversi contesti:</p>
+<div class="sourceCode" id="annotated-cell-12"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(...))  <span class="co"># &lt;class 'ellipsis'&gt;</span></span>
+<span id="annotated-cell-12-2"><a href="#annotated-cell-12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-12-3"><a href="#annotated-cell-12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> funzione_da_completare():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-12-4" class="code-annotation-target"><a href="#annotated-cell-12-4" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="annotated-cell-12-5"><a href="#annotated-cell-12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-12-6"><a href="#annotated-cell-12-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ClasseEsempio:</span>
+<span id="annotated-cell-12-7"><a href="#annotated-cell-12-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> metodo_da_completare(<span class="va">self</span>):</span>
+<span id="annotated-cell-12-8"><a href="#annotated-cell-12-8" aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="annotated-cell-12-9"><a href="#annotated-cell-12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-12-10"><a href="#annotated-cell-12-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Callable</span>
+<span id="annotated-cell-12-11"><a href="#annotated-cell-12-11" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-12-12" class="code-annotation-target"><a href="#annotated-cell-12-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> funzione_variadica(func: Callable[..., <span class="bu">int</span>]):</span>
+<span id="annotated-cell-12-13"><a href="#annotated-cell-12-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="annotated-cell-12-14"><a href="#annotated-cell-12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-12-15"><a href="#annotated-cell-12-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="annotated-cell-12-16"><a href="#annotated-cell-12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-12-17"><a href="#annotated-cell-12-17" aria-hidden="true" tabindex="-1"></a>array <span class="op">=</span> np.array([[[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]], [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]]) </span>
+<span id="annotated-cell-12-18"><a href="#annotated-cell-12-18" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-12-19" class="code-annotation-target"><a href="#annotated-cell-12-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(array[..., <span class="dv">1</span>])</span>
+<span id="annotated-cell-12-20"><a href="#annotated-cell-12-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: </span></span>
+<span id="annotated-cell-12-21"><a href="#annotated-cell-12-21" aria-hidden="true" tabindex="-1"></a><span class="co"># [[ 2  5]</span></span>
+<span id="annotated-cell-12-22"><a href="#annotated-cell-12-22" aria-hidden="true" tabindex="-1"></a><span class="co">#  [ 8 11]]</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-12" data-code-lines="1" data-code-annotation="1">Otteniamo il tipo dell’oggetto ellissi.</span>
+</dd>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-12" data-code-lines="4" data-code-annotation="2">Utilizzo come segnaposto per indicare che la funzione è da completare. Da notare che chiamare la funzione <code class="sourceCode python">funzione_da_completare()</code> non dà errore.</span>
+</dd>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-12" data-code-lines="12" data-code-annotation="3">L’uso di <code class="sourceCode python">Callable[..., <span class="bu">int</span>]</code> indica una funzione che può accettare un numero variabile di argomenti di qualsiasi tipo e restituire un valore di tipo int.</span>
+</dd>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-12" data-code-lines="19" data-code-annotation="4"><code class="sourceCode python">numpy</code> è una libreria di calcolo matriciale molto diffusa. L’ellissi è utilizzata per effettuare uno sezione complessa della matrice secondo tutte le dimensioni precedenti all’ultima. In altre parole, l’ellissi permette di selezionare interamente tutte le dimensioni tranne l’ultima specificata.</span>
+</dd>
+</dl>
+<p>Alcuni caratteri ASCII hanno un significato speciale come parte di altri token o sono significativi per l’analizzatore lessicale:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 72%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Carattere</th>
+<th>Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="co">'</span></code></td>
+<td>Utilizzato per definire stringhe di caratteri.</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="co">"</span></code></td>
+<td>Utilizzato per definire stringhe di caratteri.</td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode python"><span class="co">#</span></code></td>
+<td>Simbolo di commento. Utilizzato per indicare un commento, che viene ignorato dall’interprete Python.</td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode python"><span class="op">\</span></code></td>
+<td>Backslash. Utilizzato per caratteri di escape nelle stringhe e per continuare le righe di codice su più righe fisiche.</td>
+</tr>
+</tbody>
+</table>
+<p>Alcuni caratteri ASCII non sono utilizzati in Python e la loro presenza al difuori dei letterali di stringa e dei commenti genera un errore: <code>$</code>, <code>?</code>, <code>`</code>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiato!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiato!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./sp-python-install.html" class="pagination-link" aria-label="Scaricare e installare Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="Riferimenti">
+        <span class="nav-page-text">Riferimenti</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/sp-python-syntax.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li></ul></div></div></div></footer></body></html>

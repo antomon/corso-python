@@ -226,6 +226,12 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
+\makeatletter
+\@ifpackageloaded{tikz}{}{\usepackage{tikz}}
+\makeatother
+        \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+          \node[shape=circle,draw,inner sep=1pt] (char) {{\scriptsize#1}};}}  
+                  
 \ifLuaTeX
 \usepackage[bidi=basic]{babel}
 \else
@@ -1403,37 +1409,9 @@ Oltre a Haskell, ci sono molti altri linguaggi funzionali, tra cui:
   Racket: Derivato da Scheme, usato nella ricerca accademica.
 \end{itemize}
 
-\chapter{Sintassi dei linguaggi di programmazione e algoritmi dei
-programmi}\label{sintassi-dei-linguaggi-di-programmazione-e-algoritmi-dei-programmi}
-
-\section{Che cos'è un algoritmo?}\label{che-cosuxe8-un-algoritmo}
-
-Una definizione informale di \textbf{algoritmo} è un insieme di
-istruzioni precise e finite che descrivono come eseguire un compito
-specifico o risolvere un problema. Pensate a un algoritmo come a una
-ricetta di cucina: la ricetta fornisce una serie di passaggi chiari da
-seguire per preparare un piatto.
-
-Formalmente, un algoritmo è una sequenza ben definita di passi o
-operazioni che, a partire da un input, produce un output in un tempo
-finito. Le proprietà principali di un algoritmo includono:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Finitudine L'algoritmo deve terminare dopo un numero finito di passi.
-\item
-  Determinismo: Ogni passo dell'algoritmo deve essere definito in modo
-  preciso e non ambiguo.
-\item
-  Input L'algoritmo riceve zero o più dati in ingresso.
-\item
-  Output L'algoritmo produce uno o più risultati.
-\item
-  Effettività: Ogni operazione dell'algoritmo deve essere fattibile ed
-  eseguibile in un tempo finito.
-\end{enumerate}
+\chapter{Sintassi e semantica dei linguaggi di programmazione e
+algoritmi dei
+programmi}\label{sintassi-e-semantica-dei-linguaggi-di-programmazione-e-algoritmi-dei-programmi}
 
 \section{Sintassi e semantica dei linguaggi di
 programmazione}\label{sintassi-e-semantica-dei-linguaggi-di-programmazione}
@@ -1443,7 +1421,7 @@ algoritmi in modo che possano essere eseguiti da un computer. Un
 linguaggio di programmazione ha due componenti principali: la
 \textbf{sintassi} e la \textbf{semantica}.
 
-\subsection{Sintassi}\label{sintassi}
+\section{Sintassi}\label{sintassi}
 
 La \textbf{sintassi} di un linguaggio di programmazione è l'insieme di
 regole che definiscono come devono essere scritte le istruzioni, cioè le
@@ -1451,7 +1429,8 @@ unità logiche di esecuzione del programma. È come la grammatica in una
 lingua naturale e stabilisce quali combinazioni di simboli sono
 considerate costrutti validi nel linguaggio.
 
-Gli elementi principali della sintassi includono:
+Partiamo dagli elementi atomici della sintassi per poi risalire fino al
+programma. Gli elementi sono:
 
 \begin{itemize}
 \tightlist
@@ -1460,58 +1439,89 @@ Gli elementi principali della sintassi includono:
   significati specifici e non possono essere utilizzati per altri scopi,
   come \texttt{if}, \texttt{else}, \texttt{while}, \texttt{for}, ecc.
 \item
-  Operatori: Simboli utilizzati per eseguire operazioni su variabili e
-  valori, come \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/},
-  \texttt{=}, \texttt{==}, ecc.
+  Operatori: Simboli utilizzati per eseguire operazioni su
+  identificatori e letterali, come \texttt{+}, \texttt{-}, \texttt{*},
+  \texttt{/}, \texttt{=}, \texttt{==}, ecc.
 \item
-  Separatori e delimitatori: Caratteri utilizzati per separare elementi
-  del codice, come punto e virgola (\texttt{;}), parentesi tonde
-  (\texttt{()}), parentesi quadre (\texttt{{[}{]}}), parentesi graffe
-  (\texttt{\{\}}), ecc.
+  Separatori: Caratteri utilizzati per separare elementi del codice,
+  come punto e virgola (\texttt{;}), parentesi tonde (\texttt{()}),
+  parentesi quadre (\texttt{{[}{]}}), parentesi graffe (\texttt{\{\}}),
+  ecc.
 \item
   Identificatori: Nomi utilizzati per identificare variabili, funzioni,
-  classi, e altri oggetti definiti dall'utente.
+  classi, e altri oggetti.
 \item
   Letterali: Rappresentazioni di valori costanti nel codice, come numeri
   (\texttt{123}), stringhe (\texttt{"hello"}), caratteri
   (\texttt{\textquotesingle{}a\textquotesingle{}}), ecc.
 \item
-  Espressioni: Combinazioni di variabili, operatori e funzioni che
-  vengono valutate per produrre un valore.
+  Commento: Non fanno parte della logica del programma e sono ignorati
+  nell'esecuzione.
+\item
+  Spazi: Sono gruppi di caratteri non visualizzabili spesso ignorati.
 \end{itemize}
 
-Questi elementi sintattici sono noti anche come \textbf{lessemi} (in
-inglese \emph{token}) e sono utilizzati per comporre istruzioni semplici
-e istruzioni complesse, che, a loro volta, costituiscono i programmi.
+Un \textbf{lessema} è una sequenza di caratteri nel programma sorgente
+che corrisponde al pattern di un token ed è identificata
+dall'analizzatore lessicale come un'istanza di quel token. Un
+\textbf{token} è una coppia composta da un nome di token e un valore
+attributo opzionale. Il nome del token è un simbolo astratto che
+rappresenta un tipo di unità lessicale, ad esempio, una particolare
+parola chiave o una sequenza di caratteri di input che denota un
+identificatore. I nomi dei token sono i simboli di input che il parser
+elabora. Un \textbf{pattern} è una descrizione della forma che possono
+assumere i lessemi di un token. Nel caso di una parola chiave come
+token, il pattern è semplicemente la sequenza di caratteri che forma la
+parola chiave. Per gli identificatori e alcuni altri token, il pattern è
+una struttura più complessa che corrisponde a molte stringhe.
 
-\subsubsection{Istruzioni Semplici}\label{istruzioni-semplici}
+\subsection{Espressioni}\label{espressioni}
 
-Le \textbf{istruzioni semplici} sono costituite da singole operazioni
-che possono essere eseguite direttamente. Queste istruzioni sono
-fondamentali e spesso coinvolgono i seguenti elementi:
+Un'espressione è una combinazione di lessemi che viene valutata per
+produrre un risultato. Esempi di espressioni includono:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{5\ +\ 3}
+\item
+  \texttt{x\ *\ 2}
+\item
+  \texttt{y\ /\ 4.0}
+\item
+  \texttt{max(a,\ b)}
+\item
+  \texttt{"Hello,\ "\ +\ "world!"}
+\end{itemize}
+
+\subsection{Istruzioni semplici}\label{istruzioni-semplici}
+
+Le \textbf{istruzioni semplici} sono operazioni atomiche secondo il
+linguaggio e sono costituite da lessemi ed espressioni per compiere
+operazioni di base. Gli esempi principali includono:
 
 \begin{itemize}
 \item
-  Assegnazione: Utilizza un operatore di assegnazione (\texttt{=}) per
-  attribuire un valore a una variabile, che possiamo pensare come un
-  nome simbolico rappresentante una posizione dove è memorizzato un
-  valore. Esempio:
+  Assegnazione: Utilizza un operatore di assegnazione (ad esempio,
+  \texttt{=}) per attribuire un valore a una variabile, che possiamo
+  pensare come un nome simbolico rappresentante una posizione dove è
+  memorizzato un valore. Esempio:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x = 5}
+\NormalTok{x }\OperatorTok{=} \DecValTok{5}
 \end{Highlighting}
 \end{Shaded}
 
-  \texttt{x}: Identificatore (nome) della variabile. \texttt{=}:
-  Operatore di assegnazione. \texttt{5}: Letterale numerico intero.
+  \texttt{x}: Identificatore della variabile. \texttt{=}: Operatore di
+  assegnazione. \texttt{5}: Letterale numerico intero.
 \item
   Input/output: Utilizza parole chiave o funzioni di libreria per
   leggere valori dall'input o scrivere valori all'output. Esempio:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{print("Hello, World!")}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1519,64 +1529,160 @@ fondamentali e spesso coinvolgono i seguenti elementi:
   libreria. \texttt{"Hello,\ World!"}: Letterale stringa. L'esecuzione
   dell'istruzione produce \texttt{"Hello,\ World!"} in output.
 \item
-  Operazioni aritmetiche: Utilizza operatori aritmetici per eseguire
-  operazioni su variabili e valori. Esempio:
-  \texttt{plaintext\ \ \ \ \ y\ =\ 7\ +\ 2.3} \texttt{y}: Identificatore
-  della variabile. \texttt{=}: Operatore di assegnazione del risultato
-  della valutazione dell'operazione a destra. \texttt{7}: Letterale
-  numerico intero. \texttt{+}: Operatore aritmetico. \texttt{2.3}:
-  Letterale numerico decimale. L'esecuzione dell'istruzione fa in modo
-  che la variabile \texttt{y} sia associato a 9.3.
-\item
-  Espressioni: Combinazioni di variabili, operatori e valori che
-  producono un risultato. Esempio:
-  \texttt{plaintext\ \ \ \ \ z\ =\ (x\ *\ 2)\ +\ (y\ /\ 2)} \texttt{z}:
+  Assegnazione ad espressione: Combinazione di variabili, operatori e
+  valori che producono un risultato assegnato ad una variabile. Esempio:
+  \texttt{python\ \ \ \ \ z\ =\ (x\ *\ 2)\ +\ (y\ /\ 2)} \texttt{z}:
   Identificatore della variabile. \texttt{=}: Operatore di assegnazione.
   \texttt{(x\ *\ 2)}: Espressione che moltiplica \texttt{x} per
   \texttt{2}. \texttt{(y\ /\ 2)}: Espressione che divide \texttt{y} per
   \texttt{2}. \texttt{+}: Operatore aritmetico che somma i risultati
-  delle due espressioni. L'esecuzione dell'istruzione produce un
-  risultato valido solo se \texttt{x} e \texttt{y} sono associate a
-  valori numerici e ciò perché non tutte le istruzioni sintatticamente
-  corrette sono semanticamente corrette. D'altronde ciò non deve essere
-  preso come regola, perché se \texttt{*} fosse un operatore che ripete
-  quanto a sinistra un numero di volte definito dal valore di destra e
-  \texttt{/} la divisione del valore di sinistra in parti di numero pari
-  a quanto a destra, allora \texttt{x} e \texttt{y} potrebbero essere
-  stringhe.
+  delle due espressioni in una più complessa. L'esecuzione
+  dell'istruzione produce un risultato valido solo se \texttt{x} e
+  \texttt{y} sono associate a valori numerici e ciò perché non tutte le
+  istruzioni sintatticamente corrette sono semanticamente corrette.
+  D'altronde ciò non deve essere preso come regola, perché se \texttt{*}
+  fosse un operatore che ripete quanto a sinistra un numero di volte
+  definito dal valore di destra e \texttt{/} la divisione del valore di
+  sinistra in parti di numero pari a quanto a destra, allora \texttt{x}
+  e \texttt{y} potrebbero essere stringhe.
 \end{itemize}
 
-\subsubsection{Istruzioni Complesse}\label{istruzioni-complesse}
+\subsection{Istruzioni complesse e blocchi di
+codice}\label{istruzioni-complesse-e-blocchi-di-codice}
 
 Le \textbf{istruzioni complesse} sono costituite da più istruzioni
-semplici e possono includere strutture di controllo del flusso. Esempi
-includono:
+semplici e possono includere strutture di controllo del flusso, come
+condizioni (\texttt{if}), cicli (\texttt{for}, \texttt{while}) ed
+eccezioni (\texttt{try}, \texttt{catch}). Queste istruzioni sono
+utilizzate per organizzare il flusso di esecuzione del programma e
+possono contenere altre istruzioni semplici o complesse al loro interno.
+
+Un \textbf{blocco di codice} è una sezione del codice che raggruppa una
+serie di istruzioni che devono essere eseguite insieme. I blocchi di
+codice sono spesso utilizzati all'interno delle istruzioni complesse per
+delimitare il gruppo di istruzioni che devono essere eseguite in
+determinate condizioni o iterazioni.
+
+In molti linguaggi di programmazione, i blocchi di codice sono
+delimitati da parentesi graffe (\texttt{\{\}}), mentre in altri
+linguaggi, come Python, l'indentazione è utilizzata per indicare
+l'inizio e la fine di un blocco di codice.
+
+Alcuni esempi di istruzione e blocco di codice:
 
 \begin{itemize}
-\tightlist
 \item
-  Condizioni: Istruzioni che eseguono un blocco di codice solo se una
-  condizione è vera. Esempio:
-  \texttt{plaintext\ \ \ \ \ if\ (x\ \textgreater{}\ 0)\ \{\ \ \ \ \ \ \ \ \ print("x\ è\ positivo")\ \ \ \ \ \}}
-  \texttt{if}: Parola chiave che introduce la condizione.
-  \texttt{(x\ \textgreater{}\ 0)}: Condizione composta da: \texttt{x}
-  identificatore di variabile, \texttt{\textgreater{}} operatore di
-  confronto e \texttt{0} letterale numerico intero.
-  \texttt{\{\ ...\ \}}: Delimitatori che racchiudono il blocco di
-  codice. \texttt{print("x\ è\ positivo")}: Istruzione di output.
+  Esempio in C:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if} \OperatorTok{(}\NormalTok{x }\OperatorTok{\textgreater{}} \DecValTok{0}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{    printf}\OperatorTok{(}\StringTok{"x è positivo}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{);}
+\NormalTok{    y }\OperatorTok{=}\NormalTok{ x }\OperatorTok{*} \DecValTok{2}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+  In questo esempio:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{if\ (x\ \textgreater{}\ 0)} è un'istruzione complessa.
+  \item
+    \texttt{\{\ printf("x\ è\ positivo\textbackslash{}n");\ y\ =\ x\ *\ 2;\ \}}
+    è un blocco di codice che viene eseguito se la condizione
+    dell'istruzione \texttt{if} è vera.
+  \end{itemize}
 \item
-  Cicli: Istruzioni che ripetono un blocco di codice. Esempio:
-  \texttt{plaintext\ \ \ \ \ for\ (i\ =\ 0;\ i\ \textless{}\ n;\ i++)\ \{\ \ \ \ \ \ \ \ \ somma\ =\ somma\ +\ i\ \ \ \ \ \}}
-  \texttt{for}: Parola chiave che introduce il ciclo.
-  \texttt{(i\ =\ 0;\ i\ \textless{}\ n;\ i++)}: Espressione di controllo
-  del ciclo composta da: \texttt{i\ =\ 0} assegnazione iniziale,
-  \texttt{i\ \textless{}\ n} condizione di ciclo e \texttt{i++}
-  incremento della variabile \texttt{i}. \texttt{\{\ ...\ \}}:
-  Delimitatori che racchiudono il blocco di codice.
-  \texttt{somma\ =\ somma\ +\ i}: Operazione aritmetica.
+  Esempio in Python:
 \end{itemize}
 
-\subsection{Semantica}\label{semantica}
+\begin{Shaded}
+\begin{Highlighting}[]
+  \ControlFlowTok{if}\NormalTok{ x }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{:}
+      \BuiltInTok{print}\NormalTok{(}\StringTok{"x è positivo"}\NormalTok{)}
+\NormalTok{      y }\OperatorTok{=}\NormalTok{ x }\OperatorTok{*} \DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+In questo esempio: - \texttt{if\ x\ \textgreater{}\ 0:} è un'istruzione
+complessa. - Le righe indentate sotto l'istruzione \texttt{if}
+(\texttt{print("x\ è\ positivo")} e \texttt{y\ =\ x\ *\ 2})
+costituiscono un blocco di codice che viene eseguito se la condizione
+dell'istruzione \texttt{if} è vera.
+
+Altri esempi:
+
+\begin{itemize}
+\item
+  Condizioni: Istruzioni che eseguono un blocco di codice solo se una
+  condizione è vera. Esempio: ```c \#include
+  \textless stdio.h\textgreater{}
+
+  x = 42;
+
+  if (x \textgreater{} 0) \{ printf(``x è positivo\n''); \}
+  ``\texttt{}if\texttt{:\ Parola\ chiave\ che\ introduce\ la\ condizione.}(x
+  \textgreater{}
+  0)\texttt{:\ Condizione\ composta\ da:}x\texttt{identificatore\ di\ variabile,}\textgreater{}\texttt{operatore\ di\ confronto\ e}0\texttt{letterale\ numerico\ intero.}\{
+  \ldots{}
+  \}\texttt{:\ Delimitatori\ che\ racchiudono\ il\ blocco\ di\ codice.}print(``x
+  è positivo'')`: Istruzione di output.
+\item
+  Cicli: Istruzioni che ripetono un blocco di codice. Esempio: ```c
+  \#include \textless stdio.h\textgreater{}
+
+  int n = 42; int somma = 0; int i;
+
+  for (i = 0; i \textless{} n; i++) \{ somma = somma + i; \}
+  ``\texttt{}for\texttt{:\ Parola\ chiave\ che\ introduce\ il\ ciclo.}(i
+  = 0; i \textless{} n;
+  i++)\texttt{:\ Espressione\ di\ controllo\ del\ ciclo\ composta\ da:}i
+  = 0\texttt{assegnazione\ iniziale,}i \textless{}
+  n\texttt{condizione\ di\ ciclo\ e}i++\texttt{incremento\ della\ variabile}i\texttt{.}\{
+  \ldots{}
+  \}\texttt{:\ Delimitatori\ che\ racchiudono\ il\ blocco\ di\ codice.}somma
+  = somma + i`: Operazione aritmetica.
+\end{itemize}
+
+\subsection{Organizzazione del codice in un
+programma}\label{organizzazione-del-codice-in-un-programma}
+
+Il programma è solitamente salvato in un file di testo in righe. Queste
+righe possono essere classificate in righe fisiche e righe logiche.
+
+Una \textbf{riga fisica} è una linea di testo nel file sorgente del
+programma, terminata da un carattere di a capo.
+
+Esempio:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ x }\OperatorTok{=} \DecValTok{10}\OperatorTok{;} \CommentTok{// Questa è una riga fisica}
+\end{Highlighting}
+\end{Shaded}
+
+Una \textbf{riga logica} è una singola istruzione, che può estendersi su
+una o più righe fisiche.
+
+Esempi: - Una riga fisica terminata è una riga logica. - Esempio su più
+righe fisiche:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ y }\OperatorTok{=} \OperatorTok{(}\DecValTok{10} \OperatorTok{+} \DecValTok{20} \OperatorTok{+} \DecValTok{30} \OperatorTok{+} \CommentTok{// Prima riga fisica della riga logica}
+         \DecValTok{40} \OperatorTok{+} \DecValTok{50}\OperatorTok{);} \CommentTok{// Seconda riga fisica della riga logica}
+\end{Highlighting}
+\end{Shaded}
+
+L'interprete o il compilatore hanno un modulo particolare che si occupa
+della scansione dei file costituenti il programma, con l'obiettivo di
+individuare righe e lessemi, quindi le istruzioni. A seguire,
+l'interprete eseguirà le istruzioni, il compilatore le tradurrà in
+linguaggio macchina.
+
+\section{Semantica}\label{semantica}
 
 La \textbf{semantica} di un linguaggio di programmazione definisce il
 significato delle istruzioni sintatticamente corrette. In altre parole,
@@ -1902,7 +2008,36 @@ Questi elementi semantici combinati determinano il comportamento e la
 logica di un programma, influenzando il modo in cui il codice viene
 scritto, eseguito e mantenuto.
 
-\section{Esempio di algoritmo}\label{esempio-di-algoritmo}
+\section{Algoritmi}\label{algoritmi}
+
+Una definizione informale di \textbf{algoritmo} è un insieme di
+istruzioni precise e finite che descrivono come eseguire un compito
+specifico o risolvere un problema. Pensate a un algoritmo come a una
+ricetta di cucina: la ricetta fornisce una serie di passaggi chiari da
+seguire per preparare un piatto.
+
+Formalmente, un algoritmo è una sequenza ben definita di passi o
+operazioni che, a partire da un input, produce un output in un tempo
+finito. Le proprietà principali di un algoritmo includono:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Finitudine L'algoritmo deve terminare dopo un numero finito di passi.
+\item
+  Determinismo: Ogni passo dell'algoritmo deve essere definito in modo
+  preciso e non ambiguo.
+\item
+  Input L'algoritmo riceve zero o più dati in ingresso.
+\item
+  Output L'algoritmo produce uno o più risultati.
+\item
+  Effettività: Ogni operazione dell'algoritmo deve essere fattibile ed
+  eseguibile in un tempo finito.
+\end{enumerate}
+
+\subsection{Esempio}\label{esempio}
 
 Consideriamo un esempio semplice di algoritmo per calcolare la somma dei
 numeri da 1 a n.~In input si avrà un numero intero \texttt{n} e in
@@ -2109,10 +2244,10 @@ grazie proprio a quelle.
 
 \part{Seconda parte: Le basi di Python}
 
-\chapter{introduzione a Python}\label{introduzione-a-python}
+\chapter{Introduzione a Python}\label{introduzione-a-python}
 
 Python è un linguaggio di programmazione multiparadigma rilasciato da
-Guido van Rossum nel 1991, dopo il C++ e prima di Java e PHP. È
+Guido van Rossum nel 1991, quindi dopo il C++ e prima di Java e PHP. È
 multiparadigma, cioè abilita o supporta più paradigmi di programmazione,
 e multipiattaforma, potendo essere installato e utilizzato su gran parte
 dei sistemi operativi e hardware.
@@ -2177,11 +2312,10 @@ dell'applicazione. Ecco alcuni dei paradigmi supportati da Python:
 \begin{itemize}
 \tightlist
 \item
-  Programmazione imperativa: Python supporta la programmazione
-  imperativa, che si basa sull'esecuzione di istruzioni in una sequenza
-  specifica. Puoi scrivere ed eseguire script Python direttamente dalla
-  linea di comando, permettendo un approccio interattivo e immediato
-  alla programmazione, come se fosse una calcolatrice.
+  Programmazione imperativa: Puoi scrivere ed eseguire script Python
+  direttamente dalla linea di comando, permettendo un approccio
+  interattivo e immediato alla programmazione, come se fosse una
+  calcolatrice.
 \item
   Programmazione procedurale: In Python, è possibile organizzare il
   codice in funzioni e moduli, rendendo più semplice la gestione e la
@@ -2198,8 +2332,7 @@ dell'applicazione. Ecco alcuni dei paradigmi supportati da Python:
 \item
   Programmazione funzionale: Python include funzionalità di
   programmazione funzionale, come funzioni di prima classe e di ordine
-  superiore, lambda e strumenti come map, filter e reduce. Sfruttando la
-  modularità, si possono creare collezioni di strumenti pronti all'uso.
+  superiore, lambda e strumenti come map, filter e reduce.
 \end{itemize}
 
 Questa flessibilità rende Python adatto a una vasta gamma di
@@ -2272,10 +2405,10 @@ macchina. Esistono diverse implementazioni dell'interprete Python:
   PyPy: Un interprete alternativo che utilizza tecniche di compilazione
   just-in-time (JIT) per migliorare le prestazioni.
 \item
-  Jython: Un'implementazione di Python che gira sulla JVM (Java virtual
-  machine).
+  Jython: Un'implementazione di Python che gira sulla JVM (Java Virtual
+  Machine).
 \item
-  IronPython: Un'implementazione di Python integrata col .NET framework
+  IronPython: Un'implementazione di Python integrata col .NET Framework
   della Microsoft.
 \end{itemize}
 
@@ -2311,40 +2444,46 @@ varietà, includono:
 \begin{itemize}
 \tightlist
 \item
-  os: Fornisce funzioni per interagire con il sistema operativo.
+  \texttt{os}: Fornisce funzioni per interagire con il sistema
+  operativo.
 \item
-  sys: Offre accesso a funzioni e oggetti del runtime di Python.
+  \texttt{sys}: Offre accesso a funzioni e oggetti del runtime di
+  Python.
 \item
-  datetime: Consente di lavorare con date e orari.
+  \texttt{datetime}: Consente di lavorare con date e orari.
 \item
-  json: Permette di leggere e scrivere dati in formato JSON.
+  \texttt{json}: Permette di leggere e scrivere dati in formato JSON.
 \item
-  re: Supporta la manipolazione di stringhe tramite espressioni
+  \texttt{re}: Supporta la manipolazione di stringhe tramite espressioni
   regolari.
 \item
-  http: Include moduli per l'implementazione di client e server HTTP.
+  \texttt{http}: Include moduli per l'implementazione di client e server
+  HTTP.
 \item
-  unittest: Fornisce un framework per il testing del codice.
+  \texttt{unittest}: Fornisce un framework per il testing del codice.
 \item
-  math e cmath: Contengono funzioni matematiche di base e complesse.
+  \texttt{math} e \texttt{cmath}: Contengono funzioni matematiche di
+  base e complesse.
 \item
-  itertools, functools, operator: Offrono supporto per il paradigma di
-  programmazione funzionale.
+  \texttt{itertools}, \texttt{functools}, \texttt{operator}: Offrono
+  supporto per il paradigma di programmazione funzionale.
 \item
-  csv: Gestisce la lettura e scrittura di file CSV.
+  \texttt{csv}: Gestisce la lettura e scrittura di file CSV.
 \item
-  typing: Fornisce supporto per l'annotazione dei tipi di variabili,
-  funzioni e classi.
+  \texttt{typing}: Fornisce supporto per l'annotazione dei tipi di
+  variabili, funzioni e classi.
 \item
-  email: Permette di creare, gestire e inviare email, facilitando la
-  manipolazione di messaggi email MIME.
+  \texttt{email}: Permette di creare, gestire e inviare email,
+  facilitando la manipolazione di messaggi email MIME.
 \item
-  hashlib: Implementa algoritmi di hash sicuri come SHA-256 e MD5.
+  \texttt{hashlib}: Implementa algoritmi di hash sicuri come SHA-256 e
+  MD5.
 \item
-  asyncio: Supporta la programmazione asincrona per la scrittura di
-  codice concorrente e a bassa latenza.
+  \texttt{asyncio}: Supporta la programmazione asincrona per la
+  scrittura di codice concorrente e a bassa latenza.
 \item
-  wave: Fornisce strumenti per leggere e scrivere file audio WAV.
+  \texttt{wave}: Fornisce strumenti per leggere e scrivere file audio
+  WAV.
 \end{itemize}
 
 \subsection{Moduli di estensione}\label{moduli-di-estensione}
@@ -2400,196 +2539,169 @@ sviluppo e la gestione dei progetti:
 sort}\label{lalgoritmo-di-ordinamento-bubble-sort}
 
 Per chiudere il capitolo sul primo approccio a Python, possiamo
-confrontare un algoritmo di media complessità in diversi linguaggi di
+confrontare un algoritmo di bassa complessità in diversi linguaggi di
 programmazione. Un buon esempio potrebbe essere l'implementazione
 dell'algoritmo di ordinamento \emph{bubble sort} di una lista di valori.
-Vediamo come viene scritto in Python, C, C++, e Java.
+Vediamo come viene scritto in Python, C, C++, Java, Rust e Scala:
 
-\subsection{Python}\label{python}
+\begin{itemize}
+\item
+  Python (versione procedurale): ```python def bubble\_sort(arr): n =
+  len(arr) for i in range(n): for j in range(0, n-i-1): if arr{[}j{]}
+  \textgreater{} arr{[}j+1{]}: arr{[}j{]}, arr{[}j+1{]} = arr{[}j+1{]},
+  arr{[}j{]}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ bubble\_sort(arr):}
-\NormalTok{    n }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(arr)}
-    \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(n):}
-        \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, n}\OperatorTok{{-}}\NormalTok{i}\OperatorTok{{-}}\DecValTok{1}\NormalTok{):}
-            \ControlFlowTok{if}\NormalTok{ arr[j] }\OperatorTok{\textgreater{}}\NormalTok{ arr[j}\OperatorTok{+}\DecValTok{1}\NormalTok{]:}
-\NormalTok{                arr[j], arr[j}\OperatorTok{+}\DecValTok{1}\NormalTok{] }\OperatorTok{=}\NormalTok{ arr[j}\OperatorTok{+}\DecValTok{1}\NormalTok{], arr[j]}
+  \# Esempio di utilizzo arr = {[}64, 34, 25, 12, 22, 11, 90{]}
 
-\CommentTok{\# Esempio di utilizzo}
-\NormalTok{arr }\OperatorTok{=}\NormalTok{ [}\DecValTok{64}\NormalTok{, }\DecValTok{34}\NormalTok{, }\DecValTok{25}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{90}\NormalTok{]}
+  bubble\_sort(arr)
 
-\NormalTok{bubble\_sort(arr)}
+  print(``Sorted array is:'', arr) ```
+\item
+  Python (versione orientata agli oggetti): ```python class BubbleSort:
+  (\textbf{staticmethod?}) def bubble\_sort(arr): n = len(arr) for i in
+  range(n): for j in range(0, n-i-1): if arr{[}j{]} \textgreater{}
+  arr{[}j+1{]}: arr{[}j{]}, arr{[}j+1{]} = arr{[}j+1{]}, arr{[}j{]}
 
-\BuiltInTok{print}\NormalTok{(}\StringTok{"Sorted array is:"}\NormalTok{, arr)}
-\end{Highlighting}
-\end{Shaded}
+  \# Esempio di utilizzo arr = {[}64, 34, 25, 12, 22, 11, 90{]}
 
-\subsection{C}\label{c}
+  BubbleSort.bubble\_sort(arr)
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{\#include }\ImportTok{\textless{}stdio.h\textgreater{}}
+  print(``Sorted array is:'', arr) ```
+\item
+  Python (versione funzionale): ```python def bubble\_sort(arr): def
+  sort\_pass(arr, n): if n == 1: return arr new\_arr = {[} (arr{[}i +
+  1{]}, arr{[}i{]}) if arr{[}i{]} \textgreater{} arr{[}i + 1{]} else
+  (arr{[}i{]}, arr{[}i + 1{]}) for i in range(n - 1) {]} new\_arr =
+  {[}item for pair in new\_arr for item in pair{]} return
+  sort\_pass(new\_arr{[}:n - 1{]} + arr{[}n:{]}, n - 1)
 
-\DataTypeTok{void}\NormalTok{ bubble\_sort}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ arr}\OperatorTok{[],} \DataTypeTok{int}\NormalTok{ n}\OperatorTok{)} \OperatorTok{\{}
-    \DataTypeTok{int}\NormalTok{ i}\OperatorTok{,}\NormalTok{ j}\OperatorTok{,}\NormalTok{ temp}\OperatorTok{;}
-    \ControlFlowTok{for} \OperatorTok{(}\NormalTok{i }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ i }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)} \OperatorTok{\{}
-        \ControlFlowTok{for} \OperatorTok{(}\NormalTok{j }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ j }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{{-}}\NormalTok{i}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{;}\NormalTok{ j}\OperatorTok{++)} \OperatorTok{\{}
-            \ControlFlowTok{if} \OperatorTok{(}\NormalTok{arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{]} \OperatorTok{\textgreater{}}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{])} \OperatorTok{\{}
-\NormalTok{                temp }\OperatorTok{=}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{];}
-\NormalTok{                arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{]} \OperatorTok{=}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{];}
-\NormalTok{                arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{]} \OperatorTok{=}\NormalTok{ temp}\OperatorTok{;}
-            \OperatorTok{\}}
-        \OperatorTok{\}}
-    \OperatorTok{\}}
-\OperatorTok{\}}
+\begin{verbatim}
+  return sort_pass(arr, len(arr))
+\end{verbatim}
 
-\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()} \OperatorTok{\{}
-    \DataTypeTok{int}\NormalTok{ arr}\OperatorTok{[]} \OperatorTok{=} \OperatorTok{\{}\DecValTok{64}\OperatorTok{,} \DecValTok{34}\OperatorTok{,} \DecValTok{25}\OperatorTok{,} \DecValTok{12}\OperatorTok{,} \DecValTok{22}\OperatorTok{,} \DecValTok{11}\OperatorTok{,} \DecValTok{90}\OperatorTok{\};}
-    \DataTypeTok{int}\NormalTok{ n }\OperatorTok{=} \KeywordTok{sizeof}\OperatorTok{(}\NormalTok{arr}\OperatorTok{)/}\KeywordTok{sizeof}\OperatorTok{(}\NormalTok{arr}\OperatorTok{[}\DecValTok{0}\OperatorTok{]);}
+  \# Esempio di utilizzo arr = {[}64, 34, 25, 12, 22, 11, 90{]}
+  sorted\_arr = bubble\_sort(arr) print(``Sorted array is:'',
+  sorted\_arr) ```
+\item
+  C: ```c \#include \textless stdio.h\textgreater{}
 
-\NormalTok{    bubble\_sort}\OperatorTok{(}\NormalTok{arr}\OperatorTok{,}\NormalTok{ n}\OperatorTok{);}
+  void bubble\_sort(int arr{[}{]}, int n) \{ int i, j, temp; for (i = 0;
+  i \textless{} n-1; i++) \{ for (j = 0; j \textless{} n-i-1; j++) \{ if
+  (arr{[}j{]} \textgreater{} arr{[}j+1{]}) \{ temp = arr{[}j{]};
+  arr{[}j{]} = arr{[}j+1{]}; arr{[}j+1{]} = temp; \} \} \} \}
 
-\NormalTok{    printf}\OperatorTok{(}\StringTok{"Sorted array is: "}\OperatorTok{);}
-    \ControlFlowTok{for} \OperatorTok{(}\DataTypeTok{int}\NormalTok{ i }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ i }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)} \OperatorTok{\{}
-\NormalTok{        printf}\OperatorTok{(}\StringTok{"}\SpecialCharTok{\%d}\StringTok{ "}\OperatorTok{,}\NormalTok{ arr}\OperatorTok{[}\NormalTok{i}\OperatorTok{]);}
-    \OperatorTok{\}}
+  int main() \{ int arr{[}{]} = \{64, 34, 25, 12, 22, 11, 90\}; int n =
+  sizeof(arr)/sizeof(arr{[}0{]});
 
-    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
-\OperatorTok{\}}
-\end{Highlighting}
-\end{Shaded}
+\begin{verbatim}
+  bubble_sort(arr, n);
 
-\subsection{C++}\label{c-1}
+  printf("Sorted array is: ");
+  for (int i = 0; i < n; i++) {
+      printf("%d ", arr[i]);
+  }
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
-\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+  return 0;
+\end{verbatim}
 
-\KeywordTok{class}\NormalTok{ BubbleSort }\OperatorTok{\{}
-\KeywordTok{public}\OperatorTok{:}
-    \DataTypeTok{void}\NormalTok{ sort}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ arr}\OperatorTok{[],} \DataTypeTok{int}\NormalTok{ n}\OperatorTok{)} \OperatorTok{\{}
-        \ControlFlowTok{for} \OperatorTok{(}\DataTypeTok{int}\NormalTok{ i }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ i }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)} \OperatorTok{\{}
-            \ControlFlowTok{for} \OperatorTok{(}\DataTypeTok{int}\NormalTok{ j }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ j }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{{-}}\NormalTok{i}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{;}\NormalTok{ j}\OperatorTok{++)} \OperatorTok{\{}
-                \ControlFlowTok{if} \OperatorTok{(}\NormalTok{arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{]} \OperatorTok{\textgreater{}}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{])} \OperatorTok{\{}
-                    \DataTypeTok{int}\NormalTok{ temp }\OperatorTok{=}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{];}
-\NormalTok{                    arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{]} \OperatorTok{=}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{];}
-\NormalTok{                    arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{]} \OperatorTok{=}\NormalTok{ temp}\OperatorTok{;}
-                \OperatorTok{\}}
-            \OperatorTok{\}}
-        \OperatorTok{\}}
-    \OperatorTok{\}}
+  \} ```
+\item
+  C++: ```cpp \#include using namespace std;
 
-    \DataTypeTok{void}\NormalTok{ printArray}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ arr}\OperatorTok{[],} \DataTypeTok{int}\NormalTok{ n}\OperatorTok{)} \OperatorTok{\{}
-        \ControlFlowTok{for} \OperatorTok{(}\DataTypeTok{int}\NormalTok{ i }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ i }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)} \OperatorTok{\{}
-\NormalTok{            cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ arr}\OperatorTok{[}\NormalTok{i}\OperatorTok{]} \OperatorTok{\textless{}\textless{}} \StringTok{" "}\OperatorTok{;}
-        \OperatorTok{\}}
-\NormalTok{        cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
-    \OperatorTok{\}}
-\OperatorTok{\};}
+  class BubbleSort \{ public: void sort(int arr{[}{]}, int n) \{ for
+  (int i = 0; i \textless{} n-1; i++) \{ for (int j = 0; j \textless{}
+  n-i-1; j++) \{ if (arr{[}j{]} \textgreater{} arr{[}j+1{]}) \{ int temp
+  = arr{[}j{]}; arr{[}j{]} = arr{[}j+1{]}; arr{[}j+1{]} = temp; \} \} \}
+  \}
 
-\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()} \OperatorTok{\{}
-    \DataTypeTok{int}\NormalTok{ arr}\OperatorTok{[]} \OperatorTok{=} \OperatorTok{\{}\DecValTok{64}\OperatorTok{,} \DecValTok{34}\OperatorTok{,} \DecValTok{25}\OperatorTok{,} \DecValTok{12}\OperatorTok{,} \DecValTok{22}\OperatorTok{,} \DecValTok{11}\OperatorTok{,} \DecValTok{90}\OperatorTok{\};}
-    \DataTypeTok{int}\NormalTok{ n }\OperatorTok{=} \KeywordTok{sizeof}\OperatorTok{(}\NormalTok{arr}\OperatorTok{)/}\KeywordTok{sizeof}\OperatorTok{(}\NormalTok{arr}\OperatorTok{[}\DecValTok{0}\OperatorTok{]);}
+\begin{verbatim}
+  void printArray(int arr[], int n) {
+      for (int i = 0; i < n; i++) {
+          cout << arr[i] << " ";
+      }
+      cout << endl;
+  }
+\end{verbatim}
 
-\NormalTok{    BubbleSort bs}\OperatorTok{;}
-\NormalTok{    bs}\OperatorTok{.}\NormalTok{sort}\OperatorTok{(}\NormalTok{arr}\OperatorTok{,}\NormalTok{ n}\OperatorTok{);}
+  \};
 
-\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Sorted array is: "}\OperatorTok{;}
-\NormalTok{    bs}\OperatorTok{.}\NormalTok{printArray}\OperatorTok{(}\NormalTok{arr}\OperatorTok{,}\NormalTok{ n}\OperatorTok{);}
+  int main() \{ int arr{[}{]} = \{64, 34, 25, 12, 22, 11, 90\}; int n =
+  sizeof(arr)/sizeof(arr{[}0{]});
 
-    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
-\OperatorTok{\}}
-\end{Highlighting}
-\end{Shaded}
+\begin{verbatim}
+  BubbleSort bs;
+  bs.sort(arr, n);
 
-\subsection{Java}\label{java}
+  cout << "Sorted array is: ";
+  bs.printArray(arr, n);
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{public} \KeywordTok{class}\NormalTok{ BubbleSort }\OperatorTok{\{}
+  return 0;
+\end{verbatim}
 
-    \KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{bubbleSort}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ arr}\OperatorTok{[])} \OperatorTok{\{}
-        \DataTypeTok{int}\NormalTok{ n }\OperatorTok{=}\NormalTok{ arr}\OperatorTok{.}\FunctionTok{length}\OperatorTok{;}
-        \ControlFlowTok{for} \OperatorTok{(}\DataTypeTok{int}\NormalTok{ i }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ i }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)} \OperatorTok{\{}
-            \ControlFlowTok{for} \OperatorTok{(}\DataTypeTok{int}\NormalTok{ j }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ j }\OperatorTok{\textless{}}\NormalTok{ n}\OperatorTok{{-}}\NormalTok{i}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{;}\NormalTok{ j}\OperatorTok{++)} \OperatorTok{\{}
-                \ControlFlowTok{if} \OperatorTok{(}\NormalTok{arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{]} \OperatorTok{\textgreater{}}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{])} \OperatorTok{\{}
-                    \DataTypeTok{int}\NormalTok{ temp }\OperatorTok{=}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{];}
-\NormalTok{                    arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{]} \OperatorTok{=}\NormalTok{ arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{];}
-\NormalTok{                    arr}\OperatorTok{[}\NormalTok{j}\OperatorTok{+}\DecValTok{1}\OperatorTok{]} \OperatorTok{=}\NormalTok{ temp}\OperatorTok{;}
-                \OperatorTok{\}}
-            \OperatorTok{\}}
-        \OperatorTok{\}}
-    \OperatorTok{\}}
+  \} ```
+\item
+  Java: ```java public class BubbleSort \{
 
-    \KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{main}\OperatorTok{(}\BuiltInTok{String}\NormalTok{ args}\OperatorTok{[])} \OperatorTok{\{}
-        \DataTypeTok{int}\NormalTok{ arr}\OperatorTok{[]} \OperatorTok{=} \OperatorTok{\{}\DecValTok{64}\OperatorTok{,} \DecValTok{34}\OperatorTok{,} \DecValTok{25}\OperatorTok{,} \DecValTok{12}\OperatorTok{,} \DecValTok{22}\OperatorTok{,} \DecValTok{11}\OperatorTok{,} \DecValTok{90}\OperatorTok{\};}
+\begin{verbatim}
+  public static void bubbleSort(int arr[]) {
+      int n = arr.length;
+      for (int i = 0; i < n-1; i++) {
+          for (int j = 0; j < n-i-1; j++) {
+              if (arr[j] > arr[j+1]) {
+                  int temp = arr[j];
+                  arr[j] = arr[j+1];
+                  arr[j+1] = temp;
+              }
+          }
+      }
+  }
 
-        \FunctionTok{bubbleSort}\OperatorTok{(}\NormalTok{arr}\OperatorTok{);}
+  public static void main(String args[]) {
+      int arr[] = {64, 34, 25, 12, 22, 11, 90};
 
-        \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{println}\OperatorTok{(}\StringTok{"Sorted array is:"}\OperatorTok{);}
-        \ControlFlowTok{for} \OperatorTok{(}\DataTypeTok{int}\NormalTok{ i }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}\NormalTok{ i }\OperatorTok{\textless{}}\NormalTok{ arr}\OperatorTok{.}\FunctionTok{length}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)} \OperatorTok{\{}
-            \BuiltInTok{System}\OperatorTok{.}\FunctionTok{out}\OperatorTok{.}\FunctionTok{print}\OperatorTok{(}\NormalTok{arr}\OperatorTok{[}\NormalTok{i}\OperatorTok{]} \OperatorTok{+} \StringTok{" "}\OperatorTok{);}
-        \OperatorTok{\}}
-    \OperatorTok{\}}
-\OperatorTok{\}}
-\end{Highlighting}
-\end{Shaded}
+      bubbleSort(arr);
 
-\subsection{Rust}\label{rust}
+      System.out.println("Sorted array is:");
+      for (int i = 0; i < arr.length; i++) {
+          System.out.print(arr[i] + " ");
+      }
+  }
+\end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fn}\NormalTok{ bubble\_sort(arr}\OperatorTok{:} \OperatorTok{\&}\KeywordTok{mut}\NormalTok{ [}\DataTypeTok{i32}\NormalTok{]) }\OperatorTok{\{}
-    \KeywordTok{let}\NormalTok{ n }\OperatorTok{=}\NormalTok{ arr}\OperatorTok{.}\NormalTok{len()}\OperatorTok{;}
-    \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \DecValTok{0}\OperatorTok{..}\NormalTok{n }\OperatorTok{\{}
-        \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \DecValTok{0}\OperatorTok{..}\NormalTok{n}\OperatorTok{{-}}\NormalTok{i}\OperatorTok{{-}}\DecValTok{1} \OperatorTok{\{}
-            \ControlFlowTok{if}\NormalTok{ arr[j] }\OperatorTok{\textgreater{}}\NormalTok{ arr[j}\OperatorTok{+}\DecValTok{1}\NormalTok{] }\OperatorTok{\{}
-\NormalTok{                arr}\OperatorTok{.}\NormalTok{swap(j}\OperatorTok{,}\NormalTok{ j}\OperatorTok{+}\DecValTok{1}\NormalTok{)}\OperatorTok{;}
-            \OperatorTok{\}}
-        \OperatorTok{\}}
-    \OperatorTok{\}}
-\OperatorTok{\}}
+  \} ```
+\item
+  Rust: ```rust fn bubble\_sort(arr: \&mut {[}i32{]}) \{ let n =
+  arr.len(); for i in 0..n \{ for j in 0..n-i-1 \{ if arr{[}j{]}
+  \textgreater{} arr{[}j+1{]} \{ arr.swap(j, j+1); \} \} \} \}
 
-\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
-    \KeywordTok{let} \KeywordTok{mut}\NormalTok{ arr }\OperatorTok{=}\NormalTok{ [}\DecValTok{64}\OperatorTok{,} \DecValTok{34}\OperatorTok{,} \DecValTok{25}\OperatorTok{,} \DecValTok{12}\OperatorTok{,} \DecValTok{22}\OperatorTok{,} \DecValTok{11}\OperatorTok{,} \DecValTok{90}\NormalTok{]}\OperatorTok{;}
+  fn main() \{ let mut arr = {[}64, 34, 25, 12, 22, 11, 90{]};
 
-\NormalTok{    bubble\_sort(}\OperatorTok{\&}\KeywordTok{mut}\NormalTok{ arr)}\OperatorTok{;}
+\begin{verbatim}
+  bubble_sort(&mut arr);
 
-    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"Sorted array is: \{:?\}"}\OperatorTok{,}\NormalTok{ arr)}\OperatorTok{;}
-\OperatorTok{\}}
-\end{Highlighting}
-\end{Shaded}
+  println!("Sorted array is: {:?}", arr);
+\end{verbatim}
 
-\subsection{Scala}\label{scala}
+  \} ```
+\item
+  Scala: ```scala object BubbleSort \{ def bubbleSort(arr:
+  Array{[}Int{]}): Unit = \{ val n = arr.length for (i \textless- 0
+  until n) \{ for (j \textless- 0 until n - i - 1) \{ if (arr(j)
+  \textgreater{} arr(j + 1)) \{ val temp = arr(j) arr(j) = arr(j + 1)
+  arr(j + 1) = temp \} \} \} \}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{object}\NormalTok{ BubbleSort }\OperatorTok{\{}
-  \KeywordTok{def} \FunctionTok{bubbleSort}\OperatorTok{(}\NormalTok{arr}\OperatorTok{:} \ExtensionTok{Array}\OperatorTok{[}\BuiltInTok{Int}\OperatorTok{]):} \BuiltInTok{Unit} \OperatorTok{=} \OperatorTok{\{}
-    \KeywordTok{val}\NormalTok{ n }\OperatorTok{=}\NormalTok{ arr}\OperatorTok{.}\NormalTok{length}
-    \ControlFlowTok{for} \OperatorTok{(}\NormalTok{i }\OperatorTok{\textless{}{-}} \DecValTok{0}\NormalTok{ until n}\OperatorTok{)} \OperatorTok{\{}
-      \ControlFlowTok{for} \OperatorTok{(}\NormalTok{j }\OperatorTok{\textless{}{-}} \DecValTok{0}\NormalTok{ until n }\OperatorTok{{-}}\NormalTok{ i }\OperatorTok{{-}} \DecValTok{1}\OperatorTok{)} \OperatorTok{\{}
-        \ControlFlowTok{if} \OperatorTok{(}\FunctionTok{arr}\OperatorTok{(}\NormalTok{j}\OperatorTok{)} \OperatorTok{\textgreater{}} \FunctionTok{arr}\OperatorTok{(}\NormalTok{j }\OperatorTok{+} \DecValTok{1}\OperatorTok{))} \OperatorTok{\{}
-          \KeywordTok{val}\NormalTok{ temp }\OperatorTok{=} \FunctionTok{arr}\OperatorTok{(}\NormalTok{j}\OperatorTok{)}
-          \FunctionTok{arr}\OperatorTok{(}\NormalTok{j}\OperatorTok{)} \OperatorTok{=} \FunctionTok{arr}\OperatorTok{(}\NormalTok{j }\OperatorTok{+} \DecValTok{1}\OperatorTok{)}
-          \FunctionTok{arr}\OperatorTok{(}\NormalTok{j }\OperatorTok{+} \DecValTok{1}\OperatorTok{)} \OperatorTok{=}\NormalTok{ temp}
-        \OperatorTok{\}}
-      \OperatorTok{\}}
-    \OperatorTok{\}}
-  \OperatorTok{\}}
+\begin{verbatim}
+  def main(args: Array[String]): Unit = {
+      val arr = Array(64, 34, 25, 12, 22, 11, 90)
 
-  \KeywordTok{def} \FunctionTok{main}\OperatorTok{(}\NormalTok{args}\OperatorTok{:} \ExtensionTok{Array}\OperatorTok{[}\ExtensionTok{String}\OperatorTok{]):} \BuiltInTok{Unit} \OperatorTok{=} \OperatorTok{\{}
-    \KeywordTok{val}\NormalTok{ arr }\OperatorTok{=} \ExtensionTok{Array}\OperatorTok{(}\DecValTok{64}\OperatorTok{,} \DecValTok{34}\OperatorTok{,} \DecValTok{25}\OperatorTok{,} \DecValTok{12}\OperatorTok{,} \DecValTok{22}\OperatorTok{,} \DecValTok{11}\OperatorTok{,} \DecValTok{90}\OperatorTok{)}
+      bubbleSort(arr)
 
-    \FunctionTok{bubbleSort}\OperatorTok{(}\NormalTok{arr}\OperatorTok{)}
+      println("Sorted array is: " + arr.mkString(", "))
+  }
+\end{verbatim}
 
-    \FunctionTok{println}\OperatorTok{(}\StringTok{"Sorted array is: "} \OperatorTok{+}\NormalTok{ arr}\OperatorTok{.}\FunctionTok{mkString}\OperatorTok{(}\StringTok{", "}\OperatorTok{))}
-  \OperatorTok{\}}
-\OperatorTok{\}}
-\end{Highlighting}
-\end{Shaded}
+  \} ```
+\end{itemize}
 
 Confrontando questi esempi, possiamo osservare le differenze sintattiche
 e di stile tra Python ed altri, importanti, linguaggi. Python si
@@ -2722,7 +2834,7 @@ Eseguiamo il nostro primo ``Hello, World!'':
 
 Premi il tasto di invio per vedere il risultato immediatamente.
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, coltitle=black, toprule=.15mm, bottomtitle=1mm, arc=.35mm, breakable, colframe=quarto-callout-warning-color-frame, colback=white, bottomrule=.15mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-warning-color!10!white, leftrule=.75mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Attenzione}, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, opacityback=0, rightrule=.15mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, breakable, left=2mm, coltitle=black, toptitle=1mm, arc=.35mm, colback=white, opacitybacktitle=0.6, bottomtitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, bottomrule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Attenzione}]
 
 Il REPL e l'interprete Python sono strettamente collegati, ma non sono
 esattamente la stessa cosa. Quando avvii l'interprete Python senza
@@ -2763,7 +2875,7 @@ Ecco come fare sui diversi sistemi operativi.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
+ \BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3326,6 +3438,884 @@ Binder è un servizio simile a Colab, anche se quest'ultimo offre
 strumenti generalmente più avanzati in termini di risorse computazionali
 e collaborazione. Binder di contro è basato su GitHub e ciò può essere
 utile in alcuni contesti.
+
+\chapter{La struttura lessicale di
+Python}\label{la-struttura-lessicale-di-python}
+
+Per iniziare ad imparare Python come linguaggio, partiamo da una
+semplificazione della stuttura lessicale, cioè dall'insieme di regole
+sintattiche più significative, sia per comprendere le regole di
+composizione di programmi comprensibili all'interprete, sia per
+sfrutturne appieno tutte le potenzialità.
+
+Ogni programma Python è costituito da una serie di file di testo
+contenenti il codice sorgente con una certa codifica, il default è
+l'UTF-8, ed ogni file si può vedere come una sequenza di istruzioni,
+righe e token. Le istruzioni danno la granularità dell'algoritmo, le
+righe definiscono come queste istruzioni sono distribuite nel testo e,
+infine, i token sono gli elementi atomici che hanno un significato per
+il linguaggio.
+
+\section{Righe}\label{righe}
+
+Le righe sono di due tipi: logiche e fisiche. Le seconde sono le più
+facilmente individuabili nel testo di un programma, perché sono
+terminate da un carattere di a capo. Una o più righe fisiche
+costituiscono una riga logica che corrisponde ad una istruzione.
+
+Vi sono due modi per dividere una riga logica in righe fisiche. Il primo
+è terminare con il backslash (\VERB|\OperatorTok{\textbackslash{}}|,
+poco usata la traduzione ``barra rovesciata'' o simili) tutte le righe
+fisiche meno l'ultima (intendendo con ciò che il backslash precede l'a
+capo):
+
+\phantomsection\label{annotated-cell-32}%
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=} \DecValTok{1} \OperatorTok{+} \DecValTok{2} \OperatorTok{+}\NormalTok{ \textbackslash{} }\hspace*{\fill}\NormalTok{\circled{1}}
+     \DecValTok{3}
+
+\ControlFlowTok{if}\NormalTok{ x }\OperatorTok{\textgreater{}} \DecValTok{5} \KeywordTok{and}\NormalTok{ \textbackslash{} }\hspace*{\fill}\NormalTok{\circled{2}}
+\NormalTok{   x }\OperatorTok{\textless{}} \DecValTok{9}\NormalTok{: }\hspace*{\fill}\NormalTok{\circled{3}}
+  \BuiltInTok{print}\NormalTok{(}\StringTok{"5 \textless{} x \textless{} 9"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{description}
+\tightlist
+\item[\circled{1}]
+L'istruzione di assegnamento è spezzata su due righe fisiche
+\item[\circled{2}]
+L'istruzione condizionale ha due espressioni che devono essere entrambe
+vere, ognuna su una riga fisica.
+\item[\circled{3}]
+Non importa quanto sono indentate le righe fisiche successive alla prima
+e ciò può essere sfruttato per incrementare la leggibilità, ad esempio,
+allineando le espressioni \texttt{x\ \textgreater{}\ 5} e
+\texttt{x\ \textless{}\ 9} in colonna.
+\end{description}
+
+Il secondo è per mezzo di parentesi, giacché tutte le righe fisiche che
+seguono una con parentesi tonda \VERB|\NormalTok{(}|, quadra
+\VERB|\NormalTok{[}| o graffa \VERB|\NormalTok{\{}| aperta, fino a
+quella con l'analoga parentesi chiusa, sono unite in una logica. Le
+regole di indentazione, che vedremo nel seguito, si applicano solo alla
+prima riga fisica.
+
+Esempi:
+
+\phantomsection\label{annotated-cell-33}%
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ (}\DecValTok{1} \OperatorTok{+} \DecValTok{2} \hspace*{\fill}\NormalTok{\circled{1}}
+     \OperatorTok{+} \DecValTok{3} \OperatorTok{+} \DecValTok{4}\NormalTok{)}
+
+\NormalTok{y }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }
+           \DecValTok{3}\NormalTok{, }\DecValTok{4} \OperatorTok{+} \hspace*{\fill}\NormalTok{\circled{2}}
+      \DecValTok{5}\NormalTok{] }
+
+\NormalTok{z }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2} \hspace*{\fill}\NormalTok{\circled{3}}
+\NormalTok{     , }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{]   }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{description}
+\tightlist
+\item[\circled{1}]
+L'espressione è spezzata su due righe fisiche e le parentesi tonde
+rappresentano un'alternativa all'uso del backslash.
+\item[\circled{2}]
+Questa riga e la successiva non hanno la stessa indentazione, anche se è
+da evitare perché poco leggibile.
+\item[\circled{3}]
+La lista è spezzata su due righe fisiche e, anche qui, così è poco
+leggibile.
+\end{description}
+
+\section{Commenti}\label{commenti}
+
+Un commento inizia con un carattere cancelletto (\VERB|\CommentTok{\#}|)
+e termina alla fine della riga fisica. I commenti non possono coesistere
+con il backslash come separatore di riga logica, giacché entrambi devono
+chiudere la riga fisica:
+
+\phantomsection\label{annotated-cell-34}%
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=} \DecValTok{1} \OperatorTok{+} \DecValTok{2} \OperatorTok{+}\NormalTok{ \textbackslash{} }\CommentTok{\# Commento }\hspace*{\fill}\NormalTok{\circled{1}}
+     \DecValTok{3}
+
+\ControlFlowTok{if}\NormalTok{ x }\OperatorTok{\textgreater{}} \DecValTok{5} \KeywordTok{and} \CommentTok{\# Commento \textbackslash{} }\hspace*{\fill}\NormalTok{\circled{2}}
+\NormalTok{   x }\OperatorTok{\textless{}} \DecValTok{9}\NormalTok{: }
+  \BuiltInTok{print}\NormalTok{(}\StringTok{"5 \textless{} x \textless{} 9"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{description}
+\tightlist
+\item[\circled{1}]
+Il backslash deve terminare la riga fisica, quindi non può essere
+seguito da un commento. Se necessario può andare o alla riga successiva,
+scelta consigliata, o la precedente.
+\item[\circled{2}]
+Il commento rende il backslash parte di esso quindi non segnala più la
+fine della riga fisica e, all'esecuzione, si avrà un
+\href{https://docs.python.org/3/library/exceptions.html\#SyntaxError}{SyntaxError}
+perché \texttt{and} deve essere seguito da un'espressione.
+\end{description}
+
+\section{Indentazione}\label{indentazione}
+
+Indentazione significa che spazi o, in alternativa, tabulazioni
+precedono un carattere che non sia nessuno dei due. Il numero di spazi
+ottenuto dopo la trasformazione delle tabulazioni in spazi, si definisce
+livello di indentazione. L'indentazione del codice è il modo che Python
+utilizza per raggruppare le istruzioni in un blocco, ove tutte devono
+presentare la medesima indentazione. La prima riga logica che ha una
+indentazione minore della precedente, segnala che il blocco è stato
+chiuso proprio da quest'ultima. Anche le clausole di un'istruzione
+composta devono avere la stessa indentazione.
+
+La prima istruzione di un file o la prima inserita al prompt
+\VERB|\OperatorTok{\textgreater{}\textgreater{}\textgreater{}}| del REPL
+non deve presentare spazi o tabulazioni, cioè ha un livello di
+indentazione pari a 0.
+
+Alcuni esempi:
+
+\begin{itemize}
+\item
+  Definizione di una funzione:
+
+\phantomsection\label{annotated-cell-79}%
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ somma(a, b): }\hspace*{\fill}\NormalTok{\circled{1}}
+\NormalTok{  risultato }\OperatorTok{=}\NormalTok{ a }\OperatorTok{+}\NormalTok{ b }\hspace*{\fill}\NormalTok{\circled{2}}
+  \ControlFlowTok{return}\NormalTok{ risultato }
+\end{Highlighting}
+\end{Shaded}
+
+  \begin{description}
+  \tightlist
+  \item[\circled{1}]
+  Prima riga senza indentazione.
+  \item[\circled{2}]
+  Questa riga e la successiva appartengono allo stesso blocco e,
+  pertanto, hanno la medesima indentazione.
+  \end{description}
+\item
+  Ciclo e test di condizione:
+
+\phantomsection\label{annotated-cell-80}%
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=} \DecValTok{10}
+
+\ControlFlowTok{if}\NormalTok{ x }\OperatorTok{\textless{}} \DecValTok{0}\NormalTok{: }\hspace*{\fill}\NormalTok{\circled{1}}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"x è negativo"}\NormalTok{) }\hspace*{\fill}\NormalTok{\circled{2}}
+\ControlFlowTok{elif}\NormalTok{ x }\OperatorTok{==} \DecValTok{0}\NormalTok{: }
+      \BuiltInTok{print}\NormalTok{(}\StringTok{"x è zero"}\NormalTok{) }
+\ControlFlowTok{else}\NormalTok{: }
+        \BuiltInTok{print}\NormalTok{(}\StringTok{"x è positivo"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+  \begin{description}
+  \tightlist
+  \item[\circled{1}]
+  Le tre clausole \VERB|\ControlFlowTok{if}| , \VERB|\NormalTok{then}| e
+  \VERB|\ControlFlowTok{else}| hanno identica indentazione.
+  \item[\circled{2}]
+  I tre blocchi hanno come unico vincolo quello di avere un livello
+  maggiore della riga precedente. I blocchi corrispondenti alle diverse
+  clausole non devono avere lo stesso livello di indentazione, anche se
+  è buona prassi farlo.
+  \end{description}
+\end{itemize}
+
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, opacityback=0, rightrule=.15mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, breakable, left=2mm, coltitle=black, toptitle=1mm, arc=.35mm, colback=white, opacitybacktitle=0.6, bottomtitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, bottomrule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Attenzione}]
+
+Non si possono avere sia spazi che tabulazioni per definire il livello
+di indentazione nello stesso file. Ciò perché renderebbe ambiguo il
+numero di spazi che si ottiene dopo la trasformazione delle tabulazioni
+in spazi. Quindi, o si usano spazi, scelta raccomandata, o tabulazioni.
+
+\end{tcolorbox}
+
+\section{Token}\label{token}
+
+Le righe logiche sono composte da token che si categorizzano in parole
+chiave, identificatori, operatori, delimitatori e letterali. I token
+sono separati da un numero arbitrario di spazi e tabulazioni. Ad
+esempio:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=} \DecValTok{1}  \OperatorTok{+}  \DecValTok{2}  \OperatorTok{+}  \DecValTok{3}
+
+\ControlFlowTok{if}\NormalTok{    x }\OperatorTok{\textgreater{}} \DecValTok{5}    \KeywordTok{and}\NormalTok{    x }\OperatorTok{\textless{}} \DecValTok{9}\NormalTok{: }
+  \BuiltInTok{print}\NormalTok{(}\StringTok{"5 \textless{} x \textless{} 9"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Identificatori}\label{identificatori}
+
+Un identificatore è un nome assegnato ad un oggetto, cioè una variabile,
+una funzione, una classe, un modulo e altro. Esso è \emph{case
+sensitive} cioè \VERB|\NormalTok{python}| e \VERB|\NormalTok{Python}|
+sono due identificatori diversi.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{intero }\OperatorTok{=} \DecValTok{42}  \CommentTok{\# Identificatore di un numero intero}
+\NormalTok{decimale }\OperatorTok{=} \FloatTok{3.14}  \CommentTok{\# Identificatore di un numero decimale}
+\NormalTok{testo }\OperatorTok{=} \StringTok{"Ciao, mondo!"}  \CommentTok{\# Identificatore di una stringa}
+\NormalTok{lista }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{]  }\CommentTok{\# Identificatore di una lista}
+\NormalTok{dizionario }\OperatorTok{=}\NormalTok{ \{}\StringTok{"chiave"}\NormalTok{: }\StringTok{"valore"}\NormalTok{\}  }\CommentTok{\# Identificatore di un dizionario}
+
+\KeywordTok{def}\NormalTok{ mia\_funzione(): }\CommentTok{\# Identificatore di funzione}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"Questa è una funzione"}\NormalTok{)}
+
+\CommentTok{\# Classe}
+\KeywordTok{class}\NormalTok{ MiaClasse: }\CommentTok{\# Identificatore di classe}
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, valore): }\CommentTok{\# Identificatore di metodo}
+        \VariableTok{self}\NormalTok{.valore }\OperatorTok{=}\NormalTok{ valore  }\CommentTok{\# Identificatore per un attributo}
+    
+    \KeywordTok{def}\NormalTok{ metodo(}\VariableTok{self}\NormalTok{):}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{"Questo è un metodo della classe"}\NormalTok{)}
+
+\ImportTok{import}\NormalTok{ math  }\CommentTok{\# Identificatore di un modulo}
+
+\KeywordTok{def}\NormalTok{ mio\_generatore(): }\CommentTok{\# Identificatore di un generatore}
+    \ControlFlowTok{yield} \DecValTok{1}
+    \ControlFlowTok{yield} \DecValTok{2}
+    \ControlFlowTok{yield} \DecValTok{3}
+
+\NormalTok{mio\_oggetto }\OperatorTok{=}\NormalTok{ MiaClasse(}\DecValTok{10}\NormalTok{)  }\CommentTok{\# Identificatore per un\textquotesingle{}istanza}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Parole chiave}\label{parole-chiave}
+
+Le parole chiave sono parole che non possono essere usate per scopi
+diversi da quelli predefiniti nel linguaggio e, quindi, non possono
+essere usate come identificatori. Ad esempio, \VERB|\VariableTok{True}|
+che rappresenta il valore logico di verità, non può essere usato per
+definire ad esempio una variabile.
+
+Esistono anche delle parole chiave contestuali, cioè che sono tali solo
+in alcuni contesti ed altrove possono essee usate come identificatori.
+Usiamo il codice seguente per ottenere una lista di parole chiave e
+parole chiave contestuali:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ keyword}
+
+\CommentTok{\# Si ottiene la lista delle parole chiave}
+\NormalTok{parole\_chiave }\OperatorTok{=}\NormalTok{ keyword.kwlist}
+
+\CommentTok{\# Si ottiene la lista delle parole chiave contestuali}
+\NormalTok{parole\_chiave\_contestuale }\OperatorTok{=}\NormalTok{ keyword.softkwlist}
+
+\CommentTok{\# Stampiamo la lista delle parole chiave}
+\BuiltInTok{print}\NormalTok{(parole\_chiave)}
+
+\CommentTok{\# Stampiamo la delle parole chiave contestuali}
+\BuiltInTok{print}\NormalTok{(parole\_chiave\_contestuale)}
+\end{Highlighting}
+\end{Shaded}
+
+Nella tabella seguente invece un elenco completo con breve descrizione:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.1852}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.8148}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Parola chiave
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Descrizione
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Valori booleani & \\
+\VERB|\VariableTok{False}| & Valore booleano falso \\
+\VERB|\VariableTok{True}| & Valore booleano vero \\
+Operatori logici & \\
+\VERB|\KeywordTok{and}| & Operatore logico AND \\
+\VERB|\KeywordTok{or}| & Operatore logico OR \\
+\VERB|\KeywordTok{not}| & Operatore logico NOT \\
+Operatori di controllo di flusso & \\
+\VERB|\ControlFlowTok{if}| & Utilizzato per creare un'istruzione
+condizionale \\
+\VERB|\ControlFlowTok{elif}| & Utilizzato per aggiungere condizioni in
+un blocco if \\
+\VERB|\ControlFlowTok{else}| & Utilizzato per specificare il blocco di
+codice da eseguire se le condizioni precedenti sono false \\
+\VERB|\ControlFlowTok{for}| & Utilizzato per creare un ciclo for \\
+\VERB|\ControlFlowTok{while}| & Utilizzato per creare un ciclo while \\
+\VERB|\ControlFlowTok{break}| & Interrompe il ciclo in corso \\
+\VERB|\ControlFlowTok{continue}| & Salta l'iterazione corrente del ciclo
+e passa alla successiva \\
+\VERB|\ControlFlowTok{pass}| & Indica un blocco di codice vuoto \\
+\VERB|\ControlFlowTok{return}| & Utilizzato per restituire un valore da
+una funzione \\
+Gestione delle eccezioni & \\
+\VERB|\ControlFlowTok{try}| & Utilizzato per definire un blocco di
+codice da eseguire e gestire le eccezioni \\
+\VERB|\ControlFlowTok{except}| & Utilizzato per catturare le eccezioni
+in un blocco try-except \\
+\VERB|\ControlFlowTok{finally}| & Blocco di codice che viene eseguito
+alla fine di un blocco try, indipendentemente dal fatto che si sia
+verificata un'eccezione \\
+\VERB|\ControlFlowTok{raise}| & Utilizzato per sollevare un'eccezione \\
+Definizione delle funzioni e classi & \\
+\VERB|\KeywordTok{def}| & Utilizzato per definire una funzione \\
+\VERB|\KeywordTok{class}| & Utilizzato per definire una classe \\
+\VERB|\KeywordTok{lambda}| & Utilizzato per creare funzioni anonime \\
+Gestione contesto di dichiarazione di variabili & \\
+\VERB|\KeywordTok{global}| & Utilizzato per dichiarare variabili
+globali \\
+\VERB|\KeywordTok{nonlocal}| & Utilizzato per dichiarare variabili non
+locali \\
+Operazioni su moduli & \\
+\VERB|\ImportTok{import}| & Utilizzato per importare moduli \\
+\VERB|\ImportTok{from}| & Utilizzato per importare specifici elementi da
+un modulo \\
+\VERB|\ImportTok{as}| & Utilizzato per creare alias, ad esempio negli
+import \\
+Operatori di identità e appartenenza & \\
+\VERB|\KeywordTok{in}| & Utilizzato per verificare se un valore esiste
+in una sequenza \\
+\VERB|\KeywordTok{is}| & Operatore di confronto di identità \\
+Gestione delle risorse & \\
+\VERB|\ControlFlowTok{with}| & Utilizzato per garantire un'azione di
+pulizia come il rilascio delle risorse \\
+Programmazione asincrona & \\
+\VERB|\ControlFlowTok{async}| & Utilizzato per definire funzioni
+asincrone \\
+\VERB|\ControlFlowTok{await}| & Utilizzato per attendere un risultato in
+una funzione asincrona \\
+Varie & \\
+\VERB|\KeywordTok{del}| & Utilizzato per eliminare oggetti \\
+\VERB|\ControlFlowTok{assert}| & Utilizzato per le asserzioni, verifica
+che un'espressione sia vera \\
+\VERB|\ControlFlowTok{yield}| & Utilizzato per restituire un generatore
+da una funzione \\
+\VERB|\VariableTok{None}| & Rappresenta l'assenza di valore o un valore
+nullo \\
+Parole chiave contestuali & \\
+\VERB|\NormalTok{match}| & Utilizzato nell'istruzione
+\VERB|\NormalTok{match}| per il pattern matching \\
+\VERB|\NormalTok{case}| & Utilizzato nell'istruzione
+\VERB|\NormalTok{match}| per definire un ramo \\
+\VERB|\NormalTok{\_}| & Utilizzato come identificatore speciale
+nell'istruzione \VERB|\NormalTok{match}| per indicare un pattern di
+default o ignorare valori \\
+\VERB|\BuiltInTok{type}| & Utilizzato in specifici contesti per
+dichiarazioni di tipo \\
+\end{longtable}
+
+Esempi di uso di parole chiave contestuali:
+
+\begin{itemize}
+\item
+  \VERB|\NormalTok{match}|, \VERB|\NormalTok{case}| e
+  \VERB|\NormalTok{\_}|:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Definiamo una funzione che utilizza il pattern matching}
+\KeywordTok{def}\NormalTok{ process\_value(value):}
+    \ControlFlowTok{match}\NormalTok{ value:}
+        \ControlFlowTok{case} \DecValTok{1}\NormalTok{:}
+            \BuiltInTok{print}\NormalTok{(}\StringTok{"Uno"}\NormalTok{)}
+        \ControlFlowTok{case} \DecValTok{2}\NormalTok{:}
+            \BuiltInTok{print}\NormalTok{(}\StringTok{"Due"}\NormalTok{)}
+        \ControlFlowTok{case}\NormalTok{ \_:}
+            \BuiltInTok{print}\NormalTok{(}\StringTok{"Altro"}\NormalTok{)}
+
+\CommentTok{\# Utilizzo di \textasciigrave{}match\textasciigrave{} come identificatore per una variabile}
+\NormalTok{match }\OperatorTok{=} \StringTok{"Questo è un identificatore valido"}
+
+\CommentTok{\# Test della funzione}
+\NormalTok{process\_value(}\DecValTok{1}\NormalTok{)  }\CommentTok{\# Output: Uno}
+\NormalTok{process\_value(}\DecValTok{2}\NormalTok{)  }\CommentTok{\# Output: Due}
+\NormalTok{process\_value(}\DecValTok{3}\NormalTok{)  }\CommentTok{\# Output: Altro}
+
+\CommentTok{\# Stampa della variabile \textasciigrave{}match\textasciigrave{}}
+\BuiltInTok{print}\NormalTok{(match)  }\CommentTok{\# Output: Questo è un identificatore valido}
+\end{Highlighting}
+\end{Shaded}
+\item
+  \VERB|\BuiltInTok{type}|:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ typing }\ImportTok{import}\NormalTok{ TypeAlias}
+
+\CommentTok{\# Dichiarazione di un alias di tipo}
+\BuiltInTok{type}\NormalTok{ Point }\OperatorTok{=} \BuiltInTok{tuple}\NormalTok{[}\BuiltInTok{float}\NormalTok{, }\BuiltInTok{float}\NormalTok{]}
+
+\CommentTok{\# Utilizzo dell\textquotesingle{}alias di tipo}
+\KeywordTok{def}\NormalTok{ distanza(p1: Point, p2: Point) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{float}\NormalTok{:}
+    \ControlFlowTok{return}\NormalTok{ ((p1[}\DecValTok{0}\NormalTok{] }\OperatorTok{{-}}\NormalTok{ p2[}\DecValTok{0}\NormalTok{]) }\OperatorTok{**} \DecValTok{2} \OperatorTok{+}\NormalTok{ (p1[}\DecValTok{1}\NormalTok{] }\OperatorTok{{-}}\NormalTok{ p2[}\DecValTok{1}\NormalTok{]) }\OperatorTok{**} \DecValTok{2}\NormalTok{) }\OperatorTok{**} \FloatTok{0.5}
+
+\CommentTok{\# Test della funzione con alias di tipo}
+\NormalTok{punto1: Point }\OperatorTok{=}\NormalTok{ (}\FloatTok{1.0}\NormalTok{, }\FloatTok{2.0}\NormalTok{) }
+\NormalTok{punto2: Point }\OperatorTok{=}\NormalTok{ (}\FloatTok{4.0}\NormalTok{, }\FloatTok{6.0}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(distanza(punto1, punto2))  }\CommentTok{\# Output: 5.0}
+\end{Highlighting}
+\end{Shaded}
+\end{itemize}
+
+\section{}\label{section}
+
+\subsection{Classi riservate di
+identificatori}\label{classi-riservate-di-identificatori}
+
+Alcune classi di identificatori (oltre alle parole chiave) hanno
+significati speciali in Python. Queste classi sono identificate dai
+pattern di caratteri di sottolineatura (underscore) all'inizio e alla
+fine dei nomi. Tuttavia, l'uso di questi identificatori non impone
+limitazioni rigide al programmatore, ma è importante seguire le
+convenzioni per evitare ambiguità e problemi di compatibilità.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\_}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Non importato da \texttt{from\ module\ import\ *}}: Gli
+    identificatori che iniziano con un singolo underscore non vengono
+    importati con un'istruzione di importazione globale.
+  \item
+    \textbf{Pattern nei match}: Nel contesto di un pattern di
+    corrispondenza all'interno di un'istruzione \texttt{match},
+    \texttt{\_} è una soft keyword che denota un wildcard (carattere
+    jolly).
+  \item
+    \textbf{Interprete interattivo}: L'interprete interattivo rende
+    disponibile il risultato dell'ultima valutazione nella variabile
+    \texttt{\_}. Questo risultato è memorizzato nel modulo builtins,
+    insieme alle funzioni built-in come \texttt{print}.
+  \item
+    \textbf{Altro uso}: Altrove, \texttt{\_} è un identificatore
+    regolare. Viene spesso usato per nominare elementi ``speciali'', ma
+    non è speciale per Python stesso. Il nome \texttt{\_} è comunemente
+    usato in congiunzione con l'internazionalizzazione (vedi la
+    documentazione del modulo gettext per ulteriori informazioni su
+    questa convenzione) ed è anche comunemente utilizzato per variabili
+    non usate.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Esempio}\label{esempio-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Utilizzo di \_ come identificatore in vari contesti}
+
+\CommentTok{\# Non importato con from module import *}
+\NormalTok{\_private\_variable }\OperatorTok{=} \StringTok{"Questa variabile non verrà importata con \textquotesingle{}from module import *\textquotesingle{}"}
+
+\CommentTok{\# Utilizzo di \_ come wildcard in un\textquotesingle{}istruzione match}
+\KeywordTok{def}\NormalTok{ process\_value(value):}
+    \ControlFlowTok{match}\NormalTok{ value:}
+        \ControlFlowTok{case} \DecValTok{1}\NormalTok{:}
+            \BuiltInTok{print}\NormalTok{(}\StringTok{"Uno"}\NormalTok{)}
+        \ControlFlowTok{case}\NormalTok{ \_:}
+            \BuiltInTok{print}\NormalTok{(}\StringTok{"Altro"}\NormalTok{)}
+
+\NormalTok{process\_value(}\DecValTok{2}\NormalTok{)  }\CommentTok{\# Output: Altro}
+
+\CommentTok{\# Uso di \_ nell\textquotesingle{}interprete interattivo}
+\NormalTok{result }\OperatorTok{=} \DecValTok{5} \OperatorTok{+} \DecValTok{3}
+\BuiltInTok{print}\NormalTok{(\_)  }\CommentTok{\# Output: 8 (nell\textquotesingle{}interprete interattivo)}
+
+\CommentTok{\# Uso di \_ come variabile regolare}
+\NormalTok{\_ }\OperatorTok{=} \StringTok{"Valore non usato"}
+
+\CommentTok{\# Uso di \_ per internazionalizzazione}
+\ImportTok{import}\NormalTok{ gettext}
+\NormalTok{gettext.install(}\StringTok{\textquotesingle{}myapplication\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(\_(}\StringTok{\textquotesingle{}Hello, world\textquotesingle{}}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\_\_*\_\_}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Nomi definiti dal sistema}: Questi nomi, informalmente noti
+    come nomi ``dunder'', sono definiti dall'interprete e dalla sua
+    implementazione (inclusa la libreria standard). I nomi di sistema
+    attuali sono discussi nella sezione dei nomi dei metodi speciali e
+    altrove. Altri potrebbero essere definiti nelle versioni future di
+    Python. Qualsiasi uso di nomi \texttt{\_\_*\_\_}, in qualsiasi
+    contesto, che non segua l'uso esplicitamente documentato, è soggetto
+    a rottura senza preavviso.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Esempio}\label{esempio-2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Utilizzo di nomi "dunder"}
+\KeywordTok{class}\NormalTok{ MyClass:}
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, value):}
+        \VariableTok{self}\NormalTok{.\_\_value }\OperatorTok{=}\NormalTok{ value  }\CommentTok{\# Questo è un nome "dunder" per un attributo privato}
+    
+    \KeywordTok{def} \FunctionTok{\_\_str\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{):}
+        \ControlFlowTok{return} \SpecialStringTok{f"MyClass con valore }\SpecialCharTok{\{}\VariableTok{self}\SpecialCharTok{.}\NormalTok{\_\_value}\SpecialCharTok{\}}\SpecialStringTok{"}
+
+\NormalTok{obj }\OperatorTok{=}\NormalTok{ MyClass(}\DecValTok{10}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(obj)  }\CommentTok{\# Output: MyClass con valore 10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\_\_*}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Nomi privati della classe}: I nomi in questa categoria,
+    quando utilizzati nel contesto di una definizione di classe, vengono
+    riscritti per utilizzare una forma mangled per evitare conflitti di
+    nome tra attributi ``privati'' delle classi base e derivate.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Esempio}\label{esempio-3}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Utilizzo di nomi privati della classe}
+\KeywordTok{class}\NormalTok{ BaseClass:}
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{):}
+        \VariableTok{self}\NormalTok{.\_\_private\_attr }\OperatorTok{=} \StringTok{"Base"}
+
+\KeywordTok{class}\NormalTok{ DerivedClass(BaseClass):}
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{):}
+        \BuiltInTok{super}\NormalTok{().}\FunctionTok{\_\_init\_\_}\NormalTok{()}
+        \VariableTok{self}\NormalTok{.\_\_private\_attr }\OperatorTok{=} \StringTok{"Derived"}
+
+\NormalTok{base\_obj }\OperatorTok{=}\NormalTok{ BaseClass()}
+\NormalTok{derived\_obj }\OperatorTok{=}\NormalTok{ DerivedClass()}
+
+\CommentTok{\# Accesso ai nomi riscritti (name mangling)}
+\BuiltInTok{print}\NormalTok{(base\_obj.\_BaseClass\_\_private\_attr)  }\CommentTok{\# Output: Base}
+\BuiltInTok{print}\NormalTok{(derived\_obj.\_DerivedClass\_\_private\_attr)  }\CommentTok{\# Output: Derived}
+\end{Highlighting}
+\end{Shaded}
+
+In sintesi, Python riserva certe classi di identificatori che hanno
+significati speciali e seguono regole specifiche, principalmente per
+garantire l'integrità del codice e la compatibilità tra versioni diverse
+del linguaggio. Tuttavia, queste convenzioni non pongono limitazioni
+rigide al programmatore, che può comunque utilizzare questi
+identificatori secondo necessità, purché consapevole delle loro
+implicazioni.
+
+\section{Operatori}\label{operatori}
+
+Gli operatori sono rappresentati da simboli non alfanumerici e, quando
+applicati a uno o più identificatori, letterali o espressioni (definiti
+genericamente operandi), producono un risultato. Attenzione a non
+confondere la definizione di operatore come token, come considerata qui,
+con quella di operatore come funzionalità algoritmica, poiché alcune
+parole chiave sono operatori algoritmici e anche le funzioni possono
+agire come operatori.
+
+Esempi:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=} \DecValTok{5}
+\NormalTok{y }\OperatorTok{=} \DecValTok{10}
+\NormalTok{z }\OperatorTok{=}\NormalTok{ x }\OperatorTok{+}\NormalTok{ y }\CommentTok{\# Utilizza l\textquotesingle{}operatore + sugli identificatori x e y}
+
+\BuiltInTok{sum} \OperatorTok{=} \DecValTok{3} \OperatorTok{+} \DecValTok{4} \CommentTok{\# Utilizza l\textquotesingle{}operatore + su letterali}
+
+\NormalTok{result }\OperatorTok{=}\NormalTok{ (x }\OperatorTok{*}\NormalTok{ y) }\OperatorTok{+}\NormalTok{ (z }\OperatorTok{/} \DecValTok{2}\NormalTok{) }\CommentTok{\# Utilizza vari operatori su espressioni}
+\end{Highlighting}
+\end{Shaded}
+
+In tabella l'elenco degli operatori:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2222}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.6111}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Tipo di operatore
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Operatore
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Descrizione
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Aritmetici & \VERB|\OperatorTok{+}| & Addizione \\
+& \VERB|\OperatorTok{{-}}| & Sottrazione \\
+& \VERB|\OperatorTok{*}| & Moltiplicazione \\
+& \VERB|\OperatorTok{/}| & Divisione \\
+& \VERB|\OperatorTok{//}| & Divisione intera \\
+& \VERB|\OperatorTok{\%}| & Modulo \\
+& \VERB|\OperatorTok{**}| & Esponenziazione \\
+& \VERB|\OperatorTok{@}| & Matrice (operatore di moltiplicazione) \\
+Confronto & \VERB|\OperatorTok{\textless{}}| & Minore \\
+& \VERB|\OperatorTok{\textgreater{}}| & Maggiore \\
+& \VERB|\OperatorTok{\textless{}=}| & Minore o uguale \\
+& \VERB|\OperatorTok{\textgreater{}=}| & Maggiore o uguale \\
+& \VERB|\OperatorTok{==}| & Uguale \\
+& \VERB|\OperatorTok{!=}| & Diverso \\
+Bitwise & \VERB|\OperatorTok{\&}| & AND bit a bit \\
+& \VERB|\OperatorTok{\VerbBar{}}| & OR bit a bit \\
+& \VERB|\OperatorTok{\^{}}| & XOR bit a bit \\
+& \VERB|\OperatorTok{\textasciitilde{}}| & NOT bit a bit \\
+& \VERB|\OperatorTok{\textless{}\textless{}}| & Shift a sinistra \\
+& \VERB|\OperatorTok{\textgreater{}\textgreater{}}| & Shift a destra \\
+Assegnazione & \VERB|\OperatorTok{:=}| & Operatore di assegnazione
+(walrus) \\
+\end{longtable}
+
+Esempio su \VERB|\OperatorTok{@}| che illustra un aspetto importante: il
+comportamento degli operatori può (o meglio, deve) essere definito
+quando si creano dei tipi di oggetto. Infatti, nel codice seguente, è
+definita una matrice assieme a una delle operazioni matematiche più
+comuni che è la moltiplicazione, implementata per mezzo di
+\VERB|\FunctionTok{\_\_matmul\_\_}|:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Matrice:}
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, righe):}
+        \VariableTok{self}\NormalTok{.righe }\OperatorTok{=}\NormalTok{ righe}
+        \VariableTok{self}\NormalTok{.num\_righe }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(righe)}
+        \VariableTok{self}\NormalTok{.num\_colonne }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(righe[}\DecValTok{0}\NormalTok{]) }\ControlFlowTok{if}\NormalTok{ righe }\ControlFlowTok{else} \DecValTok{0}
+
+    \KeywordTok{def} \FunctionTok{\_\_matmul\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, altra):}
+        \CommentTok{\# Controlla se le dimensioni sono compatibili per la moltiplicazione}
+        \ControlFlowTok{if} \VariableTok{self}\NormalTok{.num\_colonne }\OperatorTok{!=}\NormalTok{ altra.num\_righe:}
+            \ControlFlowTok{raise} \PreprocessorTok{ValueError}\NormalTok{(}\StringTok{"Non è possibile moltiplicare le matrici: "}
+                             \StringTok{"dimensioni incompatibili."}\NormalTok{)}
+        
+        \CommentTok{\# Inizializza la matrice risultato con zeri}
+\NormalTok{        risultato }\OperatorTok{=}\NormalTok{ [[}\DecValTok{0} \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(altra.num\_colonne)]}
+                     \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\VariableTok{self}\NormalTok{.num\_righe)]}
+        
+        \CommentTok{\# Esegue la moltiplicazione delle matrici}
+        \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\VariableTok{self}\NormalTok{.num\_righe):}
+            \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(altra.num\_colonne):}
+                \ControlFlowTok{for}\NormalTok{ k }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\VariableTok{self}\NormalTok{.num\_colonne):}
+\NormalTok{                    risultato[i][j] }\OperatorTok{+=}\NormalTok{ (}\VariableTok{self}\NormalTok{.righe[i][k] }\OperatorTok{*}
+\NormalTok{                                        altra.righe[k][j])}
+        
+        \ControlFlowTok{return}\NormalTok{ Matrice(risultato)}
+
+    \KeywordTok{def} \FunctionTok{\_\_repr\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{):}
+        \CommentTok{\# Rappresentazione leggibile della matrice}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.join([}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{str}\NormalTok{, riga)) }\ControlFlowTok{for}\NormalTok{ riga }\KeywordTok{in} \VariableTok{self}\NormalTok{.righe])}
+
+\CommentTok{\# Definizione di due matrici}
+\NormalTok{A }\OperatorTok{=}\NormalTok{ Matrice([[}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{], [}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{]])}
+\NormalTok{B }\OperatorTok{=}\NormalTok{ Matrice([[}\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{], [}\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{]])}
+
+\CommentTok{\# Moltiplicazione di matrici utilizzando l\textquotesingle{}operatore @}
+\NormalTok{C }\OperatorTok{=}\NormalTok{ A }\OperatorTok{@}\NormalTok{ B}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Matrice A:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(A)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Matrice B:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(B)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Risultato di A @ B:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(C)}
+\end{Highlighting}
+\end{Shaded}
+
+Infine, \VERB|\OperatorTok{@}| è anche un delimitatore.
+
+\subsection{Delimitatori}\label{delimitatori}
+
+In Python, alcuni token servono come delimitatori nella grammatica del
+linguaggio. I delimitatori sono caratteri che separano le varie
+componenti del codice, come espressioni, blocchi di codice, parametri di
+funzioni e istruzioni.
+
+La seguente tabella include tutti i delimitatori e i principali
+utilizzi:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2619}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.7381}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Delimitatore
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Descrizione
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\VERB|\NormalTok{(}| & Utilizzata per raggruppare espressioni, chiamate
+di funzione e definizioni di tupla \\
+\VERB|\NormalTok{)}| & Utilizzata per chiudere le parentesi tonde
+aperte \\
+\VERB|\NormalTok{[}| & Utilizzate per definire liste e accedere agli
+elementi delle liste, tuple, o stringhe \\
+\VERB|\NormalTok{]}| & Utilizzate per chiudere le parentesi quadre
+aperte \\
+\VERB|\NormalTok{\{}| & Utilizzate per definire dizionari e set \\
+\VERB|\NormalTok{\}}| & Utilizzate per chiudere le parentesi graffe
+aperte \\
+\VERB|\NormalTok{,}| & Utilizzata per separare elementi in liste, tuple,
+e argomenti nelle chiamate di funzione \\
+\VERB|\NormalTok{:}| & Utilizzato per definire blocchi di codice (come
+in \VERB|\ControlFlowTok{if}|, \VERB|\ControlFlowTok{for}|,
+\VERB|\ControlFlowTok{while}|, \VERB|\KeywordTok{def}|,
+\VERB|\KeywordTok{class}|) e per gli slice \\
+\VERB|\NormalTok{.}| & Utilizzato per accedere agli attributi di un
+oggetto. Può apparire in letterali decimnali e immaginari \\
+\VERB|\OperatorTok{;}| & Utilizzato per separare istruzioni multiple
+sulla stessa riga \\
+\VERB|\OperatorTok{@}| & Utilizzato per dichiarare decoratori per
+funzioni e metodi \\
+\VERB|\OperatorTok{=}| & Operatore utilizzato per assegnare valori a
+variabili \\
+\VERB|\OperatorTok{{-}\textgreater{}}| & Annotazione del tipo di ritorno
+delle funzioni \\
+\VERB|\OperatorTok{+=}| & Assegnazione aumentata con addizione. Aggiunge
+il valore a destra a quello a sinistra e assegna il risultato alla
+variabile a sinistra. Come i successivi, è sia un delimitatore che un
+operatore \\
+\VERB|\OperatorTok{{-}=}| & Assegnazione aumentata con sottrazione \\
+\VERB|\OperatorTok{*=}| & Assegnazione aumentata con moltiplicazione \\
+\VERB|\OperatorTok{/=}| & Assegnazione aumentata con divisione \\
+\VERB|\OperatorTok{//=}| & Assegnazione aumentata con divisione
+intera \\
+\VERB|\OperatorTok{\%=}| & Assegnazione aumentata con modulo \\
+\VERB|\OperatorTok{@=}| & Assegnazione aumentata con moltiplicazione di
+matrici \\
+\VERB|\OperatorTok{\&=}| & Assegnazione aumentata con AND bit a bit \\
+\VERB|\OperatorTok{\VerbBar{}=}| & Assegnazione aumentata con OR bit a
+bit \\
+\VERB|\OperatorTok{\^{}=}| & Assegnazione aumentata con XOR bit a bit \\
+\VERB|\OperatorTok{\textgreater{}\textgreater{}=}| & Assegnazione
+aumentata con shift a destra \\
+\VERB|\OperatorTok{\textless{}\textless{}=}| & Assegnazione aumentata
+con shift a sinistra \\
+\VERB|\OperatorTok{**=}| & Assegnazione aumentata con esponenziazione \\
+\end{longtable}
+
+Una sequenza di tre punti, comunemente indicata come ellissi anche al
+difuori dei linguaggi di
+programmazione,\href{L'ellissi\%20è\%20usata,\%20ad\%20esempio,\%20in\%20C\%20per\%20dichiarare\%20funzioni\%20che\%20accettano\%20un\%20numero\%20variaible\%20di\%20parametri\%20e\%20i\%20Javascript\%20come\%20operatore\%20per\%20espandere\%20gli\%20array\%20o\%20le\%20proprietà\%20di\%20un\%20oggetto.}{1\^{}}
+è trattata come un token a sé e corrisponde ad un oggetto predefinito
+chiamato
+\href{https://docs.python.org/3/reference/datamodel.html\#ellipsis}{Ellipsis},
+con applicazioni in diversi contesti:
+
+\phantomsection\label{annotated-cell-43}%
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(...))  }\CommentTok{\# \textless{}class \textquotesingle{}ellipsis\textquotesingle{}\textgreater{} }\hspace*{\fill}\NormalTok{\circled{1}}
+
+\KeywordTok{def}\NormalTok{ funzione\_da\_completare():}
+\NormalTok{    ... }\hspace*{\fill}\NormalTok{\circled{2}}
+
+\KeywordTok{class}\NormalTok{ ClasseEsempio:}
+    \KeywordTok{def}\NormalTok{ metodo\_da\_completare(}\VariableTok{self}\NormalTok{):}
+\NormalTok{        ...}
+
+\ImportTok{from}\NormalTok{ typing }\ImportTok{import}\NormalTok{ Callable}
+
+\KeywordTok{def}\NormalTok{ funzione\_variadica(func: Callable[..., }\BuiltInTok{int}\NormalTok{]): }\hspace*{\fill}\NormalTok{\circled{3}}
+    \ControlFlowTok{pass}
+
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+
+\NormalTok{array }\OperatorTok{=}\NormalTok{ np.array([[[}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{], [}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{]], [[}\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{], [}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{12}\NormalTok{]]]) }
+
+\BuiltInTok{print}\NormalTok{(array[..., }\DecValTok{1}\NormalTok{]) }\hspace*{\fill}\NormalTok{\circled{4}}
+\CommentTok{\# Output: }
+\CommentTok{\# [[ 2  5]}
+\CommentTok{\#  [ 8 11]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{description}
+\tightlist
+\item[\circled{1}]
+Otteniamo il tipo dell'oggetto ellissi.
+\item[\circled{2}]
+Utilizzo come segnaposto per indicare che la funzione è da completare.
+Da notare che chiamare la funzione
+\VERB|\NormalTok{funzione\_da\_completare()}| non dà errore.
+\item[\circled{3}]
+L'uso di \VERB|\NormalTok{Callable[..., }\BuiltInTok{int}\NormalTok{]}|
+indica una funzione che può accettare un numero variabile di argomenti
+di qualsiasi tipo e restituire un valore di tipo int.
+\item[\circled{4}]
+\VERB|\NormalTok{numpy}| è una libreria di calcolo matriciale molto
+diffusa. L'ellissi è utilizzata per effettuare uno sezione complessa
+della matrice secondo tutte le dimensioni precedenti all'ultima. In
+altre parole, l'ellissi permette di selezionare interamente tutte le
+dimensioni tranne l'ultima specificata.
+\end{description}
+
+Alcuni caratteri ASCII hanno un significato speciale come parte di altri
+token o sono significativi per l'analizzatore lessicale:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2706}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.7294}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Carattere
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Descrizione
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\VERB|\CommentTok{\textquotesingle{}}| & Utilizzato per definire
+stringhe di caratteri. \\
+\VERB|\CommentTok{"}| & Utilizzato per definire stringhe di
+caratteri. \\
+\VERB|\CommentTok{\#}| & Simbolo di commento. Utilizzato per indicare un
+commento, che viene ignorato dall'interprete Python. \\
+\VERB|\OperatorTok{\textbackslash{}}| & Backslash. Utilizzato per
+caratteri di escape nelle stringhe e per continuare le righe di codice
+su più righe fisiche. \\
+\end{longtable}
+
+Alcuni caratteri ASCII non sono utilizzati in Python e la loro presenza
+al difuori dei letterali di stringa e dei commenti genera un errore:
+\texttt{\$}, \texttt{?}, \texttt{\textasciigrave{}}.
 
 \cleardoublepage
 \phantomsection

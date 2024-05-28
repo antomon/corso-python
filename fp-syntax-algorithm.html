@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Da neofita di Python a campione – 3&nbsp; Sintassi dei linguaggi di programmazione e algoritmi dei programmi</title>
+<title>Da neofita di Python a campione – 3&nbsp; Sintassi e semantica dei linguaggi di programmazione e algoritmi dei programmi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -74,6 +108,8 @@ ul.task-list li input[type="checkbox"] {
     document.body.classList.add('hypothesis-enabled');
   });
 </script>
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.5.2/core.css">
+<script type="module" src="https://pyscript.net/releases/2024.5.2/core.js"></script>
 
 
 </head>
@@ -87,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fp.html">Prima parte: I fondamenti</a></li><li class="breadcrumb-item"><a href="./fp-syntax-algorithm.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi dei linguaggi di programmazione e algoritmi dei programmi</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fp.html">Prima parte: I fondamenti</a></li><li class="breadcrumb-item"><a href="./fp-syntax-algorithm.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi e semantica dei linguaggi di programmazione e algoritmi dei programmi</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Ricerca" onclick="window.quartoOpenSearch();">
@@ -185,7 +221,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./fp-syntax-algorithm.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi dei linguaggi di programmazione e algoritmi dei programmi</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi e semantica dei linguaggi di programmazione e algoritmi dei programmi</span></span></a>
   </div>
 </li>
       </ul>
@@ -202,13 +238,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sp-python-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">introduzione a Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduzione a Python</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sp-python-install.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sp-python-syntax.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La struttura lessicale di Python</span></span></a>
   </div>
 </li>
       </ul>
@@ -240,22 +282,28 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Indice</h2>
    
   <ul>
-  <li><a href="#che-cosè-un-algoritmo" id="toc-che-cosè-un-algoritmo" class="nav-link active" data-scroll-target="#che-cosè-un-algoritmo"><span class="header-section-number">3.1</span> Che cos’è un algoritmo?</a></li>
-  <li><a href="#sintassi-e-semantica-dei-linguaggi-di-programmazione" id="toc-sintassi-e-semantica-dei-linguaggi-di-programmazione" class="nav-link" data-scroll-target="#sintassi-e-semantica-dei-linguaggi-di-programmazione"><span class="header-section-number">3.2</span> Sintassi e semantica dei linguaggi di programmazione</a>
+  <li><a href="#sintassi-e-semantica-dei-linguaggi-di-programmazione" id="toc-sintassi-e-semantica-dei-linguaggi-di-programmazione" class="nav-link active" data-scroll-target="#sintassi-e-semantica-dei-linguaggi-di-programmazione"><span class="header-section-number">3.1</span> Sintassi e semantica dei linguaggi di programmazione</a></li>
+  <li><a href="#sintassi" id="toc-sintassi" class="nav-link" data-scroll-target="#sintassi"><span class="header-section-number">3.2</span> Sintassi</a>
   <ul class="collapse">
-  <li><a href="#sintassi" id="toc-sintassi" class="nav-link" data-scroll-target="#sintassi"><span class="header-section-number">3.2.1</span> Sintassi</a></li>
-  <li><a href="#semantica" id="toc-semantica" class="nav-link" data-scroll-target="#semantica"><span class="header-section-number">3.2.2</span> Semantica</a></li>
+  <li><a href="#espressioni" id="toc-espressioni" class="nav-link" data-scroll-target="#espressioni"><span class="header-section-number">3.2.1</span> Espressioni</a></li>
+  <li><a href="#istruzioni-semplici" id="toc-istruzioni-semplici" class="nav-link" data-scroll-target="#istruzioni-semplici"><span class="header-section-number">3.2.2</span> Istruzioni semplici</a></li>
+  <li><a href="#istruzioni-complesse-e-blocchi-di-codice" id="toc-istruzioni-complesse-e-blocchi-di-codice" class="nav-link" data-scroll-target="#istruzioni-complesse-e-blocchi-di-codice"><span class="header-section-number">3.2.3</span> Istruzioni complesse e blocchi di codice</a></li>
+  <li><a href="#organizzazione-del-codice-in-un-programma" id="toc-organizzazione-del-codice-in-un-programma" class="nav-link" data-scroll-target="#organizzazione-del-codice-in-un-programma"><span class="header-section-number">3.2.4</span> Organizzazione del codice in un programma</a></li>
   </ul></li>
-  <li><a href="#esempio-di-algoritmo" id="toc-esempio-di-algoritmo" class="nav-link" data-scroll-target="#esempio-di-algoritmo"><span class="header-section-number">3.3</span> Esempio di algoritmo</a></li>
+  <li><a href="#semantica" id="toc-semantica" class="nav-link" data-scroll-target="#semantica"><span class="header-section-number">3.3</span> Semantica</a></li>
+  <li><a href="#algoritmi" id="toc-algoritmi" class="nav-link" data-scroll-target="#algoritmi"><span class="header-section-number">3.4</span> Algoritmi</a>
+  <ul class="collapse">
+  <li><a href="#esempio" id="toc-esempio" class="nav-link" data-scroll-target="#esempio"><span class="header-section-number">3.4.1</span> Esempio</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/fp-syntax-algorithm.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fp.html">Prima parte: I fondamenti</a></li><li class="breadcrumb-item"><a href="./fp-syntax-algorithm.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi dei linguaggi di programmazione e algoritmi dei programmi</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fp.html">Prima parte: I fondamenti</a></li><li class="breadcrumb-item"><a href="./fp-syntax-algorithm.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi e semantica dei linguaggi di programmazione e algoritmi dei programmi</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi dei linguaggi di programmazione e algoritmi dei programmi</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi e semantica dei linguaggi di programmazione e algoritmi dei programmi</span></h1>
 </div>
 
 
@@ -272,59 +320,96 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="che-cosè-un-algoritmo" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="che-cosè-un-algoritmo"><span class="header-section-number">3.1</span> Che cos’è un algoritmo?</h2>
-<p>Una definizione informale di <strong>algoritmo</strong> è un insieme di istruzioni precise e finite che descrivono come eseguire un compito specifico o risolvere un problema. Pensate a un algoritmo come a una ricetta di cucina: la ricetta fornisce una serie di passaggi chiari da seguire per preparare un piatto.</p>
-<p>Formalmente, un algoritmo è una sequenza ben definita di passi o operazioni che, a partire da un input, produce un output in un tempo finito. Le proprietà principali di un algoritmo includono:</p>
-<ol type="1">
-<li>Finitudine L’algoritmo deve terminare dopo un numero finito di passi.</li>
-<li>Determinismo: Ogni passo dell’algoritmo deve essere definito in modo preciso e non ambiguo.</li>
-<li>Input L’algoritmo riceve zero o più dati in ingresso.</li>
-<li>Output L’algoritmo produce uno o più risultati.</li>
-<li>Effettività: Ogni operazione dell’algoritmo deve essere fattibile ed eseguibile in un tempo finito.</li>
-</ol>
-</section>
-<section id="sintassi-e-semantica-dei-linguaggi-di-programmazione" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="sintassi-e-semantica-dei-linguaggi-di-programmazione"><span class="header-section-number">3.2</span> Sintassi e semantica dei linguaggi di programmazione</h2>
+<section id="sintassi-e-semantica-dei-linguaggi-di-programmazione" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sintassi-e-semantica-dei-linguaggi-di-programmazione"><span class="header-section-number">3.1</span> Sintassi e semantica dei linguaggi di programmazione</h2>
 <p>I linguaggi di programmazione sono strumenti utilizzati per implementare algoritmi in modo che possano essere eseguiti da un computer. Un linguaggio di programmazione ha due componenti principali: la <strong>sintassi</strong> e la <strong>semantica</strong>.</p>
-<section id="sintassi" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="sintassi"><span class="header-section-number">3.2.1</span> Sintassi</h3>
+</section>
+<section id="sintassi" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sintassi"><span class="header-section-number">3.2</span> Sintassi</h2>
 <p>La <strong>sintassi</strong> di un linguaggio di programmazione è l’insieme di regole che definiscono come devono essere scritte le istruzioni, cioè le unità logiche di esecuzione del programma. È come la grammatica in una lingua naturale e stabilisce quali combinazioni di simboli sono considerate costrutti validi nel linguaggio.</p>
-<p>Gli elementi principali della sintassi includono:</p>
+<p>Partiamo dagli elementi atomici della sintassi per poi risalire fino al programma. Gli elementi sono:</p>
 <ul>
 <li>Parole chiave: Sono termini riservati del linguaggio che hanno significati specifici e non possono essere utilizzati per altri scopi, come <code>if</code>, <code>else</code>, <code>while</code>, <code>for</code>, ecc.</li>
-<li>Operatori: Simboli utilizzati per eseguire operazioni su variabili e valori, come <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>=</code>, <code>==</code>, ecc.</li>
-<li>Separatori e delimitatori: Caratteri utilizzati per separare elementi del codice, come punto e virgola (<code>;</code>), parentesi tonde (<code>()</code>), parentesi quadre (<code>[]</code>), parentesi graffe (<code>{}</code>), ecc.</li>
-<li>Identificatori: Nomi utilizzati per identificare variabili, funzioni, classi, e altri oggetti definiti dall’utente.</li>
+<li>Operatori: Simboli utilizzati per eseguire operazioni su identificatori e letterali, come <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>=</code>, <code>==</code>, ecc.</li>
+<li>Separatori: Caratteri utilizzati per separare elementi del codice, come punto e virgola (<code>;</code>), parentesi tonde (<code>()</code>), parentesi quadre (<code>[]</code>), parentesi graffe (<code>{}</code>), ecc.</li>
+<li>Identificatori: Nomi utilizzati per identificare variabili, funzioni, classi, e altri oggetti.</li>
 <li>Letterali: Rappresentazioni di valori costanti nel codice, come numeri (<code>123</code>), stringhe (<code>"hello"</code>), caratteri (<code>'a'</code>), ecc.</li>
-<li>Espressioni: Combinazioni di variabili, operatori e funzioni che vengono valutate per produrre un valore.</li>
+<li>Commento: Non fanno parte della logica del programma e sono ignorati nell’esecuzione.</li>
+<li>Spazi: Sono gruppi di caratteri non visualizzabili spesso ignorati.</li>
 </ul>
-<p>Questi elementi sintattici sono noti anche come <strong>lessemi</strong> (in inglese <em>token</em>) e sono utilizzati per comporre istruzioni semplici e istruzioni complesse, che, a loro volta, costituiscono i programmi.</p>
-<section id="istruzioni-semplici" class="level4" data-number="3.2.1.1">
-<h4 data-number="3.2.1.1" class="anchored" data-anchor-id="istruzioni-semplici"><span class="header-section-number">3.2.1.1</span> Istruzioni Semplici</h4>
-<p>Le <strong>istruzioni semplici</strong> sono costituite da singole operazioni che possono essere eseguite direttamente. Queste istruzioni sono fondamentali e spesso coinvolgono i seguenti elementi:</p>
+<p>Un <strong>lessema</strong> è una sequenza di caratteri nel programma sorgente che corrisponde al pattern di un token ed è identificata dall’analizzatore lessicale come un’istanza di quel token. Un <strong>token</strong> è una coppia composta da un nome di token e un valore attributo opzionale. Il nome del token è un simbolo astratto che rappresenta un tipo di unità lessicale, ad esempio, una particolare parola chiave o una sequenza di caratteri di input che denota un identificatore. I nomi dei token sono i simboli di input che il parser elabora. Un <strong>pattern</strong> è una descrizione della forma che possono assumere i lessemi di un token. Nel caso di una parola chiave come token, il pattern è semplicemente la sequenza di caratteri che forma la parola chiave. Per gli identificatori e alcuni altri token, il pattern è una struttura più complessa che corrisponde a molte stringhe.</p>
+<section id="espressioni" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="espressioni"><span class="header-section-number">3.2.1</span> Espressioni</h3>
+<p>Un’espressione è una combinazione di lessemi che viene valutata per produrre un risultato. Esempi di espressioni includono:</p>
 <ul>
-<li><p>Assegnazione: Utilizza un operatore di assegnazione (<code>=</code>) per attribuire un valore a una variabile, che possiamo pensare come un nome simbolico rappresentante una posizione dove è memorizzato un valore. Esempio:</p>
-<pre class="plaintext"><code>x = 5</code></pre>
-<p><code>x</code>: Identificatore (nome) della variabile. <code>=</code>: Operatore di assegnazione. <code>5</code>: Letterale numerico intero.</p></li>
+<li><code>5 + 3</code></li>
+<li><code>x * 2</code></li>
+<li><code>y / 4.0</code></li>
+<li><code>max(a, b)</code></li>
+<li><code>"Hello, " + "world!"</code></li>
+</ul>
+</section>
+<section id="istruzioni-semplici" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="istruzioni-semplici"><span class="header-section-number">3.2.2</span> Istruzioni semplici</h3>
+<p>Le <strong>istruzioni semplici</strong> sono operazioni atomiche secondo il linguaggio e sono costituite da lessemi ed espressioni per compiere operazioni di base. Gli esempi principali includono:</p>
+<ul>
+<li><p>Assegnazione: Utilizza un operatore di assegnazione (ad esempio, <code>=</code>) per attribuire un valore a una variabile, che possiamo pensare come un nome simbolico rappresentante una posizione dove è memorizzato un valore. Esempio:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>x</code>: Identificatore della variabile. <code>=</code>: Operatore di assegnazione. <code>5</code>: Letterale numerico intero.</p></li>
 <li><p>Input/output: Utilizza parole chiave o funzioni di libreria per leggere valori dall’input o scrivere valori all’output. Esempio:</p>
-<pre class="plaintext"><code>print("Hello, World!")</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>print</code>: Parola chiave o identificatore di funzione di libreria. <code>"Hello, World!"</code>: Letterale stringa. L’esecuzione dell’istruzione produce <code>"Hello, World!"</code> in output.</p></li>
-<li><p>Operazioni aritmetiche: Utilizza operatori aritmetici per eseguire operazioni su variabili e valori. Esempio: <code>plaintext     y = 7 + 2.3</code> <code>y</code>: Identificatore della variabile. <code>=</code>: Operatore di assegnazione del risultato della valutazione dell’operazione a destra. <code>7</code>: Letterale numerico intero. <code>+</code>: Operatore aritmetico. <code>2.3</code>: Letterale numerico decimale. L’esecuzione dell’istruzione fa in modo che la variabile <code>y</code> sia associato a 9.3.</p></li>
-<li><p>Espressioni: Combinazioni di variabili, operatori e valori che producono un risultato. Esempio: <code>plaintext     z = (x * 2) + (y / 2)</code> <code>z</code>: Identificatore della variabile. <code>=</code>: Operatore di assegnazione. <code>(x * 2)</code>: Espressione che moltiplica <code>x</code> per <code>2</code>. <code>(y / 2)</code>: Espressione che divide <code>y</code> per <code>2</code>. <code>+</code>: Operatore aritmetico che somma i risultati delle due espressioni. L’esecuzione dell’istruzione produce un risultato valido solo se <code>x</code> e <code>y</code> sono associate a valori numerici e ciò perché non tutte le istruzioni sintatticamente corrette sono semanticamente corrette. D’altronde ciò non deve essere preso come regola, perché se <code>*</code> fosse un operatore che ripete quanto a sinistra un numero di volte definito dal valore di destra e <code>/</code> la divisione del valore di sinistra in parti di numero pari a quanto a destra, allora <code>x</code> e <code>y</code> potrebbero essere stringhe.</p></li>
+<li><p>Assegnazione ad espressione: Combinazione di variabili, operatori e valori che producono un risultato assegnato ad una variabile. Esempio: <code>python     z = (x * 2) + (y / 2)</code> <code>z</code>: Identificatore della variabile. <code>=</code>: Operatore di assegnazione. <code>(x * 2)</code>: Espressione che moltiplica <code>x</code> per <code>2</code>. <code>(y / 2)</code>: Espressione che divide <code>y</code> per <code>2</code>. <code>+</code>: Operatore aritmetico che somma i risultati delle due espressioni in una più complessa. L’esecuzione dell’istruzione produce un risultato valido solo se <code>x</code> e <code>y</code> sono associate a valori numerici e ciò perché non tutte le istruzioni sintatticamente corrette sono semanticamente corrette. D’altronde ciò non deve essere preso come regola, perché se <code>*</code> fosse un operatore che ripete quanto a sinistra un numero di volte definito dal valore di destra e <code>/</code> la divisione del valore di sinistra in parti di numero pari a quanto a destra, allora <code>x</code> e <code>y</code> potrebbero essere stringhe.</p></li>
 </ul>
 </section>
-<section id="istruzioni-complesse" class="level4" data-number="3.2.1.2">
-<h4 data-number="3.2.1.2" class="anchored" data-anchor-id="istruzioni-complesse"><span class="header-section-number">3.2.1.2</span> Istruzioni Complesse</h4>
-<p>Le <strong>istruzioni complesse</strong> sono costituite da più istruzioni semplici e possono includere strutture di controllo del flusso. Esempi includono:</p>
+<section id="istruzioni-complesse-e-blocchi-di-codice" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="istruzioni-complesse-e-blocchi-di-codice"><span class="header-section-number">3.2.3</span> Istruzioni complesse e blocchi di codice</h3>
+<p>Le <strong>istruzioni complesse</strong> sono costituite da più istruzioni semplici e possono includere strutture di controllo del flusso, come condizioni (<code>if</code>), cicli (<code>for</code>, <code>while</code>) ed eccezioni (<code>try</code>, <code>catch</code>). Queste istruzioni sono utilizzate per organizzare il flusso di esecuzione del programma e possono contenere altre istruzioni semplici o complesse al loro interno.</p>
+<p>Un <strong>blocco di codice</strong> è una sezione del codice che raggruppa una serie di istruzioni che devono essere eseguite insieme. I blocchi di codice sono spesso utilizzati all’interno delle istruzioni complesse per delimitare il gruppo di istruzioni che devono essere eseguite in determinate condizioni o iterazioni.</p>
+<p>In molti linguaggi di programmazione, i blocchi di codice sono delimitati da parentesi graffe (<code>{}</code>), mentre in altri linguaggi, come Python, l’indentazione è utilizzata per indicare l’inizio e la fine di un blocco di codice.</p>
+<p>Alcuni esempi di istruzione e blocco di codice:</p>
 <ul>
-<li>Condizioni: Istruzioni che eseguono un blocco di codice solo se una condizione è vera. Esempio: <code>plaintext     if (x &gt; 0) {         print("x è positivo")     }</code> <code>if</code>: Parola chiave che introduce la condizione. <code>(x &gt; 0)</code>: Condizione composta da: <code>x</code> identificatore di variabile, <code>&gt;</code> operatore di confronto e <code>0</code> letterale numerico intero. <code>{ ... }</code>: Delimitatori che racchiudono il blocco di codice. <code>print("x è positivo")</code>: Istruzione di output.</li>
-<li>Cicli: Istruzioni che ripetono un blocco di codice. Esempio: <code>plaintext     for (i = 0; i &lt; n; i++) {         somma = somma + i     }</code> <code>for</code>: Parola chiave che introduce il ciclo. <code>(i = 0; i &lt; n; i++)</code>: Espressione di controllo del ciclo composta da: <code>i = 0</code> assegnazione iniziale, <code>i &lt; n</code> condizione di ciclo e <code>i++</code> incremento della variabile <code>i</code>. <code>{ ... }</code>: Delimitatori che racchiudono il blocco di codice. <code>somma = somma + i</code>: Operazione aritmetica.</li>
+<li><p>Esempio in C:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"x è positivo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In questo esempio:</p>
+<ul>
+<li><code>if (x &gt; 0)</code> è un’istruzione complessa.</li>
+<li><code>{ printf("x è positivo\n"); y = x * 2; }</code> è un blocco di codice che viene eseguito se la condizione dell’istruzione <code>if</code> è vera.</li>
+</ul></li>
+<li><p>Esempio in Python:</p></li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In questo esempio: - <code>if x &gt; 0:</code> è un’istruzione complessa. - Le righe indentate sotto l’istruzione <code>if</code> (<code>print("x è positivo")</code> e <code>y = x * 2</code>) costituiscono un blocco di codice che viene eseguito se la condizione dell’istruzione <code>if</code> è vera.</p>
+<p>Altri esempi:</p>
+<ul>
+<li><p>Condizioni: Istruzioni che eseguono un blocco di codice solo se una condizione è vera. Esempio: ```c #include &lt;stdio.h&gt;</p>
+<p>x = 42;</p>
+<p>if (x &gt; 0) { printf(“x è positivo”); } ``<code></code>if<code>: Parola chiave che introduce la condizione.</code>(x &gt; 0)<code>: Condizione composta da:</code>x<code>identificatore di variabile,</code>&gt;<code>operatore di confronto e</code>0<code>letterale numerico intero.</code>{ … }<code>: Delimitatori che racchiudono il blocco di codice.</code>print(“x è positivo”)`: Istruzione di output.</p></li>
+<li><p>Cicli: Istruzioni che ripetono un blocco di codice. Esempio: ```c #include &lt;stdio.h&gt;</p>
+<p>int n = 42; int somma = 0; int i;</p>
+<p>for (i = 0; i &lt; n; i++) { somma = somma + i; } ``<code></code>for<code>: Parola chiave che introduce il ciclo.</code>(i = 0; i &lt; n; i++)<code>: Espressione di controllo del ciclo composta da:</code>i = 0<code>assegnazione iniziale,</code>i &lt; n<code>condizione di ciclo e</code>i++<code>incremento della variabile</code>i<code>.</code>{ … }<code>: Delimitatori che racchiudono il blocco di codice.</code>somma = somma + i`: Operazione aritmetica.</p></li>
 </ul>
 </section>
+<section id="organizzazione-del-codice-in-un-programma" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="organizzazione-del-codice-in-un-programma"><span class="header-section-number">3.2.4</span> Organizzazione del codice in un programma</h3>
+<p>Il programma è solitamente salvato in un file di testo in righe. Queste righe possono essere classificate in righe fisiche e righe logiche.</p>
+<p>Una <strong>riga fisica</strong> è una linea di testo nel file sorgente del programma, terminata da un carattere di a capo.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span> <span class="co">// Questa è una riga fisica</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Una <strong>riga logica</strong> è una singola istruzione, che può estendersi su una o più righe fisiche.</p>
+<p>Esempi: - Una riga fisica terminata è una riga logica. - Esempio su più righe fisiche:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> y <span class="op">=</span> <span class="op">(</span><span class="dv">10</span> <span class="op">+</span> <span class="dv">20</span> <span class="op">+</span> <span class="dv">30</span> <span class="op">+</span> <span class="co">// Prima riga fisica della riga logica</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>         <span class="dv">40</span> <span class="op">+</span> <span class="dv">50</span><span class="op">);</span> <span class="co">// Seconda riga fisica della riga logica</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>L’interprete o il compilatore hanno un modulo particolare che si occupa della scansione dei file costituenti il programma, con l’obiettivo di individuare righe e lessemi, quindi le istruzioni. A seguire, l’interprete eseguirà le istruzioni, il compilatore le tradurrà in linguaggio macchina.</p>
 </section>
-<section id="semantica" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="semantica"><span class="header-section-number">3.2.2</span> Semantica</h3>
+</section>
+<section id="semantica" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="semantica"><span class="header-section-number">3.3</span> Semantica</h2>
 <p>La <strong>semantica</strong> di un linguaggio di programmazione definisce il significato delle istruzioni sintatticamente corrette. In altre parole, la semantica specifica cosa fa un programma quando viene eseguito, descrivendo l’effetto delle istruzioni sullo stato del sistema. Gli elementi semantici sono numerosi, possono essere anche molto complessi e non tutti presenti in uno specifico linguaggio. Di seguito ne sono elencati alcuni tra i più diffusi:</p>
 <ul>
 <li>Variabile: È un nome simbolico associato a locazione di memoria che può contenere uno o più valori. È fondamentale per la manipolazione di dati perché sono un mezzo per astrarre dalla costante memorizzata. Le variabili possono essere associate a diversi tipi di dati e durate di vita. La semantica delle variabili include la loro dichiarazione, inizializzazione, uso e visibilità:
@@ -417,9 +502,19 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Questi elementi semantici combinati determinano il comportamento e la logica di un programma, influenzando il modo in cui il codice viene scritto, eseguito e mantenuto.</p>
 </section>
-</section>
-<section id="esempio-di-algoritmo" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="esempio-di-algoritmo"><span class="header-section-number">3.3</span> Esempio di algoritmo</h2>
+<section id="algoritmi" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="algoritmi"><span class="header-section-number">3.4</span> Algoritmi</h2>
+<p>Una definizione informale di <strong>algoritmo</strong> è un insieme di istruzioni precise e finite che descrivono come eseguire un compito specifico o risolvere un problema. Pensate a un algoritmo come a una ricetta di cucina: la ricetta fornisce una serie di passaggi chiari da seguire per preparare un piatto.</p>
+<p>Formalmente, un algoritmo è una sequenza ben definita di passi o operazioni che, a partire da un input, produce un output in un tempo finito. Le proprietà principali di un algoritmo includono:</p>
+<ol type="1">
+<li>Finitudine L’algoritmo deve terminare dopo un numero finito di passi.</li>
+<li>Determinismo: Ogni passo dell’algoritmo deve essere definito in modo preciso e non ambiguo.</li>
+<li>Input L’algoritmo riceve zero o più dati in ingresso.</li>
+<li>Output L’algoritmo produce uno o più risultati.</li>
+<li>Effettività: Ogni operazione dell’algoritmo deve essere fattibile ed eseguibile in un tempo finito.</li>
+</ol>
+<section id="esempio" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="esempio"><span class="header-section-number">3.4.1</span> Esempio</h3>
 <p>Consideriamo un esempio semplice di algoritmo per calcolare la somma dei numeri da 1 a n.&nbsp;In input si avrà un numero intero <code>n</code> e in output il risultato. In pseudocodice si può rappresentare così:</p>
 <pre class="plaintext"><code>Inizializza somma a 0
 Per ogni numero i da 1 a n:
@@ -503,6 +598,7 @@ Restituisci somma</code></pre>
 <p>Abbiamo così dissezionato un algoritmo molto semplice per illustrare come sintassi e semantica di un linguaggio abbiano ruoli distinti e complementari in un programma. È importante comprendere che un buon programmatore deve avere tutte e tre le competenze, cioè conoscere le specificità formali del linguaggio (o di più linguaggi), quindi, la sua sintassi e semantica e saper comporre algoritmi, che potrà realizzare grazie proprio a quelle.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
