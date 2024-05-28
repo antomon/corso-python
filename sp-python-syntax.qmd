@@ -259,21 +259,17 @@ Esempi di uso di parole chiave contestuali:
   print(distanza(punto1, punto2))  # Output: 5.0
   ```
 
-## 
-
-
-
 ### Classi riservate di identificatori
 
 Alcune classi di identificatori (oltre alle parole chiave) hanno significati speciali in Python. Queste classi sono identificate dai pattern di caratteri di sottolineatura (underscore) all'inizio e alla fine dei nomi. Tuttavia, l'uso di questi identificatori non impone limitazioni rigide al programmatore, ma è importante seguire le convenzioni per evitare ambiguità e problemi di compatibilità.
 
 - `_`
-  - **Non importato da `from module import *`**: Gli identificatori che iniziano con un singolo underscore non vengono importati con un'istruzione di importazione globale.
-  - **Pattern nei match**: Nel contesto di un pattern di corrispondenza all'interno di un'istruzione `match`, `_` è una soft keyword che denota un wildcard (carattere jolly).
-  - **Interprete interattivo**: L'interprete interattivo rende disponibile il risultato dell'ultima valutazione nella variabile `_`. Questo risultato è memorizzato nel modulo builtins, insieme alle funzioni built-in come `print`.
-  - **Altro uso**: Altrove, `_` è un identificatore regolare. Viene spesso usato per nominare elementi "speciali", ma non è speciale per Python stesso. Il nome `_` è comunemente usato in congiunzione con l'internazionalizzazione (vedi la documentazione del modulo gettext per ulteriori informazioni su questa convenzione) ed è anche comunemente utilizzato per variabili non usate.
+  - Non importato da `from module import *`: Gli identificatori che iniziano con un singolo underscore non vengono importati con un'istruzione di importazione globale.
+  - Pattern nei match: Nel contesto di un pattern di corrispondenza all'interno di un'istruzione `match`, `_` è una soft keyword che denota un wildcard (carattere jolly).
+  - Interprete interattivo: L'interprete interattivo rende disponibile il risultato dell'ultima valutazione nella variabile `_`. Questo risultato è memorizzato nel modulo builtins, insieme alle funzioni built-in come `print`.
+  - Altro uso: Altrove, `_` è un identificatore regolare. Viene spesso usato per nominare elementi "speciali", ma non è speciale per Python stesso. Il nome `_` è comunemente usato in congiunzione con l'internazionalizzazione (vedi la documentazione del modulo gettext per ulteriori informazioni su questa convenzione) ed è anche comunemente utilizzato per variabili non usate.
 
-#### Esempio
+Esempio:
 
 ```python
 # Utilizzo di _ come identificatore in vari contesti
@@ -305,7 +301,7 @@ print(_('Hello, world'))
 ```
 
 - `__*__`
-  - **Nomi definiti dal sistema**: Questi nomi, informalmente noti come nomi "dunder", sono definiti dall'interprete e dalla sua implementazione (inclusa la libreria standard). I nomi di sistema attuali sono discussi nella sezione dei nomi dei metodi speciali e altrove. Altri potrebbero essere definiti nelle versioni future di Python. Qualsiasi uso di nomi `__*__`, in qualsiasi contesto, che non segua l'uso esplicitamente documentato, è soggetto a rottura senza preavviso.
+  - Nomi definiti dal sistema: Questi nomi, informalmente noti come nomi "dunder", sono definiti dall'interprete e dalla sua implementazione (inclusa la libreria standard). I nomi di sistema attuali sono discussi nella sezione dei nomi dei metodi speciali e altrove. Altri potrebbero essere definiti nelle versioni future di Python. Qualsiasi uso di nomi `__*__`, in qualsiasi contesto, che non segua l'uso esplicitamente documentato, è soggetto a rottura senza preavviso.
 
 #### Esempio
 
@@ -323,7 +319,7 @@ print(obj)  # Output: MyClass con valore 10
 ```
 
 - `__*`
-  - **Nomi privati della classe**: I nomi in questa categoria, quando utilizzati nel contesto di una definizione di classe, vengono riscritti per utilizzare una forma mangled per evitare conflitti di nome tra attributi "privati" delle classi base e derivate.
+  - Nomi privati della classe: I nomi in questa categoria, quando utilizzati nel contesto di una definizione di classe, vengono riscritti per utilizzare una forma mangled per evitare conflitti di nome tra attributi "privati" delle classi base e derivate.
 
 #### Esempio
 
@@ -348,7 +344,7 @@ print(derived_obj._DerivedClass__private_attr)  # Output: Derived
 
 In sintesi, Python riserva certe classi di identificatori che hanno significati speciali e seguono regole specifiche, principalmente per garantire l'integrità del codice e la compatibilità tra versioni diverse del linguaggio. Tuttavia, queste convenzioni non pongono limitazioni rigide al programmatore, che può comunque utilizzare questi identificatori secondo necessità, purché consapevole delle loro implicazioni.
 
-## Operatori
+### Operatori
 
 Gli operatori sono rappresentati da simboli non alfanumerici e, quando applicati a uno o più identificatori, letterali o espressioni (definiti genericamente operandi), producono un risultato. Attenzione a non confondere la definizione di operatore come token, come considerata qui, con quella di operatore come funzionalità algoritmica, poiché alcune parole chiave sono operatori algoritmici e anche le funzioni possono agire come operatori. 
 
@@ -388,7 +384,7 @@ In tabella l'elenco degli operatori:
 |                        | `~`{.python}     | NOT bit a bit                                                    |
 |                        | `<<`{.python}    | Shift a sinistra                                                 |
 |                        | `>>`{.python}    | Shift a destra                                                   |
-| Assegnazione | `:=`{.python} | Operatore di assegnazione (walrus)                      |
+| Assegnazione | `:=`{.python} | Operatore di assegnazione in espressione (walrus o tricheco)                      |
 
 Esempio su `@`{.python} che illustra un aspetto importante: il comportamento degli operatori può (o meglio, deve) essere definito quando si creano dei tipi di oggetto. Infatti, nel codice seguente, è definita una matrice assieme a una delle operazioni matematiche più comuni che è la moltiplicazione, implementata per mezzo di `__matmul__`{.python}:
 
@@ -519,4 +515,160 @@ Alcuni caratteri ASCII hanno un significato speciale come parte di altri token o
 | `\`{.python}          | Backslash. Utilizzato per caratteri di escape nelle stringhe e per continuare le righe di codice su più righe fisiche.                |
 
 Alcuni caratteri ASCII non sono utilizzati in Python e la loro presenza al difuori dei letterali di stringa e dei commenti genera un errore: `$`, `?`, `` ` ``.
+
+### Letterali
+
+I letterali sono notazioni per valori costanti di alcuni tipi predefiniti nel linguaggio. Esistono diversi tipi di letterali, ognuno rappresenta un tipo di dato specifico e ha una sintassi particolare.
+
+#### Numerici
+
+I letterali numerici includono interi, numeri a virgola mobile e numeri complessi:
+
+- Interi, possono essere scritti in base decimale, ottale, esadecimale o binaria:
+  - Decimale: `10`{.python}, `-3`{.python}.
+  - Ottale: `0o12`{.python}, `-0o7`{.python}.
+  - Esadecimale: `0xA`{.python}, `-0x1F`{.python}.
+  - Binario: `0b1010`{.python}, `-0b11`{.python}.
+- Virgola mobile, possono essere rappresentati con una parte intera e una decimale, oppure con notazione scientifica:
+  - Virgola mobile: `3.14`{.python}, `-0.001`{.python}.
+  - Notazione scientifica: `1e10`{.python}, `-2.5e-3`{.python}.
+- Complessi, appresentati da una parte reale e una parte immaginaria: `3+4j`{.python}, `-1-0.5j`{.python}.
+
+#### Stringhe
+
+I letterali di stringa possono essere racchiusi tra virgolette singole o doppie. Possono anche essere multi-linea se racchiusi tra triple virgolette singole o doppie:
+
+- Stringhe racchiuse tra virgolette singole o doppie:
+  - Singole: `'ciao'`{.python}.
+  - Doppie: `"mondo"`{.python}.
+- Stringhe multi-linea racchiuse tra triple virgolette singole o doppie:
+  - Triple singole: `'''testo multi-linea'''`{.python}.
+  - Triple doppie: `"""testo multi-linea"""`{.python}.
+
+Le stringhe tra tripli apici possono avere degli a capo e degli apici (non tripli) all'interno. 
+
+Esempio:
+
+```python
+stringa_multilinea = """Questa è una stringa
+molto "importante"."""
+
+print(stringa_multilinea)
+```
+
+Tutte le stringhe sono codificate in Unicode, con il prefisso `b`{.python} la stringa è di tipo byte ed è limitata ai 128 caratteri dell'ASCII. Se si prepone `r`{.python}, che sta per _raw_ cioè grezzo, allora la codifica è sempre Unicode ma i caratteri di escape non sono intepretati.[2^]
+
+[2^]:
+
+#### F-stringhe
+
+Le f-stringhe (stringhe formattate) sono racchiuse tra virgolette singole, doppie o triple e sono precedute dal prefisso `f`{.python} o `F`{.python}. Permettono di includere espressioni Python all'interno.
+
+Si possono avere stringhe formattate grezze ma non byte.
+
+Esempio:
+```python
+nome = "Python"
+f_stringa = f'Ciao, {nome}!'
+f_stringa_multi_linea = f'''Questo è
+un esempio di
+f-stringa multi-linea con {nome}'''
+
+print(f_stringa)
+print(f_stringa_multi_linea)
+```
+
+## Istruzioni
+
+Un programma Pythom è una sequenza di istruzioni che si distinguono in **semplici** o **composte**. 
+
+### Istruzioni semplici
+
+Un'istruzione semplice è sempre contenuta in una riga logica, che può presentare più istruzioni semplici separate da `;`{.python}. È permesso ma scaonsigliato perché in pochi casi porta a codice leggibile.
+
+Un'espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne viene prodotto il risultato della valutazione. D'altronde, una espressione è spesso utilizzata per chiamare funzioni che hanno effetti collaterali, come, ad esempio, produrre un output: 
+
+- Produzione di output:
+  ```python
+  # Funzione che stampa un messaggio
+  def stampa_messaggio(messaggio):
+      print(messaggio)
+
+  # Istruzione di espressione che chiama la funzione 
+  # con un effetto collaterale (stampa del messaggio)
+  stampa_messaggio("Ciao, mondo!")
+  ```
+- Modifica di parametri:
+  ```python
+  # Funzione che modifica un argomento mutabile (lista)
+  def aggiungi_elemento(lista, elemento):
+      lista.append(elemento)
+
+  # Lista iniziale
+  numeri = [1, 2, 3]
+
+  # Istruzione di espressione che chiama la funzione 
+  # con un effetto collaterale (modifica dell'argomento)
+  aggiungi_elemento(numeri, 4)
+
+  print(numeri)  # Output: [1, 2, 3, 4]
+  ```
+- Modifica di variabili globali
+  ```python
+  # Variabile globale
+  contatore = 0
+
+  # Funzione che modifica una variabile globale
+  def incrementa_contatore():
+      global contatore
+      contatore += 1
+
+  # Istruzione di espressione che chiama la funzione 
+  # con un effetto collaterale (modifica della variabile globale)
+  incrementa_contatore()
+
+  print(contatore)  # Output: 1
+  ```
+- Lancio di eccezioni:
+  ```python
+  # Funzione che solleva un'eccezione
+  def solleva_eccezione(messaggio):
+      raise ValueError(messaggio)
+
+  # Istruzione di espressione che chiama la funzione con un effetto collaterale (sollevamento di un'eccezione)
+  try:
+      solleva_eccezione("Qualcosa è andato storto!")
+  except ValueError as e:
+      print(e)  # Output: Qualcosa è andato storto!
+  ```
+
+Un assegnamento con `=`{.python} è anch'esso un'istruzione semplice e non può mai essere all'interno di una espressione, dove invece si può usare l'operatore _tricheco_ `:=`{.python}:
+
+```python
+if (n := len("Python")) > 5:
+  print(f"La lunghezza della stringa è {n}") 
+  # Output: La lunghezza della stringa è 6
+```
+
+### Istruzioni composte
+
+Una istruzione composta è costituita da altre istruzioni (semplici o composte). Il controllo dell'esecuzione delle istruzioni componenti avviene per mezzo di una o più clausole che iniziano tutte con una parola chiave, sono terminate da `:`{.python} e seguite da un blocco di codice. Ogni blocco deve avere almeno una istruzione semplice, ma può non avere una propria riga logica.
+
+Alcuni esempi:
+
+- Blocco di istruzioni separato su più righe con medesima indentazione:
+  ```python
+  if x > 0:
+    print("x è positivo")
+    x += 1
+    print(f"x ora è {x}")
+  ```
+- Blocco come singola istruzione sulla stessa riga logica:
+  ```python
+  if x > 0: print("x è positivo")
+  ```
+- Diverse istruzioni semplici sulla stessa riga (non consigliato):
+  ```python
+  if x > 0: print("x è positivo"); x += 1; print(f"x ora è {x}")
+  ```
 

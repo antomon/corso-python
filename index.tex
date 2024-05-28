@@ -1,12 +1,10 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
   letterpaper,
-  DIV=11,
-  numbers=noendperiod]{scrreprt}
+]{scrbook}
 
 \usepackage{amsmath,amssymb}
 \usepackage{iftex}
@@ -40,6 +38,7 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
+\usepackage[left=3cm,right=3cm,top=2cm,bottom=2cm]{geometry}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
@@ -165,7 +164,6 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
-\KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
 \@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
@@ -252,11 +250,7 @@
   pdftitle={Da neofita di Python a campione},
   pdfauthor={Antonio Montano},
   pdflang={it},
-  colorlinks=true,
-  linkcolor={blue},
-  filecolor={Maroon},
-  citecolor={Blue},
-  urlcolor={Blue},
+  hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
 \title{Da neofita di Python a campione}
@@ -264,14 +258,15 @@
 \date{2024-05-24}
 
 \begin{document}
+\frontmatter
 \maketitle
 
 \renewcommand*\contentsname{Indice}
 {
-\hypersetup{linkcolor=}
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
+\mainmatter
 \bookmarksetup{startatroot}
 
 \chapter*{Prefazione}\label{prefazione}
@@ -2834,7 +2829,7 @@ Eseguiamo il nostro primo ``Hello, World!'':
 
 Premi il tasto di invio per vedere il risultato immediatamente.
 
-\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, opacityback=0, rightrule=.15mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, breakable, left=2mm, coltitle=black, toptitle=1mm, arc=.35mm, colback=white, opacitybacktitle=0.6, bottomtitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, bottomrule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Attenzione}]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, opacityback=0, left=2mm, coltitle=black, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Attenzione}, colbacktitle=quarto-callout-warning-color!10!white, bottomrule=.15mm, arc=.35mm, toprule=.15mm, colframe=quarto-callout-warning-color-frame, colback=white, breakable, toptitle=1mm, titlerule=0mm, leftrule=.75mm, bottomtitle=1mm]
 
 Il REPL e l'interprete Python sono strettamente collegati, ma non sono
 esattamente la stessa cosa. Quando avvii l'interprete Python senza
@@ -3587,7 +3582,7 @@ Alcuni esempi:
 \item
   Definizione di una funzione:
 
-\phantomsection\label{annotated-cell-79}%
+\phantomsection\label{annotated-cell-82}%
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{def}\NormalTok{ somma(a, b): }\hspace*{\fill}\NormalTok{\circled{1}}
@@ -3607,7 +3602,7 @@ Alcuni esempi:
 \item
   Ciclo e test di condizione:
 
-\phantomsection\label{annotated-cell-80}%
+\phantomsection\label{annotated-cell-83}%
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{x }\OperatorTok{=} \DecValTok{10}
@@ -3634,7 +3629,7 @@ Alcuni esempi:
   \end{description}
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, opacityback=0, rightrule=.15mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, breakable, left=2mm, coltitle=black, toptitle=1mm, arc=.35mm, colback=white, opacitybacktitle=0.6, bottomtitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, bottomrule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Attenzione}]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, opacityback=0, left=2mm, coltitle=black, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Attenzione}, colbacktitle=quarto-callout-warning-color!10!white, bottomrule=.15mm, arc=.35mm, toprule=.15mm, colframe=quarto-callout-warning-color-frame, colback=white, breakable, toptitle=1mm, titlerule=0mm, leftrule=.75mm, bottomtitle=1mm]
 
 Non si possono avere sia spazi che tabulazioni per definire il livello
 di indentazione nello stesso file. Ciò perché renderebbe ambiguo il
@@ -3874,8 +3869,6 @@ Esempi di uso di parole chiave contestuali:
 \end{Shaded}
 \end{itemize}
 
-\section{}\label{section}
-
 \subsection{Classi riservate di
 identificatori}\label{classi-riservate-di-identificatori}
 
@@ -3894,31 +3887,29 @@ convenzioni per evitare ambiguità e problemi di compatibilità.
   \begin{itemize}
   \tightlist
   \item
-    \textbf{Non importato da \texttt{from\ module\ import\ *}}: Gli
+    Non importato da \texttt{from\ module\ import\ *}: Gli
     identificatori che iniziano con un singolo underscore non vengono
     importati con un'istruzione di importazione globale.
   \item
-    \textbf{Pattern nei match}: Nel contesto di un pattern di
-    corrispondenza all'interno di un'istruzione \texttt{match},
-    \texttt{\_} è una soft keyword che denota un wildcard (carattere
-    jolly).
+    Pattern nei match: Nel contesto di un pattern di corrispondenza
+    all'interno di un'istruzione \texttt{match}, \texttt{\_} è una soft
+    keyword che denota un wildcard (carattere jolly).
   \item
-    \textbf{Interprete interattivo}: L'interprete interattivo rende
-    disponibile il risultato dell'ultima valutazione nella variabile
-    \texttt{\_}. Questo risultato è memorizzato nel modulo builtins,
-    insieme alle funzioni built-in come \texttt{print}.
+    Interprete interattivo: L'interprete interattivo rende disponibile
+    il risultato dell'ultima valutazione nella variabile \texttt{\_}.
+    Questo risultato è memorizzato nel modulo builtins, insieme alle
+    funzioni built-in come \texttt{print}.
   \item
-    \textbf{Altro uso}: Altrove, \texttt{\_} è un identificatore
-    regolare. Viene spesso usato per nominare elementi ``speciali'', ma
-    non è speciale per Python stesso. Il nome \texttt{\_} è comunemente
-    usato in congiunzione con l'internazionalizzazione (vedi la
-    documentazione del modulo gettext per ulteriori informazioni su
-    questa convenzione) ed è anche comunemente utilizzato per variabili
-    non usate.
+    Altro uso: Altrove, \texttt{\_} è un identificatore regolare. Viene
+    spesso usato per nominare elementi ``speciali'', ma non è speciale
+    per Python stesso. Il nome \texttt{\_} è comunemente usato in
+    congiunzione con l'internazionalizzazione (vedi la documentazione
+    del modulo gettext per ulteriori informazioni su questa convenzione)
+    ed è anche comunemente utilizzato per variabili non usate.
   \end{itemize}
 \end{itemize}
 
-\subsubsection{Esempio}\label{esempio-1}
+Esempio:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3959,8 +3950,8 @@ convenzioni per evitare ambiguità e problemi di compatibilità.
   \begin{itemize}
   \tightlist
   \item
-    \textbf{Nomi definiti dal sistema}: Questi nomi, informalmente noti
-    come nomi ``dunder'', sono definiti dall'interprete e dalla sua
+    Nomi definiti dal sistema: Questi nomi, informalmente noti come nomi
+    ``dunder'', sono definiti dall'interprete e dalla sua
     implementazione (inclusa la libreria standard). I nomi di sistema
     attuali sono discussi nella sezione dei nomi dei metodi speciali e
     altrove. Altri potrebbero essere definiti nelle versioni future di
@@ -3970,7 +3961,7 @@ convenzioni per evitare ambiguità e problemi di compatibilità.
   \end{itemize}
 \end{itemize}
 
-\subsubsection{Esempio}\label{esempio-2}
+\subsubsection{Esempio}\label{esempio-1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3995,14 +3986,14 @@ convenzioni per evitare ambiguità e problemi di compatibilità.
   \begin{itemize}
   \tightlist
   \item
-    \textbf{Nomi privati della classe}: I nomi in questa categoria,
-    quando utilizzati nel contesto di una definizione di classe, vengono
+    Nomi privati della classe: I nomi in questa categoria, quando
+    utilizzati nel contesto di una definizione di classe, vengono
     riscritti per utilizzare una forma mangled per evitare conflitti di
     nome tra attributi ``privati'' delle classi base e derivate.
   \end{itemize}
 \end{itemize}
 
-\subsubsection{Esempio}\label{esempio-3}
+\subsubsection{Esempio}\label{esempio-2}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4033,7 +4024,7 @@ rigide al programmatore, che può comunque utilizzare questi
 identificatori secondo necessità, purché consapevole delle loro
 implicazioni.
 
-\section{Operatori}\label{operatori}
+\subsection{Operatori}\label{operatori}
 
 Gli operatori sono rappresentati da simboli non alfanumerici e, quando
 applicati a uno o più identificatori, letterali o espressioni (definiti
@@ -4095,8 +4086,8 @@ Bitwise & \VERB|\OperatorTok{\&}| & AND bit a bit \\
 & \VERB|\OperatorTok{\textasciitilde{}}| & NOT bit a bit \\
 & \VERB|\OperatorTok{\textless{}\textless{}}| & Shift a sinistra \\
 & \VERB|\OperatorTok{\textgreater{}\textgreater{}}| & Shift a destra \\
-Assegnazione & \VERB|\OperatorTok{:=}| & Operatore di assegnazione
-(walrus) \\
+Assegnazione & \VERB|\OperatorTok{:=}| & Operatore di assegnazione in
+espressione (walrus o tricheco) \\
 \end{longtable}
 
 Esempio su \VERB|\OperatorTok{@}| che illustra un aspetto importante: il
@@ -4317,6 +4308,274 @@ Alcuni caratteri ASCII non sono utilizzati in Python e la loro presenza
 al difuori dei letterali di stringa e dei commenti genera un errore:
 \texttt{\$}, \texttt{?}, \texttt{\textasciigrave{}}.
 
+\subsection{Letterali}\label{letterali}
+
+I letterali sono notazioni per valori costanti di alcuni tipi
+predefiniti nel linguaggio. Esistono diversi tipi di letterali, ognuno
+rappresenta un tipo di dato specifico e ha una sintassi particolare.
+
+\subsubsection{Numerici}\label{numerici}
+
+I letterali numerici includono interi, numeri a virgola mobile e numeri
+complessi:
+
+\begin{itemize}
+\tightlist
+\item
+  Interi, possono essere scritti in base decimale, ottale, esadecimale o
+  binaria:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Decimale: \VERB|\DecValTok{10}|,
+    \VERB|\OperatorTok{{-}}\DecValTok{3}|.
+  \item
+    Ottale: \VERB|\BaseNTok{0o12}|,
+    \VERB|\OperatorTok{{-}}\BaseNTok{0o7}|.
+  \item
+    Esadecimale: \VERB|\BaseNTok{0xA}|,
+    \VERB|\OperatorTok{{-}}\BaseNTok{0x1F}|.
+  \item
+    Binario: \VERB|\BaseNTok{0b1010}|,
+    \VERB|\OperatorTok{{-}}\BaseNTok{0b11}|.
+  \end{itemize}
+\item
+  Virgola mobile, possono essere rappresentati con una parte intera e
+  una decimale, oppure con notazione scientifica:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Virgola mobile: \VERB|\FloatTok{3.14}|,
+    \VERB|\OperatorTok{{-}}\FloatTok{0.001}|.
+  \item
+    Notazione scientifica: \VERB|\FloatTok{1e10}|,
+    \VERB|\OperatorTok{{-}}\FloatTok{2.5e{-}3}|.
+  \end{itemize}
+\item
+  Complessi, appresentati da una parte reale e una parte immaginaria:
+  \VERB|\DecValTok{3}\OperatorTok{+}\OtherTok{4j}|,
+  \VERB|\OperatorTok{{-}}\DecValTok{1}\OperatorTok{{-}}\OtherTok{0.5j}|.
+\end{itemize}
+
+\subsubsection{Stringhe}\label{stringhe}
+
+I letterali di stringa possono essere racchiusi tra virgolette singole o
+doppie. Possono anche essere multi-linea se racchiusi tra triple
+virgolette singole o doppie:
+
+\begin{itemize}
+\tightlist
+\item
+  Stringhe racchiuse tra virgolette singole o doppie:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Singole:
+    \VERB|\CommentTok{\textquotesingle{}ciao\textquotesingle{}}|.
+  \item
+    Doppie: \VERB|\CommentTok{"mondo"}|.
+  \end{itemize}
+\item
+  Stringhe multi-linea racchiuse tra triple virgolette singole o doppie:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Triple singole:
+    \VERB|\CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}testo multi{-}linea\textquotesingle{}\textquotesingle{}\textquotesingle{}}|.
+  \item
+    Triple doppie: \VERB|\CommentTok{"""testo multi{-}linea"""}|.
+  \end{itemize}
+\end{itemize}
+
+Le stringhe tra tripli apici possono avere degli a capo e degli apici
+(non tripli) all'interno.
+
+Esempio:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stringa\_multilinea }\OperatorTok{=} \StringTok{"""Questa è una stringa}
+\StringTok{molto "importante"."""}
+
+\BuiltInTok{print}\NormalTok{(stringa\_multilinea)}
+\end{Highlighting}
+\end{Shaded}
+
+Tutte le stringhe sono codificate in Unicode, con il prefisso
+\VERB|\NormalTok{b}| la stringa è di tipo byte ed è limitata ai 128
+caratteri dell'ASCII. Se si prepone \VERB|\NormalTok{r}|, che sta per
+\emph{raw} cioè grezzo, allora la codifica è sempre Unicode ma i
+caratteri di escape non sono intepretati.\href{}{2\^{}}
+
+\subsubsection{F-stringhe}\label{f-stringhe}
+
+Le f-stringhe (stringhe formattate) sono racchiuse tra virgolette
+singole, doppie o triple e sono precedute dal prefisso
+\VERB|\NormalTok{f}| o \VERB|\NormalTok{F}|. Permettono di includere
+espressioni Python all'interno.
+
+Si possono avere stringhe formattate grezze ma non byte.
+
+Esempio:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nome }\OperatorTok{=} \StringTok{"Python"}
+\NormalTok{f\_stringa }\OperatorTok{=} \SpecialStringTok{f\textquotesingle{}Ciao, }\SpecialCharTok{\{}\NormalTok{nome}\SpecialCharTok{\}}\SpecialStringTok{!\textquotesingle{}}
+\NormalTok{f\_stringa\_multi\_linea }\OperatorTok{=} \SpecialStringTok{f\textquotesingle{}\textquotesingle{}\textquotesingle{}Questo è}
+\SpecialStringTok{un esempio di}
+\SpecialStringTok{f{-}stringa multi{-}linea con }\SpecialCharTok{\{}\NormalTok{nome}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+
+\BuiltInTok{print}\NormalTok{(f\_stringa)}
+\BuiltInTok{print}\NormalTok{(f\_stringa\_multi\_linea)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Istruzioni}\label{istruzioni}
+
+Un programma Pythom è una sequenza di istruzioni che si distinguono in
+\textbf{semplici} o \textbf{composte}.
+
+\subsection{Istruzioni semplici}\label{istruzioni-semplici-1}
+
+Un'istruzione semplice è sempre contenuta in una riga logica, che può
+presentare più istruzioni semplici separate da \VERB|\OperatorTok{;}|. È
+permesso ma scaonsigliato perché in pochi casi porta a codice leggibile.
+
+Un'espressione è una istruzione semplice ed, infatti, inserita nel REPL,
+ne viene prodotto il risultato della valutazione. D'altronde, una
+espressione è spesso utilizzata per chiamare funzioni che hanno effetti
+collaterali, come, ad esempio, produrre un output:
+
+\begin{itemize}
+\item
+  Produzione di output:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Funzione che stampa un messaggio}
+\KeywordTok{def}\NormalTok{ stampa\_messaggio(messaggio):}
+    \BuiltInTok{print}\NormalTok{(messaggio)}
+
+\CommentTok{\# Istruzione di espressione che chiama la funzione }
+\CommentTok{\# con un effetto collaterale (stampa del messaggio)}
+\NormalTok{stampa\_messaggio(}\StringTok{"Ciao, mondo!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\item
+  Modifica di parametri:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Funzione che modifica un argomento mutabile (lista)}
+\KeywordTok{def}\NormalTok{ aggiungi\_elemento(lista, elemento):}
+\NormalTok{    lista.append(elemento)}
+
+\CommentTok{\# Lista iniziale}
+\NormalTok{numeri }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{]}
+
+\CommentTok{\# Istruzione di espressione che chiama la funzione }
+\CommentTok{\# con un effetto collaterale (modifica dell\textquotesingle{}argomento)}
+\NormalTok{aggiungi\_elemento(numeri, }\DecValTok{4}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(numeri)  }\CommentTok{\# Output: [1, 2, 3, 4]}
+\end{Highlighting}
+\end{Shaded}
+\item
+  Modifica di variabili globali
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Variabile globale}
+\NormalTok{contatore }\OperatorTok{=} \DecValTok{0}
+
+\CommentTok{\# Funzione che modifica una variabile globale}
+\KeywordTok{def}\NormalTok{ incrementa\_contatore():}
+    \KeywordTok{global}\NormalTok{ contatore}
+\NormalTok{    contatore }\OperatorTok{+=} \DecValTok{1}
+
+\CommentTok{\# Istruzione di espressione che chiama la funzione }
+\CommentTok{\# con un effetto collaterale (modifica della variabile globale)}
+\NormalTok{incrementa\_contatore()}
+
+\BuiltInTok{print}\NormalTok{(contatore)  }\CommentTok{\# Output: 1}
+\end{Highlighting}
+\end{Shaded}
+\item
+  Lancio di eccezioni:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Funzione che solleva un\textquotesingle{}eccezione}
+\KeywordTok{def}\NormalTok{ solleva\_eccezione(messaggio):}
+    \ControlFlowTok{raise} \PreprocessorTok{ValueError}\NormalTok{(messaggio)}
+
+\CommentTok{\# Istruzione di espressione che chiama la funzione con un effetto collaterale (sollevamento di un\textquotesingle{}eccezione)}
+\ControlFlowTok{try}\NormalTok{:}
+\NormalTok{    solleva\_eccezione(}\StringTok{"Qualcosa è andato storto!"}\NormalTok{)}
+\ControlFlowTok{except} \PreprocessorTok{ValueError} \ImportTok{as}\NormalTok{ e:}
+    \BuiltInTok{print}\NormalTok{(e)  }\CommentTok{\# Output: Qualcosa è andato storto!}
+\end{Highlighting}
+\end{Shaded}
+\end{itemize}
+
+Un assegnamento con \VERB|\OperatorTok{=}| è anch'esso un'istruzione
+semplice e non può mai essere all'interno di una espressione, dove
+invece si può usare l'operatore \emph{tricheco} \VERB|\OperatorTok{:=}|:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (n }\OperatorTok{:=} \BuiltInTok{len}\NormalTok{(}\StringTok{"Python"}\NormalTok{)) }\OperatorTok{\textgreater{}} \DecValTok{5}\NormalTok{:}
+  \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"La lunghezza della stringa è }\SpecialCharTok{\{}\NormalTok{n}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{) }
+  \CommentTok{\# Output: La lunghezza della stringa è 6}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Istruzioni composte}\label{istruzioni-composte}
+
+Una istruzione composta è costituita da altre istruzioni (semplici o
+composte). Il controllo dell'esecuzione delle istruzioni componenti
+avviene per mezzo di una o più clausole che iniziano tutte con una
+parola chiave, sono terminate da \VERB|\NormalTok{:}| e seguite da un
+blocco di codice. Ogni blocco deve avere almeno una istruzione semplice,
+ma può non avere una propria riga logica.
+
+Alcuni esempi:
+
+\begin{itemize}
+\item
+  Blocco di istruzioni separato su più righe con medesima indentazione:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ x }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{:}
+  \BuiltInTok{print}\NormalTok{(}\StringTok{"x è positivo"}\NormalTok{)}
+\NormalTok{  x }\OperatorTok{+=} \DecValTok{1}
+  \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"x ora è }\SpecialCharTok{\{}\NormalTok{x}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\item
+  Blocco come singola istruzione sulla stessa riga logica:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ x }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{: }\BuiltInTok{print}\NormalTok{(}\StringTok{"x è positivo"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\item
+  Diverse istruzioni semplici sulla stessa riga (non consigliato):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ x }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{: }\BuiltInTok{print}\NormalTok{(}\StringTok{"x è positivo"}\NormalTok{)}\OperatorTok{;}\NormalTok{ x }\OperatorTok{+=} \DecValTok{1}\OperatorTok{;} \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"x ora è }\SpecialCharTok{\{}\NormalTok{x}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{itemize}
+
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{part}{Appendici}
@@ -4344,5 +4603,6 @@ Reading, MA, USA: Addison-Wesley.
 \end{CSLReferences}
 
 
+\backmatter
 
 \end{document}

@@ -289,14 +289,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#identificatori" id="toc-identificatori" class="nav-link" data-scroll-target="#identificatori"><span class="header-section-number">6.4.1</span> Identificatori</a></li>
   <li><a href="#parole-chiave" id="toc-parole-chiave" class="nav-link" data-scroll-target="#parole-chiave"><span class="header-section-number">6.4.2</span> Parole chiave</a></li>
+  <li><a href="#classi-riservate-di-identificatori" id="toc-classi-riservate-di-identificatori" class="nav-link" data-scroll-target="#classi-riservate-di-identificatori"><span class="header-section-number">6.4.3</span> Classi riservate di identificatori</a></li>
+  <li><a href="#operatori" id="toc-operatori" class="nav-link" data-scroll-target="#operatori"><span class="header-section-number">6.4.4</span> Operatori</a></li>
+  <li><a href="#delimitatori" id="toc-delimitatori" class="nav-link" data-scroll-target="#delimitatori"><span class="header-section-number">6.4.5</span> Delimitatori</a></li>
+  <li><a href="#letterali" id="toc-letterali" class="nav-link" data-scroll-target="#letterali"><span class="header-section-number">6.4.6</span> Letterali</a></li>
   </ul></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">6.5</span> </a>
+  <li><a href="#istruzioni" id="toc-istruzioni" class="nav-link" data-scroll-target="#istruzioni"><span class="header-section-number">6.5</span> Istruzioni</a>
   <ul class="collapse">
-  <li><a href="#classi-riservate-di-identificatori" id="toc-classi-riservate-di-identificatori" class="nav-link" data-scroll-target="#classi-riservate-di-identificatori"><span class="header-section-number">6.5.1</span> Classi riservate di identificatori</a></li>
-  </ul></li>
-  <li><a href="#operatori" id="toc-operatori" class="nav-link" data-scroll-target="#operatori"><span class="header-section-number">6.6</span> Operatori</a>
-  <ul class="collapse">
-  <li><a href="#delimitatori" id="toc-delimitatori" class="nav-link" data-scroll-target="#delimitatori"><span class="header-section-number">6.6.1</span> Delimitatori</a></li>
+  <li><a href="#istruzioni-semplici" id="toc-istruzioni-semplici" class="nav-link" data-scroll-target="#istruzioni-semplici"><span class="header-section-number">6.5.1</span> Istruzioni semplici</a></li>
+  <li><a href="#istruzioni-composte" id="toc-istruzioni-composte" class="nav-link" data-scroll-target="#istruzioni-composte"><span class="header-section-number">6.5.2</span> Istruzioni composte</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/sp-python-syntax.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li></ul></div></nav>
@@ -402,36 +403,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Alcuni esempi:</p>
 <ul>
 <li><p>Definizione di una funzione:</p>
-<div class="sourceCode" id="annotated-cell-13"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> somma(a, b):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-13-2" class="code-annotation-target"><a href="#annotated-cell-13-2" aria-hidden="true" tabindex="-1"></a>  risultato <span class="op">=</span> a <span class="op">+</span> b</span>
-<span id="annotated-cell-13-3"><a href="#annotated-cell-13-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> risultato </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-1" class="code-annotation-target"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> somma(a, b):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-16-2" class="code-annotation-target"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a>  risultato <span class="op">=</span> a <span class="op">+</span> b</span>
+<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> risultato </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="1" data-code-annotation="1">Prima riga senza indentazione.</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="1" data-code-annotation="1">Prima riga senza indentazione.</span>
 </dd>
-<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="2" data-code-annotation="2">Questa riga e la successiva appartengono allo stesso blocco e, pertanto, hanno la medesima indentazione.</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="2" data-code-annotation="2">Questa riga e la successiva appartengono allo stesso blocco e, pertanto, hanno la medesima indentazione.</span>
 </dd>
 </dl></li>
 <li><p>Ciclo e test di condizione:</p>
-<div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
-<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-4" class="code-annotation-target"><a href="#annotated-cell-14-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x è negativo"</span>)</span>
-<span id="annotated-cell-14-5"><a href="#annotated-cell-14-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">0</span>: </span>
-<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">"x è zero"</span>) </span>
-<span id="annotated-cell-14-7"><a href="#annotated-cell-14-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: </span>
-<span id="annotated-cell-14-8"><a href="#annotated-cell-14-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"x è positivo"</span>) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-17"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="annotated-cell-17-2"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-17-3" class="code-annotation-target"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-17-4" class="code-annotation-target"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x è negativo"</span>)</span>
+<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">0</span>: </span>
+<span id="annotated-cell-17-6"><a href="#annotated-cell-17-6" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">"x è zero"</span>) </span>
+<span id="annotated-cell-17-7"><a href="#annotated-cell-17-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: </span>
+<span id="annotated-cell-17-8"><a href="#annotated-cell-17-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"x è positivo"</span>) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="3" data-code-annotation="1">Le tre clausole <code class="sourceCode python"><span class="cf">if</span></code> , <code class="sourceCode python">then</code> e <code class="sourceCode python"><span class="cf">else</span></code> hanno identica indentazione.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="3" data-code-annotation="1">Le tre clausole <code class="sourceCode python"><span class="cf">if</span></code> , <code class="sourceCode python">then</code> e <code class="sourceCode python"><span class="cf">else</span></code> hanno identica indentazione.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="4" data-code-annotation="2">I tre blocchi hanno come unico vincolo quello di avere un livello maggiore della riga precedente. I blocchi corrispondenti alle diverse clausole non devono avere lo stesso livello di indentazione, anche se è buona prassi farlo.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="4" data-code-annotation="2">I tre blocchi hanno come unico vincolo quello di avere un livello maggiore della riga precedente. I blocchi corrispondenti alle diverse clausole non devono avere lo stesso livello di indentazione, anche se è buona prassi farlo.</span>
 </dd>
 </dl></li>
 </ul>
@@ -761,23 +762,19 @@ Attenzione
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(distanza(punto1, punto2))  <span class="co"># Output: 5.0</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
-</section>
-<section id="section" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="section"><span class="header-section-number">6.5</span> </h2>
-<section id="classi-riservate-di-identificatori" class="level3" data-number="6.5.1">
-<h3 data-number="6.5.1" class="anchored" data-anchor-id="classi-riservate-di-identificatori"><span class="header-section-number">6.5.1</span> Classi riservate di identificatori</h3>
+<section id="classi-riservate-di-identificatori" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="classi-riservate-di-identificatori"><span class="header-section-number">6.4.3</span> Classi riservate di identificatori</h3>
 <p>Alcune classi di identificatori (oltre alle parole chiave) hanno significati speciali in Python. Queste classi sono identificate dai pattern di caratteri di sottolineatura (underscore) all’inizio e alla fine dei nomi. Tuttavia, l’uso di questi identificatori non impone limitazioni rigide al programmatore, ma è importante seguire le convenzioni per evitare ambiguità e problemi di compatibilità.</p>
 <ul>
 <li><code>_</code>
 <ul>
-<li><strong>Non importato da <code>from module import *</code></strong>: Gli identificatori che iniziano con un singolo underscore non vengono importati con un’istruzione di importazione globale.</li>
-<li><strong>Pattern nei match</strong>: Nel contesto di un pattern di corrispondenza all’interno di un’istruzione <code>match</code>, <code>_</code> è una soft keyword che denota un wildcard (carattere jolly).</li>
-<li><strong>Interprete interattivo</strong>: L’interprete interattivo rende disponibile il risultato dell’ultima valutazione nella variabile <code>_</code>. Questo risultato è memorizzato nel modulo builtins, insieme alle funzioni built-in come <code>print</code>.</li>
-<li><strong>Altro uso</strong>: Altrove, <code>_</code> è un identificatore regolare. Viene spesso usato per nominare elementi “speciali”, ma non è speciale per Python stesso. Il nome <code>_</code> è comunemente usato in congiunzione con l’internazionalizzazione (vedi la documentazione del modulo gettext per ulteriori informazioni su questa convenzione) ed è anche comunemente utilizzato per variabili non usate.</li>
+<li>Non importato da <code>from module import *</code>: Gli identificatori che iniziano con un singolo underscore non vengono importati con un’istruzione di importazione globale.</li>
+<li>Pattern nei match: Nel contesto di un pattern di corrispondenza all’interno di un’istruzione <code>match</code>, <code>_</code> è una soft keyword che denota un wildcard (carattere jolly).</li>
+<li>Interprete interattivo: L’interprete interattivo rende disponibile il risultato dell’ultima valutazione nella variabile <code>_</code>. Questo risultato è memorizzato nel modulo builtins, insieme alle funzioni built-in come <code>print</code>.</li>
+<li>Altro uso: Altrove, <code>_</code> è un identificatore regolare. Viene spesso usato per nominare elementi “speciali”, ma non è speciale per Python stesso. Il nome <code>_</code> è comunemente usato in congiunzione con l’internazionalizzazione (vedi la documentazione del modulo gettext per ulteriori informazioni su questa convenzione) ed è anche comunemente utilizzato per variabili non usate.</li>
 </ul></li>
 </ul>
-<section id="esempio" class="level4" data-number="6.5.1.1">
-<h4 data-number="6.5.1.1" class="anchored" data-anchor-id="esempio"><span class="header-section-number">6.5.1.1</span> Esempio</h4>
+<p>Esempio:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilizzo di _ come identificatore in vari contesti</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Non importato con from module import *</span></span>
@@ -807,12 +804,11 @@ Attenzione
 <ul>
 <li><code>__*__</code>
 <ul>
-<li><strong>Nomi definiti dal sistema</strong>: Questi nomi, informalmente noti come nomi “dunder”, sono definiti dall’interprete e dalla sua implementazione (inclusa la libreria standard). I nomi di sistema attuali sono discussi nella sezione dei nomi dei metodi speciali e altrove. Altri potrebbero essere definiti nelle versioni future di Python. Qualsiasi uso di nomi <code>__*__</code>, in qualsiasi contesto, che non segua l’uso esplicitamente documentato, è soggetto a rottura senza preavviso.</li>
+<li>Nomi definiti dal sistema: Questi nomi, informalmente noti come nomi “dunder”, sono definiti dall’interprete e dalla sua implementazione (inclusa la libreria standard). I nomi di sistema attuali sono discussi nella sezione dei nomi dei metodi speciali e altrove. Altri potrebbero essere definiti nelle versioni future di Python. Qualsiasi uso di nomi <code>__*__</code>, in qualsiasi contesto, che non segua l’uso esplicitamente documentato, è soggetto a rottura senza preavviso.</li>
 </ul></li>
 </ul>
-</section>
-<section id="esempio-1" class="level4" data-number="6.5.1.2">
-<h4 data-number="6.5.1.2" class="anchored" data-anchor-id="esempio-1"><span class="header-section-number">6.5.1.2</span> Esempio</h4>
+<section id="esempio" class="level4" data-number="6.4.3.1">
+<h4 data-number="6.4.3.1" class="anchored" data-anchor-id="esempio"><span class="header-section-number">6.4.3.1</span> Esempio</h4>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilizzo di nomi "dunder"</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyClass:</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, value):</span>
@@ -826,12 +822,12 @@ Attenzione
 <ul>
 <li><code>__*</code>
 <ul>
-<li><strong>Nomi privati della classe</strong>: I nomi in questa categoria, quando utilizzati nel contesto di una definizione di classe, vengono riscritti per utilizzare una forma mangled per evitare conflitti di nome tra attributi “privati” delle classi base e derivate.</li>
+<li>Nomi privati della classe: I nomi in questa categoria, quando utilizzati nel contesto di una definizione di classe, vengono riscritti per utilizzare una forma mangled per evitare conflitti di nome tra attributi “privati” delle classi base e derivate.</li>
 </ul></li>
 </ul>
 </section>
-<section id="esempio-2" class="level4" data-number="6.5.1.3">
-<h4 data-number="6.5.1.3" class="anchored" data-anchor-id="esempio-2"><span class="header-section-number">6.5.1.3</span> Esempio</h4>
+<section id="esempio-1" class="level4" data-number="6.4.3.2">
+<h4 data-number="6.4.3.2" class="anchored" data-anchor-id="esempio-1"><span class="header-section-number">6.4.3.2</span> Esempio</h4>
 <div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilizzo di nomi privati della classe</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BaseClass:</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
@@ -851,9 +847,8 @@ Attenzione
 <p>In sintesi, Python riserva certe classi di identificatori che hanno significati speciali e seguono regole specifiche, principalmente per garantire l’integrità del codice e la compatibilità tra versioni diverse del linguaggio. Tuttavia, queste convenzioni non pongono limitazioni rigide al programmatore, che può comunque utilizzare questi identificatori secondo necessità, purché consapevole delle loro implicazioni.</p>
 </section>
 </section>
-</section>
-<section id="operatori" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="operatori"><span class="header-section-number">6.6</span> Operatori</h2>
+<section id="operatori" class="level3" data-number="6.4.4">
+<h3 data-number="6.4.4" class="anchored" data-anchor-id="operatori"><span class="header-section-number">6.4.4</span> Operatori</h3>
 <p>Gli operatori sono rappresentati da simboli non alfanumerici e, quando applicati a uno o più identificatori, letterali o espressioni (definiti genericamente operandi), producono un risultato. Attenzione a non confondere la definizione di operatore come token, come considerata qui, con quella di operatore come funzionalità algoritmica, poiché alcune parole chiave sono operatori algoritmici e anche le funzioni possono agire come operatori.</p>
 <p>Esempi:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
@@ -981,7 +976,7 @@ Attenzione
 <tr class="odd">
 <td>Assegnazione</td>
 <td><code class="sourceCode python"><span class="op">:=</span></code></td>
-<td>Operatore di assegnazione (walrus)</td>
+<td>Operatore di assegnazione in espressione (walrus o tricheco)</td>
 </tr>
 </tbody>
 </table>
@@ -1031,8 +1026,9 @@ Attenzione
 <span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Risultato di A @ B:"</span>)</span>
 <span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(C)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Infine, <code class="sourceCode python"><span class="op">@</span></code> è anche un delimitatore.</p>
-<section id="delimitatori" class="level3" data-number="6.6.1">
-<h3 data-number="6.6.1" class="anchored" data-anchor-id="delimitatori"><span class="header-section-number">6.6.1</span> Delimitatori</h3>
+</section>
+<section id="delimitatori" class="level3" data-number="6.4.5">
+<h3 data-number="6.4.5" class="anchored" data-anchor-id="delimitatori"><span class="header-section-number">6.4.5</span> Delimitatori</h3>
 <p>In Python, alcuni token servono come delimitatori nella grammatica del linguaggio. I delimitatori sono caratteri che separano le varie componenti del codice, come espressioni, blocchi di codice, parametri di funzioni e istruzioni.</p>
 <p>La seguente tabella include tutti i delimitatori e i principali utilizzi:</p>
 <table class="caption-top table">
@@ -1226,6 +1222,142 @@ Attenzione
 </tbody>
 </table>
 <p>Alcuni caratteri ASCII non sono utilizzati in Python e la loro presenza al difuori dei letterali di stringa e dei commenti genera un errore: <code>$</code>, <code>?</code>, <code>`</code>.</p>
+</section>
+<section id="letterali" class="level3" data-number="6.4.6">
+<h3 data-number="6.4.6" class="anchored" data-anchor-id="letterali"><span class="header-section-number">6.4.6</span> Letterali</h3>
+<p>I letterali sono notazioni per valori costanti di alcuni tipi predefiniti nel linguaggio. Esistono diversi tipi di letterali, ognuno rappresenta un tipo di dato specifico e ha una sintassi particolare.</p>
+<section id="numerici" class="level4" data-number="6.4.6.1">
+<h4 data-number="6.4.6.1" class="anchored" data-anchor-id="numerici"><span class="header-section-number">6.4.6.1</span> Numerici</h4>
+<p>I letterali numerici includono interi, numeri a virgola mobile e numeri complessi:</p>
+<ul>
+<li>Interi, possono essere scritti in base decimale, ottale, esadecimale o binaria:
+<ul>
+<li>Decimale: <code class="sourceCode python"><span class="dv">10</span></code>, <code class="sourceCode python"><span class="op">-</span><span class="dv">3</span></code>.</li>
+<li>Ottale: <code class="sourceCode python"><span class="bn">0o12</span></code>, <code class="sourceCode python"><span class="op">-</span><span class="bn">0o7</span></code>.</li>
+<li>Esadecimale: <code class="sourceCode python"><span class="bn">0xA</span></code>, <code class="sourceCode python"><span class="op">-</span><span class="bn">0x1F</span></code>.</li>
+<li>Binario: <code class="sourceCode python"><span class="bn">0b1010</span></code>, <code class="sourceCode python"><span class="op">-</span><span class="bn">0b11</span></code>.</li>
+</ul></li>
+<li>Virgola mobile, possono essere rappresentati con una parte intera e una decimale, oppure con notazione scientifica:
+<ul>
+<li>Virgola mobile: <code class="sourceCode python"><span class="fl">3.14</span></code>, <code class="sourceCode python"><span class="op">-</span><span class="fl">0.001</span></code>.</li>
+<li>Notazione scientifica: <code class="sourceCode python"><span class="fl">1e10</span></code>, <code class="sourceCode python"><span class="op">-</span><span class="fl">2.5e-3</span></code>.</li>
+</ul></li>
+<li>Complessi, appresentati da una parte reale e una parte immaginaria: <code class="sourceCode python"><span class="dv">3</span><span class="op">+</span><span class="ot">4j</span></code>, <code class="sourceCode python"><span class="op">-</span><span class="dv">1</span><span class="op">-</span><span class="ot">0.5j</span></code>.</li>
+</ul>
+</section>
+<section id="stringhe" class="level4" data-number="6.4.6.2">
+<h4 data-number="6.4.6.2" class="anchored" data-anchor-id="stringhe"><span class="header-section-number">6.4.6.2</span> Stringhe</h4>
+<p>I letterali di stringa possono essere racchiusi tra virgolette singole o doppie. Possono anche essere multi-linea se racchiusi tra triple virgolette singole o doppie:</p>
+<ul>
+<li>Stringhe racchiuse tra virgolette singole o doppie:
+<ul>
+<li>Singole: <code class="sourceCode python"><span class="co">'ciao'</span></code>.</li>
+<li>Doppie: <code class="sourceCode python"><span class="co">"mondo"</span></code>.</li>
+</ul></li>
+<li>Stringhe multi-linea racchiuse tra triple virgolette singole o doppie:
+<ul>
+<li>Triple singole: <code class="sourceCode python"><span class="co">'''testo multi-linea'''</span></code>.</li>
+<li>Triple doppie: <code class="sourceCode python"><span class="co">"""testo multi-linea"""</span></code>.</li>
+</ul></li>
+</ul>
+<p>Le stringhe tra tripli apici possono avere degli a capo e degli apici (non tripli) all’interno.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>stringa_multilinea <span class="op">=</span> <span class="st">"""Questa è una stringa</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="st">molto "importante"."""</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stringa_multilinea)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Tutte le stringhe sono codificate in Unicode, con il prefisso <code class="sourceCode python">b</code> la stringa è di tipo byte ed è limitata ai 128 caratteri dell’ASCII. Se si prepone <code class="sourceCode python">r</code>, che sta per <em>raw</em> cioè grezzo, allora la codifica è sempre Unicode ma i caratteri di escape non sono intepretati.<a href="">2^</a></p>
+</section>
+<section id="f-stringhe" class="level4" data-number="6.4.6.3">
+<h4 data-number="6.4.6.3" class="anchored" data-anchor-id="f-stringhe"><span class="header-section-number">6.4.6.3</span> F-stringhe</h4>
+<p>Le f-stringhe (stringhe formattate) sono racchiuse tra virgolette singole, doppie o triple e sono precedute dal prefisso <code class="sourceCode python">f</code> o <code class="sourceCode python">F</code>. Permettono di includere espressioni Python all’interno.</p>
+<p>Si possono avere stringhe formattate grezze ma non byte.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nome <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>f_stringa <span class="op">=</span> <span class="ss">f'Ciao, </span><span class="sc">{</span>nome<span class="sc">}</span><span class="ss">!'</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>f_stringa_multi_linea <span class="op">=</span> <span class="ss">f'''Questo è</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ss">un esempio di</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ss">f-stringa multi-linea con </span><span class="sc">{</span>nome<span class="sc">}</span><span class="ss">'''</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f_stringa)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f_stringa_multi_linea)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="istruzioni" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="istruzioni"><span class="header-section-number">6.5</span> Istruzioni</h2>
+<p>Un programma Pythom è una sequenza di istruzioni che si distinguono in <strong>semplici</strong> o <strong>composte</strong>.</p>
+<section id="istruzioni-semplici" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="istruzioni-semplici"><span class="header-section-number">6.5.1</span> Istruzioni semplici</h3>
+<p>Un’istruzione semplice è sempre contenuta in una riga logica, che può presentare più istruzioni semplici separate da <code class="sourceCode python"><span class="op">;</span></code>. È permesso ma scaonsigliato perché in pochi casi porta a codice leggibile.</p>
+<p>Un’espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne viene prodotto il risultato della valutazione. D’altronde, una espressione è spesso utilizzata per chiamare funzioni che hanno effetti collaterali, come, ad esempio, produrre un output:</p>
+<ul>
+<li><p>Produzione di output:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Funzione che stampa un messaggio</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> stampa_messaggio(messaggio):</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(messaggio)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Istruzione di espressione che chiama la funzione </span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># con un effetto collaterale (stampa del messaggio)</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>stampa_messaggio(<span class="st">"Ciao, mondo!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Modifica di parametri:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Funzione che modifica un argomento mutabile (lista)</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> aggiungi_elemento(lista, elemento):</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    lista.append(elemento)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Lista iniziale</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>numeri <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Istruzione di espressione che chiama la funzione </span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># con un effetto collaterale (modifica dell'argomento)</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>aggiungi_elemento(numeri, <span class="dv">4</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numeri)  <span class="co"># Output: [1, 2, 3, 4]</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Modifica di variabili globali</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variabile globale</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>contatore <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Funzione che modifica una variabile globale</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> incrementa_contatore():</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> contatore</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    contatore <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Istruzione di espressione che chiama la funzione </span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># con un effetto collaterale (modifica della variabile globale)</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>incrementa_contatore()</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(contatore)  <span class="co"># Output: 1</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Lancio di eccezioni:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Funzione che solleva un'eccezione</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> solleva_eccezione(messaggio):</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(messaggio)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Istruzione di espressione che chiama la funzione con un effetto collaterale (sollevamento di un'eccezione)</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    solleva_eccezione(<span class="st">"Qualcosa è andato storto!"</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(e)  <span class="co"># Output: Qualcosa è andato storto!</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p>Un assegnamento con <code class="sourceCode python"><span class="op">=</span></code> è anch’esso un’istruzione semplice e non può mai essere all’interno di una espressione, dove invece si può usare l’operatore <em>tricheco</em> <code class="sourceCode python"><span class="op">:=</span></code>:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (n <span class="op">:=</span> <span class="bu">len</span>(<span class="st">"Python"</span>)) <span class="op">&gt;</span> <span class="dv">5</span>:</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"La lunghezza della stringa è </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">"</span>) </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Output: La lunghezza della stringa è 6</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="istruzioni-composte" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="istruzioni-composte"><span class="header-section-number">6.5.2</span> Istruzioni composte</h3>
+<p>Una istruzione composta è costituita da altre istruzioni (semplici o composte). Il controllo dell’esecuzione delle istruzioni componenti avviene per mezzo di una o più clausole che iniziano tutte con una parola chiave, sono terminate da <code class="sourceCode python">:</code> e seguite da un blocco di codice. Ogni blocco deve avere almeno una istruzione semplice, ma può non avere una propria riga logica.</p>
+<p>Alcuni esempi:</p>
+<ul>
+<li><p>Blocco di istruzioni separato su più righe con medesima indentazione:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  x <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"x ora è </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Blocco come singola istruzione sulla stessa riga logica:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>: <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Diverse istruzioni semplici sulla stessa riga (non consigliato):</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>: <span class="bu">print</span>(<span class="st">"x è positivo"</span>)<span class="op">;</span> x <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span> <span class="bu">print</span>(<span class="ss">f"x ora è </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
 
 
 </section>

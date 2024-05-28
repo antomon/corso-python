@@ -1,10 +1,5 @@
-from typing import Callable
+x = 2
 
-# Definizione di una funzione che accetta una callable variadica
-def funzione_variadica(func: Callable[..., int]):
-    pass
+x + 3
 
-def funzione_da_completare():
-    ... # <2>
-    
-funzione_da_completare()
+_
