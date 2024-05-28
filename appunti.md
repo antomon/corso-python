@@ -625,3 +625,12 @@ I seguenti caratteri ASCII stampabili non sono usati in Python. La loro presenza
 ```plaintext
 $       ?       `
 ```
+
+
+```{=html}
+<script type="py" terminal worker>
+import code
+code.interact()
+</script>
+<div id="editor"></div>
+```
