@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -79,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -249,17 +269,27 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#definizioni" id="toc-definizioni" class="nav-link active" data-scroll-target="#definizioni"><span class="header-section-number">1.1</span> Definizioni</a></li>
   <li><a href="#linguaggi-naturali-e-di-programmazione" id="toc-linguaggi-naturali-e-di-programmazione" class="nav-link" data-scroll-target="#linguaggi-naturali-e-di-programmazione"><span class="header-section-number">1.2</span> Linguaggi naturali e di programmazione</a></li>
-  <li><a href="#interpreti-e-compilatori" id="toc-interpreti-e-compilatori" class="nav-link" data-scroll-target="#interpreti-e-compilatori"><span class="header-section-number">1.3</span> Interpreti e compilatori</a></li>
-  <li><a href="#limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione" id="toc-limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione" class="nav-link" data-scroll-target="#limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione"><span class="header-section-number">1.4</span> L’Impatto dell’intelligenza artificiale generativa sulla programmazione</a>
+  <li><a href="#algoritmi" id="toc-algoritmi" class="nav-link" data-scroll-target="#algoritmi"><span class="header-section-number">1.3</span> Algoritmi</a></li>
+  <li><a href="#esecuzione-del-programma" id="toc-esecuzione-del-programma" class="nav-link" data-scroll-target="#esecuzione-del-programma"><span class="header-section-number">1.4</span> Esecuzione del programma</a></li>
+  <li><a href="#ciclo-di-vita-del-software" id="toc-ciclo-di-vita-del-software" class="nav-link" data-scroll-target="#ciclo-di-vita-del-software"><span class="header-section-number">1.5</span> Ciclo di vita del software</a>
   <ul class="collapse">
-  <li><a href="#attività-del-programmatore-con-lia-generativa" id="toc-attività-del-programmatore-con-lia-generativa" class="nav-link" data-scroll-target="#attività-del-programmatore-con-lia-generativa"><span class="header-section-number">1.4.1</span> Attività del programmatore con l’IA Generativa</a></li>
-  <li><a href="#limportanza-di-imparare-a-programmare-nellera-dellia-generativa" id="toc-limportanza-di-imparare-a-programmare-nellera-dellia-generativa" class="nav-link" data-scroll-target="#limportanza-di-imparare-a-programmare-nellera-dellia-generativa"><span class="header-section-number">1.4.2</span> L’Importanza di imparare a programmare nell’era dell’IA generativa</a></li>
+  <li><a href="#analisi-dei-requisiti" id="toc-analisi-dei-requisiti" class="nav-link" data-scroll-target="#analisi-dei-requisiti"><span class="header-section-number">1.5.1</span> Analisi dei requisiti</a></li>
+  <li><a href="#disegno-architetturale" id="toc-disegno-architetturale" class="nav-link" data-scroll-target="#disegno-architetturale"><span class="header-section-number">1.5.2</span> Disegno architetturale</a></li>
+  <li><a href="#disegno-funzionale" id="toc-disegno-funzionale" class="nav-link" data-scroll-target="#disegno-funzionale"><span class="header-section-number">1.5.3</span> Disegno funzionale</a></li>
+  <li><a href="#implementazione" id="toc-implementazione" class="nav-link" data-scroll-target="#implementazione"><span class="header-section-number">1.5.4</span> Implementazione</a></li>
+  <li><a href="#testing-e-debugging" id="toc-testing-e-debugging" class="nav-link" data-scroll-target="#testing-e-debugging"><span class="header-section-number">1.5.5</span> Testing e debugging</a></li>
+  <li><a href="#distribuzione-e-manutenzione" id="toc-distribuzione-e-manutenzione" class="nav-link" data-scroll-target="#distribuzione-e-manutenzione"><span class="header-section-number">1.5.6</span> Distribuzione e manutenzione</a></li>
+  </ul></li>
+  <li><a href="#limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione" id="toc-limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione" class="nav-link" data-scroll-target="#limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione"><span class="header-section-number">1.6</span> L’Impatto dell’intelligenza artificiale generativa sulla programmazione</a>
+  <ul class="collapse">
+  <li><a href="#attività-del-programmatore-con-lia-generativa" id="toc-attività-del-programmatore-con-lia-generativa" class="nav-link" data-scroll-target="#attività-del-programmatore-con-lia-generativa"><span class="header-section-number">1.6.1</span> Attività del programmatore con l’IA Generativa</a></li>
+  <li><a href="#limportanza-di-imparare-a-programmare-nellera-dellia-generativa" id="toc-limportanza-di-imparare-a-programmare-nellera-dellia-generativa" class="nav-link" data-scroll-target="#limportanza-di-imparare-a-programmare-nellera-dellia-generativa"><span class="header-section-number">1.6.2</span> L’Importanza di imparare a programmare nell’era dell’IA generativa</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/fp-programming-languages.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fp.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./fp-programming-languages.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">I linguaggi di programmazione, i programmi e i programmatori</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -280,7 +310,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Partiamo da alcuni concetti basilari che ci permette di contestualizzare quelli che intridurremo via via nel corso.</p>
+<p>Partiamo da alcuni concetti basilari che ci permette di contestualizzare più facilmente quelli che introdurremo via via nel corso.</p>
 <section id="definizioni" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="definizioni"><span class="header-section-number">1.1</span> Definizioni</h2>
 <p>La <strong>programmazione</strong> è il processo di progettazione e scrittura di <strong>istruzioni</strong>, nella forma statica identificate come <strong>codice sorgente</strong>, che un computer può ricevere per eseguire compiti predefiniti. Queste istruzioni sono codificate in un <strong>linguaggio di programmazione</strong>, che traduce le idee e gli algoritmi del programmatore, in un formato comprensibile ed eseguibile dal computer.</p>
@@ -296,25 +326,76 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Vocabolario limitato: I linguaggi naturali hanno un vocabolario vastissimo e in continua espansione. I linguaggi di programmazione, al contrario, hanno un vocabolario limitato costituito da parole chiave e comandi definiti dal linguaggio stesso.</p></li>
 </ol>
 </section>
-<section id="interpreti-e-compilatori" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="interpreti-e-compilatori"><span class="header-section-number">1.3</span> Interpreti e compilatori</h2>
+<section id="algoritmi" class="level2 page-columns page-full" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="algoritmi"><span class="header-section-number">1.3</span> Algoritmi</h2>
+<p>Un <strong>algoritmo</strong> è “un insieme di regole che definiscono con precisione una sequenza di operazioni” (Harold Stone, <em>Introduction to Computer Organization and Data Structures</em>, 1971 <span class="citation" data-cites="10.5555/578826">(<a href="#ref-10.5555/578826" role="doc-biblioref">Stone 1971</a>)</span>). Gli algoritmi sono alla base della programmazione perché rappresentano il disegno teorico computazionale dei programmi.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-10.5555/578826" class="csl-entry" role="listitem">
+Stone, Harold S. 1971. <em>Introduction to Computer Organization and Data Structures</em>. USA: <a href="https://dl.acm.org/doi/10.5555/578826" class="uri">https://dl.acm.org/doi/10.5555/578826</a>; McGraw-Hill, Inc.
+</div></div><p>Più precisamente, un algoritmo è una sequenza ben definita di passi o operazioni che, a partire da un input, produce un output in un tempo finito. Le proprietà principali seguenti esprimono in modo più completo le caratteristiche che un algoritmo deve possedere:</p>
+<ol type="1">
+<li>Finitudine L’algoritmo deve terminare dopo un numero finito di passi.</li>
+<li>Determinismo: Ogni passo dell’algoritmo deve essere definito in modo preciso e non ambiguo.</li>
+<li>Input L’algoritmo riceve zero o più dati in ingresso.</li>
+<li>Output L’algoritmo produce uno o più risultati.</li>
+<li>Effettività: Ogni operazione dell’algoritmo deve essere fattibile ed eseguibile in un tempo finito.</li>
+</ol>
+<p>Gli algoritmi sono tradotti in codice sorgente attraverso un linguaggio di programmazione per creare programmi. In altre parole, un programma è la realizzazione pratica e funzionante degli algoritmi ideati dal programmatore.</p>
+</section>
+<section id="esecuzione-del-programma" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="esecuzione-del-programma"><span class="header-section-number">1.4</span> Esecuzione del programma</h2>
 <p>Quando un programma viene scritto e salvato in un file di testo, il computer deve eseguirlo per produrre le azioni desiderate. Questo processo si svolge in diverse fasi:</p>
 <ul>
 <li><p>Compilazione o interpretazione: Il codice sorgente, scritto in un linguaggio di alto livello leggibile dall’uomo, deve essere trasformato in un linguaggio macchina comprensibile dal computer. Questo avviene attraverso due possibili processi:</p>
 <ul>
-<li>Compilazione: In linguaggi come C++ o Java, un compilatore traduce tutto il codice sorgente in linguaggio macchina, creando un file eseguibile. Questo file può poi essere eseguito direttamente dalla CPU.</li>
-<li>Interpretazione: In linguaggi come Python o JavaScript, un interprete legge ed esegue il codice sorgente riga per riga, traducendolo in linguaggio macchina al momento dell’esecuzione.</li>
+<li><p><strong>Compilazione</strong>: In linguaggi come C++ o Java, un compilatore traduce tutto il codice sorgente in linguaggio macchina, creando un file eseguibile. Questo file può poi essere eseguito direttamente dalla CPU.</p></li>
+<li><p><strong>Interpretazione</strong>: In linguaggi come Python o JavaScript, un interprete legge ed esegue il codice sorgente istruzione per istruzione, traducendolo in linguaggio macchina al momento dell’esecuzione.</p></li>
 </ul></li>
 <li><p>Esecuzione: Una volta che il programma è stato compilato (nel caso dei linguaggi compilati) o viene interpretato (nel caso dei linguaggi interpretati), il computer può iniziare ad eseguire le istruzioni. La CPU (central processing unit) legge queste istruzioni dal file eseguibile o dall’interprete e le esegue una per una. Durante questa fase, la CPU manipola i dati e produce i risultati desiderati.</p></li>
 <li><p>Interazione con i componenti hardware: Durante l’esecuzione, il programma può interagire con vari componenti hardware del computer. Ad esempio, può leggere e scrivere dati nella memoria, accedere ai dischi rigidi per salvare o recuperare informazioni, comunicare attraverso la rete, e interagire con dispositivi di input/output come tastiere e monitor. Questa interazione permette al programma di eseguire compiti complessi e di fornire output all’utente.</p></li>
 </ul>
 </section>
-<section id="limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione"><span class="header-section-number">1.4</span> L’Impatto dell’intelligenza artificiale generativa sulla programmazione</h2>
+<section id="ciclo-di-vita-del-software" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="ciclo-di-vita-del-software"><span class="header-section-number">1.5</span> Ciclo di vita del software</h2>
+<p>Un <strong>software</strong> è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia è quindi: software, programmi, istruzioni. Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi.</p>
+<section id="analisi-dei-requisiti" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="analisi-dei-requisiti"><span class="header-section-number">1.5.1</span> Analisi dei requisiti</h3>
+<p>La progettazione di un’applicazione inizia con la fase di <strong>analisi dei requisiti</strong>, in cui si identificano cosa deve fare il software, chi sono gli utenti e quali sono i requisiti funzionali e non funzionali che deve soddisfare.</p>
+</section>
+<section id="disegno-architetturale" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="disegno-architetturale"><span class="header-section-number">1.5.2</span> Disegno architetturale</h3>
+<p>Il <strong>disegno architetturale</strong> riguarda l’organizzazione ad alto livello del sistema software. In questa fase si definiscono i componenti principali del sistema e come essi interagiscono tra di loro. Questo include la suddivisione del sistema in moduli o componenti, la definizione delle interfacce tra di essi, e l’uso di tecniche di modellazione per rappresentare l’architettura del sistema.</p>
+</section>
+<section id="disegno-funzionale" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="disegno-funzionale"><span class="header-section-number">1.5.3</span> Disegno funzionale</h3>
+<p>Il <strong>disegno funzionale</strong> dettaglia come ogni componente del sistema realizza le proprie funzionalità. In questa fase si descrivono le operazioni specifiche che ogni componente deve eseguire, spesso utilizzando pseudocodice o diagrammi di attività per rappresentare il flusso di operazioni.</p>
+</section>
+<section id="implementazione" class="level3" data-number="1.5.4">
+<h3 data-number="1.5.4" class="anchored" data-anchor-id="implementazione"><span class="header-section-number">1.5.4</span> Implementazione</h3>
+<p>Una volta che l’architettura è stata progettata, si passa alla fase di <strong>implementazione</strong>, in cui i programmatori scrivono il codice sorgente nei linguaggi di programmazione scelti.</p>
+</section>
+<section id="testing-e-debugging" class="level3" data-number="1.5.5">
+<h3 data-number="1.5.5" class="anchored" data-anchor-id="testing-e-debugging"><span class="header-section-number">1.5.5</span> Testing e debugging</h3>
+<p>Dopo l’implementazione, è essenziale verificare che il software funzioni correttamente:</p>
+<ul>
+<li><strong>Testing</strong>: Scrivere ed eseguire test per verificare che il software soddisfi i requisiti specificati. I test possono essere di diversi tipi, come test unitari, test di integrazione e test di sistema.</li>
+<li><strong>Debugging</strong>: Identificare e correggere gli errori (bug) nel codice. Questo può includere l’uso di strumenti di debugging per tracciare l’esecuzione del programma e trovare i punti in cui si verificano gli errori.</li>
+</ul>
+</section>
+<section id="distribuzione-e-manutenzione" class="level3" data-number="1.5.6">
+<h3 data-number="1.5.6" class="anchored" data-anchor-id="distribuzione-e-manutenzione"><span class="header-section-number">1.5.6</span> Distribuzione e manutenzione</h3>
+<p>Una volta che il software è stato testato e ritenuto pronto, si passa alla fase di <strong>distribuzione</strong> (in inglese, deployment):</p>
+<ul>
+<li><strong>Distribuzione</strong>: Rilasciare il software agli utenti finali, che può includere l’installazione su server, la distribuzione di applicazioni desktop o il rilascio di app mobile.</li>
+<li><strong>Manutenzione</strong>: Continuare a supportare il software dopo il rilascio. Questo include la correzione di bug scoperti dopo il rilascio, l’aggiornamento del software per miglioramenti e nuove funzionalità, e l’adattamento a nuovi requisiti o ambienti.</li>
+</ul>
+</section>
+</section>
+<section id="limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione"><span class="header-section-number">1.6</span> L’Impatto dell’intelligenza artificiale generativa sulla programmazione</h2>
 <p>Con l’avvento dell’<strong>intelligenza artificiale generativa</strong> (IA generativa), la programmazione ha subito una trasformazione significativa. Prima dell’IA generativa, i programmatori dovevano tutti scrivere manualmente ogni riga di codice, seguendo rigorosamente la sintassi e le regole del linguaggio di programmazione scelto. Questo processo richiedeva una conoscenza approfondita degli algoritmi, delle strutture dati e delle migliori pratiche di programmazione.</p>
 <p>Inoltre, i programmatori dovevano creare ogni funzione, classe e modulo a mano, assicurandosi che ogni dettaglio fosse corretto, identificavano e correggevano gli errori nel codice con un processo lungo e laborioso, che comportava anche la scrittura di casi di test e l’esecuzione di sessioni di esecuzione di tali casi. Infine, dovebano scrivere documentazione dettagliata per spiegare il funzionamento del codice e facilitare la manutenzione futura.</p>
-<section id="attività-del-programmatore-con-lia-generativa" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1" class="anchored" data-anchor-id="attività-del-programmatore-con-lia-generativa"><span class="header-section-number">1.4.1</span> Attività del programmatore con l’IA Generativa</h3>
+<section id="attività-del-programmatore-con-lia-generativa" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="attività-del-programmatore-con-lia-generativa"><span class="header-section-number">1.6.1</span> Attività del programmatore con l’IA Generativa</h3>
 <p>L’IA generativa ha introdotto nuovi strumenti e metodologie che stanno cambiando il modo in cui i programmatori lavorano:</p>
 <ol type="1">
 <li>Generazione automatica del codice: Gli strumenti di IA generativa possono creare porzioni di codice basate su descrizioni ad alto livello fornite dai programmatori. Questo permette di velocizzare notevolmente lo sviluppo iniziale e ridurre gli errori di sintassi.</li>
@@ -324,13 +405,14 @@ ul.task-list li input[type="checkbox"] {
 <li>Documentazione automatica: L’IA può generare documentazione leggendo e interpretando il codice, riducendo il carico di lavoro manuale e garantendo una documentazione coerente e aggiornata.</li>
 </ol>
 </section>
-<section id="limportanza-di-imparare-a-programmare-nellera-dellia-generativa" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="limportanza-di-imparare-a-programmare-nellera-dellia-generativa"><span class="header-section-number">1.4.2</span> L’Importanza di imparare a programmare nell’era dell’IA generativa</h3>
+<section id="limportanza-di-imparare-a-programmare-nellera-dellia-generativa" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="limportanza-di-imparare-a-programmare-nellera-dellia-generativa"><span class="header-section-number">1.6.2</span> L’Importanza di imparare a programmare nell’era dell’IA generativa</h3>
 <p>Nonostante l’avvento dell’IA generativa, imparare a programmare rimane fondamentale per diverse ragioni. La programmazione non è solo una competenza tecnica, ma anche un modo di pensare e risolvere problemi. Comprendere i fondamenti della programmazione è essenziale per utilizzare efficacemente gli strumenti di IA generativa. Senza una solida base, è difficile sfruttare appieno queste tecnologie. Inoltre, la programmazione insegna a scomporre problemi complessi in parti più gestibili e a trovare soluzioni logiche e sequenziali, una competenza preziosa in molti campi.</p>
 <p>Anche con l’IA generativa, esisteranno sempre situazioni in cui sarà necessario personalizzare o ottimizzare il codice per esigenze specifiche. La conoscenza della programmazione permette di fare queste modifiche con sicurezza. Inoltre, quando qualcosa va storto, è indispensabile sapere come leggere e comprendere il codice per identificare e risolvere i problemi. L’IA può assistere, ma la comprensione umana rimane cruciale per interventi mirati.</p>
 <p>Imparare a programmare consente di sperimentare nuove idee e prototipare rapidamente soluzioni innovative. La creatività è potenziata dalla capacità di tradurre idee in codice funzionante. Sapere programmare aiuta anche a comprendere i limiti e le potenzialità degli strumenti di IA generativa, permettendo di usarli in modo più strategico ed efficace.</p>
 <p>La tecnologia evolve rapidamente, e con una conoscenza della programmazione si è meglio preparati ad adattarsi alle nuove tecnologie e metodologie che emergeranno in futuro. Inoltre, la programmazione è una competenza trasversale applicabile in numerosi settori, dalla biologia computazionale alla finanza, dall’ingegneria all’arte digitale. Avere questa competenza amplia notevolmente le opportunità di carriera.</p>
 <p>Infine, la programmazione è una porta d’accesso a ruoli più avanzati e specializzati nel campo della tecnologia, come l’ingegneria del software, la scienza dei dati e la ricerca sull’IA. Conoscere i principi della programmazione aiuta a comprendere meglio come funzionano gli algoritmi di IA, permettendo di contribuire attivamente allo sviluppo di nuove tecnologie.</p>
+
 
 
 </section>

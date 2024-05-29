@@ -5,7 +5,7 @@ citation-location: margin
 
 # I linguaggi di programmazione, i programmi e i programmatori
 
-Partiamo da alcuni concetti basilari che ci permette di contestualizzare quelli che intridurremo via via nel corso.
+Partiamo da alcuni concetti basilari che ci permette di contestualizzare più facilmente quelli che introdurremo via via nel corso.
 
 ## Definizioni
 
@@ -25,17 +25,67 @@ I linguaggi di programmazione differiscono dai linguaggi naturali (come l'italia
 
 3. Vocabolario limitato: I linguaggi naturali hanno un vocabolario vastissimo e in continua espansione. I linguaggi di programmazione, al contrario, hanno un vocabolario limitato costituito da parole chiave e comandi definiti dal linguaggio stesso.
 
-## Interpreti e compilatori
+## Algoritmi
+
+Un **algoritmo** è "un insieme di regole che definiscono con precisione una sequenza di operazioni" (Harold Stone, _Introduction to Computer Organization and Data Structures_, 1971 [@10.5555/578826]). Gli algoritmi sono alla base della programmazione perché rappresentano il disegno teorico computazionale dei programmi. 
+
+Più precisamente, un algoritmo è una sequenza ben definita di passi o operazioni che, a partire da un input, produce un output in un tempo finito. Le proprietà principali seguenti esprimono in modo più completo le caratteristiche che un algoritmo deve possedere:
+
+1. Finitudine L'algoritmo deve terminare dopo un numero finito di passi.
+2. Determinismo: Ogni passo dell'algoritmo deve essere definito in modo preciso e non ambiguo.
+3. Input L'algoritmo riceve zero o più dati in ingresso.
+4. Output L'algoritmo produce uno o più risultati.
+5. Effettività: Ogni operazione dell'algoritmo deve essere fattibile ed eseguibile in un tempo finito.
+
+Gli algoritmi sono tradotti in codice sorgente attraverso un linguaggio di programmazione per creare programmi. In altre parole, un programma è la realizzazione pratica e funzionante degli algoritmi ideati dal programmatore.
+
+## Esecuzione del programma
 
 Quando un programma viene scritto e salvato in un file di testo, il computer deve eseguirlo per produrre le azioni desiderate. Questo processo si svolge in diverse fasi:
 
 - Compilazione o interpretazione: Il codice sorgente, scritto in un linguaggio di alto livello leggibile dall'uomo, deve essere trasformato in un linguaggio macchina comprensibile dal computer. Questo avviene attraverso due possibili processi:
-    - Compilazione: In linguaggi come C++ o Java, un compilatore traduce tutto il codice sorgente in linguaggio macchina, creando un file eseguibile. Questo file può poi essere eseguito direttamente dalla CPU.
-    - Interpretazione: In linguaggi come Python o JavaScript, un interprete legge ed esegue il codice sorgente riga per riga, traducendolo in linguaggio macchina al momento dell'esecuzione.
+
+    - **Compilazione**: In linguaggi come C++ o Java, un compilatore traduce tutto il codice sorgente in linguaggio macchina, creando un file eseguibile. Questo file può poi essere eseguito direttamente dalla CPU.
+
+    - **Interpretazione**: In linguaggi come Python o JavaScript, un interprete legge ed esegue il codice sorgente istruzione per istruzione, traducendolo in linguaggio macchina al momento dell'esecuzione.
 
 - Esecuzione: Una volta che il programma è stato compilato (nel caso dei linguaggi compilati) o viene interpretato (nel caso dei linguaggi interpretati), il computer può iniziare ad eseguire le istruzioni. La CPU (central processing unit) legge queste istruzioni dal file eseguibile o dall'interprete e le esegue una per una. Durante questa fase, la CPU manipola i dati e produce i risultati desiderati.
 
 - Interazione con i componenti hardware: Durante l'esecuzione, il programma può interagire con vari componenti hardware del computer. Ad esempio, può leggere e scrivere dati nella memoria, accedere ai dischi rigidi per salvare o recuperare informazioni, comunicare attraverso la rete, e interagire con dispositivi di input/output come tastiere e monitor. Questa interazione permette al programma di eseguire compiti complessi e di fornire output all'utente.
+
+## Ciclo di vita del software
+
+Un **software** è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia è quindi: software, programmi, istruzioni. Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi.
+
+### Analisi dei requisiti
+
+La progettazione di un'applicazione inizia con la fase di **analisi dei requisiti**, in cui si identificano cosa deve fare il software, chi sono gli utenti e quali sono i requisiti funzionali e non funzionali che deve soddisfare.
+
+### Disegno architetturale
+
+Il **disegno architetturale** riguarda l'organizzazione ad alto livello del sistema software. In questa fase si definiscono i componenti principali del sistema e come essi interagiscono tra di loro. Questo include la suddivisione del sistema in moduli o componenti, la definizione delle interfacce tra di essi, e l'uso di tecniche di modellazione per rappresentare l'architettura del sistema.
+
+### Disegno funzionale
+
+Il **disegno funzionale** dettaglia come ogni componente del sistema realizza le proprie funzionalità. In questa fase si descrivono le operazioni specifiche che ogni componente deve eseguire, spesso utilizzando pseudocodice o diagrammi di attività per rappresentare il flusso di operazioni.
+
+### Implementazione
+
+Una volta che l'architettura è stata progettata, si passa alla fase di **implementazione**, in cui i programmatori scrivono il codice sorgente nei linguaggi di programmazione scelti.
+
+### Testing e debugging
+
+Dopo l'implementazione, è essenziale verificare che il software funzioni correttamente:
+
+- **Testing**: Scrivere ed eseguire test per verificare che il software soddisfi i requisiti specificati. I test possono essere di diversi tipi, come test unitari, test di integrazione e test di sistema.
+- **Debugging**: Identificare e correggere gli errori (bug) nel codice. Questo può includere l'uso di strumenti di debugging per tracciare l'esecuzione del programma e trovare i punti in cui si verificano gli errori.
+
+### Distribuzione e manutenzione
+
+Una volta che il software è stato testato e ritenuto pronto, si passa alla fase di **distribuzione** (in inglese, deployment):
+
+- **Distribuzione**: Rilasciare il software agli utenti finali, che può includere l'installazione su server, la distribuzione di applicazioni desktop o il rilascio di app mobile.
+- **Manutenzione**: Continuare a supportare il software dopo il rilascio. Questo include la correzione di bug scoperti dopo il rilascio, l'aggiornamento del software per miglioramenti e nuove funzionalità, e l'adattamento a nuovi requisiti o ambienti.
 
 ## L'Impatto dell'intelligenza artificiale generativa sulla programmazione
 
