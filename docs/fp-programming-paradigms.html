@@ -410,10 +410,10 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; Interruzione per chiamare il kernel</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Le sezioni del codice:</p>
 <ul>
-<li><p>Dati: La sezione <code class="sourceCode bash"><span class="ex">.data</span></code> è utilizzata per dichiarare variabili statiche inizializzate.</p></li>
-<li><p>Testo: La sezione <code class="sourceCode bash"><span class="ex">.text</span></code> contiene il codice eseguibile. L’etichetta <code class="sourceCode bash"><span class="ex">_start</span></code> indica il punto di ingresso del programma.</p></li>
-<li><p>Registri: I registri come <code class="sourceCode bash"><span class="ex">al</span></code> e <code class="sourceCode bash"><span class="ex">eax</span></code> sono utilizzati per operazioni aritmetiche e per la memorizzazione temporanea dei dati.</p></li>
-<li><p>Chiamate di sistema: L’interruzione <code class="sourceCode bash"><span class="ex">int</span> 0x80</code> è usata per eseguire chiamate di sistema in Linux.</p></li>
+<li><p>Dati: La sezione <code>{nasm} .data</code>è utilizzata per dichiarare variabili statiche inizializzate.</p></li>
+<li><p>Testo: La sezione <code>{nasm} .text</code> contiene il codice eseguibile. L’etichetta <code class="sourceCode bash"><span class="ex">_start</span></code> indica il punto di ingresso del programma.</p></li>
+<li><p>Registri: I registri come <code>{nasm} al</code> e <code>{nasm} eax</code> sono utilizzati per operazioni aritmetiche e per la memorizzazione temporanea dei dati.</p></li>
+<li><p>Chiamate di sistema: L’interruzione <code>{nasm} int 0x80</code> è usata per eseguire chiamate di sistema in Linux.</p></li>
 </ul>
 <p>L’Assembly x86 è usato nello sviluppo di:</p>
 <ul>
@@ -746,7 +746,7 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <li><p>Purezza: Le funzioni pure sono funzioni che, dato lo stesso input, restituiscono sempre lo stesso output e non causano effetti collaterali. Questo rende il comportamento del programma più facile da comprendere e prevedere.</p></li>
 <li><p>Trasparenza referenziale: Un’espressione è trasparentemente referenziale se può essere sostituita dal suo valore senza cambiare il comportamento del programma. Questo facilita l’ottimizzazione e il reasonig sul codice.</p></li>
 <li><p>Ricorsione: È spesso utilizzata al posto di loop iterativi per eseguire ripetizioni, poiché si adatta meglio alla natura immutabile dei dati e alla definizione di funzioni.</p></li>
-<li><p>Composizione di Funzioni: Consente di costruire funzioni complesse combinando funzioni più semplici. Questo favorisce la modularità e la riusabilità del codice.</p></li>
+<li><p>Composizione di funzioni: Consente di costruire funzioni complesse combinando funzioni più semplici. Questo favorisce la modularità e la riusabilità del codice.</p></li>
 </ul>
 <p>Il paradigma funzionale ha diversi vantaggi:</p>
 <ul>
@@ -756,9 +756,9 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 </ul>
 <p>E qualche svantaggio:</p>
 <ul>
-<li><p>Curva di Apprendimento: La programmazione funzionale può essere difficile da apprendere per chi proviene da paradigmi imperativi o orientati agli oggetti, a causa dei concetti matematici sottostanti e della diversa mentalità necessaria.</p></li>
+<li><p>Curva di apprendimento: La programmazione funzionale può essere difficile da apprendere per chi proviene da paradigmi imperativi o orientati agli oggetti, a causa dei concetti matematici sottostanti e della diversa mentalità necessaria.</p></li>
 <li><p>Prestazioni: In alcuni casi, l’uso intensivo di funzioni ricorsive può portare a problemi di prestazioni, come il consumo di memoria per le chiamate ricorsive. Tuttavia, molte implementazioni moderne offrono ottimizzazioni come la ricorsione di coda (in inglese, <em>tail recursion</em>).</p></li>
-<li><p>Disponibilità di Librerie e Strumenti: Alcuni linguaggi funzionali potrebbero non avere la stessa ampiezza di librerie e strumenti disponibili rispetto ai linguaggi imperativi più diffusi.</p></li>
+<li><p>Disponibilità di librerie e strumenti: Alcuni linguaggi funzionali potrebbero non avere la stessa ampiezza di librerie e strumenti disponibili rispetto ai linguaggi imperativi più diffusi.</p></li>
 </ul>
 <section id="esempio-in-haskell" class="level3" data-number="2.6.1">
 <h3 data-number="2.6.1" class="anchored" data-anchor-id="esempio-in-haskell"><span class="header-section-number">2.6.1</span> Esempio in Haskell</h3>
