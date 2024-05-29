@@ -31,15 +31,15 @@ Un **algoritmo** è "un insieme di regole che definiscono con precisione una seq
 
 Più precisamente, un algoritmo è una sequenza ben definita di passi o operazioni che, a partire da un input, produce un output in un tempo finito. Le proprietà principali seguenti esprimono in modo più completo le caratteristiche che un algoritmo deve possedere:
 
-1. Finitudine L'algoritmo deve terminare dopo un numero finito di passi.
+- Finitudine L'algoritmo deve terminare dopo un numero finito di passi.
 
-2. Determinismo: Ogni passo dell'algoritmo deve essere definito in modo preciso e non ambiguo.
+- Determinismo: Ogni passo dell'algoritmo deve essere definito in modo preciso e non ambiguo.
 
-3. Input L'algoritmo riceve zero o più dati in ingresso.
+- Input L'algoritmo riceve zero o più dati in ingresso.
 
-4. Output L'algoritmo produce uno o più risultati.
+- Output L'algoritmo produce uno o più risultati.
 
-5. Effettività: Ogni operazione dell'algoritmo deve essere fattibile ed eseguibile in un tempo finito.
+- Effettività: Ogni operazione dell'algoritmo deve essere fattibile ed eseguibile in un tempo finito.
 
 Gli algoritmi sono tradotti in codice sorgente attraverso un linguaggio di programmazione per creare programmi. In altre parole, un programma è la realizzazione pratica e funzionante degli algoritmi ideati dal programmatore.
 
@@ -59,39 +59,33 @@ Quando un programma viene scritto e salvato in un file di testo, il computer dev
 
 ## Ciclo di vita del software
 
-Un **software** è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia è quindi: software, programmi, istruzioni. Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi.
+Un **software** è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia è quindi: software, programmi, istruzioni. 
 
-### Analisi dei requisiti
+Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi. 
 
-La progettazione di un'applicazione inizia con la fase di **analisi dei requisiti**, in cui si identificano cosa deve fare il software, chi sono gli utenti e quali sono i requisiti funzionali e non funzionali che deve soddisfare.
+Per creare il software è necessario percorrere una sequenza di fasi ben definita che, concisamente, è:
 
-### Disegno architetturale
+- La progettazione di un'applicazione inizia con la fase di **analisi dei requisiti**, in cui si identificano cosa deve fare il software, chi sono gli utenti e quali sono i requisiti funzionali e non funzionali che deve soddisfare.
 
-Il **disegno architetturale** riguarda l'organizzazione ad alto livello del sistema software. In questa fase si definiscono i componenti principali del sistema e come essi interagiscono tra di loro. Questo include la suddivisione del sistema in moduli o componenti, la definizione delle interfacce tra di essi, e l'uso di tecniche di modellazione per rappresentare l'architettura del sistema.
+- Segue il **disegno funzionale** che dettaglia come ogni componente del sistema possa rispondere alle funzionalità richieste. In questa fase si descrivono le operazioni specifiche che ogni componente deve eseguire, utilizzando diagrammi di processo per rappresentare il flusso di attività al fine di rispondere ai requisiti.[^1] 
 
-### Disegno funzionale
+- Il **disegno architetturale** riguarda l'organizzazione ad alto livello del sistema software. In questa fase si definiscono i componenti principali del sistema e come essi interagiscono tra di loro per supportare le attività di processo. Questo include la suddivisione del sistema in moduli o componenti, la definizione delle interfacce tra di essi e l'uso di tecniche di modellazione per rappresentare l'architettura del sistema.[2^]
 
-Il **disegno funzionale** dettaglia come ogni componente del sistema realizza le proprie funzionalità. In questa fase si descrivono le operazioni specifiche che ogni componente deve eseguire, spesso utilizzando pseudocodice o diagrammi di attività per rappresentare il flusso di operazioni.
+- Una volta che l'architettura è stata progettata, si passa alla fase di **implementazione**, in cui i programmatori scrivono il codice sorgente nei linguaggi di programmazione scelti.
 
-### Implementazione
+- Dopo l'implementazione, è essenziale verificare che il software funzioni correttamente:
+  
+  - **Testing**: Scrivere ed eseguire test per verificare che il software soddisfi i requisiti specificati. I test sono di diversi generi in funzione dell'oggetto di verifica, come test unitari, per segmenti di codice, test di integrazione, per componenti, e test di sistema nella sua interezza.
 
-Una volta che l'architettura è stata progettata, si passa alla fase di **implementazione**, in cui i programmatori scrivono il codice sorgente nei linguaggi di programmazione scelti.
+  - **Debugging**: Identificare e correggere gli errori (bug) nel codice. Questo può includere l'uso di strumenti di debugging per tracciare l'esecuzione del programma e trovare i punti in cui si verificano gli errori.
 
-### Testing e debugging
+- Una volta che il software è stato testato e ritenuto pronto, si passa alla fasi di messa a disposizione delle funzionalità agli utenti (in inglese, _deployment_):
 
-Dopo l'implementazione, è essenziale verificare che il software funzioni correttamente:
+  - **Distribuzione**: Rilasciare il software agli utenti finali, che può includere l'installazione su server, la distribuzione di applicazioni desktop o il rilascio di app mobile.
 
-- **Testing**: Scrivere ed eseguire test per verificare che il software soddisfi i requisiti specificati. I test possono essere di diversi tipi, come test unitari, test di integrazione e test di sistema.
+  - **Manutenzione**: Continuare a supportare il software dopo il rilascio. Questo include la correzione di bug scoperti dopo il rilascio, l'aggiornamento del software per miglioramenti e nuove funzionalità, e l'adattamento a nuovi requisiti o ambienti.
 
-- **Debugging**: Identificare e correggere gli errori (bug) nel codice. Questo può includere l'uso di strumenti di debugging per tracciare l'esecuzione del programma e trovare i punti in cui si verificano gli errori.
-
-### Distribuzione e manutenzione
-
-Una volta che il software è stato testato e ritenuto pronto, si passa alla fasi di messa a disposizione delle funzionalità agli utenti (in inglese, _deployment_):
-
-- **Distribuzione**: Rilasciare il software agli utenti finali, che può includere l'installazione su server, la distribuzione di applicazioni desktop o il rilascio di app mobile.
-
-- **Manutenzione**: Continuare a supportare il software dopo il rilascio. Questo include la correzione di bug scoperti dopo il rilascio, l'aggiornamento del software per miglioramenti e nuove funzionalità, e l'adattamento a nuovi requisiti o ambienti.
+La complessità del processo induce la necessità di avere dei team con qualità indiivduali diverse e il programmatore, oltre alle competenze specifiche, deve saper interpretare i vari artifatti di disegno e saperli tramutare in algoritmi e codice sorgente.
 
 ## L'Impatto dell'intelligenza artificiale generativa sulla programmazione
 
