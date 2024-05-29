@@ -338,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Un esempio per visualizzare i concetti introdotti:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">==</span> <span class="dv">10</span>:</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Token coinvolti:
+<li><p>Token coinvolti:</p>
 <ul>
 <li><code>if</code>: Parola chiave.</li>
 <li><code>NAME</code>: Identificatore.</li>
@@ -346,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>NUMBER</code>: Letterale numerico.</li>
 <li><code>COLON</code>: Delimitatore.</li>
 </ul></li>
-<li>Lessemi:
+<li><p>Lessemi:</p>
 <ul>
 <li>Il lessema per il token <code>if</code> è la sequenza di caratteri “if”.</li>
 <li>Il lessema per il token <code>NAME</code> è “x”.</li>
@@ -354,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Il lessema per il token <code>NUMBER</code> “10”.</li>
 <li>Il lessema per il token <code>COLON</code> “:”.</li>
 </ul></li>
-<li>Pattern:
+<li><p>Pattern:</p>
 <ul>
 <li>Il pattern per il token <code>if</code> è la stringa esatta “if”.</li>
 <li>Il pattern per un identificatore è una sequenza di lettere e numeri che inizia con una lettera.</li>
@@ -561,7 +561,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p>Annotazioni e metadati: Le annotazioni e i metadati forniscono informazioni aggiuntive al compilatore o al runtime, influenzando il comportamento del programma o fornendo dettagli utili per la documentazione e l’analisi del codice.</p>
 <ul>
-<li><p>Annotazioni: Informazioni extra utilizzate per specificare comportamenti speciali o configurazioni. Ad esempio, in Java, le annotazioni possono essere utilizzate per indicare che un metodo è obsoleto (<code>@Deprecated</code>), per sovrascrivere un metodo della superclasse (<code>@Override</code>), o per specificare la relazione tra entità nel contesto di framework come JPA (<code>@Entity</code>, <code>@Table</code>). In Python, le annotazioni sono utilizzate principalmente per indicare i tipi di variabili, parametri di funzione e valori di ritorno (type hint). Non influenzano direttamente il comportamento del programma, ma sono utili per la documentazione e il type checking anche automatico.</p></li>
+<li><p>Annotazioni: Informazioni extra utilizzate per specificare comportamenti speciali o configurazioni. Ad esempio, in Java, le annotazioni possono essere utilizzate per indicare che un metodo è obsoleto (<code>@Deprecated</code>), per sovrascrivere un metodo della superclasse (<code>@Override</code>), o per specificare la relazione tra entità nel contesto di framework come JPA (Jakarta Persistence; <code>@Entity</code>, <code>@Table</code>). In Python, le annotazioni sono utilizzate principalmente per indicare i tipi di variabili, parametri di funzione e valori di ritorno (type hint). Non influenzano direttamente il comportamento del programma, ma sono utili per la documentazione e il type checking anche automatico.</p></li>
 <li><p>Docstring: Commenti strutturati che documentano il codice, spesso utilizzati per generare documentazione automatica. In Python, ad esempio, le docstring possono essere utilizzate per descrivere il funzionamento di moduli, classi, metodi e funzioni, rendendo il codice più leggibile e comprensibile.</p></li>
 </ul></li>
 <li><p>Macro e metaprogrammazione: Le macro e la metaprogrammazione permettono di scrivere codice che manipola altre porzioni di codice.</p>
@@ -589,25 +589,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Effettuiamo una analisi dettagliata della funzione per indicare quali elementi sintattici e semantici sono presenti. Partiamo dalla prima riga:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">funzione</span> calcola_somma<span class="er">(</span><span class="ex">n</span><span class="kw">)</span><span class="bu">:</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Sintassi:
+<li><p>Sintassi:</p>
 <ul>
-<li><code class="sourceCode bash"><span class="ex">funzione</span></code>: Parola chiave che introduce la definizione di una funzione.</li>
-<li><code class="sourceCode bash"><span class="ex">calcola_somma</span></code>: Identificatore della funzione.</li>
-<li><code class="sourceCode bash"><span class="kw">(</span><span class="ex">n</span><span class="kw">)</span></code>: Delimitatori che contengono un identificatore.</li>
+<li><code>funzione</code>: Parola chiave che introduce la definizione di una funzione.</li>
+<li><code>calcola_somma</code>: Identificatore della funzione.</li>
+<li><code>(n)</code>: Delimitatori che contengono un identificatore.</li>
 </ul></li>
-<li>Semantica:
-<ul>
-<li>Definisce una funzione chiamata <code class="sourceCode bash"><span class="ex">calcola_somma</span></code> che accetta un parametro <code class="sourceCode bash"><span class="ex">n</span></code>.</li>
-</ul></li>
+<li><p>Semantica: Definisce una funzione chiamata <code>calcola_somma</code> che accetta un parametro <code>n</code>.</p></li>
 </ul>
 <p>La seconda riga ha l’inizializzazione della variabile che conterrà il risultato:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">somma</span> = 0</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Sintassi:
 <ul>
-<li><code class="sourceCode bash"><span class="ex">somma</span></code>: Identificatore della variabile.</li>
-<li><code class="sourceCode bash"><span class="ex">=</span></code>: Operatore di assegnazione.</li>
-<li><code class="sourceCode bash"><span class="ex">0</span></code>: Letterale numero intero.</li>
+<li><code>somma</code>: Identificatore della variabile.</li>
+<li><code>=</code>: Operatore di assegnazione.</li>
+<li><code>0</code>: Letterale numero intero.</li>
 </ul></li>
 <li>Semantica:
 <ul>
@@ -617,42 +614,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>A seguire la definizione di un ciclo:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">per</span> i da 1 a n:</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Sintassi:
+<li><p>Sintassi:</p>
 <ul>
-<li><code class="sourceCode bash"><span class="ex">per</span></code>: Parola chiave che introduce il ciclo.</li>
-<li><code class="sourceCode bash"><span class="ex">i</span></code>: Identificatore della variabile di controllo del ciclo.</li>
-<li><code class="sourceCode bash"><span class="ex">da</span> 1 a n</code>: Espressione di controllo del ciclo che indica l’intervallo.</li>
+<li><code>per</code>: Parola chiave che introduce il ciclo.</li>
+<li><code>i</code>: Identificatore della variabile di controllo del ciclo.</li>
+<li><code>da 1 a n</code>: Espressione di controllo del ciclo che indica l’intervallo.</li>
 </ul></li>
-<li>Semantica:
-<ul>
-<li>Itera la variabile <code class="sourceCode bash"><span class="ex">i</span></code> da <code class="sourceCode bash"><span class="ex">1</span></code> a <code class="sourceCode bash"><span class="ex">n</span></code>.</li>
-</ul></li>
+<li><p>Semantica: Itera la variabile <code>i</code> da <code>1</code> a <code>n</code>.</p></li>
 </ul>
 <p>Un assegnamento per accumulare i valori nella variabile di ritorno:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">somma</span> = somma + i</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Sintassi:
+<li><p>Sintassi:</p>
 <ul>
-<li><code class="sourceCode bash"><span class="ex">somma</span></code>: Identificatore della variabile.</li>
-<li><code class="sourceCode bash"><span class="ex">=</span></code>: Operatore di assegnazione.</li>
-<li><code class="sourceCode bash"><span class="ex">somma</span> + i</code>: Espressione aritmetica composta da: <code class="sourceCode bash"><span class="ex">somma</span></code> identificatore di variabile, <code>+</code> operatore aritmetico e <code class="sourceCode bash"><span class="ex">i</span></code> identificatore di variabile.</li>
+<li><code>somma</code>: Identificatore della variabile.</li>
+<li><code>=</code>: Operatore di assegnazione.</li>
+<li><code>somma + i</code>: Espressione aritmetica composta da: <code>somma</code> identificatore di variabile, <code>+</code> operatore aritmetico e <code>i</code> identificatore di variabile.</li>
 </ul></li>
-<li>Semantica:
-<ul>
-<li>Aggiunge il valore di <code class="sourceCode bash"><span class="ex">i</span></code> alla variabile <code class="sourceCode bash"><span class="ex">somma</span></code> e assegna il risultato a <code class="sourceCode bash"><span class="ex">somma</span></code>.</li>
-</ul></li>
+<li><p>Semantica: Aggiunge il valore di <code>i</code> alla variabile <code>somma</code> e assegna il risultato a <code>somma</code>.</p></li>
 </ul>
 <p>E finalmente il risultato del calcolo viene restituito al chiamante:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ritorna</span> somma</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Sintassi:
 <ul>
-<li><code class="sourceCode bash"><span class="ex">ritorna</span></code>: Parola chiave che indica la restituzione di un valore.</li>
-<li><code class="sourceCode bash"><span class="ex">somma</span></code>: Identificatore della variabile.</li>
+<li><code>ritorna</code>: Parola chiave che indica la restituzione di un valore.</li>
+<li><code>somma</code>: Identificatore della variabile.</li>
 </ul></li>
 <li>Semantica:
 <ul>
-<li>Restituisce il valore della variabile <code class="sourceCode bash"><span class="ex">somma</span></code> come risultato della funzione.</li>
+<li>Restituisce il valore della variabile <code>somma</code> come risultato della funzione.</li>
 </ul></li>
 </ul>
 
