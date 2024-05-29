@@ -34,29 +34,36 @@ Questa flessibilità rende Python adatto a una vasta gamma di applicazioni e con
 
 Python non è solo un linguaggio con regole sintattiche precise e ben progettate, ma possiede anche una propria filosofia, un insieme di regole di buon senso esperienziali che sono complementari alla sintassi formale. Questa filosofia è spesso riassunta nel **zen di Python**, una raccolta di aforismi che catturano i principi fondamentali del design di Python. Tali principi aiutano i programmatori a comprendere e utilizzare al meglio le potenzialità del linguaggio e dell'ecosistema Python.
 
-Ecco alcuni dei principi dello zen di Python[^1-sp-python-intro]:
+Ecco alcuni dei principi dello zen di Python[^1]:
 
 - La leggibilità conta: Il codice dovrebbe essere scritto in modo che sia facile da leggere e comprendere.
+
 - Esplicito è meglio di implicito: È preferibile scrivere codice chiaro e diretto piuttosto che utilizzare scorciatoie criptiche.
+
 - Semplice è meglio di complesso: Il codice dovrebbe essere il più semplice possibile per risolvere il problema.
+
 - Complesso è meglio di complicato: Quando la semplicità non è sufficiente, la complessità è accettabile, ma il codice non dovrebbe mai essere complicato.
+
 - Pratico batte puro: Le soluzioni pragmatiche sono preferibili alle soluzioni eleganti ma poco pratiche.
 
-[^1-sp-python-intro]: [PEP 20 – The Zen of Python](https://peps.python.org/pep-0020/)
+[^1]: [PEP 20 – The Zen of Python](https://peps.python.org/pep-0020/)
 
 Questi principi, insieme alle regole sintattiche, guidano il programmatore nell'adottare buone pratiche di sviluppo e nel creare codice che sia non solo funzionale ma anche mantenibile e comprensibile da altri.
 
 ## L'ecosistema
 
-Fino ad ora abbiamo visto Python come linguaggio, ma è molto di più: Python è anche una vasta collezione di strumenti e risorse a disposizione degli sviluppatori, strutturata in un ecosistema completo, di cui il linguaggio ne rappresenta la parte formale. Questo ecosistema è disponibile completamente e anche come sorgente sul sito ufficiale [python.org](https://www.python.org/).
+Fino ad ora abbiamo visto Python come linguaggio, ma è molto di più: Python è anche una vasta collezione di strumenti e risorse a disposizione degli sviluppatori, strutturata in un ecosistema completo, di cui il linguaggio ne rappresenta la parte formale. Questo ecosistema è disponibile completamente, anche come sorgente, sul sito ufficiale [python.org](https://www.python.org/).
 
 ### L'interprete
 
 L'interprete Python è lo strumento di esecuzione dei programmi. È il software che legge ed esegue il codice Python. Python è un linguaggio interpretato, il che significa che il codice viene eseguito direttamente dall'interprete, senza bisogno di essere compilato in un linguaggio macchina. Esistono diverse implementazioni dell'interprete Python:
 
 - CPython: L'implementazione di riferimento dell'interprete Python, scritta in C. È la versione più utilizzata e quella ufficiale.
+
 - PyPy: Un interprete alternativo che utilizza tecniche di compilazione just-in-time (JIT) per migliorare le prestazioni.
+
 - Jython: Un'implementazione di Python che gira sulla JVM (Java Virtual Machine).
+
 - IronPython: Un'implementazione di Python integrata col .NET Framework della Microsoft.
 
 ### L'ambiente di sviluppo
@@ -64,37 +71,55 @@ L'interprete Python è lo strumento di esecuzione dei programmi. È il software 
 IDLE (integrated development and learning environment) è l'ambiente di sviluppo integrato ufficiale per Python. È incluso nell'installazione standard di Python ed è progettato per essere semplice e facile da usare, ideale per i principianti. Offre diverse funzionalità utili:
 
 - Editor di codice: Con evidenziazione della sintassi, indentazione automatica e controllo degli errori.
+
 - Shell interattiva: Permette di eseguire codice Python in modo interattivo.
+
 - Strumenti di debug: Include un debugger integrato con punti di interruzione e stepping.
 
 ### Le librerie standard
 
-Una delle caratteristiche più potenti di Python è il vasto insieme di librerie[^2-sp-python-intro] utilizzabili in CPython e IDLE, che fornisce moduli e pacchetti per quasi ogni necessità di programmazione. Alcuni esempi, solo allo scopo di illustrarne la varietà, includono:
+Una delle caratteristiche più potenti di Python è il vasto insieme di librerie[^2] utilizzabili in CPython e IDLE, che fornisce moduli e pacchetti per quasi ogni necessità di programmazione. Alcuni esempi, tra le decine e al solo allo scopo di illustrarne la varietà, includono:
 
 - `os`: Fornisce funzioni per interagire con il sistema operativo.
+
 - `sys`: Offre accesso a funzioni e oggetti del runtime di Python.
+
 - `datetime`: Consente di lavorare con date e orari.
+
 - `json`: Permette di leggere e scrivere dati in formato JSON.
+
 - `re`: Supporta la manipolazione di stringhe tramite espressioni regolari.
+
 - `http`: Include moduli per l'implementazione di client e server HTTP.
+
 - `unittest`: Fornisce un framework per il testing del codice.
+
 - `math` e `cmath`: Contengono funzioni matematiche di base e complesse.
+
 - `itertools`, `functools`, `operator`: Offrono supporto per il paradigma di programmazione funzionale.
+
 - `csv`: Gestisce la lettura e scrittura di file CSV.
+
 - `typing`: Fornisce supporto per l'annotazione dei tipi di variabili, funzioni e classi.
+
 - `email`: Permette di creare, gestire e inviare email, facilitando la manipolazione di messaggi email MIME.
+
 - `hashlib`: Implementa algoritmi di hash sicuri come SHA-256 e MD5.
+
 - `asyncio`: Supporta la programmazione asincrona per la scrittura di codice concorrente e a bassa latenza.
+
 - `wave`: Fornisce strumenti per leggere e scrivere file audio WAV.
 
-[^2-sp-python-intro]: [Documentazione delle librerie standard di Python](https://docs.python.org/3/library/index.html)
+[^2]: [Documentazione delle librerie standard di Python](https://docs.python.org/3/library/index.html)
 
 ### Moduli di estensione
 
 Python supporta l'estensione del suo core tramite moduli scritti in C, C++ o altri linguaggi. Questi moduli permettono di ottimizzare parti critiche del codice o di interfacciarsi con librerie e API esterne:
 
 - Cython: Permette di scrivere moduli C estesi utilizzando una sintassi simile a Python. Cython è ampiamente utilizzato per migliorare le prestazioni di parti critiche del codice, specialmente in applicazioni scientifiche e di calcolo numerico. Ad esempio, molte librerie scientifiche popolari come SciPy e scikit-learn utilizzano Cython per accelerare le operazioni computazionalmente intensive.
+
 - ctypes: Permette di chiamare funzioni in librerie dinamiche C direttamente da Python. È utile per interfacciarsi con librerie esistenti scritte in C, rendendo Python estremamente versatile per l'integrazione con altre tecnologie. Ciò è utile in applicazioni che devono interfacciarsi con hardware specifico o utilizzare librerie legacy.
+
 - CFFI (C foreign function interface): Un'altra interfaccia per chiamare librerie C da Python. È progettata per essere facile da usare e per supportare l'uso di librerie C complesse con Python. CFFI è utilizzato in progetti come PyPy e gevent, permettendo di scrivere codice ad alte prestazioni e di gestire le chiamate a funzioni C in modo efficiente.
 
 ### Utility e strumenti aggiuntivi
@@ -102,213 +127,320 @@ Python supporta l'estensione del suo core tramite moduli scritti in C, C++ o alt
 Python include anche una serie di strumenti e utility che facilitano lo sviluppo e la gestione dei progetti:
 
 - pip: Il gestore dei pacchetti di Python. Permette di installare e gestire moduli aggiuntivi, cioè non inclusi nello standard.
+
 - venv: Uno strumento per creare ambienti virtuali isolati, che permettono di gestire separatamente le dipendenze di diversi progetti.
+
 - Documentazione: Python include una documentazione dettagliata, accessibile tramite il comando pydoc o attraverso il sito ufficiale.
 
 ## L'algoritmo di ordinamento bubble sort
 
-Per chiudere il capitolo sul primo approccio a Python, possiamo confrontare un algoritmo di bassa complessità in diversi linguaggi di programmazione. Un buon esempio potrebbe essere l'implementazione dell'algoritmo di ordinamento _bubble sort_ di una lista di valori. Vediamo come viene scritto in Python, C, C++, Java, Rust e Scala:
+Per chiudere il capitolo sul primo approccio a Python, possiamo confrontare un algoritmo, di bassa complessità ma non triviale, in diversi linguaggi di programmazione. Un buon esempio potrebbe essere l'implementazione dell'algoritmo di ordinamento _bubble sort_ di una lista di valori. Vediamo come viene scritto in Python, C, C++, Java, Rust e Scala:
 
-- Python (versione procedurale): 
-    ```python
+- Python in versione procedurale: 
+  ```python
+  def bubble_sort(arr):
+    n = len(arr)
+
+    for i in range(n):
+      for j in range(0, n-i-1):
+        if arr[j] > arr[j+1]:
+          arr[j], arr[j+1] = arr[j+1], arr[j]
+
+  # Esempio di utilizzo
+  arr = [64, 34, 25, 12, 22, 11, 90]
+
+  bubble_sort(arr)
+
+  print("Array ordinato con bubble sort: ", arr)
+  ```
+
+- Python in versione sintatticamente orientata agli oggetti, ma praticamente procedurale:
+
+  ```python
+  class BubbleSort:
+    @staticmethod
     def bubble_sort(arr):
-        n = len(arr)
-        for i in range(n):
-            for j in range(0, n-i-1):
-                if arr[j] > arr[j+1]:
-                    arr[j], arr[j+1] = arr[j+1], arr[j]
+      n = len(arr)
 
-    # Esempio di utilizzo
-    arr = [64, 34, 25, 12, 22, 11, 90]
+      for i in range(n):
+        for j in range(0, n-i-1):
+          if arr[j] > arr[j+1]:
+            arr[j], arr[j+1] = arr[j+1], arr[j]
 
-    bubble_sort(arr)
+  # Esempio di utilizzo
+  arr = [64, 34, 25, 12, 22, 11, 90]
 
-    print("Sorted array is:", arr)
-    ```
-- Python (versione orientata agli oggetti):
-    ```python
-    class BubbleSort:
-        @staticmethod
-        def bubble_sort(arr):
-            n = len(arr)
-            for i in range(n):
-                for j in range(0, n-i-1):
-                    if arr[j] > arr[j+1]:
-                        arr[j], arr[j+1] = arr[j+1], arr[j]
+  BubbleSort.bubble_sort(arr)
 
-    # Esempio di utilizzo
-    arr = [64, 34, 25, 12, 22, 11, 90]
+  print("Array ordinato con bubble sort: ", arr)
+  ```
 
-    BubbleSort.bubble_sort(arr)
+- Python in versione orientata agli oggetti, con una interfaccia di ordinamento implementata con due algoritmi (bubble e insertion sort):
 
-    print("Sorted array is:", arr)
-    ```
-- Python (versione funzionale):
-    ```python
-    def bubble_sort(arr):
-        def sort_pass(arr, n):
-            if n == 1:
-                return arr
-            new_arr = [
-                (arr[i + 1], arr[i]) if arr[i] > arr[i + 1] else (arr[i], arr[i + 1])
-                for i in range(n - 1)
-            ]
-            new_arr = [item for pair in new_arr for item in pair]
-            return sort_pass(new_arr[:n - 1] + arr[n:], n - 1)
+  ```python
+  from abc import ABC, abstractmethod
 
-        return sort_pass(arr, len(arr))
+  # Classe astratta per algoritmi di ordinamento
+  class SortAlgorithm(ABC):
+    def __init__(self, arr):
+      self._arr = arr
 
-    # Esempio di utilizzo
-    arr = [64, 34, 25, 12, 22, 11, 90]
-    sorted_arr = bubble_sort(arr)
-    print("Sorted array is:", sorted_arr)
-    ```
+    @abstractmethod
+    def sort(self):
+      # Metodo astratto che deve essere implementato dalle sottoclassi
+      pass
+
+    def get_array(self):
+      # Metodo per ottenere l'array corrente
+      return self._arr
+
+    def set_array(self, arr):
+      # Metodo per impostare un nuovo array
+      self._arr = arr
+
+  # Implementazione dell'algoritmo di bubble sort
+  class BubbleSort(SortAlgorithm):
+    def sort(self):
+      n = len(self._arr)
+
+      for i in range(n):
+        for j in range(0, n-i-1):
+          if self._arr[j] > self._arr[j+1]:
+            self._arr[j], self._arr[j+1] = self._arr[j+1], self._arr[j]
+
+  # Implementazione dell'algoritmo di insertion sort
+  class InsertionSort(SortAlgorithm):
+    def sort(self):
+      for i in range(1, len(self._arr)):
+        key = self._arr[i]
+        
+        j = i - 1
+
+        while j >= 0 and key < self._arr[j]:
+          self._arr[j + 1] = self._arr[j]
+
+          j -= 1
+
+        self._arr[j + 1] = key
+
+  # Esempio di utilizzo con bubble sort
+  arr = [64, 34, 25, 12, 22, 11, 90]
+
+  bubble_sorter = BubbleSort(arr)
+
+  bubble_sorter.sort()
+
+  print("Array ordinato con bubble sort: ", bubble_sorter.get_array())
+
+  # Esempio di utilizzo con insertion sort
+  arr = [64, 34, 25, 12, 22, 11, 90]
+
+  insertion_sorter = InsertionSort(arr)
+
+  insertion_sorter.sort()
+
+  print("Array ordinato con insertion sort: ", insertion_sorter.get_array())
+  ```
+
+  - Importiamo `ABC` e abstractmethod dal modulo `abc` per definire la classe astratta.
+  - `SortAlgorithm` è una classe astratta che rappresenta un algoritmo di ordinamento.
+  - `sort` è un metodo astratto che deve essere implementato nelle sottoclassi.
+  - `BubbleSort` è una sottoclasse di SortAlgorithm che implementa l'algoritmo di ordinamento a bolle. Idem per `InsertionSort`.
+
+- Python in versione funzionale:
+
+  ```python
+  def bubble_sort(arr):
+    def sort_pass(arr, n): # <1>
+      if n == 1:
+        return arr
+
+      new_arr = arr[:] # <2>
+
+      for i in range(n - 1):
+        if new_arr[i] > new_arr[i + 1]:
+          new_arr[i], new_arr[i + 1] = new_arr[i + 1], new_arr[i]
+
+      return sort_pass(new_arr, n - 1) # <3>
+
+    return sort_pass(arr, len(arr)) # <4>
+
+  # Esempio di utilizzo
+  arr = [64, 34, 25, 12, 22, 11, 90]
+
+  sorted_arr = bubble_sort(arr)
+
+  print("Sorted array is:", sorted_arr)
+  ```
+
+  1. All'interno di `bubble_sort`, è definita una funzione interna `sort_pass` che esegue un singolo passaggio dell'algoritmo di ordinamento a bolle.
+  2. Viene creata una copia dell'array arr chiamata `new_arr`. Poi, per ogni coppia di elementi `(new_arr[i], new_arr[i + 1])`, se `new_arr[i]` è maggiore di `new_arr[i + 1]`, vengono scambiati.
+  3. La funzione `sort_pass` viene chiamata ricorsivamente con `new_arr` e decrementando n di 1.
+  4. La funzione `bubble_sort` avvia il processo chiamando `sort_pass` con l'array completo e la sua lunghezza.
+
 - C:
-    ```c
-    #include <stdio.h>
 
-    void bubble_sort(int arr[], int n) {
-        int i, j, temp;
-        for (i = 0; i < n-1; i++) {
-            for (j = 0; j < n-i-1; j++) {
-                if (arr[j] > arr[j+1]) {
-                    temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = temp;
-                }
-            }
+  ```c
+  #include <stdio.h>
+
+  void bubble_sort(int arr[], int n) {
+    int i, j, temp;
+    for (i = 0; i < n-1; i++) {
+      for (j = 0; j < n-i-1; j++) {
+        if (arr[j] > arr[j+1]) {
+          temp = arr[j];
+          arr[j] = arr[j+1];
+          arr[j+1] = temp;
         }
+      }
+    }
+  }
+
+  int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    bubble_sort(arr, n);
+
+    printf("Array ordinato con bubble sort: ");
+    for (int i = 0; i < n; i++) {
+      printf("%d ", arr[i]);
     }
 
-    int main() {
-        int arr[] = {64, 34, 25, 12, 22, 11, 90};
-        int n = sizeof(arr)/sizeof(arr[0]);
+    return 0;
+  }
+  ```
 
-        bubble_sort(arr, n);
+- C++:
 
-        printf("Sorted array is: ");
-        for (int i = 0; i < n; i++) {
-            printf("%d ", arr[i]);
+  ```cpp
+  #include <iostream>
+  using namespace std;
+
+  class BubbleSort {
+  public:
+    void sort(int arr[], int n) {
+      for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+          if (arr[j] > arr[j+1]) {
+            int temp = arr[j];
+
+            arr[j] = arr[j+1];
+
+            arr[j+1] = temp;
+          }
         }
-
-        return 0;
+      }
     }
-    ```
-- C++: 
-    ```cpp
-    #include <iostream>
-    using namespace std;
 
-    class BubbleSort {
-    public:
-        void sort(int arr[], int n) {
-            for (int i = 0; i < n-1; i++) {
-                for (int j = 0; j < n-i-1; j++) {
-                    if (arr[j] > arr[j+1]) {
-                        int temp = arr[j];
-                        arr[j] = arr[j+1];
-                        arr[j+1] = temp;
-                    }
-                }
-            }
-        }
+    void printArray(int arr[], int n) {
+      for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+      }
 
-        void printArray(int arr[], int n) {
-            for (int i = 0; i < n; i++) {
-                cout << arr[i] << " ";
-            }
-            cout << endl;
-        }
-    };
-
-    int main() {
-        int arr[] = {64, 34, 25, 12, 22, 11, 90};
-        int n = sizeof(arr)/sizeof(arr[0]);
-
-        BubbleSort bs;
-        bs.sort(arr, n);
-
-        cout << "Sorted array is: ";
-        bs.printArray(arr, n);
-
-        return 0;
+      cout << endl;
     }
-    ```
+  };
+
+  int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    BubbleSort bs;
+    bs.sort(arr, n);
+
+    cout << "Array ordinato con bubble sort: ";
+    bs.printArray(arr, n);
+
+    return 0;
+  }
+  ```
+
 - Java: 
-    ```java
-    public class BubbleSort {
 
-        public static void bubbleSort(int arr[]) {
-            int n = arr.length;
-            for (int i = 0; i < n-1; i++) {
-                for (int j = 0; j < n-i-1; j++) {
-                    if (arr[j] > arr[j+1]) {
-                        int temp = arr[j];
-                        arr[j] = arr[j+1];
-                        arr[j+1] = temp;
-                    }
-                }
-            }
+  ```java
+  public class BubbleSort {
+
+    public static void bubbleSort(int arr[]) {
+      int n = arr.length;
+
+      for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+          if (arr[j] > arr[j+1]) {
+
+            int temp = arr[j];
+
+            arr[j] = arr[j+1];
+
+            arr[j+1] = temp;
+          }
         }
-
-        public static void main(String args[]) {
-            int arr[] = {64, 34, 25, 12, 22, 11, 90};
-
-            bubbleSort(arr);
-
-            System.out.println("Sorted array is:");
-            for (int i = 0; i < arr.length; i++) {
-                System.out.print(arr[i] + " ");
-            }
-        }
+      }
     }
-    ```
+
+    public static void main(String args[]) {
+      int arr[] = {64, 34, 25, 12, 22, 11, 90};
+
+      bubbleSort(arr);
+
+      System.out.println("Array ordinato con bubble sort:");
+      
+      for (int i = 0; i < arr.length; i++) {
+        System.out.print(arr[i] + " ");
+      }
+    }
+  }
+  ```
+
 - Rust: 
-    ```rust
-    fn bubble_sort(arr: &mut [i32]) {
-        let n = arr.len();
-        for i in 0..n {
-            for j in 0..n-i-1 {
-                if arr[j] > arr[j+1] {
-                    arr.swap(j, j+1);
-                }
-            }
+
+  ```rust
+  fn bubble_sort(arr: &mut [i32]) {
+    let n = arr.len();
+    for i in 0..n {
+      for j in 0..n-i-1 {
+        if arr[j] > arr[j+1] {
+          arr.swap(j, j+1);
         }
+      }
     }
+  }
 
-    fn main() {
-        let mut arr = [64, 34, 25, 12, 22, 11, 90];
+  fn main() {
+    let mut arr = [64, 34, 25, 12, 22, 11, 90];
 
-        bubble_sort(&mut arr);
+    bubble_sort(&mut arr);
 
-        println!("Sorted array is: {:?}", arr);
-    }
-    ```
+    println!("Array ordinato con bubble sort: {:?}", arr);
+  }
+  ```
+
 - Scala: 
-    ```scala
-    object BubbleSort {
-        def bubbleSort(arr: Array[Int]): Unit = {
-            val n = arr.length
-            for (i <- 0 until n) {
-            for (j <- 0 until n - i - 1) {
-                if (arr(j) > arr(j + 1)) {
-                val temp = arr(j)
-                arr(j) = arr(j + 1)
-                arr(j + 1) = temp
-                }
-            }
-            }
+
+  ```scala
+  object BubbleSort {
+    def bubbleSort(arr: Array[Int]): Unit = {
+      val n = arr.length
+      for (i <- 0 until n) {
+        for (j <- 0 until n - i - 1) {
+          if (arr(j) > arr(j + 1)) {
+            val temp = arr(j)
+            arr(j) = arr(j + 1)
+            arr(j + 1) = temp
+          }
         }
-
-        def main(args: Array[String]): Unit = {
-            val arr = Array(64, 34, 25, 12, 22, 11, 90)
-
-            bubbleSort(arr)
-
-            println("Sorted array is: " + arr.mkString(", "))
-        }
+      }
     }
-    ```
+
+    def main(args: Array[String]): Unit = {
+      val arr = Array(64, 34, 25, 12, 22, 11, 90)
+
+      bubbleSort(arr)
+
+      println("Array ordinato con bubble sort: " + arr.mkString(", "))
+    }
+  }
+  ```
 
 Confrontando questi esempi, possiamo osservare le differenze sintattiche e di stile tra Python ed altri, importanti, linguaggi. Python si distingue per la sua sintassi concisa e leggibile, mentre C richiede una gestione manuale della memoria e una sintassi più dettagliata. 
 
