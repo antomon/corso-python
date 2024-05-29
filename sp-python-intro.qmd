@@ -24,8 +24,11 @@ Ciò ha un effetto importante sulla versatilità perché spesso è utilizzato co
 Python è un linguaggio di programmazione multiparadigma, il che significa che supporta diversi paradigmi di programmazione, permettendo di mescolare e combinare gli stili a seconda delle necessità dell'applicazione. Ecco alcuni dei paradigmi supportati da Python:
 
 - Programmazione imperativa: Puoi scrivere ed eseguire script Python direttamente dalla linea di comando, permettendo un approccio interattivo e immediato alla programmazione, come se fosse una calcolatrice.
+
 - Programmazione procedurale: In Python, è possibile organizzare il codice in funzioni e moduli, rendendo più semplice la gestione e la riutilizzabilità del codice. Puoi raccogliere il codice in file separati e importarli come moduli, migliorando la struttura e la leggibilità del programma.
+
 - Programmazione orientata agli oggetti: Python supporta pienamente la programmazione orientata agli oggetti, consentendo la definizione di classi e oggetti. Questo paradigma è utile per modellare dati complessi e relazioni tra essi. Le caratteristiche orientate agli oggetti di Python sono concettualmente simili a quelle di C++, ma più semplici da usare.
+
 - Programmazione funzionale: Python include funzionalità di programmazione funzionale, come funzioni di prima classe e di ordine superiore, lambda e strumenti come map, filter e reduce. 
 
 Questa flessibilità rende Python adatto a una vasta gamma di applicazioni e consente ai programmatori di scegliere l'approccio più adatto al problema da risolvere.
@@ -178,15 +181,15 @@ Per chiudere il capitolo sul primo approccio a Python, possiamo confrontare un a
 - Python in versione orientata agli oggetti, con una interfaccia di ordinamento implementata con due algoritmi (bubble e insertion sort):
 
   ```python
-  from abc import ABC, abstractmethod
+  from abc import ABC, abstractmethod # <1>
 
   # Classe astratta per algoritmi di ordinamento
-  class SortAlgorithm(ABC):
+  class SortAlgorithm(ABC): # <2>
     def __init__(self, arr):
       self._arr = arr
 
     @abstractmethod
-    def sort(self):
+    def sort(self): # <3>
       # Metodo astratto che deve essere implementato dalle sottoclassi
       pass
 
@@ -199,7 +202,7 @@ Per chiudere il capitolo sul primo approccio a Python, possiamo confrontare un a
       self._arr = arr
 
   # Implementazione dell'algoritmo di bubble sort
-  class BubbleSort(SortAlgorithm):
+  class BubbleSort(SortAlgorithm): # <4>
     def sort(self):
       n = len(self._arr)
 
@@ -242,10 +245,10 @@ Per chiudere il capitolo sul primo approccio a Python, possiamo confrontare un a
   print("Array ordinato con insertion sort: ", insertion_sorter.get_array())
   ```
 
-  - Importiamo `ABC` e abstractmethod dal modulo `abc` per definire la classe astratta.
-  - `SortAlgorithm` è una classe astratta che rappresenta un algoritmo di ordinamento.
-  - `sort` è un metodo astratto che deve essere implementato nelle sottoclassi.
-  - `BubbleSort` è una sottoclasse di SortAlgorithm che implementa l'algoritmo di ordinamento a bolle. Idem per `InsertionSort`.
+  1. Importiamo `ABC` e `abstractmethod` dal modulo `abc` per definire la classe astratta.
+  2. `SortAlgorithm` è una classe astratta che rappresenta l'interfaccia di algoritmi di ordinamento.
+  3. `sort` è un metodo astratto che deve essere implementato nelle sottoclassi.
+  4. `BubbleSort` è una sottoclasse di `SortAlgorithm` che implementa l'algoritmo di ordinamento a bolle. Idem per `InsertionSort`.
 
 - Python in versione funzionale:
 
@@ -383,8 +386,8 @@ Per chiudere il capitolo sul primo approccio a Python, possiamo confrontare un a
 
       bubbleSort(arr);
 
-      System.out.println("Array ordinato con bubble sort:");
-      
+      System.out.println("Array ordinato con bubble sort: ");
+
       for (int i = 0; i < arr.length; i++) {
         System.out.print(arr[i] + " ");
       }
