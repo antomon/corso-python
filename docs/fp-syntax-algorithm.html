@@ -113,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -296,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/fp-syntax-algorithm.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fp.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./fp-syntax-algorithm.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi e semantica dei linguaggi di programmazione e algoritmi dei programmi</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -321,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="3.1" class="anchored" data-anchor-id="sintassi-e-semantica-dei-linguaggi-di-programmazione"><span class="header-section-number">3.1</span> Sintassi e semantica dei linguaggi di programmazione</h2>
 <p>I linguaggi di programmazione sono strumenti utilizzati per implementare algoritmi in modo che possano essere eseguiti da un computer. Un linguaggio di programmazione ha due componenti principali: la <strong>sintassi</strong> e la <strong>semantica</strong>.</p>
 </section>
-<section id="sintassi" class="level2" data-number="3.2">
+<section id="sintassi" class="level2 page-columns page-full" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="sintassi"><span class="header-section-number">3.2</span> Sintassi</h2>
 <p>La <strong>sintassi</strong> di un linguaggio di programmazione è l’insieme di regole che definiscono come devono essere scritte le istruzioni, cioè le unità logiche di esecuzione del programma. È come la grammatica in una lingua naturale e stabilisce quali combinazioni di simboli sono considerate costrutti validi nel linguaggio.</p>
 <p>Partiamo dagli elementi atomici della sintassi, detti <strong>token</strong>, per poi risalire fino al programma:</p>
@@ -363,12 +363,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Il pattern per il delimitatore <code class="sourceCode python">:</code> è la stringa esatta “:”.</li>
 </ul></li>
 </ul>
-<section id="analizzatore-lessicale-e-parser" class="level3" data-number="3.2.1">
+<section id="analizzatore-lessicale-e-parser" class="level3 page-columns page-full" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="analizzatore-lessicale-e-parser"><span class="header-section-number">3.2.1</span> Analizzatore Lessicale e parser</h3>
 <p>L’<strong>analizzatore lessicale</strong> (o <em>lexer</em>) è un componente del compilatore o interprete che prende in input il codice sorgente del programma e lo divide in lessemi. Esso confronta ciascun lessema con i pattern definiti per il linguaggio di programmazione e genera una sequenza di token. Questi token sono poi passati al parser.</p>
-<p>Il <strong>parser</strong> è un altro componente del compilatore o interprete che prende in input la sequenza di token generata dall’analizzatore lessicale e verifica che la sequenza rispetti le regole sintattiche del linguaggio di programmazione. Il parser analizza i token per formare una struttura gerarchica che rappresenti le relazioni grammaticali tra di essi. Questa struttura interna è spesso un albero di sintassi (<em>parse tree</em> o <em>syntax tree</em>), che riflette la struttura grammaticale del codice sorgente, solitamente descritta usando una forma standard di notazione come la BNF (Backus-Naur Form) o varianti di essa.[1^] L’albero di sintassi viene utilizzato per ulteriori fasi di compilazione o interpretazione, come l’analisi semantica e la generazione del codice. Ad esempio, il parser può verificare che le espressioni aritmetiche siano ben formate, che le istruzioni siano correttamente annidate e che le dichiarazioni di variabili siano valide.</p>
-<p>[1^]: La BNF (Backus-Naur Form o Backus Normal Form) è una metasintassi, ovvero un formalismo attraverso cui è possibile descrivere la sintassi di linguaggi formali (il prefisso meta ha proprio a che vedere con la natura circolare di questa definizione). Si tratta di uno strumento molto usato per descrivere in modo preciso e non ambiguo la sintassi dei linguaggi di programmazione, dei protocolli di rete e così via, benché non manchino in letteratura esempi di sue applicazioni a contesti anche non informatici e addirittura non tecnologici. Un esempio è la grammatica di <a href="https://docs.python.org/3/reference/grammar.html">Python</a></p>
-</section>
+<p>Il <strong>parser</strong> è un altro componente del compilatore o interprete che prende in input la sequenza di token generata dall’analizzatore lessicale e verifica che la sequenza rispetti le regole sintattiche del linguaggio di programmazione. Il parser analizza i token per formare una struttura gerarchica che rappresenti le relazioni grammaticali tra di essi. Questa struttura interna è spesso un albero di sintassi (<em>parse tree</em> o <em>syntax tree</em>), che riflette la struttura grammaticale del codice sorgente, solitamente descritta usando una forma standard di notazione come la BNF (Backus-Naur Form) o varianti di essa.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> L’albero di sintassi viene utilizzato per ulteriori fasi di compilazione o interpretazione, come l’analisi semantica e la generazione del codice. Ad esempio, il parser può verificare che le espressioni aritmetiche siano ben formate, che le istruzioni siano correttamente annidate e che le dichiarazioni di variabili siano valide.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;La BNF (Backus-Naur Form o Backus Normal Form) è una metasintassi, ovvero un formalismo attraverso cui è possibile descrivere la sintassi di linguaggi formali (il prefisso meta ha proprio a che vedere con la natura circolare di questa definizione). Si tratta di uno strumento molto usato per descrivere in modo preciso e non ambiguo la sintassi dei linguaggi di programmazione, dei protocolli di rete e così via, benché non manchino in letteratura esempi di sue applicazioni a contesti anche non informatici e addirittura non tecnologici. Un esempio è la grammatica di <a href="https://docs.python.org/3/reference/grammar.html">Python</a></p></div></div></section>
 <section id="espressioni" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="espressioni"><span class="header-section-number">3.2.2</span> Espressioni</h3>
 <p>Un’espressione è una combinazione di lessemi che viene valutata per produrre un risultato. Esempi di espressioni includono:</p>
@@ -658,6 +657,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
