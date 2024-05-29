@@ -410,10 +410,10 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; Interruzione per chiamare il kernel</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Le sezioni del codice:</p>
 <ul>
-<li><p>Dati: La sezione <code class="sourceCode nasm">.data</code> è utilizzata per dichiarare variabili statiche inizializzate.</p></li>
-<li><p>Testo: La sezione <code class="sourceCode bash"><span class="ex">.text</span></code> contiene il codice eseguibile. L’etichetta <code class="sourceCode bash"><span class="ex">_start</span></code> indica il punto di ingresso del programma.</p></li>
-<li><p>Registri: I registri come <code class="sourceCode bash"><span class="ex">al</span></code> e <code class="sourceCode bash"><span class="ex">eax</span></code> sono utilizzati per operazioni aritmetiche e per la memorizzazione temporanea dei dati.</p></li>
-<li><p>Chiamate di sistema: L’interruzione <code class="sourceCode bash"><span class="ex">int</span> 0x80</code> è usata per eseguire chiamate di sistema in Linux. <code>nasm int 0x80</code></p></li>
+<li><p>Dati: La sezione <code>.data</code> è utilizzata per dichiarare variabili statiche inizializzate.</p></li>
+<li><p>Testo: La sezione <code>.text</code> contiene il codice eseguibile. L’etichetta <code>_start</code> indica il punto di ingresso del programma.</p></li>
+<li><p>Registri: I registri come <code>al</code> e <code>eax</code> sono utilizzati per operazioni aritmetiche e per la memorizzazione temporanea dei dati.</p></li>
+<li><p>Chiamate di sistema: L’interruzione <code>int 0x80</code> è usata per eseguire chiamate di sistema in Linux. <code>int 0x80</code></p></li>
 </ul>
 <p>L’Assembly x86 è usato nello sviluppo di:</p>
 <ul>
@@ -551,7 +551,7 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 </ul>
 <section id="esempio-in-java" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="esempio-in-java"><span class="header-section-number">2.4.1</span> Esempio in Java</h3>
-<p>In questo esempio, la classe <code class="sourceCode bash"><span class="ex">Animale</span></code> rappresenta una classe base con un attributo <code class="sourceCode bash"><span class="ex">nome</span></code> e un metodo <code class="sourceCode bash"><span class="ex">faiVerso</span></code>. La classe <code class="sourceCode bash"><span class="ex">Cane</span></code> estende <code class="sourceCode bash"><span class="ex">Animale</span></code> e sovrascrive il metodo <code class="sourceCode bash"><span class="ex">faiVerso</span></code> per fornire un’implementazione specifica. La classe <code class="sourceCode bash"><span class="ex">Main</span></code> crea un’istanza di <code class="sourceCode bash"><span class="ex">Cane</span></code> e chiama il metodo <code class="sourceCode bash"><span class="ex">faiVerso</span></code>, dimostrando il polimorfismo e l’ereditarietà:</p>
+<p>In questo esempio, la classe <code>Animale</code> rappresenta una classe base con un attributo <code>nome</code> e un metodo <code>faiVerso</code>. La classe <code>Cane</code> estende <code>Animale</code> e sovrascrive il metodo <code>faiVerso</code> per fornire un’implementazione specifica. La classe <code>Main</code> crea un’istanza di <code>Cane</code> e chiama il metodo <code>faiVerso</code>, dimostrando il polimorfismo e l’ereditarietà:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Definizione della classe base</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Animale <span class="op">{</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> nome<span class="op">;</span></span>
@@ -585,7 +585,7 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>        mioCane<span class="op">.</span><span class="fu">faiVerso</span><span class="op">();</span> <span class="co">// Stampa: Il cane abbaia</span></span>
 <span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Vediamo come implementare il medesimo esempio con una classe astratta in Java. <code class="sourceCode bash"><span class="ex">Animale</span></code> è la classe astratta, cioè che non può essere istanziata in un oggetto e <code class="sourceCode bash"><span class="ex">Cane</span></code> è una classe concreta che la estende:</p>
+<p>Vediamo come implementare il medesimo esempio con una classe astratta in Java. <code>Animale</code> è la classe astratta, cioè che non può essere istanziata in un oggetto e <code>Cane</code> è una classe concreta che la estende:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Definizione della classe astratta</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">abstract</span> <span class="kw">class</span> Animale <span class="op">{</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> nome<span class="op">;</span></span>
@@ -628,7 +628,7 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <section id="template" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="template"><span class="header-section-number">2.4.2</span> Template</h3>
 <p>I template, o generics, non sono specifici dell’OOP, anche se sono spesso associati a essa. I template permettono di scrivere funzioni, classi, e altri costrutti di codice in modo generico, cioè indipendente dal tipo dei dati che manipolano. Questo concetto è particolarmente utile per creare librerie e moduli riutilizzabili e flessibili.</p>
-<p>Ad esempio, definiamo la classe <code class="sourceCode cpp">Box</code> nel modo seguente:</p>
+<p>Ad esempio, definiamo la classe <code>Box</code> nel modo seguente:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> T<span class="op">&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Box <span class="op">{</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    T value<span class="op">;</span></span>
@@ -636,7 +636,7 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> setValue<span class="op">(</span>T val<span class="op">)</span> <span class="op">{</span> value <span class="op">=</span> val<span class="op">;</span> <span class="op">}</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    T getValue<span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> value<span class="op">;</span> <span class="op">}</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Essa può contenere un valore di qualsiasi tipo specificato al momento della creazione dell’istanza per mezzo del template <code class="sourceCode cpp">T</code>:</p>
+<p>Essa può contenere un valore di qualsiasi tipo specificato al momento della creazione dell’istanza per mezzo del template <code>T</code>:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Box contiene un intero</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>Box<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> intBox<span class="op">;</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>intBox<span class="op">.</span>setValue<span class="op">(</span><span class="dv">123</span><span class="op">);</span></span>
@@ -675,11 +675,11 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">static</span> <span class="at">const</span> <span class="dt">int</span> value <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>La metaprogrammazione è presente anche in linguaggi non OOP come Lisp, che utilizza le macro per trasformare e generare codice.</p>
-<p>Nel codice sotto proposto è definita la macro <code class="sourceCode bash"><span class="ex">when</span></code>, che prende due parametri in input, cioè <code class="sourceCode bash"><span class="bu">test</span></code> e <code class="sourceCode bash"><span class="ex">body</span></code>, ove <code class="sourceCode bash"><span class="bu">test</span></code> è un’espressione condizionale e <code class="sourceCode bash"><span class="ex">body</span></code> un insieme di istruzioni da eeseguire se la condizione è vera:</p>
+<p>Nel codice sotto proposto è definita la macro <code>when</code>, che prende due parametri in input, cioè <code>test</code> e <code>body</code>, ove <code>test</code> è un’espressione condizionale e <code>body</code> un insieme di istruzioni da eeseguire se la condizione è vera:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode commonlisp code-with-copy"><code class="sourceCode commonlisp"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">defmacro</span><span class="fu"> when </span>(test &amp;<span class="kw">rest</span> body)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  `(<span class="kw">if</span> ,test</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>       (<span class="kw">progn</span> ,@body)))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Vediamo un esempio pratico di come si utilizza la macro <code class="sourceCode bash"><span class="ex">when</span></code>. Il test è valutare se <code class="sourceCode bash"><span class="ex">x</span></code> è maggiore di <code class="sourceCode bash"><span class="ex">10</span></code> e, nel caso, stampare <code class="sourceCode bash"><span class="st">"x is greater than 10"</span></code> e poi assegnare <code class="sourceCode bash"><span class="ex">x</span></code> a <code class="sourceCode bash"><span class="ex">0</span></code>. Chiamiamo la macro con i due parametri:</p>
+<p>Vediamo un esempio pratico di come si utilizza la macro <code>when</code>. Il test è valutare se <code>x</code> è maggiore di <code>10</code> e, nel caso, stampare <code>"x is greater than 10"</code> e poi assegnare <code>x</code> a <code>0</code>. Chiamiamo la macro con i due parametri:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode commonlisp code-with-copy"><code class="sourceCode commonlisp"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">when</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">setf</span> x <span class="dv">0</span>))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -718,6 +718,12 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <li><p>XQuery: Un linguaggio di query per interrogare documenti XML.</p></li>
 </ol>
 <p>Questi linguaggi rappresentano diversi ambiti di applicazione, dai database alla descrizione hardware, e sono accomunati dall’approccio dichiarativo nel quale si specifica cosa ottenere piuttosto che come ottenerlo.</p>
+<div class="callout-nite" title="Nota">
+<p>SQL è uno degli esempi più significativi di linguaggio di programmazione dichiarativo. Le query SQL descrivono i risultati desiderati piuttosto che le procedure operative.</p>
+<p>Una stored procedure in PL/SQL (Procedural Language/SQL) combina SQL con elementi di linguaggi di programmazione procedurali come blocchi di codice, condizioni e cicli. PL/SQL è quindi un linguaggio procedurale, poiché consente di specificare “come” ottenere i risultati attraverso un flusso di controllo esplicito, rendendolo non puramente dichiarativo. PL/SQL è utilizzato principalmente con il database Oracle.</p>
+<p>Un’alternativa a PL/SQL è T-SQL (Transact-SQL), utilizzato con Microsoft SQL Server e Sybase ASE. Anche T-SQL estende SQL con funzionalità procedurali simili, consentendo la scrittura di istruzioni condizionali, cicli e la gestione delle transazioni. Come PL/SQL, T-SQL è un linguaggio procedurale e non puramente dichiarativo.</p>
+<p>Esistono anche estensioni ad oggetti come il PL/pgSQL (Procedural Language/PostgreSQL) per il database PostgreSQL.</p>
+</div>
 </section>
 <section id="esempi" class="level3" data-number="2.5.2">
 <h3 data-number="2.5.2" class="anchored" data-anchor-id="esempi"><span class="header-section-number">2.5.2</span> Esempi</h3>
@@ -725,7 +731,7 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <div class="sourceCode" id="cb17"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> nome</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> utenti</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> età <span class="op">&gt;</span> <span class="dv">30</span>;</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>In Prolog, si definiscono fatti e regole che descrivono relazioni logiche. Il motore di inferenza di Prolog utilizza queste definizioni per risolvere query, senza richiedere un algoritmo dettagliato. Di seguito, sono definiti due fatti (le prime due righe) e due regole (la terza e la quarta) e quindi si effettua una query che dà come risultato <code class="sourceCode bash"><span class="fu">true</span></code>:</p>
+<p>In Prolog, si definiscono fatti e regole che descrivono relazioni logiche. Il motore di inferenza di Prolog utilizza queste definizioni per risolvere query, senza richiedere un algoritmo dettagliato. Di seguito, sono definiti due fatti (le prime due righe) e due regole (la terza e la quarta) e quindi si effettua una query che dà come risultato <code>true</code>:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode prolog code-with-copy"><code class="sourceCode prolog"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>genitore(padre<span class="kw">,</span> figlio)<span class="kw">.</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>genitore(madre<span class="kw">,</span> figlio)<span class="kw">.</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span></span>
@@ -762,7 +768,7 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 </ul>
 <section id="esempio-in-haskell" class="level3" data-number="2.6.1">
 <h3 data-number="2.6.1" class="anchored" data-anchor-id="esempio-in-haskell"><span class="header-section-number">2.6.1</span> Esempio in Haskell</h3>
-<p>Di seguito due funzioni, la prima <code class="sourceCode bash"><span class="ex">sumToN</span></code> è pura e somma i primi <code class="sourceCode bash"><span class="ex">n</span></code> numeri. <code class="sourceCode bash"><span class="kw">(</span><span class="ex">*2</span><span class="kw">)</span></code> è una funzione che prende un argomento e lo moltiplica per 2 e ciò rende la seconda funzione <code class="sourceCode bash"><span class="ex">applyFunction</span></code> una vera funzione di ordine superiore, poiché accetta <code class="sourceCode bash"><span class="kw">(</span><span class="ex">*2</span><span class="kw">)</span></code> come argomento oltre ad una lista, producendo come risultato il raddoppio di tutti i suoi elementi:</p>
+<p>Di seguito due funzioni, la prima <code>sumToN</code> è pura e somma i primi <code>n</code> numeri. <code>(*2)</code> è una funzione che prende un argomento e lo moltiplica per 2 e ciò rende la seconda funzione <code>applyFunction</code> una vera funzione di ordine superiore, poiché accetta <code>(*2)</code> come argomento oltre ad una lista, producendo come risultato il raddoppio di tutti i suoi elementi:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode haskell code-with-copy"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Definizione di una funzione pura che calcola la somma dei numeri da 1 a n</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ot">sumToN ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>sumToN n <span class="ot">=</span> <span class="fu">sum</span> [<span class="dv">1</span><span class="op">..</span>n]</span>

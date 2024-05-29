@@ -75,13 +75,13 @@ _start:
 
 Le sezioni del codice:
 
-- Dati: La sezione `.data`{.nasm} è utilizzata per dichiarare variabili statiche inizializzate.
+- Dati: La sezione `.data` è utilizzata per dichiarare variabili statiche inizializzate.
 
-- Testo: La sezione `.text`{.bash}  contiene il codice eseguibile. L'etichetta `_start`{.bash}  indica il punto di ingresso del programma.
+- Testo: La sezione `.text` contiene il codice eseguibile. L'etichetta `_start` indica il punto di ingresso del programma.
 
-- Registri: I registri come `al`{.bash}  e `eax`{.bash}  sono utilizzati per operazioni aritmetiche e per la memorizzazione temporanea dei dati.
+- Registri: I registri come `al` e `eax` sono utilizzati per operazioni aritmetiche e per la memorizzazione temporanea dei dati.
 
-- Chiamate di sistema: L'interruzione `int 0x80`{.bash}  è usata per eseguire chiamate di sistema in Linux. ```nasm int 0x80```
+- Chiamate di sistema: L'interruzione `int 0x80` è usata per eseguire chiamate di sistema in Linux. ```int 0x80```
 
 L'Assembly x86 è usato nello sviluppo di:
 
@@ -264,7 +264,7 @@ Anche se sussistono dei caveat:
 
 ### Esempio in Java
 
-In questo esempio, la classe `Animale`{.bash} rappresenta una classe base con un attributo `nome`{.bash} e un metodo `faiVerso`{.bash}. La classe `Cane`{.bash} estende `Animale`{.bash} e sovrascrive il metodo `faiVerso`{.bash} per fornire un'implementazione specifica. La classe `Main`{.bash} crea un'istanza di `Cane`{.bash} e chiama il metodo `faiVerso`{.bash}, dimostrando il polimorfismo e l'ereditarietà:
+In questo esempio, la classe `Animale` rappresenta una classe base con un attributo `nome` e un metodo `faiVerso`. La classe `Cane` estende `Animale` e sovrascrive il metodo `faiVerso` per fornire un'implementazione specifica. La classe `Main` crea un'istanza di `Cane` e chiama il metodo `faiVerso`, dimostrando il polimorfismo e l'ereditarietà:
 
 ```java
 // Definizione della classe base
@@ -302,7 +302,7 @@ public class Main {
 }
 ```
 
-Vediamo come implementare il medesimo esempio con una classe astratta in Java. `Animale`{.bash} è la classe astratta, cioè che non può essere istanziata in un oggetto e `Cane`{.bash} è una classe concreta che la estende:
+Vediamo come implementare il medesimo esempio con una classe astratta in Java. `Animale` è la classe astratta, cioè che non può essere istanziata in un oggetto e `Cane` è una classe concreta che la estende:
 
 ```java
 // Definizione della classe astratta
@@ -349,7 +349,7 @@ public class Main {
 
 I template, o generics, non sono specifici dell'OOP, anche se sono spesso associati a essa. I template permettono di scrivere funzioni, classi, e altri costrutti di codice in modo generico, cioè indipendente dal tipo dei dati che manipolano. Questo concetto è particolarmente utile per creare librerie e moduli riutilizzabili e flessibili. 
 
-Ad esempio, definiamo la classe `Box`{.cpp} nel modo seguente:
+Ad esempio, definiamo la classe `Box` nel modo seguente:
 
 ```cpp
 template <typename T>
@@ -361,7 +361,7 @@ public:
 };
 ```
 
-Essa può contenere un valore di qualsiasi tipo specificato al momento della creazione dell'istanza per mezzo del template `T`{.cpp}:
+Essa può contenere un valore di qualsiasi tipo specificato al momento della creazione dell'istanza per mezzo del template `T`:
 
 ```cpp
 // Box contiene un intero
@@ -412,7 +412,7 @@ struct Factorial<0> {
 
 La metaprogrammazione è presente anche in linguaggi non OOP come Lisp, che utilizza le macro per trasformare e generare codice. 
 
-Nel codice sotto proposto è definita la macro `when`{.bash}, che prende due parametri in input, cioè `test`{.bash} e `body`{.bash}, ove `test`{.bash} è un'espressione condizionale e `body`{.bash} un insieme di istruzioni da eeseguire se la condizione è vera:
+Nel codice sotto proposto è definita la macro `when`, che prende due parametri in input, cioè `test` e `body`, ove `test` è un'espressione condizionale e `body` un insieme di istruzioni da eeseguire se la condizione è vera:
 
 ```commonlisp
 (defmacro when (test &rest body)
@@ -420,7 +420,7 @@ Nel codice sotto proposto è definita la macro `when`{.bash}, che prende due par
        (progn ,@body)))
 ```
 
-Vediamo un esempio pratico di come si utilizza la macro `when`{.bash}. Il test è valutare se `x`{.bash} è maggiore di `10`{.bash} e, nel caso, stampare `"x is greater than 10"`{.bash} e poi assegnare `x`{.bash} a `0`{.bash}. Chiamiamo la macro con i due parametri:
+Vediamo un esempio pratico di come si utilizza la macro `when`. Il test è valutare se `x` è maggiore di `10` e, nel caso, stampare `"x is greater than 10"` e poi assegnare `x` a `0`. Chiamiamo la macro con i due parametri:
 
 ```commonlisp
 (when (> x 10)
@@ -481,6 +481,16 @@ Ecco una lista di alcuni linguaggi di programmazione dichiarativi:
 
 Questi linguaggi rappresentano diversi ambiti di applicazione, dai database alla descrizione hardware, e sono accomunati dall'approccio dichiarativo nel quale si specifica cosa ottenere piuttosto che come ottenerlo.
 
+::: {.callout-nite title="Nota"}
+SQL è uno degli esempi più significativi di linguaggio di programmazione dichiarativo. Le query SQL descrivono i risultati desiderati piuttosto che le procedure operative.
+
+Una stored procedure in PL/SQL (Procedural Language/SQL) combina SQL con elementi di linguaggi di programmazione procedurali come blocchi di codice, condizioni e cicli. PL/SQL è quindi un linguaggio procedurale, poiché consente di specificare "come" ottenere i risultati attraverso un flusso di controllo esplicito, rendendolo non puramente dichiarativo. PL/SQL è utilizzato principalmente con il database Oracle.
+
+Un'alternativa a PL/SQL è T-SQL (Transact-SQL), utilizzato con Microsoft SQL Server e Sybase ASE. Anche T-SQL estende SQL con funzionalità procedurali simili, consentendo la scrittura di istruzioni condizionali, cicli e la gestione delle transazioni. Come PL/SQL, T-SQL è un linguaggio procedurale e non puramente dichiarativo.
+
+Esistono anche estensioni ad oggetti come il PL/pgSQL (Procedural Language/PostgreSQL) per il database PostgreSQL.
+:::
+
 ### Esempi
 
 Esempio di una query SQL che estrae tutti i nomi degli utenti con età maggiore di 30: 
@@ -491,7 +501,7 @@ FROM utenti
 WHERE età > 30;
 ```
 
-In Prolog, si definiscono fatti e regole che descrivono relazioni logiche. Il motore di inferenza di Prolog utilizza queste definizioni per risolvere query, senza richiedere un algoritmo dettagliato. Di seguito, sono definiti due fatti (le prime due righe) e due regole (la terza e la quarta) e quindi si effettua una query che dà come risultato `true`{.bash}:
+In Prolog, si definiscono fatti e regole che descrivono relazioni logiche. Il motore di inferenza di Prolog utilizza queste definizioni per risolvere query, senza richiedere un algoritmo dettagliato. Di seguito, sono definiti due fatti (le prime due righe) e due regole (la terza e la quarta) e quindi si effettua una query che dà come risultato `true`:
 
 ```prolog
 genitore(padre, figlio).
@@ -542,7 +552,7 @@ E qualche svantaggio:
 
 ### Esempio in Haskell
 
-Di seguito due funzioni, la prima `sumToN`{.bash} è pura e somma i primi `n`{.bash} numeri. `(*2)`{.bash} è una funzione che prende un argomento e lo moltiplica per 2 e ciò rende la seconda funzione `applyFunction`{.bash} una vera funzione di ordine superiore, poiché accetta `(*2)`{.bash} come argomento oltre ad una lista, producendo come risultato il raddoppio di tutti i suoi elementi:
+Di seguito due funzioni, la prima `sumToN` è pura e somma i primi `n` numeri. `(*2)` è una funzione che prende un argomento e lo moltiplica per 2 e ciò rende la seconda funzione `applyFunction` una vera funzione di ordine superiore, poiché accetta `(*2)` come argomento oltre ad una lista, producendo come risultato il raddoppio di tutti i suoi elementi:
 
 ```haskell
 -- Definizione di una funzione pura che calcola la somma dei numeri da 1 a n

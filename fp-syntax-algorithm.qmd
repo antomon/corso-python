@@ -15,15 +15,15 @@ La **sintassi** di un linguaggio di programmazione è l'insieme di regole che de
 
 Partiamo dagli elementi atomici della sintassi, detti **token**, per poi risalire fino al programma:
 
-- Parole chiave: Sono termini riservati del linguaggio che hanno significati specifici e non possono essere utilizzati per altri scopi, come `if`{.python}, `else`{.python}, `while`{.python}, `for`{.python}, ecc.
+- Parole chiave: Sono termini riservati del linguaggio che hanno significati specifici e non possono essere utilizzati per altri scopi, come `if`, `else`, `while`, `for`, ecc.
 
-- Operatori: Simboli utilizzati per eseguire operazioni su identificatori e letterali, come `+`{.python}, `-`{.python}, `*`{.python}, `/`{.python}, `=`{.python}, `==`{.python}, ecc.
+- Operatori: Simboli utilizzati per eseguire operazioni su identificatori e letterali, come `+`, `-`, `*`, `/`, `=`, `==`, ecc.
 
-- Delimitatori: Caratteri utilizzati per separare elementi del codice, come punto e virgola (`;`{.python}), parentesi tonde (`()`{.python}), parentesi quadre (`[]`{.python}), parentesi graffe (`{}`{.python}), ecc.
+- Delimitatori: Caratteri utilizzati per separare elementi del codice, come punto e virgola (`;`), parentesi tonde (`()`), parentesi quadre (`[]`), parentesi graffe (`{}`), ecc.
 
 - Identificatori: Nomi utilizzati per identificare variabili, funzioni, classi, e altri oggetti.
 
-- Letterali: Rappresentazioni di valori costanti nel codice, come numeri (`123`{.python}), stringhe (`"hello"`{.python}), caratteri (`'a'`{.python}), ecc.
+- Letterali: Rappresentazioni di valori costanti nel codice, come numeri (`123`), stringhe (`"hello"`), caratteri (`'a'`), ecc.
 
 - Commento: Non fanno parte della logica del programma e sono ignorati nell'esecuzione.
 
@@ -38,27 +38,27 @@ if x == 10:
 ```
 
 - Token coinvolti:
-  - `if`{.python}: Parola chiave.
-  - `NAME`{.python}: Identificatore.
-  - `EQEQUAL`{.python}: Operatore.
-  - `NUMBER`{.python}: Letterale numerico.
-  - `COLON`{.python}: Delimitatore.
+  - `if`: Parola chiave.
+  - `NAME`: Identificatore.
+  - `EQEQUAL`: Operatore.
+  - `NUMBER`: Letterale numerico.
+  - `COLON`: Delimitatore.
 
 - Lessemi:
-  - Il lessema per il token `if`{.python} è la sequenza di caratteri "if".
-  - Il lessema per il token `NAME`{.python} è "x".
-  - Il lessema per il token `EQEQUAL`{.python} è  "==".
-  - Il lessema per il token `NUMBER`{.python} "10".
-  - Il lessema per il token `COLON`{.python} ":".
+  - Il lessema per il token `if` è la sequenza di caratteri "if".
+  - Il lessema per il token `NAME` è "x".
+  - Il lessema per il token `EQEQUAL` è  "==".
+  - Il lessema per il token `NUMBER` "10".
+  - Il lessema per il token `COLON` ":".
 
 - Pattern:
-  - Il pattern per il token `if`{.python} è la stringa esatta "if".
+  - Il pattern per il token `if` è la stringa esatta "if".
   - Il pattern per un identificatore è una sequenza di lettere e numeri che inizia con una lettera.
-  - Il pattern per l'operatore `==`{.python} è la stringa esatta "==".
+  - Il pattern per l'operatore `==` è la stringa esatta "==".
   - Il pattern per un letterale numerico è una sequenza di cifre.
-  - Il pattern per il delimitatore `:`{.python} è la stringa esatta ":".
+  - Il pattern per il delimitatore `:` è la stringa esatta ":".
 
-### Analizzatore Lessicale e parser
+### Analizzatore lessicale e parser
 
 L'**analizzatore lessicale** (o _lexer_) è un componente del compilatore o interprete che prende in input il codice sorgente del programma e lo divide in lessemi. Esso confronta ciascun lessema con i pattern definiti per il linguaggio di programmazione e genera una sequenza di token. Questi token sono poi passati al parser.
 
@@ -68,13 +68,15 @@ Il **parser** è un altro componente del compilatore o interprete che prende in 
 
 ### Espressioni
 
-Un'espressione è una combinazione di lessemi che viene valutata per produrre un risultato. Esempi di espressioni includono:
+Un'espressione è una combinazione di lessemi che viene valutata per produrre un risultato. 
 
-- `5 + 3`{.python}.
-- `x * 2`{.python}.
-- `y / 4.0`{.python}.
-- `max(a, b)`{.python}.
-- `"Hello, " + "world!"`{.python}.
+Esempi di espressioni includono:
+
+- `5 + 3`.
+- `x * 2`.
+- `y / 4.0`.
+- `max(a, b)`.
+- `"Hello, " + "world!"`.
 
 ### Istruzioni semplici
 
@@ -85,38 +87,38 @@ Le **istruzioni semplici** sono operazioni atomiche secondo il linguaggio e sono
   ```python
   x = 5
   ```
-  - `x`{.python}: Identificatore della variabile.
-  - `=`{.python}: Operatore di assegnazione.
-  - `5`{.python}: Letterale numerico intero.
+  - `x`: Identificatore della variabile.
+  - `=`: Operatore di assegnazione.
+  - `5`: Letterale numerico intero.
 
 - Input/output: Utilizza parole chiave o funzioni di libreria per leggere valori dall'input o scrivere valori all'output. Esempio:
 
   ```python
   print("Hello, World!")
   ```
-  - `print`{.python}: Parola chiave o identificatore di funzione di libreria.
-  - `"Hello, World!"`{.python}: Letterale stringa.
-  L'esecuzione dell'istruzione produce `"Hello, World!"`{.python} in output.
+  - `print`: Parola chiave o identificatore di funzione di libreria.
+  - `"Hello, World!"`: Letterale stringa.
+  L'esecuzione dell'istruzione produce `"Hello, World!"` in output.
 
 - Assegnazione ad espressione: Combinazione di variabili, operatori e valori che producono un risultato assegnato ad una variabile. Esempio:
 
     ```python
     z = (x * 2) + (y / 2)
     ```
-  - `z`{.python}: Identificatore della variabile.
-  - `=`{.python}: Operatore di assegnazione.
-  - `(x * 2)`{.python}: Espressione che moltiplica `x`{.python} per `2`{.python}.
-  - `(y / 2)`{.python}: Espressione che divide `y`{.python} per `2`{.python}.
-  - `+`{.python}: Operatore aritmetico che somma i risultati delle due espressioni in una più complessa.
-  L'esecuzione dell'istruzione produce un risultato valido solo se `x`{.python} e `y`{.python} sono associate a valori numerici e ciò perché non tutte le istruzioni sintatticamente corrette sono semanticamente corrette. D'altronde ciò non deve essere preso come regola, perché se `*`{.python} fosse un operatore che ripete quanto a sinistra un numero di volte definito dal valore di destra e `/`{.python} la divisione del valore di sinistra in parti di numero pari a quanto a destra, allora `x`{.python} e `y`{.python} potrebbero essere stringhe.
+  - `z`: Identificatore della variabile.
+  - `=`: Operatore di assegnazione.
+  - `(x * 2)`: Espressione che moltiplica `x` per `2`.
+  - `(y / 2)`: Espressione che divide `y` per `2`.
+  - `+`: Operatore aritmetico che somma i risultati delle due espressioni in una più complessa.
+  L'esecuzione dell'istruzione produce un risultato valido solo se `x` e `y` sono associate a valori numerici e ciò perché non tutte le istruzioni sintatticamente corrette sono semanticamente corrette. D'altronde ciò non deve essere preso come regola, perché se `*` fosse un operatore che ripete quanto a sinistra un numero di volte definito dal valore di destra e `/` la divisione del valore di sinistra in parti di numero pari a quanto a destra, allora `x` e `y` potrebbero essere stringhe.
 
 ### Istruzioni complesse e blocchi di codice
 
-Le **istruzioni complesse** sono costituite da più istruzioni semplici e possono includere strutture di controllo del flusso, come condizioni (`if`{.python}), cicli (`for`{.python}, `while`{.python}) ed eccezioni (`try`{.python}, `catch`{.python}). Queste istruzioni sono utilizzate per organizzare il flusso di esecuzione del programma e possono contenere altre istruzioni semplici o complesse al loro interno.
+Le **istruzioni complesse** sono costituite da più istruzioni semplici e possono includere strutture di controllo del flusso, come condizioni (`if`), cicli (`for`, `while`) ed eccezioni (`try`, `catch`). Queste istruzioni sono utilizzate per organizzare il flusso di esecuzione del programma e possono contenere altre istruzioni semplici o complesse al loro interno.
 
 Un **blocco di codice** è una sezione del codice che raggruppa una serie di istruzioni che devono essere eseguite insieme. I blocchi di codice sono spesso utilizzati all'interno delle istruzioni complesse per delimitare il gruppo di istruzioni che devono essere eseguite in determinate condizioni o iterazioni. 
 
-In molti linguaggi di programmazione, i blocchi di codice sono delimitati da parentesi graffe (`{}`{.python}), mentre in altri linguaggi, come Python, l'indentazione è utilizzata per indicare l'inizio e la fine di un blocco di codice.
+In molti linguaggi di programmazione, i blocchi di codice sono delimitati da parentesi graffe (`{}`), mentre in altri linguaggi, come Python, l'indentazione è utilizzata per indicare l'inizio e la fine di un blocco di codice.
 
 Alcuni esempi di istruzione e blocco di codice:
 
@@ -129,8 +131,8 @@ Alcuni esempi di istruzione e blocco di codice:
   }
   ```
   In questo esempio:
-  - `if (x > 0)`{.c} è un'istruzione complessa.
-  - `{ printf("x è positivo\n"); y = x * 2; }`{.c} è un blocco di codice che viene eseguito se la condizione dell'istruzione `if`{.c} è vera.
+  - `if (x > 0)` è un'istruzione complessa.
+  - `{ printf("x è positivo\n"); y = x * 2; }` è un blocco di codice che viene eseguito se la condizione dell'istruzione `if` è vera.
 
 - Esempio in Python:
 
@@ -140,8 +142,8 @@ Alcuni esempi di istruzione e blocco di codice:
       y = x * 2
   ```
   In questo esempio:
-  - `if x > 0:`{.python} è un'istruzione complessa.
-  - Le righe indentate sotto l'istruzione `if`{.python} (`print("x è positivo")`{.python} e `y = x * 2`{.python}) costituiscono un blocco di codice che viene eseguito se la condizione dell'istruzione `if`{.python} è vera.
+  - `if x > 0:` è un'istruzione complessa.
+  - Le righe indentate sotto l'istruzione `if` (`print("x è positivo")` e `y = x * 2`) costituiscono un blocco di codice che viene eseguito se la condizione dell'istruzione `if` è vera.
 
 Altri esempi: 
 
@@ -156,10 +158,10 @@ Altri esempi:
       printf("x è positivo\n");
   }
   ```
-  - `if`{.c}: Parola chiave che introduce la condizione.
-  - `(x > 0)`{.c}: Condizione composta da: `x`{.c} identificatore di variabile, `>`{.c} operatore di confronto e `0`{.c} letterale numerico intero.
-  - `{ ... }`{.c}: Delimitatori che racchiudono il blocco di codice.
-  - `print("x è positivo")`{.c}: Istruzione di output.
+  - `if`: Parola chiave che introduce la condizione.
+  - `(x > 0)`: Condizione composta da: `x` identificatore di variabile, `>` operatore di confronto e `0` letterale numerico intero.
+  - `{ ... }`: Delimitatori che racchiudono il blocco di codice.
+  - `print("x è positivo")`: Istruzione di output.
 
 - Cicli: Istruzioni che ripetono un blocco di codice. Esempio:
 
@@ -174,10 +176,10 @@ Altri esempi:
       somma = somma + i;
   }
   ```
-  - `for`{.c}: Parola chiave che introduce il ciclo.
-  - `(i = 0; i < n; i++)`{.c}: Espressione di controllo del ciclo composta da: `i = 0`{.c} assegnazione iniziale, `i < n`{.c} condizione di ciclo e `i++`{.c} incremento della variabile `i`{.c}.
-  - `{ ... }`{.c}: Delimitatori che racchiudono il blocco di codice.
-  - `somma = somma + i`{.c}: Operazione aritmetica.
+  - `for`: Parola chiave che introduce il ciclo.
+  - `(i = 0; i < n; i++)`: Espressione di controllo del ciclo composta da: `i = 0` assegnazione iniziale, `i < n` condizione di ciclo e `i++` incremento della variabile `i`.
+  - `{ ... }`: Delimitatori che racchiudono il blocco di codice.
+  - `somma = somma + i`: Operazione aritmetica.
 
 ### Organizzazione del codice in un programma
 
