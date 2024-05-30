@@ -1,2 +1,2 @@
-x= 0
-assert x > 0, "x deve essere positivo"
+x = 1 + 2 + \ # Commento
+     3

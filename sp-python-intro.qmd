@@ -27,9 +27,9 @@ Python è un linguaggio di programmazione multiparadigma, il che significa che s
 
 - Programmazione procedurale: In Python, è possibile organizzare il codice in funzioni e moduli, rendendo più semplice la gestione e la riutilizzabilità del codice. Puoi raccogliere il codice in file separati e importarli come moduli, migliorando la struttura e la leggibilità del programma.
 
-- Programmazione orientata agli oggetti: Python supporta pienamente la programmazione orientata agli oggetti, consentendo la definizione di classi e oggetti. Questo paradigma è utile per modellare dati complessi e relazioni tra essi. Le caratteristiche orientate agli oggetti di Python sono concettualmente simili a quelle di C++, ma più semplici da usare.
+- Programmazione orientata agli oggetti: Python supporta pienamente la programmazione orientata agli oggetti, consentendo la definizione di classi e oggetti. Questo paradigma è utile per modellare dati complessi e relazioni tra essi. Le caratteristiche orientate agli oggetti di Python sono concettualmente simili a quelle del C++, ma più semplici da usare.
 
-- Programmazione funzionale: Python include funzionalità di programmazione funzionale, come funzioni di prima classe e di ordine superiore, lambda e strumenti come map, filter e reduce. 
+- Programmazione funzionale: Python include funzionalità di programmazione funzionale, come funzioni di prima classe e di ordine superiore, lambda e strumenti come `map`, `filter` e `reduce`. 
 
 Questa flessibilità rende Python adatto a una vasta gamma di applicazioni e consente ai programmatori di scegliere l'approccio più adatto al problema da risolvere.
 
@@ -288,11 +288,14 @@ Per chiudere il capitolo sul primo approccio a Python, possiamo confrontare un a
 
   void bubble_sort(int arr[], int n) {
     int i, j, temp;
+
     for (i = 0; i < n-1; i++) {
       for (j = 0; j < n-i-1; j++) {
         if (arr[j] > arr[j+1]) {
           temp = arr[j];
+
           arr[j] = arr[j+1];
+
           arr[j+1] = temp;
         }
       }
@@ -306,6 +309,7 @@ Per chiudere il capitolo sul primo approccio a Python, possiamo confrontare un a
     bubble_sort(arr, n);
 
     printf("Array ordinato con bubble sort: ");
+
     for (int i = 0; i < n; i++) {
       printf("%d ", arr[i]);
     }
@@ -400,6 +404,7 @@ Per chiudere il capitolo sul primo approccio a Python, possiamo confrontare un a
   ```rust
   fn bubble_sort(arr: &mut [i32]) {
     let n = arr.len();
+
     for i in 0..n {
       for j in 0..n-i-1 {
         if arr[j] > arr[j+1] {
@@ -424,11 +429,14 @@ Per chiudere il capitolo sul primo approccio a Python, possiamo confrontare un a
   object BubbleSort {
     def bubbleSort(arr: Array[Int]): Unit = {
       val n = arr.length
+
       for (i <- 0 until n) {
         for (j <- 0 until n - i - 1) {
           if (arr(j) > arr(j + 1)) {
             val temp = arr(j)
+
             arr(j) = arr(j + 1)
+
             arr(j + 1) = temp
           }
         }
@@ -445,6 +453,8 @@ Per chiudere il capitolo sul primo approccio a Python, possiamo confrontare un a
   }
   ```
 
-Confrontando questi esempi, possiamo osservare le differenze sintattiche e di stile tra Python ed altri, importanti, linguaggi. Python si distingue per la sua sintassi concisa e leggibile, mentre C richiede una gestione manuale della memoria e una sintassi più dettagliata. 
+Confrontando questi esempi, possiamo osservare le differenze sintattiche e di stile tra Python ed altri, importanti, linguaggi. Python si distingue per la sua sintassi concisa e espressiva soprattutto nella versione procedurale. L'implementazione colla gerarchia di oggetti ha un piccolo incremento di complessità che è ripagato dalla possibilità di creare gerarchie di algoritmi di ordinamento, con impatti nulli sul codice preesistente.
 
+Confrontanto la versione procedurale in Python con l'implementazione C, già a primo acchito è evidente il diverso grado di chiarezza del codice. Inoltre, la riga `int n = sizeof(arr)/sizeof(arr[0]);` in C si rende necessaria per calcolare il numero di valori a partire dalle dimensioni totale della lista e del singolo elemento, rispetto a `n = len(arr)` di Python dove chiediamo direttamente il numero di valori. 
+ 
 Il C++ e Java aggiungono caratteristiche relative agli oggetti e funzionalità di alto livello rispetto a C, al prezzo di una sintassi più complessa e verbosa. Rust e Scala sono linguaggi più moderni e si pongono nel mezzo tra C, C++ e Java e Python.

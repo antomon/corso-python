@@ -41,51 +41,77 @@ Comprendere i paradigmi di programmazione è fondamentale per diversi motivi:
 
 ## Paradigma imperativo
 
-La **programmazione imperativa**, a differenza della programmazione dichiarativa, è un paradigma di programmazione che descrive l'esecuzione di un programma come una serie di istruzioni che cambiano il suo stato. In modo simile al modo imperativo nelle lingue naturali, che esprime comandi per compiere azioni, i programmi imperativi sono una sequenza di comandi che il computer deve eseguire. Un caso particolare di programmazione imperativa è quella procedurale.
+La **programmazione imperativa**, a differenza della programmazione dichiarativa, è un paradigma di programmazione che descrive l'esecuzione di un programma come una serie di istruzioni che cambiano il suo stato. In modo simile al modo imperativo delle lingue naturali, che esprime comandi per compiere azioni, i programmi imperativi sono una sequenza di comandi che il computer deve eseguire in sequenza. Un caso particolare di programmazione imperativa è quella procedurale.
 
 I linguaggi di programmazione imperativa si contrappongono ad altri tipi di linguaggi, come quelli funzionali e logici. I linguaggi di programmazione funzionale, come Haskell, non producono sequenze di istruzioni e non hanno uno stato globale come i linguaggi imperativi. I linguaggi di programmazione logica, come Prolog, sono caratterizzati dalla definizione di cosa deve essere calcolato, piuttosto che come deve avvenire il calcolo, a differenza di un linguaggio di programmazione imperativo.
 
-L'implementazione hardware di quasi tutti i computer è imperativa perché è progettata per eseguire il codice macchina, che è scritto in stile imperativo. Da questa prospettiva a basso livello, lo stato del programma è definito dal contenuto della memoria e dalle istruzioni nel linguaggio macchina nativo del processore. I linguaggi imperativi di alto livello utilizzano variabili e istruzioni più complesse, ma seguono ancora lo stesso paradigma per mantenere la coerenza nella traduzione (compilazione o interpretazione) del codice.
+L'implementazione hardware di quasi tutti i computer è imperativa perché è progettata per eseguire il codice macchina, che è scritto in stile imperativo. Da questa prospettiva a basso livello, lo stato del programma è definito dal contenuto della memoria e dalle istruzioni nel linguaggio macchina nativo del processore. Al contrario, i linguaggi imperativi di alto livello sono caratterizzati da un modello dati e istruzioni che risultano più facilmente usabili come strumenti di espressione di passi algoritmici.
 
-### Esempio in Assembly
+### Esempio in assembly
 
-Assembly è un linguaggio a basso livello strettamente legato all'hardware del computer. Ecco un esempio di un semplice programma scritto per l'architettura x86, utilizzando la sintassi dell'assembler NASM (Netwide Assembler). Il codice somma due numeri e stampa il risultato:
+Assembly è una categoria di linguaggi di basso livello, cioè strettamente legati all'hardware del computer, tanto che ogni processore ha il suo _dialetto_. Un esempio di un semplice programma scritto per l'architettura x86, utilizzando la sintassi dell'assembler NASM (Netwide Assembler), è il seguente che effettua la somma di due numeri e stampa il risultato:
 
 ```nasm
 section .data
     num1 db 5           ; Definisce il primo numero
     num2 db 3           ; Definisce il secondo numero
     result db 0         ; Variabile per memorizzare il risultato
+    msg db 'Result: ', 0 ; Messaggio di output
+
+section .bss
+    result_str resb 4   ; Buffer per la stringa del risultato
 
 section .text
     global _start
 
 _start:
+    ; Somma num1 e num2
     mov al, [num1]      ; Carica il primo numero in AL
     add al, [num2]      ; Aggiunge il secondo numero a AL
     mov [result], al    ; Memorizza il risultato in result
 
-    ; Print result (pseudocodice per semplicità)
-    ; In realtà, si dovrebbe convertire il risultato in ASCII e chiamare le syscall appropriate.
-    
+    ; Converti il risultato in stringa ASCII
+    mov eax, [result]   ; Carica il risultato in EAX
+    add eax, '0'        ; Converti il valore numerico in carattere ASCII
+    mov [result_str], eax ; Memorizza il carattere ASCII in result_str
+
+    ; Stampa il messaggio
+    mov eax, 4          ; syscall numero per sys_write
+    mov ebx, 1          ; file descriptor 1 (stdout)
+    mov ecx, msg        ; puntatore al messaggio
+    mov edx, 8          ; lunghezza del messaggio
+    int 0x80            ; chiamata di sistema
+
+    ; Stampa il risultato
+    mov eax, 4          ; syscall numero per sys_write
+    mov ebx, 1          ; file descriptor 1 (stdout)
+    mov ecx, result_str ; puntatore alla stringa del risultato
+    mov edx, 1          ; lunghezza della stringa del risultato
+    int 0x80            ; chiamata di sistema
+
     ; Terminazione del programma
-    mov eax, 1          ; Codice di sistema per l'uscita
-    int 0x80            ; Interruzione per chiamare il kernel
+    mov eax, 1          ; codice di sistema per l'uscita
+    xor ebx, ebx        ; codice di ritorno 0
+    int 0x80            ; interruzione per chiamare il kernel
 ```
 
 Le sezioni del codice:
 
-- Dati: La sezione `.data` è utilizzata per dichiarare variabili statiche inizializzate.
+- La sezione `.data` definisce i dati statici `num1`, `num2`, `result` e `msg`.
 
-- Testo: La sezione `.text` contiene il codice eseguibile. L'etichetta `_start` indica il punto di ingresso del programma.
+- Sezione `.bss` alloca lo spazio per `result_str`, che conterrà la stringa del risultato.
 
-- Registri: I registri come `al` e `eax` sono utilizzati per operazioni aritmetiche e per la memorizzazione temporanea dei dati.
+- Sezione `.text`definisce `_start` come punto di ingresso del programma e:
 
-- Chiamate di sistema: L'interruzione `int 0x80` è usata per eseguire chiamate di sistema in Linux. ```int 0x80```
+  - Implementa la logica principale del programma.
+  - Somma i valori di `num1` e `num2`.
+  - Converte il risultato numerico in una stringa ASCII.
+  - Utilizza chiamate al sistema operativo per scrivere il messaggio e il risultato su stdout.
+  - Termina il programma.
 
-L'Assembly x86 è usato nello sviluppo di:
+L'assembly è usato nello sviluppo di:
 
-- Sistemi operativi: Utilizzato nello sviluppo di kernel e driver.
+- Sistemi operativi, ad esempio il kernel, che ha il controllo del sistema e i driver, cioè i programmi utili alla comunicazione coll'hardware.
 
 - Applicazioni _embedded_: Microcontrollori di dispositivi medici, sistemi di controllo di veicoli, dispositivi IoT, ecc., cioè)dove è necessaria un'ottimizzazione estrema delle risorse computazionali.
 
@@ -93,7 +119,7 @@ L'Assembly x86 è usato nello sviluppo di:
 
 ### Esempio in Python
 
-All'altro estremo della immediatezza di comprensione del testo del codice troviamo Python, un linguaggio di alto livello noto per la leggibilità ed eleganza. 
+All'altro estremo della immediatezza di comprensione del testo del codice. per un essere umano, troviamo Python, un linguaggio di alto livello noto per la leggibilità ed eleganza. 
 
 Ecco il medesimo esempio:
 
@@ -115,21 +141,21 @@ Assembly:
 
 - Basso livello di astrazione: Assembly lavora direttamente con i registri della CPU e la memoria, quindi non astrae granché della complessità dell'hardware.
 
-- Versatilità: Il linguaggio è progettato per una ben definita architettura e, quindi, ha una scarsa applicabilità ad altre. 
+- Scarsa versatilità: Il linguaggio è progettato per una ben definita architettura e, quindi, ha una scarsa applicabilità ad altre, anche se alcuni dialetti di assembly presentano delle similitudini.
 
-- Precisione: Il programmatore ha un controllo dettagliato su ogni singola operazione.
+- Elevata precisione: Il programmatore ha un controllo dettagliato su ogni singola operazione compiuta dal processore, perché c'è una corrispondenza col codice macchina.
 
 - Complessità: Ogni operazione deve essere definita esplicitamente e in sequenza, il che rende il codice più lungo e difficile da leggere.
 
 Python:
 
-- Alto livello di astrazione: Python fornisce un'astrazione più elevata, permettendo di ignorare i dettagli dell'hardware.
+- Alto livello di astrazione: Python fornisce un'astrazione più elevata sia dei dati che delle istruzioni, permettendo di ignorare i dettagli dei diversi hardware.
 
-- Semplicità: Il codice è più breve e leggibile, facilitando la comprensione e la manutenzione.
+- Elevata semplicità: Il codice è più breve e leggibile, facilitando la comprensione e la manutenzione.
 
-- Versatilità: Il linguaggio è applicabile senza modifiche a un elevato numero di architetture hardware-software.
+- Elevata versatilità: Il linguaggio è applicabile senza modifiche a un elevato numero di architetture hardware-software.
 
-- Produttività: I programmatori possono concentrarsi sulla logica del problema senza preoccuparsi dei dettagli implementativi.
+- Produttività: I programmatori possono concentrarsi sulla complessità intrinseca del problema, senza preoccuparsi di molti dettagli implementativi del processo di esecuzione.
 
 ## Paradigma procedurale
 

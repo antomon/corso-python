@@ -350,7 +350,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 <p>Il secondo è per mezzo di parentesi, giacché tutte le righe fisiche che seguono una con parentesi tonda <code>(</code>, quadra <code>[</code> o graffa <code>{</code> aperta, fino a quella con l’analoga parentesi chiusa, sono unite in una logica. Le regole di indentazione, che vedremo nel seguito, si applicano solo alla prima riga fisica.</p>
-<p>Esempi:</p>
+<p>Esempi sintatticamente corretti ma sconsigliabili, per l’inerente illeggibilità:</p>
 <div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> (<span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span></span>
 <span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>     <span class="op">+</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span>)</span>
 <span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -367,17 +367,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="2">Questa riga e la successiva non hanno la stessa indentazione, anche se è da evitare perché poco leggibile.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="2">Le righe fisiche della lista non hanno la stessa indentazione e una espressione è spezzata su due righe.</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="8" data-code-annotation="3">La lista è spezzata su due righe fisiche e, anche qui, così è poco leggibile.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="8" data-code-annotation="3">La lista è spezzata su due righe fisiche e un delimitatore inizia la riga anziché terminare la precedente.</span>
 </dd>
 </dl>
 </section>
 <section id="commenti" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="commenti"><span class="header-section-number">6.2</span> Commenti</h2>
-<p>Un commento inizia con un carattere cancelletto (<code>#</code>) e termina alla fine della riga fisica. I commenti non possono coesistere con il backslash come separatore di riga logica, giacché entrambi devono chiudere la riga fisica:</p>
+<p>Un commento inizia con un carattere cancelletto (<code>#</code>) e termina alla fine della riga fisica. I commenti non possono coesistere con il backslash come separatore di riga logica, giacché entrambi devono chiudere la riga fisica.</p>
+<p>Esempi non sintatticamente corretti:</p>
 <div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> \ <span class="co"># Commento</span></span>
 <span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>     <span class="dv">3</span></span>
 <span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -387,11 +388,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Il backslash deve terminare la riga fisica, quindi non può essere seguito da un commento. Se necessario può andare o alla riga successiva, scelta consigliata, o la precedente.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Il backslash deve terminare la riga fisica, quindi non può essere seguito da un commento. Se necessario può andare o alla riga successiva, scelta consigliata, o alla precedente. L’interprete segnalerà l’errore <a href="https://docs.python.org/3/library/exceptions.html#SyntaxError"><code>SyntaxError</code></a>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="2">Il commento rende il backslash parte di esso quindi non segnala più la fine della riga fisica e, all’esecuzione, si avrà un <a href="https://docs.python.org/3/library/exceptions.html#SyntaxError">SyntaxError</a> perché <code>and</code> deve essere seguito da un’espressione.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="2">Il commento rende il backslash parte di esso quindi non segnala più la fine della riga fisica e, all’esecuzione, si avrà anche qui un errore di tipo <code>SyntaxError</code>, perché <code>and</code> deve essere seguito da un’espressione.</span>
 </dd>
 </dl>
 </section>
@@ -416,7 +417,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span data-code-cell="annotated-cell-13" data-code-lines="2" data-code-annotation="2">Questa riga e la successiva appartengono allo stesso blocco e, pertanto, hanno la medesima indentazione.</span>
 </dd>
 </dl></li>
-<li><p>Ciclo e test di condizione:</p>
+<li><p>Test di condizione:</p>
 <div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
 <span id="annotated-cell-14-2"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>

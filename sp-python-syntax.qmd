@@ -32,7 +32,7 @@ if x > 5 and \ # <2>
 
 Il secondo è per mezzo di parentesi, giacché tutte le righe fisiche che seguono una con parentesi tonda `(`, quadra `[` o graffa `{` aperta, fino a quella con l'analoga parentesi chiusa, sono unite in una logica. Le regole di indentazione, che vedremo nel seguito, si applicano solo alla prima riga fisica. 
 
-Esempi:
+Esempi sintatticamente corretti ma sconsigliabili, per l'inerente illeggibilità:
 
 ```python
 x = (1 + 2 # <1>
@@ -48,13 +48,15 @@ z = [1, 2 # <3>
 
 1. L'espressione è spezzata su due righe fisiche e le parentesi tonde rappresentano un'alternativa all'uso del backslash.
 
-2. Questa riga e la successiva non hanno la stessa indentazione, anche se è da evitare perché poco leggibile.
+2. Le righe fisiche della lista non hanno la stessa indentazione e una espressione è spezzata su due righe.
 
-3. La lista è spezzata su due righe fisiche e, anche qui, così è poco leggibile.
+3. La lista è spezzata su due righe fisiche e un delimitatore inizia la riga anziché terminare la precedente.
 
 ## Commenti
 
-Un commento inizia con un carattere cancelletto (`#`) e termina alla fine della riga fisica. I commenti non possono coesistere con il backslash come separatore di riga logica, giacché entrambi devono chiudere la riga fisica:
+Un commento inizia con un carattere cancelletto (`#`) e termina alla fine della riga fisica. I commenti non possono coesistere con il backslash come separatore di riga logica, giacché entrambi devono chiudere la riga fisica.
+
+Esempi non sintatticamente corretti: 
 
 ```python
 x = 1 + 2 + \ # Commento # <1>
@@ -65,9 +67,9 @@ if x > 5 and # Commento \ # <2>
   print("5 < x < 9") 
 ```
 
-1. Il backslash deve terminare la riga fisica, quindi non può essere seguito da un commento. Se necessario può andare o alla riga successiva, scelta consigliata, o la precedente.
+1. Il backslash deve terminare la riga fisica, quindi non può essere seguito da un commento. Se necessario può andare o alla riga successiva, scelta consigliata, o alla precedente. L'interprete segnalerà l'errore [`SyntaxError`](https://docs.python.org/3/library/exceptions.html#SyntaxError).
 
-2. Il commento rende il backslash parte di esso quindi non segnala più la fine della riga fisica e, all'esecuzione, si avrà un [SyntaxError](https://docs.python.org/3/library/exceptions.html#SyntaxError) perché `and` deve essere seguito da un'espressione.
+2. Il commento rende il backslash parte di esso quindi non segnala più la fine della riga fisica e, all'esecuzione, si avrà anche qui un errore di tipo `SyntaxError`, perché `and` deve essere seguito da un'espressione.
 
 ## Indentazione
 
@@ -88,7 +90,7 @@ Alcuni esempi:
   1. Prima riga senza indentazione.
   2. Questa riga e la successiva appartengono allo stesso blocco e, pertanto, hanno la medesima indentazione.
 
-- Ciclo e test di condizione:
+- Test di condizione:
   ```python
   x = 10
 

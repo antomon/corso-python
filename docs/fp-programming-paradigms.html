@@ -304,7 +304,7 @@ div.csl-indent {
   <li><a href="#limportanza-dei-paradigmi-di-programmazione" id="toc-limportanza-dei-paradigmi-di-programmazione" class="nav-link active" data-scroll-target="#limportanza-dei-paradigmi-di-programmazione"><span class="header-section-number">2.1</span> L’importanza dei paradigmi di programmazione</a></li>
   <li><a href="#paradigma-imperativo" id="toc-paradigma-imperativo" class="nav-link" data-scroll-target="#paradigma-imperativo"><span class="header-section-number">2.2</span> Paradigma imperativo</a>
   <ul class="collapse">
-  <li><a href="#esempio-in-assembly" id="toc-esempio-in-assembly" class="nav-link" data-scroll-target="#esempio-in-assembly"><span class="header-section-number">2.2.1</span> Esempio in Assembly</a></li>
+  <li><a href="#esempio-in-assembly" id="toc-esempio-in-assembly" class="nav-link" data-scroll-target="#esempio-in-assembly"><span class="header-section-number">2.2.1</span> Esempio in assembly</a></li>
   <li><a href="#esempio-in-python" id="toc-esempio-in-python" class="nav-link" data-scroll-target="#esempio-in-python"><span class="header-section-number">2.2.2</span> Esempio in Python</a></li>
   <li><a href="#analisi-comparativa" id="toc-analisi-comparativa" class="nav-link" data-scroll-target="#analisi-comparativa"><span class="header-section-number">2.2.3</span> Analisi comparativa</a></li>
   </ul></li>
@@ -383,48 +383,76 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 </section>
 <section id="paradigma-imperativo" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="paradigma-imperativo"><span class="header-section-number">2.2</span> Paradigma imperativo</h2>
-<p>La <strong>programmazione imperativa</strong>, a differenza della programmazione dichiarativa, è un paradigma di programmazione che descrive l’esecuzione di un programma come una serie di istruzioni che cambiano il suo stato. In modo simile al modo imperativo nelle lingue naturali, che esprime comandi per compiere azioni, i programmi imperativi sono una sequenza di comandi che il computer deve eseguire. Un caso particolare di programmazione imperativa è quella procedurale.</p>
+<p>La <strong>programmazione imperativa</strong>, a differenza della programmazione dichiarativa, è un paradigma di programmazione che descrive l’esecuzione di un programma come una serie di istruzioni che cambiano il suo stato. In modo simile al modo imperativo delle lingue naturali, che esprime comandi per compiere azioni, i programmi imperativi sono una sequenza di comandi che il computer deve eseguire in sequenza. Un caso particolare di programmazione imperativa è quella procedurale.</p>
 <p>I linguaggi di programmazione imperativa si contrappongono ad altri tipi di linguaggi, come quelli funzionali e logici. I linguaggi di programmazione funzionale, come Haskell, non producono sequenze di istruzioni e non hanno uno stato globale come i linguaggi imperativi. I linguaggi di programmazione logica, come Prolog, sono caratterizzati dalla definizione di cosa deve essere calcolato, piuttosto che come deve avvenire il calcolo, a differenza di un linguaggio di programmazione imperativo.</p>
-<p>L’implementazione hardware di quasi tutti i computer è imperativa perché è progettata per eseguire il codice macchina, che è scritto in stile imperativo. Da questa prospettiva a basso livello, lo stato del programma è definito dal contenuto della memoria e dalle istruzioni nel linguaggio macchina nativo del processore. I linguaggi imperativi di alto livello utilizzano variabili e istruzioni più complesse, ma seguono ancora lo stesso paradigma per mantenere la coerenza nella traduzione (compilazione o interpretazione) del codice.</p>
+<p>L’implementazione hardware di quasi tutti i computer è imperativa perché è progettata per eseguire il codice macchina, che è scritto in stile imperativo. Da questa prospettiva a basso livello, lo stato del programma è definito dal contenuto della memoria e dalle istruzioni nel linguaggio macchina nativo del processore. Al contrario, i linguaggi imperativi di alto livello sono caratterizzati da un modello dati e istruzioni che risultano più facilmente usabili come strumenti di espressione di passi algoritmici.</p>
 <section id="esempio-in-assembly" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="esempio-in-assembly"><span class="header-section-number">2.2.1</span> Esempio in Assembly</h3>
-<p>Assembly è un linguaggio a basso livello strettamente legato all’hardware del computer. Ecco un esempio di un semplice programma scritto per l’architettura x86, utilizzando la sintassi dell’assembler NASM (Netwide Assembler). Il codice somma due numeri e stampa il risultato:</p>
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="esempio-in-assembly"><span class="header-section-number">2.2.1</span> Esempio in assembly</h3>
+<p>Assembly è una categoria di linguaggi di basso livello, cioè strettamente legati all’hardware del computer, tanto che ogni processore ha il suo <em>dialetto</em>. Un esempio di un semplice programma scritto per l’architettura x86, utilizzando la sintassi dell’assembler NASM (Netwide Assembler), è il seguente che effettua la somma di due numeri e stampa il risultato:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode nasm code-with-copy"><code class="sourceCode nasm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">section</span> <span class="fu">.data</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    num1 <span class="dt">db</span> <span class="dv">5</span>           <span class="co">; Definisce il primo numero</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    num2 <span class="dt">db</span> <span class="dv">3</span>           <span class="co">; Definisce il secondo numero</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    result <span class="dt">db</span> <span class="dv">0</span>         <span class="co">; Variabile per memorizzare il risultato</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">section</span> <span class="fu">.text</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> _start</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">_start:</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">al</span><span class="op">,</span> <span class="op">[</span>num1<span class="op">]</span>      <span class="co">; Carica il primo numero in AL</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">add</span> <span class="kw">al</span><span class="op">,</span> <span class="op">[</span>num2<span class="op">]</span>      <span class="co">; Aggiunge il secondo numero a AL</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="op">[</span>result<span class="op">],</span> <span class="kw">al</span>    <span class="co">; Memorizza il risultato in result</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">; Print result (pseudocodice per semplicità)</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">; In realtà, si dovrebbe convertire il risultato in ASCII e chiamare le syscall appropriate.</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">; Terminazione del programma</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; Codice di sistema per l'uscita</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; Interruzione per chiamare il kernel</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    msg <span class="dt">db</span> <span class="st">'Result: '</span><span class="op">,</span> <span class="dv">0</span> <span class="co">; Messaggio di output</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">section</span> <span class="fu">.bss</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    result_str <span class="dt">resb</span> <span class="dv">4</span>   <span class="co">; Buffer per la stringa del risultato</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">section</span> <span class="fu">.text</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> _start</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">_start:</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">; Somma num1 e num2</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">al</span><span class="op">,</span> <span class="op">[</span>num1<span class="op">]</span>      <span class="co">; Carica il primo numero in AL</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">add</span> <span class="kw">al</span><span class="op">,</span> <span class="op">[</span>num2<span class="op">]</span>      <span class="co">; Aggiunge il secondo numero a AL</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="op">[</span>result<span class="op">],</span> <span class="kw">al</span>    <span class="co">; Memorizza il risultato in result</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">; Converti il risultato in stringa ASCII</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="op">[</span>result<span class="op">]</span>   <span class="co">; Carica il risultato in EAX</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">add</span> <span class="kw">eax</span><span class="op">,</span> <span class="st">'0'</span>        <span class="co">; Converti il valore numerico in carattere ASCII</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="op">[</span>result_str<span class="op">],</span> <span class="kw">eax</span> <span class="co">; Memorizza il carattere ASCII in result_str</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">; Stampa il messaggio</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">4</span>          <span class="co">; syscall numero per sys_write</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">ebx</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; file descriptor 1 (stdout)</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">ecx</span><span class="op">,</span> msg        <span class="co">; puntatore al messaggio</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">edx</span><span class="op">,</span> <span class="dv">8</span>          <span class="co">; lunghezza del messaggio</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; chiamata di sistema</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="co">; Stampa il risultato</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">4</span>          <span class="co">; syscall numero per sys_write</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">ebx</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; file descriptor 1 (stdout)</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">ecx</span><span class="op">,</span> result_str <span class="co">; puntatore alla stringa del risultato</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">edx</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; lunghezza della stringa del risultato</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; chiamata di sistema</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="co">; Terminazione del programma</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; codice di sistema per l'uscita</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">xor</span> <span class="kw">ebx</span><span class="op">,</span> <span class="kw">ebx</span>        <span class="co">; codice di ritorno 0</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; interruzione per chiamare il kernel</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Le sezioni del codice:</p>
 <ul>
-<li><p>Dati: La sezione <code>.data</code> è utilizzata per dichiarare variabili statiche inizializzate.</p></li>
-<li><p>Testo: La sezione <code>.text</code> contiene il codice eseguibile. L’etichetta <code>_start</code> indica il punto di ingresso del programma.</p></li>
-<li><p>Registri: I registri come <code>al</code> e <code>eax</code> sono utilizzati per operazioni aritmetiche e per la memorizzazione temporanea dei dati.</p></li>
-<li><p>Chiamate di sistema: L’interruzione <code>int 0x80</code> è usata per eseguire chiamate di sistema in Linux. <code>int 0x80</code></p></li>
-</ul>
-<p>L’Assembly x86 è usato nello sviluppo di:</p>
+<li><p>La sezione <code>.data</code> definisce i dati statici <code>num1</code>, <code>num2</code>, <code>result</code> e <code>msg</code>.</p></li>
+<li><p>Sezione <code>.bss</code> alloca lo spazio per <code>result_str</code>, che conterrà la stringa del risultato.</p></li>
+<li><p>Sezione <code>.text</code>definisce <code>_start</code> come punto di ingresso del programma e:</p>
 <ul>
-<li><p>Sistemi operativi: Utilizzato nello sviluppo di kernel e driver.</p></li>
+<li>Implementa la logica principale del programma.</li>
+<li>Somma i valori di <code>num1</code> e <code>num2</code>.</li>
+<li>Converte il risultato numerico in una stringa ASCII.</li>
+<li>Utilizza chiamate al sistema operativo per scrivere il messaggio e il risultato su stdout.</li>
+<li>Termina il programma.</li>
+</ul></li>
+</ul>
+<p>L’assembly è usato nello sviluppo di:</p>
+<ul>
+<li><p>Sistemi operativi, ad esempio il kernel, che ha il controllo del sistema e i driver, cioè i programmi utili alla comunicazione coll’hardware.</p></li>
 <li><p>Applicazioni <em>embedded</em>: Microcontrollori di dispositivi medici, sistemi di controllo di veicoli, dispositivi IoT, ecc., cioè)dove è necessaria un’ottimizzazione estrema delle risorse computazionali.</p></li>
 <li><p>Applicazioni HPC (<em>high performance computing</em>): Il focus qui è eseguire calcoli intensivi e complessi in tempi relativamente brevi. Queste applicazioni richiedono un numero di operazioni per unità di tempo elevato e sono ottimizzate per sfruttare al massimo le risorse hardware disponibili, come CPU, GPU e memoria.</p></li>
 </ul>
 </section>
 <section id="esempio-in-python" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="esempio-in-python"><span class="header-section-number">2.2.2</span> Esempio in Python</h3>
-<p>All’altro estremo della immediatezza di comprensione del testo del codice troviamo Python, un linguaggio di alto livello noto per la leggibilità ed eleganza.</p>
+<p>All’altro estremo della immediatezza di comprensione del testo del codice. per un essere umano, troviamo Python, un linguaggio di alto livello noto per la leggibilità ed eleganza.</p>
 <p>Ecco il medesimo esempio:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definizione delle variabili</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>num1 <span class="op">=</span> <span class="dv">5</span></span>
@@ -441,16 +469,16 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <p>Assembly:</p>
 <ul>
 <li><p>Basso livello di astrazione: Assembly lavora direttamente con i registri della CPU e la memoria, quindi non astrae granché della complessità dell’hardware.</p></li>
-<li><p>Versatilità: Il linguaggio è progettato per una ben definita architettura e, quindi, ha una scarsa applicabilità ad altre.</p></li>
-<li><p>Precisione: Il programmatore ha un controllo dettagliato su ogni singola operazione.</p></li>
+<li><p>Scarsa versatilità: Il linguaggio è progettato per una ben definita architettura e, quindi, ha una scarsa applicabilità ad altre, anche se alcuni dialetti di assembly presentano delle similitudini.</p></li>
+<li><p>Elevata precisione: Il programmatore ha un controllo dettagliato su ogni singola operazione compiuta dal processore, perché c’è una corrispondenza col codice macchina.</p></li>
 <li><p>Complessità: Ogni operazione deve essere definita esplicitamente e in sequenza, il che rende il codice più lungo e difficile da leggere.</p></li>
 </ul>
 <p>Python:</p>
 <ul>
-<li><p>Alto livello di astrazione: Python fornisce un’astrazione più elevata, permettendo di ignorare i dettagli dell’hardware.</p></li>
-<li><p>Semplicità: Il codice è più breve e leggibile, facilitando la comprensione e la manutenzione.</p></li>
-<li><p>Versatilità: Il linguaggio è applicabile senza modifiche a un elevato numero di architetture hardware-software.</p></li>
-<li><p>Produttività: I programmatori possono concentrarsi sulla logica del problema senza preoccuparsi dei dettagli implementativi.</p></li>
+<li><p>Alto livello di astrazione: Python fornisce un’astrazione più elevata sia dei dati che delle istruzioni, permettendo di ignorare i dettagli dei diversi hardware.</p></li>
+<li><p>Elevata semplicità: Il codice è più breve e leggibile, facilitando la comprensione e la manutenzione.</p></li>
+<li><p>Elevata versatilità: Il linguaggio è applicabile senza modifiche a un elevato numero di architetture hardware-software.</p></li>
+<li><p>Produttività: I programmatori possono concentrarsi sulla complessità intrinseca del problema, senza preoccuparsi di molti dettagli implementativi del processo di esecuzione.</p></li>
 </ul>
 </section>
 </section>
