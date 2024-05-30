@@ -560,6 +560,7 @@ I letterali di stringa possono essere racchiusi tra virgolette singole o doppie.
 - Stringhe racchiuse tra virgolette singole o doppie:
   - Singole: `'ciao'`.
   - Doppie: `"mondo"`.
+
 - Stringhe multi-linea racchiuse tra triple virgolette singole o doppie:
   - Triple singole: `'''testo multi-linea'''`.
   - Triple doppie: `"""testo multi-linea"""`.
@@ -577,13 +578,15 @@ print(stringa_multilinea)
 
 Tutte le stringhe sono codificate in Unicode, con il prefisso `b` la stringa è di tipo byte ed è limitata ai 128 caratteri dell'ASCII. Se si prepone `r`, che sta per _raw_ cioè grezzo, allora la codifica è sempre Unicode ma i caratteri di escape[^2-sp-python-syntax] non sono intepretati.
 
-[^2-sp-python-syntax]: In Python, il carattere di escape `\` è utilizzato nelle stringhe per inserire caratteri speciali che non possono essere facilmente digitati sulla tastiera o che hanno significati speciali. Alcuni esempi comuni includono:
+[^2-sp-python-syntax]: In Python, il carattere di escape `\` è utilizzato nelle stringhe per inserire caratteri speciali che non possono essere facilmente digitati sulla tastiera o che hanno significati speciali. 
 
-  - `\n` per una nuova linea (linefeed)
-  - `\t` per una tabulazione
-  - `\\` per inserire una barra rovesciata
-  - `\'` per un apostrofo
-  - `\"` per una doppia virgoletta
+  Alcuni esempi comuni includono:
+
+  - `\n` per una nuova linea (linefeed).
+  - `\t` per una tabulazione.
+  - `\\` per inserire una barra rovesciata.
+  - `\'` per un apostrofo.
+  - `\"` per una doppia virgoletta.
 
   Questi caratteri permettono di includere simboli speciali nelle stringhe senza interrompere la sintassi del codice.
 
