@@ -11,9 +11,9 @@ Ogni programma Python è costituito da una serie di file di testo contenenti il 
 
 ## Righe
 
-Le righe sono di due tipi: logiche e fisiche. Le seconde sono le più facilmente individuabili nel testo di un programma, perché sono terminate da un carattere di a capo. Una o più righe fisiche costituiscono una riga logica che corrisponde ad una istruzione.
+Le righe sono di due tipi: **logiche** e **fisiche**. Le seconde sono le più facilmente individuabili nel testo di un programma, perché sono terminate da un carattere di a capo. Una o più righe fisiche costituiscono una riga logica che corrisponde ad una istruzione. Esiste una eccezione, poco usata e consigliata in Python, per cui una riga fisica contiene più istruzioni separate da `;`.
 
-Vi sono due modi per dividere una riga logica in righe fisiche. Il primo è terminare con il backslash (`\`{.python}, poco usata la traduzione "barra rovesciata" o simili) tutte le righe fisiche meno l'ultima (intendendo con ciò che il backslash precede l'a capo):
+Vi sono due modi per dividere una riga logica in righe fisiche. Il primo è terminare con il backslash (`\`, poco usata la traduzione _barra rovesciata_ o simili) tutte le righe fisiche meno l'ultima (intendendo con ciò che il backslash precede l'a capo):
 
 ```python
 x = 1 + 2 + \ # <1>
@@ -23,11 +23,14 @@ if x > 5 and \ # <2>
    x < 9: # <3>
   print("5 < x < 9") 
 ```
-1. L'istruzione di assegnamento è spezzata su due righe fisiche
+
+1. L'istruzione di assegnamento è spezzata su due righe fisiche.
+
 2. L'istruzione condizionale ha due espressioni che devono essere entrambe vere, ognuna su una riga fisica.
+
 3. Non importa quanto sono indentate le righe fisiche successive alla prima e ciò può essere sfruttato per incrementare la leggibilità, ad esempio, allineando le espressioni `x > 5` e `x < 9` in colonna.
 
-Il secondo è per mezzo di parentesi, giacché tutte le righe fisiche che seguono una con parentesi tonda `(`{.python}, quadra `[`{.python} o graffa `{`{.python} aperta, fino a quella con l'analoga parentesi chiusa, sono unite in una logica. Le regole di indentazione, che vedremo nel seguito, si applicano solo alla prima riga fisica. 
+Il secondo è per mezzo di parentesi, giacché tutte le righe fisiche che seguono una con parentesi tonda `(`, quadra `[` o graffa `{` aperta, fino a quella con l'analoga parentesi chiusa, sono unite in una logica. Le regole di indentazione, che vedremo nel seguito, si applicano solo alla prima riga fisica. 
 
 Esempi:
 
@@ -42,13 +45,16 @@ y = [1, 2,
 z = [1, 2 # <3>
      , 3, 4]   
 ```
+
 1. L'espressione è spezzata su due righe fisiche e le parentesi tonde rappresentano un'alternativa all'uso del backslash.
+
 2. Questa riga e la successiva non hanno la stessa indentazione, anche se è da evitare perché poco leggibile.
+
 3. La lista è spezzata su due righe fisiche e, anche qui, così è poco leggibile.
 
 ## Commenti
 
-Un commento inizia con un carattere cancelletto (`#`{.python}) e termina alla fine della riga fisica. I commenti non possono coesistere con il backslash come separatore di riga logica, giacché entrambi devono chiudere la riga fisica:
+Un commento inizia con un carattere cancelletto (`#`) e termina alla fine della riga fisica. I commenti non possono coesistere con il backslash come separatore di riga logica, giacché entrambi devono chiudere la riga fisica:
 
 ```python
 x = 1 + 2 + \ # Commento # <1>
@@ -58,18 +64,21 @@ if x > 5 and # Commento \ # <2>
    x < 9: 
   print("5 < x < 9") 
 ```
+
 1. Il backslash deve terminare la riga fisica, quindi non può essere seguito da un commento. Se necessario può andare o alla riga successiva, scelta consigliata, o la precedente.
+
 2. Il commento rende il backslash parte di esso quindi non segnala più la fine della riga fisica e, all'esecuzione, si avrà un [SyntaxError](https://docs.python.org/3/library/exceptions.html#SyntaxError) perché `and` deve essere seguito da un'espressione.
 
 ## Indentazione
 
 Indentazione significa che spazi o, in alternativa, tabulazioni precedono un carattere che non sia nessuno dei due. Il numero di spazi ottenuto dopo la trasformazione delle tabulazioni in spazi, si definisce livello di indentazione. L'indentazione del codice è il modo che Python utilizza per raggruppare le istruzioni in un blocco, ove tutte devono presentare la medesima indentazione. La prima riga logica che ha una indentazione minore della precedente, segnala che il blocco è stato chiuso proprio da quest'ultima. Anche le clausole di un'istruzione composta devono avere la stessa indentazione.
 
-La prima istruzione di un file o la prima inserita al prompt `>>>`{.python} del REPL non deve presentare spazi o tabulazioni, cioè ha un livello di indentazione pari a 0. 
+La prima istruzione di un file o la prima inserita al prompt `>>>` del REPL non deve presentare spazi o tabulazioni, cioè ha un livello di indentazione pari a 0. 
 
 Alcuni esempi:
 
 - Definizione di una funzione:
+  
   ```python
   def somma(a, b): # <1>
     risultato = a + b # <2>
@@ -77,18 +86,21 @@ Alcuni esempi:
   ```
   1. Prima riga senza indentazione.
   2. Questa riga e la successiva appartengono allo stesso blocco e, pertanto, hanno la medesima indentazione.
+
 - Ciclo e test di condizione:
   ```python
   x = 10
 
   if x < 0: # <1>
       print("x è negativo") # <2>
+
   elif x == 0: 
         print("x è zero") 
+
   else: 
           print("x è positivo") 
   ```
-  1. Le tre clausole `if`{.python} , `then`{.python}  e `else`{.python}  hanno identica indentazione.
+  1. Le tre clausole `if` , `then`  e `else`  hanno identica indentazione.
   2. I tre blocchi hanno come unico vincolo quello di avere un livello maggiore della riga precedente. I blocchi corrispondenti alle diverse clausole non devono avere lo stesso livello di indentazione, anche se è buona prassi farlo.
 
 ::: {.callout-warning title="Attenzione"}
@@ -108,55 +120,57 @@ if    x > 5    and    x < 9:
 
 ### Identificatori
 
-Un identificatore è un nome assegnato ad un oggetto, cioè una variabile, una funzione, una classe, un modulo e altro. Esso è _case sensitive_ cioè `python`{.python} e `Python`{.python}  sono due identificatori diversi.
+Un identificatore è un nome assegnato ad un oggetto, cioè una variabile, una funzione, una classe, un modulo e altro. Esso è _case sensitive_ cioè `python` e `Python`  sono due identificatori diversi.
+
+Alcuni esempi:
 
 ```python
-intero = 42  # Identificatore di un numero intero
-decimale = 3.14  # Identificatore di un numero decimale
-testo = "Ciao, mondo!"  # Identificatore di una stringa
-lista = [1, 2, 3]  # Identificatore di una lista
-dizionario = {"chiave": "valore"}  # Identificatore di un dizionario
+intero = 42  # Identificatore di numero intero
+decimale = 3.14  # Identificatore di numero decimale
+testo = "Ciao, mondo!"  # Identificatore di stringa
+lista = [1, 2, 3]  # Identificatore di lista
+dizionario = {"chiave": "valore"}  # Identificatore di dizionario
 
 def mia_funzione(): # Identificatore di funzione
     print("Questa è una funzione")
 
 # Classe
 class MiaClasse: # Identificatore di classe
-    def __init__(self, valore): # Identificatore di metodo
-        self.valore = valore  # Identificatore per un attributo
+    def __init__(self, valore): # Identificatore di metodo e parametro
+        self.valore = valore  # Identificatore di attributo
     
     def metodo(self):
         print("Questo è un metodo della classe")
 
-import math  # Identificatore di un modulo
+import math  # Identificatore di modulo
 
-def mio_generatore(): # Identificatore di un generatore
+def mio_generatore(): # Identificatore di generatore
     yield 1
     yield 2
     yield 3
 
-mio_oggetto = MiaClasse(10)  # Identificatore per un'istanza
+mio_oggetto = MiaClasse(10)  # Identificatore di istanza
 ```
 
 ### Parole chiave
 
-Le parole chiave sono parole che non possono essere usate per scopi diversi da quelli predefiniti nel linguaggio e, quindi, non possono essere usate come identificatori. Ad esempio, `True`{.python} che rappresenta il valore logico di verità, non può essere usato per definire ad esempio una variabile.
+Le parole chiave sono parole che non possono essere usate per scopi diversi da quelli predefiniti nel linguaggio e, quindi, non possono essere usate come identificatori. Ad esempio, `True` che rappresenta il valore logico di verità, non può essere usato per definire ad esempio una variabile.
 
 Esistono anche delle parole chiave contestuali, cioè che sono tali solo in alcuni contesti ed altrove possono essee usate come identificatori. Usiamo il codice seguente per ottenere una lista di parole chiave e parole chiave contestuali:
  
 ```python
 import keyword
 
-# Si ottiene la lista delle parole chiave
+# Otteniamo la lista delle parole chiave
 parole_chiave = keyword.kwlist
 
-# Si ottiene la lista delle parole chiave contestuali
+# Otteniamo la lista delle parole chiave contestuali
 parole_chiave_contestuale = keyword.softkwlist
 
 # Stampiamo la lista delle parole chiave
 print(parole_chiave)
 
-# Stampiamo la delle parole chiave contestuali
+# Stampiamo la lista delle parole chiave contestuali
 print(parole_chiave_contestuale)
 ```
 
@@ -165,70 +179,71 @@ Nella tabella seguente invece un elenco completo con breve descrizione:
 | Parola chiave | Descrizione                                                      |
 |---------------|------------------------------------------------------------------|
 | Valori booleani                                                                |
-| `False`{.python}         | Valore booleano falso                                            |
-| `True`{.python}          | Valore booleano vero                                             |
+| `False`         | Valore booleano falso                                            |
+| `True`          | Valore booleano vero                                             |
 | Operatori logici                                                              |
-| `and`{.python}           | Operatore logico AND                                             |
-| `or`{.python}            | Operatore logico OR                                              |
-| `not`{.python}           | Operatore logico NOT                                             |
+| `and`           | Operatore logico AND                                             |
+| `or`            | Operatore logico OR                                              |
+| `not`           | Operatore logico NOT                                             |
 | Operatori di controllo di flusso                                             |
-| `if`{.python}            | Utilizzato per creare un'istruzione condizionale                 |
-| `elif`{.python}          | Utilizzato per aggiungere condizioni in un blocco if             |
-| `else`{.python}          | Utilizzato per specificare il blocco di codice da eseguire se le condizioni precedenti sono false |
-| `for`{.python}           | Utilizzato per creare un ciclo for                               |
-| `while`{.python}         | Utilizzato per creare un ciclo while                             |
-| `break`{.python}         | Interrompe il ciclo in corso                                     |
-| `continue`{.python}      | Salta l'iterazione corrente del ciclo e passa alla successiva    |
-| `pass`{.python}          | Indica un blocco di codice vuoto                                 |
-| `return`{.python}        | Utilizzato per restituire un valore da una funzione              |
+| `if`            | Utilizzato per creare un'istruzione condizionale                 |
+| `elif`          | Utilizzato per aggiungere condizioni in un blocco if             |
+| `else`          | Utilizzato per specificare il blocco di codice da eseguire se le condizioni precedenti sono false |
+| `for`           | Utilizzato per creare un ciclo for                               |
+| `while`         | Utilizzato per creare un ciclo while                             |
+| `break`         | Interrompe il ciclo in corso                                     |
+| `continue`      | Salta l'iterazione corrente del ciclo e passa alla successiva    |
+| `pass`          | Indica un blocco di codice vuoto                                 |
+| `return`        | Utilizzato per restituire un valore da una funzione              |
 | Gestione delle eccezioni                                                     |
-| `try`{.python}           | Utilizzato per definire un blocco di codice da eseguire e gestire le eccezioni |
-| `except`{.python}        | Utilizzato per catturare le eccezioni in un blocco try-except    |
-| `finally`{.python}       | Blocco di codice che viene eseguito alla fine di un blocco try, indipendentemente dal fatto che si sia verificata un'eccezione |
-| `raise`{.python}         | Utilizzato per sollevare un'eccezione                            |
+| `try`           | Utilizzato per definire un blocco di codice da eseguire e gestire le eccezioni |
+| `except`        | Utilizzato per catturare le eccezioni in un blocco try-except    |
+| `finally`       | Blocco di codice che viene eseguito alla fine di un blocco try, indipendentemente dal fatto che si sia verificata un'eccezione |
+| `raise`         | Utilizzato per sollevare un'eccezione                            |
 | Definizione delle funzioni e classi                                           |
-| `def`{.python}           | Utilizzato per definire una funzione                             |
-| `class`{.python}         | Utilizzato per definire una classe                               |
-| `lambda`{.python}        | Utilizzato per creare funzioni anonime                           |
+| `def`           | Utilizzato per definire una funzione                             |
+| `class`         | Utilizzato per definire una classe                               |
+| `lambda`        | Utilizzato per creare funzioni anonime                           |
 | Gestione contesto di dichiarazione di variabili                                                |
-| `global`{.python}        | Utilizzato per dichiarare variabili globali                      |
-| `nonlocal`{.python}      | Utilizzato per dichiarare variabili non locali                   |
+| `global`        | Utilizzato per dichiarare variabili globali                      |
+| `nonlocal`      | Utilizzato per dichiarare variabili non locali                   |
 | Operazioni su moduli                                                         |
-| `import`{.python}        | Utilizzato per importare moduli                                  |
-| `from`{.python}          | Utilizzato per importare specifici elementi da un modulo         |
-| `as`{.python}            | Utilizzato per creare alias, ad esempio negli import             |
+| `import`        | Utilizzato per importare moduli                                  |
+| `from`          | Utilizzato per importare specifici elementi da un modulo         |
+| `as`            | Utilizzato per creare alias, ad esempio negli import             |
 | Operatori di identità e appartenenza                                          |
-| `in`{.python}            | Utilizzato per verificare se un valore esiste in una sequenza    |
-| `is`{.python}            | Operatore di confronto di identità                               |
+| `in`            | Utilizzato per verificare se un valore esiste in una sequenza    |
+| `is`            | Operatore di confronto di identità                               |
 | Gestione delle risorse                                                        |
-| `with`{.python}          | Utilizzato per garantire un'azione di pulizia come il rilascio delle risorse |
+| `with`          | Utilizzato per garantire un'azione di pulizia come il rilascio delle risorse |
 | Programmazione asincrona                                                      |
-| `async`{.python}         | Utilizzato per definire funzioni asincrone                       |
-| `await`{.python}         | Utilizzato per attendere un risultato in una funzione asincrona  |
+| `async`         | Utilizzato per definire funzioni asincrone                       |
+| `await`         | Utilizzato per attendere un risultato in una funzione asincrona  |
 | Varie                                                                       |
-| `del`{.python}           | Utilizzato per eliminare oggetti                                 |
-| `assert`{.python}        | Utilizzato per le asserzioni, verifica che un'espressione sia vera|
-| `yield`{.python}         | Utilizzato per restituire un generatore da una funzione          |
-| `None`{.python}          | Rappresenta l'assenza di valore o un valore nullo                |
+| `del`           | Utilizzato per eliminare oggetti                                 |
+| `assert`        | Utilizzato per le asserzioni, verifica che un'espressione sia vera|
+| `yield`         | Utilizzato per restituire un generatore da una funzione          |
+| `None`          | Rappresenta l'assenza di valore o un valore nullo                |
 | Parole chiave contestuali                                                                 |
-| `match`{.python}         | Utilizzato nell'istruzione `match`{.python} per il pattern matching         |
-| `case`{.python}          | Utilizzato nell'istruzione `match`{.python} per definire un ramo            |
-| `_`{.python}             | Utilizzato come identificatore speciale nell'istruzione `match`{.python} per indicare un pattern di default o ignorare valori    |
-| `type`{.python}          | Utilizzato in specifici contesti per dichiarazioni di tipo                         |
+| `match`         | Utilizzato nell'istruzione `match` per il pattern matching         |
+| `case`          | Utilizzato nell'istruzione `match` per definire un ramo            |
+| `_`             | Utilizzato come identificatore speciale nell'istruzione `match` per indicare un pattern di default o ignorare valori    |
+| `type`          | Utilizzato in specifici contesti per dichiarazioni di tipo                         |
 
 Esempi di uso di parole chiave contestuali:
 
-- `match`{.python}, `case`{.python} e `_`{.python}:
+- `match`, `case` e `_`:
+
   ```python
   # Definiamo una funzione che utilizza il pattern matching
   def process_value(value):
-      match value:
-          case 1:
-              print("Uno")
-          case 2:
-              print("Due")
-          case _:
-              print("Altro")
+    match value:
+      case 1:
+        print("Uno")
+      case 2:
+        print("Due")
+      case _:
+        print("Altro")
 
   # Utilizzo di `match` come identificatore per una variabile
   match = "Questo è un identificatore valido"
@@ -241,7 +256,9 @@ Esempi di uso di parole chiave contestuali:
   # Stampa della variabile `match`
   print(match)  # Output: Questo è un identificatore valido
   ```
-- `type`{.python}:
+
+- `type`:
+  
   ```python
   from typing import TypeAlias
 
@@ -250,7 +267,7 @@ Esempi di uso di parole chiave contestuali:
 
   # Utilizzo dell'alias di tipo
   def distanza(p1: Point, p2: Point) -> float:
-      return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
+    return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
 
   # Test della funzione con alias di tipo
   punto1: Point = (1.0, 2.0) 
@@ -263,7 +280,9 @@ Esempi di uso di parole chiave contestuali:
 
 Alcune classi di identificatori (oltre alle parole chiave) hanno significati speciali in Python. Queste classi sono identificate dai pattern di caratteri di sottolineatura (underscore) all'inizio e alla fine dei nomi. Tuttavia, l'uso di questi identificatori non impone limitazioni rigide al programmatore, ma è importante seguire le convenzioni per evitare ambiguità e problemi di compatibilità.
 
-- `_`
+Identificatori speciali:
+
+- `_`:
   - Non importato da `from module import *`: Gli identificatori che iniziano con un singolo underscore non vengono importati con un'istruzione di importazione globale.
   - Pattern nei match: Nel contesto di un pattern di corrispondenza all'interno di un'istruzione `match`, `_` è una soft keyword che denota un wildcard (carattere jolly).
   - Interprete interattivo: L'interprete interattivo rende disponibile il risultato dell'ultima valutazione nella variabile `_`. Questo risultato è memorizzato nel modulo builtins, insieme alle funzioni built-in come `print`.
@@ -271,34 +290,34 @@ Alcune classi di identificatori (oltre alle parole chiave) hanno significati spe
 
 Esempio:
 
-```python
-# Utilizzo di _ come identificatore in vari contesti
+  ```python
+  # Utilizzo di _ come identificatore in vari contesti
 
-# Non importato con from module import *
-_private_variable = "Questa variabile non verrà importata con 'from module import *'"
+  # Non importato con from module import *
+  _private_variable = "Questa variabile non verrà importata con 'from module import *'"
 
-# Utilizzo di _ come wildcard in un'istruzione match
-def process_value(value):
+  # Utilizzo di _ come wildcard in un'istruzione match
+  def process_value(value):
     match value:
-        case 1:
-            print("Uno")
-        case _:
-            print("Altro")
+      case 1:
+        print("Uno")
+      case _:
+        print("Altro")
 
-process_value(2)  # Output: Altro
+  process_value(2)  # Output: Altro
 
-# Uso di _ nell'interprete interattivo
-result = 5 + 3
-print(_)  # Output: 8 (nell'interprete interattivo)
+  # Uso di _ nell'interprete interattivo
+  result = 5 + 3
+  print(_)  # Output: 8 (nell'interprete interattivo)
 
-# Uso di _ come variabile regolare
-_ = "Valore non usato"
+  # Uso di _ come variabile regolare
+  _ = "Valore non usato"
 
-# Uso di _ per internazionalizzazione
-import gettext
-gettext.install('myapplication')
-print(_('Hello, world'))
-```
+  # Uso di _ per internazionalizzazione
+  import gettext
+  gettext.install('myapplication')
+  print(_('Hello, world'))
+  ```
 
 - `__*__`
   - Nomi definiti dal sistema: Questi nomi, informalmente noti come nomi "dunder", sono definiti dall'interprete e dalla sua implementazione (inclusa la libreria standard). I nomi di sistema attuali sono discussi nella sezione dei nomi dei metodi speciali e altrove. Altri potrebbero essere definiti nelle versioni future di Python. Qualsiasi uso di nomi `__*__`, in qualsiasi contesto, che non segua l'uso esplicitamente documentato, è soggetto a rottura senza preavviso.
@@ -364,29 +383,29 @@ In tabella l'elenco degli operatori:
 
 | Tipo di operatore      | Operatore        | Descrizione                                                      |
 |------------------------|------------------|------------------------------------------------------------------|
-| Aritmetici   | `+`{.python}     | Addizione                                                        |
-|                        | `-`{.python}     | Sottrazione                                                      |
-|                        | `*`{.python}     | Moltiplicazione                                                  |
-|                        | `/`{.python}     | Divisione                                                        |
-|                        | `//`{.python}    | Divisione intera                                                 |
-|                        | `%`{.python}     | Modulo                                                           |
-|                        | `**`{.python}    | Esponenziazione                                                  |
-|                        | `@`{.python}     | Matrice (operatore di moltiplicazione)                           |
-| Confronto | `<`{.python}     | Minore                                                           |
-|                        | `>`{.python}     | Maggiore                                                         |
-|                        | `<=`{.python}    | Minore o uguale                                                  |
-|                        | `>=`{.python}    | Maggiore o uguale                                                |
-|                        | `==`{.python}    | Uguale                                                           |
-|                        | `!=`{.python}    | Diverso                                                          |
-| Bitwise      | `&`{.python}     | AND bit a bit                                                    |
-|                        | `|`{.python}     | OR bit a bit                                                     |
-|                        | `^`{.python}     | XOR bit a bit                                                    |
-|                        | `~`{.python}     | NOT bit a bit                                                    |
-|                        | `<<`{.python}    | Shift a sinistra                                                 |
-|                        | `>>`{.python}    | Shift a destra                                                   |
-| Assegnazione | `:=`{.python} | Operatore di assegnazione in espressione (walrus o tricheco)                      |
+| Aritmetici   | `+`     | Addizione                                                        |
+|                        | `-`     | Sottrazione                                                      |
+|                        | `*`     | Moltiplicazione                                                  |
+|                        | `/`     | Divisione                                                        |
+|                        | `//`    | Divisione intera                                                 |
+|                        | `%`     | Modulo                                                           |
+|                        | `**`    | Esponenziazione                                                  |
+|                        | `@`     | Matrice (operatore di moltiplicazione)                           |
+| Confronto | `<`     | Minore                                                           |
+|                        | `>`     | Maggiore                                                         |
+|                        | `<=`    | Minore o uguale                                                  |
+|                        | `>=`    | Maggiore o uguale                                                |
+|                        | `==`    | Uguale                                                           |
+|                        | `!=`    | Diverso                                                          |
+| Bitwise      | `&`     | AND bit a bit                                                    |
+|                        | `|`     | OR bit a bit                                                     |
+|                        | `^`     | XOR bit a bit                                                    |
+|                        | `~`     | NOT bit a bit                                                    |
+|                        | `<<`    | Shift a sinistra                                                 |
+|                        | `>>`    | Shift a destra                                                   |
+| Assegnazione | `:=` | Operatore di assegnazione in espressione (walrus o tricheco)                      |
 
-Esempio su `@`{.python} che illustra un aspetto importante: il comportamento degli operatori può (o meglio, deve) essere definito quando si creano dei tipi di oggetto. Infatti, nel codice seguente, è definita una matrice assieme a una delle operazioni matematiche più comuni che è la moltiplicazione, implementata per mezzo di `__matmul__`{.python}:
+Esempio su `@` che illustra un aspetto importante: il comportamento degli operatori può (o meglio, deve) essere definito quando si creano dei tipi di oggetto. Infatti, nel codice seguente, è definita una matrice assieme a una delle operazioni matematiche più comuni che è la moltiplicazione, implementata per mezzo di `__matmul__`:
 
 ```python
 class Matrice:
@@ -435,7 +454,7 @@ print("Risultato di A @ B:")
 print(C)
 ```
 
-Infine, `@`{.python} è anche un delimitatore.
+Infine, `@` è anche un delimitatore.
 
 ### Delimitatori 
 
@@ -445,34 +464,34 @@ La seguente tabella include tutti i delimitatori e i principali utilizzi:
 
 | Delimitatore         | Descrizione                                                  |
 |----------------------|--------------------------------------------------------------|
-| `(`{.python}         | Utilizzata per raggruppare espressioni, chiamate di funzione e definizioni di tupla |
-| `)`{.python}         | Utilizzata per chiudere le parentesi tonde aperte |
-| `[`{.python}         | Utilizzate per definire liste e accedere agli elementi delle liste, tuple, o stringhe |
-| `]`{.python}         | Utilizzate per chiudere le parentesi quadre aperte |
-| `{`{.python}         | Utilizzate per definire dizionari e set |
-| `}`{.python}         | Utilizzate per chiudere le parentesi graffe aperte |
-| `,`{.python}         | Utilizzata per separare elementi in liste, tuple, e argomenti nelle chiamate di funzione |
-| `:`{.python}         | Utilizzato per definire blocchi di codice (come in `if`{.python}, `for`{.python}, `while`{.python}, `def`{.python}, `class`{.python}) e per gli slice |
-| `.`{.python}         | Utilizzato per accedere agli attributi di un oggetto. Può apparire in letterali decimnali e immaginari |
-| `;`{.python}         | Utilizzato per separare istruzioni multiple sulla stessa riga |
-| `@`{.python}         | Utilizzato per dichiarare decoratori per funzioni e metodi |
-| `=`{.python}         | Operatore utilizzato per assegnare valori a variabili |
-| `->`{.python}        | Annotazione del tipo di ritorno delle funzioni |
-| `+=`{.python}        | Assegnazione aumentata con addizione. Aggiunge il valore a destra a quello a sinistra e assegna il risultato alla variabile a sinistra. Come i successivi, è sia un delimitatore che un operatore |
-| `-=`{.python}        | Assegnazione aumentata con sottrazione |
-| `*=`{.python}        | Assegnazione aumentata con moltiplicazione |
-| `/=`{.python}        | Assegnazione aumentata con divisione |
-| `//=`{.python}       | Assegnazione aumentata con divisione intera |
-| `%=`{.python}        | Assegnazione aumentata con modulo |
-| `@=`{.python}        | Assegnazione aumentata con moltiplicazione di matrici |
-| `&=`{.python}        | Assegnazione aumentata con AND bit a bit |
-| `|=`{.python}        | Assegnazione aumentata con OR bit a bit |
-| `^=`{.python}        | Assegnazione aumentata con XOR bit a bit |
-| `>>=`{.python}       | Assegnazione aumentata con shift a destra |
-| `<<=`{.python}       | Assegnazione aumentata con shift a sinistra |
-| `**=`{.python}       | Assegnazione aumentata con esponenziazione |
+| `(`         | Utilizzata per raggruppare espressioni, chiamate di funzione e definizioni di tupla |
+| `)`         | Utilizzata per chiudere le parentesi tonde aperte |
+| `[`         | Utilizzate per definire liste e accedere agli elementi delle liste, tuple, o stringhe |
+| `]`         | Utilizzate per chiudere le parentesi quadre aperte |
+| `{`         | Utilizzate per definire dizionari e set |
+| `}`         | Utilizzate per chiudere le parentesi graffe aperte |
+| `,`         | Utilizzata per separare elementi in liste, tuple, e argomenti nelle chiamate di funzione |
+| `:`         | Utilizzato per definire blocchi di codice (come in `if`, `for`, `while`, `def`, `class`) e per gli slice |
+| `.`         | Utilizzato per accedere agli attributi di un oggetto. Può apparire in letterali decimnali e immaginari |
+| `;`         | Utilizzato per separare istruzioni multiple sulla stessa riga |
+| `@`         | Utilizzato per dichiarare decoratori per funzioni e metodi |
+| `=`         | Operatore utilizzato per assegnare valori a variabili |
+| `->`        | Annotazione del tipo di ritorno delle funzioni |
+| `+=`        | Assegnazione aumentata con addizione. Aggiunge il valore a destra a quello a sinistra e assegna il risultato alla variabile a sinistra. Come i successivi, è sia un delimitatore che un operatore |
+| `-=`        | Assegnazione aumentata con sottrazione |
+| `*=`        | Assegnazione aumentata con moltiplicazione |
+| `/=`        | Assegnazione aumentata con divisione |
+| `//=`       | Assegnazione aumentata con divisione intera |
+| `%=`        | Assegnazione aumentata con modulo |
+| `@=`        | Assegnazione aumentata con moltiplicazione di matrici |
+| `&=`        | Assegnazione aumentata con AND bit a bit |
+| `|=`        | Assegnazione aumentata con OR bit a bit |
+| `^=`        | Assegnazione aumentata con XOR bit a bit |
+| `>>=`       | Assegnazione aumentata con shift a destra |
+| `<<=`       | Assegnazione aumentata con shift a sinistra |
+| `**=`       | Assegnazione aumentata con esponenziazione |
 
-Una sequenza di tre punti, comunemente indicata come ellissi anche al difuori dei linguaggi di programmazione,[1^] è trattata come un token a sé e corrisponde ad un oggetto predefinito chiamato [Ellipsis](https://docs.python.org/3/reference/datamodel.html#ellipsis), con applicazioni in diversi contesti:
+Una sequenza di tre punti, comunemente indicata come ellissi anche al difuori dei linguaggi di programmazione,[^1-sp-python-syntax] è trattata come un token a sé e corrisponde ad un oggetto predefinito chiamato [Ellipsis](https://docs.python.org/3/reference/datamodel.html#ellipsis), con applicazioni in diversi contesti:
 
 ```python
 print(type(...))  # <class 'ellipsis'> # <1>
@@ -499,20 +518,20 @@ print(array[..., 1]) # <4>
 #  [ 8 11]]
 ```
 1. Otteniamo il tipo dell'oggetto ellissi.
-2. Utilizzo come segnaposto per indicare che la funzione è da completare. Da notare che chiamare la funzione `funzione_da_completare()`{.python} non dà errore.
-3. L'uso di `Callable[..., int]`{.python} indica una funzione che può accettare un numero variabile di argomenti di qualsiasi tipo e restituire un valore di tipo int.
-4. `numpy`{.python} è una libreria di calcolo matriciale molto diffusa. L'ellissi è utilizzata per effettuare uno sezione complessa della matrice secondo tutte le dimensioni precedenti all'ultima. In altre parole, l'ellissi permette di selezionare interamente tutte le dimensioni tranne l'ultima specificata.
+2. Utilizzo come segnaposto per indicare che la funzione è da completare. Da notare che chiamare la funzione `funzione_da_completare()` non dà errore.
+3. L'uso di `Callable[..., int]` indica una funzione che può accettare un numero variabile di argomenti di qualsiasi tipo e restituire un valore di tipo int.
+4. `numpy` è una libreria di calcolo matriciale molto diffusa. L'ellissi è utilizzata per effettuare uno sezione complessa della matrice secondo tutte le dimensioni precedenti all'ultima. In altre parole, l'ellissi permette di selezionare interamente tutte le dimensioni tranne l'ultima specificata.
 
-[1^]: L'ellissi è usata, ad esempio, in C per dichiarare funzioni che accettano un numero variaible di parametri e i Javascript come operatore per espandere gli array o le proprietà di un oggetto.
+[^1-sp-python-syntax]: L'ellissi è usata, ad esempio, in C per dichiarare funzioni che accettano un numero variaible di parametri e i Javascript come operatore per espandere gli array o le proprietà di un oggetto.
 
 Alcuni caratteri ASCII hanno un significato speciale come parte di altri token o sono significativi per l'analizzatore lessicale:
 
 | Carattere             | Descrizione                                                  |
 |-----------------------|--------------------------------------------------------------|
-| `'`{.python}          | Utilizzato per definire stringhe di caratteri.                       |
-| `"`{.python}          | Utilizzato per definire stringhe di caratteri.                        |
-| `#`{.python}          | Simbolo di commento. Utilizzato per indicare un commento, che viene ignorato dall'interprete Python.                                          |
-| `\`{.python}          | Backslash. Utilizzato per caratteri di escape nelle stringhe e per continuare le righe di codice su più righe fisiche.                |
+| `'`          | Utilizzato per definire stringhe di caratteri.                       |
+| `"`          | Utilizzato per definire stringhe di caratteri.                        |
+| `#`          | Simbolo di commento. Utilizzato per indicare un commento, che viene ignorato dall'interprete Python.                                          |
+| `\`          | Backslash. Utilizzato per caratteri di escape nelle stringhe e per continuare le righe di codice su più righe fisiche.                |
 
 Alcuni caratteri ASCII non sono utilizzati in Python e la loro presenza al difuori dei letterali di stringa e dei commenti genera un errore: `$`, `?`, `` ` ``.
 
@@ -525,25 +544,25 @@ I letterali sono notazioni per valori costanti di alcuni tipi predefiniti nel li
 I letterali numerici includono interi, numeri a virgola mobile e numeri complessi:
 
 - Interi, possono essere scritti in base decimale, ottale, esadecimale o binaria:
-  - Decimale: `10`{.python}, `-3`{.python}.
-  - Ottale: `0o12`{.python}, `-0o7`{.python}.
-  - Esadecimale: `0xA`{.python}, `-0x1F`{.python}.
-  - Binario: `0b1010`{.python}, `-0b11`{.python}.
+  - Decimale: `10`, `-3`.
+  - Ottale: `0o12`, `-0o7`.
+  - Esadecimale: `0xA`, `-0x1F`.
+  - Binario: `0b1010`, `-0b11`.
 - Virgola mobile, possono essere rappresentati con una parte intera e una decimale, oppure con notazione scientifica:
-  - Virgola mobile: `3.14`{.python}, `-0.001`{.python}.
-  - Notazione scientifica: `1e10`{.python}, `-2.5e-3`{.python}.
-- Complessi, appresentati da una parte reale e una parte immaginaria: `3+4j`{.python}, `-1-0.5j`{.python}.
+  - Virgola mobile: `3.14`, `-0.001`.
+  - Notazione scientifica: `1e10`, `-2.5e-3`.
+- Complessi, appresentati da una parte reale e una parte immaginaria: `3+4j`, `-1-0.5j`.
 
 #### Stringhe
 
 I letterali di stringa possono essere racchiusi tra virgolette singole o doppie. Possono anche essere multi-linea se racchiusi tra triple virgolette singole o doppie:
 
 - Stringhe racchiuse tra virgolette singole o doppie:
-  - Singole: `'ciao'`{.python}.
-  - Doppie: `"mondo"`{.python}.
+  - Singole: `'ciao'`.
+  - Doppie: `"mondo"`.
 - Stringhe multi-linea racchiuse tra triple virgolette singole o doppie:
-  - Triple singole: `'''testo multi-linea'''`{.python}.
-  - Triple doppie: `"""testo multi-linea"""`{.python}.
+  - Triple singole: `'''testo multi-linea'''`.
+  - Triple doppie: `"""testo multi-linea"""`.
 
 Le stringhe tra tripli apici possono avere degli a capo e degli apici (non tripli) all'interno. 
 
@@ -551,18 +570,26 @@ Esempio:
 
 ```python
 stringa_multilinea = """Questa è una stringa
-molto "importante"."""
+                        molto "importante"."""
 
 print(stringa_multilinea)
 ```
 
-Tutte le stringhe sono codificate in Unicode, con il prefisso `b`{.python} la stringa è di tipo byte ed è limitata ai 128 caratteri dell'ASCII. Se si prepone `r`{.python}, che sta per _raw_ cioè grezzo, allora la codifica è sempre Unicode ma i caratteri di escape non sono intepretati.[2^]
+Tutte le stringhe sono codificate in Unicode, con il prefisso `b` la stringa è di tipo byte ed è limitata ai 128 caratteri dell'ASCII. Se si prepone `r`, che sta per _raw_ cioè grezzo, allora la codifica è sempre Unicode ma i caratteri di escape[^2-sp-python-syntax] non sono intepretati.
 
-[2^]:
+[^2-sp-python-syntax]: In Python, il carattere di escape `\` è utilizzato nelle stringhe per inserire caratteri speciali che non possono essere facilmente digitati sulla tastiera o che hanno significati speciali. Alcuni esempi comuni includono:
+
+  - `\n` per una nuova linea (linefeed)
+  - `\t` per una tabulazione
+  - `\\` per inserire una barra rovesciata
+  - `\'` per un apostrofo
+  - `\"` per una doppia virgoletta
+
+  Questi caratteri permettono di includere simboli speciali nelle stringhe senza interrompere la sintassi del codice.
 
 #### F-stringhe
 
-Le f-stringhe (stringhe formattate) sono racchiuse tra virgolette singole, doppie o triple e sono precedute dal prefisso `f`{.python} o `F`{.python}. Permettono di includere espressioni Python all'interno.
+Le f-stringhe (stringhe formattate) sono racchiuse tra virgolette singole, doppie o triple e sono precedute dal prefisso `f` o `F`. Permettono di includere espressioni Python all'interno.
 
 Si possono avere stringhe formattate grezze ma non byte.
 
@@ -584,7 +611,7 @@ Un programma Pythom è una sequenza di istruzioni che si distinguono in **sempli
 
 ### Istruzioni semplici
 
-Un'istruzione semplice è sempre contenuta in una riga logica, che può presentare più istruzioni semplici separate da `;`{.python}. È permesso ma scaonsigliato perché in pochi casi porta a codice leggibile.
+Un'istruzione semplice è sempre contenuta in una riga logica, che può presentare più istruzioni semplici separate da `;`. È permesso ma scaonsigliato perché in pochi casi porta a codice leggibile.
 
 Un'espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne viene prodotto il risultato della valutazione. D'altronde, una espressione è spesso utilizzata per chiamare funzioni che hanno effetti collaterali, come, ad esempio, produrre un output: 
 
@@ -642,7 +669,7 @@ Un'espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne vie
       print(e)  # Output: Qualcosa è andato storto!
   ```
 
-Un assegnamento con `=`{.python} è anch'esso un'istruzione semplice e non può mai essere all'interno di una espressione, dove invece si può usare l'operatore _tricheco_ `:=`{.python}:
+Un assegnamento con `=` è anch'esso un'istruzione semplice e non può mai essere all'interno di una espressione, dove invece si può usare l'operatore _tricheco_ `:=`:
 
 ```python
 if (n := len("Python")) > 5:
@@ -652,7 +679,7 @@ if (n := len("Python")) > 5:
 
 ### Istruzioni composte
 
-Una istruzione composta è costituita da altre istruzioni (semplici o composte). Il controllo dell'esecuzione delle istruzioni componenti avviene per mezzo di una o più clausole che iniziano tutte con una parola chiave, sono terminate da `:`{.python} e seguite da un blocco di codice. Ogni blocco deve avere almeno una istruzione semplice, ma può non avere una propria riga logica.
+Una istruzione composta è costituita da altre istruzioni (semplici o composte). Il controllo dell'esecuzione delle istruzioni componenti avviene per mezzo di una o più clausole che iniziano tutte con una parola chiave, sono terminate da `:` e seguite da un blocco di codice. Ogni blocco deve avere almeno una istruzione semplice, ma può non avere una propria riga logica.
 
 Alcuni esempi:
 
