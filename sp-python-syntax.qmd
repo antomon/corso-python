@@ -382,12 +382,15 @@ Esempi:
 ```python
 x = 5
 y = 10
-z = x + y # Utilizza l'operatore + sugli identificatori x e y
+z = x + y # <1>
 
-sum = 3 + 4 # Utilizza l'operatore + su letterali
+sum = 3 + 4 # <2>
 
-result = (x * y) + (z / 2) # Utilizza vari operatori su espressioni
+result = (x * y) + (z / 2) # <3>
 ```
+1. Utilizza l'operatore `+` sugli identificatori `x` e `y`.
+2. Utilizza l'operatore `+` su letterali.
+3. Utilizza vari operatori su espressioni.
 
 In tabella l'elenco degli operatori: 
 
@@ -621,14 +624,25 @@ Esempio:
 
 ```python
 nome = "Python"
-f_stringa = f'Ciao, {nome}!'
+
+f_stringa = f'Ciao, {nome.upper()}!' # <1>
+
+definizione = "Linguaggio"
+
 f_stringa_multi_linea = f'''Questo è un esempio
-                            di f-stringa multi-linea
-                            con {nome}'''
+di f-stringa multi-linea
+in {definizione.lower() + ' ' + nome}''' # <2>
 
 print(f_stringa)
+# Output: Ciao, python!
+
 print(f_stringa_multi_linea)
+# Questo è un esempio
+# di f-stringa multi-linea
+# in linguaggio Python
 ```
+1. Viene chiamato il metodo della stringa lower() per avere il maiuscolo.
+2. Usiamo un'espressione di concatenazione di stringhe.
 
 ## Istruzioni
 
