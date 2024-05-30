@@ -651,20 +651,20 @@ Un'istruzione semplice è sempre contenuta in una riga logica, che può presenta
 
 In Python, le istruzioni semplici sono:
 
-1. Assegnazione, attribuisce un valore a una variabile:
+- Assegnazione, attribuisce un valore a una variabile:
 
   ```python
   x = 10
   ```
 
-2. Istruzioni di importazione, permettono di utilizzare gli identificatori definiti in altri moduli:
+- Istruzioni di importazione, permettono di utilizzare gli identificatori definiti in altri moduli:
 
   ```python
   import math
   from math import sqrt
   ```
 
-3. Istruzioni di controllo del flusso nei cicli:
+- Istruzioni di controllo del flusso nei cicli:
 
    - `break`: Interrompe un ciclo.
    - `continue`: Salta all'iterazione successiva di un ciclo.
@@ -676,7 +676,7 @@ In Python, le istruzioni semplici sono:
           break
   ```
 
-4. Istruzioni di gestione dell'uscita da una funzione, della generazione di valori o del sollevamento di eccezioni:
+- Istruzioni di gestione dell'uscita da una funzione, della generazione di valori o del sollevamento di eccezioni:
 
    - `return`: Restituisce un valore da una funzione.
    - `yield`: Restituisce un generatore.
@@ -687,13 +687,13 @@ In Python, le istruzioni semplici sono:
       return x
   ```
 
-5. Istruzioni di asserzione in cui si verifica una condizione e viene generata un'eccezione se la condizione è falsa:
+- Istruzioni di asserzione in cui si verifica una condizione e viene generata un'eccezione se la condizione è falsa:
 
   ```python
   assert x > 0, "x deve essere positivo"
   ```
 
-6. Istruzioni di diichiarazione di modifica dell'ambito di variabili:
+- Istruzioni di diichiarazione di modifica dell'ambito di variabili:
 
   ```python
   global x
@@ -777,7 +777,7 @@ if (n := len("Python")) > 5:
 
 Una istruzione composta è costituita da altre istruzioni (semplici o composte). Il controllo dell'esecuzione delle istruzioni componenti avviene per mezzo di una o più clausole che iniziano tutte con una parola chiave, sono terminate da `:` e seguite da un blocco di codice. Ogni blocco deve avere almeno una istruzione semplice, ma può non avere una propria riga logica, cioè stare sulla stessa riga fisica e logica del `:`.
 
-Alcuni esempi:
+Alcuni esempi del rapporto tra istruzioni e righe:
 
 - Blocco di istruzioni separato su più righe con medesima indentazione:
 
@@ -802,3 +802,63 @@ Alcuni esempi:
   if x > 0: print("x è positivo"); x += 1; print(f"x ora è {x}")
   ```
 
+Ed ecco le principali istruzioni composte:
+
+- `if`, controlla l'esecuzione di un blocco di codice in base a una condizione:
+   
+  ```python
+  if condizione:
+      # blocco di codice
+  ```
+
+- `for`, itera su una sequenza (come una lista, una tupla o una stringa):
+   
+  ```python
+  for elemento in sequenza:
+      # blocco di codice
+  ```
+
+- `while`, esegue un blocco di codice finché una condizione è vera:
+
+  ```python
+  while condizione:
+      # blocco di codice
+  ```
+
+- `try`, gestisce gli errori che possono verificarsi durante l'esecuzione di un blocco di codice:
+
+  ```python
+  try:
+      # blocco di codice
+  except Eccezione:
+      # blocco di codice per gestire l'eccezione
+  ```
+
+- `with`, gestisce l'allocazione e la deallocazione di risorse:
+
+   ```python
+   with open('file.txt', 'r') as file:
+       # blocco di codice
+   ```
+
+- `def`, definisce una funzione:
+
+   ```python
+   def nome_funzione(parametri):
+       # blocco di codice
+   ```
+
+- `class`, definisce una classe:
+
+   ```python
+   class NomeClasse:
+       # blocco di codice
+   ```
+
+- `match`, esegue il pattern matching su un valore:
+
+   ```python
+   match valore:
+       case pattern:
+           # blocco di codice
+   ```
