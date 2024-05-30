@@ -1,16 +1,20 @@
-def bubble_sort(arr):
-  def sort_pass(arr, n):
-    if n == 1:
-      return arr
-    new_arr = arr[:]
-    for i in range(n - 1):
-      if new_arr[i] > new_arr[i + 1]:
-        new_arr[i], new_arr[i + 1] = new_arr[i + 1], new_arr[i]
-    return sort_pass(new_arr, n - 1)
+print(type(...))  # <class 'ellipsis'> # <1>
 
-  return sort_pass(arr, len(arr))
+def funzione_da_completare():
+  ... # <2>
 
-# Esempio di utilizzo
-arr = [64, 34, 25, 12, 22, 11, 90]
-sorted_arr = bubble_sort(arr)
-print("Sorted array is:", sorted_arr)
+class ClasseEsempio:
+  def metodo_da_completare(self):
+    ...
+
+from typing import Callable
+
+def funzione_variadica(func: Callable[..., int]): # <3>
+  pass
+
+import numpy as np
+
+array = np.array([[[1, 2, 3],    [4, 5, 6]], 
+                  [[7, 8, 9], [10, 11, 12]]]) 
+
+print(array[..., 1]) # <4>

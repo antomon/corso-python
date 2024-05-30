@@ -132,22 +132,22 @@ lista = [1, 2, 3]  # Identificatore di lista
 dizionario = {"chiave": "valore"}  # Identificatore di dizionario
 
 def mia_funzione(): # Identificatore di funzione
-    print("Questa è una funzione")
+  print("Questa è una funzione")
 
 # Classe
 class MiaClasse: # Identificatore di classe
-    def __init__(self, valore): # Identificatore di metodo e parametro
-        self.valore = valore  # Identificatore di attributo
+  def __init__(self, valore): # Identificatore di metodo e parametro
+    self.valore = valore  # Identificatore di attributo
     
-    def metodo(self):
-        print("Questo è un metodo della classe")
+  def metodo(self):
+    print("Questo è un metodo della classe")
 
 import math  # Identificatore di modulo
 
 def mio_generatore(): # Identificatore di generatore
-    yield 1
-    yield 2
-    yield 3
+  yield 1
+  yield 2
+  yield 3
 
 mio_oggetto = MiaClasse(10)  # Identificatore di istanza
 ```
@@ -240,8 +240,10 @@ Esempi di uso di parole chiave contestuali:
     match value:
       case 1:
         print("Uno")
+
       case 2:
         print("Due")
+
       case _:
         print("Altro")
 
@@ -283,85 +285,93 @@ Alcune classi di identificatori (oltre alle parole chiave) hanno significati spe
 Identificatori speciali:
 
 - `_`:
-  - Non importato da `from module import *`: Gli identificatori che iniziano con un singolo underscore non vengono importati con un'istruzione di importazione globale.
-  - Pattern nei match: Nel contesto di un pattern di corrispondenza all'interno di un'istruzione `match`, `_` è una soft keyword che denota un wildcard (carattere jolly).
-  - Interprete interattivo: L'interprete interattivo rende disponibile il risultato dell'ultima valutazione nella variabile `_`. Questo risultato è memorizzato nel modulo builtins, insieme alle funzioni built-in come `print`.
-  - Altro uso: Altrove, `_` è un identificatore regolare. Viene spesso usato per nominare elementi "speciali", ma non è speciale per Python stesso. Il nome `_` è comunemente usato in congiunzione con l'internazionalizzazione (vedi la documentazione del modulo gettext per ulteriori informazioni su questa convenzione) ed è anche comunemente utilizzato per variabili non usate.
 
-Esempio:
+  - Non importato da `from module import *`: Gli identificatori che iniziano con un singolo underscore non vengono importati con un'istruzione di importazione globale. Questo è un meccanismo per indicare che tali variabili o funzioni sono destinate ad essere _private_ al modulo e non dovrebbero essere usate direttamente da altri moduli. Esempio:
+
+    ```python
+    # Nel modulo example.py`
+    _private_variable = "Variabile da non esportare'" # <1>
+    
+    # In altro modulo diverso da example.py
+    from example import *
+
+    print(_private_variable)  # <2> 
+    ```
+    1. Nel modulo `example.py` viene definita la variabile come privata.
+    2. Genera un errore: `NameError: name '_private_variable' is not defined`
+
+  - Pattern nei match: Nel contesto di un pattern di corrispondenza all'interno di un'istruzione `match`, `_` è una soft keyword che denota un _wildcard_ (carattere jolly). Esempio:
+
+    ```python
+    def process_value(value):
+      match value:
+        case 1:
+          print("Uno")
+
+        case _: 
+          print("Altro")
+    ```
+
+  - Interprete interattivo: L'interprete interattivo rende disponibile il risultato dell'ultima valutazione nella variabile `_`. Il valore di `_` è memorizzato nel modulo [`builtins`](https://docs.python.org/3/library/builtins.html), insieme ad altre funzioni e variabili predefinite come `print()`, permettendo l'accesso globale a `_` durante una sessione interattiva. Esempio:
+
+    ```python
+    result = 5 + 3
+    print(_)  # Output: 8 (nell'interprete interattivo)
+    ```
+
+  - Altro uso: Altrove, `_` è un identificatore regolare. Viene spesso usato per nominare elementi speciali per l'utente, ma non speciali per Python stesso. Il nome `_` è comunemente usato in congiunzione con l'internazionalizzazione (vedi la documentazione del modulo [`gettext`](https://docs.python.org/3/library/gettext.html) per ulteriori informazioni su questa convenzione) ed è anche comunemente utilizzato per variabili non usate. Esempio:
+
+    ```python
+    _ = "Valore non usato" # <1>
+
+    import gettext
+
+    gettext.install('myapplication')
+
+    print(_('Hello, world')) # <2>
+    ```
+    1. Uso di `_` come variabile regolare.
+    2. Uso di _ per internazionalizzazione.
+
+- `__*__`: Questi nomi, informalmente noti come nomi _dunder_[^1-sp-python-syntax], sono definiti dall'interprete e dalla sua implementazione (inclusa la libreria standard). Altri potrebbero essere definiti nelle versioni future di Python. Qualsiasi uso di nomi `__*__`, in qualsiasi contesto, che non segua l'uso esplicitamente documentato, è soggetto a discontinuazione senza preavviso. Esempio:
 
   ```python
-  # Utilizzo di _ come identificatore in vari contesti
-
-  # Non importato con from module import *
-  _private_variable = "Questa variabile non verrà importata con 'from module import *'"
-
-  # Utilizzo di _ come wildcard in un'istruzione match
-  def process_value(value):
-    match value:
-      case 1:
-        print("Uno")
-      case _:
-        print("Altro")
-
-  process_value(2)  # Output: Altro
-
-  # Uso di _ nell'interprete interattivo
-  result = 5 + 3
-  print(_)  # Output: 8 (nell'interprete interattivo)
-
-  # Uso di _ come variabile regolare
-  _ = "Valore non usato"
-
-  # Uso di _ per internazionalizzazione
-  import gettext
-  gettext.install('myapplication')
-  print(_('Hello, world'))
-  ```
-
-- `__*__`
-  - Nomi definiti dal sistema: Questi nomi, informalmente noti come nomi "dunder", sono definiti dall'interprete e dalla sua implementazione (inclusa la libreria standard). I nomi di sistema attuali sono discussi nella sezione dei nomi dei metodi speciali e altrove. Altri potrebbero essere definiti nelle versioni future di Python. Qualsiasi uso di nomi `__*__`, in qualsiasi contesto, che non segua l'uso esplicitamente documentato, è soggetto a rottura senza preavviso.
-
-#### Esempio
-
-```python
-# Utilizzo di nomi "dunder"
-class MyClass:
-    def __init__(self, value):
-        self.__value = value  # Questo è un nome "dunder" per un attributo privato
+  class MyClass:
+    def __init__(self, value): # <1>
+      self.__value = value
     
     def __str__(self):
-        return f"MyClass con valore {self.__value}"
+      return f"MyClass con valore {self.__value}" # <2>
 
-obj = MyClass(10)
-print(obj)  # Output: MyClass con valore 10
-```
+  obj = MyClass(10)
 
-- `__*`
-  - Nomi privati della classe: I nomi in questa categoria, quando utilizzati nel contesto di una definizione di classe, vengono riscritti per utilizzare una forma mangled per evitare conflitti di nome tra attributi "privati" delle classi base e derivate.
+  print(obj)  # Output: MyClass con valore 10
+  ```
+  1. Dunder per metodo chiamato alla creazione dell'oggetto.
+  2. Dunder chiamato da print con parametro l'oggetto.
 
-#### Esempio
+- `__*`: I nomi in questa categoria, quando utilizzati all'interno di una definizione di classe, vengono riscritti dal compilatore (processo noto come name _mangling_) per evitare conflitti di nome tra attributi "privati" delle classi base e delle classi derivate. Questo aiuta a garantire che gli attributi destinati ad essere privati non vengano accidentalmente sovrascritti nelle sottoclassi. Esempio:
 
-```python
-# Utilizzo di nomi privati della classe
-class BaseClass:
+  ```python
+  class BaseClass:
     def __init__(self):
-        self.__private_attr = "Base"
+      self.__private_attr = "Base"
 
-class DerivedClass(BaseClass):
+  class DerivedClass(BaseClass):
     def __init__(self):
-        super().__init__()
-        self.__private_attr = "Derived"
+      super().__init__()
 
-base_obj = BaseClass()
-derived_obj = DerivedClass()
+      self.__private_attr = "Derived"
 
-# Accesso ai nomi riscritti (name mangling)
-print(base_obj._BaseClass__private_attr)  # Output: Base
-print(derived_obj._DerivedClass__private_attr)  # Output: Derived
-```
+  base_obj = BaseClass()
+  derived_obj = DerivedClass()
 
-In sintesi, Python riserva certe classi di identificatori che hanno significati speciali e seguono regole specifiche, principalmente per garantire l'integrità del codice e la compatibilità tra versioni diverse del linguaggio. Tuttavia, queste convenzioni non pongono limitazioni rigide al programmatore, che può comunque utilizzare questi identificatori secondo necessità, purché consapevole delle loro implicazioni.
+  # Accesso ai nomi riscritti (name mangling)
+  print(base_obj._BaseClass__private_attr)  # Output: Base
+  print(derived_obj._DerivedClass__private_attr)  # Output: Derived
+  ```
+
+[^1-sp-python-syntax]: I nomi con doppio underscore (`__`) sono chiamati _dunder_ come abbreviazione di _double underscore_. 
 
 ### Operatori
 
@@ -409,37 +419,35 @@ Esempio su `@` che illustra un aspetto importante: il comportamento degli operat
 
 ```python
 class Matrice:
-    def __init__(self, righe):
-        self.righe = righe
-        self.num_righe = len(righe)
-        self.num_colonne = len(righe[0]) if righe else 0
+  def __init__(self, righe):
+    self.righe = righe
+    self.num_righe = len(righe)
+    self.num_colonne = len(righe[0]) if righe else 0
 
-    def __matmul__(self, altra):
-        # Controlla se le dimensioni sono compatibili per la moltiplicazione
-        if self.num_colonne != altra.num_righe:
-            raise ValueError("Non è possibile moltiplicare le matrici: "
-                             "dimensioni incompatibili.")
-        
-        # Inizializza la matrice risultato con zeri
-        risultato = [[0 for _ in range(altra.num_colonne)]
-                     for _ in range(self.num_righe)]
-        
-        # Esegue la moltiplicazione delle matrici
-        for i in range(self.num_righe):
-            for j in range(altra.num_colonne):
-                for k in range(self.num_colonne):
-                    risultato[i][j] += (self.righe[i][k] *
-                                        altra.righe[k][j])
-        
-        return Matrice(risultato)
+  def __matmul__(self, altra):
+    if self.num_colonne != altra.num_righe: # <1>
+      raise ValueError("Non è possibile moltiplicare le matrici: "
+                       "dimensioni incompatibili.")
+    
+    risultato = [[0 for _ in range(altra.num_colonne)] # <2>
+           for _ in range(self.num_righe)]
+    
+    for i in range(self.num_righe): # <3>
+      for j in range(altra.num_colonne):
+        for k in range(self.num_colonne):
+          risultato[i][j] += (self.righe[i][k] *
+                    altra.righe[k][j])
+    
+    return Matrice(risultato)
 
-    def __repr__(self):
-        # Rappresentazione leggibile della matrice
-        return '\n'.join([' '.join(map(str, riga)) for riga in self.righe])
+  def __repr__(self): # <4>
+    return '\n'.join([' '.join(map(str, riga)) for riga in self.righe])
 
 # Definizione di due matrici
-A = Matrice([[1, 2], [3, 4]])
-B = Matrice([[5, 6], [7, 8]])
+A = Matrice([[1, 2], 
+             [3, 4]])
+B = Matrice([[5, 6], 
+             [7, 8]])
 
 # Moltiplicazione di matrici utilizzando l'operatore @
 C = A @ B
@@ -452,7 +460,13 @@ print(B)
 
 print("Risultato di A @ B:")
 print(C)
+# Output: [[19 22],
+#           43 50]]
 ```
+1. Controlla se le dimensioni sono compatibili per la moltiplicazione.
+2. Inizializza la matrice risultato con zeri.
+3. Esegue la moltiplicazione delle matrici.
+4. Rappresentazione leggibile della matrice-
 
 Infine, `@` è anche un delimitatore.
 
@@ -491,26 +505,27 @@ La seguente tabella include tutti i delimitatori e i principali utilizzi:
 | `<<=`       | Assegnazione aumentata con shift a sinistra |
 | `**=`       | Assegnazione aumentata con esponenziazione |
 
-Una sequenza di tre punti, comunemente indicata come ellissi anche al difuori dei linguaggi di programmazione,[^1-sp-python-syntax] è trattata come un token a sé e corrisponde ad un oggetto predefinito chiamato [Ellipsis](https://docs.python.org/3/reference/datamodel.html#ellipsis), con applicazioni in diversi contesti:
+Una sequenza di tre punti, comunemente indicata come ellissi anche al difuori dei linguaggi di programmazione,[^2-sp-python-syntax] è trattata come un token a sé e corrisponde ad un oggetto predefinito chiamato [Ellipsis](https://docs.python.org/3/reference/datamodel.html#ellipsis), con applicazioni in diversi contesti:
 
 ```python
 print(type(...))  # <class 'ellipsis'> # <1>
 
 def funzione_da_completare():
-    ... # <2>
+  ... # <2>
 
 class ClasseEsempio:
-    def metodo_da_completare(self):
-        ...
+  def metodo_da_completare(self):
+    ...
 
 from typing import Callable
 
 def funzione_variadica(func: Callable[..., int]): # <3>
-    pass
+  pass
 
 import numpy as np
 
-array = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]]) 
+array = np.array([[[1, 2, 3],    [4, 5, 6]], 
+                  [[7, 8, 9], [10, 11, 12]]]) 
 
 print(array[..., 1]) # <4>
 # Output: 
@@ -522,7 +537,7 @@ print(array[..., 1]) # <4>
 3. L'uso di `Callable[..., int]` indica una funzione che può accettare un numero variabile di argomenti di qualsiasi tipo e restituire un valore di tipo int.
 4. `numpy` è una libreria di calcolo matriciale molto diffusa. L'ellissi è utilizzata per effettuare uno sezione complessa della matrice secondo tutte le dimensioni precedenti all'ultima. In altre parole, l'ellissi permette di selezionare interamente tutte le dimensioni tranne l'ultima specificata.
 
-[^1-sp-python-syntax]: L'ellissi è usata, ad esempio, in C per dichiarare funzioni che accettano un numero variaible di parametri e i Javascript come operatore per espandere gli array o le proprietà di un oggetto.
+[^2-sp-python-syntax]: L'ellissi è usata, ad esempio, in C per dichiarare funzioni che accettano un numero variaible di parametri e i Javascript come operatore per espandere gli array o le proprietà di un oggetto.
 
 Alcuni caratteri ASCII hanno un significato speciale come parte di altri token o sono significativi per l'analizzatore lessicale:
 
@@ -544,13 +559,17 @@ I letterali sono notazioni per valori costanti di alcuni tipi predefiniti nel li
 I letterali numerici includono interi, numeri a virgola mobile e numeri complessi:
 
 - Interi, possono essere scritti in base decimale, ottale, esadecimale o binaria:
+
   - Decimale: `10`, `-3`.
   - Ottale: `0o12`, `-0o7`.
   - Esadecimale: `0xA`, `-0x1F`.
   - Binario: `0b1010`, `-0b11`.
+
 - Virgola mobile, possono essere rappresentati con una parte intera e una decimale, oppure con notazione scientifica:
+
   - Virgola mobile: `3.14`, `-0.001`.
   - Notazione scientifica: `1e10`, `-2.5e-3`.
+
 - Complessi, appresentati da una parte reale e una parte immaginaria: `3+4j`, `-1-0.5j`.
 
 #### Stringhe
@@ -558,10 +577,12 @@ I letterali numerici includono interi, numeri a virgola mobile e numeri compless
 I letterali di stringa possono essere racchiusi tra virgolette singole o doppie. Possono anche essere multi-linea se racchiusi tra triple virgolette singole o doppie:
 
 - Stringhe racchiuse tra virgolette singole o doppie:
+
   - Singole: `'ciao'`.
   - Doppie: `"mondo"`.
 
 - Stringhe multi-linea racchiuse tra triple virgolette singole o doppie:
+
   - Triple singole: `'''testo multi-linea'''`.
   - Triple doppie: `"""testo multi-linea"""`.
 
@@ -576,9 +597,9 @@ stringa_multilinea = """Questa è una stringa
 print(stringa_multilinea)
 ```
 
-Tutte le stringhe sono codificate in Unicode, con il prefisso `b` la stringa è di tipo byte ed è limitata ai 128 caratteri dell'ASCII. Se si prepone `r`, che sta per _raw_ cioè grezzo, allora la codifica è sempre Unicode ma i caratteri di escape[^2-sp-python-syntax] non sono intepretati.
+Tutte le stringhe sono codificate in Unicode, con il prefisso `b` la stringa è di tipo byte ed è limitata ai 128 caratteri dell'ASCII. Se si prepone `r`, che sta per _raw_ cioè grezzo, allora la codifica è sempre Unicode ma i caratteri di escape[^3-sp-python-syntax] non sono intepretati.
 
-[^2-sp-python-syntax]: In Python, il carattere di escape `\` è utilizzato nelle stringhe per inserire caratteri speciali che non possono essere facilmente digitati sulla tastiera o che hanno significati speciali. 
+[^3-sp-python-syntax]: In Python, il carattere di escape `\` è utilizzato nelle stringhe per inserire caratteri speciali che non possono essere facilmente digitati sulla tastiera o che hanno significati speciali. 
 
     Alcuni esempi comuni includono:
 
@@ -597,12 +618,13 @@ Le f-stringhe (stringhe formattate) sono racchiuse tra virgolette singole, doppi
 Si possono avere stringhe formattate grezze ma non byte.
 
 Esempio:
+
 ```python
 nome = "Python"
 f_stringa = f'Ciao, {nome}!'
-f_stringa_multi_linea = f'''Questo è
-un esempio di
-f-stringa multi-linea con {nome}'''
+f_stringa_multi_linea = f'''Questo è un esempio
+                            di f-stringa multi-linea
+                            con {nome}'''
 
 print(f_stringa)
 print(f_stringa_multi_linea)
@@ -619,20 +641,23 @@ Un'istruzione semplice è sempre contenuta in una riga logica, che può presenta
 Un'espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne viene prodotto il risultato della valutazione. D'altronde, una espressione è spesso utilizzata per chiamare funzioni che hanno effetti collaterali, come, ad esempio, produrre un output: 
 
 - Produzione di output:
+
   ```python
   # Funzione che stampa un messaggio
   def stampa_messaggio(messaggio):
-      print(messaggio)
+    print(messaggio)
 
   # Istruzione di espressione che chiama la funzione 
   # con un effetto collaterale (stampa del messaggio)
   stampa_messaggio("Ciao, mondo!")
   ```
+
 - Modifica di parametri:
+
   ```python
   # Funzione che modifica un argomento mutabile (lista)
   def aggiungi_elemento(lista, elemento):
-      lista.append(elemento)
+    lista.append(elemento)
 
   # Lista iniziale
   numeri = [1, 2, 3]
@@ -643,15 +668,18 @@ Un'espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne vie
 
   print(numeri)  # Output: [1, 2, 3, 4]
   ```
-- Modifica di variabili globali
+
+- Modifica di variabili globali:
+  
   ```python
   # Variabile globale
   contatore = 0
 
   # Funzione che modifica una variabile globale
   def incrementa_contatore():
-      global contatore
-      contatore += 1
+    global contatore
+
+    contatore += 1
 
   # Istruzione di espressione che chiama la funzione 
   # con un effetto collaterale (modifica della variabile globale)
@@ -659,17 +687,20 @@ Un'espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne vie
 
   print(contatore)  # Output: 1
   ```
+
 - Lancio di eccezioni:
+
   ```python
   # Funzione che solleva un'eccezione
   def solleva_eccezione(messaggio):
-      raise ValueError(messaggio)
+    raise ValueError(messaggio)
 
   # Istruzione di espressione che chiama la funzione con un effetto collaterale (sollevamento di un'eccezione)
   try:
-      solleva_eccezione("Qualcosa è andato storto!")
+    solleva_eccezione("Qualcosa è andato storto!")
+
   except ValueError as e:
-      print(e)  # Output: Qualcosa è andato storto!
+    print(e)  # Output: Qualcosa è andato storto!
   ```
 
 Un assegnamento con `=` è anch'esso un'istruzione semplice e non può mai essere all'interno di una espressione, dove invece si può usare l'operatore _tricheco_ `:=`:
@@ -687,17 +718,24 @@ Una istruzione composta è costituita da altre istruzioni (semplici o composte).
 Alcuni esempi:
 
 - Blocco di istruzioni separato su più righe con medesima indentazione:
+
   ```python
   if x > 0:
     print("x è positivo")
+
     x += 1
+
     print(f"x ora è {x}")
   ```
+
 - Blocco come singola istruzione sulla stessa riga logica:
+
   ```python
   if x > 0: print("x è positivo")
   ```
+
 - Diverse istruzioni semplici sulla stessa riga (non consigliato):
+  
   ```python
   if x > 0: print("x è positivo"); x += 1; print(f"x ora è {x}")
   ```
