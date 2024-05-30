@@ -82,6 +82,7 @@ Alcuni esempi:
   ```python
   def somma(a, b): # <1>
     risultato = a + b # <2>
+
     return risultato 
   ```
   1. Prima riga senza indentazione.
@@ -235,20 +236,18 @@ Esempi di uso di parole chiave contestuali:
 - `match`, `case` e `_`:
 
   ```python
-  # Definiamo una funzione che utilizza il pattern matching
-  def process_value(value):
-    match value:
-      case 1:
+  def process_value(value): # <1>
+    match value: # <2>
+      case 1: # <3>
         print("Uno")
 
       case 2:
         print("Due")
 
-      case _:
+      case _: # <4>
         print("Altro")
 
-  # Utilizzo di `match` come identificatore per una variabile
-  match = "Questo è un identificatore valido"
+  match = "Questo è un identificatore valido" # <5>
 
   # Test della funzione
   process_value(1)  # Output: Uno
@@ -258,14 +257,18 @@ Esempi di uso di parole chiave contestuali:
   # Stampa della variabile `match`
   print(match)  # Output: Questo è un identificatore valido
   ```
+  1. Definiamo una funzione che utilizza il pattern matching.
+  2. Uso di `match` come parola chiave.
+  3. Uso di `case` come parola chiave.
+  4. Uso di `_` come parola chiave.
+  5. Utilizzo di `match` come identificatore per una variabile.
 
 - `type`:
   
   ```python
   from typing import TypeAlias
 
-  # Dichiarazione di un alias di tipo
-  type Point = tuple[float, float]
+  type Point = tuple[float, float] # <1>
 
   # Utilizzo dell'alias di tipo
   def distanza(p1: Point, p2: Point) -> float:
@@ -276,7 +279,11 @@ Esempi di uso di parole chiave contestuali:
   punto2: Point = (4.0, 6.0)
 
   print(distanza(punto1, punto2))  # Output: 5.0
+
+  print(type(punto1)) # Output: <class 'tuple'> # <2>
   ```
+  1. Uso di `type` come parola chiave.
+  2. Uso di `type`  identificatore di una funzione.
 
 ### Classi riservate di identificatori
 
@@ -300,17 +307,7 @@ Identificatori speciali:
     1. Nel modulo `example.py` viene definita la variabile come privata.
     2. Genera un errore: `NameError: name '_private_variable' is not defined`
 
-  - Pattern nei match: Nel contesto di un pattern di corrispondenza all'interno di un'istruzione `match`, `_` è una soft keyword che denota un _wildcard_ (carattere jolly). Esempio:
-
-    ```python
-    def process_value(value):
-      match value:
-        case 1:
-          print("Uno")
-
-        case _: 
-          print("Altro")
-    ```
+  - Pattern nei match: Nel contesto di un pattern di corrispondenza all'interno di un'istruzione `match`, `_` è una parola chiave contestuale che denota un _wildcard_ (carattere jolly), coem indicato sopra. 
 
   - Interprete interattivo: L'interprete interattivo rende disponibile il risultato dell'ultima valutazione nella variabile `_`. Il valore di `_` è memorizzato nel modulo [`builtins`](https://docs.python.org/3/library/builtins.html), insieme ad altre funzioni e variabili predefinite come `print()`, permettendo l'accesso globale a `_` durante una sessione interattiva. Esempio:
 
@@ -595,7 +592,7 @@ Esempio:
 
 ```python
 stringa_multilinea = """Questa è una stringa
-                        molto "importante"."""
+molto "importante"."""
 
 print(stringa_multilinea)
 ```
@@ -608,7 +605,7 @@ Tutte le stringhe sono codificate in Unicode, con il prefisso `b` la stringa è 
 
     - `\n` per una nuova linea (linefeed).
     - `\t` per una tabulazione.
-    - `\\` per inserire una barra rovesciata.
+    - `\\` per inserire un backslash.
     - `\'` per un apostrofo.
     - `\"` per una doppia virgoletta.
 
@@ -651,6 +648,57 @@ Un programma Pythom è una sequenza di istruzioni che si distinguono in **sempli
 ### Istruzioni semplici
 
 Un'istruzione semplice è sempre contenuta in una riga logica, che può presentare più istruzioni semplici separate da `;`. È permesso ma scaonsigliato perché in pochi casi porta a codice leggibile.
+
+In Python, le istruzioni semplici sono:
+
+1. Assegnazione, attribuisce un valore a una variabile:
+
+  ```python
+  x = 10
+  ```
+
+2. Istruzioni di importazione, permettono di utilizzare gli identificatori definiti in altri moduli:
+
+  ```python
+  import math
+  from math import sqrt
+  ```
+
+3. Istruzioni di controllo del flusso nei cicli:
+
+   - `break`: Interrompe un ciclo.
+   - `continue`: Salta all'iterazione successiva di un ciclo.
+   - `pass`: Non esegue alcuna operazione.
+
+  ```python
+  for i in range(10):
+      if i == 5:
+          break
+  ```
+
+4. Istruzioni di gestione dell'uscita da una funzione, della generazione di valori o del sollevamento di eccezioni:
+
+   - `return`: Restituisce un valore da una funzione.
+   - `yield`: Restituisce un generatore.
+   - `raise`: Solleva un'eccezione per segnalare uan condizione di errore.
+
+  ```python
+  def func():
+      return x
+  ```
+
+5. Istruzioni di asserzione in cui si verifica una condizione e viene generata un'eccezione se la condizione è falsa:
+
+  ```python
+  assert x > 0, "x deve essere positivo"
+  ```
+
+6. Istruzioni di diichiarazione di modifica dell'ambito di variabili:
+
+  ```python
+  global x
+  nonlocal y
+  ```
 
 Un'espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne viene prodotto il risultato della valutazione. D'altronde, una espressione è spesso utilizzata per chiamare funzioni che hanno effetti collaterali, come, ad esempio, produrre un output: 
 
@@ -717,7 +765,7 @@ Un'espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne vie
     print(e)  # Output: Qualcosa è andato storto!
   ```
 
-Un assegnamento con `=` è anch'esso un'istruzione semplice e non può mai essere all'interno di una espressione, dove invece si può usare l'operatore _tricheco_ `:=`:
+Un assegnamento con `=` è anch'esso un'istruzione semplice e non può mai essere all'interno di una espressione, dove, invece, si può usare l'operatore _tricheco_ `:=`:
 
 ```python
 if (n := len("Python")) > 5:
@@ -727,7 +775,7 @@ if (n := len("Python")) > 5:
 
 ### Istruzioni composte
 
-Una istruzione composta è costituita da altre istruzioni (semplici o composte). Il controllo dell'esecuzione delle istruzioni componenti avviene per mezzo di una o più clausole che iniziano tutte con una parola chiave, sono terminate da `:` e seguite da un blocco di codice. Ogni blocco deve avere almeno una istruzione semplice, ma può non avere una propria riga logica.
+Una istruzione composta è costituita da altre istruzioni (semplici o composte). Il controllo dell'esecuzione delle istruzioni componenti avviene per mezzo di una o più clausole che iniziano tutte con una parola chiave, sono terminate da `:` e seguite da un blocco di codice. Ogni blocco deve avere almeno una istruzione semplice, ma può non avere una propria riga logica, cioè stare sulla stessa riga fisica e logica del `:`.
 
 Alcuni esempi:
 
@@ -748,7 +796,7 @@ Alcuni esempi:
   if x > 0: print("x è positivo")
   ```
 
-- Diverse istruzioni semplici sulla stessa riga (non consigliato):
+- Diverse istruzioni semplici sulla stessa riga logica (non consigliato):
   
   ```python
   if x > 0: print("x è positivo"); x += 1; print(f"x ora è {x}")
