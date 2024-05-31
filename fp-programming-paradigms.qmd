@@ -124,16 +124,16 @@ All'altro estremo della immediatezza di comprensione del testo del codice. per u
 Ecco il medesimo esempio:
 
 ```python
-# Definizione delle variabili
-num1 = 5
+num1 = 5 # <1>
 num2 = 3
 
-# Somma dei due numeri
-result = num1 + num2
+result = num1 + num2 # <2>
 
-# Stampa del risultato
-print("Il risultato è:", result)
+print("Il risultato è: ", result) # <3>
 ```
+1. Definizione delle variabili che identificano gli addendi.
+2. Somma dei due numeri.
+3. Stampa del risultato della somma.
 
 ### Analisi comparativa
 
@@ -237,12 +237,11 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
   }
 
   char* somma_stringhe(const char* a, const char* b) {
-      char* risultato = malloc(strlen(a) + strlen(b) + 1); 
-      // +1 per il carattere di terminazione '\0'
+      char* risultato = malloc(strlen(a) + strlen(b) + 1); // <1>
 
-      if (risultato) {
-          strcpy(risultato, a);
-          strcat(risultato, b);
+      if (risultato) { // <2>
+          strcpy(risultato, a); // <3>
+          strcat(risultato, b); // <4>
       }
 
       return risultato;
@@ -262,6 +261,10 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
       printf("%s\n", messaggio);
   }
   ```
+  1. Allocazione della memoria e +1 per il carattere di terminazione '\0'.
+  2. Il controllo è presente per verificare se la funzione `malloc` ha avuto successo nell'allocare la memoria richiesta. Se `risultato` è `NULL`, significa che `malloc` ha fallito e il blocco di codice all'interno dell'`if` viene saltato, evitando così di tentare di accedere a memoria non valida.
+  3. Se l'allocazione ha avuto successo, copia la prima stringa nel risultato.
+  4. Idem per la seconda.
 
 - File principale (`main.c`):
 
@@ -270,21 +273,18 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
   #include <stdio.h>
 
   int main() {
-      // Somma di due interi
-      int risultato = somma_interi(5, 3);
+      int risultato = somma_interi(5, 3); // <1>
 
       stampa_messaggio("Il risultato della somma di interi è:");
       printf("%d\n", risultato);
 
-      // Somma di due stringhe
-      char* risultato_stringhe = somma_stringhe("Ciao, ", "mondo!");
+      char* risultato_stringhe = somma_stringhe("Ciao, ", "mondo!"); // <2>
 
       stampa_messaggio("Il risultato della somma di stringhe è:");
       printf("%s\n", risultato_stringhe);
-      free(risultato_stringhe); // Libera la memoria allocata
+      free(risultato_stringhe); // <3>
 
-      // Somma di un array di interi
-      int array[] = {1, 2, 3, 4, 5};
+      int array[] = {1, 2, 3, 4, 5}; // <4>
       int risultato_array = somma_array(array, 5);
 
       stampa_messaggio("Il risultato della somma dell'array è:");
@@ -293,6 +293,10 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
       return 0;
   }
   ```
+  1. Chiamata della funzione di somma di due interi.
+  2. Chiamata delal funzione di somma di due stringhe (implementato come una concatenazione).
+  3. Libera la memoria allocata.
+  4. Somma di un array di interi.
 
 ## Paradigma di orientamento agli oggetti
 
@@ -337,8 +341,7 @@ Anche se sussistono dei caveat:
 In questo esempio, la classe `Animale` rappresenta una classe base con un attributo `nome` e un metodo `faiVerso`. La classe `Cane` estende `Animale` e sovrascrive il metodo `faiVerso` per fornire un'implementazione specifica. La classe `Main` crea un'istanza di `Cane` e chiama il metodo `faiVerso`, dimostrando il polimorfismo e l'ereditarietà:
 
 ```java
-// Definizione della classe base
-class Animale {
+class Animale { // <1>
     String nome;
 
     Animale(String nome) {
@@ -350,8 +353,7 @@ class Animale {
     }
 }
 
-// Definizione della classe derivata
-class Cane extends Animale {
+class Cane extends Animale { // <2>
 
     Cane(String nome) {
         super(nome);
@@ -363,60 +365,85 @@ class Cane extends Animale {
     }
 }
 
-// Classe principale
 public class Main {
     public static void main(String[] args) {
         Animale mioCane = new Cane("Fido");
 
-        mioCane.faiVerso(); // Stampa: Il cane abbaia
+        mioCane.faiVerso(); // <3>
     }
 }
 ```
+1. Definizione della classe astratta che ha il doppio compito di fornire una implementazione di default per una caratteristica comune (`descrizione`) e un vincolo di implementazione nelle classe derivate per una seconda caratteristica comune non implementabile nello stesso modo per tutte (`faiVerso`).
+2. Definizione della classe derivata Cane.
+3. Definizione della classe derivata Coccodrillo.
 
-Vediamo come implementare il medesimo esempio con una classe astratta, sempre in in Java, per correggere una chiara incoerenza: `Animale` non può essere un oggetto dato che, in realtà, è una caratteristica comune di oggetti di tipo animale. 
+Vediamo come implementare il medesimo esempio con una classe astratta, sempre in in Java, per correggere una chiara incoerenza: `Animale` non può essere un oggetto dato che, in realtà, rappresenta una caratteristica comune di oggetti di tipo animale. 
 
 Quindi, `Animale` diventa una classe astratta, cioè che non può essere istanziata in un oggetto e `Cane` è una classe concreta che la estende ridefinendo il metodo `faiVerso` per comunicare la propria caratteristica distintiva:
 
 ```java
-// Definizione della classe astratta
-abstract class Animale {
+abstract class Animale { // <1>
     String nome;
 
     Animale(String nome) {
         this.nome = nome;
     }
 
-    // Metodo astratto
-    abstract void faiVerso();
+    abstract String faiVerso(); // <2>
 
-    // Metodo concreto
-    void descrizione() {
-        System.out.println("L'animale si chiama " + nome);
+    String descrizione() { // <3>
+        return "L'animale si chiama " + nome;
     }
 }
 
-// Definizione della classe derivata
-class Cane extends Animale {
+class Cane extends Animale { // <4>
 
     Cane(String nome) {
         super(nome);
     }
 
     @Override
-    void faiVerso() {
-        System.out.println("Il cane abbaia");
+    String faiVerso() {
+        return "Il cane abbaia";
     }
 }
 
-// Classe principale
+class Coccodrillo extends Animale { // <5>
+
+    Coccodrillo(String nome) {
+        super(nome);
+    }
+
+    @Override
+    String faiVerso() { // <6>
+        return "";  
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
         Animale mioCane = new Cane("Fido");
-        mioCane.descrizione(); // Stampa: L'animale si chiama Fido
-        mioCane.faiVerso();    // Stampa: Il cane abbaia
+
+        System.out.println(mioCane.descrizione()); // <7> 
+        System.out.println(mioCane.faiVerso());    // <8>
+
+        Animale mioCoccodrillo = new Coccodrillo("Crocky");
+
+        System.out.println(mioCoccodrillo.descrizione()); // <9>
+        System.out.println(mioCoccodrillo.faiVerso());    // <10>
     }
 }
 ```
+1. Definizione della classe astratta che ha il doppio compito di fornire una implementazione di default per una caratteristica comune (`descrizione`) e un vincolo di implementazione nelle classe derivate per una seconda caratteristica comune non implementabile nello stesso modo per tutte (`faiVerso`).
+2. Metodo astratto che restituisce una stringa.
+3. Metodo concreto che restituisce una stringa.
+4. Definizione della classe derivata Cane.
+5. Definizione della classe derivata Coccodrillo.
+6. Il coccodrillo non emette versi!
+7. Stampa: l'animale si chiama Fido.
+8. Stampa: il cane abbaia.
+9. Stampa: l'animale si chiama Crocky.
+10. Non stampa nulla perché il coccodrillo non emette versi!
 
 ### Template 
 
@@ -444,7 +471,6 @@ Box<int> intBox; // <1>
 intBox.setValue(123);
 int x = intBox.getValue();
 
-// 
 Box<std::string> stringBox; // <2>
 
 stringBox.setValue("Hello, World!");
@@ -458,6 +484,7 @@ Anche nei linguaggi non orientati agli oggetti, i template trovano applicazione.
 ```rust
 fn largest<T: PartialOrd>(list: &[T]) -> &T {
     let mut largest = &list[0];
+
     for item in list {
         if item > largest {
             largest = item;
@@ -469,28 +496,32 @@ fn largest<T: PartialOrd>(list: &[T]) -> &T {
 fn main() {
     let numbers = vec![34, 50, 25, 100, 65];
     let max = largest(&numbers);
+
     println!("The largest number is {}", max);
 }
 ```
 
 ### Metaprogrammazione
 
-La metaprogrammazione è un paradigma che consente al programma di trattare il codice come dati, permettendo al codice di generare, manipolare o eseguire altro codice. Anche questo concetto non è esclusivo dell'OOP. In C++, la metaprogrammazione è strettamente legata ai template. Un esempio classico è la template metaprogramming (TMP), che permette di eseguire calcoli a tempo di compilazione. Un esempio è il codice seguente di calcolo del fattoriale:
+La metaprogrammazione è un paradigma che consente al programma di trattare il codice come dati, permettendo al codice di generare, manipolare o eseguire altro codice. Anche questo concetto non è esclusivo dell'OOP. In C++, la metaprogrammazione è strettamente legata ai template. Un esempio classico è la template metaprogramming (TMP), che permette di eseguire calcoli a tempo di compilazione. 
+
+Un esempio è il codice seguente di calcolo del fattoriale:
 
 ```cpp
 template<int N>
 struct Factorial {
-    static const int value = N * Factorial<N - 1>::value;
+    static const int value = N * Factorial<N - 1>::value; // <1>
 };
+
 template<>
 struct Factorial<0> {
-    static const int value = 1;
+    static const int value = 1; // <2>
 };
 ```
+1. Questa riga definisce un membro statico `value` della struttura `Factorial`. Per un dato `N`, il valore viene calcolato come `N` moltiplicato per il valore del fattoriale di `N - 1`. Questo è un esempio di ricorsione a livello di metaprogrammazione template.
+2. Questa riga è una specializzazione del template `Factorial` per il caso base quando `N` è 0. In questo caso, `value` è definito come `1`, terminando la ricorsione template.
 
-La metaprogrammazione è presente anche in linguaggi non OOP come Lisp, che utilizza le macro per trasformare e generare codice. 
-
-Nel codice sotto proposto è definita la macro `when`, che prende due parametri in input, cioè `test` e `body`, ove `test` è un'espressione condizionale e `body` un insieme di istruzioni da eeseguire se la condizione è vera:
+La metaprogrammazione è presente anche in linguaggi non OOP come Lisp, che utilizza le macro per trasformare e generare codice. Un esempio è il codice proposto di seguito dove è definita la macro `when`, che prende due parametri in input, cioè `test` e `body`, ove `test` è un'espressione condizionale e `body` un insieme di istruzioni da eeseguire se la condizione è vera:
 
 ```commonlisp
 (defmacro when (test &rest body)
@@ -576,11 +607,16 @@ Esistono anche estensioni ad oggetti come il PL/pgSQL (Procedural Language/Postg
 
 Esempio di una query SQL che estrae tutti i nomi degli utenti con età maggiore di 30: 
 
+Certamente! Ecco il codice SQL con i commenti identificati da un ID progressivo e l'elenco esplicativo:
+
 ```sql
-SELECT nome
-FROM utenti
-WHERE età > 30;
+SELECT nome -- <1>
+FROM utenti -- <2>
+WHERE età > 30; -- <3>
 ```
+1. Seleziona la colonna `nome`.
+2. Dalla tabella `utenti`.
+3. Per le righe dove la colonna `età` è maggiore di 30.
 
 In Prolog, si definiscono fatti e regole che descrivono relazioni logiche. Il motore di inferenza di Prolog utilizza queste definizioni per risolvere query, senza richiedere un algoritmo dettagliato. Di seguito, sono definiti due fatti (le prime due righe) e due regole (la terza e la quarta) e quindi si effettua una query che dà come risultato `true`:
 
@@ -635,20 +671,23 @@ E qualche svantaggio:
 
 Di seguito due funzioni, la prima `sumToN` è pura e somma i primi `n` numeri. `(*2)` è una funzione che prende un argomento e lo moltiplica per 2 e ciò rende la seconda funzione `applyFunction` una vera funzione di ordine superiore, poiché accetta `(*2)` come argomento oltre ad una lista, producendo come risultato il raddoppio di tutti i suoi elementi:
 
+Certamente! Ecco il codice con i commenti identificati da un ID progressivo e l'elenco esplicativo che include le descrizioni:
+
 ```haskell
--- Definizione di una funzione pura che calcola la somma dei numeri da 1 a n
 sumToN :: Integer -> Integer
-sumToN n = sum [1..n]
+sumToN n = sum [1..n] -- <1>
 
--- Funzione di ordine superiore che accetta una funzione e una lista
 applyFunction :: (a -> b) -> [a] -> [b]
-applyFunction f lst = map f lst
+applyFunction f lst = map f lst -- <2>
 
--- Utilizzo delle funzioni
 main = do
-    print (sumToN 10) -- Stampa 55
-    print (applyFunction (*2) [1, 2, 3, 4]) -- Stampa [2, 4, 6, 8]
+    print (sumToN 10) -- <3>
+    print (applyFunction (*2) [1, 2, 3, 4]) -- <4>
 ```
+1. Definizione di una funzione pura che calcola la somma dei numeri da 1 a `n`.
+2. Funzione di ordine superiore che accetta una funzione e una lista.
+3. Nel `main`, stampa il risultato di `sumToN 10`, che è 55.
+4. Nel `main`, stampa il risultato di `applyFunction (*2) [1, 2, 3, 4]`, che è `[2, 4, 6, 8]`.
 
 ### Linguaggi
 
