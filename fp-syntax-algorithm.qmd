@@ -139,10 +139,10 @@ Alcuni esempi di istruzione e blocco di codice:
 
 - Esempio in Python:
 
-```python
-  if x > 0:
-      print("x è positivo")
-      y = x * 2
+  ```python
+    if x > 0:
+        print("x è positivo")
+        y = x * 2
   ```
   In questo esempio:
   - `if x > 0:` è un'istruzione complessa.
@@ -193,17 +193,20 @@ Una **riga fisica** è una linea di testo nel file sorgente del programma, termi
 Esempio:
 
 ```c
-int x = 10; // Questa è una riga fisica
+int x = 10; /* <1> */ 
 ```
+1. Questa è una riga fisica
 
 Una **riga logica** è una singola istruzione, che può estendersi su una o più righe fisiche.
 
 Esempio di riga logica con più righe fisiche:
 
 ```c
-int y = (10 + 20 + 30 + // Prima riga fisica della riga logica
-         40 + 50); // Seconda riga fisica della riga logica
+int y = (10 + 20 + 30 + /* <1> */
+         40 + 50); /* <2> */
 ```
+1. Prima riga fisica della riga logica.
+2. Seconda riga fisica della riga logica.
 
 Il concetto di righe fisiche e logiche esiste perché le istruzioni (o righe logiche) possono essere lunghe e complesse, richiedendo più righe fisiche per migliorare la leggibilità e la gestione del codice.
 

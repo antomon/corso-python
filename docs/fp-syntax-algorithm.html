@@ -440,12 +440,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>if (x &gt; 0)</code> è un’istruzione complessa.</li>
 <li><code>{ printf("x è positivo\n"); y = x * 2; }</code> è un blocco di codice che viene eseguito se la condizione dell’istruzione <code>if</code> è vera.</li>
 </ul></li>
-<li><p>Esempio in Python:</p></li>
-</ul>
+<li><p>Esempio in Python:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>  <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
 <span id="cb6-2"><a href="#cb6-2"></a>      <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3"></a>      y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>In questo esempio: - <code>if x &gt; 0:</code> è un’istruzione complessa. - Le righe indentate sotto l’istruzione <code>if</code> (<code>print("x è positivo")</code> e <code>y = x * 2</code>) costituiscono un blocco di codice che viene eseguito se la condizione dell’istruzione <code>if</code> è vera.</p>
+<p>In questo esempio:</p>
+<ul>
+<li><code>if x &gt; 0:</code> è un’istruzione complessa.</li>
+<li>Le righe indentate sotto l’istruzione <code>if</code> (<code>print("x è positivo")</code> e <code>y = x * 2</code>) costituiscono un blocco di codice che viene eseguito se la condizione dell’istruzione <code>if</code> è vera.</li>
+</ul></li>
+</ul>
 <p>Altri esempi:</p>
 <ul>
 <li><p>Condizioni: Istruzioni che eseguono un blocco di codice solo se una condizione è vera. Esempio:</p>
@@ -485,11 +489,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Il programma è solitamente salvato in un file di testo in righe. Queste righe possono essere classificate in righe fisiche e righe logiche.</p>
 <p>Una <strong>riga fisica</strong> è una linea di testo nel file sorgente del programma, terminata da un carattere di a capo.</p>
 <p>Esempio:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span> <span class="co">// Questa è una riga fisica</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Questa è una riga fisica</span>
+</dd>
+</dl>
 <p>Una <strong>riga logica</strong> è una singola istruzione, che può estendersi su una o più righe fisiche.</p>
 <p>Esempio di riga logica con più righe fisiche:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1"></a><span class="dt">int</span> y <span class="op">=</span> <span class="op">(</span><span class="dv">10</span> <span class="op">+</span> <span class="dv">20</span> <span class="op">+</span> <span class="dv">30</span> <span class="op">+</span> <span class="co">// Prima riga fisica della riga logica</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>         <span class="dv">40</span> <span class="op">+</span> <span class="dv">50</span><span class="op">);</span> <span class="co">// Seconda riga fisica della riga logica</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a><span class="dt">int</span> y <span class="op">=</span> <span class="op">(</span><span class="dv">10</span> <span class="op">+</span> <span class="dv">20</span> <span class="op">+</span> <span class="dv">30</span> <span class="op">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2"></a>         <span class="dv">40</span> <span class="op">+</span> <span class="dv">50</span><span class="op">);</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Prima riga fisica della riga logica.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="2">Seconda riga fisica della riga logica.</span>
+</dd>
+</dl>
 <p>Il concetto di righe fisiche e logiche esiste perché le istruzioni (o righe logiche) possono essere lunghe e complesse, richiedendo più righe fisiche per migliorare la leggibilità e la gestione del codice.</p>
 </section>
 </section>
@@ -591,18 +611,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="3.4" class="anchored" data-anchor-id="applicazione-dei-concetti-di-sintassi-e-semantica"><span class="header-section-number">3.4</span> Applicazione dei concetti di sintassi e semantica</h2>
 <p>Dissezioniamo un algoritmo molto semplice per illustrare come sintassi e semantica di un linguaggio abbiano ruoli distinti e complementari in un programma. È importante comprendere che un buon programmatore deve avere tutte e tre le competenze, cioè conoscere le specificità formali del linguaggio (o di più linguaggi), quindi, la sua sintassi e semantica e saper comporre algoritmi, che potrà realizzare grazie proprio a quelle.</p>
 <p>Consideriamo un esempio semplice di algoritmo per calcolare la somma dei numeri da 1 a n.&nbsp;In input si avrà un numero intero <code>n</code> e in output il risultato. In pseudocodice (cioè mimiamo il rigore sintattico di un linguaggio di programmazione, ma utilizziamo la lingua italiana) si può rappresentare così:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">Inizializza</span> somma a 0</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="ex">Per</span> ogni numero i da 1 a n:</span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="ex">Aggiungi</span> i a somma</span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="ex">Restituisci</span> somma</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">Inizializza</span> somma a 0</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="ex">Per</span> ogni numero i da 1 a n:</span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="ex">Aggiungi</span> i a somma</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="ex">Restituisci</span> somma</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>O, in alternativa, possiamo definire una funzione che implementa l’algoritmo:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="ex">funzione</span> calcola_somma<span class="er">(</span><span class="ex">n</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="ex">somma</span> = 0</span>
-<span id="cb12-3"><a href="#cb12-3"></a>  <span class="ex">per</span> i da 1 a n:</span>
-<span id="cb12-4"><a href="#cb12-4"></a>    <span class="ex">somma</span> = somma + i</span>
-<span id="cb12-5"><a href="#cb12-5"></a>  <span class="ex">ritorna</span> somma</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="ex">funzione</span> calcola_somma<span class="er">(</span><span class="ex">n</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="ex">somma</span> = 0</span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="ex">per</span> i da 1 a n:</span>
+<span id="cb10-4"><a href="#cb10-4"></a>    <span class="ex">somma</span> = somma + i</span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="ex">ritorna</span> somma</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Effettuiamo una analisi dettagliata della funzione per indicare quali elementi sintattici e semantici sono presenti. Partiamo dalla prima riga:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">funzione</span> calcola_somma<span class="er">(</span><span class="ex">n</span><span class="kw">)</span><span class="bu">:</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">funzione</span> calcola_somma<span class="er">(</span><span class="ex">n</span><span class="kw">)</span><span class="bu">:</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><p>Sintassi:</p>
 <ul>
@@ -613,7 +633,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Semantica: Definisce una funzione chiamata <code>calcola_somma</code> che accetta un parametro <code>n</code>.</p></li>
 </ul>
 <p>La seconda riga ha l’inizializzazione della variabile che conterrà il risultato:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="ex">somma</span> = 0</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="ex">somma</span> = 0</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Sintassi:
 <ul>
@@ -627,7 +647,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 <p>A seguire la definizione di un ciclo:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="ex">per</span> i da 1 a n:</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">per</span> i da 1 a n:</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><p>Sintassi:</p>
 <ul>
@@ -638,7 +658,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Semantica: Itera la variabile <code>i</code> da <code>1</code> a <code>n</code>.</p></li>
 </ul>
 <p>Un assegnamento per accumulare i valori nella variabile di ritorno:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="ex">somma</span> = somma + i</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="ex">somma</span> = somma + i</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><p>Sintassi:</p>
 <ul>
@@ -649,7 +669,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Semantica: Aggiunge il valore di <code>i</code> alla variabile <code>somma</code> e assegna il risultato a <code>somma</code>.</p></li>
 </ul>
 <p>E finalmente il risultato del calcolo viene restituito al chiamante:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="ex">ritorna</span> somma</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="ex">ritorna</span> somma</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Sintassi:
 <ul>
