@@ -409,47 +409,47 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <section id="esempio-in-assembly" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="esempio-in-assembly"><span class="header-section-number">2.2.1</span> Esempio in assembly</h3>
 <p>Assembly è una categoria di linguaggi di basso livello, cioè strettamente legati all’hardware del computer, tanto che ogni processore ha il suo <em>dialetto</em>. Un esempio di un semplice programma scritto per l’architettura x86, utilizzando la sintassi dell’assembler NASM (Netwide Assembler), è il seguente che effettua la somma di due numeri e stampa il risultato:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode nasm code-with-copy"><code class="sourceCode nasm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">section</span> <span class="fu">.data</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    num1 <span class="dt">db</span> <span class="dv">5</span>           <span class="co">; Definisce il primo numero</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    num2 <span class="dt">db</span> <span class="dv">3</span>           <span class="co">; Definisce il secondo numero</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    result <span class="dt">db</span> <span class="dv">0</span>         <span class="co">; Variabile per memorizzare il risultato</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    msg <span class="dt">db</span> <span class="st">'Result: '</span><span class="op">,</span> <span class="dv">0</span> <span class="co">; Messaggio di output</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">section</span> <span class="fu">.bss</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    result_str <span class="dt">resb</span> <span class="dv">4</span>   <span class="co">; Buffer per la stringa del risultato</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">section</span> <span class="fu">.text</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> _start</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">_start:</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">; Somma num1 e num2</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">al</span><span class="op">,</span> <span class="op">[</span>num1<span class="op">]</span>      <span class="co">; Carica il primo numero in AL</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">add</span> <span class="kw">al</span><span class="op">,</span> <span class="op">[</span>num2<span class="op">]</span>      <span class="co">; Aggiunge il secondo numero a AL</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="op">[</span>result<span class="op">],</span> <span class="kw">al</span>    <span class="co">; Memorizza il risultato in result</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">; Converti il risultato in stringa ASCII</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="op">[</span>result<span class="op">]</span>   <span class="co">; Carica il risultato in EAX</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">add</span> <span class="kw">eax</span><span class="op">,</span> <span class="st">'0'</span>        <span class="co">; Converti il valore numerico in carattere ASCII</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="op">[</span>result_str<span class="op">],</span> <span class="kw">eax</span> <span class="co">; Memorizza il carattere ASCII in result_str</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">; Stampa il messaggio</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">4</span>          <span class="co">; syscall numero per sys_write</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">ebx</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; file descriptor 1 (stdout)</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">ecx</span><span class="op">,</span> msg        <span class="co">; puntatore al messaggio</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">edx</span><span class="op">,</span> <span class="dv">8</span>          <span class="co">; lunghezza del messaggio</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; chiamata di sistema</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="co">; Stampa il risultato</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">4</span>          <span class="co">; syscall numero per sys_write</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">ebx</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; file descriptor 1 (stdout)</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">ecx</span><span class="op">,</span> result_str <span class="co">; puntatore alla stringa del risultato</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">edx</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; lunghezza della stringa del risultato</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; chiamata di sistema</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="co">; Terminazione del programma</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; codice di sistema per l'uscita</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">xor</span> <span class="kw">ebx</span><span class="op">,</span> <span class="kw">ebx</span>        <span class="co">; codice di ritorno 0</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; interruzione per chiamare il kernel</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource nasm number-lines code-with-copy"><code class="sourceCode nasm"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">section</span> <span class="fu">.data</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>    num1 <span class="dt">db</span> <span class="dv">5</span>           <span class="co">; Definisce il primo numero</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>    num2 <span class="dt">db</span> <span class="dv">3</span>           <span class="co">; Definisce il secondo numero</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>    result <span class="dt">db</span> <span class="dv">0</span>         <span class="co">; Variabile per memorizzare il risultato</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>    msg <span class="dt">db</span> <span class="st">'Result: '</span><span class="op">,</span> <span class="dv">0</span> <span class="co">; Messaggio di output</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="kw">section</span> <span class="fu">.bss</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>    result_str <span class="dt">resb</span> <span class="dv">4</span>   <span class="co">; Buffer per la stringa del risultato</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="kw">section</span> <span class="fu">.text</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>    <span class="kw">global</span> _start</span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="fu">_start:</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>    <span class="co">; Somma num1 e num2</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>    <span class="kw">mov</span> <span class="kw">al</span><span class="op">,</span> <span class="op">[</span>num1<span class="op">]</span>      <span class="co">; Carica il primo numero in AL</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>    <span class="kw">add</span> <span class="kw">al</span><span class="op">,</span> <span class="op">[</span>num2<span class="op">]</span>      <span class="co">; Aggiunge il secondo numero a AL</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>    <span class="kw">mov</span> <span class="op">[</span>result<span class="op">],</span> <span class="kw">al</span>    <span class="co">; Memorizza il risultato in result</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a>    <span class="co">; Converti il risultato in stringa ASCII</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="op">[</span>result<span class="op">]</span>   <span class="co">; Carica il risultato in EAX</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>    <span class="kw">add</span> <span class="kw">eax</span><span class="op">,</span> <span class="st">'0'</span>        <span class="co">; Converti il valore numerico in carattere ASCII</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>    <span class="kw">mov</span> <span class="op">[</span>result_str<span class="op">],</span> <span class="kw">eax</span> <span class="co">; Memorizza il carattere ASCII in result_str</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a></span>
+<span id="cb1-24"><a href="#cb1-24"></a>    <span class="co">; Stampa il messaggio</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">4</span>          <span class="co">; syscall numero per sys_write</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>    <span class="kw">mov</span> <span class="kw">ebx</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; file descriptor 1 (stdout)</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>    <span class="kw">mov</span> <span class="kw">ecx</span><span class="op">,</span> msg        <span class="co">; puntatore al messaggio</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>    <span class="kw">mov</span> <span class="kw">edx</span><span class="op">,</span> <span class="dv">8</span>          <span class="co">; lunghezza del messaggio</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a>    <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; chiamata di sistema</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a>    <span class="co">; Stampa il risultato</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">4</span>          <span class="co">; syscall numero per sys_write</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a>    <span class="kw">mov</span> <span class="kw">ebx</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; file descriptor 1 (stdout)</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a>    <span class="kw">mov</span> <span class="kw">ecx</span><span class="op">,</span> result_str <span class="co">; puntatore alla stringa del risultato</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a>    <span class="kw">mov</span> <span class="kw">edx</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; lunghezza della stringa del risultato</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a>    <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; chiamata di sistema</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a></span>
+<span id="cb1-38"><a href="#cb1-38"></a>    <span class="co">; Terminazione del programma</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; codice di sistema per l'uscita</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a>    <span class="kw">xor</span> <span class="kw">ebx</span><span class="op">,</span> <span class="kw">ebx</span>        <span class="co">; codice di ritorno 0</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a>    <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; interruzione per chiamare il kernel</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Le sezioni del codice:</p>
 <ul>
 <li><p>La sezione <code>.data</code> definisce i dati statici <code>num1</code>, <code>num2</code>, <code>result</code> e <code>msg</code>.</p></li>
@@ -474,15 +474,15 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="esempio-in-python"><span class="header-section-number">2.2.2</span> Esempio in Python</h3>
 <p>All’altro estremo della immediatezza di comprensione del testo del codice. per un essere umano, troviamo Python, un linguaggio di alto livello noto per la leggibilità ed eleganza.</p>
 <p>Ecco il medesimo esempio:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definizione delle variabili</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>num1 <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>num2 <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Somma dei due numeri</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> num1 <span class="op">+</span> num2</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Stampa del risultato</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Il risultato è:"</span>, result)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Definizione delle variabili</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>num1 <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>num2 <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co"># Somma dei due numeri</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>result <span class="op">=</span> num1 <span class="op">+</span> num2</span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co"># Stampa del risultato</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="bu">print</span>(<span class="st">"Il risultato è:"</span>, result)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="analisi-comparativa" class="level3" data-number="2.2.3">
 <h3 data-number="2.2.3" class="anchored" data-anchor-id="analisi-comparativa"><span class="header-section-number">2.2.3</span> Analisi comparativa</h3>
@@ -525,14 +525,14 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <p>Nella programmazione procedurale, il codice è suddiviso in unità elementari chiamate <strong>funzioni</strong> e <strong>procedure</strong>. La differenza principale tra le due è la seguente:</p>
 <ul>
 <li><p>Funzione: Una funzione è un blocco di codice che esegue un compito specifico e restituisce un valore. Le funzioni sono utilizzate per calcoli o operazioni che producono un risultato. Ad esempio, una funzione che calcola la somma di due numeri in linguaggio C:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> somma<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a><span class="dt">int</span> somma<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Procedura: Una procedura è simile a una funzione, ma non restituisce un valore. È utilizzata per eseguire azioni o operazioni che non necessitano di un risultato. Ad esempio, una procedura che stampa un messaggio in Pascal:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode pascal code-with-copy"><code class="sourceCode pascal"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">procedure</span> stampaMessaggio;</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">begin</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    writeln(<span class="st">'Ciao, Mondo!'</span>);</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span>;</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource pascal number-lines code-with-copy"><code class="sourceCode pascal"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">procedure</span> stampaMessaggio;</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">begin</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>    writeln(<span class="st">'Ciao, Mondo!'</span>);</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="kw">end</span>;</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="creazione-di-librerie" class="level3" data-number="2.3.2">
@@ -541,33 +541,33 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <p>Esempio di una semplice libreria in C:</p>
 <ul>
 <li><p>File header (<code>mialibreria.h</code>):</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifndef MIALIBRERIA_H</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#define MIALIBRERIA_H</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> somma<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">);</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> stampaMessaggio<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> messaggio<span class="op">);</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1"></a><span class="pp">#ifndef MIALIBRERIA_H</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="pp">#define MIALIBRERIA_H</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="dt">int</span> somma<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">);</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="dt">void</span> stampaMessaggio<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> messaggio<span class="op">);</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="pp">#endif</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>File di implementazione (<code>mialibreria.c</code>):</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"mialibreria.h"</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> somma<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> stampaMessaggio<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> messaggio<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> messaggio<span class="op">);</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1"></a><span class="pp">#include </span><span class="im">"mialibreria.h"</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="dt">int</span> somma<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>    <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="op">}</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="dt">void</span> stampaMessaggio<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> messaggio<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> messaggio<span class="op">);</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>File principale (<code>main.c</code>):</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"mialibreria.h"</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> risultato <span class="op">=</span> somma<span class="op">(</span><span class="dv">5</span><span class="op">,</span> <span class="dv">3</span><span class="op">);</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    stampaMessaggio<span class="op">(</span><span class="st">"Il risultato è:"</span><span class="op">);</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> risultato<span class="op">);</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1"></a><span class="pp">#include </span><span class="im">"mialibreria.h"</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>    <span class="dt">int</span> risultato <span class="op">=</span> somma<span class="op">(</span><span class="dv">5</span><span class="op">,</span> <span class="dv">3</span><span class="op">);</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>    stampaMessaggio<span class="op">(</span><span class="st">"Il risultato è:"</span><span class="op">);</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> risultato<span class="op">);</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 </section>
@@ -600,142 +600,142 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <section id="esempio-in-java" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="esempio-in-java"><span class="header-section-number">2.4.1</span> Esempio in Java</h3>
 <p>In questo esempio, la classe <code>Animale</code> rappresenta una classe base con un attributo <code>nome</code> e un metodo <code>faiVerso</code>. La classe <code>Cane</code> estende <code>Animale</code> e sovrascrive il metodo <code>faiVerso</code> per fornire un’implementazione specifica. La classe <code>Main</code> crea un’istanza di <code>Cane</code> e chiama il metodo <code>faiVerso</code>, dimostrando il polimorfismo e l’ereditarietà:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Definizione della classe base</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Animale <span class="op">{</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> nome<span class="op">;</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Animale</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">nome</span> <span class="op">=</span> nome<span class="op">;</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"L'animale fa un verso"</span><span class="op">);</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">// Definizione della classe derivata</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Cane <span class="kw">extends</span> Animale <span class="op">{</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Cane</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span><span class="op">(</span>nome<span class="op">);</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Il cane abbaia"</span><span class="op">);</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co">// Classe principale</span></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        Animale mioCane <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cane</span><span class="op">(</span><span class="st">"Fido"</span><span class="op">);</span></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>        mioCane<span class="op">.</span><span class="fu">faiVerso</span><span class="op">();</span> <span class="co">// Stampa: Il cane abbaia</span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">// Definizione della classe base</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="kw">class</span> Animale <span class="op">{</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>    <span class="bu">String</span> nome<span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="fu">Animale</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">nome</span> <span class="op">=</span> nome<span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>    <span class="op">}</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a>    <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"L'animale fa un verso"</span><span class="op">);</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a>    <span class="op">}</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="op">}</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="co">// Definizione della classe derivata</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="kw">class</span> Cane <span class="kw">extends</span> Animale <span class="op">{</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a></span>
+<span id="cb8-17"><a href="#cb8-17"></a>    <span class="fu">Cane</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-18"><a href="#cb8-18"></a>        <span class="kw">super</span><span class="op">(</span>nome<span class="op">);</span></span>
+<span id="cb8-19"><a href="#cb8-19"></a>    <span class="op">}</span></span>
+<span id="cb8-20"><a href="#cb8-20"></a></span>
+<span id="cb8-21"><a href="#cb8-21"></a>    <span class="at">@Override</span></span>
+<span id="cb8-22"><a href="#cb8-22"></a>    <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb8-23"><a href="#cb8-23"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Il cane abbaia"</span><span class="op">);</span></span>
+<span id="cb8-24"><a href="#cb8-24"></a>    <span class="op">}</span></span>
+<span id="cb8-25"><a href="#cb8-25"></a><span class="op">}</span></span>
+<span id="cb8-26"><a href="#cb8-26"></a></span>
+<span id="cb8-27"><a href="#cb8-27"></a><span class="co">// Classe principale</span></span>
+<span id="cb8-28"><a href="#cb8-28"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
+<span id="cb8-29"><a href="#cb8-29"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-30"><a href="#cb8-30"></a>        Animale mioCane <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cane</span><span class="op">(</span><span class="st">"Fido"</span><span class="op">);</span></span>
+<span id="cb8-31"><a href="#cb8-31"></a>        mioCane<span class="op">.</span><span class="fu">faiVerso</span><span class="op">();</span> <span class="co">// Stampa: Il cane abbaia</span></span>
+<span id="cb8-32"><a href="#cb8-32"></a>    <span class="op">}</span></span>
+<span id="cb8-33"><a href="#cb8-33"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Vediamo come implementare il medesimo esempio con una classe astratta in Java. <code>Animale</code> è la classe astratta, cioè che non può essere istanziata in un oggetto e <code>Cane</code> è una classe concreta che la estende:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Definizione della classe astratta</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">abstract</span> <span class="kw">class</span> Animale <span class="op">{</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> nome<span class="op">;</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Animale</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">nome</span> <span class="op">=</span> nome<span class="op">;</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Metodo astratto</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">abstract</span> <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">();</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Metodo concreto</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">descrizione</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"L'animale si chiama "</span> <span class="op">+</span> nome<span class="op">);</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">// Definizione della classe derivata</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Cane <span class="kw">extends</span> Animale <span class="op">{</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Cane</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span><span class="op">(</span>nome<span class="op">);</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Il cane abbaia"</span><span class="op">);</span></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="co">// Classe principale</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>        Animale mioCane <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cane</span><span class="op">(</span><span class="st">"Fido"</span><span class="op">);</span></span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        mioCane<span class="op">.</span><span class="fu">descrizione</span><span class="op">();</span> <span class="co">// Stampa: L'animale si chiama Fido</span></span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>        mioCane<span class="op">.</span><span class="fu">faiVerso</span><span class="op">();</span>    <span class="co">// Stampa: Il cane abbaia</span></span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">// Definizione della classe astratta</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="kw">abstract</span> <span class="kw">class</span> Animale <span class="op">{</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>    <span class="bu">String</span> nome<span class="op">;</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a></span>
+<span id="cb9-5"><a href="#cb9-5"></a>    <span class="fu">Animale</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">nome</span> <span class="op">=</span> nome<span class="op">;</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>    <span class="op">}</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a></span>
+<span id="cb9-9"><a href="#cb9-9"></a>    <span class="co">// Metodo astratto</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>    <span class="kw">abstract</span> <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">();</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a></span>
+<span id="cb9-12"><a href="#cb9-12"></a>    <span class="co">// Metodo concreto</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a>    <span class="dt">void</span> <span class="fu">descrizione</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb9-14"><a href="#cb9-14"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"L'animale si chiama "</span> <span class="op">+</span> nome<span class="op">);</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a>    <span class="op">}</span></span>
+<span id="cb9-16"><a href="#cb9-16"></a><span class="op">}</span></span>
+<span id="cb9-17"><a href="#cb9-17"></a></span>
+<span id="cb9-18"><a href="#cb9-18"></a><span class="co">// Definizione della classe derivata</span></span>
+<span id="cb9-19"><a href="#cb9-19"></a><span class="kw">class</span> Cane <span class="kw">extends</span> Animale <span class="op">{</span></span>
+<span id="cb9-20"><a href="#cb9-20"></a></span>
+<span id="cb9-21"><a href="#cb9-21"></a>    <span class="fu">Cane</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-22"><a href="#cb9-22"></a>        <span class="kw">super</span><span class="op">(</span>nome<span class="op">);</span></span>
+<span id="cb9-23"><a href="#cb9-23"></a>    <span class="op">}</span></span>
+<span id="cb9-24"><a href="#cb9-24"></a></span>
+<span id="cb9-25"><a href="#cb9-25"></a>    <span class="at">@Override</span></span>
+<span id="cb9-26"><a href="#cb9-26"></a>    <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb9-27"><a href="#cb9-27"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Il cane abbaia"</span><span class="op">);</span></span>
+<span id="cb9-28"><a href="#cb9-28"></a>    <span class="op">}</span></span>
+<span id="cb9-29"><a href="#cb9-29"></a><span class="op">}</span></span>
+<span id="cb9-30"><a href="#cb9-30"></a></span>
+<span id="cb9-31"><a href="#cb9-31"></a><span class="co">// Classe principale</span></span>
+<span id="cb9-32"><a href="#cb9-32"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
+<span id="cb9-33"><a href="#cb9-33"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-34"><a href="#cb9-34"></a>        Animale mioCane <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cane</span><span class="op">(</span><span class="st">"Fido"</span><span class="op">);</span></span>
+<span id="cb9-35"><a href="#cb9-35"></a>        mioCane<span class="op">.</span><span class="fu">descrizione</span><span class="op">();</span> <span class="co">// Stampa: L'animale si chiama Fido</span></span>
+<span id="cb9-36"><a href="#cb9-36"></a>        mioCane<span class="op">.</span><span class="fu">faiVerso</span><span class="op">();</span>    <span class="co">// Stampa: Il cane abbaia</span></span>
+<span id="cb9-37"><a href="#cb9-37"></a>    <span class="op">}</span></span>
+<span id="cb9-38"><a href="#cb9-38"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="template" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="template"><span class="header-section-number">2.4.2</span> Template</h3>
 <p>I template, o generics, non sono specifici dell’OOP, anche se sono spesso associati a essa. I template permettono di scrivere funzioni, classi, e altri costrutti di codice in modo generico, cioè indipendente dal tipo dei dati che manipolano. Questo concetto è particolarmente utile per creare librerie e moduli riutilizzabili e flessibili.</p>
 <p>Ad esempio, definiamo la classe <code>Box</code> nel modo seguente:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> T<span class="op">&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Box <span class="op">{</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    T value<span class="op">;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> setValue<span class="op">(</span>T val<span class="op">)</span> <span class="op">{</span> value <span class="op">=</span> val<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    T getValue<span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> value<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> T<span class="op">&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">class</span> Box <span class="op">{</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>    T value<span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>    <span class="dt">void</span> setValue<span class="op">(</span>T val<span class="op">)</span> <span class="op">{</span> value <span class="op">=</span> val<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>    T getValue<span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="op">};</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Essa può contenere un valore di qualsiasi tipo specificato al momento della creazione dell’istanza per mezzo del template <code>T</code>:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Box contiene un intero</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>Box<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> intBox<span class="op">;</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>intBox<span class="op">.</span>setValue<span class="op">(</span><span class="dv">123</span><span class="op">);</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> x <span class="op">=</span> intBox<span class="op">.</span>getValue<span class="op">();</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Box contiene una stringa</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>Box<span class="op">&lt;</span><span class="bu">std::</span>string<span class="op">&gt;</span> stringBox<span class="op">;</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>stringBox<span class="op">.</span>setValue<span class="op">(</span><span class="st">"Hello, World!"</span><span class="op">);</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string str <span class="op">=</span> stringBox<span class="op">.</span>getValue<span class="op">();</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">// Box contiene un intero</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>Box<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> intBox<span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>intBox<span class="op">.</span>setValue<span class="op">(</span><span class="dv">123</span><span class="op">);</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="dt">int</span> x <span class="op">=</span> intBox<span class="op">.</span>getValue<span class="op">();</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="co">// Box contiene una stringa</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>Box<span class="op">&lt;</span><span class="bu">std::</span>string<span class="op">&gt;</span> stringBox<span class="op">;</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a>stringBox<span class="op">.</span>setValue<span class="op">(</span><span class="st">"Hello, World!"</span><span class="op">);</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="bu">std::</span>string str <span class="op">=</span> stringBox<span class="op">.</span>getValue<span class="op">();</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Anche nei linguaggi non orientati agli oggetti, i template trovano applicazione. Ad esempio, in Rust, un linguaggio di programmazione sistemistica non puramente OOP, il codice seguente restituisce il valore più grande di una lista:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> largest<span class="op">&lt;</span>T<span class="op">:</span> <span class="bu">PartialOrd</span><span class="op">&gt;</span>(list<span class="op">:</span> <span class="op">&amp;</span>[T]) <span class="op">-&gt;</span> <span class="op">&amp;</span>T <span class="op">{</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> largest <span class="op">=</span> <span class="op">&amp;</span>list[<span class="dv">0</span>]<span class="op">;</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> list <span class="op">{</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> item <span class="op">&gt;</span> largest <span class="op">{</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>            largest <span class="op">=</span> item<span class="op">;</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    largest</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> numbers <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">34</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">65</span>]<span class="op">;</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> max <span class="op">=</span> largest(<span class="op">&amp;</span>numbers)<span class="op">;</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"The largest number is {}"</span><span class="op">,</span> max)<span class="op">;</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource rust number-lines code-with-copy"><code class="sourceCode rust"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">fn</span> largest<span class="op">&lt;</span>T<span class="op">:</span> <span class="bu">PartialOrd</span><span class="op">&gt;</span>(list<span class="op">:</span> <span class="op">&amp;</span>[T]) <span class="op">-&gt;</span> <span class="op">&amp;</span>T <span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>    <span class="kw">let</span> <span class="kw">mut</span> largest <span class="op">=</span> <span class="op">&amp;</span>list[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>    <span class="cf">for</span> item <span class="kw">in</span> list <span class="op">{</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>        <span class="cf">if</span> item <span class="op">&gt;</span> largest <span class="op">{</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>            largest <span class="op">=</span> item<span class="op">;</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>        <span class="op">}</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>    <span class="op">}</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a>    largest</span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="op">}</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a></span>
+<span id="cb12-11"><a href="#cb12-11"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a>    <span class="kw">let</span> numbers <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">34</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">65</span>]<span class="op">;</span></span>
+<span id="cb12-13"><a href="#cb12-13"></a>    <span class="kw">let</span> max <span class="op">=</span> largest(<span class="op">&amp;</span>numbers)<span class="op">;</span></span>
+<span id="cb12-14"><a href="#cb12-14"></a>    <span class="pp">println!</span>(<span class="st">"The largest number is {}"</span><span class="op">,</span> max)<span class="op">;</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="metaprogrammazione" class="level3" data-number="2.4.3">
 <h3 data-number="2.4.3" class="anchored" data-anchor-id="metaprogrammazione"><span class="header-section-number">2.4.3</span> Metaprogrammazione</h3>
 <p>La metaprogrammazione è un paradigma che consente al programma di trattare il codice come dati, permettendo al codice di generare, manipolare o eseguire altro codice. Anche questo concetto non è esclusivo dell’OOP. In C++, la metaprogrammazione è strettamente legata ai template. Un esempio classico è la template metaprogramming (TMP), che permette di eseguire calcoli a tempo di compilazione. Un esempio è il codice seguente di calcolo del fattoriale:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="dt">int</span> N<span class="op">&gt;</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Factorial <span class="op">{</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">static</span> <span class="at">const</span> <span class="dt">int</span> value <span class="op">=</span> N <span class="op">*</span> Factorial<span class="op">&lt;</span>N <span class="op">-</span> <span class="dv">1</span><span class="op">&gt;::</span>value<span class="op">;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span><span class="op">&lt;&gt;</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Factorial<span class="op">&lt;</span><span class="dv">0</span><span class="op">&gt;</span> <span class="op">{</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">static</span> <span class="at">const</span> <span class="dt">int</span> value <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="dt">int</span> N<span class="op">&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="kw">struct</span> Factorial <span class="op">{</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>    <span class="at">static</span> <span class="at">const</span> <span class="dt">int</span> value <span class="op">=</span> N <span class="op">*</span> Factorial<span class="op">&lt;</span>N <span class="op">-</span> <span class="dv">1</span><span class="op">&gt;::</span>value<span class="op">;</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="op">};</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="kw">template</span><span class="op">&lt;&gt;</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="kw">struct</span> Factorial<span class="op">&lt;</span><span class="dv">0</span><span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>    <span class="at">static</span> <span class="at">const</span> <span class="dt">int</span> value <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="op">};</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>La metaprogrammazione è presente anche in linguaggi non OOP come Lisp, che utilizza le macro per trasformare e generare codice.</p>
 <p>Nel codice sotto proposto è definita la macro <code>when</code>, che prende due parametri in input, cioè <code>test</code> e <code>body</code>, ove <code>test</code> è un’espressione condizionale e <code>body</code> un insieme di istruzioni da eeseguire se la condizione è vera:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode commonlisp code-with-copy"><code class="sourceCode commonlisp"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">defmacro</span><span class="fu"> when </span>(test &amp;<span class="kw">rest</span> body)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  `(<span class="kw">if</span> ,test</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>       (<span class="kw">progn</span> ,@body)))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb14-1"><a href="#cb14-1"></a>(<span class="kw">defmacro</span><span class="fu"> when </span>(test &amp;<span class="kw">rest</span> body)</span>
+<span id="cb14-2"><a href="#cb14-2"></a>  `(<span class="kw">if</span> ,test</span>
+<span id="cb14-3"><a href="#cb14-3"></a>       (<span class="kw">progn</span> ,@body)))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Vediamo un esempio pratico di come si utilizza la macro <code>when</code>. Il test è valutare se <code>x</code> è maggiore di <code>10</code> e, nel caso, stampare <code>"x is greater than 10"</code> e poi assegnare <code>x</code> a <code>0</code>. Chiamiamo la macro con i due parametri:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode commonlisp code-with-copy"><code class="sourceCode commonlisp"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">when</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">setf</span> x <span class="dv">0</span>))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb15-1"><a href="#cb15-1"></a>(<span class="kw">when</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)</span>
+<span id="cb15-2"><a href="#cb15-2"></a>  (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3"></a>  (<span class="kw">setf</span> x <span class="dv">0</span>))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Questo viene espanso in:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode commonlisp code-with-copy"><code class="sourceCode commonlisp"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">if</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">progn</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>      (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>      (<span class="kw">setf</span> x <span class="dv">0</span>)))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb16-1"><a href="#cb16-1"></a>(<span class="kw">if</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>    (<span class="kw">progn</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>      (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4"></a>      (<span class="kw">setf</span> x <span class="dv">0</span>)))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="paradigma-dichiarativo" class="level2" data-number="2.5">
@@ -786,16 +786,16 @@ Nota
 <section id="esempi" class="level3" data-number="2.5.2">
 <h3 data-number="2.5.2" class="anchored" data-anchor-id="esempi"><span class="header-section-number">2.5.2</span> Esempi</h3>
 <p>Esempio di una query SQL che estrae tutti i nomi degli utenti con età maggiore di 30:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> nome</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> utenti</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> età <span class="op">&gt;</span> <span class="dv">30</span>;</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">SELECT</span> nome</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="kw">FROM</span> utenti</span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="kw">WHERE</span> età <span class="op">&gt;</span> <span class="dv">30</span>;</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In Prolog, si definiscono fatti e regole che descrivono relazioni logiche. Il motore di inferenza di Prolog utilizza queste definizioni per risolvere query, senza richiedere un algoritmo dettagliato. Di seguito, sono definiti due fatti (le prime due righe) e due regole (la terza e la quarta) e quindi si effettua una query che dà come risultato <code>true</code>:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode prolog code-with-copy"><code class="sourceCode prolog"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>genitore(padre<span class="kw">,</span> figlio)<span class="kw">.</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>genitore(madre<span class="kw">,</span> figlio)<span class="kw">.</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Z</span>)<span class="kw">,</span> antenato(<span class="dt">Z</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">?-</span> antenato(padre<span class="kw">,</span> figlio)<span class="kw">.</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb18-1"><a href="#cb18-1"></a>genitore(padre<span class="kw">,</span> figlio)<span class="kw">.</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>genitore(madre<span class="kw">,</span> figlio)<span class="kw">.</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Z</span>)<span class="kw">,</span> antenato(<span class="dt">Z</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="fu">?-</span> antenato(padre<span class="kw">,</span> figlio)<span class="kw">.</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="paradigma-funzionale" class="level2" data-number="2.6">
@@ -827,18 +827,18 @@ Nota
 <section id="esempio-in-haskell" class="level3" data-number="2.6.1">
 <h3 data-number="2.6.1" class="anchored" data-anchor-id="esempio-in-haskell"><span class="header-section-number">2.6.1</span> Esempio in Haskell</h3>
 <p>Di seguito due funzioni, la prima <code>sumToN</code> è pura e somma i primi <code>n</code> numeri. <code>(*2)</code> è una funzione che prende un argomento e lo moltiplica per 2 e ciò rende la seconda funzione <code>applyFunction</code> una vera funzione di ordine superiore, poiché accetta <code>(*2)</code> come argomento oltre ad una lista, producendo come risultato il raddoppio di tutti i suoi elementi:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode haskell code-with-copy"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Definizione di una funzione pura che calcola la somma dei numeri da 1 a n</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ot">sumToN ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>sumToN n <span class="ot">=</span> <span class="fu">sum</span> [<span class="dv">1</span><span class="op">..</span>n]</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- Funzione di ordine superiore che accetta una funzione e una lista</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="ot">applyFunction ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>applyFunction f lst <span class="ot">=</span> <span class="fu">map</span> f lst</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">-- Utilizzo delle funzioni</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span> (sumToN <span class="dv">10</span>) <span class="co">-- Stampa 55</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span> (applyFunction (<span class="op">*</span><span class="dv">2</span>) [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]) <span class="co">-- Stampa [2, 4, 6, 8]</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource haskell number-lines code-with-copy"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1"></a><span class="co">-- Definizione di una funzione pura che calcola la somma dei numeri da 1 a n</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="ot">sumToN ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>sumToN n <span class="ot">=</span> <span class="fu">sum</span> [<span class="dv">1</span><span class="op">..</span>n]</span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="co">-- Funzione di ordine superiore che accetta una funzione e una lista</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="ot">applyFunction ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]</span>
+<span id="cb19-7"><a href="#cb19-7"></a>applyFunction f lst <span class="ot">=</span> <span class="fu">map</span> f lst</span>
+<span id="cb19-8"><a href="#cb19-8"></a></span>
+<span id="cb19-9"><a href="#cb19-9"></a><span class="co">-- Utilizzo delle funzioni</span></span>
+<span id="cb19-10"><a href="#cb19-10"></a>main <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb19-11"><a href="#cb19-11"></a>    <span class="fu">print</span> (sumToN <span class="dv">10</span>) <span class="co">-- Stampa 55</span></span>
+<span id="cb19-12"><a href="#cb19-12"></a>    <span class="fu">print</span> (applyFunction (<span class="op">*</span><span class="dv">2</span>) [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]) <span class="co">-- Stampa [2, 4, 6, 8]</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="linguaggi-1" class="level3" data-number="2.6.2">
 <h3 data-number="2.6.2" class="anchored" data-anchor-id="linguaggi-1"><span class="header-section-number">2.6.2</span> Linguaggi</h3>

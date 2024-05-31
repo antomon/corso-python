@@ -349,12 +349,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="6.1" class="anchored" data-anchor-id="righe"><span class="header-section-number">6.1</span> Righe</h2>
 <p>Le righe sono di due tipi: <strong>logiche</strong> e <strong>fisiche</strong>. Le seconde sono le più facilmente individuabili nel testo di un programma, perché sono terminate da un carattere di a capo. Una o più righe fisiche costituiscono una riga logica che corrisponde ad una istruzione. Esiste una eccezione, poco usata e consigliata in Python, per cui una riga fisica contiene più istruzioni separate da <code>;</code>.</p>
 <p>Vi sono due modi per dividere una riga logica in righe fisiche. Il primo è terminare con il backslash (<code>\</code>, poco usata la traduzione <em>barra rovesciata</em> o simili) tutte le righe fisiche meno l’ultima (intendendo con ciò che il backslash precede l’a capo):</p>
-<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> <span class="op">\</span></span>
-<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a>     <span class="dv">3</span></span>
-<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">5</span> <span class="kw">and</span> <span class="op">\</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a>   x <span class="op">&lt;</span> <span class="dv">9</span>:</span>
-<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"5 &lt; x &lt; 9"</span>) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1"></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> <span class="op">\</span></span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2"></a>     <span class="dv">3</span></span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">5</span> <span class="kw">and</span> <span class="op">\</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5"></a>   x <span class="op">&lt;</span> <span class="dv">9</span>:</span>
+<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6"></a>  <span class="bu">print</span>(<span class="st">"5 &lt; x &lt; 9"</span>) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
@@ -371,15 +371,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dl>
 <p>Il secondo è per mezzo di parentesi, giacché tutte le righe fisiche che seguono una con parentesi tonda <code>(</code>, quadra <code>[</code> o graffa <code>{</code> aperta, fino a quella con l’analoga parentesi chiusa, sono unite in una logica. Le regole di indentazione, che vedremo nel seguito, si applicano solo alla prima riga fisica.</p>
 <p>Esempi sintatticamente corretti ma sconsigliabili, per l’inerente illeggibilità:</p>
-<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> (<span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span></span>
-<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>     <span class="op">+</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span>)</span>
-<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, </span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a>           <span class="dv">3</span>, <span class="dv">4</span> <span class="op">+</span></span>
-<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a>      <span class="dv">5</span>] </span>
-<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-2-8" class="code-annotation-target"><a href="#annotated-cell-2-8" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span></span>
-<span id="annotated-cell-2-9"><a href="#annotated-cell-2-9" aria-hidden="true" tabindex="-1"></a>     , <span class="dv">3</span>, <span class="dv">4</span>]   </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1"></a>x <span class="op">=</span> (<span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span></span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2"></a>     <span class="op">+</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span>)</span>
+<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3"></a></span>
+<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4"></a>y <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5"></a>           <span class="dv">3</span>, <span class="dv">4</span> <span class="op">+</span></span>
+<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6"></a>      <span class="dv">5</span>] </span>
+<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-2-8" class="code-annotation-target"><a href="#annotated-cell-2-8"></a>z <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span></span>
+<span id="annotated-cell-2-9"><a href="#annotated-cell-2-9"></a>     , <span class="dv">3</span>, <span class="dv">4</span>]   </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
@@ -399,12 +399,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="6.2" class="anchored" data-anchor-id="commenti"><span class="header-section-number">6.2</span> Commenti</h2>
 <p>Un commento inizia con un carattere cancelletto (<code>#</code>) e termina alla fine della riga fisica. I commenti non possono coesistere con il backslash come separatore di riga logica, giacché entrambi devono chiudere la riga fisica.</p>
 <p>Esempi non sintatticamente corretti:</p>
-<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> \ <span class="co"># Commento</span></span>
-<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>     <span class="dv">3</span></span>
-<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">5</span> <span class="kw">and</span> <span class="co"># Commento \</span></span>
-<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a>   x <span class="op">&lt;</span> <span class="dv">9</span>: </span>
-<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"5 &lt; x &lt; 9"</span>) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> \ <span class="co"># Commento</span></span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2"></a>     <span class="dv">3</span></span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">5</span> <span class="kw">and</span> <span class="co"># Commento \</span></span>
+<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5"></a>   x <span class="op">&lt;</span> <span class="dv">9</span>: </span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6"></a>  <span class="bu">print</span>(<span class="st">"5 &lt; x &lt; 9"</span>) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
@@ -423,10 +423,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Alcuni esempi:</p>
 <ul>
 <li><p>Definizione di una funzione:</p>
-<div class="sourceCode" id="annotated-cell-13"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> somma(a, b):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-13-2" class="code-annotation-target"><a href="#annotated-cell-13-2" aria-hidden="true" tabindex="-1"></a>  risultato <span class="op">=</span> a <span class="op">+</span> b</span>
-<span id="annotated-cell-13-3"><a href="#annotated-cell-13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-13-4"><a href="#annotated-cell-13-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> risultato </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-13"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1"></a><span class="kw">def</span> somma(a, b):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-13-2" class="code-annotation-target"><a href="#annotated-cell-13-2"></a>  risultato <span class="op">=</span> a <span class="op">+</span> b</span>
+<span id="annotated-cell-13-3"><a href="#annotated-cell-13-3"></a></span>
+<span id="annotated-cell-13-4"><a href="#annotated-cell-13-4"></a>  <span class="cf">return</span> risultato </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
 <dd>
@@ -438,16 +438,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl></li>
 <li><p>Test di condizione:</p>
-<div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
-<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-4" class="code-annotation-target"><a href="#annotated-cell-14-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x è negativo"</span>)</span>
-<span id="annotated-cell-14-5"><a href="#annotated-cell-14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">0</span>: </span>
-<span id="annotated-cell-14-7"><a href="#annotated-cell-14-7" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">"x è zero"</span>) </span>
-<span id="annotated-cell-14-8"><a href="#annotated-cell-14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-14-9"><a href="#annotated-cell-14-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: </span>
-<span id="annotated-cell-14-10"><a href="#annotated-cell-14-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"x è positivo"</span>) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3"></a><span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-4" class="code-annotation-target"><a href="#annotated-cell-14-4"></a>    <span class="bu">print</span>(<span class="st">"x è negativo"</span>)</span>
+<span id="annotated-cell-14-5"><a href="#annotated-cell-14-5"></a></span>
+<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">0</span>: </span>
+<span id="annotated-cell-14-7"><a href="#annotated-cell-14-7"></a>      <span class="bu">print</span>(<span class="st">"x è zero"</span>) </span>
+<span id="annotated-cell-14-8"><a href="#annotated-cell-14-8"></a></span>
+<span id="annotated-cell-14-9"><a href="#annotated-cell-14-9"></a><span class="cf">else</span>: </span>
+<span id="annotated-cell-14-10"><a href="#annotated-cell-14-10"></a>        <span class="bu">print</span>(<span class="st">"x è positivo"</span>) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
 <dd>
@@ -476,57 +476,57 @@ Attenzione
 <section id="token" class="level2 page-columns page-full" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="token"><span class="header-section-number">6.4</span> Token</h2>
 <p>Le righe logiche sono composte da token che si categorizzano in parole chiave, identificatori, operatori, delimitatori e letterali. I token sono separati da un numero arbitrario di spazi e tabulazioni. Ad esempio:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span>  <span class="op">+</span>  <span class="dv">2</span>  <span class="op">+</span>  <span class="dv">3</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>    x <span class="op">&gt;</span> <span class="dv">5</span>    <span class="kw">and</span>    x <span class="op">&lt;</span> <span class="dv">9</span>: </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"5 &lt; x &lt; 9"</span>) </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>x <span class="op">=</span> <span class="dv">1</span>  <span class="op">+</span>  <span class="dv">2</span>  <span class="op">+</span>  <span class="dv">3</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="cf">if</span>    x <span class="op">&gt;</span> <span class="dv">5</span>    <span class="kw">and</span>    x <span class="op">&lt;</span> <span class="dv">9</span>: </span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="bu">print</span>(<span class="st">"5 &lt; x &lt; 9"</span>) </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="identificatori" class="level3" data-number="6.4.1">
 <h3 data-number="6.4.1" class="anchored" data-anchor-id="identificatori"><span class="header-section-number">6.4.1</span> Identificatori</h3>
 <p>Un identificatore è un nome assegnato ad un oggetto, cioè una variabile, una funzione, una classe, un modulo e altro. Esso è <em>case sensitive</em> cioè <code>python</code> e <code>Python</code> sono due identificatori diversi.</p>
 <p>Alcuni esempi:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>intero <span class="op">=</span> <span class="dv">42</span>  <span class="co"># Identificatore di numero intero</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>decimale <span class="op">=</span> <span class="fl">3.14</span>  <span class="co"># Identificatore di numero decimale</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>testo <span class="op">=</span> <span class="st">"Ciao, mondo!"</span>  <span class="co"># Identificatore di stringa</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>lista <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]  <span class="co"># Identificatore di lista</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>dizionario <span class="op">=</span> {<span class="st">"chiave"</span>: <span class="st">"valore"</span>}  <span class="co"># Identificatore di dizionario</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mia_funzione(): <span class="co"># Identificatore di funzione</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"Questa è una funzione"</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Classe</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MiaClasse: <span class="co"># Identificatore di classe</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, valore): <span class="co"># Identificatore di metodo e parametro</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.valore <span class="op">=</span> valore  <span class="co"># Identificatore di attributo</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> metodo(<span class="va">self</span>):</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Questo è un metodo della classe"</span>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math  <span class="co"># Identificatore di modulo</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mio_generatore(): <span class="co"># Identificatore di generatore</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">yield</span> <span class="dv">1</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">yield</span> <span class="dv">2</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">yield</span> <span class="dv">3</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>mio_oggetto <span class="op">=</span> MiaClasse(<span class="dv">10</span>)  <span class="co"># Identificatore di istanza</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>intero <span class="op">=</span> <span class="dv">42</span>  <span class="co"># Identificatore di numero intero</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>decimale <span class="op">=</span> <span class="fl">3.14</span>  <span class="co"># Identificatore di numero decimale</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>testo <span class="op">=</span> <span class="st">"Ciao, mondo!"</span>  <span class="co"># Identificatore di stringa</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>lista <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]  <span class="co"># Identificatore di lista</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>dizionario <span class="op">=</span> {<span class="st">"chiave"</span>: <span class="st">"valore"</span>}  <span class="co"># Identificatore di dizionario</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="kw">def</span> mia_funzione(): <span class="co"># Identificatore di funzione</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="bu">print</span>(<span class="st">"Questa è una funzione"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co"># Classe</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="kw">class</span> MiaClasse: <span class="co"># Identificatore di classe</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, valore): <span class="co"># Identificatore di metodo e parametro</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>    <span class="va">self</span>.valore <span class="op">=</span> valore  <span class="co"># Identificatore di attributo</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>    </span>
+<span id="cb2-15"><a href="#cb2-15"></a>  <span class="kw">def</span> metodo(<span class="va">self</span>):</span>
+<span id="cb2-16"><a href="#cb2-16"></a>    <span class="bu">print</span>(<span class="st">"Questo è un metodo della classe"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17"></a></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="im">import</span> math  <span class="co"># Identificatore di modulo</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="kw">def</span> mio_generatore(): <span class="co"># Identificatore di generatore</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a>  <span class="cf">yield</span> <span class="dv">1</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a>  <span class="cf">yield</span> <span class="dv">2</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>  <span class="cf">yield</span> <span class="dv">3</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a></span>
+<span id="cb2-25"><a href="#cb2-25"></a>mio_oggetto <span class="op">=</span> MiaClasse(<span class="dv">10</span>)  <span class="co"># Identificatore di istanza</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="parole-chiave" class="level3" data-number="6.4.2">
 <h3 data-number="6.4.2" class="anchored" data-anchor-id="parole-chiave"><span class="header-section-number">6.4.2</span> Parole chiave</h3>
 <p>Le parole chiave sono parole che non possono essere usate per scopi diversi da quelli predefiniti nel linguaggio e, quindi, non possono essere usate come identificatori. Ad esempio, <code>True</code> che rappresenta il valore logico di verità, non può essere usato per definire ad esempio una variabile.</p>
 <p>Esistono anche delle parole chiave contestuali, cioè che sono tali solo in alcuni contesti ed altrove possono essee usate come identificatori. Usiamo il codice seguente per ottenere una lista di parole chiave e parole chiave contestuali:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> keyword</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Otteniamo la lista delle parole chiave</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>parole_chiave <span class="op">=</span> keyword.kwlist</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Otteniamo la lista delle parole chiave contestuali</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>parole_chiave_contestuale <span class="op">=</span> keyword.softkwlist</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Stampiamo la lista delle parole chiave</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parole_chiave)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Stampiamo la lista delle parole chiave contestuali</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parole_chiave_contestuale)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> keyword</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># Otteniamo la lista delle parole chiave</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>parole_chiave <span class="op">=</span> keyword.kwlist</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># Otteniamo la lista delle parole chiave contestuali</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>parole_chiave_contestuale <span class="op">=</span> keyword.softkwlist</span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co"># Stampiamo la lista delle parole chiave</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="bu">print</span>(parole_chiave)</span>
+<span id="cb3-11"><a href="#cb3-11"></a></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co"># Stampiamo la lista delle parole chiave contestuali</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="bu">print</span>(parole_chiave_contestuale)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Nella tabella seguente invece un elenco completo con breve descrizione:</p>
 <table class="caption-top table">
 <colgroup>
@@ -749,26 +749,26 @@ Attenzione
 <p>Esempi di uso di parole chiave contestuali:</p>
 <ul>
 <li><p><code>match</code>, <code>case</code> e <code>_</code>:</p>
-<div class="sourceCode" id="annotated-cell-15"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_value(value):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">match</span> value:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-15-3" class="code-annotation-target"><a href="#annotated-cell-15-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="dv">1</span>:</span>
-<span id="annotated-cell-15-4"><a href="#annotated-cell-15-4" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">"Uno"</span>)</span>
-<span id="annotated-cell-15-5"><a href="#annotated-cell-15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-15-6"><a href="#annotated-cell-15-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="dv">2</span>:</span>
-<span id="annotated-cell-15-7"><a href="#annotated-cell-15-7" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">"Due"</span>)</span>
-<span id="annotated-cell-15-8"><a href="#annotated-cell-15-8" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-15-9" class="code-annotation-target"><a href="#annotated-cell-15-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> _:</span>
-<span id="annotated-cell-15-10"><a href="#annotated-cell-15-10" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">"Altro"</span>)</span>
-<span id="annotated-cell-15-11"><a href="#annotated-cell-15-11" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-15-12" class="code-annotation-target"><a href="#annotated-cell-15-12" aria-hidden="true" tabindex="-1"></a>match <span class="op">=</span> <span class="st">"Questo è un identificatore valido"</span></span>
-<span id="annotated-cell-15-13"><a href="#annotated-cell-15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-15-14"><a href="#annotated-cell-15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Test della funzione</span></span>
-<span id="annotated-cell-15-15"><a href="#annotated-cell-15-15" aria-hidden="true" tabindex="-1"></a>process_value(<span class="dv">1</span>)  <span class="co"># Output: Uno</span></span>
-<span id="annotated-cell-15-16"><a href="#annotated-cell-15-16" aria-hidden="true" tabindex="-1"></a>process_value(<span class="dv">2</span>)  <span class="co"># Output: Due</span></span>
-<span id="annotated-cell-15-17"><a href="#annotated-cell-15-17" aria-hidden="true" tabindex="-1"></a>process_value(<span class="dv">3</span>)  <span class="co"># Output: Altro</span></span>
-<span id="annotated-cell-15-18"><a href="#annotated-cell-15-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-15-19"><a href="#annotated-cell-15-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Stampa della variabile `match`</span></span>
-<span id="annotated-cell-15-20"><a href="#annotated-cell-15-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(match)  <span class="co"># Output: Questo è un identificatore valido</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-15"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1"></a><span class="kw">def</span> process_value(value):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2"></a>  <span class="cf">match</span> value:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-15-3" class="code-annotation-target"><a href="#annotated-cell-15-3"></a>    <span class="cf">case</span> <span class="dv">1</span>:</span>
+<span id="annotated-cell-15-4"><a href="#annotated-cell-15-4"></a>      <span class="bu">print</span>(<span class="st">"Uno"</span>)</span>
+<span id="annotated-cell-15-5"><a href="#annotated-cell-15-5"></a></span>
+<span id="annotated-cell-15-6"><a href="#annotated-cell-15-6"></a>    <span class="cf">case</span> <span class="dv">2</span>:</span>
+<span id="annotated-cell-15-7"><a href="#annotated-cell-15-7"></a>      <span class="bu">print</span>(<span class="st">"Due"</span>)</span>
+<span id="annotated-cell-15-8"><a href="#annotated-cell-15-8"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-15-9" class="code-annotation-target"><a href="#annotated-cell-15-9"></a>    <span class="cf">case</span> _:</span>
+<span id="annotated-cell-15-10"><a href="#annotated-cell-15-10"></a>      <span class="bu">print</span>(<span class="st">"Altro"</span>)</span>
+<span id="annotated-cell-15-11"><a href="#annotated-cell-15-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-15-12" class="code-annotation-target"><a href="#annotated-cell-15-12"></a>match <span class="op">=</span> <span class="st">"Questo è un identificatore valido"</span></span>
+<span id="annotated-cell-15-13"><a href="#annotated-cell-15-13"></a></span>
+<span id="annotated-cell-15-14"><a href="#annotated-cell-15-14"></a><span class="co"># Test della funzione</span></span>
+<span id="annotated-cell-15-15"><a href="#annotated-cell-15-15"></a>process_value(<span class="dv">1</span>)  <span class="co"># Output: Uno</span></span>
+<span id="annotated-cell-15-16"><a href="#annotated-cell-15-16"></a>process_value(<span class="dv">2</span>)  <span class="co"># Output: Due</span></span>
+<span id="annotated-cell-15-17"><a href="#annotated-cell-15-17"></a>process_value(<span class="dv">3</span>)  <span class="co"># Output: Altro</span></span>
+<span id="annotated-cell-15-18"><a href="#annotated-cell-15-18"></a></span>
+<span id="annotated-cell-15-19"><a href="#annotated-cell-15-19"></a><span class="co"># Stampa della variabile `match`</span></span>
+<span id="annotated-cell-15-20"><a href="#annotated-cell-15-20"></a><span class="bu">print</span>(match)  <span class="co"># Output: Questo è un identificatore valido</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
 <dd>
@@ -792,21 +792,21 @@ Attenzione
 </dd>
 </dl></li>
 <li><p><code>type</code>:</p>
-<div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> TypeAlias</span>
-<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-3" class="code-annotation-target"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span> Point <span class="op">=</span> <span class="bu">tuple</span>[<span class="bu">float</span>, <span class="bu">float</span>]</span>
-<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-16-5"><a href="#annotated-cell-16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilizzo dell'alias di tipo</span></span>
-<span id="annotated-cell-16-6"><a href="#annotated-cell-16-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> distanza(p1: Point, p2: Point) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
-<span id="annotated-cell-16-7"><a href="#annotated-cell-16-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> ((p1[<span class="dv">0</span>] <span class="op">-</span> p2[<span class="dv">0</span>]) <span class="op">**</span> <span class="dv">2</span> <span class="op">+</span> (p1[<span class="dv">1</span>] <span class="op">-</span> p2[<span class="dv">1</span>]) <span class="op">**</span> <span class="dv">2</span>) <span class="op">**</span> <span class="fl">0.5</span></span>
-<span id="annotated-cell-16-8"><a href="#annotated-cell-16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-16-9"><a href="#annotated-cell-16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Test della funzione con alias di tipo</span></span>
-<span id="annotated-cell-16-10"><a href="#annotated-cell-16-10" aria-hidden="true" tabindex="-1"></a>punto1: Point <span class="op">=</span> (<span class="fl">1.0</span>, <span class="fl">2.0</span>) </span>
-<span id="annotated-cell-16-11"><a href="#annotated-cell-16-11" aria-hidden="true" tabindex="-1"></a>punto2: Point <span class="op">=</span> (<span class="fl">4.0</span>, <span class="fl">6.0</span>)</span>
-<span id="annotated-cell-16-12"><a href="#annotated-cell-16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-16-13"><a href="#annotated-cell-16-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(distanza(punto1, punto2))  <span class="co"># Output: 5.0</span></span>
-<span id="annotated-cell-16-14"><a href="#annotated-cell-16-14" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-16-15" class="code-annotation-target"><a href="#annotated-cell-16-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(punto1)) <span class="co"># Output: &lt;class 'tuple'&gt;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1"></a><span class="im">from</span> typing <span class="im">import</span> TypeAlias</span>
+<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-3" class="code-annotation-target"><a href="#annotated-cell-16-3"></a><span class="bu">type</span> Point <span class="op">=</span> <span class="bu">tuple</span>[<span class="bu">float</span>, <span class="bu">float</span>]</span>
+<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4"></a></span>
+<span id="annotated-cell-16-5"><a href="#annotated-cell-16-5"></a><span class="co"># Utilizzo dell'alias di tipo</span></span>
+<span id="annotated-cell-16-6"><a href="#annotated-cell-16-6"></a><span class="kw">def</span> distanza(p1: Point, p2: Point) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="annotated-cell-16-7"><a href="#annotated-cell-16-7"></a>  <span class="cf">return</span> ((p1[<span class="dv">0</span>] <span class="op">-</span> p2[<span class="dv">0</span>]) <span class="op">**</span> <span class="dv">2</span> <span class="op">+</span> (p1[<span class="dv">1</span>] <span class="op">-</span> p2[<span class="dv">1</span>]) <span class="op">**</span> <span class="dv">2</span>) <span class="op">**</span> <span class="fl">0.5</span></span>
+<span id="annotated-cell-16-8"><a href="#annotated-cell-16-8"></a></span>
+<span id="annotated-cell-16-9"><a href="#annotated-cell-16-9"></a><span class="co"># Test della funzione con alias di tipo</span></span>
+<span id="annotated-cell-16-10"><a href="#annotated-cell-16-10"></a>punto1: Point <span class="op">=</span> (<span class="fl">1.0</span>, <span class="fl">2.0</span>) </span>
+<span id="annotated-cell-16-11"><a href="#annotated-cell-16-11"></a>punto2: Point <span class="op">=</span> (<span class="fl">4.0</span>, <span class="fl">6.0</span>)</span>
+<span id="annotated-cell-16-12"><a href="#annotated-cell-16-12"></a></span>
+<span id="annotated-cell-16-13"><a href="#annotated-cell-16-13"></a><span class="bu">print</span>(distanza(punto1, punto2))  <span class="co"># Output: 5.0</span></span>
+<span id="annotated-cell-16-14"><a href="#annotated-cell-16-14"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-16-15" class="code-annotation-target"><a href="#annotated-cell-16-15"></a><span class="bu">print</span>(<span class="bu">type</span>(punto1)) <span class="co"># Output: &lt;class 'tuple'&gt;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
@@ -827,13 +827,13 @@ Attenzione
 <li><p><code>_</code>:</p>
 <ul>
 <li><p>Non importato da <code>from module import *</code>: Gli identificatori che iniziano con un singolo underscore non vengono importati con un’istruzione di importazione globale. Questo è un meccanismo per indicare che tali variabili o funzioni sono destinate ad essere <em>private</em> al modulo e non dovrebbero essere usate direttamente da altri moduli. Esempio:</p>
-<div class="sourceCode" id="annotated-cell-17"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nel modulo example.py`</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-17-2" class="code-annotation-target"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a>_private_variable <span class="op">=</span> <span class="st">"Variabile da non esportare'"</span></span>
-<span id="annotated-cell-17-3"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-17-4"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># In altro modulo diverso da example.py</span></span>
-<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> example <span class="im">import</span> <span class="op">*</span></span>
-<span id="annotated-cell-17-6"><a href="#annotated-cell-17-6" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-17-7" class="code-annotation-target"><a href="#annotated-cell-17-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(_private_variable)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-17"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1"></a><span class="co"># Nel modulo example.py`</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-17-2" class="code-annotation-target"><a href="#annotated-cell-17-2"></a>_private_variable <span class="op">=</span> <span class="st">"Variabile da non esportare'"</span></span>
+<span id="annotated-cell-17-3"><a href="#annotated-cell-17-3"></a></span>
+<span id="annotated-cell-17-4"><a href="#annotated-cell-17-4"></a><span class="co"># In altro modulo diverso da example.py</span></span>
+<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5"></a><span class="im">from</span> example <span class="im">import</span> <span class="op">*</span></span>
+<span id="annotated-cell-17-6"><a href="#annotated-cell-17-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-17-7" class="code-annotation-target"><a href="#annotated-cell-17-7"></a><span class="bu">print</span>(_private_variable)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
 <dd>
@@ -846,16 +846,16 @@ Attenzione
 </dl></li>
 <li><p>Pattern nei match: Nel contesto di un pattern di corrispondenza all’interno di un’istruzione <code>match</code>, <code>_</code> è una parola chiave contestuale che denota un <em>wildcard</em> (carattere jolly), coem indicato sopra.</p></li>
 <li><p>Interprete interattivo: L’interprete interattivo rende disponibile il risultato dell’ultima valutazione nella variabile <code>_</code>. Il valore di <code>_</code> è memorizzato nel modulo <a href="https://docs.python.org/3/library/builtins.html"><code>builtins</code></a>, insieme ad altre funzioni e variabili predefinite come <code>print()</code>, permettendo l’accesso globale a <code>_</code> durante una sessione interattiva. Esempio:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="dv">5</span> <span class="op">+</span> <span class="dv">3</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(_)  <span class="co"># Output: 8 (nell'interprete interattivo)</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>result <span class="op">=</span> <span class="dv">5</span> <span class="op">+</span> <span class="dv">3</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="bu">print</span>(_)  <span class="co"># Output: 8 (nell'interprete interattivo)</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Altro uso: Altrove, <code>_</code> è un identificatore regolare. Viene spesso usato per nominare elementi speciali per l’utente, ma non speciali per Python stesso. Il nome <code>_</code> è comunemente usato in congiunzione con l’internazionalizzazione (vedi la documentazione del modulo <a href="https://docs.python.org/3/library/gettext.html"><code>gettext</code></a> per ulteriori informazioni su questa convenzione) ed è anche comunemente utilizzato per variabili non usate. Esempio:</p>
-<div class="sourceCode" id="annotated-cell-19"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-19-1" class="code-annotation-target"><a href="#annotated-cell-19-1" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> <span class="st">"Valore non usato"</span></span>
-<span id="annotated-cell-19-2"><a href="#annotated-cell-19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-19-3"><a href="#annotated-cell-19-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gettext</span>
-<span id="annotated-cell-19-4"><a href="#annotated-cell-19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-19-5"><a href="#annotated-cell-19-5" aria-hidden="true" tabindex="-1"></a>gettext.install(<span class="st">'myapplication'</span>)</span>
-<span id="annotated-cell-19-6"><a href="#annotated-cell-19-6" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-19-7" class="code-annotation-target"><a href="#annotated-cell-19-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(_(<span class="st">'Hello, world'</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-19"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-19-1" class="code-annotation-target"><a href="#annotated-cell-19-1"></a>_ <span class="op">=</span> <span class="st">"Valore non usato"</span></span>
+<span id="annotated-cell-19-2"><a href="#annotated-cell-19-2"></a></span>
+<span id="annotated-cell-19-3"><a href="#annotated-cell-19-3"></a><span class="im">import</span> gettext</span>
+<span id="annotated-cell-19-4"><a href="#annotated-cell-19-4"></a></span>
+<span id="annotated-cell-19-5"><a href="#annotated-cell-19-5"></a>gettext.install(<span class="st">'myapplication'</span>)</span>
+<span id="annotated-cell-19-6"><a href="#annotated-cell-19-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-19-7" class="code-annotation-target"><a href="#annotated-cell-19-7"></a><span class="bu">print</span>(_(<span class="st">'Hello, world'</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
 <dd>
@@ -868,16 +868,16 @@ Attenzione
 </dl></li>
 </ul></li>
 <li><p><code>__*__</code>: Questi nomi, informalmente noti come nomi <em>dunder</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, sono definiti dall’interprete e dalla sua implementazione (inclusa la libreria standard). Altri potrebbero essere definiti nelle versioni future di Python. Qualsiasi uso di nomi <code>__*__</code>, in qualsiasi contesto, che non segua l’uso esplicitamente documentato, è soggetto a discontinuazione senza preavviso. Esempio:</p>
-<div class="sourceCode" id="annotated-cell-20"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-20-1"><a href="#annotated-cell-20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyClass:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-20-2" class="code-annotation-target"><a href="#annotated-cell-20-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, value):</span>
-<span id="annotated-cell-20-3"><a href="#annotated-cell-20-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.__value <span class="op">=</span> value</span>
-<span id="annotated-cell-20-4"><a href="#annotated-cell-20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-20-5"><a href="#annotated-cell-20-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-20-6" class="code-annotation-target"><a href="#annotated-cell-20-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"MyClass con valore </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>__value<span class="sc">}</span><span class="ss">"</span></span>
-<span id="annotated-cell-20-7"><a href="#annotated-cell-20-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-20-8"><a href="#annotated-cell-20-8" aria-hidden="true" tabindex="-1"></a>obj <span class="op">=</span> MyClass(<span class="dv">10</span>)</span>
-<span id="annotated-cell-20-9"><a href="#annotated-cell-20-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-20-10"><a href="#annotated-cell-20-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(obj)  <span class="co"># Output: MyClass con valore 10</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-20"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-20-1"><a href="#annotated-cell-20-1"></a><span class="kw">class</span> MyClass:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-20-2" class="code-annotation-target"><a href="#annotated-cell-20-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, value):</span>
+<span id="annotated-cell-20-3"><a href="#annotated-cell-20-3"></a>    <span class="va">self</span>.__value <span class="op">=</span> value</span>
+<span id="annotated-cell-20-4"><a href="#annotated-cell-20-4"></a></span>
+<span id="annotated-cell-20-5"><a href="#annotated-cell-20-5"></a>  <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-20-6" class="code-annotation-target"><a href="#annotated-cell-20-6"></a>    <span class="cf">return</span> <span class="ss">f"MyClass con valore </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>__value<span class="sc">}</span><span class="ss">"</span></span>
+<span id="annotated-cell-20-7"><a href="#annotated-cell-20-7"></a></span>
+<span id="annotated-cell-20-8"><a href="#annotated-cell-20-8"></a>obj <span class="op">=</span> MyClass(<span class="dv">10</span>)</span>
+<span id="annotated-cell-20-9"><a href="#annotated-cell-20-9"></a></span>
+<span id="annotated-cell-20-10"><a href="#annotated-cell-20-10"></a><span class="bu">print</span>(obj)  <span class="co"># Output: MyClass con valore 10</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
 <dd>
@@ -889,35 +889,35 @@ Attenzione
 </dd>
 </dl></li>
 <li><p><code>__*</code>: I nomi in questa categoria, quando utilizzati all’interno di una definizione di classe, vengono riscritti dal compilatore (processo noto come name <em>mangling</em>) per evitare conflitti di nome tra attributi “privati” delle classi base e delle classi derivate. Questo aiuta a garantire che gli attributi destinati ad essere privati non vengano accidentalmente sovrascritti nelle sottoclassi. Esempio:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BaseClass:</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.__private_attr <span class="op">=</span> <span class="st">"Base"</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DerivedClass(BaseClass):</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.__private_attr <span class="op">=</span> <span class="st">"Derived"</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>base_obj <span class="op">=</span> BaseClass()</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>derived_obj <span class="op">=</span> DerivedClass()</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Accesso ai nomi riscritti (name mangling)</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(base_obj._BaseClass__private_attr)  <span class="co"># Output: Base</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(derived_obj._DerivedClass__private_attr)  <span class="co"># Output: Derived</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">class</span> BaseClass:</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    <span class="va">self</span>.__private_attr <span class="op">=</span> <span class="st">"Base"</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="kw">class</span> DerivedClass(BaseClass):</span>
+<span id="cb5-6"><a href="#cb5-6"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb5-7"><a href="#cb5-7"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a>    <span class="va">self</span>.__private_attr <span class="op">=</span> <span class="st">"Derived"</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a></span>
+<span id="cb5-11"><a href="#cb5-11"></a>base_obj <span class="op">=</span> BaseClass()</span>
+<span id="cb5-12"><a href="#cb5-12"></a>derived_obj <span class="op">=</span> DerivedClass()</span>
+<span id="cb5-13"><a href="#cb5-13"></a></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co"># Accesso ai nomi riscritti (name mangling)</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="bu">print</span>(base_obj._BaseClass__private_attr)  <span class="co"># Output: Base</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="bu">print</span>(derived_obj._DerivedClass__private_attr)  <span class="co"># Output: Derived</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;I nomi con doppio underscore (<code>__</code>) sono chiamati <em>dunder</em> come abbreviazione di <em>double underscore</em>.</p></div></div></section>
 <section id="operatori" class="level3" data-number="6.4.4">
 <h3 data-number="6.4.4" class="anchored" data-anchor-id="operatori"><span class="header-section-number">6.4.4</span> Operatori</h3>
 <p>Gli operatori sono rappresentati da simboli non alfanumerici e, quando applicati a uno o più identificatori, letterali o espressioni (definiti genericamente operandi), producono un risultato. Attenzione a non confondere la definizione di operatore come token, come considerata qui, con quella di operatore come funzionalità algoritmica, poiché alcune parole chiave sono operatori algoritmici e anche le funzioni possono agire come operatori.</p>
 <p>Esempi:</p>
-<div class="sourceCode" id="annotated-cell-7"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
-<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">10</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-3" class="code-annotation-target"><a href="#annotated-cell-7-3" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> x <span class="op">+</span> y</span>
-<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-5" class="code-annotation-target"><a href="#annotated-cell-7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span> <span class="op">=</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span></span>
-<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-7-7" class="code-annotation-target"><a href="#annotated-cell-7-7" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> (x <span class="op">*</span> y) <span class="op">+</span> (z <span class="op">/</span> <span class="dv">2</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-7"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
+<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2"></a>y <span class="op">=</span> <span class="dv">10</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-3" class="code-annotation-target"><a href="#annotated-cell-7-3"></a>z <span class="op">=</span> x <span class="op">+</span> y</span>
+<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-5" class="code-annotation-target"><a href="#annotated-cell-7-5"></a><span class="bu">sum</span> <span class="op">=</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span></span>
+<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-7-7" class="code-annotation-target"><a href="#annotated-cell-7-7"></a>result <span class="op">=</span> (x <span class="op">*</span> y) <span class="op">+</span> (z <span class="op">/</span> <span class="dv">2</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
@@ -1055,50 +1055,50 @@ Attenzione
 </tbody>
 </table>
 <p>Esempio su <code>@</code> che illustra un aspetto importante: il comportamento degli operatori può (o meglio, deve) essere definito quando si creano dei tipi di oggetto. Infatti, nel codice seguente, è definita una matrice assieme a una delle operazioni matematiche più comuni che è la moltiplicazione, implementata per mezzo di <code>__matmul__</code>:</p>
-<div class="sourceCode" id="annotated-cell-8"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Matrice:</span>
-<span id="annotated-cell-8-2"><a href="#annotated-cell-8-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, righe):</span>
-<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.righe <span class="op">=</span> righe</span>
-<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.num_righe <span class="op">=</span> <span class="bu">len</span>(righe)</span>
-<span id="annotated-cell-8-5"><a href="#annotated-cell-8-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.num_colonne <span class="op">=</span> <span class="bu">len</span>(righe[<span class="dv">0</span>]) <span class="cf">if</span> righe <span class="cf">else</span> <span class="dv">0</span></span>
-<span id="annotated-cell-8-6"><a href="#annotated-cell-8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-8-7"><a href="#annotated-cell-8-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__matmul__</span>(<span class="va">self</span>, altra):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-8" class="code-annotation-target"><a href="#annotated-cell-8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="va">self</span>.num_colonne <span class="op">!=</span> altra.num_righe:</span>
-<span id="annotated-cell-8-9"><a href="#annotated-cell-8-9" aria-hidden="true" tabindex="-1"></a>      <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Non è possibile moltiplicare le matrici: "</span></span>
-<span id="annotated-cell-8-10"><a href="#annotated-cell-8-10" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"dimensioni incompatibili."</span>)</span>
-<span id="annotated-cell-8-11"><a href="#annotated-cell-8-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-8-12" class="code-annotation-target"><a href="#annotated-cell-8-12" aria-hidden="true" tabindex="-1"></a>    risultato <span class="op">=</span> [[<span class="dv">0</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(altra.num_colonne)]</span>
-<span id="annotated-cell-8-13"><a href="#annotated-cell-8-13" aria-hidden="true" tabindex="-1"></a>           <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.num_righe)]</span>
-<span id="annotated-cell-8-14"><a href="#annotated-cell-8-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-8-15" class="code-annotation-target"><a href="#annotated-cell-8-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.num_righe):</span>
-<span id="annotated-cell-8-16"><a href="#annotated-cell-8-16" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(altra.num_colonne):</span>
-<span id="annotated-cell-8-17"><a href="#annotated-cell-8-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.num_colonne):</span>
-<span id="annotated-cell-8-18"><a href="#annotated-cell-8-18" aria-hidden="true" tabindex="-1"></a>          risultato[i][j] <span class="op">+=</span> (<span class="va">self</span>.righe[i][k] <span class="op">*</span></span>
-<span id="annotated-cell-8-19"><a href="#annotated-cell-8-19" aria-hidden="true" tabindex="-1"></a>                    altra.righe[k][j])</span>
-<span id="annotated-cell-8-20"><a href="#annotated-cell-8-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="annotated-cell-8-21"><a href="#annotated-cell-8-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Matrice(risultato)</span>
-<span id="annotated-cell-8-22"><a href="#annotated-cell-8-22" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-8-23" class="code-annotation-target"><a href="#annotated-cell-8-23" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
-<span id="annotated-cell-8-24"><a href="#annotated-cell-8-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>.join([<span class="st">' '</span>.join(<span class="bu">map</span>(<span class="bu">str</span>, riga)) <span class="cf">for</span> riga <span class="kw">in</span> <span class="va">self</span>.righe])</span>
-<span id="annotated-cell-8-25"><a href="#annotated-cell-8-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-8-26"><a href="#annotated-cell-8-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Definizione di due matrici</span></span>
-<span id="annotated-cell-8-27"><a href="#annotated-cell-8-27" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrice([[<span class="dv">1</span>, <span class="dv">2</span>], </span>
-<span id="annotated-cell-8-28"><a href="#annotated-cell-8-28" aria-hidden="true" tabindex="-1"></a>             [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
-<span id="annotated-cell-8-29"><a href="#annotated-cell-8-29" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> Matrice([[<span class="dv">5</span>, <span class="dv">6</span>], </span>
-<span id="annotated-cell-8-30"><a href="#annotated-cell-8-30" aria-hidden="true" tabindex="-1"></a>             [<span class="dv">7</span>, <span class="dv">8</span>]])</span>
-<span id="annotated-cell-8-31"><a href="#annotated-cell-8-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-8-32"><a href="#annotated-cell-8-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Moltiplicazione di matrici utilizzando l'operatore @</span></span>
-<span id="annotated-cell-8-33"><a href="#annotated-cell-8-33" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> A <span class="op">@</span> B</span>
-<span id="annotated-cell-8-34"><a href="#annotated-cell-8-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-8-35"><a href="#annotated-cell-8-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Matrice A:"</span>)</span>
-<span id="annotated-cell-8-36"><a href="#annotated-cell-8-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A)</span>
-<span id="annotated-cell-8-37"><a href="#annotated-cell-8-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-8-38"><a href="#annotated-cell-8-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Matrice B:"</span>)</span>
-<span id="annotated-cell-8-39"><a href="#annotated-cell-8-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(B)</span>
-<span id="annotated-cell-8-40"><a href="#annotated-cell-8-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-8-41"><a href="#annotated-cell-8-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Risultato di A @ B:"</span>)</span>
-<span id="annotated-cell-8-42"><a href="#annotated-cell-8-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(C)</span>
-<span id="annotated-cell-8-43"><a href="#annotated-cell-8-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: [[19 22],</span></span>
-<span id="annotated-cell-8-44"><a href="#annotated-cell-8-44" aria-hidden="true" tabindex="-1"></a><span class="co">#           43 50]]</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-8"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1"></a><span class="kw">class</span> Matrice:</span>
+<span id="annotated-cell-8-2"><a href="#annotated-cell-8-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, righe):</span>
+<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3"></a>    <span class="va">self</span>.righe <span class="op">=</span> righe</span>
+<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4"></a>    <span class="va">self</span>.num_righe <span class="op">=</span> <span class="bu">len</span>(righe)</span>
+<span id="annotated-cell-8-5"><a href="#annotated-cell-8-5"></a>    <span class="va">self</span>.num_colonne <span class="op">=</span> <span class="bu">len</span>(righe[<span class="dv">0</span>]) <span class="cf">if</span> righe <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="annotated-cell-8-6"><a href="#annotated-cell-8-6"></a></span>
+<span id="annotated-cell-8-7"><a href="#annotated-cell-8-7"></a>  <span class="kw">def</span> <span class="fu">__matmul__</span>(<span class="va">self</span>, altra):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-8" class="code-annotation-target"><a href="#annotated-cell-8-8"></a>    <span class="cf">if</span> <span class="va">self</span>.num_colonne <span class="op">!=</span> altra.num_righe:</span>
+<span id="annotated-cell-8-9"><a href="#annotated-cell-8-9"></a>      <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Non è possibile moltiplicare le matrici: "</span></span>
+<span id="annotated-cell-8-10"><a href="#annotated-cell-8-10"></a>                       <span class="st">"dimensioni incompatibili."</span>)</span>
+<span id="annotated-cell-8-11"><a href="#annotated-cell-8-11"></a>    </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-8-12" class="code-annotation-target"><a href="#annotated-cell-8-12"></a>    risultato <span class="op">=</span> [[<span class="dv">0</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(altra.num_colonne)]</span>
+<span id="annotated-cell-8-13"><a href="#annotated-cell-8-13"></a>           <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.num_righe)]</span>
+<span id="annotated-cell-8-14"><a href="#annotated-cell-8-14"></a>    </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-8-15" class="code-annotation-target"><a href="#annotated-cell-8-15"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.num_righe):</span>
+<span id="annotated-cell-8-16"><a href="#annotated-cell-8-16"></a>      <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(altra.num_colonne):</span>
+<span id="annotated-cell-8-17"><a href="#annotated-cell-8-17"></a>        <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.num_colonne):</span>
+<span id="annotated-cell-8-18"><a href="#annotated-cell-8-18"></a>          risultato[i][j] <span class="op">+=</span> (<span class="va">self</span>.righe[i][k] <span class="op">*</span></span>
+<span id="annotated-cell-8-19"><a href="#annotated-cell-8-19"></a>                    altra.righe[k][j])</span>
+<span id="annotated-cell-8-20"><a href="#annotated-cell-8-20"></a>    </span>
+<span id="annotated-cell-8-21"><a href="#annotated-cell-8-21"></a>    <span class="cf">return</span> Matrice(risultato)</span>
+<span id="annotated-cell-8-22"><a href="#annotated-cell-8-22"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-8-23" class="code-annotation-target"><a href="#annotated-cell-8-23"></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="annotated-cell-8-24"><a href="#annotated-cell-8-24"></a>    <span class="cf">return</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>.join([<span class="st">' '</span>.join(<span class="bu">map</span>(<span class="bu">str</span>, riga)) <span class="cf">for</span> riga <span class="kw">in</span> <span class="va">self</span>.righe])</span>
+<span id="annotated-cell-8-25"><a href="#annotated-cell-8-25"></a></span>
+<span id="annotated-cell-8-26"><a href="#annotated-cell-8-26"></a><span class="co"># Definizione di due matrici</span></span>
+<span id="annotated-cell-8-27"><a href="#annotated-cell-8-27"></a>A <span class="op">=</span> Matrice([[<span class="dv">1</span>, <span class="dv">2</span>], </span>
+<span id="annotated-cell-8-28"><a href="#annotated-cell-8-28"></a>             [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
+<span id="annotated-cell-8-29"><a href="#annotated-cell-8-29"></a>B <span class="op">=</span> Matrice([[<span class="dv">5</span>, <span class="dv">6</span>], </span>
+<span id="annotated-cell-8-30"><a href="#annotated-cell-8-30"></a>             [<span class="dv">7</span>, <span class="dv">8</span>]])</span>
+<span id="annotated-cell-8-31"><a href="#annotated-cell-8-31"></a></span>
+<span id="annotated-cell-8-32"><a href="#annotated-cell-8-32"></a><span class="co"># Moltiplicazione di matrici utilizzando l'operatore @</span></span>
+<span id="annotated-cell-8-33"><a href="#annotated-cell-8-33"></a>C <span class="op">=</span> A <span class="op">@</span> B</span>
+<span id="annotated-cell-8-34"><a href="#annotated-cell-8-34"></a></span>
+<span id="annotated-cell-8-35"><a href="#annotated-cell-8-35"></a><span class="bu">print</span>(<span class="st">"Matrice A:"</span>)</span>
+<span id="annotated-cell-8-36"><a href="#annotated-cell-8-36"></a><span class="bu">print</span>(A)</span>
+<span id="annotated-cell-8-37"><a href="#annotated-cell-8-37"></a></span>
+<span id="annotated-cell-8-38"><a href="#annotated-cell-8-38"></a><span class="bu">print</span>(<span class="st">"Matrice B:"</span>)</span>
+<span id="annotated-cell-8-39"><a href="#annotated-cell-8-39"></a><span class="bu">print</span>(B)</span>
+<span id="annotated-cell-8-40"><a href="#annotated-cell-8-40"></a></span>
+<span id="annotated-cell-8-41"><a href="#annotated-cell-8-41"></a><span class="bu">print</span>(<span class="st">"Risultato di A @ B:"</span>)</span>
+<span id="annotated-cell-8-42"><a href="#annotated-cell-8-42"></a><span class="bu">print</span>(C)</span>
+<span id="annotated-cell-8-43"><a href="#annotated-cell-8-43"></a><span class="co"># Output: [[19 22],</span></span>
+<span id="annotated-cell-8-44"><a href="#annotated-cell-8-44"></a><span class="co">#           43 50]]</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
@@ -1242,29 +1242,29 @@ Attenzione
 </tbody>
 </table>
 <p>Una sequenza di tre punti, comunemente indicata come ellissi anche al difuori dei linguaggi di programmazione,<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> è trattata come un token a sé e corrisponde ad un oggetto predefinito chiamato <a href="https://docs.python.org/3/reference/datamodel.html#ellipsis">Ellipsis</a>, con applicazioni in diversi contesti:</p>
-<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;L’ellissi è usata, ad esempio, in C per dichiarare funzioni che accettano un numero variaible di parametri e i Javascript come operatore per espandere gli array o le proprietà di un oggetto.</p></div></div><div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(...))  <span class="co"># &lt;class 'ellipsis'&gt;</span></span>
-<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> funzione_da_completare():</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-4" class="code-annotation-target"><a href="#annotated-cell-9-4" aria-hidden="true" tabindex="-1"></a>  ...</span>
-<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-9-6"><a href="#annotated-cell-9-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ClasseEsempio:</span>
-<span id="annotated-cell-9-7"><a href="#annotated-cell-9-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> metodo_da_completare(<span class="va">self</span>):</span>
-<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="annotated-cell-9-9"><a href="#annotated-cell-9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-9-10"><a href="#annotated-cell-9-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Callable</span>
-<span id="annotated-cell-9-11"><a href="#annotated-cell-9-11" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-9-12" class="code-annotation-target"><a href="#annotated-cell-9-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> funzione_variadica(func: Callable[..., <span class="bu">int</span>]):</span>
-<span id="annotated-cell-9-13"><a href="#annotated-cell-9-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">pass</span></span>
-<span id="annotated-cell-9-14"><a href="#annotated-cell-9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-9-15"><a href="#annotated-cell-9-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="annotated-cell-9-16"><a href="#annotated-cell-9-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-9-17"><a href="#annotated-cell-9-17" aria-hidden="true" tabindex="-1"></a>array <span class="op">=</span> np.array([[[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]], </span>
-<span id="annotated-cell-9-18"><a href="#annotated-cell-9-18" aria-hidden="true" tabindex="-1"></a>                  [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]]) </span>
-<span id="annotated-cell-9-19"><a href="#annotated-cell-9-19" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-9-20" class="code-annotation-target"><a href="#annotated-cell-9-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(array[..., <span class="dv">1</span>])</span>
-<span id="annotated-cell-9-21"><a href="#annotated-cell-9-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: </span></span>
-<span id="annotated-cell-9-22"><a href="#annotated-cell-9-22" aria-hidden="true" tabindex="-1"></a><span class="co"># [[ 2  5]</span></span>
-<span id="annotated-cell-9-23"><a href="#annotated-cell-9-23" aria-hidden="true" tabindex="-1"></a><span class="co">#  [ 8 11]]</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;L’ellissi è usata, ad esempio, in C per dichiarare funzioni che accettano un numero variaible di parametri e i Javascript come operatore per espandere gli array o le proprietà di un oggetto.</p></div></div><div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1"></a><span class="bu">print</span>(<span class="bu">type</span>(...))  <span class="co"># &lt;class 'ellipsis'&gt;</span></span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2"></a></span>
+<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3"></a><span class="kw">def</span> funzione_da_completare():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-4" class="code-annotation-target"><a href="#annotated-cell-9-4"></a>  ...</span>
+<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5"></a></span>
+<span id="annotated-cell-9-6"><a href="#annotated-cell-9-6"></a><span class="kw">class</span> ClasseEsempio:</span>
+<span id="annotated-cell-9-7"><a href="#annotated-cell-9-7"></a>  <span class="kw">def</span> metodo_da_completare(<span class="va">self</span>):</span>
+<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8"></a>    ...</span>
+<span id="annotated-cell-9-9"><a href="#annotated-cell-9-9"></a></span>
+<span id="annotated-cell-9-10"><a href="#annotated-cell-9-10"></a><span class="im">from</span> typing <span class="im">import</span> Callable</span>
+<span id="annotated-cell-9-11"><a href="#annotated-cell-9-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-9-12" class="code-annotation-target"><a href="#annotated-cell-9-12"></a><span class="kw">def</span> funzione_variadica(func: Callable[..., <span class="bu">int</span>]):</span>
+<span id="annotated-cell-9-13"><a href="#annotated-cell-9-13"></a>  <span class="cf">pass</span></span>
+<span id="annotated-cell-9-14"><a href="#annotated-cell-9-14"></a></span>
+<span id="annotated-cell-9-15"><a href="#annotated-cell-9-15"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="annotated-cell-9-16"><a href="#annotated-cell-9-16"></a></span>
+<span id="annotated-cell-9-17"><a href="#annotated-cell-9-17"></a>array <span class="op">=</span> np.array([[[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]], </span>
+<span id="annotated-cell-9-18"><a href="#annotated-cell-9-18"></a>                  [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]]) </span>
+<span id="annotated-cell-9-19"><a href="#annotated-cell-9-19"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-9-20" class="code-annotation-target"><a href="#annotated-cell-9-20"></a><span class="bu">print</span>(array[..., <span class="dv">1</span>])</span>
+<span id="annotated-cell-9-21"><a href="#annotated-cell-9-21"></a><span class="co"># Output: </span></span>
+<span id="annotated-cell-9-22"><a href="#annotated-cell-9-22"></a><span class="co"># [[ 2  5]</span></span>
+<span id="annotated-cell-9-23"><a href="#annotated-cell-9-23"></a><span class="co">#  [ 8 11]]</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
@@ -1355,10 +1355,10 @@ Attenzione
 </ul>
 <p>Le stringhe tra tripli apici possono avere degli a capo e degli apici (non tripli) all’interno.</p>
 <p>Esempio:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>stringa_multilinea <span class="op">=</span> <span class="st">"""Questa è una stringa</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="st">molto "importante"."""</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stringa_multilinea)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>stringa_multilinea <span class="op">=</span> <span class="st">"""Questa è una stringa</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="st">molto "importante"."""</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="bu">print</span>(stringa_multilinea)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Tutte le stringhe sono codificate in Unicode, con il prefisso <code>b</code> la stringa è di tipo byte ed è limitata ai 128 caratteri dell’ASCII. Se si prepone <code>r</code>, che sta per <em>raw</em> cioè grezzo, allora la codifica è sempre Unicode ma i caratteri di escape<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> non sono intepretati.</p>
 <div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;In Python, il carattere di escape <code>\</code> è utilizzato nelle stringhe per inserire caratteri speciali che non possono essere facilmente digitati sulla tastiera o che hanno significati speciali.</p>
 <p>Alcuni esempi comuni includono:</p>
@@ -1375,23 +1375,23 @@ Attenzione
 <p>Le f-stringhe (stringhe formattate) sono racchiuse tra virgolette singole, doppie o triple e sono precedute dal prefisso <code>f</code> o <code>F</code>. Permettono di includere espressioni Python all’interno.</p>
 <p>Si possono avere stringhe formattate grezze ma non byte.</p>
 <p>Esempio:</p>
-<div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1" aria-hidden="true" tabindex="-1"></a>nome <span class="op">=</span> <span class="st">"Python"</span></span>
-<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-3" class="code-annotation-target"><a href="#annotated-cell-11-3" aria-hidden="true" tabindex="-1"></a>f_stringa <span class="op">=</span> <span class="ss">f'Ciao, </span><span class="sc">{</span>nome<span class="sc">.</span>upper()<span class="sc">}</span><span class="ss">!'</span></span>
-<span id="annotated-cell-11-4"><a href="#annotated-cell-11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-11-5"><a href="#annotated-cell-11-5" aria-hidden="true" tabindex="-1"></a>definizione <span class="op">=</span> <span class="st">"Linguaggio"</span></span>
-<span id="annotated-cell-11-6"><a href="#annotated-cell-11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-11-7"><a href="#annotated-cell-11-7" aria-hidden="true" tabindex="-1"></a>f_stringa_multi_linea <span class="op">=</span> <span class="ss">f'''Questo è un esempio</span></span>
-<span id="annotated-cell-11-8"><a href="#annotated-cell-11-8" aria-hidden="true" tabindex="-1"></a><span class="ss">di f-stringa multi-linea</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-11-9" class="code-annotation-target"><a href="#annotated-cell-11-9" aria-hidden="true" tabindex="-1"></a><span class="ss">in </span><span class="sc">{</span>definizione<span class="sc">.</span>lower() <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> nome<span class="sc">}</span><span class="ss">'''</span></span>
-<span id="annotated-cell-11-10"><a href="#annotated-cell-11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-11-11"><a href="#annotated-cell-11-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f_stringa)</span>
-<span id="annotated-cell-11-12"><a href="#annotated-cell-11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: Ciao, python!</span></span>
-<span id="annotated-cell-11-13"><a href="#annotated-cell-11-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-11-14"><a href="#annotated-cell-11-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f_stringa_multi_linea)</span>
-<span id="annotated-cell-11-15"><a href="#annotated-cell-11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Questo è un esempio</span></span>
-<span id="annotated-cell-11-16"><a href="#annotated-cell-11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&nbsp;di f-stringa multi-linea</span></span>
-<span id="annotated-cell-11-17"><a href="#annotated-cell-11-17" aria-hidden="true" tabindex="-1"></a><span class="co"># in linguaggio Python</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1"></a>nome <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-3" class="code-annotation-target"><a href="#annotated-cell-11-3"></a>f_stringa <span class="op">=</span> <span class="ss">f'Ciao, </span><span class="sc">{</span>nome<span class="sc">.</span>upper()<span class="sc">}</span><span class="ss">!'</span></span>
+<span id="annotated-cell-11-4"><a href="#annotated-cell-11-4"></a></span>
+<span id="annotated-cell-11-5"><a href="#annotated-cell-11-5"></a>definizione <span class="op">=</span> <span class="st">"Linguaggio"</span></span>
+<span id="annotated-cell-11-6"><a href="#annotated-cell-11-6"></a></span>
+<span id="annotated-cell-11-7"><a href="#annotated-cell-11-7"></a>f_stringa_multi_linea <span class="op">=</span> <span class="ss">f'''Questo è un esempio</span></span>
+<span id="annotated-cell-11-8"><a href="#annotated-cell-11-8"></a><span class="ss">di f-stringa multi-linea</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-11-9" class="code-annotation-target"><a href="#annotated-cell-11-9"></a><span class="ss">in </span><span class="sc">{</span>definizione<span class="sc">.</span>lower() <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> nome<span class="sc">}</span><span class="ss">'''</span></span>
+<span id="annotated-cell-11-10"><a href="#annotated-cell-11-10"></a></span>
+<span id="annotated-cell-11-11"><a href="#annotated-cell-11-11"></a><span class="bu">print</span>(f_stringa)</span>
+<span id="annotated-cell-11-12"><a href="#annotated-cell-11-12"></a><span class="co"># Output: Ciao, python!</span></span>
+<span id="annotated-cell-11-13"><a href="#annotated-cell-11-13"></a></span>
+<span id="annotated-cell-11-14"><a href="#annotated-cell-11-14"></a><span class="bu">print</span>(f_stringa_multi_linea)</span>
+<span id="annotated-cell-11-15"><a href="#annotated-cell-11-15"></a><span class="co"># Questo è un esempio</span></span>
+<span id="annotated-cell-11-16"><a href="#annotated-cell-11-16"></a><span class="co">#&nbsp;di f-stringa multi-linea</span></span>
+<span id="annotated-cell-11-17"><a href="#annotated-cell-11-17"></a><span class="co"># in linguaggio Python</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
@@ -1414,87 +1414,87 @@ Attenzione
 <p>In Python, le istruzioni semplici sono:</p>
 <ul>
 <li><p>Assegnazione, attribuisce un valore a una variabile:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>x <span class="op">=</span> <span class="dv">10</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Istruzioni di importazione, permettono di utilizzare gli identificatori definiti in altri moduli:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> math</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Istruzioni di controllo del flusso nei cicli:</p>
 <ul>
 <li><code>break</code>: Interrompe un ciclo.</li>
 <li><code>continue</code>: Salta all’iterazione successiva di un ciclo.</li>
 <li><code>pass</code>: Non esegue alcuna operazione.</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">5</span>:</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb9-2"><a href="#cb9-2"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">5</span>:</span>
+<span id="cb9-3"><a href="#cb9-3"></a>        <span class="cf">break</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Istruzioni di gestione dell’uscita da una funzione, della generazione di valori o del sollevamento di eccezioni:</p>
 <ul>
 <li><code>return</code>: Restituisce un valore da una funzione.</li>
 <li><code>yield</code>: Restituisce un generatore.</li>
 <li><code>raise</code>: Solleva un’eccezione per segnalare uan condizione di errore.</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> func():</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">def</span> func():</span>
+<span id="cb10-2"><a href="#cb10-2"></a>    <span class="cf">return</span> x</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Istruzioni di asserzione in cui si verifica una condizione e viene generata un’eccezione se la condizione è falsa:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> x <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"x deve essere positivo"</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="cf">assert</span> x <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"x deve essere positivo"</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Istruzioni di diichiarazione di modifica dell’ambito di variabili:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> x</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">nonlocal</span> y</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">global</span> x</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="kw">nonlocal</span> y</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <p>Un’espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne viene prodotto il risultato della valutazione. D’altronde, una espressione è spesso utilizzata per chiamare funzioni che hanno effetti collaterali, come, ad esempio, produrre un output:</p>
 <ul>
 <li><p>Produzione di output:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Funzione che stampa un messaggio</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> stampa_messaggio(messaggio):</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(messaggio)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Istruzione di espressione che chiama la funzione </span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># con un effetto collaterale (stampa del messaggio)</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>stampa_messaggio(<span class="st">"Ciao, mondo!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Funzione che stampa un messaggio</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="kw">def</span> stampa_messaggio(messaggio):</span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="bu">print</span>(messaggio)</span>
+<span id="cb13-4"><a href="#cb13-4"></a></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="co"># Istruzione di espressione che chiama la funzione </span></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="co"># con un effetto collaterale (stampa del messaggio)</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>stampa_messaggio(<span class="st">"Ciao, mondo!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Modifica di parametri:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Funzione che modifica un argomento mutabile (lista)</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> aggiungi_elemento(lista, elemento):</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  lista.append(elemento)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Lista iniziale</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>numeri <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Istruzione di espressione che chiama la funzione </span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># con un effetto collaterale (modifica dell'argomento)</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>aggiungi_elemento(numeri, <span class="dv">4</span>)</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numeri)  <span class="co"># Output: [1, 2, 3, 4]</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Funzione che modifica un argomento mutabile (lista)</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="kw">def</span> aggiungi_elemento(lista, elemento):</span>
+<span id="cb14-3"><a href="#cb14-3"></a>  lista.append(elemento)</span>
+<span id="cb14-4"><a href="#cb14-4"></a></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="co"># Lista iniziale</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>numeri <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb14-7"><a href="#cb14-7"></a></span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="co"># Istruzione di espressione che chiama la funzione </span></span>
+<span id="cb14-9"><a href="#cb14-9"></a><span class="co"># con un effetto collaterale (modifica dell'argomento)</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a>aggiungi_elemento(numeri, <span class="dv">4</span>)</span>
+<span id="cb14-11"><a href="#cb14-11"></a></span>
+<span id="cb14-12"><a href="#cb14-12"></a><span class="bu">print</span>(numeri)  <span class="co"># Output: [1, 2, 3, 4]</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Modifica di variabili globali:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variabile globale</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>contatore <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Funzione che modifica una variabile globale</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> incrementa_contatore():</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">global</span> contatore</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  contatore <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Istruzione di espressione che chiama la funzione </span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># con un effetto collaterale (modifica della variabile globale)</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>incrementa_contatore()</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(contatore)  <span class="co"># Output: 1</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Variabile globale</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>contatore <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="co"># Funzione che modifica una variabile globale</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="kw">def</span> incrementa_contatore():</span>
+<span id="cb15-6"><a href="#cb15-6"></a>  <span class="kw">global</span> contatore</span>
+<span id="cb15-7"><a href="#cb15-7"></a></span>
+<span id="cb15-8"><a href="#cb15-8"></a>  contatore <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a></span>
+<span id="cb15-10"><a href="#cb15-10"></a><span class="co"># Istruzione di espressione che chiama la funzione </span></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="co"># con un effetto collaterale (modifica della variabile globale)</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a>incrementa_contatore()</span>
+<span id="cb15-13"><a href="#cb15-13"></a></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="bu">print</span>(contatore)  <span class="co"># Output: 1</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Lancio di eccezioni:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Funzione che solleva un'eccezione</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> solleva_eccezione(messaggio):</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">raise</span> <span class="pp">ValueError</span>(messaggio)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Istruzione di espressione che chiama la funzione con un effetto collaterale (sollevamento di un'eccezione)</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  solleva_eccezione(<span class="st">"Qualcosa è andato storto!"</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(e)  <span class="co"># Output: Qualcosa è andato storto!</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Funzione che solleva un'eccezione</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="kw">def</span> solleva_eccezione(messaggio):</span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="cf">raise</span> <span class="pp">ValueError</span>(messaggio)</span>
+<span id="cb16-4"><a href="#cb16-4"></a></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="co"># Istruzione di espressione che chiama la funzione con un effetto collaterale (sollevamento di un'eccezione)</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="cf">try</span>:</span>
+<span id="cb16-7"><a href="#cb16-7"></a>  solleva_eccezione(<span class="st">"Qualcosa è andato storto!"</span>)</span>
+<span id="cb16-8"><a href="#cb16-8"></a></span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
+<span id="cb16-10"><a href="#cb16-10"></a>  <span class="bu">print</span>(e)  <span class="co"># Output: Qualcosa è andato storto!</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <p>Un assegnamento con <code>=</code> è anch’esso un’istruzione semplice e non può mai essere all’interno di una espressione, dove, invece, si può usare l’operatore <em>tricheco</em> <code>:=</code>:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (n <span class="op">:=</span> <span class="bu">len</span>(<span class="st">"Python"</span>)) <span class="op">&gt;</span> <span class="dv">5</span>:</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"La lunghezza della stringa è </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">"</span>) </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Output: La lunghezza della stringa è 6</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="cf">if</span> (n <span class="op">:=</span> <span class="bu">len</span>(<span class="st">"Python"</span>)) <span class="op">&gt;</span> <span class="dv">5</span>:</span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="bu">print</span>(<span class="ss">f"La lunghezza della stringa è </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">"</span>) </span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="co"># Output: La lunghezza della stringa è 6</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="istruzioni-composte" class="level3" data-number="6.5.2">
 <h3 data-number="6.5.2" class="anchored" data-anchor-id="istruzioni-composte"><span class="header-section-number">6.5.2</span> Istruzioni composte</h3>
@@ -1502,46 +1502,46 @@ Attenzione
 <p>Alcuni esempi del rapporto tra istruzioni e righe:</p>
 <ul>
 <li><p>Blocco di istruzioni separato su più righe con medesima indentazione:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  x <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"x ora è </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3"></a></span>
+<span id="cb18-4"><a href="#cb18-4"></a>  x <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a></span>
+<span id="cb18-6"><a href="#cb18-6"></a>  <span class="bu">print</span>(<span class="ss">f"x ora è </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Blocco come singola istruzione sulla stessa riga logica:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>: <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>: <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Diverse istruzioni semplici sulla stessa riga logica (non consigliato):</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>: <span class="bu">print</span>(<span class="st">"x è positivo"</span>)<span class="op">;</span> x <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span> <span class="bu">print</span>(<span class="ss">f"x ora è </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>: <span class="bu">print</span>(<span class="st">"x è positivo"</span>)<span class="op">;</span> x <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span> <span class="bu">print</span>(<span class="ss">f"x ora è </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <p>Ed ecco le principali istruzioni composte:</p>
 <ul>
 <li><p><code>if</code>, controlla l’esecuzione di un blocco di codice in base a una condizione:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> condizione:</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># blocco di codice</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="cf">if</span> condizione:</span>
+<span id="cb21-2"><a href="#cb21-2"></a>    <span class="co"># blocco di codice</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>for</code>, itera su una sequenza (come una lista, una tupla o una stringa):</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> elemento <span class="kw">in</span> sequenza:</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># blocco di codice</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="cf">for</span> elemento <span class="kw">in</span> sequenza:</span>
+<span id="cb22-2"><a href="#cb22-2"></a>    <span class="co"># blocco di codice</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>while</code>, esegue un blocco di codice finché una condizione è vera:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> condizione:</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># blocco di codice</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="cf">while</span> condizione:</span>
+<span id="cb23-2"><a href="#cb23-2"></a>    <span class="co"># blocco di codice</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>try</code>, gestisce gli errori che possono verificarsi durante l’esecuzione di un blocco di codice:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># blocco di codice</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> Eccezione:</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># blocco di codice per gestire l'eccezione</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="cf">try</span>:</span>
+<span id="cb24-2"><a href="#cb24-2"></a>    <span class="co"># blocco di codice</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="cf">except</span> Eccezione:</span>
+<span id="cb24-4"><a href="#cb24-4"></a>    <span class="co"># blocco di codice per gestire l'eccezione</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>with</code>, gestisce l’allocazione e la deallocazione di risorse:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'file.txt'</span>, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># blocco di codice</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'file.txt'</span>, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb25-2"><a href="#cb25-2"></a>    <span class="co"># blocco di codice</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>def</code>, definisce una funzione:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> nome_funzione(parametri):</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># blocco di codice</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">def</span> nome_funzione(parametri):</span>
+<span id="cb26-2"><a href="#cb26-2"></a>    <span class="co"># blocco di codice</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>class</code>, definisce una classe:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NomeClasse:</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># blocco di codice</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="kw">class</span> NomeClasse:</span>
+<span id="cb27-2"><a href="#cb27-2"></a>    <span class="co"># blocco di codice</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>match</code>, esegue il pattern matching su un valore:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">match</span> valore:</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> pattern:</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># blocco di codice</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="cf">match</span> valore:</span>
+<span id="cb28-2"><a href="#cb28-2"></a>    <span class="cf">case</span> pattern:</span>
+<span id="cb28-3"><a href="#cb28-3"></a>        <span class="co"># blocco di codice</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 
 

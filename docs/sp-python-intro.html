@@ -438,100 +438,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Per chiudere il capitolo sul primo approccio a Python, possiamo confrontare un algoritmo, di bassa complessità ma non triviale, in diversi linguaggi di programmazione. Un buon esempio potrebbe essere l’implementazione dell’algoritmo di ordinamento <em>bubble sort</em> di una lista di valori. Vediamo come viene scritto in Python, C, C++, Java, Rust e Scala:</p>
 <ul>
 <li><p>Python in versione procedurale:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bubble_sort(arr):</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> arr[j] <span class="op">&gt;</span> arr[j<span class="op">+</span><span class="dv">1</span>]:</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        arr[j], arr[j<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> arr[j<span class="op">+</span><span class="dv">1</span>], arr[j]</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>bubble_sort(arr)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Array ordinato con bubble sort: "</span>, arr)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> bubble_sort(arr):</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb1-6"><a href="#cb1-6"></a>      <span class="cf">if</span> arr[j] <span class="op">&gt;</span> arr[j<span class="op">+</span><span class="dv">1</span>]:</span>
+<span id="cb1-7"><a href="#cb1-7"></a>        arr[j], arr[j<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> arr[j<span class="op">+</span><span class="dv">1</span>], arr[j]</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a>bubble_sort(arr)</span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="bu">print</span>(<span class="st">"Array ordinato con bubble sort: "</span>, arr)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Python in versione sintatticamente orientata agli oggetti, ma praticamente procedurale:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BubbleSort:</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">@staticmethod</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> bubble_sort(arr):</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> arr[j] <span class="op">&gt;</span> arr[j<span class="op">+</span><span class="dv">1</span>]:</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>          arr[j], arr[j<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> arr[j<span class="op">+</span><span class="dv">1</span>], arr[j]</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>BubbleSort.bubble_sort(arr)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Array ordinato con bubble sort: "</span>, arr)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">class</span> BubbleSort:</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="at">@staticmethod</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="kw">def</span> bubble_sort(arr):</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb2-7"><a href="#cb2-7"></a>      <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb2-8"><a href="#cb2-8"></a>        <span class="cf">if</span> arr[j] <span class="op">&gt;</span> arr[j<span class="op">+</span><span class="dv">1</span>]:</span>
+<span id="cb2-9"><a href="#cb2-9"></a>          arr[j], arr[j<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> arr[j<span class="op">+</span><span class="dv">1</span>], arr[j]</span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
+<span id="cb2-13"><a href="#cb2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14"></a>BubbleSort.bubble_sort(arr)</span>
+<span id="cb2-15"><a href="#cb2-15"></a></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="bu">print</span>(<span class="st">"Array ordinato con bubble sort: "</span>, arr)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Python in versione orientata agli oggetti, con una interfaccia di ordinamento implementata con due algoritmi (bubble e insertion sort):</p>
-<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abc <span class="im">import</span> ABC, abstractmethod</span>
-<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Classe astratta per algoritmi di ordinamento</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SortAlgorithm(ABC):</span>
-<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, arr):</span>
-<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>._arr <span class="op">=</span> arr</span>
-<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">@abstractmethod</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-3-9" class="code-annotation-target"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> sort(<span class="va">self</span>):</span>
-<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Metodo astratto che deve essere implementato dalle sottoclassi</span></span>
-<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
-<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> get_array(<span class="va">self</span>):</span>
-<span id="annotated-cell-3-14"><a href="#annotated-cell-3-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Metodo per ottenere l'array corrente</span></span>
-<span id="annotated-cell-3-15"><a href="#annotated-cell-3-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">self</span>._arr</span>
-<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-17"><a href="#annotated-cell-3-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> set_array(<span class="va">self</span>, arr):</span>
-<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Metodo per impostare un nuovo array</span></span>
-<span id="annotated-cell-3-19"><a href="#annotated-cell-3-19" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>._arr <span class="op">=</span> arr</span>
-<span id="annotated-cell-3-20"><a href="#annotated-cell-3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-21"><a href="#annotated-cell-3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Implementazione dell'algoritmo di bubble sort</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-3-22" class="code-annotation-target"><a href="#annotated-cell-3-22" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BubbleSort(SortAlgorithm):</span>
-<span id="annotated-cell-3-23"><a href="#annotated-cell-3-23" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> sort(<span class="va">self</span>):</span>
-<span id="annotated-cell-3-24"><a href="#annotated-cell-3-24" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(<span class="va">self</span>._arr)</span>
-<span id="annotated-cell-3-25"><a href="#annotated-cell-3-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-26"><a href="#annotated-cell-3-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="annotated-cell-3-27"><a href="#annotated-cell-3-27" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="annotated-cell-3-28"><a href="#annotated-cell-3-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>._arr[j] <span class="op">&gt;</span> <span class="va">self</span>._arr[j<span class="op">+</span><span class="dv">1</span>]:</span>
-<span id="annotated-cell-3-29"><a href="#annotated-cell-3-29" aria-hidden="true" tabindex="-1"></a>          <span class="va">self</span>._arr[j], <span class="va">self</span>._arr[j<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> <span class="va">self</span>._arr[j<span class="op">+</span><span class="dv">1</span>], <span class="va">self</span>._arr[j]</span>
-<span id="annotated-cell-3-30"><a href="#annotated-cell-3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-31"><a href="#annotated-cell-3-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Implementazione dell'algoritmo di insertion sort</span></span>
-<span id="annotated-cell-3-32"><a href="#annotated-cell-3-32" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> InsertionSort(SortAlgorithm):</span>
-<span id="annotated-cell-3-33"><a href="#annotated-cell-3-33" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> sort(<span class="va">self</span>):</span>
-<span id="annotated-cell-3-34"><a href="#annotated-cell-3-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(<span class="va">self</span>._arr)):</span>
-<span id="annotated-cell-3-35"><a href="#annotated-cell-3-35" aria-hidden="true" tabindex="-1"></a>      key <span class="op">=</span> <span class="va">self</span>._arr[i]</span>
-<span id="annotated-cell-3-36"><a href="#annotated-cell-3-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-37"><a href="#annotated-cell-3-37" aria-hidden="true" tabindex="-1"></a>      j <span class="op">=</span> i <span class="op">-</span> <span class="dv">1</span></span>
-<span id="annotated-cell-3-38"><a href="#annotated-cell-3-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-39"><a href="#annotated-cell-3-39" aria-hidden="true" tabindex="-1"></a>      <span class="cf">while</span> j <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> key <span class="op">&lt;</span> <span class="va">self</span>._arr[j]:</span>
-<span id="annotated-cell-3-40"><a href="#annotated-cell-3-40" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._arr[j <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> <span class="va">self</span>._arr[j]</span>
-<span id="annotated-cell-3-41"><a href="#annotated-cell-3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-42"><a href="#annotated-cell-3-42" aria-hidden="true" tabindex="-1"></a>        j <span class="op">-=</span> <span class="dv">1</span></span>
-<span id="annotated-cell-3-43"><a href="#annotated-cell-3-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-44"><a href="#annotated-cell-3-44" aria-hidden="true" tabindex="-1"></a>      <span class="va">self</span>._arr[j <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> key</span>
-<span id="annotated-cell-3-45"><a href="#annotated-cell-3-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-46"><a href="#annotated-cell-3-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Esempio di utilizzo con bubble sort</span></span>
-<span id="annotated-cell-3-47"><a href="#annotated-cell-3-47" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
-<span id="annotated-cell-3-48"><a href="#annotated-cell-3-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-49"><a href="#annotated-cell-3-49" aria-hidden="true" tabindex="-1"></a>bubble_sorter <span class="op">=</span> BubbleSort(arr)</span>
-<span id="annotated-cell-3-50"><a href="#annotated-cell-3-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-51"><a href="#annotated-cell-3-51" aria-hidden="true" tabindex="-1"></a>bubble_sorter.sort()</span>
-<span id="annotated-cell-3-52"><a href="#annotated-cell-3-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-53"><a href="#annotated-cell-3-53" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Array ordinato con bubble sort: "</span>, bubble_sorter.get_array())</span>
-<span id="annotated-cell-3-54"><a href="#annotated-cell-3-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-55"><a href="#annotated-cell-3-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Esempio di utilizzo con insertion sort</span></span>
-<span id="annotated-cell-3-56"><a href="#annotated-cell-3-56" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
-<span id="annotated-cell-3-57"><a href="#annotated-cell-3-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-58"><a href="#annotated-cell-3-58" aria-hidden="true" tabindex="-1"></a>insertion_sorter <span class="op">=</span> InsertionSort(arr)</span>
-<span id="annotated-cell-3-59"><a href="#annotated-cell-3-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-60"><a href="#annotated-cell-3-60" aria-hidden="true" tabindex="-1"></a>insertion_sorter.sort()</span>
-<span id="annotated-cell-3-61"><a href="#annotated-cell-3-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-62"><a href="#annotated-cell-3-62" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Array ordinato con insertion sort: "</span>, insertion_sorter.get_array())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a><span class="im">from</span> abc <span class="im">import</span> ABC, abstractmethod</span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2"></a></span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3"></a><span class="co"># Classe astratta per algoritmi di ordinamento</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4"></a><span class="kw">class</span> SortAlgorithm(ABC):</span>
+<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, arr):</span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6"></a>    <span class="va">self</span>._arr <span class="op">=</span> arr</span>
+<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7"></a></span>
+<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8"></a>  <span class="at">@abstractmethod</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-3-9" class="code-annotation-target"><a href="#annotated-cell-3-9"></a>  <span class="kw">def</span> sort(<span class="va">self</span>):</span>
+<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10"></a>    <span class="co"># Metodo astratto che deve essere implementato dalle sottoclassi</span></span>
+<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11"></a>    <span class="cf">pass</span></span>
+<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12"></a></span>
+<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13"></a>  <span class="kw">def</span> get_array(<span class="va">self</span>):</span>
+<span id="annotated-cell-3-14"><a href="#annotated-cell-3-14"></a>    <span class="co"># Metodo per ottenere l'array corrente</span></span>
+<span id="annotated-cell-3-15"><a href="#annotated-cell-3-15"></a>    <span class="cf">return</span> <span class="va">self</span>._arr</span>
+<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16"></a></span>
+<span id="annotated-cell-3-17"><a href="#annotated-cell-3-17"></a>  <span class="kw">def</span> set_array(<span class="va">self</span>, arr):</span>
+<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18"></a>    <span class="co"># Metodo per impostare un nuovo array</span></span>
+<span id="annotated-cell-3-19"><a href="#annotated-cell-3-19"></a>    <span class="va">self</span>._arr <span class="op">=</span> arr</span>
+<span id="annotated-cell-3-20"><a href="#annotated-cell-3-20"></a></span>
+<span id="annotated-cell-3-21"><a href="#annotated-cell-3-21"></a><span class="co"># Implementazione dell'algoritmo di bubble sort</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-3-22" class="code-annotation-target"><a href="#annotated-cell-3-22"></a><span class="kw">class</span> BubbleSort(SortAlgorithm):</span>
+<span id="annotated-cell-3-23"><a href="#annotated-cell-3-23"></a>  <span class="kw">def</span> sort(<span class="va">self</span>):</span>
+<span id="annotated-cell-3-24"><a href="#annotated-cell-3-24"></a>    n <span class="op">=</span> <span class="bu">len</span>(<span class="va">self</span>._arr)</span>
+<span id="annotated-cell-3-25"><a href="#annotated-cell-3-25"></a></span>
+<span id="annotated-cell-3-26"><a href="#annotated-cell-3-26"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="annotated-cell-3-27"><a href="#annotated-cell-3-27"></a>      <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="annotated-cell-3-28"><a href="#annotated-cell-3-28"></a>        <span class="cf">if</span> <span class="va">self</span>._arr[j] <span class="op">&gt;</span> <span class="va">self</span>._arr[j<span class="op">+</span><span class="dv">1</span>]:</span>
+<span id="annotated-cell-3-29"><a href="#annotated-cell-3-29"></a>          <span class="va">self</span>._arr[j], <span class="va">self</span>._arr[j<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> <span class="va">self</span>._arr[j<span class="op">+</span><span class="dv">1</span>], <span class="va">self</span>._arr[j]</span>
+<span id="annotated-cell-3-30"><a href="#annotated-cell-3-30"></a></span>
+<span id="annotated-cell-3-31"><a href="#annotated-cell-3-31"></a><span class="co"># Implementazione dell'algoritmo di insertion sort</span></span>
+<span id="annotated-cell-3-32"><a href="#annotated-cell-3-32"></a><span class="kw">class</span> InsertionSort(SortAlgorithm):</span>
+<span id="annotated-cell-3-33"><a href="#annotated-cell-3-33"></a>  <span class="kw">def</span> sort(<span class="va">self</span>):</span>
+<span id="annotated-cell-3-34"><a href="#annotated-cell-3-34"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(<span class="va">self</span>._arr)):</span>
+<span id="annotated-cell-3-35"><a href="#annotated-cell-3-35"></a>      key <span class="op">=</span> <span class="va">self</span>._arr[i]</span>
+<span id="annotated-cell-3-36"><a href="#annotated-cell-3-36"></a></span>
+<span id="annotated-cell-3-37"><a href="#annotated-cell-3-37"></a>      j <span class="op">=</span> i <span class="op">-</span> <span class="dv">1</span></span>
+<span id="annotated-cell-3-38"><a href="#annotated-cell-3-38"></a></span>
+<span id="annotated-cell-3-39"><a href="#annotated-cell-3-39"></a>      <span class="cf">while</span> j <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> key <span class="op">&lt;</span> <span class="va">self</span>._arr[j]:</span>
+<span id="annotated-cell-3-40"><a href="#annotated-cell-3-40"></a>        <span class="va">self</span>._arr[j <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> <span class="va">self</span>._arr[j]</span>
+<span id="annotated-cell-3-41"><a href="#annotated-cell-3-41"></a></span>
+<span id="annotated-cell-3-42"><a href="#annotated-cell-3-42"></a>        j <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="annotated-cell-3-43"><a href="#annotated-cell-3-43"></a></span>
+<span id="annotated-cell-3-44"><a href="#annotated-cell-3-44"></a>      <span class="va">self</span>._arr[j <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> key</span>
+<span id="annotated-cell-3-45"><a href="#annotated-cell-3-45"></a></span>
+<span id="annotated-cell-3-46"><a href="#annotated-cell-3-46"></a><span class="co"># Esempio di utilizzo con bubble sort</span></span>
+<span id="annotated-cell-3-47"><a href="#annotated-cell-3-47"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
+<span id="annotated-cell-3-48"><a href="#annotated-cell-3-48"></a></span>
+<span id="annotated-cell-3-49"><a href="#annotated-cell-3-49"></a>bubble_sorter <span class="op">=</span> BubbleSort(arr)</span>
+<span id="annotated-cell-3-50"><a href="#annotated-cell-3-50"></a></span>
+<span id="annotated-cell-3-51"><a href="#annotated-cell-3-51"></a>bubble_sorter.sort()</span>
+<span id="annotated-cell-3-52"><a href="#annotated-cell-3-52"></a></span>
+<span id="annotated-cell-3-53"><a href="#annotated-cell-3-53"></a><span class="bu">print</span>(<span class="st">"Array ordinato con bubble sort: "</span>, bubble_sorter.get_array())</span>
+<span id="annotated-cell-3-54"><a href="#annotated-cell-3-54"></a></span>
+<span id="annotated-cell-3-55"><a href="#annotated-cell-3-55"></a><span class="co"># Esempio di utilizzo con insertion sort</span></span>
+<span id="annotated-cell-3-56"><a href="#annotated-cell-3-56"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
+<span id="annotated-cell-3-57"><a href="#annotated-cell-3-57"></a></span>
+<span id="annotated-cell-3-58"><a href="#annotated-cell-3-58"></a>insertion_sorter <span class="op">=</span> InsertionSort(arr)</span>
+<span id="annotated-cell-3-59"><a href="#annotated-cell-3-59"></a></span>
+<span id="annotated-cell-3-60"><a href="#annotated-cell-3-60"></a>insertion_sorter.sort()</span>
+<span id="annotated-cell-3-61"><a href="#annotated-cell-3-61"></a></span>
+<span id="annotated-cell-3-62"><a href="#annotated-cell-3-62"></a><span class="bu">print</span>(<span class="st">"Array ordinato con insertion sort: "</span>, insertion_sorter.get_array())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
@@ -551,27 +551,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl></li>
 <li><p>Python in versione funzionale:</p>
-<div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bubble_sort(arr):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> sort_pass(arr, n):</span>
-<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> arr</span>
-<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-4-6" class="code-annotation-target"><a href="#annotated-cell-4-6" aria-hidden="true" tabindex="-1"></a>    new_arr <span class="op">=</span> arr[:]</span>
-<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> <span class="dv">1</span>):</span>
-<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> new_arr[i] <span class="op">&gt;</span> new_arr[i <span class="op">+</span> <span class="dv">1</span>]:</span>
-<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10" aria-hidden="true" tabindex="-1"></a>        new_arr[i], new_arr[i <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> new_arr[i <span class="op">+</span> <span class="dv">1</span>], new_arr[i]</span>
-<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-4-12" class="code-annotation-target"><a href="#annotated-cell-4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sort_pass(new_arr, n <span class="op">-</span> <span class="dv">1</span>)</span>
-<span id="annotated-cell-4-13"><a href="#annotated-cell-4-13" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-4-14" class="code-annotation-target"><a href="#annotated-cell-4-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> sort_pass(arr, <span class="bu">len</span>(arr))</span>
-<span id="annotated-cell-4-15"><a href="#annotated-cell-4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-16"><a href="#annotated-cell-4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="annotated-cell-4-17"><a href="#annotated-cell-4-17" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
-<span id="annotated-cell-4-18"><a href="#annotated-cell-4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-19"><a href="#annotated-cell-4-19" aria-hidden="true" tabindex="-1"></a>sorted_arr <span class="op">=</span> bubble_sort(arr)</span>
-<span id="annotated-cell-4-20"><a href="#annotated-cell-4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-21"><a href="#annotated-cell-4-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sorted array is:"</span>, sorted_arr)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1"></a><span class="kw">def</span> bubble_sort(arr):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2"></a>  <span class="kw">def</span> sort_pass(arr, n):</span>
+<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4"></a>      <span class="cf">return</span> arr</span>
+<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-4-6" class="code-annotation-target"><a href="#annotated-cell-4-6"></a>    new_arr <span class="op">=</span> arr[:]</span>
+<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7"></a></span>
+<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9"></a>      <span class="cf">if</span> new_arr[i] <span class="op">&gt;</span> new_arr[i <span class="op">+</span> <span class="dv">1</span>]:</span>
+<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10"></a>        new_arr[i], new_arr[i <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> new_arr[i <span class="op">+</span> <span class="dv">1</span>], new_arr[i]</span>
+<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-4-12" class="code-annotation-target"><a href="#annotated-cell-4-12"></a>    <span class="cf">return</span> sort_pass(new_arr, n <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="annotated-cell-4-13"><a href="#annotated-cell-4-13"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-4-14" class="code-annotation-target"><a href="#annotated-cell-4-14"></a>  <span class="cf">return</span> sort_pass(arr, <span class="bu">len</span>(arr))</span>
+<span id="annotated-cell-4-15"><a href="#annotated-cell-4-15"></a></span>
+<span id="annotated-cell-4-16"><a href="#annotated-cell-4-16"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="annotated-cell-4-17"><a href="#annotated-cell-4-17"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
+<span id="annotated-cell-4-18"><a href="#annotated-cell-4-18"></a></span>
+<span id="annotated-cell-4-19"><a href="#annotated-cell-4-19"></a>sorted_arr <span class="op">=</span> bubble_sort(arr)</span>
+<span id="annotated-cell-4-20"><a href="#annotated-cell-4-20"></a></span>
+<span id="annotated-cell-4-21"><a href="#annotated-cell-4-21"></a><span class="bu">print</span>(<span class="st">"Sorted array is:"</span>, sorted_arr)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
@@ -591,157 +591,157 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl></li>
 <li><p>C:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> bubble_sort<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> i<span class="op">,</span> j<span class="op">,</span> temp<span class="op">;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="op">(</span>arr<span class="op">[</span>j<span class="op">]</span> <span class="op">&gt;</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        temp <span class="op">=</span> arr<span class="op">[</span>j<span class="op">];</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        arr<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">];</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> temp<span class="op">;</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> arr<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">};</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> n <span class="op">=</span> <span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">)/</span><span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">[</span><span class="dv">0</span><span class="op">]);</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  bubble_sort<span class="op">(</span>arr<span class="op">,</span> n<span class="op">);</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">"Array ordinato con bubble sort: "</span><span class="op">);</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%d</span><span class="st"> "</span><span class="op">,</span> arr<span class="op">[</span>i<span class="op">]);</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="dt">void</span> bubble_sort<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="dt">int</span> i<span class="op">,</span> j<span class="op">,</span> temp<span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>    <span class="cf">for</span> <span class="op">(</span>j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>      <span class="cf">if</span> <span class="op">(</span>arr<span class="op">[</span>j<span class="op">]</span> <span class="op">&gt;</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>        temp <span class="op">=</span> arr<span class="op">[</span>j<span class="op">];</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a>        arr<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">];</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a></span>
+<span id="cb3-13"><a href="#cb3-13"></a>        arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> temp<span class="op">;</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>      <span class="op">}</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>    <span class="op">}</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>  <span class="op">}</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="op">}</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a>  <span class="dt">int</span> arr<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">};</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a>  <span class="dt">int</span> n <span class="op">=</span> <span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">)/</span><span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">[</span><span class="dv">0</span><span class="op">]);</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a></span>
+<span id="cb3-23"><a href="#cb3-23"></a>  bubble_sort<span class="op">(</span>arr<span class="op">,</span> n<span class="op">);</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a></span>
+<span id="cb3-25"><a href="#cb3-25"></a>  printf<span class="op">(</span><span class="st">"Array ordinato con bubble sort: "</span><span class="op">);</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a></span>
+<span id="cb3-27"><a href="#cb3-27"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%d</span><span class="st"> "</span><span class="op">,</span> arr<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a>  <span class="op">}</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a></span>
+<span id="cb3-31"><a href="#cb3-31"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>C++:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BubbleSort <span class="op">{</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> sort<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>arr<span class="op">[</span>j<span class="op">]</span> <span class="op">&gt;</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>          <span class="dt">int</span> temp <span class="op">=</span> arr<span class="op">[</span>j<span class="op">];</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>          arr<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">];</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>          arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> temp<span class="op">;</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> printArray<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> arr<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> arr<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">};</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> n <span class="op">=</span> <span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">)/</span><span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">[</span><span class="dv">0</span><span class="op">]);</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  BubbleSort bs<span class="op">;</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  bs<span class="op">.</span>sort<span class="op">(</span>arr<span class="op">,</span> n<span class="op">);</span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">"Array ordinato con bubble sort: "</span><span class="op">;</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  bs<span class="op">.</span>printArray<span class="op">(</span>arr<span class="op">,</span> n<span class="op">);</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="kw">class</span> BubbleSort <span class="op">{</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="dt">void</span> sort<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>      <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>        <span class="cf">if</span> <span class="op">(</span>arr<span class="op">[</span>j<span class="op">]</span> <span class="op">&gt;</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>          <span class="dt">int</span> temp <span class="op">=</span> arr<span class="op">[</span>j<span class="op">];</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a></span>
+<span id="cb4-12"><a href="#cb4-12"></a>          arr<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">];</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a></span>
+<span id="cb4-14"><a href="#cb4-14"></a>          arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> temp<span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a>        <span class="op">}</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a>      <span class="op">}</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>    <span class="op">}</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a>  <span class="op">}</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a></span>
+<span id="cb4-20"><a href="#cb4-20"></a>  <span class="dt">void</span> printArray<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a>      cout <span class="op">&lt;&lt;</span> arr<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
+<span id="cb4-23"><a href="#cb4-23"></a>    <span class="op">}</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a></span>
+<span id="cb4-25"><a href="#cb4-25"></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a>  <span class="op">}</span></span>
+<span id="cb4-27"><a href="#cb4-27"></a><span class="op">};</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a></span>
+<span id="cb4-29"><a href="#cb4-29"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a>  <span class="dt">int</span> arr<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">};</span></span>
+<span id="cb4-31"><a href="#cb4-31"></a>  <span class="dt">int</span> n <span class="op">=</span> <span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">)/</span><span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">[</span><span class="dv">0</span><span class="op">]);</span></span>
+<span id="cb4-32"><a href="#cb4-32"></a></span>
+<span id="cb4-33"><a href="#cb4-33"></a>  BubbleSort bs<span class="op">;</span></span>
+<span id="cb4-34"><a href="#cb4-34"></a>  bs<span class="op">.</span>sort<span class="op">(</span>arr<span class="op">,</span> n<span class="op">);</span></span>
+<span id="cb4-35"><a href="#cb4-35"></a></span>
+<span id="cb4-36"><a href="#cb4-36"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">"Array ordinato con bubble sort: "</span><span class="op">;</span></span>
+<span id="cb4-37"><a href="#cb4-37"></a>  bs<span class="op">.</span>printArray<span class="op">(</span>arr<span class="op">,</span> n<span class="op">);</span></span>
+<span id="cb4-38"><a href="#cb4-38"></a></span>
+<span id="cb4-39"><a href="#cb4-39"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-40"><a href="#cb4-40"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Java:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> BubbleSort <span class="op">{</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">bubbleSort</span><span class="op">(</span><span class="dt">int</span> arr<span class="op">[])</span> <span class="op">{</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> n <span class="op">=</span> arr<span class="op">.</span><span class="fu">length</span><span class="op">;</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>arr<span class="op">[</span>j<span class="op">]</span> <span class="op">&gt;</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>          <span class="dt">int</span> temp <span class="op">=</span> arr<span class="op">[</span>j<span class="op">];</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>          arr<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">];</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>          arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> temp<span class="op">;</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span> args<span class="op">[])</span> <span class="op">{</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> arr<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">};</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bubbleSort</span><span class="op">(</span>arr<span class="op">);</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Array ordinato con bubble sort: "</span><span class="op">);</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> arr<span class="op">.</span><span class="fu">length</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>      <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span>arr<span class="op">[</span>i<span class="op">]</span> <span class="op">+</span> <span class="st">" "</span><span class="op">);</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">public</span> <span class="kw">class</span> BubbleSort <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">bubbleSort</span><span class="op">(</span><span class="dt">int</span> arr<span class="op">[])</span> <span class="op">{</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="dt">int</span> n <span class="op">=</span> arr<span class="op">.</span><span class="fu">length</span><span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a></span>
+<span id="cb5-6"><a href="#cb5-6"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>      <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>        <span class="cf">if</span> <span class="op">(</span>arr<span class="op">[</span>j<span class="op">]</span> <span class="op">&gt;</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a>          <span class="dt">int</span> temp <span class="op">=</span> arr<span class="op">[</span>j<span class="op">];</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a>          arr<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">];</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a></span>
+<span id="cb5-14"><a href="#cb5-14"></a>          arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> temp<span class="op">;</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a>        <span class="op">}</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a>      <span class="op">}</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a>    <span class="op">}</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a>  <span class="op">}</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a></span>
+<span id="cb5-20"><a href="#cb5-20"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span> args<span class="op">[])</span> <span class="op">{</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a>    <span class="dt">int</span> arr<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">};</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a></span>
+<span id="cb5-23"><a href="#cb5-23"></a>    <span class="fu">bubbleSort</span><span class="op">(</span>arr<span class="op">);</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a></span>
+<span id="cb5-25"><a href="#cb5-25"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Array ordinato con bubble sort: "</span><span class="op">);</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a></span>
+<span id="cb5-27"><a href="#cb5-27"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> arr<span class="op">.</span><span class="fu">length</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a>      <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span>arr<span class="op">[</span>i<span class="op">]</span> <span class="op">+</span> <span class="st">" "</span><span class="op">);</span></span>
+<span id="cb5-29"><a href="#cb5-29"></a>    <span class="op">}</span></span>
+<span id="cb5-30"><a href="#cb5-30"></a>  <span class="op">}</span></span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Rust:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> bubble_sort(arr<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> [<span class="dt">i32</span>]) <span class="op">{</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> n <span class="op">=</span> arr<span class="op">.</span>len()<span class="op">;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span>n <span class="op">{</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span>n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span> <span class="op">{</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> arr[j] <span class="op">&gt;</span> arr[j<span class="op">+</span><span class="dv">1</span>] <span class="op">{</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        arr<span class="op">.</span>swap(j<span class="op">,</span> j<span class="op">+</span><span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> arr <span class="op">=</span> [<span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span>]<span class="op">;</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  bubble_sort(<span class="op">&amp;</span><span class="kw">mut</span> arr)<span class="op">;</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">"Array ordinato con bubble sort: {:?}"</span><span class="op">,</span> arr)<span class="op">;</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource rust number-lines code-with-copy"><code class="sourceCode rust"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">fn</span> bubble_sort(arr<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> [<span class="dt">i32</span>]) <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="kw">let</span> n <span class="op">=</span> arr<span class="op">.</span>len()<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span>n <span class="op">{</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span>n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span> <span class="op">{</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>      <span class="cf">if</span> arr[j] <span class="op">&gt;</span> arr[j<span class="op">+</span><span class="dv">1</span>] <span class="op">{</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>        arr<span class="op">.</span>swap(j<span class="op">,</span> j<span class="op">+</span><span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>      <span class="op">}</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>    <span class="op">}</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>  <span class="op">}</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="op">}</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a>  <span class="kw">let</span> <span class="kw">mut</span> arr <span class="op">=</span> [<span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span>]<span class="op">;</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a></span>
+<span id="cb6-16"><a href="#cb6-16"></a>  bubble_sort(<span class="op">&amp;</span><span class="kw">mut</span> arr)<span class="op">;</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a></span>
+<span id="cb6-18"><a href="#cb6-18"></a>  <span class="pp">println!</span>(<span class="st">"Array ordinato con bubble sort: {:?}"</span><span class="op">,</span> arr)<span class="op">;</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Scala:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode scala code-with-copy"><code class="sourceCode scala"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">object</span> BubbleSort <span class="op">{</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">bubbleSort</span><span class="op">(</span>arr<span class="op">:</span> <span class="ex">Array</span><span class="op">[</span><span class="bu">Int</span><span class="op">]):</span> <span class="bu">Unit</span> <span class="op">=</span> <span class="op">{</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> n <span class="op">=</span> arr<span class="op">.</span>length</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">&lt;-</span> <span class="dv">0</span> until n<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> <span class="op">(</span>j <span class="op">&lt;-</span> <span class="dv">0</span> until n <span class="op">-</span> i <span class="op">-</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span><span class="fu">arr</span><span class="op">(</span>j<span class="op">)</span> <span class="op">&gt;</span> <span class="fu">arr</span><span class="op">(</span>j <span class="op">+</span> <span class="dv">1</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>          <span class="kw">val</span> temp <span class="op">=</span> <span class="fu">arr</span><span class="op">(</span>j<span class="op">)</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>          <span class="fu">arr</span><span class="op">(</span>j<span class="op">)</span> <span class="op">=</span> <span class="fu">arr</span><span class="op">(</span>j <span class="op">+</span> <span class="dv">1</span><span class="op">)</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>          <span class="fu">arr</span><span class="op">(</span>j <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">=</span> temp</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">main</span><span class="op">(</span>args<span class="op">:</span> <span class="ex">Array</span><span class="op">[</span><span class="ex">String</span><span class="op">]):</span> <span class="bu">Unit</span> <span class="op">=</span> <span class="op">{</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> arr <span class="op">=</span> <span class="ex">Array</span><span class="op">(</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">)</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bubbleSort</span><span class="op">(</span>arr<span class="op">)</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span><span class="op">(</span><span class="st">"Array ordinato con bubble sort: "</span> <span class="op">+</span> arr<span class="op">.</span><span class="fu">mkString</span><span class="op">(</span><span class="st">", "</span><span class="op">))</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource scala number-lines code-with-copy"><code class="sourceCode scala"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">object</span> BubbleSort <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="kw">def</span> <span class="fu">bubbleSort</span><span class="op">(</span>arr<span class="op">:</span> <span class="ex">Array</span><span class="op">[</span><span class="bu">Int</span><span class="op">]):</span> <span class="bu">Unit</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>    <span class="kw">val</span> n <span class="op">=</span> arr<span class="op">.</span>length</span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">&lt;-</span> <span class="dv">0</span> until n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>      <span class="cf">for</span> <span class="op">(</span>j <span class="op">&lt;-</span> <span class="dv">0</span> until n <span class="op">-</span> i <span class="op">-</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>        <span class="cf">if</span> <span class="op">(</span><span class="fu">arr</span><span class="op">(</span>j<span class="op">)</span> <span class="op">&gt;</span> <span class="fu">arr</span><span class="op">(</span>j <span class="op">+</span> <span class="dv">1</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>          <span class="kw">val</span> temp <span class="op">=</span> <span class="fu">arr</span><span class="op">(</span>j<span class="op">)</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a></span>
+<span id="cb7-10"><a href="#cb7-10"></a>          <span class="fu">arr</span><span class="op">(</span>j<span class="op">)</span> <span class="op">=</span> <span class="fu">arr</span><span class="op">(</span>j <span class="op">+</span> <span class="dv">1</span><span class="op">)</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a></span>
+<span id="cb7-12"><a href="#cb7-12"></a>          <span class="fu">arr</span><span class="op">(</span>j <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">=</span> temp</span>
+<span id="cb7-13"><a href="#cb7-13"></a>        <span class="op">}</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a>      <span class="op">}</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a>    <span class="op">}</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a>  <span class="op">}</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a></span>
+<span id="cb7-18"><a href="#cb7-18"></a>  <span class="kw">def</span> <span class="fu">main</span><span class="op">(</span>args<span class="op">:</span> <span class="ex">Array</span><span class="op">[</span><span class="ex">String</span><span class="op">]):</span> <span class="bu">Unit</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a>    <span class="kw">val</span> arr <span class="op">=</span> <span class="ex">Array</span><span class="op">(</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">)</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a></span>
+<span id="cb7-21"><a href="#cb7-21"></a>    <span class="fu">bubbleSort</span><span class="op">(</span>arr<span class="op">)</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a></span>
+<span id="cb7-23"><a href="#cb7-23"></a>    <span class="fu">println</span><span class="op">(</span><span class="st">"Array ordinato con bubble sort: "</span> <span class="op">+</span> arr<span class="op">.</span><span class="fu">mkString</span><span class="op">(</span><span class="st">", "</span><span class="op">))</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a>  <span class="op">}</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <p>Confrontando questi esempi, possiamo osservare le differenze sintattiche e di stile tra Python ed altri, importanti, linguaggi. Python si distingue per la sua sintassi concisa e espressiva soprattutto nella versione procedurale. L’implementazione colla gerarchia di oggetti ha un piccolo incremento di complessità che è ripagato dalla possibilità di creare gerarchie di algoritmi di ordinamento, con impatti nulli sul codice preesistente.</p>
 <p>La versione procedurale in Python e l’implementazione C, già a primo acchito, presentano un evidente diverso grado di chiarezza del codice. Inoltre, la riga <code>int n = sizeof(arr)/sizeof(arr[0]);</code> in C si rende necessaria per calcolare il numero di valori a partire dalle dimensioni totale della lista e del singolo elemento, rispetto a <code>n = len(arr)</code> di Python dove chiediamo direttamente il numero di valori.</p>
