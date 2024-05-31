@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Da neofita di Python a campione – 7&nbsp; Esercizi</title>
+<title>Da neofita di Python a campione – Seconda parte: Le basi di Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./sp-python-syntax.html" rel="prev">
+<link href="./seconda-parte-python-introduzione.html" rel="next">
+<link href="./prima-parte-sintassi-algoritmi.html" rel="prev">
 <link href="./red-python-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -112,9 +78,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://cdn.jsdelivr.net/pyodide/v0.26.0/full/pyodide.js"></script>
 
 
-<meta property="og:title" content="Da neofita di Python a campione - 7&nbsp; Esercizi">
+<meta property="og:title" content="Da neofita di Python a campione - Seconda parte: Le basi di Python">
 <meta property="og:site_name" content="Da neofita di Python a campione">
-<meta name="twitter:title" content="Da neofita di Python a campione - 7&nbsp; Esercizi">
+<meta name="twitter:title" content="Da neofita di Python a campione - Seconda parte: Le basi di Python">
 <meta name="twitter:creator" content="@antomon">
 <meta name="twitter:site" content="@antomon">
 <meta name="twitter:card" content="summary">
@@ -129,7 +95,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sp.html">Seconda parte: Le basi di Python</a></li><li class="breadcrumb-item"><a href="./sp-exercises.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Esercizi</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./seconda-parte.html">Seconda parte: Le basi di Python</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Ricerca" onclick="window.quartoOpenSearch();">
@@ -205,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./fp.html" class="sidebar-item-text sidebar-link">
+            <a href="./prima-parte.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prima parte: I fondamenti della programmazione</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -214,19 +180,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fp-programming-languages.html" class="sidebar-item-text sidebar-link">
+  <a href="./prima-parte-linguaggi-programmazione.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">I linguaggi di programmazione, i programmi e i programmatori</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fp-programming-paradigms.html" class="sidebar-item-text sidebar-link">
+  <a href="./prima-parte-paradigmi-programmazione.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Paradigmi di programmazione</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fp-syntax-algorithm.html" class="sidebar-item-text sidebar-link">
+  <a href="./prima-parte-sintassi-algoritmi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi e semantica dei linguaggi di programmazione e algoritmi dei programmi</span></span></a>
   </div>
 </li>
@@ -234,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./sp.html" class="sidebar-item-text sidebar-link">
+            <a href="./seconda-parte.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Seconda parte: Le basi di Python</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -243,26 +209,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sp-python-intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./seconda-parte-python-introduzione.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduzione a Python</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sp-python-install.html" class="sidebar-item-text sidebar-link">
+  <a href="./seconda-parte-python-installazione.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sp-python-syntax.html" class="sidebar-item-text sidebar-link">
+  <a href="./seconda-parte-python-sintassi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La struttura lessicale di Python</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sp-exercises.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Esercizi</span></span></a>
+  <a href="./seconda-parte-python-modello-dati.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">seconda-parte-python-modello-dati.html</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-esercizi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Esercizi</span></span></a>
   </div>
 </li>
       </ul>
@@ -278,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="./appendice-riferimenti.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Riferimenti</span></a>
   </div>
 </li>
@@ -289,24 +261,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Indice</h2>
-   
-  <ul>
-  <li><a href="#funzioni-e-istruzioni-composte" id="toc-funzioni-e-istruzioni-composte" class="nav-link active" data-scroll-target="#funzioni-e-istruzioni-composte"><span class="header-section-number">7.1</span> Funzioni e istruzioni composte</a>
-  <ul class="collapse">
-  <li><a href="#numeri-pari-o-dispari" id="toc-numeri-pari-o-dispari" class="nav-link" data-scroll-target="#numeri-pari-o-dispari"><span class="header-section-number">7.1.1</span> ★ ☆ ☆ ☆ ☆ Numeri pari o dispari</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/sp-exercises.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sp.html">Seconda parte: Le basi di Python</a></li><li class="breadcrumb-item"><a href="./sp-exercises.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Esercizi</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Esercizi</span></h1>
+<h1 class="title">Seconda parte: Le basi di Python</h1>
 </div>
 
 
@@ -323,74 +286,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="funzioni-e-istruzioni-composte" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="funzioni-e-istruzioni-composte"><span class="header-section-number">7.1</span> Funzioni e istruzioni composte</h2>
-<section id="numeri-pari-o-dispari" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="numeri-pari-o-dispari"><span class="header-section-number">7.1.1</span> ★ ☆ ☆ ☆ ☆ Numeri pari o dispari</h3>
-<p>Definire una funzione che prende in input un numero intero e restituisce una stringa di <code>Pari</code> o <code>Dispari</code>.</p>
-<section id="soluzione-1-test-con-operatore-modulo" class="level4" data-number="7.1.1.1">
-<h4 data-number="7.1.1.1" class="anchored" data-anchor-id="soluzione-1-test-con-operatore-modulo"><span class="header-section-number">7.1.1.1</span> Soluzione 1: test con operatore modulo</h4>
-<div id="4e92f46c" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Mostra il codice</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
-<span id="cb1-2"><a href="#cb1-2"></a>  <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb1-3"><a href="#cb1-3"></a>    <span class="cf">return</span> <span class="st">"Pari"</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="cf">else</span>:</span>
-<span id="cb1-6"><a href="#cb1-6"></a>    <span class="cf">return</span> <span class="st">"Dispari"</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section>
-<section id="soluzione-2-test-con-operatore-modulo-e-controllo-degli-input" class="level4" data-number="7.1.1.2">
-<h4 data-number="7.1.1.2" class="anchored" data-anchor-id="soluzione-2-test-con-operatore-modulo-e-controllo-degli-input"><span class="header-section-number">7.1.1.2</span> Soluzione 2: test con operatore modulo e controllo degli input</h4>
-<div id="1069a3d5" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Mostra il codice</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
-<span id="cb2-2"><a href="#cb2-2"></a>    <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(n, <span class="bu">int</span>):</span>
-<span id="cb2-3"><a href="#cb2-3"></a>        <span class="cf">return</span> <span class="st">"Errore: l'input deve essere un numero intero!"</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>    </span>
-<span id="cb2-5"><a href="#cb2-5"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb2-6"><a href="#cb2-6"></a>        <span class="cf">return</span> <span class="st">"Pari"</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a></span>
-<span id="cb2-8"><a href="#cb2-8"></a>    <span class="cf">else</span>:</span>
-<span id="cb2-9"><a href="#cb2-9"></a>        <span class="cf">return</span> <span class="st">"Dispari"</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section>
-<section id="soluzione-3-test-con-operatore-modulo-e-generazione-di-errore-su-input-non-intero" class="level4" data-number="7.1.1.3">
-<h4 data-number="7.1.1.3" class="anchored" data-anchor-id="soluzione-3-test-con-operatore-modulo-e-generazione-di-errore-su-input-non-intero"><span class="header-section-number">7.1.1.3</span> Soluzione 3: test con operatore modulo e generazione di errore su input non intero</h4>
-<div id="da203825" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Mostra il codice</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
-<span id="cb3-2"><a href="#cb3-2"></a>    <span class="cf">assert</span> <span class="bu">isinstance</span>(n, <span class="bu">int</span>), <span class="op">\</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>      <span class="st">"Errore: l'input deve essere un numero intero!"</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>    </span>
-<span id="cb3-5"><a href="#cb3-5"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb3-6"><a href="#cb3-6"></a>        <span class="cf">return</span> <span class="st">"Pari"</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>    <span class="cf">else</span>:</span>
-<span id="cb3-8"><a href="#cb3-8"></a>        <span class="cf">return</span> <span class="st">"Dispari"</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section>
-<section id="soluzione-4-uso-di-funzione-built-in" class="level4" data-number="7.1.1.4">
-<h4 data-number="7.1.1.4" class="anchored" data-anchor-id="soluzione-4-uso-di-funzione-built-in"><span class="header-section-number">7.1.1.4</span> Soluzione 4: uso di funzione built-in</h4>
-<div id="01180275" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Mostra il codice</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    _, remainder <span class="op">=</span> <span class="bu">divmod</span>(n, <span class="dv">2</span>)</span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a>    <span class="cf">return</span> <span class="st">"Pari"</span> <span class="cf">if</span> remainder <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"Dispari"</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 
 
-</section>
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -815,13 +712,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./sp-python-syntax.html" class="pagination-link" aria-label="La struttura lessicale di Python">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La struttura lessicale di Python</span></span>
+      <a href="./prima-parte-sintassi-algoritmi.html" class="pagination-link" aria-label="Sintassi e semantica dei linguaggi di programmazione e algoritmi dei programmi">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi e semantica dei linguaggi di programmazione e algoritmi dei programmi</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="Riferimenti">
-        <span class="nav-page-text">Riferimenti</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./seconda-parte-python-introduzione.html" class="pagination-link" aria-label="Introduzione a Python">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduzione a Python</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -849,7 +746,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/sp-exercises.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/seconda-parte.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
