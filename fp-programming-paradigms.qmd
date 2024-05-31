@@ -217,8 +217,11 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
   #define MIALIBRERIA_H
 
   int somma_interi(int a, int b);
+
   char* somma_stringhe(const char* a, const char* b);
+
   int somma_array(int arr[], int n);
+
   void stampa_messaggio(const char* messaggio);
 
   #endif
@@ -237,11 +240,11 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
   }
 
   char* somma_stringhe(const char* a, const char* b) {
-      char* risultato = malloc(strlen(a) + strlen(b) + 1); // <1>
+      char* risultato = malloc(strlen(a) + strlen(b) + 1); /* <1> */
 
-      if (risultato) { // <2>
-          strcpy(risultato, a); // <3>
-          strcat(risultato, b); // <4>
+      if (risultato) { /* <2> */
+          strcpy(risultato, a); /* <3> */
+          strcat(risultato, b); /* <4> */
       }
 
       return risultato;
@@ -278,13 +281,13 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
       stampa_messaggio("Il risultato della somma di interi è:");
       printf("%d\n", risultato);
 
-      char* risultato_stringhe = somma_stringhe("Ciao, ", "mondo!"); // <2>
+      char* risultato_stringhe = somma_stringhe("Ciao, ", "mondo!"); /* <2> */
 
       stampa_messaggio("Il risultato della somma di stringhe è:");
       printf("%s\n", risultato_stringhe);
-      free(risultato_stringhe); // <3>
+      free(risultato_stringhe); /* <3> */
 
-      int array[] = {1, 2, 3, 4, 5}; // <4>
+      int array[] = {1, 2, 3, 4, 5}; /* <4> */
       int risultato_array = somma_array(array, 5);
 
       stampa_messaggio("Il risultato della somma dell'array è:");
