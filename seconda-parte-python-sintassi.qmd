@@ -332,7 +332,7 @@ Identificatori speciali:
     1. Uso di `_` come variabile regolare.
     2. Uso di _ per internazionalizzazione.
 
-- `__*__`: Questi nomi, informalmente noti come nomi _dunder_[^1-sp-python-syntax], sono definiti dall'interprete e dalla sua implementazione (inclusa la libreria standard). Altri potrebbero essere definiti nelle versioni future di Python. Qualsiasi uso di nomi `__*__`, in qualsiasi contesto, che non segua l'uso esplicitamente documentato, è soggetto a discontinuazione senza preavviso. Esempio:
+- `__*__`: Questi nomi, informalmente noti come nomi _dunder_[^1-seconda-parte-python-sintassi], sono definiti dall'interprete e dalla sua implementazione (inclusa la libreria standard). Altri potrebbero essere definiti nelle versioni future di Python. Qualsiasi uso di nomi `__*__`, in qualsiasi contesto, che non segua l'uso esplicitamente documentato, è soggetto a discontinuazione senza preavviso. Esempio:
 
   ```python
   class MyClass:
@@ -372,7 +372,7 @@ Identificatori speciali:
   1. Accesso al nome di `BaseClass`.
   2. Accesso al nome di `DerivedClass`.
 
-[^1-sp-python-syntax]: I nomi con doppio underscore (`__`) sono chiamati _dunder_ come abbreviazione di _double underscore_. 
+[^1-seconda-parte-python-sintassi]: I nomi con doppio underscore (`__`) sono chiamati _dunder_ come abbreviazione di _double underscore_. 
 
 ### Operatori
 
@@ -509,7 +509,7 @@ La seguente tabella include tutti i delimitatori e i principali utilizzi:
 | `<<=`       | Assegnazione aumentata con shift a sinistra |
 | `**=`       | Assegnazione aumentata con esponenziazione |
 
-Una sequenza di tre punti, comunemente indicata come ellissi anche al difuori dei linguaggi di programmazione,[^2-sp-python-syntax] è trattata come un token a sé e corrisponde ad un oggetto predefinito chiamato [Ellipsis](https://docs.python.org/3/reference/datamodel.html#ellipsis), con applicazioni in diversi contesti:
+Una sequenza di tre punti, comunemente indicata come ellissi anche al difuori dei linguaggi di programmazione,[^2-seconda-parte-python-sintassi] è trattata come un token a sé e corrisponde ad un oggetto predefinito chiamato [Ellipsis](https://docs.python.org/3/reference/datamodel.html#ellipsis), con applicazioni in diversi contesti:
 
 ```python
 print(type(...))  # <1>
@@ -538,7 +538,7 @@ print(array[..., 1]) # <4>
 3. L'uso di `Callable[..., int]` indica una funzione che può accettare un numero variabile di argomenti di qualsiasi tipo e restituire un valore di tipo int.
 4. `numpy` è una libreria di calcolo matriciale molto diffusa. L'ellissi è utilizzata per effettuare uno sezione complessa della matrice secondo tutte le dimensioni precedenti all'ultima. In altre parole, l'ellissi permette di selezionare interamente tutte le dimensioni tranne l'ultima specificata. Il risultato stampato in console è su due righe: `[[ 2  5]` e ` [ 8 11]]`.
 
-[^2-sp-python-syntax]: L'ellissi è usata, ad esempio, in C per dichiarare funzioni che accettano un numero variaible di parametri e i Javascript come operatore per espandere gli array o le proprietà di un oggetto.
+[^2-seconda-parte-python-sintassi]: L'ellissi è usata, ad esempio, in C per dichiarare funzioni che accettano un numero variaible di parametri e i Javascript come operatore per espandere gli array o le proprietà di un oggetto.
 
 Alcuni caratteri ASCII hanno un significato speciale come parte di altri token o sono significativi per l'analizzatore lessicale:
 
@@ -598,9 +598,9 @@ molto "importante"."""
 print(stringa_multilinea)
 ```
 
-Tutte le stringhe sono codificate in Unicode, con il prefisso `b` la stringa è di tipo byte ed è limitata ai 128 caratteri dell'ASCII. Se si prepone `r`, che sta per _raw_ cioè grezzo, allora la codifica è sempre Unicode ma i caratteri di escape[^3-sp-python-syntax] non sono intepretati.
+Tutte le stringhe sono codificate in Unicode, con il prefisso `b` la stringa è di tipo byte ed è limitata ai 128 caratteri dell'ASCII. Se si prepone `r`, che sta per _raw_ cioè grezzo, allora la codifica è sempre Unicode ma i caratteri di escape[^3-seconda-parte-python-sintassi] non sono intepretati.
 
-[^3-sp-python-syntax]: In Python, il carattere di escape `\` è utilizzato nelle stringhe per inserire caratteri speciali che non possono essere facilmente digitati sulla tastiera o che hanno significati speciali. 
+[^3-seconda-parte-python-sintassi]: In Python, il carattere di escape `\` è utilizzato nelle stringhe per inserire caratteri speciali che non possono essere facilmente digitati sulla tastiera o che hanno significati speciali. 
 
     Alcuni esempi comuni includono:
 
