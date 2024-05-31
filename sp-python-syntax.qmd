@@ -344,10 +344,11 @@ Identificatori speciali:
 
   obj = MyClass(10)
 
-  print(obj)  # Output: MyClass con valore 10
+  print(obj)  # <3>
   ```
   1. Dunder per metodo chiamato alla creazione dell'oggetto.
-  2. Dunder chiamato da print con parametro l'oggetto.
+  2. Dunder chiamato da `print` con parametro l'oggetto.
+  3. Output: MyClass con valore 10
 
 - `__*`: I nomi in questa categoria, quando utilizzati all'interno di una definizione di classe, vengono riscritti dal compilatore (processo noto come name _mangling_) per evitare conflitti di nome tra attributi "privati" delle classi base e delle classi derivate. Questo aiuta a garantire che gli attributi destinati ad essere privati non vengano accidentalmente sovrascritti nelle sottoclassi. Esempio:
 
@@ -365,10 +366,11 @@ Identificatori speciali:
   base_obj = BaseClass()
   derived_obj = DerivedClass()
 
-  # Accesso ai nomi riscritti (name mangling)
-  print(base_obj._BaseClass__private_attr)  # Output: Base
-  print(derived_obj._DerivedClass__private_attr)  # Output: Derived
+  print(base_obj._BaseClass__private_attr)  # <1>
+  print(derived_obj._DerivedClass__private_attr)  # <2>
   ```
+  1. Accesso al nome di `BaseClass`.
+  2. Accesso al nome di `DerivedClass`.
 
 [^1-sp-python-syntax]: I nomi con doppio underscore (`__`) sono chiamati _dunder_ come abbreviazione di _double underscore_. 
 
@@ -381,6 +383,7 @@ Esempi:
 ```python
 x = 5
 y = 10
+
 z = x + y # <1>
 
 sum = 3 + 4 # <2>
@@ -461,14 +464,15 @@ print("Matrice B:")
 print(B)
 
 print("Risultato di A @ B:")
-print(C)
-# Output: [[19 22],
-#           43 50]]
+print(C) # <5>
 ```
 1. Controlla se le dimensioni sono compatibili per la moltiplicazione.
 2. Inizializza la matrice risultato con zeri.
 3. Esegue la moltiplicazione delle matrici.
-4. Rappresentazione leggibile della matrice-
+4. Rappresentazione leggibile della matrice.
+5. Chiama `__matmul__` per ottenere la stringa con risultato:
+   19 22
+   43 50
 
 Infine, `@` è anche un delimitatore.
 
@@ -510,7 +514,7 @@ La seguente tabella include tutti i delimitatori e i principali utilizzi:
 Una sequenza di tre punti, comunemente indicata come ellissi anche al difuori dei linguaggi di programmazione,[^2-sp-python-syntax] è trattata come un token a sé e corrisponde ad un oggetto predefinito chiamato [Ellipsis](https://docs.python.org/3/reference/datamodel.html#ellipsis), con applicazioni in diversi contesti:
 
 ```python
-print(type(...))  # <class 'ellipsis'> # <1>
+print(type(...))  # <1>
 
 def funzione_da_completare():
   ... # <2>
@@ -530,14 +534,13 @@ array = np.array([[[1, 2, 3],    [4, 5, 6]],
                   [[7, 8, 9], [10, 11, 12]]]) 
 
 print(array[..., 1]) # <4>
-# Output: 
-# [[ 2  5]
-#  [ 8 11]]
 ```
-1. Otteniamo il tipo dell'oggetto ellissi.
+1. Otteniamo il tipo dell'oggetto ellissi. L'output è `<class 'ellipsis'>`.
 2. Utilizzo come segnaposto per indicare che la funzione è da completare. Da notare che chiamare la funzione `funzione_da_completare()` non dà errore.
 3. L'uso di `Callable[..., int]` indica una funzione che può accettare un numero variabile di argomenti di qualsiasi tipo e restituire un valore di tipo int.
-4. `numpy` è una libreria di calcolo matriciale molto diffusa. L'ellissi è utilizzata per effettuare uno sezione complessa della matrice secondo tutte le dimensioni precedenti all'ultima. In altre parole, l'ellissi permette di selezionare interamente tutte le dimensioni tranne l'ultima specificata.
+4. `numpy` è una libreria di calcolo matriciale molto diffusa. L'ellissi è utilizzata per effettuare uno sezione complessa della matrice secondo tutte le dimensioni precedenti all'ultima. In altre parole, l'ellissi permette di selezionare interamente tutte le dimensioni tranne l'ultima specificata. Il risultato stampato in console è:
+  [[ 2  5]
+   [ 8 11]]
 
 [^2-sp-python-syntax]: L'ellissi è usata, ad esempio, in C per dichiarare funzioni che accettano un numero variaible di parametri e i Javascript come operatore per espandere gli array o le proprietà di un oggetto.
 
@@ -632,16 +635,20 @@ f_stringa_multi_linea = f'''Questo è un esempio
 di f-stringa multi-linea
 in {definizione.lower() + ' ' + nome}''' # <2>
 
-print(f_stringa)
-# Output: Ciao, python!
+print(f_stringa) # <3>
+# 
 
-print(f_stringa_multi_linea)
-# Questo è un esempio
-# di f-stringa multi-linea
-# in linguaggio Python
+print(f_stringa_multi_linea) # <4>
 ```
 1. Viene chiamato il metodo della stringa lower() per avere il maiuscolo.
 2. Usiamo un'espressione di concatenazione di stringhe.
+3. Output: `Output: Ciao, python!`.
+4. Output: 
+  ```
+  Questo è un esempio
+  di f-stringa multi-linea
+  in linguaggio Python
+  ```.
 
 ## Istruzioni
 
