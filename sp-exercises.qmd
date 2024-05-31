@@ -14,7 +14,9 @@ format:
 
 ### ★ ☆ ☆ ☆ ☆ Numeri pari o dispari 
 
-Definire una funzione che prende in input un numero intero e restituisce una stringa tra `Pari` e `Dispari`.
+Definire una funzione che prende in input un numero intero e restituisce una stringa di `Pari` o `Dispari`.
+
+#### Soluzione 1: test con operatore modulo
 
 ```{python}
 def pari_o_dispari(n):
@@ -25,5 +27,39 @@ def pari_o_dispari(n):
     return "Dispari"
 ```
 
+#### Soluzione 2: test con operatore modulo e controllo degli input
 
+```{python}
+def pari_o_dispari(n):
+    if not isinstance(n, int):
+        return "Errore: l'input deve essere un numero intero!"
+    
+    if n % 2 == 0:
+        return "Pari"
+
+    else:
+        return "Dispari"
+```
+
+#### Soluzione 3: test con operatore modulo e generazione di errore su input non intero
+
+```{python}
+def pari_o_dispari(n):
+    assert isinstance(n, int), \
+      "Errore: l'input deve essere un numero intero!"
+    
+    if n % 2 == 0:
+        return "Pari"
+    else:
+        return "Dispari"
+```
+
+#### Soluzione 4: uso di funzione built-in
+
+```{python}
+def pari_o_dispari(n):
+    _, remainder = divmod(n, 2)
+
+    return "Pari" if remainder == 0 else "Dispari"
+```
 

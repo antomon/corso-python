@@ -327,8 +327,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="7.1" class="anchored" data-anchor-id="funzioni-e-istruzioni-composte"><span class="header-section-number">7.1</span> Funzioni e istruzioni composte</h2>
 <section id="numeri-pari-o-dispari" class="level3" data-number="7.1.1">
 <h3 data-number="7.1.1" class="anchored" data-anchor-id="numeri-pari-o-dispari"><span class="header-section-number">7.1.1</span> ★ ☆ ☆ ☆ ☆ Numeri pari o dispari</h3>
-<p>Definire una funzione che prende in input un numero intero e restituisce una stringa tra <code>Pari</code> e <code>Dispari</code>.</p>
-<div id="74633eb4" class="cell" data-execution_count="1">
+<p>Definire una funzione che prende in input un numero intero e restituisce una stringa di <code>Pari</code> o <code>Dispari</code>.</p>
+<section id="soluzione-1-test-con-operatore-modulo" class="level4" data-number="7.1.1.1">
+<h4 data-number="7.1.1.1" class="anchored" data-anchor-id="soluzione-1-test-con-operatore-modulo"><span class="header-section-number">7.1.1.1</span> Soluzione 1: test con operatore modulo</h4>
+<div id="6fde3d30" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Mostra il codice</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
@@ -339,8 +341,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6"></a>    <span class="cf">return</span> <span class="st">"Dispari"</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+</section>
+<section id="soluzione-2-test-con-operatore-modulo-e-controllo-degli-input" class="level4" data-number="7.1.1.2">
+<h4 data-number="7.1.1.2" class="anchored" data-anchor-id="soluzione-2-test-con-operatore-modulo-e-controllo-degli-input"><span class="header-section-number">7.1.1.2</span> Soluzione 2: test con operatore modulo e controllo degli input</h4>
+<div id="fb52c649" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Mostra il codice</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(n, <span class="bu">int</span>):</span>
+<span id="cb2-3"><a href="#cb2-3"></a>        <span class="cf">return</span> <span class="st">"Errore: l'input deve essere un numero intero!"</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>    </span>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-6"><a href="#cb2-6"></a>        <span class="cf">return</span> <span class="st">"Pari"</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-9"><a href="#cb2-9"></a>        <span class="cf">return</span> <span class="st">"Dispari"</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="soluzione-3-test-con-operatore-modulo-e-generazione-di-errore-su-input-non-intero" class="level4" data-number="7.1.1.3">
+<h4 data-number="7.1.1.3" class="anchored" data-anchor-id="soluzione-3-test-con-operatore-modulo-e-generazione-di-errore-su-input-non-intero"><span class="header-section-number">7.1.1.3</span> Soluzione 3: test con operatore modulo e generazione di errore su input non intero</h4>
+<div id="75f29479" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Mostra il codice</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="cf">assert</span> <span class="bu">isinstance</span>(n, <span class="bu">int</span>), <span class="op">\</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>      <span class="st">"Errore: l'input deve essere un numero intero!"</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>    </span>
+<span id="cb3-5"><a href="#cb3-5"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb3-6"><a href="#cb3-6"></a>        <span class="cf">return</span> <span class="st">"Pari"</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-8"><a href="#cb3-8"></a>        <span class="cf">return</span> <span class="st">"Dispari"</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="soluzione-4-uso-di-funzione-built-in" class="level4" data-number="7.1.1.4">
+<h4 data-number="7.1.1.4" class="anchored" data-anchor-id="soluzione-4-uso-di-funzione-built-in"><span class="header-section-number">7.1.1.4</span> Soluzione 4: uso di funzione built-in</h4>
+<div id="bef5066e" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Mostra il codice</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    _, remainder <span class="op">=</span> <span class="bu">divmod</span>(n, <span class="dv">2</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a>    <span class="cf">return</span> <span class="st">"Pari"</span> <span class="cf">if</span> remainder <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"Dispari"</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 
+</section>
 </section>
 </section>
 
