@@ -381,9 +381,7 @@ public class Main {
 3. `@Override` indica in esplicito che il `faiVerso()` del `Cane` sovrascrive (non eredita) il `faiVerso()` di `Animale`.
 4. Output: `Il cane abbaia`.
 
-[^1-prima-parte-paradigmi-programmazione]: In Java, l'annotazione `@Override` è opzionale, ma altamente consigliata. Non omettere l'annotazione `@Override` non causerà un errore di compilazione o di runtime. Tuttavia, l'uso di `@Override` offre dei vantaggi importanti:
-   1. Verifica del compilatore: Il compilatore verifica che il metodo stia effettivamente sovrascrivendo un metodo nella superclasse. Se il metodo nella superclasse viene rinominato o rimosso, il compilatore segnalerà un errore.
-   2. Migliora la leggibilità del codice: Indica chiaramente al lettore del codice che il metodo è inteso per sovrascrivere un metodo nella superclasse.
+[^1-prima-parte-paradigmi-programmazione]: In Java, l'annotazione `@Override` è opzionale, ma altamente consigliata. Non omettere l'annotazione `@Override` non causerà un errore di compilazione o di runtime. Tuttavia, l'uso di `@Override` offre dei vantaggi importanti perché, innanzitutto, il compilatore può verificare che il metodo stia effettivamente sovrascrivendo uno nella classe base e segnalare un errore in caso contrario. Inoltre, l'annotazione migliora la leggibilità del codice perché indica chiaramente al lettore come il metodo è inteso rispetto all'ereditarietà.
 
 In realtà, se gli oggetti devono rappresentare animali reali vorrà dire che non deve essere possibile crearne dalla matrice `Animale`. Vediamo, quindi, come implementare il medesimo esempio con una classe _astratta_, cioè una classe che non può essere usata per generare direttamente oggetti, sempre in Java. 
 
