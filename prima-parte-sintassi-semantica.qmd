@@ -3,9 +3,7 @@ reference-location: margin
 citation-location: margin
 ---
 
-# Sintassi e semantica dei linguaggi di programmazione e algoritmi dei programmi
-
-## Sintassi e semantica dei linguaggi di programmazione
+# Sintassi e semantica dei linguaggi di programmazione
 
 I linguaggi di programmazione sono strumenti utilizzati per implementare algoritmi in modo che possano essere eseguiti da un computer. Un linguaggio di programmazione ha due componenti principali: la **sintassi** e la **semantica**.
 
@@ -65,9 +63,9 @@ if x == 10:
 
 L'**analizzatore lessicale** (o _lexer_) è un componente del compilatore o interprete che prende in input il codice sorgente del programma e lo divide in lessemi. Esso confronta ciascun lessema con i pattern definiti per il linguaggio di programmazione e genera una sequenza di token. Questi token sono poi passati al parser.
 
-Il **parser** è un altro componente del compilatore o interprete che prende in input la sequenza di token generata dall'analizzatore lessicale e verifica che la sequenza rispetti le regole sintattiche del linguaggio di programmazione. Il parser analizza i token per formare una struttura gerarchica che rappresenti le relazioni grammaticali tra di essi. Questa struttura interna è spesso un albero di sintassi (_parse tree_ o _syntax tree_), che riflette la struttura grammaticale del codice sorgente, solitamente descritta usando una forma standard di notazione come la BNF (Backus-Naur Form) o varianti di essa.[^1-prima-parte-sintassi-algoritmi] L'albero di sintassi viene utilizzato per ulteriori fasi di compilazione o interpretazione, come l'analisi semantica e la generazione del codice. Ad esempio, il parser può verificare che le espressioni aritmetiche siano ben formate, che le istruzioni siano correttamente annidate e che le dichiarazioni di variabili siano valide.
+Il **parser** è un altro componente del compilatore o interprete che prende in input la sequenza di token generata dall'analizzatore lessicale e verifica che la sequenza rispetti le regole sintattiche del linguaggio di programmazione. Il parser analizza i token per formare una struttura gerarchica che rappresenti le relazioni grammaticali tra di essi. Questa struttura interna è spesso un albero di sintassi (_parse tree_ o _syntax tree_), che riflette la struttura grammaticale del codice sorgente, solitamente descritta usando una forma standard di notazione come la BNF (Backus-Naur Form) o varianti di essa.[^1-prima-parte-sintassi-semantica] L'albero di sintassi viene utilizzato per ulteriori fasi di compilazione o interpretazione, come l'analisi semantica e la generazione del codice. Ad esempio, il parser può verificare che le espressioni aritmetiche siano ben formate, che le istruzioni siano correttamente annidate e che le dichiarazioni di variabili siano valide.
 
-[^1-prima-parte-sintassi-algoritmi]: La BNF (Backus-Naur form o Backus normal form) è una metasintassi, ovvero un formalismo attraverso cui è possibile descrivere la sintassi di linguaggi formali (il prefisso meta ha proprio a che vedere con la natura circolare di questa definizione). Si tratta di uno strumento molto usato per descrivere in modo preciso e non ambiguo la sintassi dei linguaggi di programmazione, dei protocolli di rete e così via, benché non manchino in letteratura esempi di sue applicazioni a contesti anche non informatici e addirittura non tecnologici. Un esempio è la grammatica di [Python](https://docs.python.org/3/reference/grammar.html)
+[^1-prima-parte-sintassi-semantica]: La BNF (Backus-Naur form o Backus normal form) è una metasintassi, ovvero un formalismo attraverso cui è possibile descrivere la sintassi di linguaggi formali (il prefisso meta ha proprio a che vedere con la natura circolare di questa definizione). Si tratta di uno strumento molto usato per descrivere in modo preciso e non ambiguo la sintassi dei linguaggi di programmazione, dei protocolli di rete e così via, benché non manchino in letteratura esempi di sue applicazioni a contesti anche non informatici e addirittura non tecnologici. Un esempio è la grammatica di [Python](https://docs.python.org/3/reference/grammar.html)
 
 ### Espressioni
 
@@ -129,8 +127,9 @@ Alcuni esempi di istruzione e blocco di codice:
 
   ```c
   if (x > 0) {
-      printf("x è positivo\n");
-      y = x * 2;
+    printf("x è positivo\n");
+
+    y = x * 2;
   }
   ```
   In questo esempio:
@@ -140,9 +139,10 @@ Alcuni esempi di istruzione e blocco di codice:
 - Esempio in Python:
 
   ```python
-    if x > 0:
-        print("x è positivo")
-        y = x * 2
+  if x > 0:
+    print("x è positivo")
+
+    y = x * 2
   ```
   In questo esempio:
   - `if x > 0:` è un'istruzione complessa.
@@ -195,7 +195,7 @@ Esempio:
 ```c
 int x = 10; /* <1> */ 
 ```
-1. Questa è una riga fisica
+1. Questa è una riga fisica.
 
 Una **riga logica** è una singola istruzione, che può estendersi su una o più righe fisiche.
 
@@ -212,7 +212,324 @@ Il concetto di righe fisiche e logiche esiste perché le istruzioni (o righe log
 
 ## Semantica
 
-La **semantica** di un linguaggio di programmazione definisce il significato delle istruzioni sintatticamente corrette. In altre parole, la semantica specifica cosa fa un programma quando viene eseguito, descrivendo l'effetto delle istruzioni sullo stato del sistema. Gli elementi semantici sono numerosi, possono essere anche molto complessi e non tutti presenti in uno specifico linguaggio. Di seguito ne sono elencati alcuni tra i più diffusi:
+La **semantica** di un linguaggio di programmazione definisce il significato delle istruzioni sintatticamente corrette. In altre parole, la semantica specifica cosa fa un programma quando viene eseguito, descrivendo l'effetto delle istruzioni sullo stato del sistema. Gli elementi semantici sono numerosi, possono essere anche complessi e non tutti presenti in uno specifico linguaggio. 
+
+Di seguito ne sono riportati alcuni tra i principali elementi semantici.
+
+### Modello dati
+
+Un **modello dati** è una rappresentazione formale dei tipi di dati e delle operazioni che possono essere eseguite su di essi. Esso definisce le strutture fondamentali attraverso le quali i dati vengono organizzati, memorizzati, manipolati e interagiscono all'interno del programma. 
+
+Le componenti il modello dati sono:
+
+1. Tipi di dati:
+
+    - Tipi primitivi: Questi sono i tipi di dati fondamentali che il linguaggio supporta nativamente, come numeri interi, numeri in virgola mobile, caratteri e booleani.
+
+    - Tipi compositi: Questi sono tipi di dati costruiti combinando tipi primitivi. Esempi comuni includono array, liste, tuple, set e dizionari.
+
+    - Tipi di dati definiti dall'utente: Questi sono tipi di dati che possono essere definiti dagli utenti del linguaggio, come le `struct` in C oppure le classi in Python o C++, che permettono di creare tipi di dati personalizzati. 
+
+2. Operazioni:
+
+    - Operazioni aritmetiche: Operazioni che possono essere eseguite sui tipi di dati, come addizione, sottrazione, moltiplicazione e divisione per i numeri.
+
+    - Operazioni logiche: Operazioni che coinvolgono valori booleani, come AND, OR e NOT.
+
+    - Operazioni di sequenza: Operazioni che si possono eseguire su sequenze di dati, come l'indicizzazione, la _slicing_ e l'iterazione.
+
+3. Regole di comportamento:
+
+    - Mutabilità: Determina se un oggetto può essere modificato dopo la sua creazione. Oggetti mutabili, come liste e dizionari in Python, possono essere cambiati. Oggetti immutabili, come tuple e stringhe, non possono essere modificati dopo la loro creazione.
+
+    - Copia e clonazione: Regole che determinano come i dati vengono copiati. Per esempio, in Python, la copia di una lista crea una nuova lista con gli stessi elementi, mentre la copia di un intero crea solo un riferimento allo stesso valore.
+
+#### Linguaggi procedurali
+
+Nei linguaggi di programmazione procedurali, il modello dati è incentrato su tipi di dati semplici e compositi che supportano lo stile di programmazione orientato alle funzioni e procedure. Alcune caratteristiche tipiche includono:
+
+- Tipi primitivi: Numeri interi, numeri a virgola mobile, caratteri e booleani.
+
+- Strutture composite: Array, strutture (`struct`) e unioni (`union`). Gli array permettono di gestire collezioni di elementi dello stesso tipo, mentre le strutture permettono di combinare vari tipi di dati sotto un unico nome. Le unioni consentono di memorizzare diversi tipi di dati nello stesso spazio di memoria, ma solo uno di essi può essere attivo alla volta.
+
+- Operazioni basate su funzioni: Le operazioni sui dati vengono eseguite attraverso funzioni che manipolano i valori passati come argomenti.
+
+Esempio in C:
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_DATI 100
+
+union Valore { /* <1> */
+  int intero;
+  float decimale;
+  char carattere;
+};
+
+struct Dato {  /* <2> */
+  char tipo;  
+  // 'i' per int, 'f' per float, 'c' per char
+  union Valore valore;
+};
+
+void stampa_dato(struct Dato d) { /* <3> */
+  switch (d.tipo) {
+    case 'i':
+      printf("Intero: %d\n", d.valore.intero);
+      break;
+
+    case 'f':
+      printf("Float: %f\n", d.valore.decimale);
+      break;
+
+    case 'c':
+      printf("Carattere: %c\n", d.valore.carattere);
+      break;
+
+    default:
+      printf("Tipo sconosciuto\n");
+      break;
+  }
+}
+
+int confronta_dato(struct Dato d1, struct Dato d2) {
+  if (d1.tipo != d2.tipo) return 0;
+
+  switch (d1.tipo) {
+    case 'i': return d1.valore.intero == d2.valore.intero;
+
+    case 'f': return d1.valore.decimale == d2.valore.decimale;
+
+    case 'c': return d1.valore.carattere == d2.valore.carattere;
+
+    default: return 0;
+  }
+}
+
+void inserisci_dato(struct Dato dati[], int *count, struct Dato nuovo_dato) { /* <4> */
+  if (*count < MAX_DATI) {
+    dati[*count] = nuovo_dato;
+
+    (*count)++;
+
+  } else {
+    printf("Array pieno, impossibile inserire nuovo dato.\n");
+  }
+}
+
+void cancella_dato(struct Dato dati[], int *count, struct Dato dato_da_cancellare) { /* <5> */
+  for (int i = 0; i < *count; i++) {
+    if (confronta_dato(dati[i], dato_da_cancellare)) {
+      for (int j = i; j < *count - 1; j++) {
+        dati[j] = dati[j + 1];
+      }
+
+      (*count)--;
+
+      i--; 
+    }
+  }
+}
+
+int main() {
+  struct Dato dati[MAX_DATI]; /* <6> */
+  int count = 0;
+
+  struct Dato dato1 = {'i', .valore.intero = 42};
+  struct Dato dato2 = {'f', .valore.decimale = 3.14};
+  struct Dato dato3 = {'c', .valore.carattere = 'A'};
+  
+  inserisci_dato(dati, &count, dato1); /* <7> */
+  inserisci_dato(dati, &count, dato2);
+  inserisci_dato(dati, &count, dato3);
+
+  for (int i = 0; i < count; i++) { /* <8> */
+    stampa_dato(dati[i]);
+  }
+
+  cancella_dato(dati, &count, dato1); /* <9> */
+
+  printf("Dopo cancellazione:\n");
+
+  for (int i = 0; i < count; i++) {
+    stampa_dato(dati[i]);
+  }
+
+  return 0;
+}
+```
+1. Definizione di una `union`.
+2. Definizione di una `struct` che include la `union`.
+3. Funzione per stampare i valori in base al tipo.
+4. Funzione per inserire un nuovo dato alla fine dell'array.
+5. Funzione per cancellare tutte le occorrenze di un dato dall'array.
+6. Definizione di un array di `struct` Dato.
+7. Inserimento di dati nell'array.
+8. Stampa dei dati nell'array.
+9. Cancellazione di un dato specifico e ristampa dell'array.
+
+L'esempio mostra come nel modello dati del linguaggio C possono essere definiti dei tipi compositi (`Dato`, `Valore`) e delle operazioni su quelli (`stampa_dato`, `confronta_dato`, `inserisci_dato`, `cancella_dato`). Il codice, pur realizzante una semplice libreria, appare _slegato_, cioè con funzioni che si applicano a tipi di dati specifici solo dall'interpretazione degli identificatori della funzione stessa e dei suoi parametri, cioè senza un legame esplicito e non ambiguo, tra tipo e funzione.
+
+#### Linguaggi orientati agli oggetti
+
+La programmazione orientata agli oggetti è un paradigma che utilizza **oggetti** per rappresentare concetti ed entità del mondo reale o astratto. Questo approccio si basa su un processo mentale fondamentale per risolvere problemi complessi: la decomposizione. Un problema complesso è più facilmente risolvibile se diviso in parti più piccole, ciascuna delle quali possiede uno stato e la possibilità di comunicare con le altre parti. Questa divisione permette di continuare la decomposizione fino a raggiungere un livello sufficientemente elementare da poter essere realizzato come istruzioni codificate in costrutti permessi dalla sintassi del linguaggio.
+
+##### Oggetti
+
+Lo stato di un oggetto è definito dai suoi attributi, i cui valori possono essere altri oggetti già disponibili, sia definiti dall'utente che dal linguaggio. L'interazione tra diversi oggetti avviene attraverso i metodi, che sono funzioni associate agli oggetti che possono modificare lo stato dell'oggetto o invocare metodi su altri oggetti.
+
+I membri di un oggetto (attributi e metodi) possono avere diverse limitazioni di accesso, definite dal concetto di visibilità:
+
+- Pubblica: Gli attributi e i metodi pubblici sono accessibili da qualsiasi parte del programma. Questa visibilità permette a qualsiasi altro oggetto o funzione di interagire con questi membri.
+  
+- Privata: Gli attributi e i metodi privati sono accessibili solo da altri membri dell'oggetto e rispondono alla esigenza di separare il codice di interfaccia da quello utile al funzionamento interno.
+  
+- Protetta: Gli attributi e i metodi protetti sono accessibili da tutti i membri del medesimo oggetto ma, a differenza dei privati, anche da quelli degli oggetti derivati. Questo fornisce un livello intermedio di accesso, utile per la gestione dell'ereditarietà.
+
+L'**incapsulamento** è il principio su cui si basa la gestione della visibilità e guida la separazione del codice realizzante le specificità di un oggetto, da come è fruito dagli altri oggetti. Questo protegge l'integrità del suo stato e ne facilita la manutenzione del codice stesso, permettendo modifiche di implementazione, senza impatti sul codice esterno fintantoché non si cambiano i membri pubblici. Inoltre, se ben sfruttata nella progettazione, rende il codice più comprensibile e riduce la superficie d'attacco.
+
+##### Classi e prototipi
+
+Un oggetto può essere generato da una struttura statica che ne definisce tutte le caratteristiche, la **classe**, oppure può essere creato a partire da un altro oggetto esistente, noto come **prototipo**.
+
+Nella programmazione ad oggetti basata su classi, ogni oggetto è un'istanza _vivente_ di una classe predefinita, che ne rappresenta il progetto o l'archetipo. La classe definisce i membri e la visibilità, quindi, in definitiva tutte le proprietà comuni agli oggetti dello stesso tipo o matrice. Gli oggetti vengono creati chiamando un metodo speciale della classe, noto come costruttore e, all'atto della loro vita, un secondo metodo, il distruttore, che si occupa di effettuare le azioni di terminazione. La classe può inoltre definire metodi e attributi specifici che possono essere ereditati da altre classi, cioè possono essere utilizzati da quest'ultime al pari dei propri membri, permettendo la definizione di una gerarchia di classi che facilita il riuso del codice per mezzo dell'estensione, al posto della modifica, delle funzionalità. La classe che eredita da un'altra classe si definisce _derivata_ dalla classe che, a sua volta, è detta _base_.
+
+Alternativamente, alcuni linguaggi usano il concetto di prototipo, in cui gli oggetti sono le entità principali e non esiste una matrice separata come la classe. In questo paradigma, ogni oggetto può servire da prototipo per altri e ciò significa che, invece di creare nuove istanze di una classe, si creano nuovi oggetti clonando o estendendo oggetti esistenti. È possibile aggiungere o modificare proprietà e metodi di un oggetto prototipo e, in tal caso, queste modifiche si rifletteranno in tutti gli oggetti che derivano da esso.
+
+
+
+
+Il paradigma basato su prototipi offre maggiore flessibilità e dinamismo rispetto a quello basato su classi, poiché la struttura degli oggetti può essere modificata in modo dinamico. Tuttavia, questo approccio può anche introdurre complessità e rendere più difficile la gestione delle gerarchie di oggetti e la comprensione del codice, poiché non esistono strutture fisse come le classi.
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Ereditarietà
+
+Le lingue OOP sono diverse, ma tipicamente permettono l'ereditarietà per il riuso del codice e l'estensibilità in forma di classi o prototipi. Le classi definiscono il formato dei dati e i metodi disponibili per un tipo di oggetto. Gli oggetti sono creati chiamando un metodo speciale della classe noto come costruttore. Le classi possono ereditare da altre classi, formando una gerarchia che rappresenta relazioni "is-a-type-of" (è un tipo di). Ad esempio, la classe Employee può ereditare dalla classe Person. 
+
+##### Ereditarietà Basata su Classi
+
+Nella programmazione basata su classi, ogni oggetto è un'istanza di una particolare classe. La classe definisce i dati e i metodi disponibili per un tipo di oggetto. Ad esempio:
+
+```java
+class Person {
+    String firstName;
+    String lastName;
+
+    public String makeFullName() {
+        return firstName + " " + lastName;
+    }
+}
+
+class Employee extends Person {
+    String position;
+    double salary;
+}
+```
+
+In questo esempio, `Employee` eredita `firstName`, `lastName` e `makeFullName` da `Person`, ma aggiunge `position` e `salary`.
+
+##### Ereditarietà Basata su Prototipi
+
+In contrasto, nella programmazione basata su prototipi, gli oggetti sono le entità principali. Non esiste il concetto di "classe" esplicitamente. In JavaScript, ogni oggetto ha un prototipo a cui è collegato. Ad esempio:
+
+```javascript
+const person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    makeFullName: function() {
+        return this.firstName + ' ' + this.lastName;
+    }
+};
+
+const employee = Object.create(person);
+employee.position = 'Developer';
+employee.salary = 50000;
+
+console.log(employee.makeFullName()); // John Doe
+```
+
+In questo esempio, `employee` eredita `firstName`, `lastName` e `makeFullName` da `person` tramite il suo prototipo.
+
+#### Dinamica e Dispatch di Messaggi
+
+In OOP, la selezione del codice procedurale da eseguire in risposta a una chiamata di metodo è responsabilità dell'oggetto. Questa funzionalità è nota come **dispatch dinamico**. Se la variabilità della chiamata dipende da più di un singolo tipo di oggetto (ad esempio, almeno un altro oggetto parametro è coinvolto nella scelta del metodo), si parla di **multiple dispatch**. Una chiamata di metodo è anche conosciuta come **passaggio di messaggi**. È concettualizzata come un messaggio (il nome del metodo e i suoi parametri di input) passato all'oggetto per il dispatch.
+
+Il dispatch interagisce con l'ereditarietà; se un metodo non è presente in un dato oggetto o classe, il dispatch è delegato al suo oggetto o classe genitore, e così via, salendo la catena dell'ereditarietà.
+
+#### Astrazione dei Dati e Incapsulamento
+
+**L'astrazione dei dati** è un pattern di design in cui i dati sono visibili solo a funzioni semanticamente correlate, per prevenire l'uso improprio. L'incapsulamento, d'altra parte, impedisce al codice esterno di essere preoccupato per il funzionamento interno di un oggetto. Questo facilita il refactoring del codice, consentendo all'autore della classe di cambiare il modo in cui gli oggetti di quella classe rappresentano i loro dati internamente senza cambiare alcun codice esterno (finché le chiamate ai metodi "pubblici" funzionano allo stesso modo). L'incapsulamento incoraggia anche i programmatori a mettere tutto il codice che riguarda un certo set di dati nella stessa classe, organizzandolo per una facile comprensione da parte di altri programmatori. Questa tecnica promuove il disaccoppiamento.
+
+In OOP, gli oggetti forniscono un livello che può essere utilizzato per separare il codice interno da quello esterno e implementare l'astrazione e l'incapsulamento. Il codice esterno può utilizzare un oggetto solo chiamando un metodo di istanza specifico con un certo set di parametri di input, leggendo una variabile di istanza o scrivendo su una variabile di istanza.
+
+#### Polimorfismo
+
+**Il polimorfismo** è quando il codice chiamante può essere indipendente dalla classe specifica su cui opera, purché faccia parte della gerarchia supportata. Nel frattempo, lo stesso nome di operazione tra oggetti in una gerarchia di ereditarietà può comportarsi in modo diverso. Questo è un altro tipo di astrazione che semplifica il codice esterno alla gerarchia di classi e consente una forte separazione delle preoccupazioni.
+
+Ad esempio, gli oggetti del tipo `Circle` e `Square` possono derivare da una classe comune chiamata `Shape`. La funzione `Draw` per ciascun tipo di `Shape` implementa ciò che è necessario per disegnare se stessa, mentre il codice chiamante può rimanere indifferente al particolare tipo di `Shape` che viene disegnato.
+
+```java
+abstract class Shape {
+    abstract void draw();
+}
+
+class Circle extends Shape {
+    void draw() {
+        System.out.println("Drawing a Circle");
+    }
+}
+
+class Square extends Shape {
+    void draw() {
+        System.out.println("Drawing a Square");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape circle = new Circle();
+        Shape square = new Square();
+        circle.draw(); // Drawing a Circle
+        square.draw(); // Drawing a Square
+    }
+}
+```
+
+#### Ricorsione Aperta
+
+Un'altra caratteristica comune degli oggetti è che i metodi sono associati a essi e possono accedere e modificare i campi dati dell'oggetto. In questo tipo di OOP, esiste solitamente un nome speciale come `this` o `self` usato per riferirsi all'oggetto corrente. Nei linguaggi che supportano la ricorsione aperta, i metodi degli oggetti possono chiamare altri metodi sullo stesso oggetto (inclusi se stessi) usando questo nome. Questa variabile è legata tardivamente; consente a un metodo definito in una classe di invocare un altro metodo che è definito successivamente, in qualche sottoclasse di essa.
+
+### Conclusione
+
+Il modello dati nella programmazione orientata agli oggetti è complesso e ricco di concetti che migliorano la modularità, il riuso del codice e la manutenibilità del software. Comprendere a fondo questi concetti è fondamentale per sfruttare appieno le potenzialità del paradigma OOP e per progettare software robusto e scalabile.
+
+### Riferimenti Bibliografici
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - Variabile: È un nome simbolico associato a locazione di memoria che può contenere uno o più valori. È fondamentale per la manipolazione di dati perché sono un mezzo per astrarre dalla costante memorizzata. Le variabili possono essere associate a diversi tipi di dati e durate di vita. La semantica delle variabili include la loro dichiarazione, inizializzazione, uso e visibilità:
 

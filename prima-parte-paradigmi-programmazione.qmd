@@ -303,15 +303,15 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
 
 ## Paradigma di orientamento agli oggetti
 
-La **programmazione orientata agli oggetti** (in inglese, _object-oriented programming_, OOP) è un paradigma di programmazione che organizza il software in termini di _oggetti_, ciascuno dei quali rappresenta un'istanza di una "classe". Una classe definisce un tipo di dato che include attributi (dati) e metodi (funzionalità). Gli oggetti interagiscono tra loro attraverso messaggi, permettendo una struttura modulare e intuitiva.
+La **programmazione orientata agli oggetti** (in inglese _object-oriented programming_, OOP) è un paradigma di programmazione che organizza il software in termini di _oggetti_, ciascuno dei quali rappresenta un'istanza di una matrice detta _classe_. Una classe definisce un tipo di dato che include attributi (dati) e metodi (funzionalità). Gli oggetti interagiscono tra loro attraverso messaggi, permettendo una struttura modulare e intuitiva.
 
 L'OOP è emersa negli anni '60 e '70 con il linguaggio Simula, il primo linguaggio di programmazione a supportare questo paradigma. Tuttavia, è stato con Smalltalk, sviluppato negli anni '70 da Alan Kay e altri presso Xerox PARC, che l'OOP ha guadagnato popolarità. Il paradigma è stato ulteriormente consolidato con il linguaggio C++ negli anni '80 e con Java negli anni '90, rendendolo uno dei più utilizzati per lo sviluppo software moderno. Oggi numerosi sono i linguaggi a oggetti, ad esempio Python, C#, Ruby, Swift, Javascript, ecc. ed altri lo supportano come PHP (dalla versione 5) e financo il Fortran nella versione 2003. 
 
 Rispetto ai paradigmi precedenti, l'OOP introduce diversi concetti chiave che ineriscono al disegno architetturale di software:
 
-- Classe e oggetto: La classe è un modello o schema per creare oggetti. Contiene definizioni di attributi e metodi. L'oggetto è un'istanza di una classe e rappresenta un'entità concreta con stato e comportamento.
+- Classe e oggetto: La classe è un modello o schema per creare oggetti. Contiene definizioni di attributi e metodi. L'oggetto è un'istanza di una classe e rappresenta un'entità concreta nel programma con stato e comportamento mutevoli.
 
-- Incapsulamento: Nasconde i dettagli interni di un oggetto e mostra solo le interfacce necessarie. Migliora la modularità e protegge l'integrità dei dati.
+- Incapsulamento: Nasconde i dettagli interni di un oggetto e mostra solo le interfacce necessarie agli altri oggetti. Migliora la modularità e protegge l'integrità dei dati.
 
 - Ereditarietà: Permette a una classe di estenderne un'altra, ereditandone attributi e metodi. Favorisce il riuso del codice e facilita l'estensione delle funzionalità.
 
@@ -341,7 +341,7 @@ Anche se sussistono dei caveat:
 
 ### Esempio in Java
 
-In questo esempio, la classe `Animale` rappresenta una classe base con un attributo `nome` e un metodo `faiVerso`. La classe `Cane` estende `Animale` e sovrascrive il metodo `faiVerso` per fornire un'implementazione specifica. La classe `Main` crea un'istanza di `Cane` e chiama il metodo `faiVerso`, dimostrando il polimorfismo e l'ereditarietà:
+In questo esempio, la classe `Animale` rappresenta una tipo di dato generico con un attributo `nome` e un metodo `faiVerso`. La classe `Cane` specializza `Animale`, usando l'attributo `nome` e sovrascrivendo il metodo `faiVerso`, per fornire un'implementazione coerente colle sue caratteristiche. La classe `Main` crea un'istanza di `Cane` e chiama il metodo `faiVerso`, dimostrando il polimorfismo e l'ereditarietà:
 
 ```java
 class Animale { // <1>
@@ -362,7 +362,7 @@ class Cane extends Animale { // <2>
         super(nome);
     }
 
-    @Override
+    @Override // <3>
     void faiVerso() {
         System.out.println("Il cane abbaia");
     }
@@ -372,17 +372,24 @@ public class Main {
     public static void main(String[] args) {
         Animale mioCane = new Cane("Fido");
 
-        mioCane.faiVerso(); // <3>
+        mioCane.faiVerso(); // <4>
     }
 }
 ```
-1. Definizione della classe astratta che ha il doppio compito di fornire una implementazione di default per una caratteristica comune (`descrizione`) e un vincolo di implementazione nelle classe derivate per una seconda caratteristica comune non implementabile nello stesso modo per tutte (`faiVerso`).
-2. Definizione della classe derivata Cane.
-3. Definizione della classe derivata Coccodrillo.
+1. Definizione della classe `Animale` che ha il doppio compito di provvedere all'implementazione per una caratteristica comune (`nome` e `descrizione()`) e una particolare (`faiVerso()`).
+2. Definizione della classe derivata `Cane`.
+3. `@Override`[^1-prima-parte-paradigmi-programmazione] indica in esplicito che il `faiVerso()` del `Cane` sovrascrive (non eredita) il `faiVerso()` di `Animale`.
+4. Output: `Il cane abbaia`.
 
-Vediamo come implementare il medesimo esempio con una classe astratta, sempre in in Java, per correggere una chiara incoerenza: `Animale` non può essere un oggetto dato che, in realtà, rappresenta una caratteristica comune di oggetti di tipo animale. 
+[^1-prima-parte-paradigmi-programmazione]: In Java, l'annotazione `@Override` è opzionale, ma altamente consigliata. Non omettere l'annotazione `@Override` non causerà un errore di compilazione o di runtime. Tuttavia, l'uso di `@Override` offre dei vantaggi importanti:
 
-Quindi, `Animale` diventa una classe astratta, cioè che non può essere istanziata in un oggetto e `Cane` è una classe concreta che la estende ridefinendo il metodo `faiVerso` per comunicare la propria caratteristica distintiva:
+   1. Verifica del compilatore: Il compilatore verifica che il metodo stia effettivamente sovrascrivendo un metodo nella superclasse. Se il metodo nella superclasse viene rinominato o rimosso, il compilatore segnalerà un errore.
+
+   2. Migliora la leggibilità del codice: Indica chiaramente al lettore del codice che il metodo è inteso per sovrascrivere un metodo nella superclasse.
+
+In realtà, se gli oggetti devono rappresentare animali reali vorrà dire che non deve essere possibile crearne dalla matrice `Animale`. Vediamo, quindi, come implementare il medesimo esempio con una classe _astratta_,, cioè una classe che non può essere usata per generare direttamente oggetti, sempre in in Java. 
+
+Quindi, `Animale` deve essere marchiata con costrutti ad hoc come classe astratta e `Cane` invece subisce altre modifiche sintattiche per indicare le modalità con cui, ereditando le caratteristiche di `Animale`, essa è una classe concreta, cioè da cui si possono creare oggetti. Nel caso pratico, ogni animale ha il suo verso, quindi dobbiamo costringere il programmatore che vuole implementare classi corrispondenti ad animali reali, ad aggiungere tassativamente il metodo `faiVerso()` per comunicarne la caratteristica distintiva:
 
 ```java
 abstract class Animale { // <1>
@@ -437,15 +444,15 @@ public class Main {
     }
 }
 ```
-1. Definizione della classe astratta che ha il doppio compito di fornire una implementazione di default per una caratteristica comune (`descrizione`) e un vincolo di implementazione nelle classe derivate per una seconda caratteristica comune non implementabile nello stesso modo per tutte (`faiVerso`).
-2. Metodo astratto che restituisce una stringa.
-3. Metodo concreto che restituisce una stringa.
-4. Definizione della classe derivata Cane.
-5. Definizione della classe derivata Coccodrillo.
+1. Definizione della classe astratta che ha il doppio compito di fornire una implementazione di default per una caratteristica comune (`nome`) e un vincolo di implementazione nelle classe derivate per una seconda caratteristica comune non implementabile nello stesso modo per tutte (`faiVerso()`).
+2. Metodo astratto `faiVerso()` che le classi corrispondenti ad animali reali dovranno implementare e che dovrà resituire una stringa.
+3. Metodo concreto `faiVerso()` che restituisce una stringa.
+4. Definizione della classe derivata `Cane`.
+5. Definizione della classe derivata `Coccodrillo`.
 6. Il coccodrillo non emette versi!
-7. Stampa: l'animale si chiama Fido.
-8. Stampa: il cane abbaia.
-9. Stampa: l'animale si chiama Crocky.
+7. Stampa: `L'animale si chiama Fido`.
+8. Stampa: `Il cane abbaia`.
+9. Stampa: `L'animale si chiama Crocky`.
 10. Non stampa nulla perché il coccodrillo non emette versi!
 
 ### Template 
