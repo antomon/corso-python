@@ -313,8 +313,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#semantica" id="toc-semantica" class="nav-link" data-scroll-target="#semantica"><span class="header-section-number">3.2</span> Semantica</a>
   <ul class="collapse">
   <li><a href="#modello-dati" id="toc-modello-dati" class="nav-link" data-scroll-target="#modello-dati"><span class="header-section-number">3.2.1</span> Modello dati</a></li>
-  <li><a href="#conclusione" id="toc-conclusione" class="nav-link" data-scroll-target="#conclusione"><span class="header-section-number">3.2.2</span> Conclusione</a></li>
-  <li><a href="#riferimenti-bibliografici" id="toc-riferimenti-bibliografici" class="nav-link" data-scroll-target="#riferimenti-bibliografici"><span class="header-section-number">3.2.3</span> Riferimenti Bibliografici</a></li>
   </ul></li>
   <li><a href="#applicazione-dei-concetti-di-sintassi-e-semantica" id="toc-applicazione-dei-concetti-di-sintassi-e-semantica" class="nav-link" data-scroll-target="#applicazione-dei-concetti-di-sintassi-e-semantica"><span class="header-section-number">3.3</span> Applicazione dei concetti di sintassi e semantica</a></li>
   </ul>
@@ -522,11 +520,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Il concetto di righe fisiche e logiche esiste perché le istruzioni (o righe logiche) possono essere lunghe e complesse, richiedendo più righe fisiche per migliorare la leggibilità e la gestione del codice.</p>
 </section>
 </section>
-<section id="semantica" class="level2" data-number="3.2">
+<section id="semantica" class="level2 page-columns page-full" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="semantica"><span class="header-section-number">3.2</span> Semantica</h2>
 <p>La <strong>semantica</strong> di un linguaggio di programmazione definisce il significato delle istruzioni sintatticamente corrette. In altre parole, la semantica specifica cosa fa un programma quando viene eseguito, descrivendo l’effetto delle istruzioni sullo stato del sistema. Gli elementi semantici sono numerosi, possono essere anche complessi e non tutti presenti in uno specifico linguaggio.</p>
 <p>Di seguito ne sono riportati alcuni tra i principali elementi semantici.</p>
-<section id="modello-dati" class="level3" data-number="3.2.1">
+<section id="modello-dati" class="level3 page-columns page-full" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="modello-dati"><span class="header-section-number">3.2.1</span> Modello dati</h3>
 <p>Un <strong>modello dati</strong> è una rappresentazione formale dei tipi di dati e delle operazioni che possono essere eseguite su di essi. Esso definisce le strutture fondamentali attraverso le quali i dati vengono organizzati, memorizzati, manipolati e interagiscono all’interno del programma.</p>
 <p>Le componenti il modello dati sono:</p>
@@ -700,9 +698,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dl>
 <p>L’esempio mostra come nel modello dati del linguaggio C possono essere definiti dei tipi compositi (<code>Dato</code>, <code>Valore</code>) e delle operazioni su quelli (<code>stampa_dato</code>, <code>confronta_dato</code>, <code>inserisci_dato</code>, <code>cancella_dato</code>). Il codice, pur realizzante una semplice libreria, appare <em>slegato</em>, cioè con funzioni che si applicano a tipi di dati specifici solo dall’interpretazione degli identificatori della funzione stessa e dei suoi parametri, cioè senza un legame esplicito e non ambiguo, tra tipo e funzione.</p>
 </section>
-<section id="linguaggi-orientati-agli-oggetti" class="level4" data-number="3.2.1.2">
+<section id="linguaggi-orientati-agli-oggetti" class="level4 page-columns page-full" data-number="3.2.1.2">
 <h4 data-number="3.2.1.2" class="anchored" data-anchor-id="linguaggi-orientati-agli-oggetti"><span class="header-section-number">3.2.1.2</span> Linguaggi orientati agli oggetti</h4>
-<p>La programmazione orientata agli oggetti è un paradigma che utilizza <strong>oggetti</strong> per rappresentare concetti ed entità del mondo reale o astratto. Questo approccio si basa su un processo mentale fondamentale per risolvere problemi complessi: la decomposizione. Un problema complesso è più facilmente risolvibile se diviso in parti più piccole, ciascuna delle quali possiede uno stato e la possibilità di comunicare con le altre parti. Questa divisione permette di continuare la decomposizione fino a raggiungere un livello sufficientemente elementare da poter essere realizzato come istruzioni codificate in costrutti permessi dalla sintassi del linguaggio.</p>
+<p>La programmazione orientata agli oggetti è un paradigma che utilizza <strong>oggetti</strong> per rappresentare concetti ed entità del mondo reale o astratto. Questo approccio si basa su un processo mentale fondamentale per risolvere problemi complessi: la decomposizione. Un problema complesso è più facilmente risolvibile se diviso in parti più piccole, ciascuna delle quali possiede uno stato e la possibilità di interagire con le altre parti. Questa divisione può essere effettuata per gradi, come se si osservasse sempre più da vicino il problema, effettivamente continunandone la specificazione, fino a raggiungere un livello sufficientemente di dettaglio da poter essere realizzato come istruzioni, codificate in costrutti permessi dalla sintassi del linguaggio, dell’oggetto.</p>
 <section id="oggetti" class="level5" data-number="3.2.1.2.1">
 <h5 data-number="3.2.1.2.1" class="anchored" data-anchor-id="oggetti"><span class="header-section-number">3.2.1.2.1</span> Oggetti</h5>
 <p>Lo stato di un oggetto è definito dai suoi attributi, i cui valori possono essere altri oggetti già disponibili, sia definiti dall’utente che dal linguaggio. L’interazione tra diversi oggetti avviene attraverso i metodi, che sono funzioni associate agli oggetti che possono modificare lo stato dell’oggetto o invocare metodi su altri oggetti.</p>
@@ -714,104 +712,108 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>L’<strong>incapsulamento</strong> è il principio su cui si basa la gestione della visibilità e guida la separazione del codice realizzante le specificità di un oggetto, da come è fruito dagli altri oggetti. Questo protegge l’integrità del suo stato e ne facilita la manutenzione del codice stesso, permettendo modifiche di implementazione, senza impatti sul codice esterno fintantoché non si cambiano i membri pubblici. Inoltre, se ben sfruttata nella progettazione, rende il codice più comprensibile e riduce la superficie d’attacco.</p>
 </section>
-<section id="classi-e-prototipi" class="level5" data-number="3.2.1.2.2">
-<h5 data-number="3.2.1.2.2" class="anchored" data-anchor-id="classi-e-prototipi"><span class="header-section-number">3.2.1.2.2</span> Classi e prototipi</h5>
+<section id="classi" class="level5" data-number="3.2.1.2.2">
+<h5 data-number="3.2.1.2.2" class="anchored" data-anchor-id="classi"><span class="header-section-number">3.2.1.2.2</span> Classi</h5>
 <p>Un oggetto può essere generato da una struttura statica che ne definisce tutte le caratteristiche, la <strong>classe</strong>, oppure può essere creato a partire da un altro oggetto esistente, noto come <strong>prototipo</strong>.</p>
-<p>Nella programmazione ad oggetti basata su classi, ogni oggetto è un’istanza <em>vivente</em> di una classe predefinita, che ne rappresenta il progetto o l’archetipo. La classe definisce i membri e la visibilità, quindi, in definitiva tutte le proprietà comuni agli oggetti dello stesso tipo o matrice. Gli oggetti vengono creati chiamando un metodo speciale della classe, noto come costruttore e, all’atto della loro vita, un secondo metodo, il distruttore, che si occupa di effettuare le azioni di terminazione. La classe può inoltre definire metodi e attributi specifici che possono essere ereditati da altre classi, cioè possono essere utilizzati da quest’ultime al pari dei propri membri, permettendo la definizione di una gerarchia di classi che facilita il riuso del codice per mezzo dell’estensione, al posto della modifica, delle funzionalità. La classe che eredita da un’altra classe si definisce <em>derivata</em> dalla classe che, a sua volta, è detta <em>base</em>.</p>
-<p>Alternativamente, alcuni linguaggi usano il concetto di prototipo, in cui gli oggetti sono le entità principali e non esiste una matrice separata come la classe. In questo paradigma, ogni oggetto può servire da prototipo per altri e ciò significa che, invece di creare nuove istanze di una classe, si creano nuovi oggetti clonando o estendendo oggetti esistenti. È possibile aggiungere o modificare proprietà e metodi di un oggetto prototipo e, in tal caso, queste modifiche si rifletteranno in tutti gli oggetti che derivano da esso.</p>
-<p>Il paradigma basato su prototipi offre maggiore flessibilità e dinamismo rispetto a quello basato su classi, poiché la struttura degli oggetti può essere modificata in modo dinamico. Tuttavia, questo approccio può anche introdurre complessità e rendere più difficile la gestione delle gerarchie di oggetti e la comprensione del codice, poiché non esistono strutture fisse come le classi.</p>
+<p>Nella programmazione ad oggetti basata su classi, ogni oggetto è un’istanza <em>vivente</em> di una classe predefinita, che ne rappresenta il progetto o l’archetipo. La classe definisce i membri e la visibilità, quindi, in definitiva tutte le proprietà comuni agli oggetti dello stesso tipo o matrice. Gli oggetti vengono creati chiamando un metodo speciale della classe, noto come costruttore e, all’atto della loro vita, un secondo metodo, il distruttore, che si occupa di effettuare le azioni di terminazione.</p>
+<p>La classe può inoltre definire metodi e attributi particolari, che possono essere ereditati da altre classi, cioè possono essere utilizzati da quest’ultime al pari dei propri membri. In tal modo, il linguaggio permette la costruzioni di gerarchie di classi che modellano relazioni di specializzazione, dalla più generale alla più particolare.</p>
+<p>Ciò, oltre ad essere uno strumento di progettazione utile di per sé, facilita il riuso del codice per mezzo dell’estensione, al posto della modifica, di funzionalità. La classe che eredita da un’altra classe si definisce <em>derivata</em> dalla classe che, a sua volta, è detta <em>base</em>.</p>
 </section>
+<section id="prototipi" class="level5" data-number="3.2.1.2.3">
+<h5 data-number="3.2.1.2.3" class="anchored" data-anchor-id="prototipi"><span class="header-section-number">3.2.1.2.3</span> Prototipi</h5>
+<p>Alternativamente, alcuni linguaggi usano il concetto di prototipo, in cui gli oggetti sono le entità principali e non esiste una matrice separata come la classe. In questo paradigma, ogni oggetto può servire da prototipo per altri e ciò significa che, invece di creare nuove istanze di una classe, si creano nuovi oggetti clonando o estendendo quelli esistenti. È possibile aggiungere o modificare proprietà e metodi di un oggetto prototipo e, in tal caso, queste modifiche si propagheranno in tutti gli oggetti che derivano da esso.</p>
+<p>Il paradigma basato su prototipi offre maggiore flessibilità e dinamismo rispetto a quello basato su classi, poiché la struttura degli oggetti può essere modificata in modo dinamico. D’altronde, questo approccio può anche introdurre complessità e rendere più difficile la gestione delle gerarchie di oggetti e la comprensione del codice, poiché non esistono strutture fisse come le classi.</p>
 </section>
-<section id="ereditarietà" class="level4" data-number="3.2.1.3">
-<h4 data-number="3.2.1.3" class="anchored" data-anchor-id="ereditarietà"><span class="header-section-number">3.2.1.3</span> Ereditarietà</h4>
-<p>Le lingue OOP sono diverse, ma tipicamente permettono l’ereditarietà per il riuso del codice e l’estensibilità in forma di classi o prototipi. Le classi definiscono il formato dei dati e i metodi disponibili per un tipo di oggetto. Gli oggetti sono creati chiamando un metodo speciale della classe noto come costruttore. Le classi possono ereditare da altre classi, formando una gerarchia che rappresenta relazioni “is-a-type-of” (è un tipo di). Ad esempio, la classe Employee può ereditare dalla classe Person.</p>
-<section id="ereditarietà-basata-su-classi" class="level5" data-number="3.2.1.3.1">
-<h5 data-number="3.2.1.3.1" class="anchored" data-anchor-id="ereditarietà-basata-su-classi"><span class="header-section-number">3.2.1.3.1</span> Ereditarietà Basata su Classi</h5>
-<p>Nella programmazione basata su classi, ogni oggetto è un’istanza di una particolare classe. La classe definisce i dati e i metodi disponibili per un tipo di oggetto. Ad esempio:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">class</span> Person <span class="op">{</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>    <span class="bu">String</span> firstName<span class="op">;</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>    <span class="bu">String</span> lastName<span class="op">;</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a></span>
-<span id="cb9-5"><a href="#cb9-5"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">makeFullName</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a>        <span class="cf">return</span> firstName <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> lastName<span class="op">;</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a>    <span class="op">}</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="op">}</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a></span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="kw">class</span> Employee <span class="kw">extends</span> Person <span class="op">{</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a>    <span class="bu">String</span> position<span class="op">;</span></span>
-<span id="cb9-12"><a href="#cb9-12"></a>    <span class="dt">double</span> salary<span class="op">;</span></span>
-<span id="cb9-13"><a href="#cb9-13"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>In questo esempio, <code>Employee</code> eredita <code>firstName</code>, <code>lastName</code> e <code>makeFullName</code> da <code>Person</code>, ma aggiunge <code>position</code> e <code>salary</code>.</p>
+<section id="esempi-di-gerarchie-di-classi-e-prototipi" class="level5 page-columns page-full" data-number="3.2.1.2.4">
+<h5 data-number="3.2.1.2.4" class="anchored" data-anchor-id="esempi-di-gerarchie-di-classi-e-prototipi"><span class="header-section-number">3.2.1.2.4</span> Esempi di gerarchie di classi e prototipi</h5>
+<p>Vediamo le differenze tra classi e prototipi, riprendendo l’esempio in Java nella versione semplificata (senza astrazione):</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">class</span> Animale <span class="op">{</span> </span>
+<span id="cb9-2"><a href="#cb9-2"></a>    <span class="bu">String</span> nome<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a>    <span class="fu">Animale</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">nome</span> <span class="op">=</span> nome<span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>    <span class="op">}</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a></span>
+<span id="cb9-8"><a href="#cb9-8"></a>    <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"L'animale fa un verso"</span><span class="op">);</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>    <span class="op">}</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="op">}</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a></span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="kw">class</span> Cane <span class="kw">extends</span> Animale <span class="op">{</span> </span>
+<span id="cb9-14"><a href="#cb9-14"></a></span>
+<span id="cb9-15"><a href="#cb9-15"></a>    <span class="fu">Cane</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-16"><a href="#cb9-16"></a>        <span class="kw">super</span><span class="op">(</span>nome<span class="op">);</span></span>
+<span id="cb9-17"><a href="#cb9-17"></a>    <span class="op">}</span></span>
+<span id="cb9-18"><a href="#cb9-18"></a></span>
+<span id="cb9-19"><a href="#cb9-19"></a>    <span class="at">@Override</span></span>
+<span id="cb9-20"><a href="#cb9-20"></a>    <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb9-21"><a href="#cb9-21"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Il cane abbaia"</span><span class="op">);</span></span>
+<span id="cb9-22"><a href="#cb9-22"></a>    <span class="op">}</span></span>
+<span id="cb9-23"><a href="#cb9-23"></a><span class="op">}</span></span>
+<span id="cb9-24"><a href="#cb9-24"></a></span>
+<span id="cb9-25"><a href="#cb9-25"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
+<span id="cb9-26"><a href="#cb9-26"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-27"><a href="#cb9-27"></a>        Animale mioCane <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cane</span><span class="op">(</span><span class="st">"Fido"</span><span class="op">);</span></span>
+<span id="cb9-28"><a href="#cb9-28"></a></span>
+<span id="cb9-29"><a href="#cb9-29"></a>        mioCane<span class="op">.</span><span class="fu">faiVerso</span><span class="op">();</span> </span>
+<span id="cb9-30"><a href="#cb9-30"></a>    <span class="op">}</span></span>
+<span id="cb9-31"><a href="#cb9-31"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Implementiamo il medesimo programma in Javascript<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, linguaggio che usa il concetto di prototipo:</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;In JavaScript, le classi come sintassi sono state introdotte in ECMAScript 6 (ES6), per semplificare la creazione di oggetti e la gestione dell’ereditarietà prototipale. Tuttavia, è importante capire che sotto il cofano, JavaScript non utilizza classi nel senso tradizionale come in linguaggi come Java o C++ e non esiste un meccanismo nativo per creare classi astratte, anche se è possibile simulare il comportamento delle classi astratte utilizzando varie tecniche. Una comune è quella di lanciare un’eccezione se un metodo funzionalmente astratto non viene sovrascritto nella classe derivata.</p></div></div><div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode numberSource javascript code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode javascript"><a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1"></a><span class="kw">let</span> Animale <span class="op">=</span> {</span>
+<span id="annotated-cell-6-2"><a href="#annotated-cell-6-2"></a>    <span class="dt">nome</span><span class="op">:</span> <span class="st">"Generic"</span><span class="op">,</span></span>
+<span id="annotated-cell-6-3"><a href="#annotated-cell-6-3"></a></span>
+<span id="annotated-cell-6-4"><a href="#annotated-cell-6-4"></a>    <span class="dt">init</span><span class="op">:</span> <span class="kw">function</span>(nome) {</span>
+<span id="annotated-cell-6-5"><a href="#annotated-cell-6-5"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">nome</span> <span class="op">=</span> nome<span class="op">;</span></span>
+<span id="annotated-cell-6-6"><a href="#annotated-cell-6-6"></a>    }<span class="op">,</span></span>
+<span id="annotated-cell-6-7"><a href="#annotated-cell-6-7"></a></span>
+<span id="annotated-cell-6-8"><a href="#annotated-cell-6-8"></a>    <span class="dt">faiVerso</span><span class="op">:</span> <span class="kw">function</span>() {</span>
+<span id="annotated-cell-6-9"><a href="#annotated-cell-6-9"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"L'animale fa un verso"</span>)<span class="op">;</span></span>
+<span id="annotated-cell-6-10"><a href="#annotated-cell-6-10"></a>    }</span>
+<span id="annotated-cell-6-11"><a href="#annotated-cell-6-11"></a>}<span class="op">;</span></span>
+<span id="annotated-cell-6-12"><a href="#annotated-cell-6-12"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-6-13" class="code-annotation-target"><a href="#annotated-cell-6-13"></a><span class="kw">let</span> Cane <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">create</span>(Animale)<span class="op">;</span></span>
+<span id="annotated-cell-6-14"><a href="#annotated-cell-6-14"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-6-15" class="code-annotation-target"><a href="#annotated-cell-6-15"></a>Cane<span class="op">.</span><span class="at">faiVerso</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="annotated-cell-6-16"><a href="#annotated-cell-6-16"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Il cane abbaia"</span>)<span class="op">;</span></span>
+<span id="annotated-cell-6-17"><a href="#annotated-cell-6-17"></a>}<span class="op">;</span></span>
+<span id="annotated-cell-6-18"><a href="#annotated-cell-6-18"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-6-19" class="code-annotation-target"><a href="#annotated-cell-6-19"></a><span class="kw">let</span> mioCane <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">create</span>(Cane)<span class="op">;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-6-20" class="code-annotation-target"><a href="#annotated-cell-6-20"></a>mioCane<span class="op">.</span><span class="fu">init</span>(<span class="st">"Fido"</span>)<span class="op">;</span></span>
+<span id="annotated-cell-6-21"><a href="#annotated-cell-6-21"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-6-22" class="code-annotation-target"><a href="#annotated-cell-6-22"></a>mioCane<span class="op">.</span><span class="fu">faiVerso</span>()<span class="op">;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="1" data-code-annotation="1">Definizione dell’oggetto prototipo <code>Animale</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="13" data-code-annotation="2">Creazione di un nuovo oggetto basato sul prototipo <code>Animale</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="15" data-code-annotation="3">Viene creato un nuovo oggetto <code>Cane</code> basato sul prototipo <code>Animale</code>, usando <code>Object.create(Animale)</code>. Questo permette a <code>Cane</code> di ereditare proprietà e metodi da <code>Animale</code>. Il metodo <code>faiVerso</code> viene sovrascritto nell’oggetto <code>Cane</code> per specificare il comportamento da cane.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="19" data-code-annotation="4">Un nuovo oggetto <code>mioCane</code> viene creato basandosi sul prototipo <code>Cane</code> usando <code>Object.create(Cane)</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="20" data-code-annotation="5">Il metodo <code>init</code> viene chiamato per inizializzare il nome dell’oggetto <code>mioCane</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="22" data-code-annotation="6">Quando viene chiamato <code>mioCane.faiVerso()</code>, il metodo sovrascritto nell’oggetto <code>Cane</code> viene eseguito, mostrando <code>Il cane abbaia</code>.</span>
+</dd>
+</dl>
 </section>
-<section id="ereditarietà-basata-su-prototipi" class="level5" data-number="3.2.1.3.2">
-<h5 data-number="3.2.1.3.2" class="anchored" data-anchor-id="ereditarietà-basata-su-prototipi"><span class="header-section-number">3.2.1.3.2</span> Ereditarietà Basata su Prototipi</h5>
-<p>In contrasto, nella programmazione basata su prototipi, gli oggetti sono le entità principali. Non esiste il concetto di “classe” esplicitamente. In JavaScript, ogni oggetto ha un prototipo a cui è collegato. Ad esempio:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource javascript number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">const</span> person <span class="op">=</span> {</span>
-<span id="cb10-2"><a href="#cb10-2"></a>    <span class="dt">firstName</span><span class="op">:</span> <span class="st">'John'</span><span class="op">,</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>    <span class="dt">lastName</span><span class="op">:</span> <span class="st">'Doe'</span><span class="op">,</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a>    <span class="dt">makeFullName</span><span class="op">:</span> <span class="kw">function</span>() {</span>
-<span id="cb10-5"><a href="#cb10-5"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="at">firstName</span> <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> <span class="kw">this</span><span class="op">.</span><span class="at">lastName</span><span class="op">;</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>    }</span>
-<span id="cb10-7"><a href="#cb10-7"></a>}<span class="op">;</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a></span>
-<span id="cb10-9"><a href="#cb10-9"></a><span class="kw">const</span> employee <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">create</span>(person)<span class="op">;</span></span>
-<span id="cb10-10"><a href="#cb10-10"></a>employee<span class="op">.</span><span class="at">position</span> <span class="op">=</span> <span class="st">'Developer'</span><span class="op">;</span></span>
-<span id="cb10-11"><a href="#cb10-11"></a>employee<span class="op">.</span><span class="at">salary</span> <span class="op">=</span> <span class="dv">50000</span><span class="op">;</span></span>
-<span id="cb10-12"><a href="#cb10-12"></a></span>
-<span id="cb10-13"><a href="#cb10-13"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(employee<span class="op">.</span><span class="fu">makeFullName</span>())<span class="op">;</span> <span class="co">// John Doe</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>In questo esempio, <code>employee</code> eredita <code>firstName</code>, <code>lastName</code> e <code>makeFullName</code> da <code>person</code> tramite il suo prototipo.</p>
-</section>
-</section>
-<section id="dinamica-e-dispatch-di-messaggi" class="level4" data-number="3.2.1.4">
-<h4 data-number="3.2.1.4" class="anchored" data-anchor-id="dinamica-e-dispatch-di-messaggi"><span class="header-section-number">3.2.1.4</span> Dinamica e Dispatch di Messaggi</h4>
-<p>In OOP, la selezione del codice procedurale da eseguire in risposta a una chiamata di metodo è responsabilità dell’oggetto. Questa funzionalità è nota come <strong>dispatch dinamico</strong>. Se la variabilità della chiamata dipende da più di un singolo tipo di oggetto (ad esempio, almeno un altro oggetto parametro è coinvolto nella scelta del metodo), si parla di <strong>multiple dispatch</strong>. Una chiamata di metodo è anche conosciuta come <strong>passaggio di messaggi</strong>. È concettualizzata come un messaggio (il nome del metodo e i suoi parametri di input) passato all’oggetto per il dispatch.</p>
-<p>Il dispatch interagisce con l’ereditarietà; se un metodo non è presente in un dato oggetto o classe, il dispatch è delegato al suo oggetto o classe genitore, e così via, salendo la catena dell’ereditarietà.</p>
-</section>
-<section id="astrazione-dei-dati-e-incapsulamento" class="level4" data-number="3.2.1.5">
-<h4 data-number="3.2.1.5" class="anchored" data-anchor-id="astrazione-dei-dati-e-incapsulamento"><span class="header-section-number">3.2.1.5</span> Astrazione dei Dati e Incapsulamento</h4>
-<p><strong>L’astrazione dei dati</strong> è un pattern di design in cui i dati sono visibili solo a funzioni semanticamente correlate, per prevenire l’uso improprio. L’incapsulamento, d’altra parte, impedisce al codice esterno di essere preoccupato per il funzionamento interno di un oggetto. Questo facilita il refactoring del codice, consentendo all’autore della classe di cambiare il modo in cui gli oggetti di quella classe rappresentano i loro dati internamente senza cambiare alcun codice esterno (finché le chiamate ai metodi “pubblici” funzionano allo stesso modo). L’incapsulamento incoraggia anche i programmatori a mettere tutto il codice che riguarda un certo set di dati nella stessa classe, organizzandolo per una facile comprensione da parte di altri programmatori. Questa tecnica promuove il disaccoppiamento.</p>
-<p>In OOP, gli oggetti forniscono un livello che può essere utilizzato per separare il codice interno da quello esterno e implementare l’astrazione e l’incapsulamento. Il codice esterno può utilizzare un oggetto solo chiamando un metodo di istanza specifico con un certo set di parametri di input, leggendo una variabile di istanza o scrivendo su una variabile di istanza.</p>
-</section>
-<section id="polimorfismo" class="level4" data-number="3.2.1.6">
-<h4 data-number="3.2.1.6" class="anchored" data-anchor-id="polimorfismo"><span class="header-section-number">3.2.1.6</span> Polimorfismo</h4>
-<p><strong>Il polimorfismo</strong> è quando il codice chiamante può essere indipendente dalla classe specifica su cui opera, purché faccia parte della gerarchia supportata. Nel frattempo, lo stesso nome di operazione tra oggetti in una gerarchia di ereditarietà può comportarsi in modo diverso. Questo è un altro tipo di astrazione che semplifica il codice esterno alla gerarchia di classi e consente una forte separazione delle preoccupazioni.</p>
-<p>Ad esempio, gli oggetti del tipo <code>Circle</code> e <code>Square</code> possono derivare da una classe comune chiamata <code>Shape</code>. La funzione <code>Draw</code> per ciascun tipo di <code>Shape</code> implementa ciò che è necessario per disegnare se stessa, mentre il codice chiamante può rimanere indifferente al particolare tipo di <code>Shape</code> che viene disegnato.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">abstract</span> <span class="kw">class</span> <span class="bu">Shape</span> <span class="op">{</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>    <span class="kw">abstract</span> <span class="dt">void</span> <span class="fu">draw</span><span class="op">();</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="op">}</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="kw">class</span> Circle <span class="kw">extends</span> <span class="bu">Shape</span> <span class="op">{</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a>    <span class="dt">void</span> <span class="fu">draw</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb11-7"><a href="#cb11-7"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Drawing a Circle"</span><span class="op">);</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a>    <span class="op">}</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a><span class="op">}</span></span>
-<span id="cb11-10"><a href="#cb11-10"></a></span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="kw">class</span> Square <span class="kw">extends</span> <span class="bu">Shape</span> <span class="op">{</span></span>
-<span id="cb11-12"><a href="#cb11-12"></a>    <span class="dt">void</span> <span class="fu">draw</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb11-13"><a href="#cb11-13"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Drawing a Square"</span><span class="op">);</span></span>
-<span id="cb11-14"><a href="#cb11-14"></a>    <span class="op">}</span></span>
-<span id="cb11-15"><a href="#cb11-15"></a><span class="op">}</span></span>
-<span id="cb11-16"><a href="#cb11-16"></a></span>
-<span id="cb11-17"><a href="#cb11-17"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
-<span id="cb11-18"><a href="#cb11-18"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb11-19"><a href="#cb11-19"></a>        <span class="bu">Shape</span> circle <span class="op">=</span> <span class="kw">new</span> <span class="fu">Circle</span><span class="op">();</span></span>
-<span id="cb11-20"><a href="#cb11-20"></a>        <span class="bu">Shape</span> square <span class="op">=</span> <span class="kw">new</span> <span class="fu">Square</span><span class="op">();</span></span>
-<span id="cb11-21"><a href="#cb11-21"></a>        circle<span class="op">.</span><span class="fu">draw</span><span class="op">();</span> <span class="co">// Drawing a Circle</span></span>
-<span id="cb11-22"><a href="#cb11-22"></a>        square<span class="op">.</span><span class="fu">draw</span><span class="op">();</span> <span class="co">// Drawing a Square</span></span>
-<span id="cb11-23"><a href="#cb11-23"></a>    <span class="op">}</span></span>
-<span id="cb11-24"><a href="#cb11-24"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="ricorsione-aperta" class="level4" data-number="3.2.1.7">
-<h4 data-number="3.2.1.7" class="anchored" data-anchor-id="ricorsione-aperta"><span class="header-section-number">3.2.1.7</span> Ricorsione Aperta</h4>
-<p>Un’altra caratteristica comune degli oggetti è che i metodi sono associati a essi e possono accedere e modificare i campi dati dell’oggetto. In questo tipo di OOP, esiste solitamente un nome speciale come <code>this</code> o <code>self</code> usato per riferirsi all’oggetto corrente. Nei linguaggi che supportano la ricorsione aperta, i metodi degli oggetti possono chiamare altri metodi sullo stesso oggetto (inclusi se stessi) usando questo nome. Questa variabile è legata tardivamente; consente a un metodo definito in una classe di invocare un altro metodo che è definito successivamente, in qualche sottoclasse di essa.</p>
-</section>
-</section>
-<section id="conclusione" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="conclusione"><span class="header-section-number">3.2.2</span> Conclusione</h3>
-<p>Il modello dati nella programmazione orientata agli oggetti è complesso e ricco di concetti che migliorano la modularità, il riuso del codice e la manutenibilità del software. Comprendere a fondo questi concetti è fondamentale per sfruttare appieno le potenzialità del paradigma OOP e per progettare software robusto e scalabile.</p>
-</section>
-<section id="riferimenti-bibliografici" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="riferimenti-bibliografici"><span class="header-section-number">3.2.3</span> Riferimenti Bibliografici</h3>
+<section id="ereditarietà" class="level5" data-number="3.2.1.2.5">
+<h5 data-number="3.2.1.2.5" class="anchored" data-anchor-id="ereditarietà"><span class="header-section-number">3.2.1.2.5</span> Ereditarietà</h5>
+<p>Come abbiamo visto, l’ereditarietà è un meccanismo che permette a una classe di ereditare membri da un’altra classe. In realtà, l’ereditarietà può essere multipla cioè essere tale da permettere a una classe di ricevere attributi e metodi contemporaneamente da più classi base. Questo meccanismo risponde all’esigenza di specializzare più concetti allo stesso tempo.</p>
+<p>Va sottolineato che l’ereditarietà multipla è uno strumento potente prono ad abusi perché può introdurre complessità nella gestione delle gerarchie di classi e causare conflitti tra metodi ereditati da più classi. Per esempio, se due classi base definiscono un metodo con lo stesso nome, la classe derivata deve specificare quale metodo utilizzare o come combinarli.</p>
+<p>Alcuni linguaggi di programmazione, come Go, impediscono l’ereditarietà per progettazione del linguaggio. Questo approccio è adottato per favorire la composizione degli oggetti rispetto all’ereditarietà, promuovendo l’uso di interfacce e la combinazione di comportamenti attraverso l’aggregazione, piuttosto che attraverso gerarchie di classi complesse.</p>
+<p>Esempio di ereditarietà multipla in Java:</p>
 <ul>
 <li><p>Variabile: È un nome simbolico associato a locazione di memoria che può contenere uno o più valori. È fondamentale per la manipolazione di dati perché sono un mezzo per astrarre dalla costante memorizzata. Le variabili possono essere associate a diversi tipi di dati e durate di vita. La semantica delle variabili include la loro dichiarazione, inizializzazione, uso e visibilità:</p>
 <ul>
@@ -904,22 +906,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Questi elementi semantici combinati determinano il comportamento e la logica di un programma, influenzando il modo in cui il codice viene scritto, eseguito e mantenuto.</p>
 </section>
 </section>
+</section>
+</section>
 <section id="applicazione-dei-concetti-di-sintassi-e-semantica" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="applicazione-dei-concetti-di-sintassi-e-semantica"><span class="header-section-number">3.3</span> Applicazione dei concetti di sintassi e semantica</h2>
 <p>Dissezioniamo un algoritmo molto semplice per illustrare come sintassi e semantica di un linguaggio abbiano ruoli distinti e complementari in un programma. È importante comprendere che un buon programmatore deve avere tutte e tre le competenze, cioè conoscere le specificità formali del linguaggio (o di più linguaggi), quindi, la sua sintassi e semantica e saper comporre algoritmi, che potrà realizzare grazie proprio a quelle.</p>
 <p>Consideriamo un esempio semplice di algoritmo per calcolare la somma dei numeri da 1 a n.&nbsp;In input si avrà un numero intero <code>n</code> e in output il risultato. In pseudocodice (cioè mimiamo il rigore sintattico di un linguaggio di programmazione, ma utilizziamo la lingua italiana) si può rappresentare così:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="ex">Inizializza</span> somma a 0</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="ex">Per</span> ogni numero i da 1 a n:</span>
-<span id="cb12-3"><a href="#cb12-3"></a>  <span class="ex">Aggiungi</span> i a somma</span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="ex">Restituisci</span> somma</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="ex">Inizializza</span> somma a 0</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="ex">Per</span> ogni numero i da 1 a n:</span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="ex">Aggiungi</span> i a somma</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="ex">Restituisci</span> somma</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>O, in alternativa, possiamo definire una funzione che implementa l’algoritmo:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">funzione</span> calcola_somma<span class="er">(</span><span class="ex">n</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="ex">somma</span> = 0</span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="ex">per</span> i da 1 a n:</span>
-<span id="cb13-4"><a href="#cb13-4"></a>    <span class="ex">somma</span> = somma + i</span>
-<span id="cb13-5"><a href="#cb13-5"></a>  <span class="ex">ritorna</span> somma</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">funzione</span> calcola_somma<span class="er">(</span><span class="ex">n</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="ex">somma</span> = 0</span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="ex">per</span> i da 1 a n:</span>
+<span id="cb11-4"><a href="#cb11-4"></a>    <span class="ex">somma</span> = somma + i</span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="ex">ritorna</span> somma</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Effettuiamo una analisi dettagliata della funzione per indicare quali elementi sintattici e semantici sono presenti. Partiamo dalla prima riga:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="ex">funzione</span> calcola_somma<span class="er">(</span><span class="ex">n</span><span class="kw">)</span><span class="bu">:</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="ex">funzione</span> calcola_somma<span class="er">(</span><span class="ex">n</span><span class="kw">)</span><span class="bu">:</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><p>Sintassi:</p>
 <ul>
@@ -930,7 +934,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Semantica: Definisce una funzione chiamata <code>calcola_somma</code> che accetta un parametro <code>n</code>.</p></li>
 </ul>
 <p>La seconda riga ha l’inizializzazione della variabile che conterrà il risultato:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="ex">somma</span> = 0</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">somma</span> = 0</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Sintassi:
 <ul>
@@ -944,7 +948,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 <p>A seguire la definizione di un ciclo:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="ex">per</span> i da 1 a n:</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="ex">per</span> i da 1 a n:</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><p>Sintassi:</p>
 <ul>
@@ -955,7 +959,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Semantica: Itera la variabile <code>i</code> da <code>1</code> a <code>n</code>.</p></li>
 </ul>
 <p>Un assegnamento per accumulare i valori nella variabile di ritorno:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="ex">somma</span> = somma + i</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="ex">somma</span> = somma + i</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><p>Sintassi:</p>
 <ul>
@@ -966,7 +970,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Semantica: Aggiunge il valore di <code>i</code> alla variabile <code>somma</code> e assegna il risultato a <code>somma</code>.</p></li>
 </ul>
 <p>E finalmente il risultato del calcolo viene restituito al chiamante:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="ex">ritorna</span> somma</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="ex">ritorna</span> somma</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Sintassi:
 <ul>

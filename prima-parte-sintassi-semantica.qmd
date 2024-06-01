@@ -374,7 +374,7 @@ L'esempio mostra come nel modello dati del linguaggio C possono essere definiti 
 
 #### Linguaggi orientati agli oggetti
 
-La programmazione orientata agli oggetti è un paradigma che utilizza **oggetti** per rappresentare concetti ed entità del mondo reale o astratto. Questo approccio si basa su un processo mentale fondamentale per risolvere problemi complessi: la decomposizione. Un problema complesso è più facilmente risolvibile se diviso in parti più piccole, ciascuna delle quali possiede uno stato e la possibilità di comunicare con le altre parti. Questa divisione permette di continuare la decomposizione fino a raggiungere un livello sufficientemente elementare da poter essere realizzato come istruzioni codificate in costrutti permessi dalla sintassi del linguaggio.
+La programmazione orientata agli oggetti è un paradigma che utilizza **oggetti** per rappresentare concetti ed entità del mondo reale o astratto. Questo approccio si basa su un processo mentale fondamentale per risolvere problemi complessi: la decomposizione. Un problema complesso è più facilmente risolvibile se diviso in parti più piccole, ciascuna delle quali possiede uno stato e la possibilità di interagire con le altre parti. Questa divisione può essere effettuata per gradi, come se si osservasse sempre più da vicino il problema, effettivamente continunandone la specificazione, fino a raggiungere un livello sufficientemente di dettaglio da poter essere realizzato come istruzioni, codificate in costrutti permessi dalla sintassi del linguaggio, dell'oggetto.
 
 ##### Oggetti
 
@@ -390,133 +390,176 @@ I membri di un oggetto (attributi e metodi) possono avere diverse limitazioni di
 
 L'**incapsulamento** è il principio su cui si basa la gestione della visibilità e guida la separazione del codice realizzante le specificità di un oggetto, da come è fruito dagli altri oggetti. Questo protegge l'integrità del suo stato e ne facilita la manutenzione del codice stesso, permettendo modifiche di implementazione, senza impatti sul codice esterno fintantoché non si cambiano i membri pubblici. Inoltre, se ben sfruttata nella progettazione, rende il codice più comprensibile e riduce la superficie d'attacco.
 
-##### Classi e prototipi
+##### Classi
 
 Un oggetto può essere generato da una struttura statica che ne definisce tutte le caratteristiche, la **classe**, oppure può essere creato a partire da un altro oggetto esistente, noto come **prototipo**.
 
-Nella programmazione ad oggetti basata su classi, ogni oggetto è un'istanza _vivente_ di una classe predefinita, che ne rappresenta il progetto o l'archetipo. La classe definisce i membri e la visibilità, quindi, in definitiva tutte le proprietà comuni agli oggetti dello stesso tipo o matrice. Gli oggetti vengono creati chiamando un metodo speciale della classe, noto come costruttore e, all'atto della loro vita, un secondo metodo, il distruttore, che si occupa di effettuare le azioni di terminazione. La classe può inoltre definire metodi e attributi specifici che possono essere ereditati da altre classi, cioè possono essere utilizzati da quest'ultime al pari dei propri membri, permettendo la definizione di una gerarchia di classi che facilita il riuso del codice per mezzo dell'estensione, al posto della modifica, delle funzionalità. La classe che eredita da un'altra classe si definisce _derivata_ dalla classe che, a sua volta, è detta _base_.
+Nella programmazione ad oggetti basata su classi, ogni oggetto è un'istanza _vivente_ di una classe predefinita, che ne rappresenta il progetto o l'archetipo. La classe definisce i membri e la visibilità, quindi, in definitiva tutte le proprietà comuni agli oggetti dello stesso tipo o matrice. Gli oggetti vengono creati chiamando un metodo speciale della classe, noto come costruttore e, all'atto della loro vita, un secondo metodo, il distruttore, che si occupa di effettuare le azioni di terminazione. 
 
-Alternativamente, alcuni linguaggi usano il concetto di prototipo, in cui gli oggetti sono le entità principali e non esiste una matrice separata come la classe. In questo paradigma, ogni oggetto può servire da prototipo per altri e ciò significa che, invece di creare nuove istanze di una classe, si creano nuovi oggetti clonando o estendendo oggetti esistenti. È possibile aggiungere o modificare proprietà e metodi di un oggetto prototipo e, in tal caso, queste modifiche si rifletteranno in tutti gli oggetti che derivano da esso.
+La classe può inoltre definire metodi e attributi particolari, che possono essere ereditati da altre classi, cioè possono essere utilizzati da quest'ultime al pari dei propri membri. In tal modo, il linguaggio permette la costruzioni di gerarchie di classi che modellano relazioni di specializzazione, dalla più generale alla più particolare.
 
+Ciò, oltre ad essere uno strumento di progettazione utile di per sé, facilita il riuso del codice per mezzo dell'estensione, al posto della modifica, di funzionalità. La classe che eredita da un'altra classe si definisce _derivata_ dalla classe che, a sua volta, è detta _base_.
 
+##### Prototipi
 
+Alternativamente, alcuni linguaggi usano il concetto di prototipo, in cui gli oggetti sono le entità principali e non esiste una matrice separata come la classe. In questo paradigma, ogni oggetto può servire da prototipo per altri e ciò significa che, invece di creare nuove istanze di una classe, si creano nuovi oggetti clonando o estendendo quelli esistenti. È possibile aggiungere o modificare proprietà e metodi di un oggetto prototipo e, in tal caso, queste modifiche si propagheranno in tutti gli oggetti che derivano da esso.
 
-Il paradigma basato su prototipi offre maggiore flessibilità e dinamismo rispetto a quello basato su classi, poiché la struttura degli oggetti può essere modificata in modo dinamico. Tuttavia, questo approccio può anche introdurre complessità e rendere più difficile la gestione delle gerarchie di oggetti e la comprensione del codice, poiché non esistono strutture fisse come le classi.
+Il paradigma basato su prototipi offre maggiore flessibilità e dinamismo rispetto a quello basato su classi, poiché la struttura degli oggetti può essere modificata in modo dinamico. D'altronde, questo approccio può anche introdurre complessità e rendere più difficile la gestione delle gerarchie di oggetti e la comprensione del codice, poiché non esistono strutture fisse come le classi.
 
+##### Esempi di gerarchie di classi e prototipi
 
-
-
-
-
-
-
-
-
-
-
-
-#### Ereditarietà
-
-Le lingue OOP sono diverse, ma tipicamente permettono l'ereditarietà per il riuso del codice e l'estensibilità in forma di classi o prototipi. Le classi definiscono il formato dei dati e i metodi disponibili per un tipo di oggetto. Gli oggetti sono creati chiamando un metodo speciale della classe noto come costruttore. Le classi possono ereditare da altre classi, formando una gerarchia che rappresenta relazioni "is-a-type-of" (è un tipo di). Ad esempio, la classe Employee può ereditare dalla classe Person. 
-
-##### Ereditarietà Basata su Classi
-
-Nella programmazione basata su classi, ogni oggetto è un'istanza di una particolare classe. La classe definisce i dati e i metodi disponibili per un tipo di oggetto. Ad esempio:
+Vediamo le differenze tra classi e prototipi, riprendendo l'esempio in Java nella versione semplificata (senza astrazione):
 
 ```java
-class Person {
-    String firstName;
-    String lastName;
+class Animale { 
+    String nome;
 
-    public String makeFullName() {
-        return firstName + " " + lastName;
+    Animale(String nome) {
+        this.nome = nome;
+    }
+
+    void faiVerso() {
+        System.out.println("L'animale fa un verso");
     }
 }
 
-class Employee extends Person {
-    String position;
-    double salary;
-}
-```
+class Cane extends Animale { 
 
-In questo esempio, `Employee` eredita `firstName`, `lastName` e `makeFullName` da `Person`, ma aggiunge `position` e `salary`.
-
-##### Ereditarietà Basata su Prototipi
-
-In contrasto, nella programmazione basata su prototipi, gli oggetti sono le entità principali. Non esiste il concetto di "classe" esplicitamente. In JavaScript, ogni oggetto ha un prototipo a cui è collegato. Ad esempio:
-
-```javascript
-const person = {
-    firstName: 'John',
-    lastName: 'Doe',
-    makeFullName: function() {
-        return this.firstName + ' ' + this.lastName;
+    Cane(String nome) {
+        super(nome);
     }
-};
 
-const employee = Object.create(person);
-employee.position = 'Developer';
-employee.salary = 50000;
-
-console.log(employee.makeFullName()); // John Doe
-```
-
-In questo esempio, `employee` eredita `firstName`, `lastName` e `makeFullName` da `person` tramite il suo prototipo.
-
-#### Dinamica e Dispatch di Messaggi
-
-In OOP, la selezione del codice procedurale da eseguire in risposta a una chiamata di metodo è responsabilità dell'oggetto. Questa funzionalità è nota come **dispatch dinamico**. Se la variabilità della chiamata dipende da più di un singolo tipo di oggetto (ad esempio, almeno un altro oggetto parametro è coinvolto nella scelta del metodo), si parla di **multiple dispatch**. Una chiamata di metodo è anche conosciuta come **passaggio di messaggi**. È concettualizzata come un messaggio (il nome del metodo e i suoi parametri di input) passato all'oggetto per il dispatch.
-
-Il dispatch interagisce con l'ereditarietà; se un metodo non è presente in un dato oggetto o classe, il dispatch è delegato al suo oggetto o classe genitore, e così via, salendo la catena dell'ereditarietà.
-
-#### Astrazione dei Dati e Incapsulamento
-
-**L'astrazione dei dati** è un pattern di design in cui i dati sono visibili solo a funzioni semanticamente correlate, per prevenire l'uso improprio. L'incapsulamento, d'altra parte, impedisce al codice esterno di essere preoccupato per il funzionamento interno di un oggetto. Questo facilita il refactoring del codice, consentendo all'autore della classe di cambiare il modo in cui gli oggetti di quella classe rappresentano i loro dati internamente senza cambiare alcun codice esterno (finché le chiamate ai metodi "pubblici" funzionano allo stesso modo). L'incapsulamento incoraggia anche i programmatori a mettere tutto il codice che riguarda un certo set di dati nella stessa classe, organizzandolo per una facile comprensione da parte di altri programmatori. Questa tecnica promuove il disaccoppiamento.
-
-In OOP, gli oggetti forniscono un livello che può essere utilizzato per separare il codice interno da quello esterno e implementare l'astrazione e l'incapsulamento. Il codice esterno può utilizzare un oggetto solo chiamando un metodo di istanza specifico con un certo set di parametri di input, leggendo una variabile di istanza o scrivendo su una variabile di istanza.
-
-#### Polimorfismo
-
-**Il polimorfismo** è quando il codice chiamante può essere indipendente dalla classe specifica su cui opera, purché faccia parte della gerarchia supportata. Nel frattempo, lo stesso nome di operazione tra oggetti in una gerarchia di ereditarietà può comportarsi in modo diverso. Questo è un altro tipo di astrazione che semplifica il codice esterno alla gerarchia di classi e consente una forte separazione delle preoccupazioni.
-
-Ad esempio, gli oggetti del tipo `Circle` e `Square` possono derivare da una classe comune chiamata `Shape`. La funzione `Draw` per ciascun tipo di `Shape` implementa ciò che è necessario per disegnare se stessa, mentre il codice chiamante può rimanere indifferente al particolare tipo di `Shape` che viene disegnato.
-
-```java
-abstract class Shape {
-    abstract void draw();
-}
-
-class Circle extends Shape {
-    void draw() {
-        System.out.println("Drawing a Circle");
-    }
-}
-
-class Square extends Shape {
-    void draw() {
-        System.out.println("Drawing a Square");
+    @Override
+    void faiVerso() {
+        System.out.println("Il cane abbaia");
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Shape circle = new Circle();
-        Shape square = new Square();
-        circle.draw(); // Drawing a Circle
-        square.draw(); // Drawing a Square
+        Animale mioCane = new Cane("Fido");
+
+        mioCane.faiVerso(); 
     }
 }
 ```
 
-#### Ricorsione Aperta
+Implementiamo il medesimo programma in Javascript[^2-prima-parte-sintassi-semantica], linguaggio che usa il concetto di prototipo: 
 
-Un'altra caratteristica comune degli oggetti è che i metodi sono associati a essi e possono accedere e modificare i campi dati dell'oggetto. In questo tipo di OOP, esiste solitamente un nome speciale come `this` o `self` usato per riferirsi all'oggetto corrente. Nei linguaggi che supportano la ricorsione aperta, i metodi degli oggetti possono chiamare altri metodi sullo stesso oggetto (inclusi se stessi) usando questo nome. Questa variabile è legata tardivamente; consente a un metodo definito in una classe di invocare un altro metodo che è definito successivamente, in qualche sottoclasse di essa.
+```javascript
+let Animale = { // <1>
+    nome: "Generic",
 
-### Conclusione
+    init: function(nome) {
+        this.nome = nome;
+    },
 
-Il modello dati nella programmazione orientata agli oggetti è complesso e ricco di concetti che migliorano la modularità, il riuso del codice e la manutenibilità del software. Comprendere a fondo questi concetti è fondamentale per sfruttare appieno le potenzialità del paradigma OOP e per progettare software robusto e scalabile.
+    faiVerso: function() {
+        console.log("L'animale fa un verso");
+    }
+};
 
-### Riferimenti Bibliografici
+let Cane = Object.create(Animale); // <2>
+
+Cane.faiVerso = function() { // <3>
+    console.log("Il cane abbaia");
+};
+
+let mioCane = Object.create(Cane); // <4>
+mioCane.init("Fido"); // <5>
+
+mioCane.faiVerso(); // <6>
+```
+1. Definizione dell'oggetto prototipo `Animale`.
+2. Creazione di un nuovo oggetto basato sul prototipo `Animale`. 
+3. Viene creato un nuovo oggetto `Cane` basato sul prototipo `Animale`, usando `Object.create(Animale)`. Questo permette a `Cane` di ereditare proprietà e metodi da `Animale`. Il metodo `faiVerso` viene sovrascritto nell'oggetto `Cane` per specificare il comportamento da cane.
+4. Un nuovo oggetto `mioCane` viene creato basandosi sul prototipo `Cane` usando `Object.create(Cane)`.
+5. Il metodo `init` viene chiamato per inizializzare il nome dell'oggetto `mioCane`.
+6. Quando viene chiamato `mioCane.faiVerso()`, il metodo sovrascritto nell'oggetto `Cane` viene eseguito, mostrando `Il cane abbaia`.
+
+[^2-prima-parte-sintassi-semantica]: In JavaScript, le classi come sintassi sono state introdotte in ECMAScript 6 (ES6), per semplificare la creazione di oggetti e la gestione dell'ereditarietà prototipale. Tuttavia, è importante capire che sotto il cofano, JavaScript non utilizza classi nel senso tradizionale come in linguaggi come Java o C++ e non esiste un meccanismo nativo per creare classi astratte, anche se è possibile simulare il comportamento delle classi astratte utilizzando varie tecniche. Una comune è quella di lanciare un'eccezione se un metodo funzionalmente astratto non viene sovrascritto nella classe derivata.
+
+##### Ereditarietà
+
+Come abbiamo visto, l'ereditarietà è un meccanismo che permette a una classe di ereditare membri da un'altra classe. In realtà, l'ereditarietà può essere multipla cioè essere tale da permettere a una classe di ricevere attributi e metodi contemporaneamente da più classi base. Questo meccanismo risponde all'esigenza di specializzare più concetti allo stesso tempo. 
+
+Va sottolineato che l'ereditarietà multipla è uno strumento potente prono ad abusi perché può introdurre complessità nella gestione delle gerarchie di classi e causare conflitti tra metodi ereditati da più classi. Per esempio, se due classi base definiscono un metodo con lo stesso nome, la classe derivata deve specificare quale metodo utilizzare o come combinarli.
+
+Alcuni linguaggi di programmazione, come Go, impediscono l'ereditarietà per progettazione del linguaggio. Questo approccio è adottato per favorire la composizione degli oggetti rispetto all'ereditarietà, promuovendo l'uso di interfacce e la combinazione di comportamenti attraverso l'aggregazione, piuttosto che attraverso gerarchie di classi complesse.
+
+Esempio di ereditarietà multipla in Java:
+
+```java
+class Animale { 
+    String nome;
+
+    Animale(String nome) {
+        this.nome = nome;
+    }
+
+    void faiVerso() {
+        System.out.println("L'animale fa un verso");
+    }
+}
+
+class Domestico { 
+    void viviInCasa() {
+        System.out.println("L'animale vive in casa");
+    }
+}
+
+class Selvatico { 
+    void viviInNatura() {
+        System.out.println("L'animale vive in natura");
+    }
+}
+
+class Cane extends Animale { 
+    Domestico domestico = new Domestico();
+
+    Cane(String nome) {
+        super(nome);
+    }
+
+    @Override
+    void faiVerso() {
+        System.out.println("Il cane abbaia");
+    }
+
+    void viviInCasa() {
+        domestico.viviInCasa();
+    }
+}
+
+class Lupo extends Animale { 
+    Selvatico selvatico = new Selvatico();
+
+    Lupo(String nome) {
+        super(nome);
+    }
+
+    @Override
+    void faiVerso() {
+        System.out.println("Il lupo ulula");
+    }
+
+    void viviInNatura() {
+        selvatico.viviInNatura();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Cane mioCane = new Cane("Fido");
+        mioCane.faiVerso(); 
+        mioCane.viviInCasa();
+
+        Lupo mioLupo = new Lupo("Lupo");
+        mioLupo.faiVerso();
+        mioLupo.viviInNatura();
+    }
+}
+```
 
 
 
