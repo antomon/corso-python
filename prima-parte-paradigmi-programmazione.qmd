@@ -387,9 +387,9 @@ public class Main {
 
    2. Migliora la leggibilità del codice: Indica chiaramente al lettore del codice che il metodo è inteso per sovrascrivere un metodo nella superclasse.
 
-In realtà, se gli oggetti devono rappresentare animali reali vorrà dire che non deve essere possibile crearne dalla matrice `Animale`. Vediamo, quindi, come implementare il medesimo esempio con una classe _astratta_,, cioè una classe che non può essere usata per generare direttamente oggetti, sempre in in Java. 
+In realtà, se gli oggetti devono rappresentare animali reali vorrà dire che non deve essere possibile crearne dalla matrice `Animale`. Vediamo, quindi, come implementare il medesimo esempio con una classe _astratta_, cioè una classe che non può essere usata per generare direttamente oggetti, sempre in Java. 
 
-Quindi, `Animale` deve essere marchiata con costrutti ad hoc come classe astratta e `Cane` invece subisce altre modifiche sintattiche per indicare le modalità con cui, ereditando le caratteristiche di `Animale`, essa è una classe concreta, cioè da cui si possono creare oggetti. Nel caso pratico, ogni animale ha il suo verso, quindi dobbiamo costringere il programmatore che vuole implementare classi corrispondenti ad animali reali, ad aggiungere tassativamente il metodo `faiVerso()` per comunicarne la caratteristica distintiva:
+Nel caso pratico, ogni animale ha il suo verso, quindi dobbiamo costringere il programmatore che vuole implementare classi corrispondenti ad animali reali, ad aggiungere tassativamente il metodo `faiVerso()` per comunicarne la caratteristica distintiva. Una modalità è marchiare `Animale` e il suo metodo da caratterizzare (`faiVerso()`), con costrutti ad hoc perché siano, rispettivamente, identificata come classe astratta (per mezzo della parola riservata `abstract`) e metodo da implementare. Al contempo, `Cane` non subisce specifiche modifiche sintattiche, ma deve rispettare il vincolo (implementare `faiVerso()`) perché, ereditando le caratteristiche di `Animale`, possa essere una classe concreta, cioè da cui si possono creare oggetti. Il codice risultate è:
 
 ```java
 abstract class Animale { // <1>
@@ -604,7 +604,7 @@ Questi linguaggi rappresentano diversi ambiti di applicazione, dai database alla
 
 ## Nota
 
-SQL è uno degli esempi più significativi di linguaggio di programmazione dichiarativo. Le query SQL descrivono i risultati desiderati piuttosto che le procedure operative.
+SQL è uno degli esempi più diffusi di linguaggio di programmazione dichiarativo. Le query SQL descrivono i risultati desiderati piuttosto che le procedure operative.
 
 Una stored procedure in PL/SQL (Procedural Language/SQL) combina SQL con elementi di linguaggi di programmazione procedurali come blocchi di codice, condizioni e cicli. PL/SQL è quindi un linguaggio procedurale, poiché consente di specificare "come" ottenere i risultati attraverso un flusso di controllo esplicito, rendendolo non puramente dichiarativo. PL/SQL è utilizzato principalmente con il database Oracle.
 
