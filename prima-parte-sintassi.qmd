@@ -1,0 +1,212 @@
+---
+reference-location: margin
+citation-location: margin
+---
+
+# Sintassi e semantica dei linguaggi di programmazione
+
+I linguaggi di programmazione sono strumenti utilizzati per implementare algoritmi in modo che possano essere eseguiti da un computer. Un linguaggio di programmazione ha due componenti principali: la **sintassi** e la **semantica**.
+
+## Sintassi
+
+La **sintassi** di un linguaggio di programmazione è l'insieme di regole che definiscono come devono essere scritte le istruzioni, cioè le unità logiche di esecuzione del programma. È come la grammatica in una lingua naturale e stabilisce quali combinazioni di simboli sono considerate costrutti validi nel linguaggio.
+
+Partiamo dagli elementi atomici della sintassi, detti **token**, per poi risalire fino al programma:
+
+- Parole chiave: Sono termini riservati del linguaggio che hanno significati specifici e non possono essere utilizzati per altri scopi, come `if`, `else`, `while`, `for`, ecc.
+
+- Operatori: Simboli utilizzati per eseguire operazioni su identificatori e letterali, come `+`, `-`, `*`, `/`, `=`, `==`, ecc.
+
+- Delimitatori: Caratteri utilizzati per separare elementi del codice, come punto e virgola (`;`), parentesi tonde (`()`), parentesi quadre (`[]`), parentesi graffe (`{}`), ecc.
+
+- Identificatori: Nomi utilizzati per identificare variabili, funzioni, classi, e altri oggetti.
+
+- Letterali: Rappresentazioni di valori costanti nel codice, come numeri (`123`), stringhe (`"hello"`), caratteri (`'a'`), ecc.
+
+- Commento: Non fanno parte della logica del programma e sono ignorati nell'esecuzione.
+
+- Spazi e tabulazioni: Sono gruppi di caratteri non visualizzabili spesso ignorati. 
+
+Un **lessema** è una sequenza di caratteri nel programma sorgente che corrisponde al pattern di un token ed è identificata dall'**analizzatore lessicale** come un'istanza di quel token. Un **token** è una coppia composta da un nome di token e un valore attributo opzionale. Il nome del token è un simbolo astratto che rappresenta un tipo di unità lessicale, come una particolare parola chiave o una sequenza di caratteri di input che denota un identificatore. Un **pattern** è una descrizione della forma che possono assumere i lessemi di un token. Ad esempio, nel caso di una parola chiave come token, il pattern è semplicemente la sequenza di caratteri che forma la parola chiave. Per gli identificatori e altri token, il pattern è una struttura più complessa che corrisponde a molte stringhe.
+
+Un esempio per visualizzare i concetti introdotti:
+
+```python
+if x == 10:
+```
+
+- Token coinvolti:
+
+  - `if`: Parola chiave.
+  - `NAME`: Identificatore.
+  - `EQEQUAL`: Operatore.
+  - `NUMBER`: Letterale numerico.
+  - `COLON`: Delimitatore.
+
+- Lessemi:
+
+  - Il lessema per il token `if` è la sequenza di caratteri "if".
+  - Il lessema per il token `NAME` è "x".
+  - Il lessema per il token `EQEQUAL` è  "==".
+  - Il lessema per il token `NUMBER` "10".
+  - Il lessema per il token `COLON` ":".
+
+- Pattern:
+
+  - Il pattern per il token `if` è la stringa esatta "if".
+  - Il pattern per un identificatore è una sequenza di lettere e numeri che inizia con una lettera.
+  - Il pattern per l'operatore `==` è la stringa esatta "==".
+  - Il pattern per un letterale numerico è una sequenza di cifre.
+  - Il pattern per il delimitatore `:` è la stringa esatta ":".
+
+### Analizzatore lessicale e parser
+
+L'**analizzatore lessicale** (o _lexer_) è un componente del compilatore o interprete che prende in input il codice sorgente del programma e lo divide in lessemi. Esso confronta ciascun lessema con i pattern definiti per il linguaggio di programmazione e genera una sequenza di token. Questi token sono poi passati al parser.
+
+Il **parser** è un altro componente del compilatore o interprete che prende in input la sequenza di token generata dall'analizzatore lessicale e verifica che la sequenza rispetti le regole sintattiche del linguaggio di programmazione. Il parser analizza i token per formare una struttura gerarchica che rappresenti le relazioni grammaticali tra di essi. Questa struttura interna è spesso un albero di sintassi (_parse tree_ o _syntax tree_), che riflette la struttura grammaticale del codice sorgente, solitamente descritta usando una forma standard di notazione come la BNF (Backus-Naur Form) o varianti di essa.[^1-prima-parte-sintassi-semantica] L'albero di sintassi viene utilizzato per ulteriori fasi di compilazione o interpretazione, come l'analisi semantica e la generazione del codice. Ad esempio, il parser può verificare che le espressioni aritmetiche siano ben formate, che le istruzioni siano correttamente annidate e che le dichiarazioni di variabili siano valide.
+
+[^1-prima-parte-sintassi-semantica]: La BNF (Backus-Naur form o Backus normal form) è una metasintassi, ovvero un formalismo attraverso cui è possibile descrivere la sintassi di linguaggi formali (il prefisso meta ha proprio a che vedere con la natura circolare di questa definizione). Si tratta di uno strumento molto usato per descrivere in modo preciso e non ambiguo la sintassi dei linguaggi di programmazione, dei protocolli di rete e così via, benché non manchino in letteratura esempi di sue applicazioni a contesti anche non informatici e addirittura non tecnologici. Un esempio è la grammatica di [Python](https://docs.python.org/3/reference/grammar.html)
+
+### Espressioni
+
+Un'espressione è una combinazione di lessemi che viene valutata per produrre un risultato. 
+
+Esempi di espressioni includono:
+
+- `5 + 3`.
+- `x * 2`.
+- `y / 4.0`.
+- `max(a, b)`.
+- `"Hello, " + "world!"`.
+
+### Istruzioni semplici
+
+Le **istruzioni semplici** sono operazioni atomiche secondo il linguaggio e sono costituite da lessemi ed espressioni per compiere operazioni di base. Gli esempi principali includono: 
+
+- Assegnazione: Utilizza un operatore di assegnazione (ad esempio, `=`) per attribuire un valore a una variabile, che possiamo pensare come un nome simbolico rappresentante una posizione dove è memorizzato un valore. Esempio:
+
+  ```python
+  x = 5
+  ```
+  - `x`: Identificatore della variabile.
+  - `=`: Operatore di assegnazione.
+  - `5`: Letterale numerico intero.
+
+- Input/output: Utilizza parole chiave o funzioni di libreria per leggere valori dall'input o scrivere valori all'output. Esempio:
+
+  ```python
+  print("Hello, World!")
+  ```
+  - `print`: Parola chiave o identificatore di funzione di libreria.
+  - `"Hello, World!"`: Letterale stringa.
+  L'esecuzione dell'istruzione produce `"Hello, World!"` in output.
+
+- Assegnazione ad espressione: Combinazione di variabili, operatori e valori che producono un risultato assegnato ad una variabile. Esempio:
+
+    ```python
+    z = (x * 2) + (y / 2)
+    ```
+  - `z`: Identificatore della variabile.
+  - `=`: Operatore di assegnazione.
+  - `(x * 2)`: Espressione che moltiplica `x` per `2`.
+  - `(y / 2)`: Espressione che divide `y` per `2`.
+  - `+`: Operatore aritmetico che somma i risultati delle due espressioni in una più complessa.
+  L'esecuzione dell'istruzione produce un risultato valido solo se `x` e `y` sono associate a valori numerici e ciò perché non tutte le istruzioni sintatticamente corrette sono semanticamente corrette. D'altronde ciò non deve essere preso come regola, perché se `*` fosse un operatore che ripete quanto a sinistra un numero di volte definito dal valore di destra e `/` la divisione del valore di sinistra in parti di numero pari a quanto a destra, allora `x` e `y` potrebbero essere stringhe.
+
+### Istruzioni complesse e blocchi di codice
+
+Le **istruzioni complesse** sono costituite da più istruzioni semplici e possono includere strutture di controllo del flusso, come condizioni (`if`), cicli (`for`, `while`) ed eccezioni (`try`, `catch`). Queste istruzioni sono utilizzate per organizzare il flusso di esecuzione del programma e possono contenere altre istruzioni semplici o complesse al loro interno.
+
+Un **blocco di codice** è una sezione del codice che raggruppa una serie di istruzioni che devono essere eseguite insieme. I blocchi di codice sono spesso utilizzati all'interno delle istruzioni complesse per delimitare il gruppo di istruzioni che devono essere eseguite in determinate condizioni o iterazioni. 
+
+In molti linguaggi di programmazione, i blocchi di codice sono delimitati da parentesi graffe (`{}`), mentre in altri linguaggi, come Python, l'indentazione è utilizzata per indicare l'inizio e la fine di un blocco di codice.
+
+Alcuni esempi di istruzione e blocco di codice:
+
+- Esempio in C:
+
+  ```c
+  if (x > 0) {
+    printf("x è positivo\n");
+
+    y = x * 2;
+  }
+  ```
+  In questo esempio:
+  - `if (x > 0)` è un'istruzione complessa.
+  - `{ printf("x è positivo\n"); y = x * 2; }` è un blocco di codice che viene eseguito se la condizione dell'istruzione `if` è vera.
+
+- Esempio in Python:
+
+  ```python
+  if x > 0:
+    print("x è positivo")
+
+    y = x * 2
+  ```
+  In questo esempio:
+  - `if x > 0:` è un'istruzione complessa.
+  - Le righe indentate sotto l'istruzione `if` (`print("x è positivo")` e `y = x * 2`) costituiscono un blocco di codice che viene eseguito se la condizione dell'istruzione `if` è vera.
+
+Altri esempi: 
+
+- Condizioni: Istruzioni che eseguono un blocco di codice solo se una condizione è vera. Esempio:
+
+  ```c
+  #include <stdio.h>
+
+  x = 42;
+
+  if (x > 0) {
+      printf("x è positivo\n");
+  }
+  ```
+  - `if`: Parola chiave che introduce la condizione.
+  - `(x > 0)`: Condizione composta da: `x` identificatore di variabile, `>` operatore di confronto e `0` letterale numerico intero.
+  - `{ ... }`: Delimitatori che racchiudono il blocco di codice.
+  - `print("x è positivo")`: Istruzione di output.
+
+- Cicli: Istruzioni che ripetono un blocco di codice. Esempio:
+
+  ```c
+  #include <stdio.h>
+
+  int n = 42;
+  int somma = 0;
+  int i;
+
+  for (i = 0; i < n; i++) {
+      somma = somma + i;
+  }
+  ```
+  - `for`: Parola chiave che introduce il ciclo.
+  - `(i = 0; i < n; i++)`: Espressione di controllo del ciclo composta da: `i = 0` assegnazione iniziale, `i < n` condizione di ciclo e `i++` incremento della variabile `i`.
+  - `{ ... }`: Delimitatori che racchiudono il blocco di codice.
+  - `somma = somma + i`: Operazione aritmetica.
+
+### Organizzazione del codice in un programma
+
+Il programma è solitamente salvato in un file di testo in righe. Queste righe possono essere classificate in righe fisiche e righe logiche.
+
+Una **riga fisica** è una linea di testo nel file sorgente del programma, terminata da un carattere di a capo. 
+
+Esempio:
+
+```c
+int x = 10; /* <1> */ 
+```
+1. Questa è una riga fisica.
+
+Una **riga logica** è una singola istruzione, che può estendersi su una o più righe fisiche.
+
+Esempio di riga logica con più righe fisiche:
+
+```c
+int y = (10 + 20 + 30 + /* <1> */
+         40 + 50); /* <2> */
+```
+1. Prima riga fisica della riga logica.
+2. Seconda riga fisica della riga logica.
+
+Il concetto di righe fisiche e logiche esiste perché le istruzioni (o righe logiche) possono essere lunghe e complesse, richiedendo più righe fisiche per migliorare la leggibilità e la gestione del codice.
+

@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Antonio Montano">
 
-<title>Da neofita di Python a campione</title>
+<title>Da neofita di Python a campione – 3&nbsp; Sintassi e semantica dei linguaggi di programmazione</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./prima-parte.html" rel="next">
+<link href="./prima-parte-semantica.html" rel="next">
+<link href="./prima-parte-paradigmi-programmazione.html" rel="prev">
 <link href="./red-python-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -78,17 +112,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="https://cdn.jsdelivr.net/pyodide/v0.26.0/full/pyodide.js"></script>
 
 
-<meta property="og:title" content="Da neofita di Python a campione">
-<meta property="og:description" content="Corso di Python per tutti">
+<meta property="og:title" content="Da neofita di Python a campione - 3&nbsp; Sintassi e semantica dei linguaggi di programmazione">
+<meta property="og:description" content="">
 <meta property="og:site_name" content="Da neofita di Python a campione">
-<meta name="twitter:title" content="Da neofita di Python a campione">
-<meta name="twitter:description" content="Corso di Python per tutti">
+<meta name="twitter:title" content="Da neofita di Python a campione - 3&nbsp; Sintassi e semantica dei linguaggi di programmazione">
+<meta name="twitter:description" content="">
 <meta name="twitter:creator" content="@antomon">
 <meta name="twitter:site" content="@antomon">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -171,7 +205,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Prefazione</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-sintassi.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi e semantica dei linguaggi di programmazione</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -185,7 +219,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefazione</span></a>
   </div>
 </li>
@@ -212,7 +246,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prima-parte-sintassi.html" class="sidebar-item-text sidebar-link">
+  <a href="./prima-parte-sintassi.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi e semantica dei linguaggi di programmazione</span></span></a>
   </div>
 </li>
@@ -292,36 +326,30 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Indice</h2>
    
   <ul>
-  <li><a href="#prefazione" id="toc-prefazione" class="nav-link active" data-scroll-target="#prefazione">Prefazione</a></li>
+  <li><a href="#sintassi" id="toc-sintassi" class="nav-link active" data-scroll-target="#sintassi"><span class="header-section-number">3.1</span> Sintassi</a>
+  <ul class="collapse">
+  <li><a href="#analizzatore-lessicale-e-parser" id="toc-analizzatore-lessicale-e-parser" class="nav-link" data-scroll-target="#analizzatore-lessicale-e-parser"><span class="header-section-number">3.1.1</span> Analizzatore lessicale e parser</a></li>
+  <li><a href="#espressioni" id="toc-espressioni" class="nav-link" data-scroll-target="#espressioni"><span class="header-section-number">3.1.2</span> Espressioni</a></li>
+  <li><a href="#istruzioni-semplici" id="toc-istruzioni-semplici" class="nav-link" data-scroll-target="#istruzioni-semplici"><span class="header-section-number">3.1.3</span> Istruzioni semplici</a></li>
+  <li><a href="#istruzioni-complesse-e-blocchi-di-codice" id="toc-istruzioni-complesse-e-blocchi-di-codice" class="nav-link" data-scroll-target="#istruzioni-complesse-e-blocchi-di-codice"><span class="header-section-number">3.1.4</span> Istruzioni complesse e blocchi di codice</a></li>
+  <li><a href="#organizzazione-del-codice-in-un-programma" id="toc-organizzazione-del-codice-in-un-programma" class="nav-link" data-scroll-target="#organizzazione-del-codice-in-un-programma"><span class="header-section-number">3.1.5</span> Organizzazione del codice in un programma</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-sintassi.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-sintassi.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi e semantica dei linguaggi di programmazione</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Da neofita di Python a campione</h1>
-<p class="subtitle lead">Corso di Python per tutti</p>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi e semantica dei linguaggi di programmazione</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autore/Autrice</div>
-    <div class="quarto-title-meta-contents">
-             <p>Antonio Montano </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">24 maggio 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -331,12 +359,189 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><img src="red-python.png" class="img-fluid" alt="Pitone rosso"></p>
-<section id="prefazione" class="level1 unnumbered">
-<h1 class="unnumbered">Prefazione</h1>
+<p>I linguaggi di programmazione sono strumenti utilizzati per implementare algoritmi in modo che possano essere eseguiti da un computer. Un linguaggio di programmazione ha due componenti principali: la <strong>sintassi</strong> e la <strong>semantica</strong>.</p>
+<section id="sintassi" class="level2 page-columns page-full" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sintassi"><span class="header-section-number">3.1</span> Sintassi</h2>
+<p>La <strong>sintassi</strong> di un linguaggio di programmazione è l’insieme di regole che definiscono come devono essere scritte le istruzioni, cioè le unità logiche di esecuzione del programma. È come la grammatica in una lingua naturale e stabilisce quali combinazioni di simboli sono considerate costrutti validi nel linguaggio.</p>
+<p>Partiamo dagli elementi atomici della sintassi, detti <strong>token</strong>, per poi risalire fino al programma:</p>
+<ul>
+<li><p>Parole chiave: Sono termini riservati del linguaggio che hanno significati specifici e non possono essere utilizzati per altri scopi, come <code>if</code>, <code>else</code>, <code>while</code>, <code>for</code>, ecc.</p></li>
+<li><p>Operatori: Simboli utilizzati per eseguire operazioni su identificatori e letterali, come <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>=</code>, <code>==</code>, ecc.</p></li>
+<li><p>Delimitatori: Caratteri utilizzati per separare elementi del codice, come punto e virgola (<code>;</code>), parentesi tonde (<code>()</code>), parentesi quadre (<code>[]</code>), parentesi graffe (<code>{}</code>), ecc.</p></li>
+<li><p>Identificatori: Nomi utilizzati per identificare variabili, funzioni, classi, e altri oggetti.</p></li>
+<li><p>Letterali: Rappresentazioni di valori costanti nel codice, come numeri (<code>123</code>), stringhe (<code>"hello"</code>), caratteri (<code>'a'</code>), ecc.</p></li>
+<li><p>Commento: Non fanno parte della logica del programma e sono ignorati nell’esecuzione.</p></li>
+<li><p>Spazi e tabulazioni: Sono gruppi di caratteri non visualizzabili spesso ignorati.</p></li>
+</ul>
+<p>Un <strong>lessema</strong> è una sequenza di caratteri nel programma sorgente che corrisponde al pattern di un token ed è identificata dall’<strong>analizzatore lessicale</strong> come un’istanza di quel token. Un <strong>token</strong> è una coppia composta da un nome di token e un valore attributo opzionale. Il nome del token è un simbolo astratto che rappresenta un tipo di unità lessicale, come una particolare parola chiave o una sequenza di caratteri di input che denota un identificatore. Un <strong>pattern</strong> è una descrizione della forma che possono assumere i lessemi di un token. Ad esempio, nel caso di una parola chiave come token, il pattern è semplicemente la sequenza di caratteri che forma la parola chiave. Per gli identificatori e altri token, il pattern è una struttura più complessa che corrisponde a molte stringhe.</p>
+<p>Un esempio per visualizzare i concetti introdotti:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">if</span> x <span class="op">==</span> <span class="dv">10</span>:</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>Token coinvolti:</p>
+<ul>
+<li><code>if</code>: Parola chiave.</li>
+<li><code>NAME</code>: Identificatore.</li>
+<li><code>EQEQUAL</code>: Operatore.</li>
+<li><code>NUMBER</code>: Letterale numerico.</li>
+<li><code>COLON</code>: Delimitatore.</li>
+</ul></li>
+<li><p>Lessemi:</p>
+<ul>
+<li>Il lessema per il token <code>if</code> è la sequenza di caratteri “if”.</li>
+<li>Il lessema per il token <code>NAME</code> è “x”.</li>
+<li>Il lessema per il token <code>EQEQUAL</code> è “==”.</li>
+<li>Il lessema per il token <code>NUMBER</code> “10”.</li>
+<li>Il lessema per il token <code>COLON</code> “:”.</li>
+</ul></li>
+<li><p>Pattern:</p>
+<ul>
+<li>Il pattern per il token <code>if</code> è la stringa esatta “if”.</li>
+<li>Il pattern per un identificatore è una sequenza di lettere e numeri che inizia con una lettera.</li>
+<li>Il pattern per l’operatore <code>==</code> è la stringa esatta “==”.</li>
+<li>Il pattern per un letterale numerico è una sequenza di cifre.</li>
+<li>Il pattern per il delimitatore <code>:</code> è la stringa esatta “:”.</li>
+</ul></li>
+</ul>
+<section id="analizzatore-lessicale-e-parser" class="level3 page-columns page-full" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="analizzatore-lessicale-e-parser"><span class="header-section-number">3.1.1</span> Analizzatore lessicale e parser</h3>
+<p>L’<strong>analizzatore lessicale</strong> (o <em>lexer</em>) è un componente del compilatore o interprete che prende in input il codice sorgente del programma e lo divide in lessemi. Esso confronta ciascun lessema con i pattern definiti per il linguaggio di programmazione e genera una sequenza di token. Questi token sono poi passati al parser.</p>
+<p>Il <strong>parser</strong> è un altro componente del compilatore o interprete che prende in input la sequenza di token generata dall’analizzatore lessicale e verifica che la sequenza rispetti le regole sintattiche del linguaggio di programmazione. Il parser analizza i token per formare una struttura gerarchica che rappresenti le relazioni grammaticali tra di essi. Questa struttura interna è spesso un albero di sintassi (<em>parse tree</em> o <em>syntax tree</em>), che riflette la struttura grammaticale del codice sorgente, solitamente descritta usando una forma standard di notazione come la BNF (Backus-Naur Form) o varianti di essa.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> L’albero di sintassi viene utilizzato per ulteriori fasi di compilazione o interpretazione, come l’analisi semantica e la generazione del codice. Ad esempio, il parser può verificare che le espressioni aritmetiche siano ben formate, che le istruzioni siano correttamente annidate e che le dichiarazioni di variabili siano valide.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;La BNF (Backus-Naur form o Backus normal form) è una metasintassi, ovvero un formalismo attraverso cui è possibile descrivere la sintassi di linguaggi formali (il prefisso meta ha proprio a che vedere con la natura circolare di questa definizione). Si tratta di uno strumento molto usato per descrivere in modo preciso e non ambiguo la sintassi dei linguaggi di programmazione, dei protocolli di rete e così via, benché non manchino in letteratura esempi di sue applicazioni a contesti anche non informatici e addirittura non tecnologici. Un esempio è la grammatica di <a href="https://docs.python.org/3/reference/grammar.html">Python</a></p></div></div></section>
+<section id="espressioni" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="espressioni"><span class="header-section-number">3.1.2</span> Espressioni</h3>
+<p>Un’espressione è una combinazione di lessemi che viene valutata per produrre un risultato.</p>
+<p>Esempi di espressioni includono:</p>
+<ul>
+<li><code>5 + 3</code>.</li>
+<li><code>x * 2</code>.</li>
+<li><code>y / 4.0</code>.</li>
+<li><code>max(a, b)</code>.</li>
+<li><code>"Hello, " + "world!"</code>.</li>
+</ul>
+</section>
+<section id="istruzioni-semplici" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="istruzioni-semplici"><span class="header-section-number">3.1.3</span> Istruzioni semplici</h3>
+<p>Le <strong>istruzioni semplici</strong> sono operazioni atomiche secondo il linguaggio e sono costituite da lessemi ed espressioni per compiere operazioni di base. Gli esempi principali includono:</p>
+<ul>
+<li><p>Assegnazione: Utilizza un operatore di assegnazione (ad esempio, <code>=</code>) per attribuire un valore a una variabile, che possiamo pensare come un nome simbolico rappresentante una posizione dove è memorizzato un valore. Esempio:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>x</code>: Identificatore della variabile.</li>
+<li><code>=</code>: Operatore di assegnazione.</li>
+<li><code>5</code>: Letterale numerico intero.</li>
+</ul></li>
+<li><p>Input/output: Utilizza parole chiave o funzioni di libreria per leggere valori dall’input o scrivere valori all’output. Esempio:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>print</code>: Parola chiave o identificatore di funzione di libreria.</li>
+<li><code>"Hello, World!"</code>: Letterale stringa. L’esecuzione dell’istruzione produce <code>"Hello, World!"</code> in output.</li>
+</ul></li>
+<li><p>Assegnazione ad espressione: Combinazione di variabili, operatori e valori che producono un risultato assegnato ad una variabile. Esempio:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>z <span class="op">=</span> (x <span class="op">*</span> <span class="dv">2</span>) <span class="op">+</span> (y <span class="op">/</span> <span class="dv">2</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>z</code>: Identificatore della variabile.</li>
+<li><code>=</code>: Operatore di assegnazione.</li>
+<li><code>(x * 2)</code>: Espressione che moltiplica <code>x</code> per <code>2</code>.</li>
+<li><code>(y / 2)</code>: Espressione che divide <code>y</code> per <code>2</code>.</li>
+<li><code>+</code>: Operatore aritmetico che somma i risultati delle due espressioni in una più complessa. L’esecuzione dell’istruzione produce un risultato valido solo se <code>x</code> e <code>y</code> sono associate a valori numerici e ciò perché non tutte le istruzioni sintatticamente corrette sono semanticamente corrette. D’altronde ciò non deve essere preso come regola, perché se <code>*</code> fosse un operatore che ripete quanto a sinistra un numero di volte definito dal valore di destra e <code>/</code> la divisione del valore di sinistra in parti di numero pari a quanto a destra, allora <code>x</code> e <code>y</code> potrebbero essere stringhe.</li>
+</ul></li>
+</ul>
+</section>
+<section id="istruzioni-complesse-e-blocchi-di-codice" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="istruzioni-complesse-e-blocchi-di-codice"><span class="header-section-number">3.1.4</span> Istruzioni complesse e blocchi di codice</h3>
+<p>Le <strong>istruzioni complesse</strong> sono costituite da più istruzioni semplici e possono includere strutture di controllo del flusso, come condizioni (<code>if</code>), cicli (<code>for</code>, <code>while</code>) ed eccezioni (<code>try</code>, <code>catch</code>). Queste istruzioni sono utilizzate per organizzare il flusso di esecuzione del programma e possono contenere altre istruzioni semplici o complesse al loro interno.</p>
+<p>Un <strong>blocco di codice</strong> è una sezione del codice che raggruppa una serie di istruzioni che devono essere eseguite insieme. I blocchi di codice sono spesso utilizzati all’interno delle istruzioni complesse per delimitare il gruppo di istruzioni che devono essere eseguite in determinate condizioni o iterazioni.</p>
+<p>In molti linguaggi di programmazione, i blocchi di codice sono delimitati da parentesi graffe (<code>{}</code>), mentre in altri linguaggi, come Python, l’indentazione è utilizzata per indicare l’inizio e la fine di un blocco di codice.</p>
+<p>Alcuni esempi di istruzione e blocco di codice:</p>
+<ul>
+<li><p>Esempio in C:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  printf<span class="op">(</span><span class="st">"x è positivo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In questo esempio:</p>
+<ul>
+<li><code>if (x &gt; 0)</code> è un’istruzione complessa.</li>
+<li><code>{ printf("x è positivo\n"); y = x * 2; }</code> è un blocco di codice che viene eseguito se la condizione dell’istruzione <code>if</code> è vera.</li>
+</ul></li>
+<li><p>Esempio in Python:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In questo esempio:</p>
+<ul>
+<li><code>if x &gt; 0:</code> è un’istruzione complessa.</li>
+<li>Le righe indentate sotto l’istruzione <code>if</code> (<code>print("x è positivo")</code> e <code>y = x * 2</code>) costituiscono un blocco di codice che viene eseguito se la condizione dell’istruzione <code>if</code> è vera.</li>
+</ul></li>
+</ul>
+<p>Altri esempi:</p>
+<ul>
+<li><p>Condizioni: Istruzioni che eseguono un blocco di codice solo se una condizione è vera. Esempio:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a>x <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>    printf<span class="op">(</span><span class="st">"x è positivo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>if</code>: Parola chiave che introduce la condizione.</li>
+<li><code>(x &gt; 0)</code>: Condizione composta da: <code>x</code> identificatore di variabile, <code>&gt;</code> operatore di confronto e <code>0</code> letterale numerico intero.</li>
+<li><code>{ ... }</code>: Delimitatori che racchiudono il blocco di codice.</li>
+<li><code>print("x è positivo")</code>: Istruzione di output.</li>
+</ul></li>
+<li><p>Cicli: Istruzioni che ripetono un blocco di codice. Esempio:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="dt">int</span> n <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="dt">int</span> somma <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="dt">int</span> i<span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a>    somma <span class="op">=</span> somma <span class="op">+</span> i<span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>for</code>: Parola chiave che introduce il ciclo.</li>
+<li><code>(i = 0; i &lt; n; i++)</code>: Espressione di controllo del ciclo composta da: <code>i = 0</code> assegnazione iniziale, <code>i &lt; n</code> condizione di ciclo e <code>i++</code> incremento della variabile <code>i</code>.</li>
+<li><code>{ ... }</code>: Delimitatori che racchiudono il blocco di codice.</li>
+<li><code>somma = somma + i</code>: Operazione aritmetica.</li>
+</ul></li>
+</ul>
+</section>
+<section id="organizzazione-del-codice-in-un-programma" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="organizzazione-del-codice-in-un-programma"><span class="header-section-number">3.1.5</span> Organizzazione del codice in un programma</h3>
+<p>Il programma è solitamente salvato in un file di testo in righe. Queste righe possono essere classificate in righe fisiche e righe logiche.</p>
+<p>Una <strong>riga fisica</strong> è una linea di testo nel file sorgente del programma, terminata da un carattere di a capo.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Questa è una riga fisica.</span>
+</dd>
+</dl>
+<p>Una <strong>riga logica</strong> è una singola istruzione, che può estendersi su una o più righe fisiche.</p>
+<p>Esempio di riga logica con più righe fisiche:</p>
+<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a><span class="dt">int</span> y <span class="op">=</span> <span class="op">(</span><span class="dv">10</span> <span class="op">+</span> <span class="dv">20</span> <span class="op">+</span> <span class="dv">30</span> <span class="op">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2"></a>         <span class="dv">40</span> <span class="op">+</span> <span class="dv">50</span><span class="op">);</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Prima riga fisica della riga logica.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="2">Seconda riga fisica della riga logica.</span>
+</dd>
+</dl>
+<p>Il concetto di righe fisiche e logiche esiste perché le istruzioni (o righe logiche) possono essere lunghe e complesse, richiedendo più righe fisiche per migliorare la leggibilità e la gestione del codice.</p>
 
 
 </section>
+</section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -761,10 +966,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./prima-parte-paradigmi-programmazione.html" class="pagination-link" aria-label="Paradigmi di programmazione">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Paradigmi di programmazione</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./prima-parte.html" class="pagination-link" aria-label="Prima parte: I fondamenti della programmazione">
-        <span class="nav-page-text">Prima parte: I fondamenti della programmazione</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./prima-parte-semantica.html" class="pagination-link" aria-label="prima-parte-semantica.html">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">prima-parte-semantica.html</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -792,7 +1000,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-sintassi.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
