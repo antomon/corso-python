@@ -222,7 +222,7 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
 
   int somma_array(int arr[], int n);
 
-  void stampa_messaggio(const char* messaggio);
+  void stampa_messaggio(const char* messaggio, void* risultato, char tipo);
 
   #endif
   ```
@@ -250,7 +250,7 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
       return risultato;
   }
 
-  int somma_array(int arr[], int n) {
+  int somma_array_interi(int arr[], int n) {
       int somma = 0;
 
       for (int i = 0; i < n; i++) {
@@ -260,8 +260,15 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
       return somma;
   }
 
-  void stampa_messaggio(const char* messaggio) {
-      printf("%s\n", messaggio);
+  void stampa_messaggio(const char* messaggio, void* risultato, char tipo) {
+     printf("%s", messaggio);
+
+    if (tipo == 'i') {
+      printf("%d\n", *(int*)risultato)
+
+    } else if (tipo == 's') {
+        printf("%s\n", (char*)risultato);
+    }
   }
   ```
   1. Allocazione della memoria e +1 per il carattere di terminazione '\0'.
@@ -274,32 +281,53 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
   ```c
   #include "mialibreria.h"
   #include <stdio.h>
+  #include <stdlib.h>
 
   int main() {
-      int risultato = somma_interi(5, 3); /* <1> */
+    int risultato = somma_interi(5, 3); /* <1> */
+    stampa_messaggio("Il risultato della somma di interi è: ", &risultato, 'i');
 
-      stampa_messaggio("Il risultato della somma di interi è:");
-      printf("%d\n", risultato);
+    char* risultato_stringhe = somma_stringhe("Ciao, ", "mondo!"); /* <2> */
+    stampa_messaggio("Il risultato della somma di stringhe è: ", risultato_stringhe, 's');
+    free(risultato_stringhe); /* <3> */
 
-      char* risultato_stringhe = somma_stringhe("Ciao, ", "mondo!"); /* <2> */
+    int array[] = {1, 2, 3, 4, 5}; 
+    int risultato_array = somma_array_interi(array, 5); /* <4> */
+    stampa_messaggio("Il risultato della somma dell'array di interi è: ", &risultato_array, 'i');
 
-      stampa_messaggio("Il risultato della somma di stringhe è:");
-      printf("%s\n", risultato_stringhe);
-      free(risultato_stringhe); /* <3> */
-
-      int array[] = {1, 2, 3, 4, 5}; /* <4> */
-      int risultato_array = somma_array(array, 5);
-
-      stampa_messaggio("Il risultato della somma dell'array è:");
-      printf("%d\n", risultato_array);
-
-      return 0;
+    return 0;
   }
   ```
   1. Chiamata della funzione di somma di due interi.
   2. Chiamata delal funzione di somma di due stringhe (implementato come una concatenazione).
   3. Libera la memoria allocata.
   4. Somma di un array di interi.
+
+E il medesimo, ma in Python:
+
+```python
+def somma_interi(a, b):
+    return a + b
+
+def somma_stringhe(a, b): # <1>
+    return a + b
+
+def somma_array(arr): # <2>
+    return sum(arr) # <3>
+
+risultato_interi = somma_interi(3, 5)
+print(f"Il risultato della somma di interi è: {risultato_interi}")
+
+risultato_stringhe = somma_stringhe("Ciao, ", "mondo!")
+print(f"Il risultato della somma di stringhe è: {risultato_stringhe}")
+
+array_interi = [1, 2, 3, 4, 5]
+risultato_array = somma_array(array_interi) 
+print(f"Il risultato della somma dell'array è: {risultato_array}")
+```
+1. Il codice di `somma_interi` e `somma_stringhe` è identico.
+2. La funzione ora prende in input solo l'array e non c'è bisogno di inserire anche la sua dimensione.
+3. In Python, per evitare errori quando si usa la funzione sum, l'array (o lista) deve contenere elementi che supportano l'operazione di addizione tra di loro. Tipicamente, si usano numeri (interi o float), ma è possibile anche sommare altri tipi di elementi se l'operazione di addizione è definita per quel tipo.
 
 ## Paradigma di orientamento agli oggetti
 
