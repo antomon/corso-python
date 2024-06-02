@@ -18,6 +18,12 @@ Definire una funzione che prende in input un numero intero e restituisce una str
 
 #### Soluzione 1: test con operatore modulo
 
+::: {.callout-tip}
+## Suggerimento
+
+Usare l'operatore modulo `%` che restituisce il resto della divisione di due interi.
+:::
+
 ```{python}
 def pari_o_dispari(n):
   if n % 2 == 0:
@@ -25,41 +31,102 @@ def pari_o_dispari(n):
 
   else:
     return "Dispari"
+
+risultato = pari_o_dispari(42)
+
+print(risultato)
+
+risultato = pari_o_dispari(73)
+
+print(risultato)
 ```
 
 #### Soluzione 2: test con operatore modulo e controllo degli input
 
+::: {.callout-tip}
+## Suggerimento
+
+Usare l'operatore modulo `%` e la funzione `isinstance` per verificare il tipo in input.
+:::
+
 ```{python}
 def pari_o_dispari(n):
-    if not isinstance(n, int):
-        return "Errore: l'input deve essere un numero intero!"
+  if not isinstance(n, int):
+    return "Errore: l'input deve essere un numero intero!"
     
-    if n % 2 == 0:
-        return "Pari"
+  if n % 2 == 0:
+    return "Pari"
 
-    else:
-        return "Dispari"
+  else:
+    return "Dispari"
+
+risultato = pari_o_dispari(42)
+
+print(risultato)
+
+risultato = pari_o_dispari(73)
+
+print(risultato)
 ```
 
 #### Soluzione 3: test con operatore modulo e generazione di errore su input non intero
 
+::: {.callout-tip}
+## Suggerimento
+
+Usare l'operatore modulo `%`, la funzione `isinstance` per verificare il tipo in input e `assert` in caso di input non corretto.
+:::
+
 ```{python}
 def pari_o_dispari(n):
-    assert isinstance(n, int), \
-      "Errore: l'input deve essere un numero intero!"
+  assert isinstance(n, int), \
+    "Errore: l'input deve essere un numero intero!"
     
-    if n % 2 == 0:
-        return "Pari"
-    else:
-        return "Dispari"
+  if n % 2 == 0:
+    return "Pari"
+
+  else:
+    return "Dispari"
+
+risultato = pari_o_dispari(42)
+
+print(risultato)
+
+risultato = pari_o_dispari(73)
+
+print(risultato)
+
+'''
+risultato = pari_o_dispari("42")
+
+print(risultato)
+
+risultato = pari_o_dispari(73.)
+
+print(risultato)
+'''
 ```
 
 #### Soluzione 4: uso di funzione built-in
 
+::: {.callout-tip}
+## Suggerimento
+
+Usare la funzione `divmod` che restituisce il quoziente e il resto della divisione di due interi.
+:::
+
 ```{python}
 def pari_o_dispari(n):
-    _, remainder = divmod(n, 2)
+  _, remainder = divmod(n, 2)
 
-    return "Pari" if remainder == 0 else "Dispari"
+  return "Pari" if remainder == 0 else "Dispari"
+
+risultato = pari_o_dispari(42)
+
+print(risultato)
+
+risultato = pari_o_dispari(73)
+
+print(risultato)
 ```
 
