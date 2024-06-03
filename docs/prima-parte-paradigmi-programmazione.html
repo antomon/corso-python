@@ -1166,12 +1166,12 @@ Nota
 </dd>
 </dl>
 <p>In Prolog, si definiscono fatti e regole che descrivono relazioni logiche. Il motore di inferenza di Prolog utilizza queste definizioni per risolvere query, senza richiedere un algoritmo dettagliato. Di seguito, sono definiti due fatti (le prime due righe) e due regole (la terza e la quarta) e quindi si effettua una query che dà come risultato <code>true</code>:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb8-1"><a href="#cb8-1"></a>genitore(padre<span class="kw">,</span> figlio)<span class="kw">.</span>  <span class="co">/* &lt;1&gt; */</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>genitore(madre<span class="kw">,</span> figlio)<span class="kw">.</span>  <span class="co">/* &lt;2&gt; */</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span>  <span class="co">/* &lt;3&gt; */</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Z</span>)<span class="kw">,</span> antenato(<span class="dt">Z</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span>  <span class="co">/* &lt;4&gt; */</span></span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb8-1"><a href="#cb8-1"></a>genitore(padre<span class="kw">,</span> figlio)<span class="kw">.</span> </span>
+<span id="cb8-2"><a href="#cb8-2"></a>genitore(madre<span class="kw">,</span> figlio)<span class="kw">.</span>  </span>
+<span id="cb8-3"><a href="#cb8-3"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span>  </span>
+<span id="cb8-4"><a href="#cb8-4"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Z</span>)<span class="kw">,</span> antenato(<span class="dt">Z</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span>  </span>
 <span id="cb8-5"><a href="#cb8-5"></a></span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="fu">?-</span> antenato(padre<span class="kw">,</span> figlio)<span class="kw">.</span>  <span class="co">/* &lt;5&gt; */</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="fu">?-</span> antenato(padre<span class="kw">,</span> figlio)<span class="kw">.</span> </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Commento riga per riga:</p>
 <ol type="1">
 <li>Questa regola dichiara che <code>padre</code> è genitore di <code>figlio</code>.</li>

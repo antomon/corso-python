@@ -698,12 +698,12 @@ WHERE età > 30; -- <3>
 In Prolog, si definiscono fatti e regole che descrivono relazioni logiche. Il motore di inferenza di Prolog utilizza queste definizioni per risolvere query, senza richiedere un algoritmo dettagliato. Di seguito, sono definiti due fatti (le prime due righe) e due regole (la terza e la quarta) e quindi si effettua una query che dà come risultato `true`:
 
 ```prolog
-genitore(padre, figlio).  /* <1> */
-genitore(madre, figlio).  /* <2> */
-antenato(X, Y) :- genitore(X, Y).  /* <3> */
-antenato(X, Y) :- genitore(X, Z), antenato(Z, Y).  /* <4> */
+genitore(padre, figlio). 
+genitore(madre, figlio).  
+antenato(X, Y) :- genitore(X, Y).  
+antenato(X, Y) :- genitore(X, Z), antenato(Z, Y).  
 
-?- antenato(padre, figlio).  /* <5> */
+?- antenato(padre, figlio). 
 ```
 Commento riga per riga:
 
