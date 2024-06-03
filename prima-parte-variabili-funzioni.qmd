@@ -1,0 +1,83 @@
+---
+reference-location: margin
+citation-location: margin
+---
+
+# Variabili e funzioni
+
+La **semantica** di un linguaggio di programmazione definisce il significato delle istruzioni sintatticamente corrette. In altre parole, la semantica specifica cosa fa un programma quando viene eseguito, descrivendo l'effetto delle istruzioni sullo stato del sistema. Gli elementi semantici sono numerosi, possono essere anche complessi e non tutti presenti in uno specifico linguaggio. 
+
+Tra gli elementi semantici più importanti, troviamo le variabili e le funzioni. 
+
+## Variabili
+
+- Variabile: È un nome simbolico associato a locazione di memoria che può contenere uno o più valori. È fondamentale per la manipolazione di dati perché sono un mezzo per astrarre dalla costante memorizzata. Le variabili possono essere associate a diversi tipi di dati e durate di vita. La semantica delle variabili include la loro dichiarazione, inizializzazione, uso e visibilità:
+
+  - Dichiarazione: La dichiarazione di una variabile è il processo mediante il quale si introduce una variabile nel programma, specificandone il nome e, in molti casi, il tipo di dato che essa può contenere. La dichiarazione informa il compilatore o l'interprete che una certa variabile esiste e può essere utilizzata nel codice.
+
+  - Inizializzazione: L'inizializzazione di una variabile è il processo di assegnare un valore iniziale alla variabile. L'inizializzazione può avvenire contestualmente alla dichiarazione o in un'istruzione separata successiva.
+
+  - Visibilità: Indica dove la variabile può essere utilizzata all'interno del codice (ad esempio, variabili locali o globali).
+
+  - Durata di Vita: Descrive per quanto tempo la variabile rimane in memoria durante l'esecuzione del programma (ad esempio, automatica, statica, dinamica).
+
+
+
+- Ambito (in inglese, _scope_): L'ambito rappresenta la porzione del codice in cui un identificatore (come una variabile o una funzione) è definito e, quindi, esiste. L'ambito determina dove un identificatore può essere dichiarato e utilizzato. Tipicamente gli ambiti sono:
+
+  - Globale: Identificatori dichiarati a livello globale, accessibili ovunque nel programma.
+
+  - Locale: Identificatori dichiarati all'interno di un blocco, come una funzione o un loop, e accessibili solo all'interno di quel blocco.
+
+  - Statico e dinamico: L'ambito statico è determinato a tempo di compilazione, mentre l'ambito dinamico è determinato a runtime, influenzando come e dove gli identificatori possono essere utilizzati.
+
+- Visibilità: La visibilità si riferisce a dove nel codice un identificatore può essere visto e utilizzato. Anche se correlata all'ambito, la visibilità può essere influenzata da altri fattori come la modularità e i namespace, che organizzano e separano gli identificatori per evitare conflitti di nome. La visibilità è generalmente:
+
+  - Globale: Un identificatore dichiarato con visibilità globale può essere utilizzato in qualsiasi parte del programma.
+
+  - Locale: Un identificatore dichiarato con visibilità locale è visibile solo all'interno del blocco di codice in cui è stato dichiarato.
+
+
+
+## Funzioni
+
+
+
+- Funzioni e metodi: Le funzioni e i metodi sono blocchi di codice riutilizzabili che eseguono una serie di istruzioni. Alcuni concetti collegati sono:
+
+  - Parametri e argomenti: Valori passati alle funzioni per influenzarne il comportamento. I parametri sono definiti nella dichiarazione della funzione, mentre gli argomenti sono i valori effettivi passati quando la funzione è chiamata.
+
+  - Valore di ritorno: Il risultato prodotto da una funzione, che può essere utilizzato nell'istruzione chiamante.
+
+  - Overloading: Definizione di più funzioni con lo stesso nome ma diversi parametri, consentendo diverse implementazioni basate sui tipi e il numero di argomenti.
+
+  - Ricorsione: Capacità di una funzione di chiamare se stessa, utile per risolvere problemi che possono essere suddivisi in sottoproblemi simili.
+
+  - Funzioni di prima classe: Le funzioni possono essere assegnate a variabili, passate come argomenti e ritornate da altre funzioni.
+
+  - Funzioni di ordine superiore: Funzioni che accettano altre funzioni come argomenti e/o ritornano funzioni come risultati.
+
+- Durata di vita delle variabili: La durata di vita delle variabili si riferisce a quanto tempo una variabile rimane in memoria durante l'esecuzione del programma. Alcune tipologie di durata:
+
+  - Automatica: Variabili che esistono solo durante l'esecuzione del blocco in cui sono dichiarate.
+
+  - Statica: Variabili che esistono per tutta la durata del programma e mantengono il loro valore tra diverse chiamate di funzione.
+
+  - Dinamica: Variabili allocate dinamicamente durante l'esecuzione del programma, solitamente gestite manualmente dall'utente (ad esempio, usando `malloc`/`free` in C) o automaticamente tramite garbage collection.
+
+- Durata di vita di altri identificatori: 
+
+  - Funzioni: Le funzioni stesse generalmente hanno una durata di vita che coincide con la durata del programma. Tuttavia, i puntatori a funzione e le chiusure (in inglese, closures) possono avere durate di vita diverse in alcuni linguaggi.
+
+  - Classi e oggetti: Le classi hanno una durata di vita che coincide con la durata del programma, mentre gli oggetti (istanze di classi) hanno durate di vita dinamiche, determinate dalla loro allocazione e deallocazione.
+
+  - Moduli: In linguaggi come Python, i moduli hanno una durata di vita che coincide con la durata del programma o del processo di importazione.
+
+- Controllo di flusso: Determina l'ordine in cui le istruzioni vengono eseguite e alcuni esempi sono:
+
+  - Condizionali: Strutture che permettono al programma di prendere decisioni (`if`, `else`, `switch`/`case`).
+
+  - Cicli: Strutture che ripetono un blocco di codice (`for`, `while`, `do`-`while`).
+
+  - Eccezioni: Meccanismi per gestire errori e condizioni anomale (`try`, `catch`, `throw`), permettendo al programma di continuare l'esecuzione in modo controllato.
+

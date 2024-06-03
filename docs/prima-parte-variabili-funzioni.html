@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Da neofita di Python a campione – 1&nbsp; I linguaggi di programmazione, i programmi e i programmatori</title>
+<title>Da neofita di Python a campione – 4&nbsp; Variabili e funzioni</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -50,8 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./prima-parte-paradigmi-programmazione.html" rel="next">
-<link href="./prima-parte.html" rel="prev">
+<link href="./prima-parte-modello-dati.html" rel="next">
+<link href="./prima-parte-sintassi.html" rel="prev">
 <link href="./red-python-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -98,17 +78,17 @@ div.csl-indent {
 <script src="https://cdn.jsdelivr.net/pyodide/v0.26.0/full/pyodide.js"></script>
 
 
-<meta property="og:title" content="Da neofita di Python a campione - 1&nbsp; I linguaggi di programmazione, i programmi e i programmatori">
+<meta property="og:title" content="Da neofita di Python a campione - 4&nbsp; Variabili e funzioni">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="Da neofita di Python a campione">
-<meta name="twitter:title" content="Da neofita di Python a campione - 1&nbsp; I linguaggi di programmazione, i programmi e i programmatori">
+<meta name="twitter:title" content="Da neofita di Python a campione - 4&nbsp; Variabili e funzioni">
 <meta name="twitter:description" content="">
 <meta name="twitter:creator" content="@antomon">
 <meta name="twitter:site" content="@antomon">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar floating nav-fixed slimcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -186,7 +166,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-linguaggi-programmazione.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">I linguaggi di programmazione, i programmi e i programmatori</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-variabili-funzioni.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Variabili e funzioni</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -215,7 +195,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prima-parte-linguaggi-programmazione.html" class="sidebar-item-text sidebar-link active">
+  <a href="./prima-parte-linguaggi-programmazione.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">I linguaggi di programmazione, i programmi e i programmatori</span></span></a>
   </div>
 </li>
@@ -233,7 +213,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prima-parte-variabili-funzioni.html" class="sidebar-item-text sidebar-link">
+  <a href="./prima-parte-variabili-funzioni.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Variabili e funzioni</span></span></a>
   </div>
 </li>
@@ -313,25 +293,17 @@ div.csl-indent {
     <h2 id="toc-title">Indice</h2>
    
   <ul>
-  <li><a href="#definizioni" id="toc-definizioni" class="nav-link active" data-scroll-target="#definizioni"><span class="header-section-number">1.1</span> Definizioni</a></li>
-  <li><a href="#linguaggi-naturali-e-di-programmazione" id="toc-linguaggi-naturali-e-di-programmazione" class="nav-link" data-scroll-target="#linguaggi-naturali-e-di-programmazione"><span class="header-section-number">1.2</span> Linguaggi naturali e di programmazione</a></li>
-  <li><a href="#algoritmi" id="toc-algoritmi" class="nav-link" data-scroll-target="#algoritmi"><span class="header-section-number">1.3</span> Algoritmi</a></li>
-  <li><a href="#esecuzione-del-programma" id="toc-esecuzione-del-programma" class="nav-link" data-scroll-target="#esecuzione-del-programma"><span class="header-section-number">1.4</span> Esecuzione del programma</a></li>
-  <li><a href="#ciclo-di-vita-del-software" id="toc-ciclo-di-vita-del-software" class="nav-link" data-scroll-target="#ciclo-di-vita-del-software"><span class="header-section-number">1.5</span> Ciclo di vita del software</a></li>
-  <li><a href="#limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione" id="toc-limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione" class="nav-link" data-scroll-target="#limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione"><span class="header-section-number">1.6</span> L’Impatto dell’intelligenza artificiale generativa sulla programmazione</a>
-  <ul class="collapse">
-  <li><a href="#attività-del-programmatore-con-lia-generativa" id="toc-attività-del-programmatore-con-lia-generativa" class="nav-link" data-scroll-target="#attività-del-programmatore-con-lia-generativa"><span class="header-section-number">1.6.1</span> Attività del programmatore con l’IA Generativa</a></li>
-  <li><a href="#limportanza-di-imparare-a-programmare-nellera-dellia-generativa" id="toc-limportanza-di-imparare-a-programmare-nellera-dellia-generativa" class="nav-link" data-scroll-target="#limportanza-di-imparare-a-programmare-nellera-dellia-generativa"><span class="header-section-number">1.6.2</span> L’Importanza di imparare a programmare nell’era dell’IA generativa</a></li>
-  </ul></li>
+  <li><a href="#variabili" id="toc-variabili" class="nav-link active" data-scroll-target="#variabili"><span class="header-section-number">4.1</span> Variabili</a></li>
+  <li><a href="#funzioni" id="toc-funzioni" class="nav-link" data-scroll-target="#funzioni"><span class="header-section-number">4.2</span> Funzioni</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-linguaggi-programmazione.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-variabili-funzioni.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-linguaggi-programmazione.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">I linguaggi di programmazione, i programmi e i programmatori</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-variabili-funzioni.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Variabili e funzioni</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">I linguaggi di programmazione, i programmi e i programmatori</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Variabili e funzioni</span></h1>
 </div>
 
 
@@ -348,99 +320,64 @@ div.csl-indent {
 </header>
 
 
-<p>Partiamo da alcuni concetti basilari che ci permettono di contestualizzare più facilmente quelli che introdurremo via via nel corso.</p>
-<section id="definizioni" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="definizioni"><span class="header-section-number">1.1</span> Definizioni</h2>
-<p>La <strong>programmazione</strong> è il processo di progettazione e scrittura di <strong>istruzioni</strong>, nella forma statica identificate come <strong>codice sorgente</strong>, che un computer può ricevere per eseguire compiti predefiniti. Queste istruzioni sono codificate in un <strong>linguaggio di programmazione</strong>, che traduce le idee e gli algoritmi del programmatore, in un formato comprensibile ed eseguibile dal computer.</p>
-<p>Un <strong>programma</strong> informatico è una sequenza di istruzioni scritte per eseguire una specifica operazione o un insieme di operazioni su un computer. Queste istruzioni sono codificate in un linguaggio che il computer può comprendere e seguire per eseguire attività come calcoli, manipolazione di dati, controllo di dispositivi e interazione con l’utente. Pensate a un programma come a una ricetta di cucina. La ricetta elenca gli ingredienti necessari (dati) e fornisce istruzioni passo-passo (algoritmo) per preparare un piatto. Allo stesso modo, un programma informatico specifica i dati da usare e le istruzioni da seguire per ottenere un risultato desiderato.</p>
-<p>Un linguaggio di programmazione è un linguaggio formale che fornisce un insieme di regole e sintassi per scrivere programmi informatici. Questi linguaggi permettono ai programmatori di comunicare con i computer e di creare software. Alcuni esempi di linguaggi di programmazione includono Python, Java, C++, SQL, Rust, Haskell, Prolog, C, Assembly, Fortran, JavaScript e altre centinaia (o forse migliaia).</p>
-</section>
-<section id="linguaggi-naturali-e-di-programmazione" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="linguaggi-naturali-e-di-programmazione"><span class="header-section-number">1.2</span> Linguaggi naturali e di programmazione</h2>
-<p>I linguaggi di programmazione differiscono dai linguaggi naturali (come l’italiano o l’inglese) in diversi modi:</p>
-<ol type="1">
-<li><p>Precisione e rigidità: I linguaggi di programmazione sono estremamente precisi e rigidi. Ogni istruzione deve essere scritta in un modo specifico affinché il computer possa comprenderla ed eseguirla correttamente. Anche un piccolo errore di sintassi può impedire il funzionamento di un programma.</p></li>
-<li><p>Ambiguità: I linguaggi naturali sono spesso ambigui e aperti a interpretazioni. Le stesse parole possono avere significati diversi a seconda del contesto. I linguaggi di programmazione, invece, sono progettati per essere privi di ambiguità; ogni istruzione ha un significato preciso e univoco.</p></li>
-<li><p>Vocabolario limitato: I linguaggi naturali hanno un vocabolario vastissimo e in continua espansione. I linguaggi di programmazione, al contrario, hanno un vocabolario limitato costituito da parole chiave e comandi definiti dal linguaggio stesso.</p></li>
-</ol>
-</section>
-<section id="algoritmi" class="level2 page-columns page-full" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="algoritmi"><span class="header-section-number">1.3</span> Algoritmi</h2>
-<p>Un <strong>algoritmo</strong> è “un insieme di regole che definiscono con precisione una sequenza di operazioni” (Harold Stone, <em>Introduction to Computer Organization and Data Structures</em>, 1971 <span class="citation" data-cites="10.5555/578826">(<a href="appendice-riferimenti.html#ref-10.5555/578826" role="doc-biblioref">Stone 1971</a>)</span>). Gli algoritmi sono alla base della programmazione perché rappresentano il disegno teorico computazionale dei programmi.</p>
-<div class="no-row-height column-margin column-container"><div id="ref-10.5555/578826" class="csl-entry" role="listitem">
-Stone, Harold S. 1971. <em>Introduction to Computer Organization and Data Structures</em>. USA: <a href="https://dl.acm.org/doi/10.5555/578826" class="uri">https://dl.acm.org/doi/10.5555/578826</a>; McGraw-Hill, Inc.
-</div></div><p>Più precisamente, un algoritmo è una sequenza ben definita di passi o operazioni che, a partire da un input, produce un output in un tempo finito. Le proprietà principali seguenti esprimono in modo più completo le caratteristiche che un algoritmo deve possedere:</p>
+<p>La <strong>semantica</strong> di un linguaggio di programmazione definisce il significato delle istruzioni sintatticamente corrette. In altre parole, la semantica specifica cosa fa un programma quando viene eseguito, descrivendo l’effetto delle istruzioni sullo stato del sistema. Gli elementi semantici sono numerosi, possono essere anche complessi e non tutti presenti in uno specifico linguaggio.</p>
+<p>Tra gli elementi semantici più importanti, troviamo le variabili e le funzioni.</p>
+<section id="variabili" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="variabili"><span class="header-section-number">4.1</span> Variabili</h2>
 <ul>
-<li><p>Finitudine L’algoritmo deve terminare dopo un numero finito di passi.</p></li>
-<li><p>Determinismo: Ogni passo dell’algoritmo deve essere definito in modo preciso e non ambiguo.</p></li>
-<li><p>Input L’algoritmo riceve zero o più dati in ingresso.</p></li>
-<li><p>Output L’algoritmo produce uno o più risultati.</p></li>
-<li><p>Effettività: Ogni operazione dell’algoritmo deve essere fattibile ed eseguibile in un tempo finito.</p></li>
-</ul>
-<p>Gli algoritmi sono tradotti in codice sorgente attraverso un linguaggio di programmazione per creare programmi. In altre parole, un programma è la realizzazione pratica e funzionante degli algoritmi ideati dal programmatore.</p>
-</section>
-<section id="esecuzione-del-programma" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="esecuzione-del-programma"><span class="header-section-number">1.4</span> Esecuzione del programma</h2>
-<p>Quando un programma viene scritto e salvato in un file di testo, il computer deve eseguirlo per produrre le azioni desiderate. Questo processo si svolge in diverse fasi:</p>
+<li><p>Variabile: È un nome simbolico associato a locazione di memoria che può contenere uno o più valori. È fondamentale per la manipolazione di dati perché sono un mezzo per astrarre dalla costante memorizzata. Le variabili possono essere associate a diversi tipi di dati e durate di vita. La semantica delle variabili include la loro dichiarazione, inizializzazione, uso e visibilità:</p>
 <ul>
-<li><p>Compilazione o interpretazione: Il codice sorgente, scritto in un linguaggio di alto livello leggibile dall’uomo, deve essere trasformato in un linguaggio macchina comprensibile dal computer. Questo avviene attraverso due possibili processi:</p>
-<ul>
-<li><p><strong>Compilazione</strong>: In linguaggi come C++ o Java, un compilatore traduce tutto il codice sorgente in linguaggio macchina, creando un file eseguibile. Questo file può poi essere eseguito direttamente dalla CPU.</p></li>
-<li><p><strong>Interpretazione</strong>: In linguaggi come Python o JavaScript, un interprete legge ed esegue il codice sorgente istruzione per istruzione, traducendolo in linguaggio macchina al momento dell’esecuzione.</p></li>
+<li><p>Dichiarazione: La dichiarazione di una variabile è il processo mediante il quale si introduce una variabile nel programma, specificandone il nome e, in molti casi, il tipo di dato che essa può contenere. La dichiarazione informa il compilatore o l’interprete che una certa variabile esiste e può essere utilizzata nel codice.</p></li>
+<li><p>Inizializzazione: L’inizializzazione di una variabile è il processo di assegnare un valore iniziale alla variabile. L’inizializzazione può avvenire contestualmente alla dichiarazione o in un’istruzione separata successiva.</p></li>
+<li><p>Visibilità: Indica dove la variabile può essere utilizzata all’interno del codice (ad esempio, variabili locali o globali).</p></li>
+<li><p>Durata di Vita: Descrive per quanto tempo la variabile rimane in memoria durante l’esecuzione del programma (ad esempio, automatica, statica, dinamica).</p></li>
 </ul></li>
-<li><p>Esecuzione: Una volta che il programma è stato compilato (nel caso dei linguaggi compilati) o viene interpretato (nel caso dei linguaggi interpretati), il computer può iniziare ad eseguire le istruzioni. La CPU (central processing unit) legge queste istruzioni dal file eseguibile o dall’interprete e le esegue una per una. Durante questa fase, la CPU manipola i dati e produce i risultati desiderati.</p></li>
-<li><p>Interazione con i componenti hardware: Durante l’esecuzione, il programma può interagire con vari componenti hardware del computer. Ad esempio, può leggere e scrivere dati nella memoria, accedere ai dischi rigidi per salvare o recuperare informazioni, comunicare attraverso la rete, e interagire con dispositivi di input/output come tastiere e monitor. Questa interazione permette al programma di eseguire compiti complessi e di fornire output all’utente.</p></li>
-</ul>
-</section>
-<section id="ciclo-di-vita-del-software" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="ciclo-di-vita-del-software"><span class="header-section-number">1.5</span> Ciclo di vita del software</h2>
-<p>Un <strong>software</strong> è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia è quindi: software, programmi, istruzioni.</p>
-<p>Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi.</p>
-<p>Per creare il software è necessario percorrere una sequenza di fasi ben definita che, concisamente, è:</p>
+<li><p>Ambito (in inglese, <em>scope</em>): L’ambito rappresenta la porzione del codice in cui un identificatore (come una variabile o una funzione) è definito e, quindi, esiste. L’ambito determina dove un identificatore può essere dichiarato e utilizzato. Tipicamente gli ambiti sono:</p>
 <ul>
-<li><p>La progettazione di un’applicazione inizia con la fase di <strong>analisi dei requisiti</strong>, in cui si identificano cosa deve fare il software, chi sono gli utenti e quali sono i requisiti funzionali e non funzionali che deve soddisfare.</p></li>
-<li><p>Segue il <strong>disegno funzionale</strong> che dettaglia come ogni componente del sistema possa rispondere alle funzionalità richieste. In questa fase si descrivono le operazioni specifiche che ogni componente deve eseguire, utilizzando diagrammi di processo per rappresentare il flusso di attività al fine di rispondere ai requisiti.</p></li>
-<li><p>Il <strong>disegno architetturale</strong> riguarda l’organizzazione ad alto livello del sistema software. In questa fase si definiscono i componenti principali del sistema e come essi interagiscono tra di loro per supportare le attività di processo. Questo include la suddivisione del sistema in moduli o componenti, la definizione delle interfacce tra di essi e l’uso di tecniche di modellazione per rappresentare l’architettura del sistema.</p></li>
-<li><p>Una volta che l’architettura è stata progettata, si passa alla fase di <strong>implementazione</strong>, in cui i programmatori scrivono il codice sorgente nei linguaggi di programmazione scelti.</p></li>
-<li><p>Dopo l’implementazione, è essenziale verificare che il software funzioni correttamente:</p>
-<ul>
-<li><p><strong>Testing</strong>: Scrivere ed eseguire test per verificare che il software soddisfi i requisiti specificati. I test sono di diversi generi in funzione dell’oggetto di verifica, come test unitari, per segmenti di codice, test di integrazione, per componenti, e test di sistema nella sua interezza.</p></li>
-<li><p><strong>Debugging</strong>: Identificare e correggere gli errori (bug) nel codice. Questo può includere l’uso di strumenti di debugging per tracciare l’esecuzione del programma e trovare i punti in cui si verificano gli errori.</p></li>
+<li><p>Globale: Identificatori dichiarati a livello globale, accessibili ovunque nel programma.</p></li>
+<li><p>Locale: Identificatori dichiarati all’interno di un blocco, come una funzione o un loop, e accessibili solo all’interno di quel blocco.</p></li>
+<li><p>Statico e dinamico: L’ambito statico è determinato a tempo di compilazione, mentre l’ambito dinamico è determinato a runtime, influenzando come e dove gli identificatori possono essere utilizzati.</p></li>
 </ul></li>
-<li><p>Una volta che il software è stato testato e ritenuto pronto, si passa alla fasi di messa a disposizione delle funzionalità agli utenti (in inglese, <em>deployment</em>):</p>
+<li><p>Visibilità: La visibilità si riferisce a dove nel codice un identificatore può essere visto e utilizzato. Anche se correlata all’ambito, la visibilità può essere influenzata da altri fattori come la modularità e i namespace, che organizzano e separano gli identificatori per evitare conflitti di nome. La visibilità è generalmente:</p>
 <ul>
-<li><p><strong>Distribuzione</strong>: Rilasciare il software agli utenti finali, che può includere l’installazione su server, la distribuzione di applicazioni desktop o il rilascio di app mobile.</p></li>
-<li><p><strong>Manutenzione</strong>: Continuare a supportare il software dopo il rilascio. Questo include la correzione di bug scoperti dopo il rilascio, l’aggiornamento del software per miglioramenti e nuove funzionalità, e l’adattamento a nuovi requisiti o ambienti.</p></li>
+<li><p>Globale: Un identificatore dichiarato con visibilità globale può essere utilizzato in qualsiasi parte del programma.</p></li>
+<li><p>Locale: Un identificatore dichiarato con visibilità locale è visibile solo all’interno del blocco di codice in cui è stato dichiarato.</p></li>
 </ul></li>
 </ul>
-<p>La complessità del processo induce la necessità di avere dei team con qualità indiivduali diverse e il programmatore, oltre alle competenze specifiche, deve saper interpretare i vari artifatti di disegno e saperli tramutare in algoritmi e codice sorgente.</p>
 </section>
-<section id="limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione"><span class="header-section-number">1.6</span> L’Impatto dell’intelligenza artificiale generativa sulla programmazione</h2>
-<p>Con l’avvento dell’<strong>intelligenza artificiale generativa</strong> (IA generativa), la programmazione ha subito una trasformazione significativa. Prima dell’IA generativa, i programmatori dovevano tutti scrivere manualmente ogni riga di codice, seguendo rigorosamente la sintassi e le regole del linguaggio di programmazione scelto. Questo processo richiedeva una conoscenza approfondita degli algoritmi, delle strutture dati e delle migliori pratiche di programmazione.</p>
-<p>Inoltre, i programmatori dovevano creare ogni funzione, classe e modulo a mano, assicurandosi che ogni dettaglio fosse corretto, identificavano e correggevano gli errori nel codice con un processo lungo e laborioso, che comportava anche la scrittura di casi di test e l’esecuzione di sessioni di esecuzione di tali casi. Infine, dovebano scrivere documentazione dettagliata per spiegare il funzionamento del codice e facilitare la manutenzione futura.</p>
-<section id="attività-del-programmatore-con-lia-generativa" class="level3" data-number="1.6.1">
-<h3 data-number="1.6.1" class="anchored" data-anchor-id="attività-del-programmatore-con-lia-generativa"><span class="header-section-number">1.6.1</span> Attività del programmatore con l’IA Generativa</h3>
-<p>L’IA generativa ha introdotto nuovi strumenti e metodologie che stanno cambiando il modo in cui i programmatori lavorano:</p>
-<ol type="1">
-<li><p>Generazione automatica del codice: Gli strumenti di IA generativa possono creare porzioni di codice basate su descrizioni ad alto livello fornite dai programmatori. Questo permette di velocizzare notevolmente lo sviluppo iniziale e ridurre gli errori di sintassi.</p></li>
-<li><p>Assistenza nel debugging: L’IA può identificare potenziali bug e suggerire correzioni, rendendo il processo di debugging più efficiente e meno dispendioso in termini di tempo.</p></li>
-<li><p>Ottimizzazione automatica: Gli algoritmi di IA possono analizzare il codice e suggerire o applicare automaticamente ottimizzazioni per migliorare le prestazioni.</p></li>
-<li><p>Generazione di casi di test: L’IA può creare casi di test per verificare la correttezza del codice, coprendo una gamma più ampia di scenari di quanto un programmatore potrebbe fare manualmente.</p></li>
-<li><p>Documentazione automatica: L’IA può generare documentazione leggendo e interpretando il codice, riducendo il carico di lavoro manuale e garantendo una documentazione coerente e aggiornata.</p></li>
-</ol>
-</section>
-<section id="limportanza-di-imparare-a-programmare-nellera-dellia-generativa" class="level3" data-number="1.6.2">
-<h3 data-number="1.6.2" class="anchored" data-anchor-id="limportanza-di-imparare-a-programmare-nellera-dellia-generativa"><span class="header-section-number">1.6.2</span> L’Importanza di imparare a programmare nell’era dell’IA generativa</h3>
-<p>Nonostante l’avvento dell’IA generativa, imparare a programmare rimane fondamentale per diverse ragioni. La programmazione non è solo una competenza tecnica, ma anche un modo di pensare e risolvere problemi. Comprendere i fondamenti della programmazione è essenziale per utilizzare efficacemente gli strumenti di IA generativa. Senza una solida base, è difficile sfruttare appieno queste tecnologie. Inoltre, la programmazione insegna a scomporre problemi complessi in parti più gestibili e a trovare soluzioni logiche e sequenziali, una competenza preziosa in molti campi.</p>
-<p>Anche con l’IA generativa, esisteranno sempre situazioni in cui sarà necessario personalizzare o ottimizzare il codice per esigenze specifiche. La conoscenza della programmazione permette di fare queste modifiche con sicurezza. Inoltre, quando qualcosa va storto, è indispensabile sapere come leggere e comprendere il codice per identificare e risolvere i problemi. L’IA può assistere, ma la comprensione umana rimane cruciale per interventi mirati.</p>
-<p>Imparare a programmare consente di sperimentare nuove idee e prototipare rapidamente soluzioni innovative. La creatività è potenziata dalla capacità di tradurre idee in codice funzionante. Sapere programmare aiuta anche a comprendere i limiti e le potenzialità degli strumenti di IA generativa, permettendo di usarli in modo più strategico ed efficace.</p>
-<p>La tecnologia evolve rapidamente, e con una conoscenza della programmazione si è meglio preparati ad adattarsi alle nuove tecnologie e metodologie che emergeranno in futuro. Inoltre, la programmazione è una competenza trasversale applicabile in numerosi settori, dalla biologia computazionale alla finanza, dall’ingegneria all’arte digitale. Avere questa competenza amplia notevolmente le opportunità di carriera.</p>
-<p>Infine, la programmazione è una porta d’accesso a ruoli più avanzati e specializzati nel campo della tecnologia, come l’ingegneria del software, la scienza dei dati e la ricerca sull’IA. Conoscere i principi della programmazione aiuta a comprendere meglio come funzionano gli algoritmi di IA, permettendo di contribuire attivamente allo sviluppo di nuove tecnologie.</p>
+<section id="funzioni" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="funzioni"><span class="header-section-number">4.2</span> Funzioni</h2>
+<ul>
+<li><p>Funzioni e metodi: Le funzioni e i metodi sono blocchi di codice riutilizzabili che eseguono una serie di istruzioni. Alcuni concetti collegati sono:</p>
+<ul>
+<li><p>Parametri e argomenti: Valori passati alle funzioni per influenzarne il comportamento. I parametri sono definiti nella dichiarazione della funzione, mentre gli argomenti sono i valori effettivi passati quando la funzione è chiamata.</p></li>
+<li><p>Valore di ritorno: Il risultato prodotto da una funzione, che può essere utilizzato nell’istruzione chiamante.</p></li>
+<li><p>Overloading: Definizione di più funzioni con lo stesso nome ma diversi parametri, consentendo diverse implementazioni basate sui tipi e il numero di argomenti.</p></li>
+<li><p>Ricorsione: Capacità di una funzione di chiamare se stessa, utile per risolvere problemi che possono essere suddivisi in sottoproblemi simili.</p></li>
+<li><p>Funzioni di prima classe: Le funzioni possono essere assegnate a variabili, passate come argomenti e ritornate da altre funzioni.</p></li>
+<li><p>Funzioni di ordine superiore: Funzioni che accettano altre funzioni come argomenti e/o ritornano funzioni come risultati.</p></li>
+</ul></li>
+<li><p>Durata di vita delle variabili: La durata di vita delle variabili si riferisce a quanto tempo una variabile rimane in memoria durante l’esecuzione del programma. Alcune tipologie di durata:</p>
+<ul>
+<li><p>Automatica: Variabili che esistono solo durante l’esecuzione del blocco in cui sono dichiarate.</p></li>
+<li><p>Statica: Variabili che esistono per tutta la durata del programma e mantengono il loro valore tra diverse chiamate di funzione.</p></li>
+<li><p>Dinamica: Variabili allocate dinamicamente durante l’esecuzione del programma, solitamente gestite manualmente dall’utente (ad esempio, usando <code>malloc</code>/<code>free</code> in C) o automaticamente tramite garbage collection.</p></li>
+</ul></li>
+<li><p>Durata di vita di altri identificatori:</p>
+<ul>
+<li><p>Funzioni: Le funzioni stesse generalmente hanno una durata di vita che coincide con la durata del programma. Tuttavia, i puntatori a funzione e le chiusure (in inglese, closures) possono avere durate di vita diverse in alcuni linguaggi.</p></li>
+<li><p>Classi e oggetti: Le classi hanno una durata di vita che coincide con la durata del programma, mentre gli oggetti (istanze di classi) hanno durate di vita dinamiche, determinate dalla loro allocazione e deallocazione.</p></li>
+<li><p>Moduli: In linguaggi come Python, i moduli hanno una durata di vita che coincide con la durata del programma o del processo di importazione.</p></li>
+</ul></li>
+<li><p>Controllo di flusso: Determina l’ordine in cui le istruzioni vengono eseguite e alcuni esempi sono:</p>
+<ul>
+<li><p>Condizionali: Strutture che permettono al programma di prendere decisioni (<code>if</code>, <code>else</code>, <code>switch</code>/<code>case</code>).</p></li>
+<li><p>Cicli: Strutture che ripetono un blocco di codice (<code>for</code>, <code>while</code>, <code>do</code>-<code>while</code>).</p></li>
+<li><p>Eccezioni: Meccanismi per gestire errori e condizioni anomale (<code>try</code>, <code>catch</code>, <code>throw</code>), permettendo al programma di continuare l’esecuzione in modo controllato.</p></li>
+</ul></li>
+</ul>
 
 
-
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -866,13 +803,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./prima-parte.html" class="pagination-link" aria-label="Prima parte: I fondamenti della programmazione">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prima parte: I fondamenti della programmazione</span>
+      <a href="./prima-parte-sintassi.html" class="pagination-link" aria-label="Sintassi dei linguaggi di programmazione">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sintassi dei linguaggi di programmazione</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./prima-parte-paradigmi-programmazione.html" class="pagination-link" aria-label="Paradigmi di programmazione">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Paradigmi di programmazione</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./prima-parte-modello-dati.html" class="pagination-link" aria-label="Modello dati">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modello dati</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -900,7 +837,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-linguaggi-programmazione.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-variabili-funzioni.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
