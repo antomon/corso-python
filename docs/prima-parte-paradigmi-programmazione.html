@@ -584,9 +584,11 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <span id="cb4-7"><a href="#cb4-7"></a></span>
 <span id="cb4-8"><a href="#cb4-8"></a><span class="dt">int</span> somma_array<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">);</span></span>
 <span id="cb4-9"><a href="#cb4-9"></a></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="dt">void</span> stampa_messaggio<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> messaggio<span class="op">,</span> <span class="dt">void</span><span class="op">*</span> risultato<span class="op">,</span> <span class="dt">char</span> tipo<span class="op">);</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="pp">#endif</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="dt">void</span> stampa_messaggio<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> messaggio<span class="op">,</span> </span>
+<span id="cb4-11"><a href="#cb4-11"></a>                      <span class="dt">void</span><span class="op">*</span> risultato<span class="op">,</span> </span>
+<span id="cb4-12"><a href="#cb4-12"></a>                      <span class="dt">char</span> tipo<span class="op">);</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="pp">#endif</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>File di implementazione (<code>mialibreria.c</code>):</p>
 <div class="sourceCode" id="annotated-cell-19"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-19-1"><a href="#annotated-cell-19-1"></a><span class="pp">#include </span><span class="im">"mialibreria.h"</span></span>
 <span id="annotated-cell-19-2"><a href="#annotated-cell-19-2"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
@@ -618,24 +620,25 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <span id="annotated-cell-19-28"><a href="#annotated-cell-19-28"></a>  <span class="cf">return</span> somma<span class="op">;</span></span>
 <span id="annotated-cell-19-29"><a href="#annotated-cell-19-29"></a><span class="op">}</span></span>
 <span id="annotated-cell-19-30"><a href="#annotated-cell-19-30"></a></span>
-<span id="annotated-cell-19-31"><a href="#annotated-cell-19-31"></a><span class="dt">void</span> stampa_messaggio<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> messaggio<span class="op">,</span> <span class="dt">void</span><span class="op">*</span> risultato<span class="op">,</span> <span class="dt">char</span> tipo<span class="op">)</span> <span class="op">{</span></span>
-<span id="annotated-cell-19-32"><a href="#annotated-cell-19-32"></a>   printf<span class="op">(</span><span class="st">"</span><span class="sc">%s</span><span class="st">"</span><span class="op">,</span> messaggio<span class="op">);</span></span>
-<span id="annotated-cell-19-33"><a href="#annotated-cell-19-33"></a></span>
-<span id="annotated-cell-19-34"><a href="#annotated-cell-19-34"></a>  <span class="cf">if</span> <span class="op">(</span>tipo <span class="op">==</span> <span class="ch">'i'</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="annotated-cell-19-35"><a href="#annotated-cell-19-35"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> <span class="op">*(</span><span class="dt">int</span><span class="op">*)</span>risultato<span class="op">)</span></span>
-<span id="annotated-cell-19-36"><a href="#annotated-cell-19-36"></a></span>
-<span id="annotated-cell-19-37"><a href="#annotated-cell-19-37"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>tipo <span class="op">==</span> <span class="ch">'s'</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="annotated-cell-19-38"><a href="#annotated-cell-19-38"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> <span class="op">(</span><span class="dt">char</span><span class="op">*)</span>risultato<span class="op">);</span></span>
-<span id="annotated-cell-19-39"><a href="#annotated-cell-19-39"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-19-40"><a href="#annotated-cell-19-40"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-19-31"><a href="#annotated-cell-19-31"></a><span class="dt">void</span> stampa_messaggio<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> messaggio<span class="op">,</span> </span>
+<span id="annotated-cell-19-32"><a href="#annotated-cell-19-32"></a>                      <span class="dt">void</span><span class="op">*</span> risultato<span class="op">,</span> </span>
+<span id="annotated-cell-19-33"><a href="#annotated-cell-19-33"></a>                      <span class="dt">char</span> tipo<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-19-34"><a href="#annotated-cell-19-34"></a>  printf<span class="op">(</span><span class="st">"</span><span class="sc">%s</span><span class="st">"</span><span class="op">,</span> messaggio<span class="op">);</span></span>
+<span id="annotated-cell-19-35"><a href="#annotated-cell-19-35"></a></span>
+<span id="annotated-cell-19-36"><a href="#annotated-cell-19-36"></a>  <span class="cf">if</span> <span class="op">(</span>tipo <span class="op">==</span> <span class="ch">'i'</span><span class="op">)</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-19-37" class="code-annotation-target"><a href="#annotated-cell-19-37"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> <span class="op">*(</span><span class="dt">int</span><span class="op">*)</span>risultato<span class="op">);</span></span>
+<span id="annotated-cell-19-38"><a href="#annotated-cell-19-38"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>tipo <span class="op">==</span> <span class="ch">'s'</span><span class="op">)</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-19-39" class="code-annotation-target"><a href="#annotated-cell-19-39"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> <span class="op">(</span><span class="dt">char</span><span class="op">*)</span>risultato<span class="op">);</span></span>
+<span id="annotated-cell-19-40"><a href="#annotated-cell-19-40"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-19-41"><a href="#annotated-cell-19-41"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-lines="11" data-code-annotation="1">Allocazione della memoria e +1 per il carattere di terminazione ‘\0’.</span>
+<span data-code-cell="annotated-cell-19" data-code-lines="11" data-code-annotation="1">Allocazione della memoria per la somma delle due stringhe e +1 per il carattere di terminazione <code>\0</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-19" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-lines="13" data-code-annotation="2">Il controllo è presente per verificare se la funzione <code>malloc</code> ha avuto successo nell’allocare la memoria richiesta. Se <code>risultato</code> è <code>NULL</code>, significa che <code>malloc</code> ha fallito e il blocco di codice all’interno dell’<code>if</code> viene saltato, evitando così di tentare di accedere a memoria non valida.</span>
+<span data-code-cell="annotated-cell-19" data-code-lines="13" data-code-annotation="2">Controllo se la funzione <code>malloc</code> ha avuto successo nell’allocare la memoria richiesta. Se <code>risultato</code> è <code>NULL</code>, significa che <code>malloc</code> ha fallito e il blocco di codice all’interno dell’<code>if</code> viene saltato, evitando così di tentare di accedere a memoria non valida.</span>
 </dd>
 <dt data-target-cell="annotated-cell-19" data-target-annotation="3">3</dt>
 <dd>
@@ -643,7 +646,15 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 </dd>
 <dt data-target-cell="annotated-cell-19" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-lines="15" data-code-annotation="4">Idem per la seconda.</span>
+<span data-code-cell="annotated-cell-19" data-code-lines="15" data-code-annotation="4">Concatenazione della seconda stringa nel risultato.</span>
+</dd>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-19" data-code-lines="37" data-code-annotation="5">Stampa del risultato se il tipo è intero.</span>
+</dd>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-19" data-code-lines="39" data-code-annotation="6">Stampa del risultato se il tipo è una stringa.</span>
 </dd>
 </dl></li>
 <li><p>File principale (<code>main.c</code>):</p>
@@ -653,34 +664,37 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <span id="annotated-cell-20-4"><a href="#annotated-cell-20-4"></a></span>
 <span id="annotated-cell-20-5"><a href="#annotated-cell-20-5"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-20-6" class="code-annotation-target"><a href="#annotated-cell-20-6"></a>  <span class="dt">int</span> risultato <span class="op">=</span> somma_interi<span class="op">(</span><span class="dv">5</span><span class="op">,</span> <span class="dv">3</span><span class="op">);</span></span>
-<span id="annotated-cell-20-7"><a href="#annotated-cell-20-7"></a>  stampa_messaggio<span class="op">(</span><span class="st">"Il risultato della somma di interi è: "</span><span class="op">,</span> <span class="op">&amp;</span>risultato<span class="op">,</span> <span class="ch">'i'</span><span class="op">);</span></span>
-<span id="annotated-cell-20-8"><a href="#annotated-cell-20-8"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-20-9" class="code-annotation-target"><a href="#annotated-cell-20-9"></a>  <span class="dt">char</span><span class="op">*</span> risultato_stringhe <span class="op">=</span> somma_stringhe<span class="op">(</span><span class="st">"Ciao, "</span><span class="op">,</span> <span class="st">"mondo!"</span><span class="op">);</span></span>
-<span id="annotated-cell-20-10"><a href="#annotated-cell-20-10"></a>  stampa_messaggio<span class="op">(</span><span class="st">"Il risultato della somma di stringhe è: "</span><span class="op">,</span> risultato_stringhe<span class="op">,</span> <span class="ch">'s'</span><span class="op">);</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-20-11" class="code-annotation-target"><a href="#annotated-cell-20-11"></a>  free<span class="op">(</span>risultato_stringhe<span class="op">);</span></span>
-<span id="annotated-cell-20-12"><a href="#annotated-cell-20-12"></a></span>
-<span id="annotated-cell-20-13"><a href="#annotated-cell-20-13"></a>  <span class="dt">int</span> array<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">};</span> </span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-20-14" class="code-annotation-target"><a href="#annotated-cell-20-14"></a>  <span class="dt">int</span> risultato_array <span class="op">=</span> somma_array_interi<span class="op">(</span>array<span class="op">,</span> <span class="dv">5</span><span class="op">);</span></span>
-<span id="annotated-cell-20-15"><a href="#annotated-cell-20-15"></a>  stampa_messaggio<span class="op">(</span><span class="st">"Il risultato della somma dell'array di interi è: "</span><span class="op">,</span> <span class="op">&amp;</span>risultato_array<span class="op">,</span> <span class="ch">'i'</span><span class="op">);</span></span>
-<span id="annotated-cell-20-16"><a href="#annotated-cell-20-16"></a></span>
-<span id="annotated-cell-20-17"><a href="#annotated-cell-20-17"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="annotated-cell-20-18"><a href="#annotated-cell-20-18"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-20-7"><a href="#annotated-cell-20-7"></a>  stampa_messaggio<span class="op">(</span><span class="st">"Il risultato della somma di interi è: "</span><span class="op">,</span> </span>
+<span id="annotated-cell-20-8"><a href="#annotated-cell-20-8"></a>                   <span class="op">&amp;</span>risultato<span class="op">,</span> <span class="ch">'i'</span><span class="op">);</span></span>
+<span id="annotated-cell-20-9"><a href="#annotated-cell-20-9"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-20-10" class="code-annotation-target"><a href="#annotated-cell-20-10"></a>  <span class="dt">char</span><span class="op">*</span> risultato_stringhe <span class="op">=</span> somma_stringhe<span class="op">(</span><span class="st">"Ciao, "</span><span class="op">,</span> <span class="st">"mondo!"</span><span class="op">);</span></span>
+<span id="annotated-cell-20-11"><a href="#annotated-cell-20-11"></a>  stampa_messaggio<span class="op">(</span><span class="st">"Il risultato della somma di stringhe è: "</span><span class="op">,</span> </span>
+<span id="annotated-cell-20-12"><a href="#annotated-cell-20-12"></a>                   risultato_stringhe<span class="op">,</span> <span class="ch">'s'</span><span class="op">);</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-20-13" class="code-annotation-target"><a href="#annotated-cell-20-13"></a>  free<span class="op">(</span>risultato_stringhe<span class="op">);</span></span>
+<span id="annotated-cell-20-14"><a href="#annotated-cell-20-14"></a></span>
+<span id="annotated-cell-20-15"><a href="#annotated-cell-20-15"></a>  <span class="dt">int</span> array<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">};</span> </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-20-16" class="code-annotation-target"><a href="#annotated-cell-20-16"></a>  <span class="dt">int</span> risultato_array <span class="op">=</span> somma_array_interi<span class="op">(</span>array<span class="op">,</span> <span class="dv">5</span><span class="op">);</span></span>
+<span id="annotated-cell-20-17"><a href="#annotated-cell-20-17"></a>  stampa_messaggio<span class="op">(</span><span class="st">"Il risultato della somma dell'array di interi è: "</span><span class="op">,</span> </span>
+<span id="annotated-cell-20-18"><a href="#annotated-cell-20-18"></a>                   <span class="op">&amp;</span>risultato_array<span class="op">,</span> <span class="ch">'i'</span><span class="op">);</span></span>
+<span id="annotated-cell-20-19"><a href="#annotated-cell-20-19"></a></span>
+<span id="annotated-cell-20-20"><a href="#annotated-cell-20-20"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="annotated-cell-20-21"><a href="#annotated-cell-20-21"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-lines="6" data-code-annotation="1">Chiamata della funzione di somma di due interi.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="6" data-code-annotation="1">Chiamata della funzione per la somma di due interi.</span>
 </dd>
 <dt data-target-cell="annotated-cell-20" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-lines="9" data-code-annotation="2">Chiamata delal funzione di somma di due stringhe (implementato come una concatenazione).</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="10" data-code-annotation="2">Chiamata della funzione per la somma di due stringhe (implementata come una concatenazione).</span>
 </dd>
 <dt data-target-cell="annotated-cell-20" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-lines="11" data-code-annotation="3">Libera la memoria allocata.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="13" data-code-annotation="3">Liberazione della memoria allocata per la stringa risultante.</span>
 </dd>
 <dt data-target-cell="annotated-cell-20" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-lines="14" data-code-annotation="4">Somma di un array di interi.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="16" data-code-annotation="4">Chiamata della funzione per la somma di un array di interi.</span>
 </dd>
 </dl></li>
 </ul>
@@ -706,7 +720,7 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="1">Il codice di <code>somma_interi</code> e <code>somma_stringhe</code> è identico.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="1">Il codice di <code>somma_interi</code> e <code>somma_stringhe</code> è identico e questo ci suggerisce che una delle due è ridondante.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
@@ -1049,28 +1063,28 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 </dd>
 </dl>
 <p>La metaprogrammazione è presente anche in linguaggi non OOP come Lisp, che utilizza le macro per trasformare e generare codice. Un esempio è il codice proposto di seguito dove è definita la macro <code>when</code>, che prende due parametri in input, cioè <code>test</code> e <code>body</code>, ove <code>test</code> è un’espressione condizionale e <code>body</code> un insieme di istruzioni da eeseguire se la condizione è vera:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb5-1"><a href="#cb5-1"></a>(<span class="kw">defmacro</span><span class="fu"> when </span>(test &amp;<span class="kw">rest</span> body)  <span class="co">; &lt;1&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  `(<span class="kw">if</span> ,test                      <span class="co">; &lt;2&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>       (<span class="kw">progn</span> ,@body)))           <span class="co">; &lt;3&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb5-1"><a href="#cb5-1"></a>(<span class="kw">defmacro</span><span class="fu"> when </span>(test &amp;<span class="kw">rest</span> body)  <span class="co">;; &lt;1&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  `(<span class="kw">if</span> ,test                      <span class="co">;; &lt;2&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>       (<span class="kw">progn</span> ,@body)))           <span class="co">;; &lt;3&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
 <li>Definizione di una macro chiamata <code>when</code>, che accetta un <code>test</code> e un numero variabile di espressioni (<code>body</code>).</li>
 <li>La macro espande in un’espressione <code>if</code> che valuta <code>test</code>. Se <code>test</code> è vero, esegue le espressioni contenute in <code>body</code>.</li>
 <li><code>progn</code> è utilizzato per racchiudere ed eseguire tutte le espressioni in <code>body</code> in sequenza. L’operatore <code>,@</code> è usato per spalmare gli elementi di <code>body</code> nell’espressione <code>progn</code>.</li>
 </ol>
 <p>Vediamo un esempio pratico di come si utilizza la macro <code>when</code>. Il test è valutare se <code>x</code> è maggiore di <code>10</code> e, nel caso, stampare <code>"x is greater than 10"</code> e poi assegnare <code>x</code> a <code>0</code>. Chiamiamo la macro con i due parametri:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb6-1"><a href="#cb6-1"></a>(<span class="kw">when</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)                       <span class="co">; &lt;1&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>)     <span class="co">; &lt;2&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>  (<span class="kw">setf</span> x <span class="dv">0</span>))                        <span class="co">; &lt;3&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb6-1"><a href="#cb6-1"></a>(<span class="kw">when</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)                       <span class="co">;; &lt;1&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>)     <span class="co">;; &lt;2&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  (<span class="kw">setf</span> x <span class="dv">0</span>))                        <span class="co">;; &lt;3&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
 <li>Invocazione della macro <code>when</code> con la condizione <code>&gt; x 10</code>.</li>
 <li>Se la condizione è vera, viene eseguita l’istruzione <code>(print "x is greater than 10")</code>, che stampa il messaggio.</li>
 <li>Successivamente, viene eseguita l’istruzione <code>(setf x 0)</code>, che assegna il valore <code>0</code> a <code>x</code>.</li>
 </ol>
 <p>Questo viene espanso in:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb7-1"><a href="#cb7-1"></a>(<span class="kw">if</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)                         <span class="co">; &lt;1&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>    (<span class="kw">progn</span>                           <span class="co">; &lt;2&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>      (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>) <span class="co">; &lt;3&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>      (<span class="kw">setf</span> x <span class="dv">0</span>)))                   <span class="co">; &lt;4&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb7-1"><a href="#cb7-1"></a>(<span class="kw">if</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)                         <span class="co">;; &lt;1&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>    (<span class="kw">progn</span>                           <span class="co">;; &lt;2&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>      (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>) <span class="co">;; &lt;3&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>      (<span class="kw">setf</span> x <span class="dv">0</span>)))                   <span class="co">;; &lt;4&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
 <li>L’istruzione <code>if</code> valuta la condizione <code>&gt; x 10</code>.</li>
 <li>Se la condizione è vera, viene eseguito il blocco <code>progn</code>.</li>
@@ -1143,12 +1157,12 @@ Nota
 </dd>
 </dl>
 <p>In Prolog, si definiscono fatti e regole che descrivono relazioni logiche. Il motore di inferenza di Prolog utilizza queste definizioni per risolvere query, senza richiedere un algoritmo dettagliato. Di seguito, sono definiti due fatti (le prime due righe) e due regole (la terza e la quarta) e quindi si effettua una query che dà come risultato <code>true</code>:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb8-1"><a href="#cb8-1"></a>genitore(padre<span class="kw">,</span> figlio)<span class="kw">.</span>  <span class="co">% &lt;1&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>genitore(madre<span class="kw">,</span> figlio)<span class="kw">.</span>  <span class="co">% &lt;2&gt;</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span>  <span class="co">% &lt;3&gt;</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Z</span>)<span class="kw">,</span> antenato(<span class="dt">Z</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span>  <span class="co">% &lt;4&gt;</span></span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb8-1"><a href="#cb8-1"></a>genitore(padre<span class="kw">,</span> figlio)<span class="kw">.</span>  <span class="co">/* &lt;1&gt; */</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>genitore(madre<span class="kw">,</span> figlio)<span class="kw">.</span>  <span class="co">/* &lt;2&gt; */</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span>  <span class="co">/* &lt;3&gt; */</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Z</span>)<span class="kw">,</span> antenato(<span class="dt">Z</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span>  <span class="co">/* &lt;4&gt; */</span></span>
 <span id="cb8-5"><a href="#cb8-5"></a></span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="fu">?-</span> antenato(padre<span class="kw">,</span> figlio)<span class="kw">.</span>  <span class="co">% &lt;5&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="fu">?-</span> antenato(padre<span class="kw">,</span> figlio)<span class="kw">.</span>  <span class="co">/* &lt;5&gt; */</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
 <li>Questa regola dichiara che <code>padre</code> è genitore di <code>figlio</code>.</li>
 <li>Questa regola dichiara che <code>madre</code> è genitore di <code>figlio</code>.</li>

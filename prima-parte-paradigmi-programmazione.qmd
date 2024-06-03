@@ -222,7 +222,9 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
 
   int somma_array(int arr[], int n);
 
-  void stampa_messaggio(const char* messaggio, void* risultato, char tipo);
+  void stampa_messaggio(const char* messaggio, 
+                        void* risultato, 
+                        char tipo);
 
   #endif
   ```
@@ -260,21 +262,24 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
     return somma;
   }
 
-  void stampa_messaggio(const char* messaggio, void* risultato, char tipo) {
-     printf("%s", messaggio);
+  void stampa_messaggio(const char* messaggio, 
+                        void* risultato, 
+                        char tipo) {
+    printf("%s", messaggio);
 
     if (tipo == 'i') {
-      printf("%d\n", *(int*)risultato)
-
+      printf("%d\n", *(int*)risultato); /* <5> */
     } else if (tipo == 's') {
-      printf("%s\n", (char*)risultato);
+      printf("%s\n", (char*)risultato); /* <6> */
     }
   }
   ```
-  1. Allocazione della memoria e +1 per il carattere di terminazione '\0'.
-  2. Il controllo è presente per verificare se la funzione `malloc` ha avuto successo nell'allocare la memoria richiesta. Se `risultato` è `NULL`, significa che `malloc` ha fallito e il blocco di codice all'interno dell'`if` viene saltato, evitando così di tentare di accedere a memoria non valida.
+  1. Allocazione della memoria per la somma delle due stringhe e +1 per il carattere di terminazione `\0`.
+  2. Controllo se la funzione `malloc` ha avuto successo nell'allocare la memoria richiesta. Se `risultato` è `NULL`, significa che `malloc` ha fallito e il blocco di codice all'interno dell'`if` viene saltato, evitando così di tentare di accedere a memoria non valida.
   3. Se l'allocazione ha avuto successo, copia la prima stringa nel risultato.
-  4. Idem per la seconda.
+  4. Concatenazione della seconda stringa nel risultato.
+  5. Stampa del risultato se il tipo è intero.
+  6. Stampa del risultato se il tipo è una stringa.
 
 - File principale (`main.c`):
 
@@ -285,23 +290,26 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
 
   int main() {
     int risultato = somma_interi(5, 3); /* <1> */
-    stampa_messaggio("Il risultato della somma di interi è: ", &risultato, 'i');
+    stampa_messaggio("Il risultato della somma di interi è: ", 
+                     &risultato, 'i');
 
     char* risultato_stringhe = somma_stringhe("Ciao, ", "mondo!"); /* <2> */
-    stampa_messaggio("Il risultato della somma di stringhe è: ", risultato_stringhe, 's');
+    stampa_messaggio("Il risultato della somma di stringhe è: ", 
+                     risultato_stringhe, 's');
     free(risultato_stringhe); /* <3> */
 
     int array[] = {1, 2, 3, 4, 5}; 
     int risultato_array = somma_array_interi(array, 5); /* <4> */
-    stampa_messaggio("Il risultato della somma dell'array di interi è: ", &risultato_array, 'i');
+    stampa_messaggio("Il risultato della somma dell'array di interi è: ", 
+                     &risultato_array, 'i');
 
     return 0;
   }
   ```
-  1. Chiamata della funzione di somma di due interi.
-  2. Chiamata delal funzione di somma di due stringhe (implementato come una concatenazione).
-  3. Libera la memoria allocata.
-  4. Somma di un array di interi.
+  1. Chiamata della funzione per la somma di due interi.
+  2. Chiamata della funzione per la somma di due stringhe (implementata come una concatenazione).
+  3. Liberazione della memoria allocata per la stringa risultante.
+  4. Chiamata della funzione per la somma di un array di interi.
 
 E il medesimo, ma in Python:
 
@@ -325,7 +333,7 @@ array_interi = [1, 2, 3, 4, 5]
 risultato_array = somma_array(array_interi) 
 print(f"Il risultato della somma dell'array è: {risultato_array}")
 ```
-1. Il codice di `somma_interi` e `somma_stringhe` è identico.
+1. Il codice di `somma_interi` e `somma_stringhe` è identico e questo ci suggerisce che una delle due è ridondante.
 2. La funzione ora prende in input solo l'array e non c'è bisogno di inserire anche la sua dimensione.
 3. In Python, per evitare errori quando si usa la funzione sum, l'array (o lista) deve contenere elementi che supportano l'operazione di addizione tra di loro. Tipicamente, si usano numeri (interi o float), ma è possibile anche sommare altri tipi di elementi se l'operazione di addizione è definita per quel tipo.
 
@@ -577,9 +585,9 @@ struct Factorial<0> {
 La metaprogrammazione è presente anche in linguaggi non OOP come Lisp, che utilizza le macro per trasformare e generare codice. Un esempio è il codice proposto di seguito dove è definita la macro `when`, che prende due parametri in input, cioè `test` e `body`, ove `test` è un'espressione condizionale e `body` un insieme di istruzioni da eeseguire se la condizione è vera:
 
 ```commonlisp
-(defmacro when (test &rest body)  ; <1>
-  `(if ,test                      ; <2>
-       (progn ,@body)))           ; <3>
+(defmacro when (test &rest body)  ;; <1>
+  `(if ,test                      ;; <2>
+       (progn ,@body)))           ;; <3>
 ```
 1. Definizione di una macro chiamata `when`, che accetta un `test` e un numero variabile di espressioni (`body`).
 2. La macro espande in un'espressione `if` che valuta `test`. Se `test` è vero, esegue le espressioni contenute in `body`.
@@ -588,9 +596,9 @@ La metaprogrammazione è presente anche in linguaggi non OOP come Lisp, che util
 Vediamo un esempio pratico di come si utilizza la macro `when`. Il test è valutare se `x` è maggiore di `10` e, nel caso, stampare `"x is greater than 10"` e poi assegnare `x` a `0`. Chiamiamo la macro con i due parametri:
 
 ```commonlisp
-(when (> x 10)                       ; <1>
-  (print "x is greater than 10")     ; <2>
-  (setf x 0))                        ; <3>
+(when (> x 10)                       ;; <1>
+  (print "x is greater than 10")     ;; <2>
+  (setf x 0))                        ;; <3>
 ```
 1. Invocazione della macro `when` con la condizione `> x 10`.
 2. Se la condizione è vera, viene eseguita l'istruzione `(print "x is greater than 10")`, che stampa il messaggio.
@@ -599,10 +607,10 @@ Vediamo un esempio pratico di come si utilizza la macro `when`. Il test è valut
 Questo viene espanso in:
 
 ```commonlisp
-(if (> x 10)                         ; <1>
-    (progn                           ; <2>
-      (print "x is greater than 10") ; <3>
-      (setf x 0)))                   ; <4>
+(if (> x 10)                         ;; <1>
+    (progn                           ;; <2>
+      (print "x is greater than 10") ;; <3>
+      (setf x 0)))                   ;; <4>
 ```
 1. L'istruzione `if` valuta la condizione `> x 10`.
 2. Se la condizione è vera, viene eseguito il blocco `progn`.
@@ -683,12 +691,12 @@ WHERE età > 30; -- <3>
 In Prolog, si definiscono fatti e regole che descrivono relazioni logiche. Il motore di inferenza di Prolog utilizza queste definizioni per risolvere query, senza richiedere un algoritmo dettagliato. Di seguito, sono definiti due fatti (le prime due righe) e due regole (la terza e la quarta) e quindi si effettua una query che dà come risultato `true`:
 
 ```prolog
-genitore(padre, figlio).  % <1>
-genitore(madre, figlio).  % <2>
-antenato(X, Y) :- genitore(X, Y).  % <3>
-antenato(X, Y) :- genitore(X, Z), antenato(Z, Y).  % <4>
+genitore(padre, figlio).  /* <1> */
+genitore(madre, figlio).  /* <2> */
+antenato(X, Y) :- genitore(X, Y).  /* <3> */
+antenato(X, Y) :- genitore(X, Z), antenato(Z, Y).  /* <4> */
 
-?- antenato(padre, figlio).  % <5>
+?- antenato(padre, figlio).  /* <5> */
 ```
 
 1. Questa regola dichiara che `padre` è genitore di `figlio`.
