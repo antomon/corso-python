@@ -364,13 +364,16 @@ div.csl-indent {
   <li><a href="#esempio-in-java" id="toc-esempio-in-java" class="nav-link" data-scroll-target="#esempio-in-java"><span class="header-section-number">2.4.1</span> Esempio in Java</a></li>
   <li><a href="#template" id="toc-template" class="nav-link" data-scroll-target="#template"><span class="header-section-number">2.4.2</span> Template</a></li>
   <li><a href="#metaprogrammazione" id="toc-metaprogrammazione" class="nav-link" data-scroll-target="#metaprogrammazione"><span class="header-section-number">2.4.3</span> Metaprogrammazione</a></li>
-  <li><a href="#linguaggi" id="toc-linguaggi" class="nav-link" data-scroll-target="#linguaggi"><span class="header-section-number">2.4.4</span> Linguaggi</a></li>
-  <li><a href="#esempi" id="toc-esempi" class="nav-link" data-scroll-target="#esempi"><span class="header-section-number">2.4.5</span> Esempi</a></li>
   </ul></li>
-  <li><a href="#paradigma-funzionale" id="toc-paradigma-funzionale" class="nav-link" data-scroll-target="#paradigma-funzionale"><span class="header-section-number">2.5</span> Paradigma funzionale</a>
+  <li><a href="#paradigma-dichiarativo" id="toc-paradigma-dichiarativo" class="nav-link" data-scroll-target="#paradigma-dichiarativo"><span class="header-section-number">2.5</span> Paradigma dichiarativo</a>
   <ul class="collapse">
-  <li><a href="#linguaggi-1" id="toc-linguaggi-1" class="nav-link" data-scroll-target="#linguaggi-1"><span class="header-section-number">2.5.1</span> Linguaggi</a></li>
-  <li><a href="#esempio-in-haskell" id="toc-esempio-in-haskell" class="nav-link" data-scroll-target="#esempio-in-haskell"><span class="header-section-number">2.5.2</span> Esempio in Haskell</a></li>
+  <li><a href="#linguaggi" id="toc-linguaggi" class="nav-link" data-scroll-target="#linguaggi"><span class="header-section-number">2.5.1</span> Linguaggi</a></li>
+  <li><a href="#esempi" id="toc-esempi" class="nav-link" data-scroll-target="#esempi"><span class="header-section-number">2.5.2</span> Esempi</a></li>
+  </ul></li>
+  <li><a href="#paradigma-funzionale" id="toc-paradigma-funzionale" class="nav-link" data-scroll-target="#paradigma-funzionale"><span class="header-section-number">2.6</span> Paradigma funzionale</a>
+  <ul class="collapse">
+  <li><a href="#linguaggi-1" id="toc-linguaggi-1" class="nav-link" data-scroll-target="#linguaggi-1"><span class="header-section-number">2.6.1</span> Linguaggi</a></li>
+  <li><a href="#esempio-in-haskell" id="toc-esempio-in-haskell" class="nav-link" data-scroll-target="#esempio-in-haskell"><span class="header-section-number">2.6.2</span> Esempio in Haskell</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-paradigmi-programmazione.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
@@ -1063,34 +1066,25 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 </dd>
 </dl>
 <p>La metaprogrammazione è presente anche in linguaggi non OOP come Lisp, che utilizza le macro per trasformare e generare codice. Un esempio è il codice proposto di seguito dove è definita la macro <code>when</code>, che prende due parametri in input, cioè <code>test</code> e <code>body</code>, ove <code>test</code> è un’espressione condizionale e <code>body</code> un insieme di istruzioni da eeseguire se la condizione è vera:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb5-1"><a href="#cb5-1"></a>(<span class="kw">defmacro</span><span class="fu"> when </span>(test &amp;<span class="kw">rest</span> body)  <span class="co">;; &lt;1&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  `(<span class="kw">if</span> ,test                      <span class="co">;; &lt;2&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>       (<span class="kw">progn</span> ,@body)))           <span class="co">;; &lt;3&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li>Definizione di una macro chiamata <code>when</code>, che accetta un <code>test</code> e un numero variabile di espressioni (<code>body</code>).</li>
-<li>La macro espande in un’espressione <code>if</code> che valuta <code>test</code>. Se <code>test</code> è vero, esegue le espressioni contenute in <code>body</code>.</li>
-<li><code>progn</code> è utilizzato per racchiudere ed eseguire tutte le espressioni in <code>body</code> in sequenza. L’operatore <code>,@</code> è usato per spalmare gli elementi di <code>body</code> nell’espressione <code>progn</code>.</li>
-</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb5-1"><a href="#cb5-1"></a>(<span class="kw">defmacro</span><span class="fu"> when </span>(test &amp;<span class="kw">rest</span> body)  </span>
+<span id="cb5-2"><a href="#cb5-2"></a>  `(<span class="kw">if</span> ,test                      </span>
+<span id="cb5-3"><a href="#cb5-3"></a>       (<span class="kw">progn</span> ,@body)))           </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Commento riga per riga: 1. Definizione di una macro chiamata <code>when</code>, che accetta un <code>test</code> e un numero variabile di espressioni (<code>body</code>). 2. La macro espande in un’espressione <code>if</code> che valuta <code>test</code>. Se <code>test</code> è vero, esegue le espressioni contenute in <code>body</code>. 3. <code>progn</code> è utilizzato per racchiudere ed eseguire tutte le espressioni in <code>body</code> in sequenza. L’operatore <code>,@</code> è usato per spalmare gli elementi di <code>body</code> nell’espressione <code>progn</code>.</p>
 <p>Vediamo un esempio pratico di come si utilizza la macro <code>when</code>. Il test è valutare se <code>x</code> è maggiore di <code>10</code> e, nel caso, stampare <code>"x is greater than 10"</code> e poi assegnare <code>x</code> a <code>0</code>. Chiamiamo la macro con i due parametri:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb6-1"><a href="#cb6-1"></a>(<span class="kw">when</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)                       <span class="co">;; &lt;1&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>)     <span class="co">;; &lt;2&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>  (<span class="kw">setf</span> x <span class="dv">0</span>))                        <span class="co">;; &lt;3&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li>Invocazione della macro <code>when</code> con la condizione <code>&gt; x 10</code>.</li>
-<li>Se la condizione è vera, viene eseguita l’istruzione <code>(print "x is greater than 10")</code>, che stampa il messaggio.</li>
-<li>Successivamente, viene eseguita l’istruzione <code>(setf x 0)</code>, che assegna il valore <code>0</code> a <code>x</code>.</li>
-</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb6-1"><a href="#cb6-1"></a>(<span class="kw">when</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)                      </span>
+<span id="cb6-2"><a href="#cb6-2"></a>  (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>)     </span>
+<span id="cb6-3"><a href="#cb6-3"></a>  (<span class="kw">setf</span> x <span class="dv">0</span>))                        </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Commento riga per riga: 1. Invocazione della macro <code>when</code> con la condizione <code>&gt; x 10</code>. 2. Se la condizione è vera, viene eseguita l’istruzione <code>(print "x is greater than 10")</code>, che stampa il messaggio. 3. Successivamente, viene eseguita l’istruzione <code>(setf x 0)</code>, che assegna il valore <code>0</code> a <code>x</code>.</p>
 <p>Questo viene espanso in:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb7-1"><a href="#cb7-1"></a>(<span class="kw">if</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)                         <span class="co">;; &lt;1&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>    (<span class="kw">progn</span>                           <span class="co">;; &lt;2&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>      (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>) <span class="co">;; &lt;3&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>      (<span class="kw">setf</span> x <span class="dv">0</span>)))                   <span class="co">;; &lt;4&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li>L’istruzione <code>if</code> valuta la condizione <code>&gt; x 10</code>.</li>
-<li>Se la condizione è vera, viene eseguito il blocco <code>progn</code>.</li>
-<li>All’interno del blocco <code>progn</code>, viene eseguita l’istruzione <code>(print "x is greater than 10")</code>.</li>
-<li>Infine, viene eseguita l’istruzione <code>(setf x 0)</code> all’interno del blocco <code>progn</code>. ## Paradigma dichiarativo</li>
-</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb7-1"><a href="#cb7-1"></a>(<span class="kw">if</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)                        </span>
+<span id="cb7-2"><a href="#cb7-2"></a>    (<span class="kw">progn</span>                        </span>
+<span id="cb7-3"><a href="#cb7-3"></a>      (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>) </span>
+<span id="cb7-4"><a href="#cb7-4"></a>      (<span class="kw">setf</span> x <span class="dv">0</span>)))                   </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Commento riga per riga: 1. L’istruzione <code>if</code> valuta la condizione <code>&gt; x 10</code>. 2. Se la condizione è vera, viene eseguito il blocco <code>progn</code>. 3. All’interno del blocco <code>progn</code>, viene eseguita l’istruzione <code>(print "x is greater than 10")</code>. 4. Infine, viene eseguita l’istruzione <code>(setf x 0)</code> all’interno del blocco <code>progn</code>.</p>
+</section>
+</section>
+<section id="paradigma-dichiarativo" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="paradigma-dichiarativo"><span class="header-section-number">2.5</span> Paradigma dichiarativo</h2>
 <p>La <strong>programmazione dichiarativa</strong> è un paradigma di programmazione che si focalizza sul <em>cosa</em> deve essere calcolato piuttosto che sul <em>come</em> calcolarlo. In altre parole, i programmi dichiarativi descrivono il risultato desiderato senza specificare esplicitamente i passaggi per ottenerlo. Questo è in netto contrasto con la programmazione imperativa, dove si fornisce una sequenza dettagliata di istruzioni per modificare lo stato del programma.</p>
 <p>La programmazione dichiarativa ha radici nella logica e nella matematica, ed è emersa come un importante paradigma negli anni ’70 e ’80 con l’avvento di linguaggi come Prolog (per la programmazione logica) e SQL (per la gestione dei database). La programmazione funzionale, con linguaggi come Haskell, è anch’essa una forma di programmazione dichiarativa.</p>
 <p>I concetti principali associati alla programazione dichiarativa sono:</p>
@@ -1101,9 +1095,8 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 </ul>
 <p>Il vantaggio principale è relativo alla sua chiarezza perché ci si concentra sul risultato desiderato piuttosto che sui dettagli di implementazione.</p>
 <p>La programmazione imperativa specifica come ottenere un risultato mediante una sequenza di istruzioni, modificando lo stato del programma. La programmazione dichiarativa, al contrario, specifica cosa deve essere ottenuto senza descrivere i dettagli di implementazione. In termini di livello di astrazione, la programmazione dichiarativa si trova a un livello superiore rispetto a quella imperativa.</p>
-</section>
-<section id="linguaggi" class="level3" data-number="2.4.4">
-<h3 data-number="2.4.4" class="anchored" data-anchor-id="linguaggi"><span class="header-section-number">2.4.4</span> Linguaggi</h3>
+<section id="linguaggi" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="linguaggi"><span class="header-section-number">2.5.1</span> Linguaggi</h3>
 <p>Ecco una lista di alcuni linguaggi di programmazione dichiarativi:</p>
 <ol type="1">
 <li><p>SQL (Structured Query Language): Utilizzato per la gestione e l’interrogazione di database relazionali.</p></li>
@@ -1135,8 +1128,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="esempi" class="level3" data-number="2.4.5">
-<h3 data-number="2.4.5" class="anchored" data-anchor-id="esempi"><span class="header-section-number">2.4.5</span> Esempi</h3>
+<section id="esempi" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="esempi"><span class="header-section-number">2.5.2</span> Esempi</h3>
 <p>Esempio di una query SQL che estrae tutti i nomi degli utenti con età maggiore di 30:</p>
 <p>Certamente! Ecco il codice SQL con i commenti identificati da un ID progressivo e l’elenco esplicativo:</p>
 <div class="sourceCode" id="annotated-cell-13"><pre class="sourceCode numberSource sql code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode sql"><a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1"></a><span class="kw">SELECT</span> nome</span>
@@ -1172,8 +1165,8 @@ Nota
 </ol>
 </section>
 </section>
-<section id="paradigma-funzionale" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="paradigma-funzionale"><span class="header-section-number">2.5</span> Paradigma funzionale</h2>
+<section id="paradigma-funzionale" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="paradigma-funzionale"><span class="header-section-number">2.6</span> Paradigma funzionale</h2>
 <p>La <strong>programmazione funzionale</strong> è un paradigma di programmazione che tratta il calcolo come la valutazione di funzioni matematiche ed evita lo stato mutabile e i dati modificabili. I programmi funzionali sono costruiti applicando e componendo funzioni. Questo paradigma è stato ispirato dal calcolo lambda, una formalizzazione matematica del concetto di funzione. La programmazione funzionale è un paradigma alternativo alla programmazione imperativa, che descrive la computazione come una sequenza di istruzioni che modificano lo stato del programma.</p>
 <p>La programmazione funzionale ha radici storiche che risalgono agli anni ’30, con il lavoro di Alonzo Church sul calcolo lambda. I linguaggi di programmazione funzionale hanno iniziato a svilupparsi negli anni ’50 e ’60 con Lisp, ma è stato negli anni ’70 e ’80 che linguaggi come ML e Haskell hanno consolidato questo paradigma. Haskell, in particolare, è stato progettato per esplorare nuove idee in programmazione funzionale e ha avuto un impatto significativo sulla ricerca e sulla pratica del software.</p>
 <p>La programmazione funzionale è una forma di programmazione dichiarativa che si basa su funzioni pure e immutabilità. Entrambi i paradigmi evitano stati mutabili e si concentrano sul risultato finale, ma la programmazione funzionale utilizza funzioni matematiche come unità fondamentali di calcolo.</p>
@@ -1198,8 +1191,8 @@ Nota
 <li><p>Prestazioni: In alcuni casi, l’uso intensivo di funzioni ricorsive può portare a problemi di prestazioni, come il consumo di memoria per le chiamate ricorsive. Tuttavia, molte implementazioni moderne offrono ottimizzazioni come la ricorsione di coda (in inglese, <em>tail recursion</em>).</p></li>
 <li><p>Disponibilità di librerie e strumenti: Alcuni linguaggi funzionali potrebbero non avere la stessa ampiezza di librerie e strumenti disponibili rispetto ai linguaggi imperativi più diffusi.</p></li>
 </ul>
-<section id="linguaggi-1" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="linguaggi-1"><span class="header-section-number">2.5.1</span> Linguaggi</h3>
+<section id="linguaggi-1" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="linguaggi-1"><span class="header-section-number">2.6.1</span> Linguaggi</h3>
 <p>Oltre a Haskell, ci sono molti altri linguaggi funzionali, tra cui:</p>
 <ul>
 <li><p>Erlang: Utilizzato per sistemi concorrenti e distribuiti.</p></li>
@@ -1214,8 +1207,8 @@ Nota
 <li><p>Racket: Derivato da Scheme, usato nella ricerca accademica.</p></li>
 </ul>
 </section>
-<section id="esempio-in-haskell" class="level3" data-number="2.5.2">
-<h3 data-number="2.5.2" class="anchored" data-anchor-id="esempio-in-haskell"><span class="header-section-number">2.5.2</span> Esempio in Haskell</h3>
+<section id="esempio-in-haskell" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="esempio-in-haskell"><span class="header-section-number">2.6.2</span> Esempio in Haskell</h3>
 <p>Di seguito due funzioni, la prima <code>sumToN</code> è pura e somma i primi <code>n</code> numeri. <code>(*2)</code> è una funzione che prende un argomento e lo moltiplica per 2 e ciò rende la seconda funzione <code>applyFunction</code> una vera funzione di ordine superiore, poiché accetta <code>(*2)</code> come argomento oltre ad una lista, producendo come risultato il raddoppio di tutti i suoi elementi:</p>
 <p>Certamente! Ecco il codice con i commenti identificati da un ID progressivo e l’elenco esplicativo che include le descrizioni:</p>
 <div class="sourceCode" id="annotated-cell-15"><pre class="sourceCode numberSource haskell code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode haskell"><span id="annotated-cell-15-1"><a href="#annotated-cell-15-1"></a><span class="ot">sumToN ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span></span>
