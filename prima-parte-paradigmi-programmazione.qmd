@@ -191,7 +191,7 @@ Nella programmazione procedurale, il codice è suddiviso in unità elementari ch
 
   ```c
   int somma(int a, int b) {
-      return a + b;
+    return a + b;
   }
   ```
 
@@ -200,7 +200,7 @@ Nella programmazione procedurale, il codice è suddiviso in unità elementari ch
   ```pascal
   procedure stampaMessaggio;
   begin
-      writeln('Ciao, Mondo!');
+    writeln('Ciao, Mondo!');
   end;
   ```
 
@@ -236,28 +236,28 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
   #include <string.h>
 
   int somma_interi(int a, int b) {
-      return a + b;
+    return a + b;
   }
 
   char* somma_stringhe(const char* a, const char* b) {
-      char* risultato = malloc(strlen(a) + strlen(b) + 1); /* <1> */
+    char* risultato = malloc(strlen(a) + strlen(b) + 1); /* <1> */
 
-      if (risultato) { /* <2> */
-          strcpy(risultato, a); /* <3> */
-          strcat(risultato, b); /* <4> */
-      }
+    if (risultato) { /* <2> */
+      strcpy(risultato, a); /* <3> */
+      strcat(risultato, b); /* <4> */
+    }
 
-      return risultato;
+    return risultato;
   }
 
   int somma_array_interi(int arr[], int n) {
-      int somma = 0;
+    int somma = 0;
 
-      for (int i = 0; i < n; i++) {
-          somma += arr[i];
-      }
+    for (int i = 0; i < n; i++) {
+      somma += arr[i];
+    }
 
-      return somma;
+    return somma;
   }
 
   void stampa_messaggio(const char* messaggio, void* risultato, char tipo) {
@@ -267,7 +267,7 @@ Esempio di una semplice libreria ipotetica di _somme_ in C:
       printf("%d\n", *(int*)risultato)
 
     } else if (tipo == 's') {
-        printf("%s\n", (char*)risultato);
+      printf("%s\n", (char*)risultato);
     }
   }
   ```
@@ -307,13 +307,13 @@ E il medesimo, ma in Python:
 
 ```python
 def somma_interi(a, b):
-    return a + b
+  return a + b
 
 def somma_stringhe(a, b): # <1>
-    return a + b
+  return a + b
 
 def somma_array(arr): # <2>
-    return sum(arr) # <3>
+  return sum(arr) # <3>
 
 risultato_interi = somma_interi(3, 5)
 print(f"Il risultato della somma di interi è: {risultato_interi}")
@@ -337,27 +337,27 @@ L'OOP è emersa negli anni '60 e '70 con il linguaggio Simula, il primo linguagg
 
 Rispetto ai paradigmi precedenti, l'OOP introduce diversi concetti chiave che ineriscono al disegno architetturale di software:
 
-- Classe e oggetto: La classe è un modello o schema per creare oggetti. Contiene definizioni di attributi e metodi. L'oggetto è un'istanza di una classe e rappresenta un'entità concreta nel programma con stato e comportamento mutevoli.
+- **Classe** e **oggetto**: La classe è un modello o schema per creare oggetti. Contiene definizioni di attributi e metodi. L'oggetto è un'istanza di una classe e rappresenta un'entità concreta nel programma con stato e comportamento mutevoli.
 
-- Incapsulamento: Nasconde i dettagli interni di un oggetto e mostra solo le interfacce necessarie agli altri oggetti. Migliora la modularità e protegge l'integrità dei dati.
+- **Incapsulamento**: Nasconde i dettagli interni di un oggetto e mostra solo le interfacce necessarie agli altri oggetti. Migliora la modularità e protegge l'integrità dei dati.
 
-- Ereditarietà: Permette a una classe di estenderne un'altra, ereditandone attributi e metodi. Favorisce il riuso del codice e facilita l'estensione delle funzionalità.
+- **Ereditarietà** (relazione _is-a_): Permette a una classe di estenderne un'altra, ereditandone attributi e metodi. Favorisce il riuso del codice e facilita l'estensione delle funzionalità. Si usa quando una classe può essere considerata una specializzazione di un'altra. Ad esempio, un `Gatto` è un `Animale`, quindi la classe `Gatto` eredita dalla classe `Animale`.
 
-- Polimorfismo: Consente a oggetti di classi diverse di essere trattati come oggetti di una classe comune. Facilita l'uso di un'interfaccia uniforme per operazioni diverse.
+- **Polimorfismo**: Consente a oggetti di classi diverse di essere trattati come oggetti di una classe comune. Facilita l'uso di un'interfaccia uniforme per operazioni diverse. Il polimorfismo è strettamente legato all'ereditarietà e permette di usare un metodo in modi diversi a seconda dell'oggetto che lo invoca. Ad esempio, un metodo `muovi()` può comportarsi diversamente se invocato su un oggetto di classe `Gatto` rispetto a un oggetto di classe `Uccello`, ma entrambi sono trattati come `Animale`.
 
-- Astrazione: Permette di definire interfacce di alto livello per oggetti, senza esporre i dettagli implementativi. Facilita la comprensione e la gestione della complessità del sistema.
+- **Astrazione**: Permette di definire interfacce di alto livello per oggetti, senza esporre i dettagli implementativi. Facilita la comprensione e la gestione della complessità del sistema, perché, assieme a ereditarietà e polimorfismo, permette di pensare in modo più naturale, basando la decomposizione del problema anche su relazioni di tipo gerarchico e concettuale. Attraverso l'astrazione, si definiscono classi e interfacce che rappresentano concetti generici, come `Forma` o `Veicolo`, senza specificare i dettagli concreti delle implementazioni.
+
+- **Composizione** (relazione _has-a_): Permette a una classe di contenere altre classi come parte dei suoi attributi. È una forma di relazione che indica che un oggetto è composto da uno o più oggetti di altre classi. Si usa quando una classe ha bisogno di utilizzare funzionalità di altre classi ma non rappresenta una specializzazione di quelle classi. Ad esempio, una classe `Auto` può avere un oggetto `Motore` come attributo, indicando che _un'Auto ha un Motore_.
 
 I vantaggi principali dell'OOP sono:
 
-- Modularità: Le classi e gli oggetti favoriscono la suddivisione del codice in moduli indipendenti, migliorando la manutenibilità e la riusabilità del software.
+- **Modularità**: Le classi e gli oggetti favoriscono la suddivisione del codice in moduli indipendenti, in una forma più granulare rispetto al paradigma procedurale. Non solo le istruzioni sono raggruppate per soddisfare una specifica operazione, ma possono essere viste come più operazioni su uno stato associato. La modularità è rafforzata dalle relazioni _has-a_ e _is-a_, che aiutano a organizzare il codice in componenti logicamente separati e interconnessi.
 
-- Riutilizzabilità: L'uso di classi e l'ereditarietà consentono di riutilizzare il codice in nuovi progetti senza riscriverlo.
+- **Riutilizzabilità**: L'uso di classi e l'ereditarietà (relazione _is-a_) consentono di riutilizzare il codice in nuovi progetti senza riscriverlo, limitando gli effetti collaterali sul codice con cui interagiscono. Le classi base possono essere estese per creare nuove classi con funzionalità aggiuntive, mantenendo al contempo la compatibilità con il codice esistente.
 
-- Facilità di manutenzione: L'incapsulamento e l'astrazione riducono la complessità e facilitano la manutenzione del codice.
+- **Facilità di manutenzione**: L'incapsulamento e l'astrazione riducono la complessità perché permettono una migliore assegnazione logica dei principi usati nella progettazione dell'applicazione alle singole classi. Ciò facilita la manutenzione del codice, poiché nella modifica si possono individuare rapidamente le istruzioni impattate. La relazione _has-a_ contribuisce ulteriormente alla manutenzione isolando le responsabilità all'interno delle classi.
 
-- Estendibilità: Le classi possono essere estese per aggiungere nuove funzionalità senza modificare il codice esistente.
-
-- Affidabilità: Il polimorfismo e l'ereditarietà migliorano l'affidabilità del codice, poiché le modifiche possono essere fatte in una classe base e propagate alle classi derivate.
+- **Estendibilità**: Le classi possono essere estese (relazione _is-a_) per aggiungere nuove funzionalità senza modificare il codice già preesistente, riducendo così gli impatti per il codice che ne dipende. Questo approccio facilita l'integrazione di nuove caratteristiche e miglioramenti, mantenendo la stabilità del sistema.
 
 Anche se sussistono dei caveat:
 
@@ -365,7 +365,7 @@ Anche se sussistono dei caveat:
 
 - Overhead di prestazioni: L'uso intensivo di oggetti può introdurre un overhead di memoria e prestazioni rispetto alla programmazione procedurale.
 
-- Abuso di ereditarietà: L'uso improprio dell'ereditarietà può portare a gerarchie di classi troppo complesse e difficili da gestire.
+- Abuso di ereditarietà: L'uso improprio dell'ereditarietà può portare a gerarchie di classi troppo complesse e difficili da gestire, quindi, producendo un effetto opposto ad una delle ragioni di esistenza del concetto, cioè la semplicità di comunicazione della progettazione del software.
 
 ### Esempio in Java
 
@@ -373,35 +373,35 @@ In questo esempio, la classe `Animale` rappresenta una tipo di dato generico con
 
 ```java
 class Animale { // <1>
-    String nome;
+  String nome;
 
-    Animale(String nome) {
-        this.nome = nome;
-    }
+  Animale(String nome) {
+    this.nome = nome;
+  }
 
-    void faiVerso() {
-        System.out.println("L'animale fa un verso");
-    }
+  void faiVerso() {
+    System.out.println("L'animale fa un verso");
+  }
 }
 
 class Cane extends Animale { // <2>
 
-    Cane(String nome) {
-        super(nome);
-    }
+  Cane(String nome) {
+    super(nome);
+  }
 
-    @Override // <3>
-    void faiVerso() {
-        System.out.println("Il cane abbaia");
-    }
+  @Override // <3>
+  void faiVerso() {
+    System.out.println("Il cane abbaia");
+  }
 }
 
 public class Main {
-    public static void main(String[] args) {
-        Animale mioCane = new Cane("Fido");
+  public static void main(String[] args) {
+    Animale mioCane = new Cane("Fido");
 
-        mioCane.faiVerso(); // <4>
-    }
+    mioCane.faiVerso(); // <4>
+  }
 }
 ```
 1. Definizione della classe `Animale` che ha il doppio compito di provvedere all'implementazione per una caratteristica comune (`nome` e `descrizione()`) e una particolare (`faiVerso()`).
@@ -417,55 +417,55 @@ Nel caso pratico, ogni animale ha il suo verso, quindi dobbiamo costringere il p
 
 ```java
 abstract class Animale { // <1>
-    String nome;
+  String nome;
 
-    Animale(String nome) {
-        this.nome = nome;
-    }
+  Animale(String nome) {
+    this.nome = nome;
+  }
 
-    abstract String faiVerso(); // <2>
+  abstract String faiVerso(); // <2>
 
-    String descrizione() { // <3>
-        return "L'animale si chiama " + nome;
-    }
+  String descrizione() { // <3>
+    return "L'animale si chiama " + nome;
+  }
 }
 
 class Cane extends Animale { // <4>
 
-    Cane(String nome) {
-        super(nome);
-    }
+  Cane(String nome) {
+    super(nome);
+  }
 
-    @Override
-    String faiVerso() {
-        return "Il cane abbaia";
-    }
+  @Override
+  String faiVerso() {
+    return "Il cane abbaia";
+  }
 }
 
 class Coccodrillo extends Animale { // <5>
 
-    Coccodrillo(String nome) {
-        super(nome);
-    }
+  Coccodrillo(String nome) {
+    super(nome);
+  }
 
-    @Override
-    String faiVerso() { // <6>
-        return "";  
-    }
+  @Override
+  String faiVerso() { // <6>
+    return "";  
+  }
 }
 
 public class Main {
-    public static void main(String[] args) {
-        Animale mioCane = new Cane("Fido");
+  public static void main(String[] args) {
+    Animale mioCane = new Cane("Fido");
 
-        System.out.println(mioCane.descrizione()); // <7> 
-        System.out.println(mioCane.faiVerso());    // <8>
+    System.out.println(mioCane.descrizione()); // <7> 
+    System.out.println(mioCane.faiVerso());    // <8>
 
-        Animale mioCoccodrillo = new Coccodrillo("Crocky");
+    Animale mioCoccodrillo = new Coccodrillo("Crocky");
 
-        System.out.println(mioCoccodrillo.descrizione()); // <9>
-        System.out.println(mioCoccodrillo.faiVerso());    // <10>
-    }
+    System.out.println(mioCoccodrillo.descrizione()); // <9>
+    System.out.println(mioCoccodrillo.faiVerso());    // <10>
+  }
 }
 ```
 1. Definizione della classe astratta che ha il doppio compito di fornire una implementazione di default per una caratteristica comune (`nome`) e un vincolo di implementazione nelle classe derivate per una seconda caratteristica comune non implementabile nello stesso modo per tutte (`faiVerso()`).
@@ -481,59 +481,78 @@ public class Main {
 
 ### Template 
 
-I template, o generics, non sono specifici dell'OOP, anche se sono spesso associati a essa. I template permettono di scrivere funzioni, classi, e altri costrutti di codice in modo generico, cioè indipendente dal tipo dei dati che manipolano. Questo concetto è particolarmente utile per creare librerie e moduli riutilizzabili e flessibili. 
+I **template**, o generics, non sono specifici dell'OOP, anche se sono spesso associati a essa. I template permettono di scrivere funzioni, classi, e altri costrutti di codice in modo generico, cioè indipendente dal tipo dei dati che manipolano. Questo concetto è particolarmente utile per creare librerie e moduli riutilizzabili e flessibili. 
 
 Ad esempio, definiamo la classe `Box` nel modo seguente:
 
 ```cpp
-template <typename T>
-class Box {
-    T value;
+template <typename T>  // <1>
+class Box {  // <2>
+  T value;  // <3>
 
 public:
-    void setValue(T val) { value = val; }
+  void setValue(T val) { value = val; }  // <4>
 
-    T getValue() { return value; }
+  T getValue() { return value; }  // <5>
 };
 ```
+1. La keyword `template` definisce un template di classe che può lavorare con qualsiasi tipo `T` specificato al momento dell'uso.
+2. Dichiarazione della classe `Box` che utilizza il template di tipo `T`.
+3. Dichiarazione del membro dati `value` di tipo `T`, che rappresenta il valore contenuto nella scatola.
+4. Metodo pubblico `setValue` che imposta il valore del membro dati `value` con il parametro `val` di tipo `T`.
+5. Metodo pubblico `getValue` che restituisce il valore del membro dati `value` di tipo `T`.
 
-Essa può contenere un valore di qualsiasi tipo specificato al momento della creazione dell'istanza per mezzo del template `T`:
+`Box` può contenere un valore di qualsiasi tipo specificato al momento della creazione dell'istanza per mezzo del template `T`:
 
 ```cpp
-Box<int> intBox; // <1>
+Box<int> intBox;  // <1>
 
-intBox.setValue(123);
-int x = intBox.getValue();
+intBox.setValue(123);  // <2>
+int x = intBox.getValue();  // <3>
 
-Box<std::string> stringBox; // <2>
+Box<std::string> stringBox;  // <4>
 
-stringBox.setValue("Hello, World!");
-std::string str = stringBox.getValue();
+stringBox.setValue("Hello, World!");  // <5>
+std::string str = stringBox.getValue();  // <6>
 ```
-1. Box contiene un intero.
-2. Box contiene una stringa.
+1. Creazione di un'istanza di `Box` con tipo `int`, chiamata `intBox`.
+2. Chiamata del metodo `setValue` per impostare il valore di `intBox` a `123`.
+3. Chiamata del metodo `getValue` per ottenere il valore di `intBox` e assegnarlo alla variabile `x` di tipo `int`.
+4. Creazione di un'istanza di `Box` con tipo `std::string`, chiamata `stringBox`.
+5. Chiamata del metodo `setValue` per impostare il valore di `stringBox` a `"Hello, World!"`.
+6. Chiamata del metodo `getValue` per ottenere il valore di `stringBox` e assegnarlo alla variabile `str` di tipo `std::string`.
 
 Anche nei linguaggi non orientati agli oggetti, i template trovano applicazione. Ad esempio, in Rust, un linguaggio di programmazione sistemistica non puramente OOP, il codice seguente restituisce il valore più grande di una lista:
 
 ```rust
-fn largest<T: PartialOrd>(list: &[T]) -> &T {
-    let mut largest = &list[0];
+fn largest<T: PartialOrd>(list: &[T]) -> &T {  // <1>
+    let mut largest = &list[0];  // <2>
 
-    for item in list {
-        if item > largest {
-            largest = item;
+    for item in list {  // <3>
+        if item > largest {  // <4>
+            largest = item;  // <5>
         }
     }
-    largest
+    largest  // <6>
 }
 
-fn main() {
-    let numbers = vec![34, 50, 25, 100, 65];
-    let max = largest(&numbers);
+fn main() {  // <7>
+    let numbers = vec![34, 50, 25, 100, 65];  // <8>
+    let max = largest(&numbers);  // <9>
 
-    println!("The largest number is {}", max);
+    println!("The largest number is {}", max);  // <10>
 }
 ```
+1. Definizione della funzione generica `largest` che accetta una lista di riferimenti a un tipo `T` che implementa il tratto `PartialOrd` e restituisce un riferimento a un valore di tipo `T`.
+2. Inizializzazione della variabile `largest` con il primo elemento della lista.
+3. Iterazione attraverso ogni elemento della lista.
+4. Controllo se l'elemento corrente `item` è maggiore di `largest`.
+5. Se `item` è maggiore, aggiornamento della variabile `largest` con `item`.
+6. Restituzione di `largest`, che è il riferimento al più grande elemento trovato nella lista.
+7. Definizione della funzione `main`, punto di ingresso del programma.
+8. Creazione di un vettore di numeri interi `numbers`.
+9. Chiamata della funzione `largest` con un riferimento a `numbers` e assegnazione del risultato a `max`.
+10. Stampa del valore più grande trovato nella lista usando la macro `println!`.
 
 ### Metaprogrammazione
 
@@ -558,28 +577,37 @@ struct Factorial<0> {
 La metaprogrammazione è presente anche in linguaggi non OOP come Lisp, che utilizza le macro per trasformare e generare codice. Un esempio è il codice proposto di seguito dove è definita la macro `when`, che prende due parametri in input, cioè `test` e `body`, ove `test` è un'espressione condizionale e `body` un insieme di istruzioni da eeseguire se la condizione è vera:
 
 ```commonlisp
-(defmacro when (test &rest body)
-  `(if ,test
-       (progn ,@body)))
+(defmacro when (test &rest body)  ; <1>
+  `(if ,test                      ; <2>
+       (progn ,@body)))           ; <3>
 ```
+1. Definizione di una macro chiamata `when`, che accetta un `test` e un numero variabile di espressioni (`body`).
+2. La macro espande in un'espressione `if` che valuta `test`. Se `test` è vero, esegue le espressioni contenute in `body`.
+3. `progn` è utilizzato per racchiudere ed eseguire tutte le espressioni in `body` in sequenza. L'operatore `,@` è usato per spalmare gli elementi di `body` nell'espressione `progn`.
 
 Vediamo un esempio pratico di come si utilizza la macro `when`. Il test è valutare se `x` è maggiore di `10` e, nel caso, stampare `"x is greater than 10"` e poi assegnare `x` a `0`. Chiamiamo la macro con i due parametri:
 
 ```commonlisp
-(when (> x 10)
-  (print "x is greater than 10")
-  (setf x 0))
+(when (> x 10)                       ; <1>
+  (print "x is greater than 10")     ; <2>
+  (setf x 0))                        ; <3>
 ```
+1. Invocazione della macro `when` con la condizione `> x 10`.
+2. Se la condizione è vera, viene eseguita l'istruzione `(print "x is greater than 10")`, che stampa il messaggio.
+3. Successivamente, viene eseguita l'istruzione `(setf x 0)`, che assegna il valore `0` a `x`.
 
 Questo viene espanso in:
 
 ```commonlisp
-(if (> x 10)
-    (progn
-      (print "x is greater than 10")
-      (setf x 0)))
+(if (> x 10)                         ; <1>
+    (progn                           ; <2>
+      (print "x is greater than 10") ; <3>
+      (setf x 0)))                   ; <4>
 ```
-
+1. L'istruzione `if` valuta la condizione `> x 10`.
+2. Se la condizione è vera, viene eseguito il blocco `progn`.
+3. All'interno del blocco `progn`, viene eseguita l'istruzione `(print "x is greater than 10")`.
+4. Infine, viene eseguita l'istruzione `(setf x 0)` all'interno del blocco `progn`.
 ## Paradigma dichiarativo
 
 La **programmazione dichiarativa** è un paradigma di programmazione che si focalizza sul _cosa_ deve essere calcolato piuttosto che sul _come_ calcolarlo. In altre parole, i programmi dichiarativi descrivono il risultato desiderato senza specificare esplicitamente i passaggi per ottenerlo. Questo è in netto contrasto con la programmazione imperativa, dove si fornisce una sequenza dettagliata di istruzioni per modificare lo stato del programma.
@@ -655,13 +683,19 @@ WHERE età > 30; -- <3>
 In Prolog, si definiscono fatti e regole che descrivono relazioni logiche. Il motore di inferenza di Prolog utilizza queste definizioni per risolvere query, senza richiedere un algoritmo dettagliato. Di seguito, sono definiti due fatti (le prime due righe) e due regole (la terza e la quarta) e quindi si effettua una query che dà come risultato `true`:
 
 ```prolog
-genitore(padre, figlio).
-genitore(madre, figlio).
-antenato(X, Y) :- genitore(X, Y).
-antenato(X, Y) :- genitore(X, Z), antenato(Z, Y).
+genitore(padre, figlio).  % <1>
+genitore(madre, figlio).  % <2>
+antenato(X, Y) :- genitore(X, Y).  % <3>
+antenato(X, Y) :- genitore(X, Z), antenato(Z, Y).  % <4>
 
-?- antenato(padre, figlio).
+?- antenato(padre, figlio).  % <5>
 ```
+
+1. Questa regola dichiara che `padre` è genitore di `figlio`.
+2. Questa regola dichiara che `madre` è genitore di `figlio`.
+3. Questa regola stabilisce che `X` è antenato di `Y` se `X` è genitore di `Y`.
+4. Questa regola stabilisce che `X` è antenato di `Y` se `X` è genitore di `Z` e `Z` è antenato di `Y`.
+5. Questa è una query che chiede se `padre` è un antenato di `figlio`.
 
 ## Paradigma funzionale
 
@@ -701,28 +735,6 @@ E qualche svantaggio:
 
 - Disponibilità di librerie e strumenti: Alcuni linguaggi funzionali potrebbero non avere la stessa ampiezza di librerie e strumenti disponibili rispetto ai linguaggi imperativi più diffusi.
 
-### Esempio in Haskell
-
-Di seguito due funzioni, la prima `sumToN` è pura e somma i primi `n` numeri. `(*2)` è una funzione che prende un argomento e lo moltiplica per 2 e ciò rende la seconda funzione `applyFunction` una vera funzione di ordine superiore, poiché accetta `(*2)` come argomento oltre ad una lista, producendo come risultato il raddoppio di tutti i suoi elementi:
-
-Certamente! Ecco il codice con i commenti identificati da un ID progressivo e l'elenco esplicativo che include le descrizioni:
-
-```haskell
-sumToN :: Integer -> Integer
-sumToN n = sum [1..n] -- <1>
-
-applyFunction :: (a -> b) -> [a] -> [b]
-applyFunction f lst = map f lst -- <2>
-
-main = do
-    print (sumToN 10) -- <3>
-    print (applyFunction (*2) [1, 2, 3, 4]) -- <4>
-```
-1. Definizione di una funzione pura che calcola la somma dei numeri da 1 a `n`.
-2. Funzione di ordine superiore che accetta una funzione e una lista.
-3. Nel `main`, stampa il risultato di `sumToN 10`, che è 55.
-4. Nel `main`, stampa il risultato di `applyFunction (*2) [1, 2, 3, 4]`, che è `[2, 4, 6, 8]`.
-
 ### Linguaggi
 
 Oltre a Haskell, ci sono molti altri linguaggi funzionali, tra cui:
@@ -746,3 +758,25 @@ Oltre a Haskell, ci sono molti altri linguaggi funzionali, tra cui:
 - ML: Linguaggio influente che ha portato allo sviluppo di OCaml e F#.
 
 - Racket: Derivato da Scheme, usato nella ricerca accademica.
+
+### Esempio in Haskell
+
+Di seguito due funzioni, la prima `sumToN` è pura e somma i primi `n` numeri. `(*2)` è una funzione che prende un argomento e lo moltiplica per 2 e ciò rende la seconda funzione `applyFunction` una vera funzione di ordine superiore, poiché accetta `(*2)` come argomento oltre ad una lista, producendo come risultato il raddoppio di tutti i suoi elementi:
+
+Certamente! Ecco il codice con i commenti identificati da un ID progressivo e l'elenco esplicativo che include le descrizioni:
+
+```haskell
+sumToN :: Integer -> Integer
+sumToN n = sum [1..n] -- <1>
+
+applyFunction :: (a -> b) -> [a] -> [b]
+applyFunction f lst = map f lst -- <2>
+
+main = do
+    print (sumToN 10) -- <3>
+    print (applyFunction (*2) [1, 2, 3, 4]) -- <4>
+```
+1. Definizione di una funzione pura che calcola la somma dei numeri da 1 a `n`.
+2. Funzione di ordine superiore che accetta una funzione e una lista.
+3. Nel `main`, stampa il risultato di `sumToN 10`, che è 55.
+4. Nel `main`, stampa il risultato di `applyFunction (*2) [1, 2, 3, 4]`, che è `[2, 4, 6, 8]`.
