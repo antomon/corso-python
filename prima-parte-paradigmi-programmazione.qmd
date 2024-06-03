@@ -590,6 +590,7 @@ La metaprogrammazione è presente anche in linguaggi non OOP come Lisp, che util
        (progn ,@body)))           
 ```
 Commento riga per riga:
+
 1. Definizione di una macro chiamata `when`, che accetta un `test` e un numero variabile di espressioni (`body`).
 2. La macro espande in un'espressione `if` che valuta `test`. Se `test` è vero, esegue le espressioni contenute in `body`.
 3. `progn` è utilizzato per racchiudere ed eseguire tutte le espressioni in `body` in sequenza. L'operatore `,@` è usato per spalmare gli elementi di `body` nell'espressione `progn`.
@@ -602,6 +603,7 @@ Vediamo un esempio pratico di come si utilizza la macro `when`. Il test è valut
   (setf x 0))                        
 ```
 Commento riga per riga:
+
 1. Invocazione della macro `when` con la condizione `> x 10`.
 2. Se la condizione è vera, viene eseguita l'istruzione `(print "x is greater than 10")`, che stampa il messaggio.
 3. Successivamente, viene eseguita l'istruzione `(setf x 0)`, che assegna il valore `0` a `x`.
@@ -615,6 +617,7 @@ Questo viene espanso in:
       (setf x 0)))                   
 ```
 Commento riga per riga:
+
 1. L'istruzione `if` valuta la condizione `> x 10`.
 2. Se la condizione è vera, viene eseguito il blocco `progn`.
 3. All'interno del blocco `progn`, viene eseguita l'istruzione `(print "x is greater than 10")`.
@@ -702,11 +705,14 @@ antenato(X, Y) :- genitore(X, Z), antenato(Z, Y).  /* <4> */
 
 ?- antenato(padre, figlio).  /* <5> */
 ```
+Commento riga per riga:
+
 1. Questa regola dichiara che `padre` è genitore di `figlio`.
 2. Questa regola dichiara che `madre` è genitore di `figlio`.
 3. Questa regola stabilisce che `X` è antenato di `Y` se `X` è genitore di `Y`.
 4. Questa regola stabilisce che `X` è antenato di `Y` se `X` è genitore di `Z` e `Z` è antenato di `Y`.
-5. Questa è una query che chiede se `padre` è un antenato di `figlio`.
+5. Riga vuota.
+6. Questa è una query che chiede se `padre` è un antenato di `figlio`.
 
 ## Paradigma funzionale
 

@@ -1069,18 +1069,34 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb5-1"><a href="#cb5-1"></a>(<span class="kw">defmacro</span><span class="fu"> when </span>(test &amp;<span class="kw">rest</span> body)  </span>
 <span id="cb5-2"><a href="#cb5-2"></a>  `(<span class="kw">if</span> ,test                      </span>
 <span id="cb5-3"><a href="#cb5-3"></a>       (<span class="kw">progn</span> ,@body)))           </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Commento riga per riga: 1. Definizione di una macro chiamata <code>when</code>, che accetta un <code>test</code> e un numero variabile di espressioni (<code>body</code>). 2. La macro espande in un’espressione <code>if</code> che valuta <code>test</code>. Se <code>test</code> è vero, esegue le espressioni contenute in <code>body</code>. 3. <code>progn</code> è utilizzato per racchiudere ed eseguire tutte le espressioni in <code>body</code> in sequenza. L’operatore <code>,@</code> è usato per spalmare gli elementi di <code>body</code> nell’espressione <code>progn</code>.</p>
+<p>Commento riga per riga:</p>
+<ol type="1">
+<li>Definizione di una macro chiamata <code>when</code>, che accetta un <code>test</code> e un numero variabile di espressioni (<code>body</code>).</li>
+<li>La macro espande in un’espressione <code>if</code> che valuta <code>test</code>. Se <code>test</code> è vero, esegue le espressioni contenute in <code>body</code>.</li>
+<li><code>progn</code> è utilizzato per racchiudere ed eseguire tutte le espressioni in <code>body</code> in sequenza. L’operatore <code>,@</code> è usato per spalmare gli elementi di <code>body</code> nell’espressione <code>progn</code>.</li>
+</ol>
 <p>Vediamo un esempio pratico di come si utilizza la macro <code>when</code>. Il test è valutare se <code>x</code> è maggiore di <code>10</code> e, nel caso, stampare <code>"x is greater than 10"</code> e poi assegnare <code>x</code> a <code>0</code>. Chiamiamo la macro con i due parametri:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb6-1"><a href="#cb6-1"></a>(<span class="kw">when</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)                      </span>
 <span id="cb6-2"><a href="#cb6-2"></a>  (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>)     </span>
 <span id="cb6-3"><a href="#cb6-3"></a>  (<span class="kw">setf</span> x <span class="dv">0</span>))                        </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Commento riga per riga: 1. Invocazione della macro <code>when</code> con la condizione <code>&gt; x 10</code>. 2. Se la condizione è vera, viene eseguita l’istruzione <code>(print "x is greater than 10")</code>, che stampa il messaggio. 3. Successivamente, viene eseguita l’istruzione <code>(setf x 0)</code>, che assegna il valore <code>0</code> a <code>x</code>.</p>
+<p>Commento riga per riga:</p>
+<ol type="1">
+<li>Invocazione della macro <code>when</code> con la condizione <code>&gt; x 10</code>.</li>
+<li>Se la condizione è vera, viene eseguita l’istruzione <code>(print "x is greater than 10")</code>, che stampa il messaggio.</li>
+<li>Successivamente, viene eseguita l’istruzione <code>(setf x 0)</code>, che assegna il valore <code>0</code> a <code>x</code>.</li>
+</ol>
 <p>Questo viene espanso in:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb7-1"><a href="#cb7-1"></a>(<span class="kw">if</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)                        </span>
 <span id="cb7-2"><a href="#cb7-2"></a>    (<span class="kw">progn</span>                        </span>
 <span id="cb7-3"><a href="#cb7-3"></a>      (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>) </span>
 <span id="cb7-4"><a href="#cb7-4"></a>      (<span class="kw">setf</span> x <span class="dv">0</span>)))                   </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Commento riga per riga: 1. L’istruzione <code>if</code> valuta la condizione <code>&gt; x 10</code>. 2. Se la condizione è vera, viene eseguito il blocco <code>progn</code>. 3. All’interno del blocco <code>progn</code>, viene eseguita l’istruzione <code>(print "x is greater than 10")</code>. 4. Infine, viene eseguita l’istruzione <code>(setf x 0)</code> all’interno del blocco <code>progn</code>.</p>
+<p>Commento riga per riga:</p>
+<ol type="1">
+<li>L’istruzione <code>if</code> valuta la condizione <code>&gt; x 10</code>.</li>
+<li>Se la condizione è vera, viene eseguito il blocco <code>progn</code>.</li>
+<li>All’interno del blocco <code>progn</code>, viene eseguita l’istruzione <code>(print "x is greater than 10")</code>.</li>
+<li>Infine, viene eseguita l’istruzione <code>(setf x 0)</code> all’interno del blocco <code>progn</code>.</li>
+</ol>
 </section>
 </section>
 <section id="paradigma-dichiarativo" class="level2" data-number="2.5">
@@ -1156,11 +1172,13 @@ Nota
 <span id="cb8-4"><a href="#cb8-4"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Z</span>)<span class="kw">,</span> antenato(<span class="dt">Z</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span>  <span class="co">/* &lt;4&gt; */</span></span>
 <span id="cb8-5"><a href="#cb8-5"></a></span>
 <span id="cb8-6"><a href="#cb8-6"></a><span class="fu">?-</span> antenato(padre<span class="kw">,</span> figlio)<span class="kw">.</span>  <span class="co">/* &lt;5&gt; */</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Commento riga per riga:</p>
 <ol type="1">
 <li>Questa regola dichiara che <code>padre</code> è genitore di <code>figlio</code>.</li>
 <li>Questa regola dichiara che <code>madre</code> è genitore di <code>figlio</code>.</li>
 <li>Questa regola stabilisce che <code>X</code> è antenato di <code>Y</code> se <code>X</code> è genitore di <code>Y</code>.</li>
 <li>Questa regola stabilisce che <code>X</code> è antenato di <code>Y</code> se <code>X</code> è genitore di <code>Z</code> e <code>Z</code> è antenato di <code>Y</code>.</li>
+<li>Riga vuota.</li>
 <li>Questa è una query che chiede se <code>padre</code> è un antenato di <code>figlio</code>.</li>
 </ol>
 </section>
