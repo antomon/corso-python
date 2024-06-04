@@ -316,7 +316,7 @@ div.csl-indent {
   <li><a href="#definizioni" id="toc-definizioni" class="nav-link active" data-scroll-target="#definizioni"><span class="header-section-number">1.1</span> Definizioni</a></li>
   <li><a href="#linguaggi-naturali-e-di-programmazione" id="toc-linguaggi-naturali-e-di-programmazione" class="nav-link" data-scroll-target="#linguaggi-naturali-e-di-programmazione"><span class="header-section-number">1.2</span> Linguaggi naturali e di programmazione</a></li>
   <li><a href="#algoritmi" id="toc-algoritmi" class="nav-link" data-scroll-target="#algoritmi"><span class="header-section-number">1.3</span> Algoritmi</a></li>
-  <li><a href="#esecuzione-del-programma" id="toc-esecuzione-del-programma" class="nav-link" data-scroll-target="#esecuzione-del-programma"><span class="header-section-number">1.4</span> Esecuzione del programma</a></li>
+  <li><a href="#dal-codice-sorgente-allesecuzione" id="toc-dal-codice-sorgente-allesecuzione" class="nav-link" data-scroll-target="#dal-codice-sorgente-allesecuzione"><span class="header-section-number">1.4</span> Dal codice sorgente all’esecuzione</a></li>
   <li><a href="#ciclo-di-vita-del-software" id="toc-ciclo-di-vita-del-software" class="nav-link" data-scroll-target="#ciclo-di-vita-del-software"><span class="header-section-number">1.5</span> Ciclo di vita del software</a></li>
   <li><a href="#limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione" id="toc-limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione" class="nav-link" data-scroll-target="#limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione"><span class="header-section-number">1.6</span> L’Impatto dell’intelligenza artificiale generativa sulla programmazione</a>
   <ul class="collapse">
@@ -371,7 +371,7 @@ div.csl-indent {
 Stone, Harold S. 1971. <em>Introduction to Computer Organization and Data Structures</em>. USA: <a href="https://dl.acm.org/doi/10.5555/578826" class="uri">https://dl.acm.org/doi/10.5555/578826</a>; McGraw-Hill, Inc.
 </div></div><p>Più precisamente, un algoritmo è una sequenza ben definita di passi o operazioni che, a partire da un input, produce un output in un tempo finito. Le proprietà principali seguenti esprimono in modo più completo le caratteristiche che un algoritmo deve possedere:</p>
 <ul>
-<li><p>Finitudine L’algoritmo deve terminare dopo un numero finito di passi.</p></li>
+<li><p>Finitudine: L’algoritmo deve terminare dopo un numero finito di passi.</p></li>
 <li><p>Determinismo: Ogni passo dell’algoritmo deve essere definito in modo preciso e non ambiguo.</p></li>
 <li><p>Input L’algoritmo riceve zero o più dati in ingresso.</p></li>
 <li><p>Output L’algoritmo produce uno o più risultati.</p></li>
@@ -379,22 +379,29 @@ Stone, Harold S. 1971. <em>Introduction to Computer Organization and Data Struct
 </ul>
 <p>Gli algoritmi sono tradotti in codice sorgente attraverso un linguaggio di programmazione per creare programmi. In altre parole, un programma è la realizzazione pratica e funzionante degli algoritmi ideati dal programmatore.</p>
 </section>
-<section id="esecuzione-del-programma" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="esecuzione-del-programma"><span class="header-section-number">1.4</span> Esecuzione del programma</h2>
-<p>Quando un programma viene scritto e salvato in un file di testo, il computer deve eseguirlo per produrre le azioni desiderate. Questo processo si svolge in diverse fasi:</p>
-<ul>
-<li><p>Compilazione o interpretazione: Il codice sorgente, scritto in un linguaggio di alto livello leggibile dall’uomo, deve essere trasformato in un linguaggio macchina comprensibile dal computer. Questo avviene attraverso due possibili processi:</p>
-<ul>
-<li><p><strong>Compilazione</strong>: In linguaggi come C++ o Java, un compilatore traduce tutto il codice sorgente in linguaggio macchina, creando un file eseguibile. Questo file può poi essere eseguito direttamente dalla CPU.</p></li>
-<li><p><strong>Interpretazione</strong>: In linguaggi come Python o JavaScript, un interprete legge ed esegue il codice sorgente istruzione per istruzione, traducendolo in linguaggio macchina al momento dell’esecuzione.</p></li>
-</ul></li>
-<li><p>Esecuzione: Una volta che il programma è stato compilato (nel caso dei linguaggi compilati) o viene interpretato (nel caso dei linguaggi interpretati), il computer può iniziare ad eseguire le istruzioni. La CPU (central processing unit) legge queste istruzioni dal file eseguibile o dall’interprete e le esegue una per una. Durante questa fase, la CPU manipola i dati e produce i risultati desiderati.</p></li>
-<li><p>Interazione con i componenti hardware: Durante l’esecuzione, il programma può interagire con vari componenti hardware del computer. Ad esempio, può leggere e scrivere dati nella memoria, accedere ai dischi rigidi per salvare o recuperare informazioni, comunicare attraverso la rete, e interagire con dispositivi di input/output come tastiere e monitor. Questa interazione permette al programma di eseguire compiti complessi e di fornire output all’utente.</p></li>
-</ul>
+<section id="dal-codice-sorgente-allesecuzione" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="dal-codice-sorgente-allesecuzione"><span class="header-section-number">1.4</span> Dal codice sorgente all’esecuzione</h2>
+<p>Per comprendere come un programma scritto in un linguaggio di programmazione passi dal file di testo contenente il codice sorgente all’esecuzione delle istruzioni da parte della CPU, è fondamentale capire che questo processo richiede un programma che interpreti il codice sorgente. Tale programma può essere un <strong>compilatore</strong> o un <strong>interprete</strong>, le due macrocategorie che definiscono come il codice sorgente viene tradotto ed eseguito.</p>
+<p>Un <strong>compilatore</strong> è un programma che traduce l’intero codice sorgente di un programma scritto in un linguaggio di alto livello (come C o C++) in codice macchina, che è il linguaggio comprensibile direttamente dalla CPU. Questa traduzione avviene una sola volta, generando un file eseguibile che può essere eseguito direttamente dalla CPU.</p>
+<p>Un <strong>interprete</strong>, invece, è un programma che esegue il codice sorgente direttamente, istruzione per istruzione, senza produrre un file eseguibile separato. L’interprete legge una riga di codice, la traduce in codice macchina e la esegue immediatamente. Questo processo viene ripetuto per ogni riga del codice sorgente.</p>
+<p>È importante notare che alcuni linguaggi di programmazione possono essere sia compilati che interpretati, a seconda dell’implementazione disponibile. Ad esempio, Java utilizza sia la compilazione (per generare bytecode) che l’interpretazione, e la Java Virtual Machine (JVM) spesso utilizza anche la compilazione just-in-time (JIT) per tradurre il bytecode in codice macchina nativo durante l’esecuzione.</p>
+<p>Detto ciò i passaggi macro perché un programma sia eseguito, sono:</p>
+<ol type="1">
+<li><p>Il programmatore scrive il codice sorgente utilizzando un editor di testo o un ambiente di sviluppo integrato (integrated development environment, IDE). Questo codice contiene le istruzioni del programma, scritte secondo la sintassi del linguaggio di programmazione scelto.</p></li>
+<li><p>L’interpreto o il compilatore vengono eseguiti con input il programma e un componente, l’analizzatore lessicale, legge il codice sorgente e lo divide in lessemi, che sono sequenze di caratteri che corrispondono agli elementi <em>atomici</em> del linguaggio. Ogni lessema viene identificato come un token specifico, come una parola chiave, un operatore o un identificatore.</p></li>
+<li><p>A seguire un secondo compoenente, il parser, riceve la sequenza di token dall’analizzatore lessicale e costruisce un albero di sintassi, che rappresenta la struttura grammaticale del programma. Il parser verifica che il codice rispetti le regole sintattiche del linguaggio.</p></li>
+<li><p>Un altro componente effettua la verifica che il programma abbia un senso logico. Ad esempio, controlla che le variabili siano dichiarate prima di essere utilizzate e che i tipi di dati siano compatibili con le operazioni eseguite su di essi.</p></li>
+<li><p>Il compilatore, a questo punto, genera una rappresentazione intermedia del programma, che è più vicina al linguaggio macchina ma ancora indipendente dall’architettura specifica del computer. Ciò è tipico dei linguaggi compilati, anche se alcuni interpreti possono generare un bytecode intermedio.</p></li>
+<li><p>Il compilatore ottimizza codice intermedio al fine di migliorare le prestazioni del programma, riducendo il numero di istruzioni o migliorando l’efficienza delle operazioni.</p></li>
+<li><p>Il codice intermedio ottimizzato viene tradotto in codice macchina, che è specifico per l’architettura del computer su cui il programma verrà eseguito.</p></li>
+<li><p>Linking: Il codice macchina viene combinato con altre librerie e moduli necessari per formare un eseguibile completo.</p></li>
+<li><p>Esecuzione: L’eseguibile viene caricato nella memoria del computer e il processore esegue le istruzioni, portando a termine le operazioni definite nel programma.</p></li>
+</ol>
+<p>Nel caso di un interprete, i passaggi di generazione del codice intermedio e macchina possono essere sostituiti da una valutazione diretta delle istruzioni del programma, eseguendole una per una. In pratica, l’interprete traduce ogni singola istruzione del codice sorgente in un formato conprensibile dalla CPU e passa questa istruzione alla CPU stessa per l’esecuzione. Questo processo continua fino a quando tutte le istruzioni del programma non sono state eseguite.</p>
 </section>
 <section id="ciclo-di-vita-del-software" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="ciclo-di-vita-del-software"><span class="header-section-number">1.5</span> Ciclo di vita del software</h2>
-<p>Un <strong>software</strong> è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia è quindi: software, programmi, istruzioni.</p>
+<p>Un <strong>software</strong> è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia è, quindi: software, programmi, istruzioni.</p>
 <p>Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi.</p>
 <p>Per creare il software è necessario percorrere una sequenza di fasi ben definita che, concisamente, è:</p>
 <ul>

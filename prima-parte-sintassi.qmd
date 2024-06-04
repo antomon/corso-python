@@ -5,13 +5,27 @@ citation-location: margin
 
 # Sintassi dei linguaggi di programmazione
 
-I linguaggi di programmazione sono strumenti utilizzati per implementare algoritmi in modo che possano essere eseguiti da un computer. Un linguaggio di programmazione ha due componenti principali: la **sintassi** e la **semantica**.
+Abbiamo visto come i linguaggi di programmazione siano degli insiemi di regole formali con cui si scrivono programmi eseguibili da computer. I linguaggio di programmazione ha due componenti principali: la **sintassi** e la **semantica**.
 
-## Sintassi
+Partiamo dalla **sintassi** di un linguaggio di programmazione che possiamo considerare come l'insieme di regole che definisce la struttura e la forma delle istruzioni, cioè le unità logiche di esecuzione del programma. È come la grammatica in una lingua naturale e stabilisce quali combinazioni di simboli sono considerate costrutti validi nel linguaggio.
 
-La **sintassi** di un linguaggio di programmazione è l'insieme di regole che definiscono come devono essere scritte le istruzioni, cioè le unità logiche di esecuzione del programma. È come la grammatica in una lingua naturale e stabilisce quali combinazioni di simboli sono considerate costrutti validi nel linguaggio.
+Per esempio, la sintassi determina quali parole chiave, operatori, separatori e altri elementi sono ammessi e in quale ordine devono apparire. Una sintassi corretta è fondamentale per garantire che il programma sia privo di errori formali e possa essere eseguito senza problemi.
 
-Partiamo dagli elementi atomici della sintassi, detti **token**, per poi risalire fino al programma:
+L'importanza della comprensione della sintassi è simile alla buona conoscenza per un linguaggio naturale:
+
+1. Leggibilità del codice: Una corretta comprensione della sintassi permette di scrivere codice più chiaro e comprensibile agli altri programmatori. Una buona formattazione e organizzazione del codice facilita la manutenzione e la collaborazione su progetti di programmazione.
+
+2. Efficienza nella risoluzione dei problemi: Conoscere bene la sintassi del linguaggio aiuta a trovare soluzioni efficienti ai problemi, poiché si è consapevoli delle strutture e delle funzionalità native del linguaggio che possono essere utilizzate per risolvere determinati compiti.
+
+3. Sviluppo di codice robusto e sicuro: Una comprensione approfondita della sintassi aiuta a scrivere codice più robusto e sicuro, riducendo il rischio di bug e vulnerabilità nel software.
+
+4. Adattabilità a nuovi contesti e tecnologie: Con una solida conoscenza della sintassi di base, è più facile imparare nuovi concetti, framework e librerie nel linguaggio di programmazione, consentendoci di sfruttare il lavoro e l'innovazione prodotta da altri.
+
+5. Possibilità di esplorazione creativa: Capire la sintassi di un linguaggio offre la flessibilità necessaria per sperimentare e innovare, consentendo ai programmatori di creare soluzioni originali e creative ai problemi.
+
+## Token
+
+Gli elementi atomici della sintassi sono i **token**. Essi compongono tutte le istruzioni e possono essere sia prodotti dal programmatore che generati dall'analisi del testo da parte dell'interprete o compilatore. La comprensione di quali token siano validi, ci permette sia di scrivere istruzioni corrette, sia di sfruttare appieno i costrutti del linguaggio:
 
 - Parole chiave: Sono termini riservati del linguaggio che hanno significati specifici e non possono essere utilizzati per altri scopi, come `if`, `else`, `while`, `for`, ecc.
 
@@ -59,49 +73,43 @@ if x == 10:
   - Il pattern per un letterale numerico è una sequenza di cifre.
   - Il pattern per il delimitatore `:` è la stringa esatta ":".
 
-### Analizzatore lessicale e parser
+## Analizzatore lessicale e parser
 
 L'**analizzatore lessicale** (o _lexer_) è un componente del compilatore o interprete che prende in input il codice sorgente del programma e lo divide in lessemi. Esso confronta ciascun lessema con i pattern definiti per il linguaggio di programmazione e genera una sequenza di token. Questi token sono poi passati al parser.
 
-Il **parser** è un altro componente del compilatore o interprete che prende in input la sequenza di token generata dall'analizzatore lessicale e verifica che la sequenza rispetti le regole sintattiche del linguaggio di programmazione. Il parser analizza i token per formare una struttura gerarchica che rappresenti le relazioni grammaticali tra di essi. Questa struttura interna è spesso un albero di sintassi (_parse tree_ o _syntax tree_), che riflette la struttura grammaticale del codice sorgente, solitamente descritta usando una forma standard di notazione come la BNF (Backus-Naur Form) o varianti di essa.[^1-prima-parte-sintassi-semantica] L'albero di sintassi viene utilizzato per ulteriori fasi di compilazione o interpretazione, come l'analisi semantica e la generazione del codice. Ad esempio, il parser può verificare che le espressioni aritmetiche siano ben formate, che le istruzioni siano correttamente annidate e che le dichiarazioni di variabili siano valide.
+Ad esempio, il codice `if x == 10:` viene trasformato in una sequenza di token: `[IF, NAME(x), EQEQUAL, NUMBER(10), COLON]`.
 
-[^1-prima-parte-sintassi-semantica]: La BNF (Backus-Naur form o Backus normal form) è una metasintassi, ovvero un formalismo attraverso cui è possibile descrivere la sintassi di linguaggi formali (il prefisso meta ha proprio a che vedere con la natura circolare di questa definizione). Si tratta di uno strumento molto usato per descrivere in modo preciso e non ambiguo la sintassi dei linguaggi di programmazione, dei protocolli di rete e così via, benché non manchino in letteratura esempi di sue applicazioni a contesti anche non informatici e addirittura non tecnologici. Un esempio è la grammatica di [Python](https://docs.python.org/3/reference/grammar.html)
+Il **parser** è un altro componente del compilatore o interprete che prende in input la sequenza di token generata dall'analizzatore lessicale e verifica che la sequenza rispetti le regole sintattiche del linguaggio di programmazione. Il parser analizza i token per formare una struttura gerarchica che rappresenti le relazioni grammaticali tra di essi. Questa struttura interna è spesso un albero di sintassi (_parse tree_ o _syntax tree_), che riflette la struttura grammaticale del codice sorgente, solitamente descritta usando una forma standard di notazione come la BNF (Backus-Naur Form) o varianti di essa [^1-prima-parte-sintassi-semantica]. L'albero di sintassi ottenuto viene utilizzato per le successive fasi di compilazione o interpretazione, come quella di analisi semantica e di generazione del codice eseguibile. Ad esempio, il parser può verificare che le espressioni aritmetiche siano ben formate, che le istruzioni siano correttamente annidate e che le dichiarazioni di variabili siano valide.
+
+[^1-prima-parte-sintassi-semantica]: La BNF (Backus-Naur form o Backus normal form) è una metasintassi, ovvero un formalismo attraverso cui è possibile descrivere la sintassi di linguaggi formali (il prefisso meta ha proprio a che vedere con la natura circolare di questa definizione). Si tratta di uno strumento molto usato per descrivere in modo preciso e non ambiguo la sintassi dei linguaggi di programmazione, dei protocolli di rete e così via, benché non manchino in letteratura esempi di sue applicazioni a contesti anche non informatici e addirittura non tecnologici. Un esempio è la grammatica di [Python](https://docs.python.org/3/reference/grammar.html).
 
 ### Espressioni
 
-Un'espressione è una combinazione di lessemi che viene valutata per produrre un risultato. 
+Un'espressione è una combinazione di lessemi che viene valutata per produrre un risultato. Le espressioni sono fondamentali nei linguaggi di programmazione perché permettono di eseguire calcoli, prendere decisioni e manipolare dati.
 
-Esempi di espressioni includono:
+Ecco alcune tipologie di espressioni (notazioni in Python):
 
-- `5 + 3`.
-- `x * 2`.
-- `y / 4.0`.
-- `max(a, b)`.
-- `"Hello, " + "world!"`.
+1. Espressioni aritmetiche: Combinano letterali numerici, identificatori valorizzabili in numeri e operatori aritmetici per eseguire calcoli matematici. Esempi: `5 + 3`, `y / 4.0`, `"Hello, " + "world!"`. 
 
-### Istruzioni semplici
+2. Espressioni logiche: Applicano operatori logici per valutare condizioni e produrre valori booleani (vero o falso) a letterali e identificatori. Esempi: `x or 5`, `not y`, `a and b`.
+
+3. Espressioni di confronto: Confrontano due valori usando operatori di confronto e restituiscono valori booleani, sempre a partire da letterali e identificatori. Esempi: `x < y`, `x != 42`, `a >= b`.
+
+4. Espressioni di chiamata a funzione: Invocano identificatori particolari, funzioni e metodi di oggetti, spesso con parametri definiti da identificatori e letterali, per eseguire operazioni più complesse. Esempi: `max(a, b)`, `sin(theta)`, `my_function(x, 42)`.
+
+5. Espressioni di manipolazione di contenitori di dati: Creano e manipolano strutture dati come liste, dizionari, tuple e insiemi contenenti identificatori e letterali. Esempi: `[1, x, 3]`, `{ 'key': 'value' }`, `( 'y', 42 )`
+
+6. Espressioni condizionali (ternarie): Valutano espressioni e restituiscono un valore basato sul risultato. Esempi: `x if x > y else y`, `'Even' if n % 2 == 0 else 'Odd'`.
+
+Le espressioni si possono comporre in espressioni più complesse come accade per quelle matematiche pur che siano rispettate le regole di compatibilità tra operatori, identificatori e letterali; esempio `(x < y) and sin(theta)`. 
+
+## Istruzioni semplici
 
 Le **istruzioni semplici** sono operazioni atomiche secondo il linguaggio e sono costituite da lessemi ed espressioni per compiere operazioni di base. Gli esempi principali includono: 
 
-- Assegnazione: Utilizza un operatore di assegnazione (ad esempio, `=`) per attribuire un valore a una variabile, che possiamo pensare come un nome simbolico rappresentante una posizione dove è memorizzato un valore. Esempio:
+- Espressioni: È eseguibile dal compilatore o interprete quindi è una delle istruzioni semplici più importanti quando a sé stante. Sono presenti all'interno di istruzioni semplici e composte.
 
-  ```python
-  x = 5
-  ```
-  - `x`: Identificatore della variabile.
-  - `=`: Operatore di assegnazione.
-  - `5`: Letterale numerico intero.
-
-- Input/output: Utilizza parole chiave o funzioni di libreria per leggere valori dall'input o scrivere valori all'output. Esempio:
-
-  ```python
-  print("Hello, World!")
-  ```
-  - `print`: Parola chiave o identificatore di funzione di libreria.
-  - `"Hello, World!"`: Letterale stringa.
-  L'esecuzione dell'istruzione produce `"Hello, World!"` in output.
-
-- Assegnazione ad espressione: Combinazione di variabili, operatori e valori che producono un risultato assegnato ad una variabile. Esempio:
+- Assegnazione: Utilizza un operatore di assegnazione (ad esempio, `=`) per attribuire un valore rappresentato da un letterale, una espressione o un identificatore, ad un identificatore di variabile, che possiamo pensare come un nome simbolico rappresentante una posizione dove è memorizzato un valore. Esempio:
 
     ```python
     z = (x * 2) + (y / 2)
@@ -113,11 +121,14 @@ Le **istruzioni semplici** sono operazioni atomiche secondo il linguaggio e sono
   - `+`: Operatore aritmetico che somma i risultati delle due espressioni in una più complessa.
   L'esecuzione dell'istruzione produce un risultato valido solo se `x` e `y` sono associate a valori numerici e ciò perché non tutte le istruzioni sintatticamente corrette sono semanticamente corrette. D'altronde ciò non deve essere preso come regola, perché se `*` fosse un operatore che ripete quanto a sinistra un numero di volte definito dal valore di destra e `/` la divisione del valore di sinistra in parti di numero pari a quanto a destra, allora `x` e `y` potrebbero essere stringhe.
 
-### Istruzioni complesse e blocchi di codice
 
-Le **istruzioni complesse** sono costituite da più istruzioni semplici e possono includere strutture di controllo del flusso, come condizioni (`if`), cicli (`for`, `while`) ed eccezioni (`try`, `catch`). Queste istruzioni sono utilizzate per organizzare il flusso di esecuzione del programma e possono contenere altre istruzioni semplici o complesse al loro interno.
 
-Un **blocco di codice** è una sezione del codice che raggruppa una serie di istruzioni che devono essere eseguite insieme. I blocchi di codice sono spesso utilizzati all'interno delle istruzioni complesse per delimitare il gruppo di istruzioni che devono essere eseguite in determinate condizioni o iterazioni. 
+
+## Istruzioni composte e blocchi di codice
+
+Le **istruzioni composte** sono costituite da più istruzioni semplici e possono includere strutture di controllo del flusso, come condizioni (`if`), cicli (`for`, `while`) ed eccezioni (`try`, `catch`). Queste istruzioni sono utilizzate per organizzare il flusso di esecuzione del programma e possono contenere altre istruzioni semplici o composte al loro interno.
+
+Un **blocco di codice** è una sezione del codice che raggruppa una serie di istruzioni che devono essere eseguite insieme. I blocchi di codice sono spesso utilizzati all'interno delle istruzioni composte per delimitare il gruppo di istruzioni che devono essere eseguite in determinate condizioni o iterazioni. 
 
 In molti linguaggi di programmazione, i blocchi di codice sono delimitati da parentesi graffe (`{}`), mentre in altri linguaggi, come Python, l'indentazione è utilizzata per indicare l'inizio e la fine di un blocco di codice.
 
@@ -133,7 +144,7 @@ Alcuni esempi di istruzione e blocco di codice:
   }
   ```
   In questo esempio:
-  - `if (x > 0)` è un'istruzione complessa.
+  - `if (x > 0)` è un'istruzione composta.
   - `{ printf("x è positivo\n"); y = x * 2; }` è un blocco di codice che viene eseguito se la condizione dell'istruzione `if` è vera.
 
 - Esempio in Python:
@@ -145,7 +156,7 @@ Alcuni esempi di istruzione e blocco di codice:
     y = x * 2
   ```
   In questo esempio:
-  - `if x > 0:` è un'istruzione complessa.
+  - `if x > 0:` è un'istruzione composta.
   - Le righe indentate sotto l'istruzione `if` (`print("x è positivo")` e `y = x * 2`) costituiscono un blocco di codice che viene eseguito se la condizione dell'istruzione `if` è vera.
 
 Altri esempi: 
@@ -184,7 +195,7 @@ Altri esempi:
   - `{ ... }`: Delimitatori che racchiudono il blocco di codice.
   - `somma = somma + i`: Operazione aritmetica.
 
-### Organizzazione del codice in un programma
+## Organizzazione del codice in un programma
 
 Il programma è solitamente salvato in un file di testo in righe. Queste righe possono essere classificate in righe fisiche e righe logiche.
 
@@ -208,5 +219,5 @@ int y = (10 + 20 + 30 + /* <1> */
 1. Prima riga fisica della riga logica.
 2. Seconda riga fisica della riga logica.
 
-Il concetto di righe fisiche e logiche esiste perché le istruzioni (o righe logiche) possono essere lunghe e complesse, richiedendo più righe fisiche per migliorare la leggibilità e la gestione del codice.
+Il concetto di righe fisiche e logiche esiste perché le istruzioni (o righe logiche) possono essere lunghe e composte, richiedendo più righe fisiche per migliorare la leggibilità e la gestione del codice.
 

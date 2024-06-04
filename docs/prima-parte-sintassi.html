@@ -327,14 +327,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Indice</h2>
    
   <ul>
-  <li><a href="#sintassi" id="toc-sintassi" class="nav-link active" data-scroll-target="#sintassi"><span class="header-section-number">3.1</span> Sintassi</a>
+  <li><a href="#token" id="toc-token" class="nav-link active" data-scroll-target="#token"><span class="header-section-number">3.1</span> Token</a></li>
+  <li><a href="#analizzatore-lessicale-e-parser" id="toc-analizzatore-lessicale-e-parser" class="nav-link" data-scroll-target="#analizzatore-lessicale-e-parser"><span class="header-section-number">3.2</span> Analizzatore lessicale e parser</a>
   <ul class="collapse">
-  <li><a href="#analizzatore-lessicale-e-parser" id="toc-analizzatore-lessicale-e-parser" class="nav-link" data-scroll-target="#analizzatore-lessicale-e-parser"><span class="header-section-number">3.1.1</span> Analizzatore lessicale e parser</a></li>
-  <li><a href="#espressioni" id="toc-espressioni" class="nav-link" data-scroll-target="#espressioni"><span class="header-section-number">3.1.2</span> Espressioni</a></li>
-  <li><a href="#istruzioni-semplici" id="toc-istruzioni-semplici" class="nav-link" data-scroll-target="#istruzioni-semplici"><span class="header-section-number">3.1.3</span> Istruzioni semplici</a></li>
-  <li><a href="#istruzioni-complesse-e-blocchi-di-codice" id="toc-istruzioni-complesse-e-blocchi-di-codice" class="nav-link" data-scroll-target="#istruzioni-complesse-e-blocchi-di-codice"><span class="header-section-number">3.1.4</span> Istruzioni complesse e blocchi di codice</a></li>
-  <li><a href="#organizzazione-del-codice-in-un-programma" id="toc-organizzazione-del-codice-in-un-programma" class="nav-link" data-scroll-target="#organizzazione-del-codice-in-un-programma"><span class="header-section-number">3.1.5</span> Organizzazione del codice in un programma</a></li>
+  <li><a href="#espressioni" id="toc-espressioni" class="nav-link" data-scroll-target="#espressioni"><span class="header-section-number">3.2.1</span> Espressioni</a></li>
   </ul></li>
+  <li><a href="#istruzioni-semplici" id="toc-istruzioni-semplici" class="nav-link" data-scroll-target="#istruzioni-semplici"><span class="header-section-number">3.3</span> Istruzioni semplici</a></li>
+  <li><a href="#istruzioni-composte-e-blocchi-di-codice" id="toc-istruzioni-composte-e-blocchi-di-codice" class="nav-link" data-scroll-target="#istruzioni-composte-e-blocchi-di-codice"><span class="header-section-number">3.4</span> Istruzioni composte e blocchi di codice</a></li>
+  <li><a href="#organizzazione-del-codice-in-un-programma" id="toc-organizzazione-del-codice-in-un-programma" class="nav-link" data-scroll-target="#organizzazione-del-codice-in-un-programma"><span class="header-section-number">3.5</span> Organizzazione del codice in un programma</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-sintassi.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
@@ -360,11 +360,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>I linguaggi di programmazione sono strumenti utilizzati per implementare algoritmi in modo che possano essere eseguiti da un computer. Un linguaggio di programmazione ha due componenti principali: la <strong>sintassi</strong> e la <strong>semantica</strong>.</p>
-<section id="sintassi" class="level2 page-columns page-full" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="sintassi"><span class="header-section-number">3.1</span> Sintassi</h2>
-<p>La <strong>sintassi</strong> di un linguaggio di programmazione è l’insieme di regole che definiscono come devono essere scritte le istruzioni, cioè le unità logiche di esecuzione del programma. È come la grammatica in una lingua naturale e stabilisce quali combinazioni di simboli sono considerate costrutti validi nel linguaggio.</p>
-<p>Partiamo dagli elementi atomici della sintassi, detti <strong>token</strong>, per poi risalire fino al programma:</p>
+<p>Abbiamo visto come i linguaggi di programmazione siano degli insiemi di regole formali con cui si scrivono programmi eseguibili da computer. I linguaggio di programmazione ha due componenti principali: la <strong>sintassi</strong> e la <strong>semantica</strong>.</p>
+<p>Partiamo dalla <strong>sintassi</strong> di un linguaggio di programmazione che possiamo considerare come l’insieme di regole che definisce la struttura e la forma delle istruzioni, cioè le unità logiche di esecuzione del programma. È come la grammatica in una lingua naturale e stabilisce quali combinazioni di simboli sono considerate costrutti validi nel linguaggio.</p>
+<p>Per esempio, la sintassi determina quali parole chiave, operatori, separatori e altri elementi sono ammessi e in quale ordine devono apparire. Una sintassi corretta è fondamentale per garantire che il programma sia privo di errori formali e possa essere eseguito senza problemi.</p>
+<p>L’importanza della comprensione della sintassi è simile alla buona conoscenza per un linguaggio naturale:</p>
+<ol type="1">
+<li><p>Leggibilità del codice: Una corretta comprensione della sintassi permette di scrivere codice più chiaro e comprensibile agli altri programmatori. Una buona formattazione e organizzazione del codice facilita la manutenzione e la collaborazione su progetti di programmazione.</p></li>
+<li><p>Efficienza nella risoluzione dei problemi: Conoscere bene la sintassi del linguaggio aiuta a trovare soluzioni efficienti ai problemi, poiché si è consapevoli delle strutture e delle funzionalità native del linguaggio che possono essere utilizzate per risolvere determinati compiti.</p></li>
+<li><p>Sviluppo di codice robusto e sicuro: Una comprensione approfondita della sintassi aiuta a scrivere codice più robusto e sicuro, riducendo il rischio di bug e vulnerabilità nel software.</p></li>
+<li><p>Adattabilità a nuovi contesti e tecnologie: Con una solida conoscenza della sintassi di base, è più facile imparare nuovi concetti, framework e librerie nel linguaggio di programmazione, consentendoci di sfruttare il lavoro e l’innovazione prodotta da altri.</p></li>
+<li><p>Possibilità di esplorazione creativa: Capire la sintassi di un linguaggio offre la flessibilità necessaria per sperimentare e innovare, consentendo ai programmatori di creare soluzioni originali e creative ai problemi.</p></li>
+</ol>
+<section id="token" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="token"><span class="header-section-number">3.1</span> Token</h2>
+<p>Gli elementi atomici della sintassi sono i <strong>token</strong>. Essi compongono tutte le istruzioni e possono essere sia prodotti dal programmatore che generati dall’analisi del testo da parte dell’interprete o compilatore. La comprensione di quali token siano validi, ci permette sia di scrivere istruzioni corrette, sia di sfruttare appieno i costrutti del linguaggio:</p>
 <ul>
 <li><p>Parole chiave: Sono termini riservati del linguaggio che hanno significati specifici e non possono essere utilizzati per altri scopi, come <code>if</code>, <code>else</code>, <code>while</code>, <code>for</code>, ecc.</p></li>
 <li><p>Operatori: Simboli utilizzati per eseguire operazioni su identificatori e letterali, come <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>=</code>, <code>==</code>, ecc.</p></li>
@@ -403,42 +412,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Il pattern per il delimitatore <code>:</code> è la stringa esatta “:”.</li>
 </ul></li>
 </ul>
-<section id="analizzatore-lessicale-e-parser" class="level3 page-columns page-full" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="analizzatore-lessicale-e-parser"><span class="header-section-number">3.1.1</span> Analizzatore lessicale e parser</h3>
-<p>L’<strong>analizzatore lessicale</strong> (o <em>lexer</em>) è un componente del compilatore o interprete che prende in input il codice sorgente del programma e lo divide in lessemi. Esso confronta ciascun lessema con i pattern definiti per il linguaggio di programmazione e genera una sequenza di token. Questi token sono poi passati al parser.</p>
-<p>Il <strong>parser</strong> è un altro componente del compilatore o interprete che prende in input la sequenza di token generata dall’analizzatore lessicale e verifica che la sequenza rispetti le regole sintattiche del linguaggio di programmazione. Il parser analizza i token per formare una struttura gerarchica che rappresenti le relazioni grammaticali tra di essi. Questa struttura interna è spesso un albero di sintassi (<em>parse tree</em> o <em>syntax tree</em>), che riflette la struttura grammaticale del codice sorgente, solitamente descritta usando una forma standard di notazione come la BNF (Backus-Naur Form) o varianti di essa.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> L’albero di sintassi viene utilizzato per ulteriori fasi di compilazione o interpretazione, come l’analisi semantica e la generazione del codice. Ad esempio, il parser può verificare che le espressioni aritmetiche siano ben formate, che le istruzioni siano correttamente annidate e che le dichiarazioni di variabili siano valide.</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;La BNF (Backus-Naur form o Backus normal form) è una metasintassi, ovvero un formalismo attraverso cui è possibile descrivere la sintassi di linguaggi formali (il prefisso meta ha proprio a che vedere con la natura circolare di questa definizione). Si tratta di uno strumento molto usato per descrivere in modo preciso e non ambiguo la sintassi dei linguaggi di programmazione, dei protocolli di rete e così via, benché non manchino in letteratura esempi di sue applicazioni a contesti anche non informatici e addirittura non tecnologici. Un esempio è la grammatica di <a href="https://docs.python.org/3/reference/grammar.html">Python</a></p></div></div></section>
-<section id="espressioni" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="espressioni"><span class="header-section-number">3.1.2</span> Espressioni</h3>
-<p>Un’espressione è una combinazione di lessemi che viene valutata per produrre un risultato.</p>
-<p>Esempi di espressioni includono:</p>
-<ul>
-<li><code>5 + 3</code>.</li>
-<li><code>x * 2</code>.</li>
-<li><code>y / 4.0</code>.</li>
-<li><code>max(a, b)</code>.</li>
-<li><code>"Hello, " + "world!"</code>.</li>
-</ul>
 </section>
-<section id="istruzioni-semplici" class="level3" data-number="3.1.3">
-<h3 data-number="3.1.3" class="anchored" data-anchor-id="istruzioni-semplici"><span class="header-section-number">3.1.3</span> Istruzioni semplici</h3>
+<section id="analizzatore-lessicale-e-parser" class="level2 page-columns page-full" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="analizzatore-lessicale-e-parser"><span class="header-section-number">3.2</span> Analizzatore lessicale e parser</h2>
+<p>L’<strong>analizzatore lessicale</strong> (o <em>lexer</em>) è un componente del compilatore o interprete che prende in input il codice sorgente del programma e lo divide in lessemi. Esso confronta ciascun lessema con i pattern definiti per il linguaggio di programmazione e genera una sequenza di token. Questi token sono poi passati al parser.</p>
+<p>Ad esempio, il codice <code>if x == 10:</code> viene trasformato in una sequenza di token: <code>[IF, NAME(x), EQEQUAL, NUMBER(10), COLON]</code>.</p>
+<p>Il <strong>parser</strong> è un altro componente del compilatore o interprete che prende in input la sequenza di token generata dall’analizzatore lessicale e verifica che la sequenza rispetti le regole sintattiche del linguaggio di programmazione. Il parser analizza i token per formare una struttura gerarchica che rappresenti le relazioni grammaticali tra di essi. Questa struttura interna è spesso un albero di sintassi (<em>parse tree</em> o <em>syntax tree</em>), che riflette la struttura grammaticale del codice sorgente, solitamente descritta usando una forma standard di notazione come la BNF (Backus-Naur Form) o varianti di essa <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. L’albero di sintassi ottenuto viene utilizzato per le successive fasi di compilazione o interpretazione, come quella di analisi semantica e di generazione del codice eseguibile. Ad esempio, il parser può verificare che le espressioni aritmetiche siano ben formate, che le istruzioni siano correttamente annidate e che le dichiarazioni di variabili siano valide.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;La BNF (Backus-Naur form o Backus normal form) è una metasintassi, ovvero un formalismo attraverso cui è possibile descrivere la sintassi di linguaggi formali (il prefisso meta ha proprio a che vedere con la natura circolare di questa definizione). Si tratta di uno strumento molto usato per descrivere in modo preciso e non ambiguo la sintassi dei linguaggi di programmazione, dei protocolli di rete e così via, benché non manchino in letteratura esempi di sue applicazioni a contesti anche non informatici e addirittura non tecnologici. Un esempio è la grammatica di <a href="https://docs.python.org/3/reference/grammar.html">Python</a>.</p></div></div><section id="espressioni" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="espressioni"><span class="header-section-number">3.2.1</span> Espressioni</h3>
+<p>Un’espressione è una combinazione di lessemi che viene valutata per produrre un risultato. Le espressioni sono fondamentali nei linguaggi di programmazione perché permettono di eseguire calcoli, prendere decisioni e manipolare dati.</p>
+<p>Ecco alcune tipologie di espressioni (notazioni in Python):</p>
+<ol type="1">
+<li><p>Espressioni aritmetiche: Combinano letterali numerici, identificatori valorizzabili in numeri e operatori aritmetici per eseguire calcoli matematici. Esempi: <code>5 + 3</code>, <code>y / 4.0</code>, <code>"Hello, " + "world!"</code>.</p></li>
+<li><p>Espressioni logiche: Applicano operatori logici per valutare condizioni e produrre valori booleani (vero o falso) a letterali e identificatori. Esempi: <code>x or 5</code>, <code>not y</code>, <code>a and b</code>.</p></li>
+<li><p>Espressioni di confronto: Confrontano due valori usando operatori di confronto e restituiscono valori booleani, sempre a partire da letterali e identificatori. Esempi: <code>x &lt; y</code>, <code>x != 42</code>, <code>a &gt;= b</code>.</p></li>
+<li><p>Espressioni di chiamata a funzione: Invocano identificatori particolari, funzioni e metodi di oggetti, spesso con parametri definiti da identificatori e letterali, per eseguire operazioni più complesse. Esempi: <code>max(a, b)</code>, <code>sin(theta)</code>, <code>my_function(x, 42)</code>.</p></li>
+<li><p>Espressioni di manipolazione di contenitori di dati: Creano e manipolano strutture dati come liste, dizionari, tuple e insiemi contenenti identificatori e letterali. Esempi: <code>[1, x, 3]</code>, <code>{ 'key': 'value' }</code>, <code>( 'y', 42 )</code></p></li>
+<li><p>Espressioni condizionali (ternarie): Valutano espressioni e restituiscono un valore basato sul risultato. Esempi: <code>x if x &gt; y else y</code>, <code>'Even' if n % 2 == 0 else 'Odd'</code>.</p></li>
+</ol>
+<p>Le espressioni si possono comporre in espressioni più complesse come accade per quelle matematiche pur che siano rispettate le regole di compatibilità tra operatori, identificatori e letterali; esempio <code>(x &lt; y) and sin(theta)</code>.</p>
+</section>
+</section>
+<section id="istruzioni-semplici" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="istruzioni-semplici"><span class="header-section-number">3.3</span> Istruzioni semplici</h2>
 <p>Le <strong>istruzioni semplici</strong> sono operazioni atomiche secondo il linguaggio e sono costituite da lessemi ed espressioni per compiere operazioni di base. Gli esempi principali includono:</p>
 <ul>
-<li><p>Assegnazione: Utilizza un operatore di assegnazione (ad esempio, <code>=</code>) per attribuire un valore a una variabile, che possiamo pensare come un nome simbolico rappresentante una posizione dove è memorizzato un valore. Esempio:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><code>x</code>: Identificatore della variabile.</li>
-<li><code>=</code>: Operatore di assegnazione.</li>
-<li><code>5</code>: Letterale numerico intero.</li>
-</ul></li>
-<li><p>Input/output: Utilizza parole chiave o funzioni di libreria per leggere valori dall’input o scrivere valori all’output. Esempio:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><code>print</code>: Parola chiave o identificatore di funzione di libreria.</li>
-<li><code>"Hello, World!"</code>: Letterale stringa. L’esecuzione dell’istruzione produce <code>"Hello, World!"</code> in output.</li>
-</ul></li>
-<li><p>Assegnazione ad espressione: Combinazione di variabili, operatori e valori che producono un risultato assegnato ad una variabile. Esempio:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>z <span class="op">=</span> (x <span class="op">*</span> <span class="dv">2</span>) <span class="op">+</span> (y <span class="op">/</span> <span class="dv">2</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<li><p>Espressioni: È eseguibile dal compilatore o interprete quindi è una delle istruzioni semplici più importanti quando a sé stante. Sono presenti all’interno di istruzioni semplici e composte.</p></li>
+<li><p>Assegnazione: Utilizza un operatore di assegnazione (ad esempio, <code>=</code>) per attribuire un valore rappresentato da un letterale, una espressione o un identificatore, ad un identificatore di variabile, che possiamo pensare come un nome simbolico rappresentante una posizione dove è memorizzato un valore. Esempio:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>z <span class="op">=</span> (x <span class="op">*</span> <span class="dv">2</span>) <span class="op">+</span> (y <span class="op">/</span> <span class="dv">2</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>z</code>: Identificatore della variabile.</li>
 <li><code>=</code>: Operatore di assegnazione.</li>
@@ -448,45 +449,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 </section>
-<section id="istruzioni-complesse-e-blocchi-di-codice" class="level3" data-number="3.1.4">
-<h3 data-number="3.1.4" class="anchored" data-anchor-id="istruzioni-complesse-e-blocchi-di-codice"><span class="header-section-number">3.1.4</span> Istruzioni complesse e blocchi di codice</h3>
-<p>Le <strong>istruzioni complesse</strong> sono costituite da più istruzioni semplici e possono includere strutture di controllo del flusso, come condizioni (<code>if</code>), cicli (<code>for</code>, <code>while</code>) ed eccezioni (<code>try</code>, <code>catch</code>). Queste istruzioni sono utilizzate per organizzare il flusso di esecuzione del programma e possono contenere altre istruzioni semplici o complesse al loro interno.</p>
-<p>Un <strong>blocco di codice</strong> è una sezione del codice che raggruppa una serie di istruzioni che devono essere eseguite insieme. I blocchi di codice sono spesso utilizzati all’interno delle istruzioni complesse per delimitare il gruppo di istruzioni che devono essere eseguite in determinate condizioni o iterazioni.</p>
+<section id="istruzioni-composte-e-blocchi-di-codice" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="istruzioni-composte-e-blocchi-di-codice"><span class="header-section-number">3.4</span> Istruzioni composte e blocchi di codice</h2>
+<p>Le <strong>istruzioni composte</strong> sono costituite da più istruzioni semplici e possono includere strutture di controllo del flusso, come condizioni (<code>if</code>), cicli (<code>for</code>, <code>while</code>) ed eccezioni (<code>try</code>, <code>catch</code>). Queste istruzioni sono utilizzate per organizzare il flusso di esecuzione del programma e possono contenere altre istruzioni semplici o composte al loro interno.</p>
+<p>Un <strong>blocco di codice</strong> è una sezione del codice che raggruppa una serie di istruzioni che devono essere eseguite insieme. I blocchi di codice sono spesso utilizzati all’interno delle istruzioni composte per delimitare il gruppo di istruzioni che devono essere eseguite in determinate condizioni o iterazioni.</p>
 <p>In molti linguaggi di programmazione, i blocchi di codice sono delimitati da parentesi graffe (<code>{}</code>), mentre in altri linguaggi, come Python, l’indentazione è utilizzata per indicare l’inizio e la fine di un blocco di codice.</p>
 <p>Alcuni esempi di istruzione e blocco di codice:</p>
 <ul>
 <li><p>Esempio in C:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  printf<span class="op">(</span><span class="st">"x è positivo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a>  y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  printf<span class="op">(</span><span class="st">"x è positivo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In questo esempio:</p>
 <ul>
-<li><code>if (x &gt; 0)</code> è un’istruzione complessa.</li>
+<li><code>if (x &gt; 0)</code> è un’istruzione composta.</li>
 <li><code>{ printf("x è positivo\n"); y = x * 2; }</code> è un blocco di codice che viene eseguito se la condizione dell’istruzione <code>if</code> è vera.</li>
 </ul></li>
 <li><p>Esempio in Python:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3"></a></span>
-<span id="cb6-4"><a href="#cb6-4"></a>  y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In questo esempio:</p>
 <ul>
-<li><code>if x &gt; 0:</code> è un’istruzione complessa.</li>
+<li><code>if x &gt; 0:</code> è un’istruzione composta.</li>
 <li>Le righe indentate sotto l’istruzione <code>if</code> (<code>print("x è positivo")</code> e <code>y = x * 2</code>) costituiscono un blocco di codice che viene eseguito se la condizione dell’istruzione <code>if</code> è vera.</li>
 </ul></li>
 </ul>
 <p>Altri esempi:</p>
 <ul>
 <li><p>Condizioni: Istruzioni che eseguono un blocco di codice solo se una condizione è vera. Esempio:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a></span>
-<span id="cb7-3"><a href="#cb7-3"></a>x <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>    printf<span class="op">(</span><span class="st">"x è positivo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a>x <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>    printf<span class="op">(</span><span class="st">"x è positivo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>if</code>: Parola chiave che introduce la condizione.</li>
 <li><code>(x &gt; 0)</code>: Condizione composta da: <code>x</code> identificatore di variabile, <code>&gt;</code> operatore di confronto e <code>0</code> letterale numerico intero.</li>
@@ -494,15 +495,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>print("x è positivo")</code>: Istruzione di output.</li>
 </ul></li>
 <li><p>Cicli: Istruzioni che ripetono un blocco di codice. Esempio:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="dt">int</span> n <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="dt">int</span> somma <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="dt">int</span> i<span class="op">;</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a>    somma <span class="op">=</span> somma <span class="op">+</span> i<span class="op">;</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="dt">int</span> n <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="dt">int</span> somma <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="dt">int</span> i<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>    somma <span class="op">=</span> somma <span class="op">+</span> i<span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>for</code>: Parola chiave che introduce il ciclo.</li>
 <li><code>(i = 0; i &lt; n; i++)</code>: Espressione di controllo del ciclo composta da: <code>i = 0</code> assegnazione iniziale, <code>i &lt; n</code> condizione di ciclo e <code>i++</code> incremento della variabile <code>i</code>.</li>
@@ -511,8 +512,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 </section>
-<section id="organizzazione-del-codice-in-un-programma" class="level3" data-number="3.1.5">
-<h3 data-number="3.1.5" class="anchored" data-anchor-id="organizzazione-del-codice-in-un-programma"><span class="header-section-number">3.1.5</span> Organizzazione del codice in un programma</h3>
+<section id="organizzazione-del-codice-in-un-programma" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="organizzazione-del-codice-in-un-programma"><span class="header-section-number">3.5</span> Organizzazione del codice in un programma</h2>
 <p>Il programma è solitamente salvato in un file di testo in righe. Queste righe possono essere classificate in righe fisiche e righe logiche.</p>
 <p>Una <strong>riga fisica</strong> è una linea di testo nel file sorgente del programma, terminata da un carattere di a capo.</p>
 <p>Esempio:</p>
@@ -537,10 +538,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="2">Seconda riga fisica della riga logica.</span>
 </dd>
 </dl>
-<p>Il concetto di righe fisiche e logiche esiste perché le istruzioni (o righe logiche) possono essere lunghe e complesse, richiedendo più righe fisiche per migliorare la leggibilità e la gestione del codice.</p>
+<p>Il concetto di righe fisiche e logiche esiste perché le istruzioni (o righe logiche) possono essere lunghe e composte, richiedendo più righe fisiche per migliorare la leggibilità e la gestione del codice.</p>
 
 
-</section>
 </section>
 
 

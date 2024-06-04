@@ -33,7 +33,7 @@ Le componenti il modello dati sono:
 
     - Copia e clonazione: Regole che determinano come i dati vengono copiati. Per esempio, in Python, la copia di una lista crea una nuova lista con gli stessi elementi, mentre la copia di un intero crea solo un riferimento allo stesso valore.
 
-### Linguaggi procedurali
+## Linguaggi procedurali
 
 Nei linguaggi di programmazione procedurali, il modello dati è incentrato su tipi di dati semplici e compositi che supportano lo stile di programmazione orientato alle funzioni e procedure. Alcune caratteristiche tipiche includono:
 
@@ -161,11 +161,11 @@ int main() {
 
 L'esempio mostra come nel modello dati del linguaggio C possono essere definiti dei tipi compositi (`Dato`, `Valore`) e delle operazioni su quelli (`stampa_dato`, `confronta_dato`, `inserisci_dato`, `cancella_dato`). Il codice, pur realizzante una semplice libreria, appare _slegato_, cioè con funzioni che si applicano a tipi di dati specifici solo dall'interpretazione degli identificatori della funzione stessa e dei suoi parametri, cioè senza un legame esplicito e non ambiguo, tra tipo e funzione.
 
-### Linguaggi orientati agli oggetti
+## Linguaggi orientati agli oggetti
 
 La programmazione orientata agli oggetti è un paradigma che utilizza **oggetti** per rappresentare concetti ed entità del mondo reale o astratto. Questo approccio si basa su un processo mentale fondamentale per risolvere problemi complessi: la decomposizione. Un problema complesso è più facilmente risolvibile se diviso in parti più piccole, ciascuna delle quali possiede uno stato e la possibilità di interagire con le altre parti. Questa divisione può essere effettuata per gradi, come se si osservasse sempre più da vicino il problema, effettivamente continunandone la specificazione, fino a raggiungere un livello sufficientemente di dettaglio da poter essere realizzato come istruzioni, codificate in costrutti permessi dalla sintassi del linguaggio, dell'oggetto.
 
-#### Oggetti
+### Oggetti
 
 Lo stato di un oggetto è definito dai suoi attributi, i cui valori possono essere altri oggetti già disponibili, sia definiti dall'utente che dal linguaggio. L'interazione tra diversi oggetti avviene attraverso i metodi, che sono funzioni associate agli oggetti che possono modificare lo stato dell'oggetto o invocare metodi su altri oggetti.
 
@@ -179,7 +179,7 @@ I membri di un oggetto (attributi e metodi) possono avere diverse limitazioni di
 
 L'**incapsulamento** è il principio su cui si basa la gestione della visibilità e guida la separazione del codice realizzante le specificità di un oggetto, da come è fruito dagli altri oggetti. Questo protegge l'integrità del suo stato e ne facilita la manutenzione del codice stesso, permettendo modifiche di implementazione, senza impatti sul codice esterno fintantoché non si cambiano i membri pubblici. Inoltre, se ben sfruttata nella progettazione, rende il codice più comprensibile e riduce la superficie d'attacco.
 
-#### Classi
+### Classi
 
 Un oggetto può essere generato da una struttura statica che ne definisce tutte le caratteristiche, la **classe**, oppure può essere creato a partire da un altro oggetto esistente, noto come **prototipo**.
 
@@ -189,13 +189,13 @@ La classe può inoltre definire metodi e attributi particolari, che possono esse
 
 Ciò, oltre ad essere uno strumento di progettazione utile di per sé, facilita il riuso del codice per mezzo dell'estensione, al posto della modifica, di funzionalità. La classe che eredita da un'altra classe si definisce _derivata_ dalla classe che, a sua volta, è detta _base_.
 
-#### Prototipi
+### Prototipi
 
 Alternativamente, alcuni linguaggi usano il concetto di prototipo, in cui gli oggetti sono le entità principali e non esiste una matrice separata come la classe. In questo paradigma, ogni oggetto può servire da prototipo per altri e ciò significa che, invece di creare nuove istanze di una classe, si creano nuovi oggetti clonando o estendendo quelli esistenti. È possibile aggiungere o modificare proprietà e metodi di un oggetto prototipo e, in tal caso, queste modifiche si propagheranno in tutti gli oggetti che derivano da esso.
 
 Il paradigma basato su prototipi offre maggiore flessibilità e dinamismo rispetto a quello basato su classi, poiché la struttura degli oggetti può essere modificata in modo dinamico. D'altronde, questo approccio può anche introdurre complessità e rendere più difficile la gestione delle gerarchie di oggetti e la comprensione del codice, poiché non esistono strutture fisse come le classi.
 
-#### Esempi di gerarchie di classi e prototipi
+### Esempi di gerarchie di classi e prototipi
 
 Vediamo le differenze tra classi e prototipi, riprendendo l'esempio in Java nella versione semplificata (senza astrazione):
 
@@ -268,13 +268,13 @@ mioCane.faiVerso(); // <6>
 
 [^2-prima-parte-sintassi-semantica]: In JavaScript, le classi come sintassi sono state introdotte in ECMAScript 6 (ES6), per semplificare la creazione di oggetti e la gestione dell'ereditarietà prototipale. Tuttavia, è importante capire che sotto il cofano, JavaScript non utilizza classi nel senso tradizionale come in linguaggi come Java o C++ e non esiste un meccanismo nativo per creare classi astratte, anche se è possibile simulare il comportamento delle classi astratte utilizzando varie tecniche. Una comune è quella di lanciare un'eccezione se un metodo funzionalmente astratto non viene sovrascritto nella classe derivata.
 
-#### Ereditarietà
+### Ereditarietà
 
 Come abbiamo visto, l'ereditarietà è un meccanismo che permette a una classe di ereditare membri da un'altra classe. Essa si può presentare singola o **multipla**, ove la prima consente a una classe derivata di estendere solo una classe base. Questo è il modello di ereditarietà più comune e supportato da molti linguaggi di programmazione orientati agli oggetti, come Java e C#.
 
 L'ereditarietà multipla è tale da permettere a una classe di ricevere attributi e metodi contemporaneamente da più classi base. Questo meccanismo risponde all'esigenza di specializzare più concetti allo stesso tempo. Va sottolineato che è uno strumento potente prono, però, ad abusi, perché può introdurre complessità nella gestione delle gerarchie di classi e causare conflitti quando lo stesso metodo è ereditato da più classi, situazione nota come _problema del diamante_. Pertanto, alcuni linguaggi ne limitano l'applicazione, come Java che consente solo l'ereditarietà multipla di interfacce, ma non di classi. Altri, come Go, non supportano l'ereditarietà per scelta di progettazione. Go enfatizza la composizione rispetto all'ereditarietà per promuovere uno stile di programmazione più essenziale e flessibile. La composizione consente di costruire comportamenti complessi aggregando oggetti più semplici, evitando le complicazioni delle gerarchie di classi multilivello. Il C++, invece, supporta completamente l'ereditarietà multipla.
 
-#### Interfacce e classi astratte
+### Interfacce e classi astratte
 
 Le **interfacce** e le **classi astratte** sono due concetti fondamentali nella programmazione orientata agli oggetti, che consentono di definire contratti che le classi concrete devono rispettare.
 
@@ -375,7 +375,7 @@ public class Main {
 
 Le interfacce e le classi astratte sono strumenti potenti per promuovere la riusabilità del codice e l'estensibilità dei sistemi software, poiché permettono di definire contratti chiari e di implementare diverse versioni di una funzionalità senza modificare il codice preesistente.
 
-#### Polimorfismo
+### Polimorfismo
 
 Il **polimorfismo** è un concetto chiave della programmazione orientata agli oggetti che permette a oggetti di classi diverse di essere trattati come oggetti di una classe comune. È uno strumento  complementare all'ereditarietà, nelle mani del programmatore, utile a modellare comportamenti comuni per oggetti di tipi diversi, permettendo al codice di interagire con questi oggetti senza conoscere esattamente il loro tipo specifico. In termini pratici, il polimorfismo permette di chiamare metodi su oggetti di tipi diversi e ottenere comportamenti specifici a seconda del tipo di oggetto su cui viene chiamato il medesimo metodo. 
 
@@ -451,8 +451,6 @@ I linguaggi di programmazione hanno delle differenze in relazione al supporto de
 
 Esempio in Java da confrontare con quello seguente in Python:
 
-### Java
-
 ```java
 class Animale {
   void faiVerso() { // <1>
@@ -521,15 +519,17 @@ Ma il dispatch, cioè l'individuazione del metodo da eseguire, può essere singo
 
 Il **multiple dispatch**, invece, estende ulteriormente le capacità del polimorfismo permettendo la selezione del metodo da invocare basandosi sui tipi runtime di più di un argomento. Questo è particolarmente utile in scenari dove il comportamento dipende da combinazioni di tipi di oggetti, e non solo dal tipo dell'oggetto su cui il metodo è chiamato. Linguaggi come Julia e CLOS (Common Lisp Object System)supportano nativamente il multiple dispatch, mentre linguaggi come Java e C++ non lo supportano direttamente ma possono emularlo attraverso pattern come il _visitor_.
 
-### Concetti Avanzati della Programmazione Orientata agli Oggetti (OOP)
+### Altri concetti
 
 Dopo aver compreso i concetti fondamentali della programmazione orientata agli oggetti (OOP), come oggetti, classi, prototipi, ereditarietà e polimorfismo, è importante esplorare altri aspetti avanzati che contribuiscono alla potenza e alla flessibilità di questo paradigma.
 
-#### Mixins e Traits
+#### Mixin e trait
 
-I **mixins** e i **traits** sono concetti che permettono di aggiungere funzionalità a una classe senza utilizzare l'ereditarietà classica. 
+I **mixin** e i **trait** sono concetti che permettono di aggiungere funzionalità a una classe senza utilizzare l'ereditarietà classica. 
 
-- **Mixins**: Sono classi che offrono metodi che possono essere utilizzati da altre classi senza essere una classe base di queste ultime. Permettono di combinare comportamenti comuni tra diverse classi.
+I mixin sono classi che offrono metodi che possono essere utilizzati da altre classi senza essere una classe base di queste ultime. Permettono di combinare comportamenti comuni tra diverse classi.
+
+Esempio:
 
 ```python
 class MixinA:
@@ -548,7 +548,7 @@ obj.metodo_a()
 obj.metodo_b()
 ```
 
-- **Traits**: Simili ai mixins, i traits permettono di definire metodi che possono essere riutilizzati in diverse classi. Sono supportati nativamente in linguaggi come Scala e Rust.
+I trait sono simili ai mixin e permettono di definire metodi che possono essere riutilizzati in diverse classi. Sono supportati nativamente in linguaggi come Scala e Rust.
 
 ```scala
 trait TraitA {
@@ -569,6 +569,8 @@ obj.metodoB()
 #### Duck Typing
 
 Il **duck typing** è un concetto che si applica principalmente nei linguaggi dinamici, dove l'importanza è data al comportamento degli oggetti piuttosto che alla loro appartenenza a una specifica classe. Se un oggetto implementa i metodi richiesti da una certa operazione, allora può essere utilizzato per quella operazione, indipendentemente dal suo tipo.
+
+Esempio:
 
 ```python
 class Anatra:
