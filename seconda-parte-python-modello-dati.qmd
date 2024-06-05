@@ -3,48 +3,5 @@ reference-location: margin
 citation-location: margin
 ---
 
-# Modello dati
+# Il modello dati
 
-Un **modello dati** è una rappresentazione astratta che definisce come i dati sono organizzati, archiviati e manipolati all'interno di un sistema informatico. In altre parole, un modello dati stabilisce le strutture dei dati e le relazioni tra essi, fornendo un quadro concettuale per comprendere e gestire le informazioni.
-
-### Componenti di un Modello Dati
-
-Un modello dati tipicamente include le seguenti componenti:
-
-1. **Entità**: Le entità rappresentano oggetti o concetti del mondo reale che possiedono attributi e hanno un'esistenza indipendente. Ad esempio, in un database di una biblioteca, entità possono essere "Libri", "Autori", e "Utenti".
-
-2. **Attributi**: Gli attributi sono proprietà o caratteristiche delle entità. Per esempio, l'entità "Libro" può avere attributi come "Titolo", "Autore", "Anno di pubblicazione" e "ISBN".
-
-3. **Relazioni**: Le relazioni definiscono le associazioni tra le entità. Ad esempio, una relazione può indicare che "Autore" scrive "Libro" o che "Utente" prende in prestito "Libro".
-
-4. **Vincoli**: I vincoli sono regole che limitano i dati ammessi all'interno del modello, garantendo l'integrità e la coerenza dei dati. Un esempio di vincolo è che un ISBN deve essere univoco per ogni libro.
-
-### Tipi di Modelli Dati
-
-Esistono diversi tipi di modelli dati, ciascuno con il proprio livello di astrazione e applicazioni specifiche:
-
-1. **Modello Dati Concettuale**: Questo modello fornisce una visione ad alto livello della struttura dei dati, senza preoccuparsi di come i dati saranno fisicamente implementati. È spesso rappresentato mediante diagrammi E/R (Entità-Relazione).
-
-2. **Modello Dati Logico**: Questo modello traduce il modello concettuale in strutture che possono essere implementate in un sistema di gestione di database (DBMS). Definisce tabelle, colonne, chiavi primarie e chiavi esterne.
-
-3. **Modello Dati Fisico**: Questo modello descrive l'implementazione effettiva dei dati nel DBMS, includendo dettagli come i tipi di dati specifici, gli indici, le partizioni, e le modalità di memorizzazione.
-
-### Importanza del Modello Dati
-
-Un modello dati ben progettato è fondamentale per diverse ragioni:
-
-- **Organizzazione dei Dati**: Fornisce una struttura chiara e logica per l'archiviazione e l'accesso ai dati.
-- **Efficienza**: Ottimizza le operazioni di database, migliorando la velocità e la scalabilità.
-- **Integrità dei Dati**: Assicura che i dati siano accurati, coerenti e privi di errori.
-- **Manutenzione**: Facilita la manutenzione e l'espansione del sistema, consentendo aggiornamenti e modifiche più agevoli.
-
-### Conclusione
-
-Un modello dati è essenziale per la progettazione e la gestione efficiente dei dati in qualsiasi sistema informatico. Comprendere i principi dei modelli dati è cruciale per sviluppatori, amministratori di database e analisti di dati, poiché fornisce le basi per costruire applicazioni solide e scalabili.
-
-
-L'operazione di un programma Python si basa sui dati che gestisce. I valori dei dati in Python sono noti come oggetti; ogni oggetto, alias valore, ha un tipo. Il tipo di un oggetto determina quali operazioni l'oggetto supporta (in altre parole, quali operazioni è possibile eseguire sul valore). Il tipo determina anche gli attributi e gli elementi dell'oggetto (se presenti) e se l'oggetto può essere modificato. Un oggetto che può essere modificato è noto come oggetto mutabile, mentre uno che non può essere modificato è un oggetto immutabile. Trattiamo gli attributi e gli elementi degli oggetti nella sezione "Object attributes and items".
-
-La funzione incorporata `type(obj)` accetta qualsiasi oggetto come argomento e restituisce l'oggetto di tipo che rappresenta il tipo di `obj`. La funzione incorporata `isinstance(obj, type)` restituisce True quando l'oggetto `obj` ha il tipo `type` (o qualsiasi sua sottoclasse); altrimenti, restituisce False. L'argomento `type` di `isinstance` può anche essere una tupla di tipi (Python 3.10+ o più tipi uniti con l'operatore `|`), nel qual caso restituisce True se il tipo di `obj` corrisponde a uno qualsiasi dei tipi dati, o a qualsiasi sottoclasse di quei tipi.
-
-Python ha tipi incorporati per tipi di dati fondamentali come numeri, stringhe, tuple, liste, dizionari e insiemi, come trattato nelle sezioni seguenti.
