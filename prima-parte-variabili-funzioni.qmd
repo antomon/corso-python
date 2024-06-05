@@ -426,7 +426,6 @@ Per le funzioni distinguiamo sempre i seguenti:
     globalFunction();  // <2>
     
     return 0;
-}
   ```
   1. Dichiarazione della funzione `globalFunction` a livello globale.
   2. Chiamata della funzione `globalFunction` all'interno di `main`.
@@ -446,12 +445,12 @@ Per le funzioni distinguiamo sempre i seguenti:
 
   outerFunction()
 
-  localFunction()  # <3> Errore: localFunction non è visibile qui
+  localFunction()  # <3>
   ```
   1. Dichiarazione della funzione `localFunction` all'interno di `outerFunction`.
   2. Chiamata della funzione `localFunction` all'interno di `outerFunction`.
   3. Chiamata a `localFunction` al di fuori di `outerFunction`, che genera un errore poiché `localFunction` non è visibile a questo livello.
-   
+
   In Java e C++, le funzioni dichiarate all'interno di un blocco (come metodi all'interno di una classe) sono accessibili solo all'interno di quel blocco, simile a Python. 
 
   In C, le funzioni locali non sono standard, ma è possibile ottenere un comportamento simile usando funzioni statiche o funzioni inline definite all'interno di un file sorgente specifico.
