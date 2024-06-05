@@ -2,29 +2,27 @@
 
 
 
-s = "Hello" + ' ' + 'World!'
-print(s)
 
-ss = s
+n = 42
+s = "42"
 
-ss *= 2
-print(ss)
-print(s)
-
-b = 'el' in s
+b = n and s
 print(b)
 
-b = 'oo' not in s
+b = n or s
 print(b)
 
-b = "Ciao Mondo!" < s
+b = n and not s
 print(b)
 
-s_ = ss[:len(s)]
-print(s)
+b = str(2) in s
+print(b)
 
-l = len(ss)
-print(l)
+e = 2 + n * 3
+print(e)
 
-s_ = ss[:int(len(ss) / 2)]
-print(s_)
+e = (2 + n) * 3
+print(e)
+
+e = 0 and (n or s)
+print(e)

@@ -14,7 +14,7 @@ format:
 
 ### ★☆☆☆☆ Python come calcolatrice
 
-Proviamo a fare delle operazioni su booleani, numeri interi, in virgola mobile e stringhe nel REPL.
+Provare le operazioni su booleani, numeri interi, in virgola mobile e stringhe nel REPL.
 
 #### Numeri
 
@@ -26,6 +26,7 @@ Usare gli operatori matematici su costanti numeriche e osservare i risultati e g
 
 ```{python}
 # Se eseguite nel REPL i print sono inutili!
+
 # Moltiplicazione
 x = 5 * 2
 print(x)
@@ -43,14 +44,14 @@ print(x) # Cosa notiamo?
 x = 4 / 2.
 print(x)
 
-# Maggiore di
+# Confronto
 x = 5 > 2
 print(x)
 
 x = 5 > 2.
 print(x) # Cosa notiamo?
 
-# Test di diversità
+# Diversità
 x = 4 != 4.
 print(x) # Cosa notiamo?
 
@@ -68,6 +69,7 @@ Usare gli operatori su stringhe sempre nel REPL.
 
 ```{python}
 # Se eseguite nel REPL i print sono inutili!
+
 s = "Hello" + ' ' + 'World!'
 print(s)
 
@@ -77,25 +79,73 @@ ss *= 2
 print(ss)
 print(s) # Cosa notiamo per s e ss?
 
+# Appartenenza
 b = 'el' in s
 print(b) 
 
 b = 'oo' not in s
 print(b)
 
+# Confronto
 b = "Ciao Mondo!" < s 
 print(b) # È rispettato l'ordine lessicografico?
 
-# Slicing della stringa come contenitore di caratteri
-s_ = ss[:len(s)] 
-print(s) 
+l_s= len(s)
+print(l_s)
 
-l = len(ss) 
-print(l)
+# Slicing della stringa come contenitore di caratteri
+s_ = ss[:l_s] 
+print(s_) 
+
+l_ss = len(ss) 
+print(l_ss)
 
 # Modo alternativo di ottenere la stringa originale solo usando ss
-s_ = ss[:int(len(ss) / 2)] 
+s_ = ss[:int(l_ss / 2)] 
 print(s_) 
+
+# Metodo per rendere la stringa in maiuscolo
+su = s.upper()
+print(su)
+
+# Uguaglianza
+b = s == su
+print(b) # Cosa notiamo?
+```
+
+#### Espressioni
+
+```{python}
+n = 42
+s = "42"
+
+# Congiunzione
+b = n and s
+print(b) # Cosa notiamo?
+
+# Disgiunzione
+b = n or s
+print(b) 
+
+# Negazione e congiunzione
+b = n and not s
+print(b) # Cosa notiamo?
+
+# Conversione di tipo in stringa e appartenenza
+b = str(2) in s
+print(b)
+
+# Conversione di tipo in intero e divisione
+b = int(s) / 2
+print(b)
+
+# Espressione con precedenza data dall'ordine degli operatori 
+e = 2 + n * 3
+print(e)
+
+# Espressione con precedenza modificata colle parentesi 
+e = (2 + n) * 3
+print(e) # Cosa notiamo?
 ```
 
 ## Funzioni e istruzioni composte
