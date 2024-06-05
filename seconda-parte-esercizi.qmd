@@ -21,7 +21,7 @@ Proviamo a fare delle operazioni su booleani, numeri interi, in virgola mobile e
 ::: {.callout-tip}
 ## Suggerimento
 
-Usare gli operatori matematici su costanti e osservare i risultati e gli errori nel REPL è più immediato rispetto all'esecuzione completa del programma.
+Usare gli operatori matematici su costanti numeriche e osservare i risultati e gli errori nel REPL, perché è più immediato rispetto all'esecuzione completa del programma.
 :::
 
 ```{python}
@@ -56,6 +56,46 @@ print(x) # Cosa notiamo?
 
 x = 0 != (1 - 1)
 print(x) # Cosa notiamo?
+```
+
+#### Stringhe
+
+::: {.callout-tip}
+## Suggerimento
+
+Usare gli operatori su stringhe sempre nel REPL.
+:::
+
+```{python}
+# Se eseguite nel REPL i print sono inutili!
+s = "Hello" + ' ' + 'World!'
+print(s)
+
+ss = s
+
+ss *= 2
+print(ss)
+print(s) # Cosa notiamo per s e ss?
+
+b = 'el' in s
+print(b) 
+
+b = 'oo' not in s
+print(b)
+
+b = "Ciao Mondo!" < s 
+print(b) # È rispettato l'ordine lessicografico?
+
+# Slicing della stringa come contenitore di caratteri
+s_ = ss[:len(s)] 
+print(s) 
+
+l = len(ss) 
+print(l)
+
+# Modo alternativo di ottenere la stringa originale solo usando ss
+s_ = ss[:int(len(ss) / 2)] 
+print(s_) 
 ```
 
 ## Funzioni e istruzioni composte
