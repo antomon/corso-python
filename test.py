@@ -1,20 +1,13 @@
-print(type(...))  # <class 'ellipsis'> # <1>
+# Test di diversità
+x = 4 != 4.
+print(x)
 
-def funzione_da_completare():
-  ... # <2>
+x = 0 != (1 - 1)
+print(x)
 
-class ClasseEsempio:
-  def metodo_da_completare(self):
-    ...
+x = 0 or (0 + 0)
+print(x)
 
-from typing import Callable
+x = 0 or 2
+print(x)
 
-def funzione_variadica(func: Callable[..., int]): # <3>
-  pass
-
-import numpy as np
-
-array = np.array([[[1, 2, 3],    [4, 5, 6]], 
-                  [[7, 8, 9], [10, 11, 12]]]) 
-
-print(array[..., 1]) # <4>

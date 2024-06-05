@@ -7,63 +7,404 @@ citation-location: margin
 
 La **semantica** di un linguaggio di programmazione definisce il significato delle istruzioni sintatticamente corrette. In altre parole, la semantica specifica cosa fa un programma quando viene eseguito, descrivendo l'effetto delle istruzioni sullo stato del sistema. Gli elementi semantici sono numerosi, possono essere anche complessi e non tutti presenti in uno specifico linguaggio. 
 
-Tra gli elementi semantici più importanti, troviamo le variabili e le funzioni. 
+Tra i primi elementi semantici, richiamati già molte volte, troviamo le variabili e le funzioni. 
 
 ## Variabili
 
-- Variabile: È un nome simbolico associato a locazione di memoria che può contenere uno o più valori. È fondamentale per la manipolazione di dati perché sono un mezzo per astrarre dalla costante memorizzata. Le variabili possono essere associate a diversi tipi di dati e durate di vita. La semantica delle variabili include la loro dichiarazione, inizializzazione, uso e visibilità:
+Le **variabili** sono uno dei concetti fondamentali nella programmazione, essenziali per la manipolazione e la gestione dei dati. Una variabile è un nome simbolico associato a una locazione di memoria che può contenere uno o più valori di un certo tipo di dato. Questo concetto permette agli sviluppatori di astrarre dalla memoria fisica e concentrarsi sulla logica del programma. 
 
-  - Dichiarazione: La dichiarazione di una variabile è il processo mediante il quale si introduce una variabile nel programma, specificandone il nome e, in molti casi, il tipo di dato che essa può contenere. La dichiarazione informa il compilatore o l'interprete che una certa variabile esiste e può essere utilizzata nel codice.
+La gestione delle variabili varia tra i diversi linguaggi di programmazione, quindi esploreremo le variabili con particolare attenzione a Python, Java, C e C++.
 
-  - Inizializzazione: L'inizializzazione di una variabile è il processo di assegnare un valore iniziale alla variabile. L'inizializzazione può avvenire contestualmente alla dichiarazione o in un'istruzione separata successiva.
+### Dichiarazione e inizializzazione
 
-  - Visibilità: Indica dove la variabile può essere utilizzata all'interno del codice (ad esempio, variabili locali o globali).
+La dichiarazione di una variabile è il processo mediante il quale si introduce una variabile nel programma, specificandone il nome e, in molti casi, il tipo di dato che essa può contenere. Questo processo informa il compilatore o l'interprete che una certa variabile esiste e può essere utilizzata nel codice. Abbiamo visto che esiste una istruzione specifica in alcuni linguaggi, mentre in altri è implicita nella assegnazione. 
 
-  - Durata di Vita: Descrive per quanto tempo la variabile rimane in memoria durante l'esecuzione del programma (ad esempio, automatica, statica, dinamica).
+L'inizializzazione di una variabile è il processo di assegnazione di un valore iniziale alla variabile. Questo può avvenire contestualmente alla dichiarazione o in un'istruzione separata successiva, quella di assegnamento.
 
+Esempi:
 
+- In Python, le variabili sono dichiarate automaticamente al momento dell'assegnazione del valore. Non è necessario specificare il tipo di dato, poiché Python è dinamicamente tipizzato, cioè determina durante l'esecuzione il tipo di dato del valore associato alla variabile.
 
-- Ambito (in inglese, _scope_): L'ambito rappresenta la porzione del codice in cui un identificatore (come una variabile o una funzione) è definito e, quindi, esiste. L'ambito determina dove un identificatore può essere dichiarato e utilizzato. Tipicamente gli ambiti sono:
+  ```python
+  x = 10  # <1>
+  x = "Hello"  # <2>
+  ```
+  1. Dichiarazione e inizializzazione.
+  2. Cambia il tipo di `x` dinamicamente a stringa.
 
-  - Globale: Identificatori dichiarati a livello globale, accessibili ovunque nel programma.
+- Java: In Java, le variabili devono essere dichiarate con un tipo di dato esplicito. La dichiarazione può avvenire contestualmente all'inizializzazione o separatamente.
 
-  - Locale: Identificatori dichiarati all'interno di un blocco, come una funzione o un loop, e accessibili solo all'interno di quel blocco.
+  ```java
+  int x;  // <1>
+  x = 10; // <2>
+  int y = 20; // <3>
+  ```
+ 1. Dichiarazione.
+ 2. Inizializzazione.
+ 3. Dichiarazione e inizializzazione.
 
-  - Statico e dinamico: L'ambito statico è determinato a tempo di compilazione, mentre l'ambito dinamico è determinato a runtime, influenzando come e dove gli identificatori possono essere utilizzati.
+- C: In C, la dichiarazione delle variabili richiede la specifica del tipo di dato. La dichiarazione e l'inizializzazione possono essere separate o combinate.
 
-- Visibilità: La visibilità si riferisce a dove nel codice un identificatore può essere visto e utilizzato. Anche se correlata all'ambito, la visibilità può essere influenzata da altri fattori come la modularità e i namespace, che organizzano e separano gli identificatori per evitare conflitti di nome. La visibilità è generalmente:
+  ```c
+  int x;  /* <1> */
+  x = 10; /* <2> */
+  int y = 20; /* <3> */
+  ```
+ 1. Dichiarazione.
+ 2. Inizializzazione.
+ 3. Dichiarazione e inizializzazione.
 
-  - Globale: Un identificatore dichiarato con visibilità globale può essere utilizzato in qualsiasi parte del programma.
+- C++: Simile al C, ma con funzionalità aggiuntive come l'inizializzazione a lista.
 
-  - Locale: Un identificatore dichiarato con visibilità locale è visibile solo all'interno del blocco di codice in cui è stato dichiarato.
+  ```cpp
+  int x;  // <1>
+  x = 10; // <2>
+  int y = 20; // <3>
+  int z{30};  // <4>
+  int arr[5] = {1, 2, 3, 4, 5}; // <5>
+  ```
+  1. Dichiarazione.
+  2. Inizializzazione.
+  3. Dichiarazione e inizializzazione.
+  4. Dichiarazione e inizializzazione a lista di `z` con l'intero 30.
+  5. Dichiarazione e inizializzazione a lista di un array con 5 valori predefiniti.
 
+### Ambito delle variabili
 
+L'ambito di una variabile rappresenta la porzione del codice in cui l'identificatore della variabile è definito e, quindi, può essere utilizzato. Gli approcci dei diversi linguaggi sono diversi, infatti Java, C e C++ hanno una gestione dell'ambito delle variabili per cui quelle dichiarate all'interno di un blocco sono limitate a quel blocco e non sono visibili al di fuori di esso. In Python, invece, le variabili definite all'interno di un blocco di un'istruzione composta (come un ciclo for o una condizione if) rimangono accessibili anche al di fuori del blocco, purché siano ancora nel medesimo ambito di funzione o modulo e, soprattutto quel blocco sia stato eseguito.
+
+- Globale: Le variabili globali sono dichiarate al di fuori di qualsiasi blocco e sono accessibili ovunque nel programma.
+
+  ```c
+  int globalVar = 10; /* <1> */ 
+
+  void function() { /* <2> */ 
+    printf("%d\n", globalVar); /* <3> */ 
+  }
+  ```
+  1. Variabile globale.
+  2. Inizio del blocco.
+  3. Accesso alla variabile globale.
+
+- Locale: Le variabili locali sono dichiarate all'interno di un blocco, come una funzione o un loop, e sono accessibili solo all'interno di quel blocco. 
+
+  ```java
+  public class Main {
+    public static void main(String[] args) {
+      if (true) {
+        int x = 10;  // <1>
+      }
+
+      System.out.println(x);  // <2>
+
+      for (int i = 0; i < 10; i++) {
+        int y = i;  // <3>
+      }
+
+      System.out.println(y); // <4>
+    }
+  }
+  ```
+  1. Variabile locale al blocco `if`.
+  2. Errore: `x` non è visibile qui!
+  3. Variabile locale al blocco `for`.
+  4. Errore: `y` non è visibile qui.
+
+- In Python, una variabile definita all'interno di un blocco di un'istruzione composta, come all'interno di un ciclo `for` o di una condizione `if`, rimane accessibile anche dopo l'esecuzione del blocco:
+
+  ```python
+  for i in range(10):
+    loopVar = i  # 
+
+  print(loopVar)  # 
+  ```
+  1. Variabile locale al ciclo.
+  2. `loopVar` è ancora accessibile qui.
+
+### Visibilità delle variabili
+
+La visibilità si riferisce alla possibilità che in una regione di codice una certa variabile possa essere _vista_ e utilizzata. Anche se correlata all'ambito, la visibilità può essere influenzata da altri fattori come la modularità e gli spazi di nomi (_namespace_).
+
+- Consideriamo un esempio in C++ per illustrare la differenza tra ambito e visibilità:
+
+  ```cpp
+  #include <iostream>
+
+  int globalVar = 10; // <1>
+
+  void function() {
+    int localVar = 5; // <2>
+
+    std::cout << globalVar << std::endl; // <3>
+    std::cout << localVar << std::endl; // <4>
+  }
+
+  int main() {
+    function();
+
+    std::cout << globalVar << std::endl; // <5>
+    std::cout << localVar << std::endl; // <6>
+
+    return 0;
+  }
+  ```
+  1. Variabile globale (ambito globale).
+  2. Variabile locale (ambito locale alla funzione).
+  3. Visibilità globaleVar all'interno della funzione.
+  4. Visibilità localVar all'interno della funzione.
+  5. Visibilità globalVar all'interno di main.
+  6. Errore: localVar non è visibile qui (ambito locale alla funzione function). 
+
+- In Python, le variabili definite all'interno di una funzione sono locali a quella funzione, ma le variabili definite all'interno di un blocco (come un ciclo `for` o un `if`) sono visibili all'interno della funzione o del modulo in cui si trovano:
+
+  ```python
+  globalVar = 10  # <1>
+
+  def function():
+    localVar = 5  # <2>
+
+    if True:
+      blockVar = 20  # <3>
+
+    print(localVar)  # <4>
+    print(blockVar)  # <5>
+
+  function()
+
+  print(globalVar)  # <6>
+  print(localVar)  # <7>
+  print(blockVar)  # <8>
+  ```
+  1. Variabile globale.
+  2. Variabile locale.
+  3. Visibile all'interno della funzione.
+  4. Visibile.
+  5. Visibile.
+  6. Visibile.
+  7. Errore: non visibile al di fuori della funzione.
+  8. Errore: non visibile al di fuori della funzione.
+
+### Durata di vita degli oggetti referenziati
+
+La durata di vita descrive per quanto tempo un oggetto rimane in memoria durante l'esecuzione del programma. Questo è distinto dalla variabile (o puntatore) che fa riferimento all'oggetto. 
+
+In alcuni linguaggi di programmazione è presente il **garbage collector**, cioè un processo avviato dal compilatore o interprete che si occupa di rendere nuovamente disponibili le aree di memoria precedentemente occupate da oggetti non più referenziati da variabili. Questo accade quando l'esecuzione del programma raggiunge regioni di codice dove quelle variabili non sono più visibili. In questo modo, la visibilità è legata alla durata di vita degli oggetti, rendendo la gestione della memoria non più una preoccupazione del programmatore.
+
+- Variabile automatica: L'oggetto esiste solo durante l'esecuzione del blocco di codice in cui è stata dichiarata la variabile a cui è associato.
+
+  ```c
+  void function() {
+    int autoVar = 10; /* <1> */
+  } 
+
+  printf("autoVar cancellata!"); /* <2> */ 
+  ```
+  1. Dichiarazione di `autoVar` e creazione in memoria di un oggetto corrispondente all'intero 10.
+  2. Prima di questa istruzione l'oggetto 10 non è più presente in memoria.
+
+- Variabile statica: La variabile esiste per tutta la durata del programma, ma è accessibile solo all'interno del blocco in cui è dichiarata.
+
+  ```c
+  void function() {
+    static int staticVar = 10; /* <1> */ 
+  }
+  ```
+  1. Variabile statica ottenuta con una parola chiave ad hoc in fase di dichiarazione.
+
+- Variabile dinamica: Le variabili dinamiche sono utilizzate per riservare memoria che persiste oltre la durata del blocco di codice in cui sono state create. L'oggetto è creato in memoria e deve essere cancellato esplicitamente dall'utente, utilizzando funzioni di gestione della memoria come `delete`. La variabile che punta all'oggetto è separata dall'oggetto stesso, quindi se la variabile non è più visibile, l'oggetto continuerà a rimanere in memoria e non sarà più eliminabile, causando una perdita di memoria (_memory leak_).
+
+  ```cpp
+  #include <iostream>
+
+  void function() {
+    int* dynamicVar = new int(10); // <1>
+    std::cout << "dynamicVar: " << *dynamicVar << std::endl; // <2>
+  }
+
+  int main() {
+    function(); // <3>
+
+    int* safeDynamicVar = new int(20); // <4>
+
+    std::cout << "safeDynamicVar: " << *safeDynamicVar << std::endl; // <5>
+    
+    delete safeDynamicVar; // <6>
+
+    return 0;
+  ```
+  1. Allocazione dinamica di un intero all'interno della funzione `function()`.
+  2. Stampa del valore puntato da `dynamicVar`. Prima della chiusura del blocco non viene deallocata `dynamicVar` per dimostrare il problema di perdita di memoria
+  3. Chiamata alla funzione `function()`. Dopo l'uscita dalla funzione, `dynamicVar` non è più accessibile, causando una perdita di memoria poiché non è stata deallocata.
+  4. Allocazione dinamica di un intero. 
+  5. Stampa del valore puntato da `safeDynamicVar`.
+  6. Deallocazione dinamica dell'intero. Corretto uso di allocazione e deallocazione dinamica.
+
+- In Python, la gestione della memoria è automatica grazie al garbage collector. Quando non ci sono più riferimenti di variabili a un oggetto, il garbage collector lo rimuove dalla memoria.
 
 ## Funzioni
 
+Le funzioni sono blocchi di codice riutilizzabili che eseguono una serie di istruzioni. Questi costrutti sono fondamentali per la strutturazione e la modularizzazione del codice, consentendo di definire operazioni che possono essere invocate più volte durante l'esecuzione di un programma. La distinzione tra funzioni e metodi è che le funzioni sono indipendenti, mentre i metodi sono associati a oggetti o classi.
+
+### Parametri e argomenti
+
+I **parametri** e gli **argomenti** sono strumenti fondamentali per passare informazioni alle funzioni e influenzarne il comportamento.
+
+- Parametri o parametri formali: I parametri sono definiti nella dichiarazione della funzione e rappresentano i nomi delle variabili che la funzione utilizzerà per accedere ai dati passati.
+
+- Argomenti o parametri attuali: Gli argomenti sono i valori effettivi passati alla funzione quando viene chiamata.
+
+Esempio in Python:
+
+```python
+def add(a, b):  # <1>
+  return a + b
+
+result = add(3, 4)  # <2>
+
+print(result)  # <3>
+```
+1. `a` e `b` sono parametri della funzione `add`.
+2. `3` e `4` sono argomenti passati alla funzione `add`.
+3. Il risultato della funzione `add` viene stampato.
+
+### Valore di ritorno
+
+Il valore di ritorno è il risultato prodotto da una funzione, che può essere utilizzato nell'istruzione chiamante. Una funzione può restituire un valore utilizzando la parola chiave `return`.
+
+Esempio in Java:
+
+```java
+public class Main {
+  public static int add(int a, int b) {  // <1>
+    return a + b;  // <2>
+  }
+
+  public static void main(String[] args) {
+    int result = add(3, 4);  // <3>
+
+    System.out.println(result);  // <4>
+  }
+}
+```
+1. Dichiarazione della funzione `add` che accetta due parametri interi.
+2. La funzione `add` ritorna la somma di `a` e `b`.
+3. Chiamata della funzione `add` con argomenti `3` e `4`.
+4. Il risultato della funzione `add` viene stampato.
+
+### Ricorsione
+
+La **ricorsione** è la capacità di una funzione di chiamare se stessa, utile per risolvere problemi che possono essere suddivisi in sottoproblemi simili. Ogni chiamata ricorsiva deve avvicinarsi a una condizione di terminazione per evitare loop infiniti.
+
+Esempio in C++ (calcolo del fattoriale):
+
+```cpp
+#include <iostream>
+
+int factorial(int n) {  // <1>
+  if (n <= 1) return 1;  // <2>
+
+  return n * factorial(n - 1);  // <3>
+}
+
+int main() {
+  int result = factorial(5);  // <4>
+
+  std::cout << result << std::endl;  // <5>
+  
+  return 0;
+}
+```
+1. Dichiarazione della funzione `factorial`.
+2. Condizione di terminazione: se `n` è minore o uguale a 1, ritorna 1.
+3. Chiamata ricorsiva: `factorial` chiama se stessa con `n - 1`.
+4. Chiamata della funzione `factorial` con argomento `5`.
+5. Il risultato della funzione `factorial` viene stampato.
+
+### Funzioni di prima classe
+
+Le **funzioni di prima classe** sono funzioni che possono essere trattate come qualsiasi altra variabile. Possono essere assegnate a variabili, passate come argomenti e ritornate da altre funzioni.
+
+- Esempio in Python:
+
+  ```python
+  def greet(name):
+    return f"Hello, {name}!"
+
+  say_hello = greet  # <1>
+
+  print(say_hello("World"))  # <2>
+  ```
+  1. La funzione `greet` viene assegnata alla variabile `say_hello`.
+  2. `say_hello` viene chiamata con l'argomento `"World"`.
+
+- Esempio in C++:
+
+  ```cpp
+  #include <iostream>
+  #include <functional>
+
+  void greet(const std::string& name) {
+    std::cout << "Hello, " << name << "!" << std::endl;
+  }
+
+  int main() {
+    std::function<void(const std::string&)> say_hello = greet;  // <1>
+
+    say_hello("World");  // <2>
+
+    return 0;
+  ```
+1. La funzione `greet` viene assegnata alla variabile `say_hello` utilizzando `std::function`.
+2. `say_hello` viene chiamata con l'argomento `"World"`.
+
+### Funzioni di ordine superiore
+
+Le **funzioni di ordine superiore** sono funzioni che accettano altre funzioni come argomenti e/o ritornano funzioni come risultati. Sono fondamentali per la programmazione funzionale.
+
+- Esempio in Python:
+
+  ```python
+  def add(a):
+    def inner(b):
+      return a + b
+
+    return inner  # <1>
+
+  add_five = add(5)  # <2>
+
+  print(add_five(3))  # <3>
+  ```
+  1. La funzione `add` ritorna una nuova funzione `inner` che somma `a` al suo argomento `b`.
+  2. `add(5)` ritorna una nuova funzione che somma 5 al suo argomento.
+  3. La funzione risultante viene chiamata con l'argomento `3`, restituendo `8`.
+
+- Esempio in C++:
+
+  ```cpp
+  #include <iostream>
+  #include <functional>
+
+  std::function<int(int)> add(int a) {  // <1>
+    return [a](int b) { return a + b; };  // <2>
+  }
+
+  int main() {
+    auto add_five = add(5);  // <3>
+
+    std::cout << add_five(3) << std::endl;  // <4>
+
+    return 0;
+  }
+  ```
+1. Dichiarazione della funzione `add` che ritorna un `std::function<int(int)>`.
+2. `add` ritorna una lambda funzione che somma `a` al suo argomento `b`.
+3. `add(5)` ritorna una nuova funzione che somma 5 al suo argomento.
+4. La funzione risultante viene chiamata con l'argomento `3`, restituendo `8`.
 
 
-- Funzioni e metodi: Le funzioni e i metodi sono blocchi di codice riutilizzabili che eseguono una serie di istruzioni. Alcuni concetti collegati sono:
 
-  - Parametri e argomenti: Valori passati alle funzioni per influenzarne il comportamento. I parametri sono definiti nella dichiarazione della funzione, mentre gli argomenti sono i valori effettivi passati quando la funzione è chiamata.
 
-  - Valore di ritorno: Il risultato prodotto da una funzione, che può essere utilizzato nell'istruzione chiamante.
 
-  - Overloading: Definizione di più funzioni con lo stesso nome ma diversi parametri, consentendo diverse implementazioni basate sui tipi e il numero di argomenti.
-
-  - Ricorsione: Capacità di una funzione di chiamare se stessa, utile per risolvere problemi che possono essere suddivisi in sottoproblemi simili.
-
-  - Funzioni di prima classe: Le funzioni possono essere assegnate a variabili, passate come argomenti e ritornate da altre funzioni.
-
-  - Funzioni di ordine superiore: Funzioni che accettano altre funzioni come argomenti e/o ritornano funzioni come risultati.
-
-- Durata di vita delle variabili: La durata di vita delle variabili si riferisce a quanto tempo una variabile rimane in memoria durante l'esecuzione del programma. Alcune tipologie di durata:
-
-  - Automatica: Variabili che esistono solo durante l'esecuzione del blocco in cui sono dichiarate.
-
-  - Statica: Variabili che esistono per tutta la durata del programma e mantengono il loro valore tra diverse chiamate di funzione.
-
-  - Dinamica: Variabili allocate dinamicamente durante l'esecuzione del programma, solitamente gestite manualmente dall'utente (ad esempio, usando `malloc`/`free` in C) o automaticamente tramite garbage collection.
 
 - Durata di vita di altri identificatori: 
 

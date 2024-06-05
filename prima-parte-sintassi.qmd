@@ -79,15 +79,15 @@ L'**analizzatore lessicale** (o _lexer_) è un componente del compilatore o inte
 
 Ad esempio, il codice `if x == 10:` viene trasformato in una sequenza di token: `[IF, NAME(x), EQEQUAL, NUMBER(10), COLON]`.
 
-Il **parser** è un altro componente del compilatore o interprete che prende in input la sequenza di token generata dall'analizzatore lessicale e verifica che la sequenza rispetti le regole sintattiche del linguaggio di programmazione. Il parser analizza i token per formare una struttura gerarchica che rappresenti le relazioni grammaticali tra di essi. Questa struttura interna è spesso un albero di sintassi (_parse tree_ o _syntax tree_), che riflette la struttura grammaticale del codice sorgente, solitamente descritta usando una forma standard di notazione come la BNF (Backus-Naur Form) o varianti di essa [^1-prima-parte-sintassi-semantica]. L'albero di sintassi ottenuto viene utilizzato per le successive fasi di compilazione o interpretazione, come quella di analisi semantica e di generazione del codice eseguibile. Ad esempio, il parser può verificare che le espressioni aritmetiche siano ben formate, che le istruzioni siano correttamente annidate e che le dichiarazioni di variabili siano valide.
+Il **parser** è un altro componente del compilatore o interprete che prende in input la sequenza di token generata dall'analizzatore lessicale e verifica che la sequenza rispetti le regole sintattiche del linguaggio di programmazione. Il parser analizza i token per formare una struttura gerarchica che rappresenti le relazioni grammaticali tra di essi. Questa struttura interna è spesso un albero di sintassi (_parse tree_ o _syntax tree_), che riflette la struttura grammaticale del codice sorgente, solitamente descritta usando una forma standard di notazione come la BNF (Backus-Naur Form) o varianti di essa [^1-prima-parte-sintassi]. L'albero di sintassi ottenuto viene utilizzato per le successive fasi di compilazione o interpretazione, come quella di analisi semantica e di generazione del codice eseguibile. Ad esempio, il parser può verificare che le espressioni aritmetiche siano ben formate, che le istruzioni siano correttamente annidate e che le dichiarazioni di variabili siano valide.
 
-[^1-prima-parte-sintassi-semantica]: La BNF (Backus-Naur form o Backus normal form) è una metasintassi, ovvero un formalismo attraverso cui è possibile descrivere la sintassi di linguaggi formali (il prefisso meta ha proprio a che vedere con la natura circolare di questa definizione). Si tratta di uno strumento molto usato per descrivere in modo preciso e non ambiguo la sintassi dei linguaggi di programmazione, dei protocolli di rete e così via, benché non manchino in letteratura esempi di sue applicazioni a contesti anche non informatici e addirittura non tecnologici. Un esempio è la grammatica di [Python](https://docs.python.org/3/reference/grammar.html).
+[^1-prima-parte-sintassi]: La BNF (Backus-Naur form o Backus normal form) è una metasintassi, ovvero un formalismo attraverso cui è possibile descrivere la sintassi di linguaggi formali (il prefisso meta ha proprio a che vedere con la natura circolare di questa definizione). Si tratta di uno strumento molto usato per descrivere in modo preciso e non ambiguo la sintassi dei linguaggi di programmazione, dei protocolli di rete e così via, benché non manchino in letteratura esempi di sue applicazioni a contesti anche non informatici e addirittura non tecnologici. Un esempio è la grammatica di [Python](https://docs.python.org/3/reference/grammar.html).
 
-### Espressioni
+## Espressioni
 
 Un'espressione è una combinazione di lessemi che viene valutata per produrre un risultato. Le espressioni sono fondamentali nei linguaggi di programmazione perché permettono di eseguire calcoli, prendere decisioni e manipolare dati.
 
-Ecco alcune tipologie di espressioni (notazioni in Python):
+Ecco alcune tipologie di espressioni (notazioni in Python, ma non molto dissimili da altri linguaggi):
 
 1. Espressioni aritmetiche: Combinano letterali numerici, identificatori valorizzabili in numeri e operatori aritmetici per eseguire calcoli matematici. Esempi: `5 + 3`, `y / 4.0`, `"Hello, " + "world!"`. 
 
@@ -105,24 +105,114 @@ Le espressioni si possono comporre in espressioni più complesse come accade per
 
 ## Istruzioni semplici
 
-Le **istruzioni semplici** sono operazioni atomiche secondo il linguaggio e sono costituite da lessemi ed espressioni per compiere operazioni di base. Gli esempi principali includono: 
+Le **istruzioni semplici** sono operazioni atomiche secondo il linguaggio e sono costituite da tutti i tipi di lessemi per compiere operazioni di base. I linguaggi di programmazione presentano delle istruzioni _condivise_ nel senso di fondamentali che hanno solo minime differenze ed altre più particolari, perché dipendenti da specificità dalla progettazione del linguaggio. Ciò potrebbe essere anche solo questione di sintassi più che rappresentanti nuovi concetti. 
 
-- Espressioni: È eseguibile dal compilatore o interprete quindi è una delle istruzioni semplici più importanti quando a sé stante. Sono presenti all'interno di istruzioni semplici e composte.
+Di seguito un elenco di istruzioni semplici, alcune standard cioè presenti in tutti o la gran parte dei linguaggi considerati, altre specifiche ma che mettono in evidenza aspetti rilevanti di progettazione:
 
-- Assegnazione: Utilizza un operatore di assegnazione (ad esempio, `=`) per attribuire un valore rappresentato da un letterale, una espressione o un identificatore, ad un identificatore di variabile, che possiamo pensare come un nome simbolico rappresentante una posizione dove è memorizzato un valore. Esempio:
+- Espressioni: È eseguibile dal compilatore o interprete, quindi, è una delle istruzioni semplici più importanti quando a sé stante, ma sono presenti anche all'interno di istruzioni semplici e composte. Alcuni esempi in vari linguaggi di somma di due identificatori:
 
+  - In Python: `x + y`.
+  - In Java: `x + y;`.
+  - In C: `x + y;`.
+  - In C++: `x + y;`.
+
+- Dichiarazione di variabili: La dichiarazione di una variabile introduce una nuova variabile nel programma e specifica il suo tipo[^2-prima-parte-sintassi]. La dichiarazione non assegna necessariamente un valore iniziale alla variabile. Esempi:
+
+  - In Python la dichiarazione avviene automaticamente con l'assegnazione, anche se è possibile annotare il tipo di una variabile, ad esempio `x: int = 5`, anche se ciò non costringe il programmatore a utilizzare `x` on interi.
+  - In Java: `int x;`.
+  - In C: `int x;`.
+  - In C++: `int x;`.
+
+- Assegnazione: Utilizza un operatore di assegnazione (ad esempio, `=`) per attribuire un valore rappresentato da un letterale, una espressione o un identificatore, ad un identificatore di variabile, che possiamo pensare come un nome simbolico rappresentante una posizione dove è memorizzato un valore. In alcuni linguaggi deve essere preceduta dalla dichiarazione. Esempio:
+
+  - In Python:
+  
     ```python
     z = (x * 2) + (y / 2)
     ```
-  - `z`: Identificatore della variabile.
-  - `=`: Operatore di assegnazione.
-  - `(x * 2)`: Espressione che moltiplica `x` per `2`.
-  - `(y / 2)`: Espressione che divide `y` per `2`.
-  - `+`: Operatore aritmetico che somma i risultati delle due espressioni in una più complessa.
-  L'esecuzione dell'istruzione produce un risultato valido solo se `x` e `y` sono associate a valori numerici e ciò perché non tutte le istruzioni sintatticamente corrette sono semanticamente corrette. D'altronde ciò non deve essere preso come regola, perché se `*` fosse un operatore che ripete quanto a sinistra un numero di volte definito dal valore di destra e `/` la divisione del valore di sinistra in parti di numero pari a quanto a destra, allora `x` e `y` potrebbero essere stringhe.
+    - `z`: Identificatore della variabile.
+    - `=`: Operatore di assegnazione.
+    - `(x * 2)`: Espressione che moltiplica `x` per `2`.
+    - `(y / 2)`: Espressione che divide `y` per `2`.
+    - `+`: Operatore aritmetico che somma i risultati delle due espressioni in una più complessa.
+    L'esecuzione dell'istruzione produce un risultato valido solo se `x` e `y` sono associate a valori numerici e ciò perché non tutte le istruzioni sintatticamente corrette sono semanticamente corrette. D'altronde ciò non deve essere preso come regola, perché se `*` fosse un operatore che ripete quanto a sinistra un numero di volte definito dal valore di destra e `/` la divisione del valore di sinistra in parti di numero pari a quanto a destra, allora `x` e `y` potrebbero essere stringhe.
 
+  - In Java: `z = (x * 2) + (y / 2);`.
+  - In C: `z = (x * 2) + (y / 2);`.
+  - In C++: `z = (x * 2) + (y / 2);`.
 
+- Assegnazione aumentata: Combina un'operazione e un'assegnazione in un'unica istruzione. Esempi per una assegnazione di una variabile del valore ottenuto dalla somma di quello proprio con il numero intero 1:
 
+  - In Python: `x += 1` è come scrivere `x = x + 1`.
+  - In Java: `x += 1;`.
+  - In C: `x += 1;`.
+  - In C++: `x += 1;`.
+
+- Istruzioni di input/output: Sono espressioni particolari ma generalmente evidenziate perché permettono di interagire con l'utente o di produrre output, spesso con sintassi ad hoc. Esempi:
+
+  - In Python: `print("Hello, World!")`.
+  - In Java: `System.out.println("Hello, World!");`.
+  - In C: `printf("Hello, World!\n");`.
+  - In C++: `std::cout << "Hello, World!" << std::endl;`.
+
+- Istruzioni di controllo del flusso: Permettono di interrompere o continuare l'esecuzione di cicli o di saltare a una specifica etichetta nel codice. Esempi:
+
+  - In Python: `break`, `continue`.
+  - In Java: `break;`, `continue;`.
+  - In C: `break;`, `continue;`, `goto label;`.
+  - In C++: `break;`, `continue;`, `goto label;`.
+
+- Gestione della vita degli oggetti: Include la creazione, l'utilizzo e la distruzione dei dati presenti nella memoria del computer. In alcuni linguaggi ciò è parzialmente o totalmente a carico del programmatore, mentre, all'altro estremo, è completamente gestito dal linguaggio. Esempi:
+
+  - Creazione di oggetti:
+    - In C++: `int* ptr = new int;`.
+    - In Java: `String str = new String("Hello, world!");`
+    - In Python: Non è presente una istruzione specifica giacché l'espressione `MyClass()` crea un oggetto di tipo `MyClass`.
+    - In C: La creazione di oggetti è spesso gestita manualmente attraverso l'allocazione di memoria dinamica con funzioni come `malloc`.
+  - Distruzione di oggetti:
+    - In Python: La gestione della memoria è automatica tramite il garbage collector.
+    - In Java: In Java, la gestione della memoria è affidata al garbage collector.
+    - In C++: `delete ptr;`.
+    - In C: `free(ptr);` (richiede `#include <stdlib.h>`).
+  - Eliminazione di variabili:
+    - In Python: `del x`.
+
+- Ritorno di valori: Utilizzata all'interno di funzioni per restituire un valore. Esempi:
+
+  - In Python: `return x`.
+  - In Java: `return x;`.
+  - In C: `return x;`.
+  - In C++: `return x;`.
+
+- Generazione di eccezioni: Utilizzata per generare e inviare un'eccezione, cioè una interruzione della sequenza ordinaria delle istruzione per segnalare una anomalia. Esempi:
+
+  - In Python: `raise ValueError("Invalid input")`.
+  - In Java: `throw new IllegalArgumentException("Invalid input");`.
+  - In C++: `throw std::invalid_argument("Invalid input");`.
+  - In C: Non esiste un equivalente diretto, ma si possono utilizzare meccanismi come `setjmp` e `longjmp` per la gestione degli errori.
+
+- Importazione di moduli: Permettono di importare moduli o parti di essi, cioè di utilizzare funzioni, classi, variabili e altri identificatori definiti in altri file o librerie. Esempi:
+
+  - In Python: `import math`, `from math import sqrt`
+  - In Java: `import java.util.List;`
+  - In C: `#include <stdio.h>`
+  - In C++: `#include <iostream>`
+
+- Dichiarazioni globali e non locali: Permettono di dichiarare variabili che esistono nell'ambito globale o non locale. Esempi:
+
+  - In Python: `global x`, `nonlocal y`.
+  - In Java: Le variabili globali non sono supportate direttamente; si utilizzano campi statici delle classi.
+  - In C: Le variabili globali sono dichiarate al di fuori di qualsiasi funzione.
+  - In C++: Le variabili globali sono dichiarate al di fuori di qualsiasi funzione.
+
+- Assert: Utilizzata per verificare se una condizione è vera e, in caso contrario, sollevare un'eccezione. Esempi:
+
+  - In Python: `assert x > 0, "x deve essere positivo"`.
+  - In Java: `assert x > 0 : "x deve essere positivo";`.
+  - In C: `assert(x > 0);` (richiede `#include <assert.h>`).
+  - In C++: `assert(x > 0);` (richiede `#include <cassert>`).
+
+[^2-prima-parte-sintassi]: Spiegheremo il concetto di tipo a breve, per ora si può pensare ad esso come l'insieme dei possibili valori e operazioni che si possono effettuare su di essi.
 
 ## Istruzioni composte e blocchi di codice
 
@@ -137,69 +227,319 @@ Alcuni esempi di istruzione e blocco di codice:
 - Esempio in C:
 
   ```c
-  if (x > 0) {
-    printf("x è positivo\n");
+  if (x > 0) { /* <1> */
+    printf("x è positivo\n"); /* <2> */
 
     y = x * 2;
   }
   ```
   In questo esempio:
-  - `if (x > 0)` è un'istruzione composta.
-  - `{ printf("x è positivo\n"); y = x * 2; }` è un blocco di codice che viene eseguito se la condizione dell'istruzione `if` è vera.
+  1. `if (x > 0)` e quanto nelle parentesi graffe è un'istruzione composta. `if` è una parola chiave seguita da una espressione tra delimitatori. 
+  2. `{ printf("x è positivo\n"); y = x * 2; }` è un blocco di codice che viene eseguito se la condizione dell'istruzione `if` è vera. Sono presenti diversi delimitatori, una espressione e una istruzione di assegnamento.
 
 - Esempio in Python:
 
   ```python
-  if x > 0:
-    print("x è positivo")
+  if x > 0: # <1>
+    print("x è positivo") # <2>
 
     y = x * 2
   ```
   In questo esempio:
-  - `if x > 0:` è un'istruzione composta.
-  - Le righe indentate sotto l'istruzione `if` (`print("x è positivo")` e `y = x * 2`) costituiscono un blocco di codice che viene eseguito se la condizione dell'istruzione `if` è vera.
+  1. `if x > 0:` è un'istruzione composta.
+  2. Le righe indentate sotto l'istruzione `if`, cioè `print("x è positivo")` e `y = x * 2`, costituiscono un blocco di codice che viene eseguito se la condizione dell'istruzione `if` è vera.
 
-Altri esempi: 
+Alcuni esempi di istruzione e blocco di codice:
 
-- Condizioni: Istruzioni che eseguono un blocco di codice solo se una condizione è vera. Esempio:
+- Esempio in C:
 
   ```c
-  #include <stdio.h>
+  if (x > 0) { /* <1> */
+    printf("x è positivo\n"); /* <2> */
+    y = x * 2;
+  }
+  ```
+  In questo esempio:
+  1. `if (x > 0)` e quanto nelle parentesi graffe è un'istruzione composta.
+  2. `{ printf("x è positivo\n"); y = x * 2; }` è un blocco di codice che viene eseguito se la condizione dell'istruzione `if` è vera.
 
-  x = 42;
+- Esempio in Python:
 
-  if (x > 0) {
+  ```python
+  if x > 0: # <1>
+    print("x è positivo") # <2>
+    y = x * 2
+  ```
+  In questo esempio:
+  1. `if x > 0:` è un'istruzione composta.
+  2. Le righe indentate sotto l'istruzione `if` (`print("x è positivo")` e `y = x * 2`) costituiscono un blocco di codice che viene eseguito se la condizione dell'istruzione `if` è vera.
+
+Di seguito sono elencate le istruzioni composte principali, con spiegazioni e semplici esempi di sintassi per Python, Java, C e C++:
+
+- Condizionali (`if`, `else if`, `else`): Le istruzioni condizionali permettono l'esecuzione di blocchi di codice basati su espressioni logiche.
+
+    - Python:
+      ```python
+      if x > 0:
+        print("x è positivo")
+
+      elif x == 0:
+        print("x è zero")
+
+      else:
+        print("x è negativo")
+      ```
+
+  - Java:
+    ```java
+    if (x > 0) {
+      System.out.println("x è positivo");
+    } else if (x == 0) {
+      System.out.println("x è zero");
+    } else {
+      System.out.println("x è negativo");
+    }
+    ```
+
+  - C:
+    ```c
+    if (x > 0) {
       printf("x è positivo\n");
-  }
-  ```
-  - `if`: Parola chiave che introduce la condizione.
-  - `(x > 0)`: Condizione composta da: `x` identificatore di variabile, `>` operatore di confronto e `0` letterale numerico intero.
-  - `{ ... }`: Delimitatori che racchiudono il blocco di codice.
-  - `print("x è positivo")`: Istruzione di output.
+    } else if (x == 0) {
+      printf("x è zero\n");
+    } else {
+      printf("x è negativo\n");
+    }
+    ```
 
-- Cicli: Istruzioni che ripetono un blocco di codice. Esempio:
+  - C++:
+    ```cpp
+    if (x > 0) {
+      std::cout << "x è positivo" << std::endl;
+    } else if (x == 0) {
+      std::cout << "x è zero" << std::endl;
+    } else {
+      std::cout << "x è negativo" << std::endl;
+    }
+    ```
 
-  ```c
-  #include <stdio.h>
+- Cicli (`for`): I cicli `for` permettono di iterare su un insieme di valori o di ripetere l'esecuzione di un blocco di codice per un numero specificato di volte.
 
-  int n = 42;
-  int somma = 0;
-  int i;
+  - Python:
+    ```python
+    for i in range(5):
+      print(i)
+    ```
 
-  for (i = 0; i < n; i++) {
-      somma = somma + i;
-  }
-  ```
-  - `for`: Parola chiave che introduce il ciclo.
-  - `(i = 0; i < n; i++)`: Espressione di controllo del ciclo composta da: `i = 0` assegnazione iniziale, `i < n` condizione di ciclo e `i++` incremento della variabile `i`.
-  - `{ ... }`: Delimitatori che racchiudono il blocco di codice.
-  - `somma = somma + i`: Operazione aritmetica.
+  - Java:
+    ```java
+    for (int i = 0; i < 5; i++) {
+      System.out.println(i);
+    }
+    ```
 
-## Organizzazione del codice in un programma
+  - C:
+    ```c
+    for (int i = 0; i < 5; i++) {
+      printf("%d\n", i);
+    }
+    ```
+
+  - C++:
+    ```cpp
+    for (int i = 0; i < 5; i++) {
+      std::cout << i << std::endl;
+    }
+    ```
+
+Cicli (`while`): I cicli `while` ripetono l'esecuzione di un blocco di codice finché una condizione specificata rimane vera.
+
+  - Python:
+
+    ```python
+    while x > 0:
+      print(x)
+
+      x -= 1
+    ```
+
+  - Java:
+
+    ```java
+    while (x > 0) {
+      System.out.println(x);
+
+      x--;
+    }
+    ```
+
+  - C:
+
+    ```c
+    while (x > 0) {
+      printf("%d\n", x);
+
+      x--;
+    }
+    ```
+
+  - C++:
+
+    ```cpp
+    while (x > 0) {
+      std::cout << x << std::endl;
+      
+      x--;
+    }
+    ```
+
+- Gestione delle eccezioni (`try`, `catch`): Le istruzioni di gestione delle eccezioni permettono di gestire errori o condizioni anomale che possono verificarsi durante l'esecuzione del programma.
+
+  - Python:
+
+    ```python
+    try:
+      value = int(input("Inserisci un numero: "))
+
+    except ValueError:
+      print("Input non valido")
+    ```
+
+  - Java:
+
+    ```java
+    try {
+      int value = Integer.parseInt(input);
+
+    } catch (NumberFormatException e) {
+      System.out.println("Input non valido");
+    }
+    ```
+
+  - C++:
+
+    ```cpp
+    try {
+      int value = std::stoi(input);
+
+    } catch (const std::invalid_argument& e) {
+      std::cout << "Input non valido" << std::endl;
+    }
+    ```
+
+  - C: C non ha un supporto nativo per la gestione delle eccezioni, ma si possono usare meccanismi come `setjmp` e `longjmp`.
+
+    ```c
+    #include <setjmp.h>
+
+    jmp_buf buf; /* <1> */
+    
+    void error() {
+      longjmp(buf, 1); /* <2> */
+    }
+    
+    int main() {
+      if (setjmp(buf)) { /* <3> */
+        printf("Errore rilevato\n"); /* <4> */
+        
+      } else {
+        error(); /* <5> */
+      }
+      return 0;
+    }
+    ```
+    1. Dichiarazione di una variabile di tipo `jmp_buf`.
+    2. Salta al punto salvato in buf con valore di ritorno 1.
+    3. Salva il contesto di esecuzione attuale in `buf`.
+    4. Esegue se `longjmp` viene chiamato.
+    5. Chiama la funzione error, che salta indietro al punto `setjmp`.
+
+- Selezione multipla (`switch`, `case`, `default`): Le istruzioni di selezione multipla permettono di eseguire uno tra diversi blocchi di codice basati sul valore di un'espressione.
+
+  - Python (a partire da Python 3.10 con `match`):
+    ```python
+    match x:
+      case 0:
+        print("x è zero")
+
+      case 1:
+        print("x è uno")
+
+      case _:
+        print("x è un altro numero")
+    ```
+
+  - Java:
+    ```java
+    switch (x) {
+      case 0:
+        System.out.println("x è zero");
+
+        break;
+
+      case 1:
+        System.out.println("x è uno");
+
+        break;
+
+      default:
+        System.out.println("x è un altro numero");
+
+        break;
+    }
+    ```
+
+  - C:
+    ```c
+    switch (x) {
+      case 0:
+        printf("x è zero\n");
+
+        break;
+
+      case 1:
+        printf("x è uno\n");
+
+        break;
+
+      default:
+        printf("x è un altro numero\n");
+
+        break;
+    }
+    ```
+
+  - C++:
+    ```cpp
+    switch (x) {
+      case 0:
+        std::cout << "x è zero" << std::endl;
+
+        break;
+
+      case 1:
+        std::cout << "x è uno" << std::endl;
+
+        break;
+
+      default:
+        std::cout << "x è un altro numero" << std::endl;
+        
+        break;
+    }
+    ```
+
+## Organizzazione delle istruzioni in un programma
+
+Certamente, ecco il paragrafo completato:
+
+---
+
+## Organizzazione delle istruzioni in un programma
 
 Il programma è solitamente salvato in un file di testo in righe. Queste righe possono essere classificate in righe fisiche e righe logiche.
 
-Una **riga fisica** è una linea di testo nel file sorgente del programma, terminata da un carattere di a capo. 
+Una **riga fisica** è una linea di testo nel file sorgente del programma, terminata da un carattere di a capo.
 
 Esempio:
 
@@ -220,4 +560,27 @@ int y = (10 + 20 + 30 + /* <1> */
 2. Seconda riga fisica della riga logica.
 
 Il concetto di righe fisiche e logiche esiste perché le istruzioni (o righe logiche) possono essere lunghe e composte, richiedendo più righe fisiche per migliorare la leggibilità e la gestione del codice.
+
+In molti linguaggi di programmazione, l'uso di righe fisiche e logiche facilita l'organizzazione e la formattazione del codice. Ad esempio:
+
+- **Python** utilizza l'indentazione per definire i blocchi di codice, quindi una riga logica che si estende su più righe fisiche deve continuare con una corretta indentazione. Inoltre, è possibile usare il carattere di continuazione (`\`) per indicare che una riga logica prosegue sulla riga successiva:
+
+  ```python
+  result = (10 + 20 + 30 + \
+            40 + 50)
+  ```
+
+- **Java** e **C** utilizzano le parentesi graffe (`{}`) per delimitare i blocchi di codice, e le istruzioni possono estendersi su più righe fisiche senza il bisogno di un carattere di continuazione, grazie al punto e virgola (`;`) che termina le istruzioni:
+
+  ```java
+  int y = (10 + 20 + 30 + 
+           40 + 50);
+  ```
+
+  ```c
+  int y = (10 + 20 + 30 + 
+           40 + 50);
+  ```
+
+L'uso corretto di righe fisiche e logiche migliora la leggibilità del codice, rendendolo più facile da capire e mantenere. Inoltre, una buona formattazione del codice facilita il lavoro di squadra, poiché gli sviluppatori possono facilmente seguire e comprendere la logica implementata da altri.
 

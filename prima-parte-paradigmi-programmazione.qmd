@@ -7,7 +7,9 @@ citation-location: margin
 
 I linguaggi di programmazione possono essere classificati in diversi tipologie in base al loro scopo e alla loro struttura. 
 
-Una delle classificazioni più importanti è quella del **paradigma di programmazione**, che definisce il modello e gli stili di risoluzione dei problemi che un linguaggio supporta. Tuttavia, è importante notare che molti linguaggi moderni sfruttano efficacemente più di un paradigma di programmazione, rendendo difficile assegnare un linguaggio a una sola categoria. Come ha affermato Bjarne Stroustrup, il creatore di C++: 
+Una delle classificazioni più importanti è quella del **paradigma di programmazione**, che definisce il modello e gli stili di risoluzione dei problemi che un linguaggio supporta per mezzo della codificazione degli algoritmi. 
+
+Tuttavia, è importante notare che molti linguaggi moderni sfruttano efficacemente più di un paradigma di programmazione, rendendo difficile assegnare un linguaggio a una sola categoria. Come ha affermato Bjarne Stroustrup, il creatore di C++: 
 
 > Le funzionalità dei linguaggi esistono per fornire supporto agli stili di programmazione. Per favore, non considerate una singola funzionalità di linguaggio come una soluzione, ma come un mattoncino da un insieme variegato che può essere combinato per esprimere soluzioni.
 >  
@@ -119,9 +121,9 @@ L'assembly è usato nello sviluppo di:
 
 ### Esempio in Python
 
-All'altro estremo della immediatezza di comprensione del testo del codice. per un essere umano, troviamo Python, un linguaggio di alto livello noto per la leggibilità ed eleganza. 
+All'altro estremo della immediatezza di comprensione del testo del codice per un essere umano, troviamo Python, un linguaggio di alto livello noto per la leggibilità ed eleganza. 
 
-Ecco il medesimo esempio:
+Ecco il medesimo esempio, visibilmente più conciso e certamente intuibile anche avendo basi limitate di programmazione:
 
 ```python
 num1 = 5 # <1>
@@ -206,7 +208,7 @@ Nella programmazione procedurale, il codice è suddiviso in unità elementari ch
 
 ### Creazione di librerie
 
-Un altro aspetto importante della programmazione procedurale è la possibilità di creare **librerie**, che sono collezioni di funzioni e procedure riutilizzabili. Le librerie permettono di organizzare e condividere codice comune tra diversi progetti, aumentando la produttività e riducendo la duplicazione del codice.
+Un altro aspetto importante della programmazione procedurale è la possibilità di creare **librerie**, che sono collezioni di funzioni e procedure riutilizzabili. Le librerie permettono di organizzare e condividere codice comune tra diversi progetti, aumentando la produttività e riducendo la duplicazione del codice, nonché abilitando un modello commerciale che mette a disposizione del software prodotto da aziende o comunità specializzate.
 
 Esempio di una semplice libreria ipotetica di _somme_ in C:
 
@@ -335,13 +337,15 @@ print(f"Il risultato della somma dell'array è: {risultato_array}")
 ```
 1. Il codice di `somma_interi` e `somma_stringhe` è identico e questo ci suggerisce che una delle due è ridondante.
 2. La funzione ora prende in input solo l'array e non c'è bisogno di inserire anche la sua dimensione.
-3. In Python, per evitare errori quando si usa la funzione sum, l'array (o lista) deve contenere elementi che supportano l'operazione di addizione tra di loro. Tipicamente, si usano numeri (interi o float), ma è possibile anche sommare altri tipi di elementi se l'operazione di addizione è definita per quel tipo.
+3. In Python, per evitare errori quando si usa la funzione `sum`, l'array (o lista) deve contenere elementi che supportano l'operazione di addizione tra di loro. Tipicamente, si usano numeri (interi o a virgola mobile), ma è possibile anche sommare altri tipi di elementi se l'operazione di addizione è definita per quel tipo di dato.
+
+Anche qui Python appare più semplice e immediato, sicuramente vincente sul piano della comprensione del codice e della immediatezza di utilizzo. In realtà, Python e C hanno sia una forte complementarietà sulle applicazioni, sia una dipendenza perché molte librerie e l'interprete stesso di Python sono in C.
 
 ## Paradigma di orientamento agli oggetti
 
 La **programmazione orientata agli oggetti** (in inglese _object-oriented programming_, OOP) è un paradigma di programmazione che organizza il software in termini di _oggetti_, ciascuno dei quali rappresenta un'istanza di una matrice detta _classe_. Una classe definisce un tipo di dato che include attributi (dati) e metodi (funzionalità). Gli oggetti interagiscono tra loro attraverso messaggi, permettendo una struttura modulare e intuitiva.
 
-L'OOP è emersa negli anni '60 e '70 con il linguaggio Simula, il primo linguaggio di programmazione a supportare questo paradigma. Tuttavia, è stato con Smalltalk, sviluppato negli anni '70 da Alan Kay e altri presso Xerox PARC, che l'OOP ha guadagnato popolarità. Il paradigma è stato ulteriormente consolidato con il linguaggio C++ negli anni '80 e con Java negli anni '90, rendendolo uno dei più utilizzati per lo sviluppo software moderno. Oggi numerosi sono i linguaggi a oggetti, ad esempio Python, C#, Ruby, Swift, Javascript, ecc. ed altri lo supportano come PHP (dalla versione 5) e financo il Fortran nella versione 2003. 
+L'OOP è emersa negli anni '60 e '70 con il linguaggio Simula, il primo linguaggio di programmazione a supportare questo paradigma. Tuttavia, è stato con Smalltalk, sviluppato negli anni '70 da Alan Kay e altri presso Xerox PARC, che l'OOP ha guadagnato popolarità. Il paradigma è stato ulteriormente consolidato con il linguaggio C++ negli anni '80 e con Java negli anni '90, rendendolo uno dei più utilizzati per lo sviluppo software moderno. Oggi numerosi sono i linguaggi a oggetti, ad esempio Python, C#, Ruby, Java, Swift, Javascript, ecc. ed altri lo supportano come PHP (dalla versione 5) e financo il Fortran nella versione 2003. 
 
 Rispetto ai paradigmi precedenti, l'OOP introduce diversi concetti chiave che ineriscono al disegno architetturale di software:
 

@@ -401,7 +401,8 @@ div.csl-indent {
 
 
 <p>I linguaggi di programmazione possono essere classificati in diversi tipologie in base al loro scopo e alla loro struttura.</p>
-<p>Una delle classificazioni più importanti è quella del <strong>paradigma di programmazione</strong>, che definisce il modello e gli stili di risoluzione dei problemi che un linguaggio supporta. Tuttavia, è importante notare che molti linguaggi moderni sfruttano efficacemente più di un paradigma di programmazione, rendendo difficile assegnare un linguaggio a una sola categoria. Come ha affermato Bjarne Stroustrup, il creatore di C++:</p>
+<p>Una delle classificazioni più importanti è quella del <strong>paradigma di programmazione</strong>, che definisce il modello e gli stili di risoluzione dei problemi che un linguaggio supporta per mezzo della codificazione degli algoritmi.</p>
+<p>Tuttavia, è importante notare che molti linguaggi moderni sfruttano efficacemente più di un paradigma di programmazione, rendendo difficile assegnare un linguaggio a una sola categoria. Come ha affermato Bjarne Stroustrup, il creatore di C++:</p>
 <div class="page-columns page-full"><blockquote class="blockquote">
 <p>Le funzionalità dei linguaggi esistono per fornire supporto agli stili di programmazione. Per favore, non considerate una singola funzionalità di linguaggio come una soluzione, ma come un mattoncino da un insieme variegato che può essere combinato per esprimere soluzioni.</p>
 <p>I principi generali per il design e la programmazione possono essere espressi semplicemente:</p>
@@ -498,8 +499,8 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 </section>
 <section id="esempio-in-python" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="esempio-in-python"><span class="header-section-number">2.2.2</span> Esempio in Python</h3>
-<p>All’altro estremo della immediatezza di comprensione del testo del codice. per un essere umano, troviamo Python, un linguaggio di alto livello noto per la leggibilità ed eleganza.</p>
-<p>Ecco il medesimo esempio:</p>
+<p>All’altro estremo della immediatezza di comprensione del testo del codice per un essere umano, troviamo Python, un linguaggio di alto livello noto per la leggibilità ed eleganza.</p>
+<p>Ecco il medesimo esempio, visibilmente più conciso e certamente intuibile anche avendo basi limitate di programmazione:</p>
 <div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1"></a>num1 <span class="op">=</span> <span class="dv">5</span></span>
 <span id="annotated-cell-2-2"><a href="#annotated-cell-2-2"></a>num2 <span class="op">=</span> <span class="dv">3</span></span>
 <span id="annotated-cell-2-3"><a href="#annotated-cell-2-3"></a></span>
@@ -574,7 +575,7 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 </section>
 <section id="creazione-di-librerie" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="creazione-di-librerie"><span class="header-section-number">2.3.2</span> Creazione di librerie</h3>
-<p>Un altro aspetto importante della programmazione procedurale è la possibilità di creare <strong>librerie</strong>, che sono collezioni di funzioni e procedure riutilizzabili. Le librerie permettono di organizzare e condividere codice comune tra diversi progetti, aumentando la produttività e riducendo la duplicazione del codice.</p>
+<p>Un altro aspetto importante della programmazione procedurale è la possibilità di creare <strong>librerie</strong>, che sono collezioni di funzioni e procedure riutilizzabili. Le librerie permettono di organizzare e condividere codice comune tra diversi progetti, aumentando la produttività e riducendo la duplicazione del codice, nonché abilitando un modello commerciale che mette a disposizione del software prodotto da aziende o comunità specializzate.</p>
 <p>Esempio di una semplice libreria ipotetica di <em>somme</em> in C:</p>
 <ul>
 <li><p>File header (<code>mialibreria.h</code>):</p>
@@ -731,15 +732,16 @@ Stroustrup, Bjarne. 2013. <em>The C++ Programming Language</em>. 4th ed. <a href
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="8" data-code-annotation="3">In Python, per evitare errori quando si usa la funzione sum, l’array (o lista) deve contenere elementi che supportano l’operazione di addizione tra di loro. Tipicamente, si usano numeri (interi o float), ma è possibile anche sommare altri tipi di elementi se l’operazione di addizione è definita per quel tipo.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="8" data-code-annotation="3">In Python, per evitare errori quando si usa la funzione <code>sum</code>, l’array (o lista) deve contenere elementi che supportano l’operazione di addizione tra di loro. Tipicamente, si usano numeri (interi o a virgola mobile), ma è possibile anche sommare altri tipi di elementi se l’operazione di addizione è definita per quel tipo di dato.</span>
 </dd>
 </dl>
+<p>Anche qui Python appare più semplice e immediato, sicuramente vincente sul piano della comprensione del codice e della immediatezza di utilizzo. In realtà, Python e C hanno sia una forte complementarietà sulle applicazioni, sia una dipendenza perché molte librerie e l’interprete stesso di Python sono in C.</p>
 </section>
 </section>
 <section id="paradigma-di-orientamento-agli-oggetti" class="level2 page-columns page-full" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="paradigma-di-orientamento-agli-oggetti"><span class="header-section-number">2.4</span> Paradigma di orientamento agli oggetti</h2>
 <p>La <strong>programmazione orientata agli oggetti</strong> (in inglese <em>object-oriented programming</em>, OOP) è un paradigma di programmazione che organizza il software in termini di <em>oggetti</em>, ciascuno dei quali rappresenta un’istanza di una matrice detta <em>classe</em>. Una classe definisce un tipo di dato che include attributi (dati) e metodi (funzionalità). Gli oggetti interagiscono tra loro attraverso messaggi, permettendo una struttura modulare e intuitiva.</p>
-<p>L’OOP è emersa negli anni ’60 e ’70 con il linguaggio Simula, il primo linguaggio di programmazione a supportare questo paradigma. Tuttavia, è stato con Smalltalk, sviluppato negli anni ’70 da Alan Kay e altri presso Xerox PARC, che l’OOP ha guadagnato popolarità. Il paradigma è stato ulteriormente consolidato con il linguaggio C++ negli anni ’80 e con Java negli anni ’90, rendendolo uno dei più utilizzati per lo sviluppo software moderno. Oggi numerosi sono i linguaggi a oggetti, ad esempio Python, C#, Ruby, Swift, Javascript, ecc. ed altri lo supportano come PHP (dalla versione 5) e financo il Fortran nella versione 2003.</p>
+<p>L’OOP è emersa negli anni ’60 e ’70 con il linguaggio Simula, il primo linguaggio di programmazione a supportare questo paradigma. Tuttavia, è stato con Smalltalk, sviluppato negli anni ’70 da Alan Kay e altri presso Xerox PARC, che l’OOP ha guadagnato popolarità. Il paradigma è stato ulteriormente consolidato con il linguaggio C++ negli anni ’80 e con Java negli anni ’90, rendendolo uno dei più utilizzati per lo sviluppo software moderno. Oggi numerosi sono i linguaggi a oggetti, ad esempio Python, C#, Ruby, Java, Swift, Javascript, ecc. ed altri lo supportano come PHP (dalla versione 5) e financo il Fortran nella versione 2003.</p>
 <p>Rispetto ai paradigmi precedenti, l’OOP introduce diversi concetti chiave che ineriscono al disegno architetturale di software:</p>
 <ul>
 <li><p><strong>Classe</strong> e <strong>oggetto</strong>: La classe è un modello o schema per creare oggetti. Contiene definizioni di attributi e metodi. L’oggetto è un’istanza di una classe e rappresenta un’entità concreta nel programma con stato e comportamento mutevoli.</p></li>

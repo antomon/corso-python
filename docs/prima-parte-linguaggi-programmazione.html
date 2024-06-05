@@ -351,30 +351,31 @@ div.csl-indent {
 <p>Partiamo da alcuni concetti basilari che ci permettono di contestualizzare più facilmente quelli che introdurremo via via nel corso.</p>
 <section id="definizioni" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="definizioni"><span class="header-section-number">1.1</span> Definizioni</h2>
-<p>La <strong>programmazione</strong> è il processo di progettazione e scrittura di <strong>istruzioni</strong>, nella forma statica identificate come <strong>codice sorgente</strong>, che un computer può ricevere per eseguire compiti predefiniti. Queste istruzioni sono codificate in un <strong>linguaggio di programmazione</strong>, che traduce le idee e gli algoritmi del programmatore, in un formato comprensibile ed eseguibile dal computer.</p>
-<p>Un <strong>programma</strong> informatico è una sequenza di istruzioni scritte per eseguire una specifica operazione o un insieme di operazioni su un computer. Queste istruzioni sono codificate in un linguaggio che il computer può comprendere e seguire per eseguire attività come calcoli, manipolazione di dati, controllo di dispositivi e interazione con l’utente. Pensate a un programma come a una ricetta di cucina. La ricetta elenca gli ingredienti necessari (dati) e fornisce istruzioni passo-passo (algoritmo) per preparare un piatto. Allo stesso modo, un programma informatico specifica i dati da usare e le istruzioni da seguire per ottenere un risultato desiderato.</p>
+<p>La <strong>programmazione</strong> è il processo di progettazione e scrittura di <strong>istruzioni</strong>, nella forma statica, ad esempio un file di testo, identificate come <strong>codice sorgente</strong>, che un computer può ricevere per eseguire compiti predefiniti. Queste istruzioni sono codificate in un <strong>linguaggio di programmazione</strong>, che traduce le idee e gli algoritmi del programmatore, in un formato comprensibile ed eseguibile dal computer.</p>
+<p>Un <strong>programma</strong> informatico è una sequenza di istruzioni scritte per eseguire una specifica operazione o un insieme di operazioni su un computer. Queste istruzioni sono codificate in un linguaggio che il computer può comprendere e utilizzare per eseguire attività come calcoli, manipolazione di dati, controllo di dispositivi e interazione con l’utente. Pensate a un programma come a una ricetta di cucina. La ricetta elenca gli ingredienti necessari (dati) e fornisce istruzioni passo-passo (algoritmo) per preparare un piatto. Allo stesso modo, un programma informatico specifica i dati da usare e le istruzioni da seguire per ottenere un risultato desiderato.</p>
 <p>Un linguaggio di programmazione è un linguaggio formale che fornisce un insieme di regole e sintassi per scrivere programmi informatici. Questi linguaggi permettono ai programmatori di comunicare con i computer e di creare software. Alcuni esempi di linguaggi di programmazione includono Python, Java, C++, SQL, Rust, Haskell, Prolog, C, Assembly, Fortran, JavaScript e altre centinaia (o forse migliaia).</p>
 </section>
 <section id="linguaggi-naturali-e-di-programmazione" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="linguaggi-naturali-e-di-programmazione"><span class="header-section-number">1.2</span> Linguaggi naturali e di programmazione</h2>
-<p>I linguaggi di programmazione differiscono dai linguaggi naturali (come l’italiano o l’inglese) in diversi modi:</p>
+<p>I linguaggi di programmazione hanno dei punti in comune e delle differenze coi linguaggi naturali (come l’italiano o l’inglese). Quest’ultime sono principalmente:</p>
 <ol type="1">
 <li><p>Precisione e rigidità: I linguaggi di programmazione sono estremamente precisi e rigidi. Ogni istruzione deve essere scritta in un modo specifico affinché il computer possa comprenderla ed eseguirla correttamente. Anche un piccolo errore di sintassi può impedire il funzionamento di un programma.</p></li>
 <li><p>Ambiguità: I linguaggi naturali sono spesso ambigui e aperti a interpretazioni. Le stesse parole possono avere significati diversi a seconda del contesto. I linguaggi di programmazione, invece, sono progettati per essere privi di ambiguità; ogni istruzione ha un significato preciso e univoco.</p></li>
 <li><p>Vocabolario limitato: I linguaggi naturali hanno un vocabolario vastissimo e in continua espansione. I linguaggi di programmazione, al contrario, hanno un vocabolario limitato costituito da parole chiave e comandi definiti dal linguaggio stesso.</p></li>
+<li><p>Forma di mediazione: I linguaggi naturali sono direttamente utilizzati per comunicare, quelli di programmazione non sono comprensibili immediatamente dai computer, ma devono essere tradotti in una forma opportuna per mezzo di programmi ad hoc.</p></li>
 </ol>
 </section>
 <section id="algoritmi" class="level2 page-columns page-full" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="algoritmi"><span class="header-section-number">1.3</span> Algoritmi</h2>
-<p>Un <strong>algoritmo</strong> è “un insieme di regole che definiscono con precisione una sequenza di operazioni” (Harold Stone, <em>Introduction to Computer Organization and Data Structures</em>, 1971 <span class="citation" data-cites="10.5555/578826">(<a href="appendice-riferimenti.html#ref-10.5555/578826" role="doc-biblioref">Stone 1971</a>)</span>). Gli algoritmi sono alla base della programmazione perché rappresentano il disegno teorico computazionale dei programmi.</p>
+<p>Un <strong>algoritmo</strong> è “un insieme di regole che definiscono con precisione una sequenza di operazioni” (Harold Stone, <em>Introduction to Computer Organization and Data Structures</em>, 1971 <span class="citation" data-cites="10.5555/578826">(<a href="appendice-riferimenti.html#ref-10.5555/578826" role="doc-biblioref">Stone 1971</a>)</span>). Tale definizione, per quanto generica, coglie i due aspetti fondanti, cioè regole, intese come prescrizioni sintattiche o semantiche, che si traducono in operazioni richieste ad un agente, umano o informatico.</p>
 <div class="no-row-height column-margin column-container"><div id="ref-10.5555/578826" class="csl-entry" role="listitem">
 Stone, Harold S. 1971. <em>Introduction to Computer Organization and Data Structures</em>. USA: <a href="https://dl.acm.org/doi/10.5555/578826" class="uri">https://dl.acm.org/doi/10.5555/578826</a>; McGraw-Hill, Inc.
-</div></div><p>Più precisamente, un algoritmo è una sequenza ben definita di passi o operazioni che, a partire da un input, produce un output in un tempo finito. Le proprietà principali seguenti esprimono in modo più completo le caratteristiche che un algoritmo deve possedere:</p>
+</div></div><p>In altre parole, un algoritmo è una sequenza ben definita di passi o operazioni ben codificata, che, a partire da un input, produce un output in un tempo finito e, quindi, presenta la seguente serie di caratteristiche:</p>
 <ul>
 <li><p>Finitudine: L’algoritmo deve terminare dopo un numero finito di passi.</p></li>
 <li><p>Determinismo: Ogni passo dell’algoritmo deve essere definito in modo preciso e non ambiguo.</p></li>
-<li><p>Input L’algoritmo riceve zero o più dati in ingresso.</p></li>
-<li><p>Output L’algoritmo produce uno o più risultati.</p></li>
+<li><p>Input: L’algoritmo riceve zero o più dati in ingresso.</p></li>
+<li><p>Output: L’algoritmo produce uno o più risultati.</p></li>
 <li><p>Effettività: Ogni operazione dell’algoritmo deve essere fattibile ed eseguibile in un tempo finito.</p></li>
 </ul>
 <p>Gli algoritmi sono tradotti in codice sorgente attraverso un linguaggio di programmazione per creare programmi. In altre parole, un programma è la realizzazione pratica e funzionante degli algoritmi ideati dal programmatore.</p>
@@ -385,7 +386,7 @@ Stone, Harold S. 1971. <em>Introduction to Computer Organization and Data Struct
 <p>Un <strong>compilatore</strong> è un programma che traduce l’intero codice sorgente di un programma scritto in un linguaggio di alto livello (come C o C++) in codice macchina, che è il linguaggio comprensibile direttamente dalla CPU. Questa traduzione avviene una sola volta, generando un file eseguibile che può essere eseguito direttamente dalla CPU.</p>
 <p>Un <strong>interprete</strong>, invece, è un programma che esegue il codice sorgente direttamente, istruzione per istruzione, senza produrre un file eseguibile separato. L’interprete legge una riga di codice, la traduce in codice macchina e la esegue immediatamente. Questo processo viene ripetuto per ogni riga del codice sorgente.</p>
 <p>È importante notare che alcuni linguaggi di programmazione possono essere sia compilati che interpretati, a seconda dell’implementazione disponibile. Ad esempio, Java utilizza sia la compilazione (per generare bytecode) che l’interpretazione, e la Java Virtual Machine (JVM) spesso utilizza anche la compilazione just-in-time (JIT) per tradurre il bytecode in codice macchina nativo durante l’esecuzione.</p>
-<p>Detto ciò i passaggi macro perché un programma sia eseguito, sono:</p>
+<p>Detto ciò i passaggi macro perché un programma sia eseguito e possa produrre gli effetti pronosticati, sono:</p>
 <ol type="1">
 <li><p>Il programmatore scrive il codice sorgente utilizzando un editor di testo o un ambiente di sviluppo integrato (integrated development environment, IDE). Questo codice contiene le istruzioni del programma, scritte secondo la sintassi del linguaggio di programmazione scelto.</p></li>
 <li><p>L’interpreto o il compilatore vengono eseguiti con input il programma e un componente, l’analizzatore lessicale, legge il codice sorgente e lo divide in lessemi, che sono sequenze di caratteri che corrispondono agli elementi <em>atomici</em> del linguaggio. Ogni lessema viene identificato come un token specifico, come una parola chiave, un operatore o un identificatore.</p></li>
@@ -401,9 +402,9 @@ Stone, Harold S. 1971. <em>Introduction to Computer Organization and Data Struct
 </section>
 <section id="ciclo-di-vita-del-software" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="ciclo-di-vita-del-software"><span class="header-section-number">1.5</span> Ciclo di vita del software</h2>
-<p>Un <strong>software</strong> è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia è, quindi: software, programmi, istruzioni.</p>
+<p>Un <strong>software</strong> è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia concetttuale, dal più generale all’elemento più granulare, è: software, programmi, istruzioni.</p>
 <p>Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi.</p>
-<p>Per creare il software è necessario percorrere una sequenza di fasi ben definita che, concisamente, è:</p>
+<p>Per creare il software, quindi, è necessario percorrere una sequenza di fasi ben definita che, concisamente, è:</p>
 <ul>
 <li><p>La progettazione di un’applicazione inizia con la fase di <strong>analisi dei requisiti</strong>, in cui si identificano cosa deve fare il software, chi sono gli utenti e quali sono i requisiti funzionali e non funzionali che deve soddisfare.</p></li>
 <li><p>Segue il <strong>disegno funzionale</strong> che dettaglia come ogni componente del sistema possa rispondere alle funzionalità richieste. In questa fase si descrivono le operazioni specifiche che ogni componente deve eseguire, utilizzando diagrammi di processo per rappresentare il flusso di attività al fine di rispondere ai requisiti.</p></li>
