@@ -23,11 +23,8 @@ if x > 5 and \ # <2>
    x < 9: # <3>
   print("5 < x < 9") 
 ```
-
 1.  L'istruzione di assegnamento è spezzata su due righe fisiche.
-
 2.  L'istruzione condizionale ha due espressioni che devono essere entrambe vere, ognuna su una riga fisica.
-
 3.  Non importa quanto sono indentate le righe fisiche successive alla prima e ciò può essere sfruttato per incrementare la leggibilità, ad esempio, allineando le espressioni `x > 5` e `x < 9` in colonna.
 
 Il secondo è per mezzo di parentesi, giacché tutte le righe fisiche che seguono una con parentesi tonda `(`, quadra `[` o graffa `{` aperta, fino a quella con l'analoga parentesi chiusa, sono unite in una logica. Le regole di indentazione, che vedremo nel seguito, si applicano solo alla prima riga fisica.
@@ -45,11 +42,8 @@ y = [1, 2,
 z = [1, 2 # <3>
      , 3, 4]   
 ```
-
 1.  L'espressione è spezzata su due righe fisiche e le parentesi tonde rappresentano un'alternativa all'uso del backslash.
-
 2.  Le righe fisiche della lista non hanno la stessa indentazione e una espressione è spezzata su due righe.
-
 3.  La lista è spezzata su due righe fisiche e un delimitatore inizia la riga anziché terminare la precedente.
 
 ## Commenti
@@ -87,7 +81,6 @@ Alcuni esempi:
 
       return risultato 
     ```
-
     1.  Prima riga senza indentazione.
     2.  Questa riga e la successiva appartengono allo stesso blocco e, pertanto, hanno la medesima indentazione.
 
@@ -105,7 +98,6 @@ Alcuni esempi:
     else: 
             print("x è positivo") 
     ```
-
     1.  Le tre clausole `if` , `then` e `else` hanno identica indentazione.
     2.  I tre blocchi hanno come unico vincolo quello di avere un livello maggiore della riga precedente. I blocchi corrispondenti alle diverse clausole non devono avere lo stesso livello di indentazione, anche se è buona prassi farlo.
 
@@ -158,19 +150,19 @@ def mio_generatore():  # <12>
 
 mio_oggetto = MiaClasse(10)  # <13>
 ```
-1.  Identificatore di numero intero: `intero`
-2.  Identificatore di numero decimale: `decimale`
-3.  Identificatore di stringa: `testo`
-4.  Identificatore di lista: `lista`
-5.  Identificatore di dizionario: `dizionario`
-6.  Identificatore di funzione: `mia_funzione`
-7.  Identificatore di classe: `MiaClasse`
-8.  Identificatore di metodo e parametro: `__init__` e `valore`
-9.  Identificatore di attributo: `valore`
-10. Identificatore di metodo: `metodo`
-11. Identificatore di modulo: `math`
-12. Identificatore di generatore: `mio_generatore`
-13. Identificatore di oggetto: `mio_oggetto`
+1.  Identificatore di numero intero: `intero`.
+2.  Identificatore di numero decimale: `decimale`.
+3.  Identificatore di stringa: `testo`.
+4.  Identificatore di lista: `lista`.
+5.  Identificatore di dizionario: `dizionario`.
+6.  Identificatore di funzione: `mia_funzione`.
+7.  Identificatore di classe: `MiaClasse`.
+8.  Identificatore di metodo e parametro: `__init__` e `valore`.
+9.  Identificatore di attributo: `valore`.
+10. Identificatore di metodo: `metodo`.
+11. Identificatore di modulo: `math`.
+12. Identificatore di generatore: `mio_generatore`.
+13. Identificatore di oggetto: `mio_oggetto`.
 
 ### Parole chiave
 
@@ -250,6 +242,7 @@ Nella tabella seguente invece un elenco completo con breve descrizione:
 | `case` | Utilizzato nell'istruzione `match` per definire un ramo |
 | `_` | Utilizzato come identificatore speciale nell'istruzione `match` per indicare un pattern di default o ignorare valori |
 | `type` | Utilizzato in specifici contesti per dichiarazioni di tipo |
+: Parole chiave di Python {.bordered .hover .dark}
 
 Esempi di uso di parole chiave contestuali:
 
@@ -280,7 +273,7 @@ Esempi di uso di parole chiave contestuali:
     3.  Uso di `case` come parola chiave.
     4.  Uso di `_` come parola chiave.
     5.  Utilizzo di `match` come identificatore per una variabile.
-    6.  Output: Questo è un identificatore valido-
+    6.  Output: Questo è un identificatore valido.
 
 -   `type`:
 
@@ -324,7 +317,7 @@ Identificatori speciali:
         print(_private_variable)  # <2> 
         ```
         1.  Nel modulo `example.py` viene definita la variabile come privata.
-        2.  Genera un errore: `NameError: name '_private_variable' is not defined`
+        2.  Genera un errore: `NameError: name '_private_variable' is not defined`.
 
     -   Pattern nei match: Nel contesto di un pattern di corrispondenza all'interno di un'istruzione `match`, `_` è una parola chiave contestuale che denota un *wildcard* (carattere jolly), coem indicato sopra.
 
@@ -349,9 +342,8 @@ Identificatori speciali:
 
         print(_('Hello, world')) # <2>
         ```
-
         1.  Uso di `_` come variabile regolare.
-        2.  Uso di \_ per internazionalizzazione.
+        2.  Uso di `_` per internazionalizzazione.
 
 -   `__*__`: Questi nomi, informalmente noti come nomi *dunder*[^seconda-parte-python-sintassi-1], sono definiti dall'interprete e dalla sua implementazione (inclusa la libreria standard). Altri potrebbero essere definiti nelle versioni future di Python. Qualsiasi uso di nomi `__*__`, in qualsiasi contesto, che non segua l'uso esplicitamente documentato, è soggetto a discontinuazione senza preavviso. Esempio:
 
@@ -367,10 +359,9 @@ Identificatori speciali:
 
     print(obj)  # <3>
     ```
-
     1.  Dunder per metodo chiamato alla creazione dell'oggetto.
     2.  Dunder chiamato da `print` con parametro l'oggetto.
-    3.  Output: MyClass con valore 10
+    3.  Output: `MyClass` con valore `10`.
 
 -   `__*`: I nomi in questa categoria, quando utilizzati all'interno di una definizione di classe, vengono riscritti dal compilatore (processo noto come name *mangling*) per evitare conflitti di nome tra attributi "privati" delle classi base e delle classi derivate. Questo aiuta a garantire che gli attributi destinati ad essere privati non vengano accidentalmente sovrascritti nelle sottoclassi. Esempio:
 
@@ -391,7 +382,6 @@ Identificatori speciali:
     print(base_obj._BaseClass__private_attr)  # <1>
     print(derived_obj._DerivedClass__private_attr)  # <2>
     ```
-
     1.  Accesso al nome di `BaseClass`.
     2.  Accesso al nome di `DerivedClass`.
 
@@ -413,7 +403,6 @@ sum = 3 + 4 # <2>
 
 result = (x * y) + (z / 2) # <3>
 ```
-
 1.  Utilizza l'operatore `+` sugli identificatori `x` e `y`.
 2.  Utilizza l'operatore `+` su letterali.
 3.  Utilizza vari operatori su espressioni.
@@ -465,7 +454,7 @@ class Matrice:
       for j in range(altra.num_colonne):
         for k in range(self.num_colonne):
           risultato[i][j] += (self.righe[i][k] *
-                    altra.righe[k][j])
+                              altra.righe[k][j])
     
     return Matrice(risultato)
 
@@ -478,8 +467,7 @@ A = Matrice([[1, 2],
 B = Matrice([[5, 6], 
              [7, 8]])
 
-# Moltiplicazione di matrici utilizzando l'operatore @
-C = A @ B
+C = A @ B # <5>
 
 print("Matrice A:")
 print(A)
@@ -488,14 +476,14 @@ print("Matrice B:")
 print(B)
 
 print("Risultato di A @ B:")
-print(C) # <5>
+print(C) # <6>
 ```
-
 1.  Controlla se le dimensioni sono compatibili per la moltiplicazione.
 2.  Inizializza la matrice risultato con zeri.
 3.  Esegue la moltiplicazione delle matrici.
 4.  Rappresentazione leggibile della matrice.
-5.  Chiama `__matmul__` per ottenere la stringa su due righe: `19 22` e `43 50`.
+5.  Moltiplicazione di matrici utilizzando l'operatore `@`.
+6.  Chiama `__matmul__` per ottenere la stringa su due righe: `19 22` e `43 50`.
 
 Infine, `@` è anche un delimitatore.
 
@@ -560,7 +548,6 @@ array = np.array([[[1, 2, 3],    [4, 5, 6]],
 
 print(array[..., 1]) # <4>
 ```
-
 1.  Otteniamo il tipo dell'oggetto ellissi. L'output è `<class 'ellipsis'>`.
 2.  Utilizzo come segnaposto per indicare che la funzione è da completare. Da notare che chiamare la funzione `funzione_da_completare()` non dà errore.
 3.  L'uso di `Callable[..., int]` indica una funzione che può accettare un numero variabile di argomenti di qualsiasi tipo e restituire un valore di tipo int.
@@ -661,7 +648,6 @@ print(f_stringa) # <3>
 
 print(f_stringa_multi_linea) # <4>
 ```
-
 1.  Viene chiamato il metodo della stringa lower() per avere il maiuscolo.
 2.  Usiamo un'espressione di concatenazione di stringhe.
 3.  Output: `Output: Ciao, python!`.
@@ -704,9 +690,9 @@ In Python, le istruzioni semplici sono:
 
 -   Istruzioni di gestione dell'uscita da una funzione, della generazione di valori o del sollevamento di eccezioni:
 
-    -   `return`: Restituisce un valore da una funzione.
-    -   `yield`: Restituisce un generatore.
-    -   `raise`: Solleva un'eccezione per segnalare uan condizione di errore.
+    -  `return`: Restituisce un valore da una funzione.
+    -  `yield`: Restituisce un generatore.
+    -  `raise`: Solleva un'eccezione per segnalare uan condizione di errore.
 
     ``` python
     def func():
