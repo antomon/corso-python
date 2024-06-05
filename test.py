@@ -1,28 +1,12 @@
 
 
 
+def outerFunction():
+  def localFunction():  # <1>
+    print("Funzione locale")
 
+  localFunction()  # <2>
 
-n = 42
-s = "42"
+outerFunction()
 
-b = n and s
-print(b)
-
-b = n or s
-print(b)
-
-b = n and not s
-print(b)
-
-b = str(2) in s
-print(b)
-
-e = 2 + n * 3
-print(e)
-
-e = (2 + n) * 3
-print(e)
-
-e = 0 and (n or s)
-print(e)
+localFunction()  # <3> Errore: localFunction non è visibile qui

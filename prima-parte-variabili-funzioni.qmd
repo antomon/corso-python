@@ -150,10 +150,10 @@ La visibilità si riferisce alla possibilità che in una regione di codice una c
   ```
   1. Variabile globale (ambito globale).
   2. Variabile locale (ambito locale alla funzione).
-  3. Visibilità globaleVar all'interno della funzione.
-  4. Visibilità localVar all'interno della funzione.
-  5. Visibilità globalVar all'interno di main.
-  6. Errore: localVar non è visibile qui (ambito locale alla funzione function). 
+  3. Visibilità `globaleVar` all'interno della funzione.
+  4. Visibilità `localVar` all'interno della funzione.
+  5. Visibilità `globalVar` all'interno di `main`.
+  6. Errore: `localVar` non è visibile qui (ambito locale alla funzione function). 
 
 - In Python, le variabili definite all'interno di una funzione sono locali a quella funzione, ma le variabili definite all'interno di un blocco (come un ciclo `for` o un `if`) sono visibili all'interno della funzione o del modulo in cui si trovano:
 
@@ -240,6 +240,8 @@ In alcuni linguaggi di programmazione è presente il **garbage collector**, cio�
   6. Deallocazione dinamica dell'intero. Corretto uso di allocazione e deallocazione dinamica.
 
 - In Python, la gestione della memoria è automatica grazie al garbage collector. Quando non ci sono più riferimenti di variabili a un oggetto, il garbage collector lo rimuove dalla memoria.
+
+
 
 ## Funzioni
 
@@ -397,21 +399,292 @@ Le **funzioni di ordine superiore** sono funzioni che accettano altre funzioni c
   }
   ```
 1. Dichiarazione della funzione `add` che ritorna un `std::function<int(int)>`.
-2. `add` ritorna una lambda funzione che somma `a` al suo argomento `b`.
-3. `add(5)` ritorna una nuova funzione che somma 5 al suo argomento.
+2. `add` ritorna una funzione lambda che somma `a` al suo argomento `b`.
+3. `add(5)` ritorna una nuova funzione che somma `5` al suo argomento.
 4. La funzione risultante viene chiamata con l'argomento `3`, restituendo `8`.
 
+### Ambito e visibilità
+
+L'ambito e la visibilità degli identificatori delle funzioni sono concetti sono simili a quelli delle variabili, ma presentano alcune differenze chiave che è importante comprendere.
+
+#### Ambito
+
+Per le funzioni distinguiamo sempre i seguenti:
+
+- Ambito globale: Una funzione dichiarata a livello globale, cioè al di fuori di qualsiasi altra funzione o blocco di codice, ha un ambito globale. Questo significa che la funzione è visibile e può essere chiamata da qualsiasi punto del programma dopo la sua dichiarazione.
+  
+  Esempio in C++:
+
+  ```cpp
+  #include <iostream>
+
+  void globalFunction() {  // <1>
+    std::cout << "Funzione globale" << std::endl;
+  }
+
+  int main() {
+    globalFunction();  // <2>
+    
+    return 0;
+}
+  ```
+  1. Dichiarazione della funzione `globalFunction` a livello globale.
+  2. Chiamata della funzione `globalFunction` all'interno di `main`.
+
+  Il comportamento è identico in Java e C. In Python, le funzioni definite a livello globale hanno ambito globale.
+
+- Ambito locale: Una funzione dichiarata all'interno di un blocco di codice (come all'interno di una funzione o di una classe) ha un ambito locale. La funzione è visibile e può essere chiamata solo all'interno di quel blocco.
+
+  Esempio in Python:
+
+  ```python
+  def outerFunction():
+    def localFunction():  # <1>
+      print("Funzione locale")
+
+    localFunction()  # <2>
+
+  outerFunction()
+
+  localFunction()  # <3> Errore: localFunction non è visibile qui
+  ```
+  1. Dichiarazione della funzione `localFunction` all'interno di `outerFunction`.
+  2. Chiamata della funzione `localFunction` all'interno di `outerFunction`.
+  3. Chiamata a `localFunction` al di fuori di `outerFunction`, che genera un errore poiché `localFunction` non è visibile a questo livello.
+   
+  In Java e C++, le funzioni dichiarate all'interno di un blocco (come metodi all'interno di una classe) sono accessibili solo all'interno di quel blocco, simile a Python. 
+
+  In C, le funzioni locali non sono standard, ma è possibile ottenere un comportamento simile usando funzioni statiche o funzioni inline definite all'interno di un file sorgente specifico.
+
+#### Visibilità
+
+La visibilità si riferisce a dove nel codice l'identificatore di una funzione può essere utilizzato. La visibilità è strettamente legata all'ambito, ma può essere influenzata anche da altre considerazioni come la modularità e le regole di accesso.
+
+- Visibilità Globale: Le funzioni con ambito globale sono visibili ovunque nel programma come per le variabili. 
+
+- Visibilità Locale: Le funzioni con ambito locale sono visibili solo all'interno del blocco in cui sono dichiarate. Questo è utile per creare funzioni di supporto (_helper_) o interne che non devono essere accessibili dall'esterno.
+
+  Esempio in Python:
+
+  ```python
+  def outerFunction():
+    def helperFunction():  # <1>
+      print("Funzione helper")
+
+    helperFunction()  # <2>
+
+    print("Funzione esterna")
+
+  outerFunction()
+  ```
+  1. Dichiarazione della funzione `helperFunction` all'interno di `outerFunction`.
+  2. Chiamata della funzione `helperFunction` all'interno di `outerFunction`.
+
+#### Differenze tra funzioni con variabili e oggetti
+
+Sebbene l'ambito e la visibilità delle funzioni condividano concetti simili con le variabili e gli oggetti, ci sono alcune differenze chiave:
+
+- Durata di vita: Le variabili locali (automatiche) hanno una durata di vita limitata al blocco di codice in cui sono dichiarate. Quando il controllo esce dal blocco, la memoria allocata per la variabile viene liberata. Le funzioni, tuttavia, non vengono "distrutte" quando il controllo esce dal loro ambito; semplicemente non sono più visibili e chiamabili. In Python, le variabili definite all'interno di un blocco di un'istruzione composta rimangono accessibili finché sono nello stesso ambito di funzione o modulo, mentre le funzioni definite all'interno di un'altra funzione (nested functions) sono visibili solo all'interno di quella funzione.
+  
+- Allocazione dinamica: In C++, le variabili e gli oggetti possono essere allocati dinamicamente usando `new` e deallocati usando `delete`. Le funzioni non richiedono un'allocazione esplicita di memoria; la loro dichiarazione è sufficiente per renderle utilizzabili nell'ambito definito.
+
+## Spazio di nomi, moduli e file
+
+In molti linguaggi di programmazione, la gestione dell'ambito e della visibilità delle variabili e delle funzioni può essere ulteriormente organizzata utilizzando spazio di nomi (_namespace_), moduli, header e file separati. Questa organizzazione aiuta a evitare conflitti di nome e a mantenere il codice più modulare e manutenibile.
+
+### Python
+
+In Python, i moduli sono file che contengono definizioni di variabili, funzioni e classi. I moduli possono essere importati in altri moduli o script per riutilizzare il codice. Quando un modulo viene importato, gli identificatori definiti in quel modulo (come variabili, funzioni e classi) diventano accessibili attraverso il nome del modulo. Sebbene i moduli siano spesso implementati come file separati, è possibile definirli anche all'interno di un file di codice sorgente principale.
+
+Esempio di modulo (`mymodule.py`):
+
+```python
+# mymodule.py
+my_var = 10  # <1>
+
+def my_function():
+    print("Funzione del modulo")  # <2>
+```
+1. Variabile globale nel modulo.
+2. Funzione nel modulo.
+
+Importazione di un modulo in un altro file sorgente (`main.py`):
+
+```python
+# main.py
+import mymodule  # <1>
+
+print(mymodule.my_var)  # <2>
+mymodule.my_function()  # <3>
+```
+1. Importazione del modulo `mymodule`.
+2. Accesso alla variabile `my_var` dal modulo `mymodule`.
+3. Chiamata della funzione `my_function` dal modulo `mymodule`.
+
+### Java
+
+In Java, i pacchetti (_package_) sono utilizzati per organizzare le classi in namespace separati. Ogni classe deve dichiarare il pacchetto di appartenenza.
+
+#### Pacchetti
+
+Esempio di classe in un pacchetto (`mypackage/MyClass.java`):
+
+```java
+// mypackage/MyClass.java
+package mypackage;  // <1>
+
+public class MyClass {
+    public static int myVar = 10;  // <2>
+
+    public static void myMethod() {
+        System.out.println("Metodo del pacchetto");  // <3>
+    }
+}
+```
+1. Dichiarazione del pacchetto `mypackage`.
+2. Variabile globale di classe.
+3. Metodo della classe.
+
+Importazione di una classe da un pacchetto in un'altra classe (`Main.java`):
+
+```java
+// Main.java
+import mypackage.MyClass;  // <1>
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(MyClass.myVar);  // <2>
+        MyClass.myMethod();  // <3>
+    }
+}
+```
+1. Importazione della classe `MyClass` dal pacchetto `mypackage`.
+2. Accesso alla variabile `myVar` dalla classe `MyClass`.
+3. Chiamata del metodo `myMethod` dalla classe `MyClass`.
+
+### C
+
+In C, i file di intestazione (_header file_) sono utilizzati per dichiarare funzioni e variabili che possono essere utilizzate in più file sorgente, a mo' di libreria.
+
+Esempio di file di intestazione (`mymodule.h`):
+
+```c
+// mymodule.h
+#ifndef MYMODULE_H 
+#define MYMODULE_H
+
+extern int myVar;  /* <1> */
+
+void myFunction();  /* <2> */
+
+#endif
+```
+1. Dichiarazione della variabile globale `myVar`.
+2. Dichiarazione della funzione `myFunction`.
+
+Esempio di file sorgente (`mymodule.c`):
+
+```c
+// mymodule.c
+#include "mymodule.h"
+
+int myVar = 10;  /* <1> */
+
+void myFunction() {
+    printf("Funzione del modulo\n");  /* <2> */
+}
+```
+1. Definizione della variabile globale `myVar`.
+2. Definizione della funzione `myFunction`.
+
+Utilizzo del file di intestazione in un altro file sorgente (`main.c`):
+
+```c
+// main.c
+#include <stdio.h>
+#include "mymodule.h"  /* <1> */
+
+int main() {
+    printf("%d\n", myVar);  /* <2> */
+
+    myFunction();  /* <3> */
+
+    return 0;
+}
+```
+1. Inclusione del file di intestazione `mymodule.h`.
+2. Accesso alla variabile `myVar` dichiarata in `mymodule.h`.
+3. Chiamata della funzione `myFunction` dichiarata in `mymodule.h`.
+
+### C++
+
+In C++, la parola chiave `namespace` è utilizzata per organizzare le classi, le funzioni e le variabili in spazi di nomi separati, simili ai pacchetti in Java.
+
+Esempio di dichiarazione di uno spazio di nomi (`mymodule.h`):
+
+```cpp
+// mymodule.h
+#ifndef MYMODULE_H 
+#define MYMODULE_H
+
+namespace mynamespace {  // <1>
+    extern int myVar;  // <2>
+
+    void myFunction();  // <3>
+}
+
+#endif
+```
+1. Dichiarazione dello spazio di nomi `mynamespace`.
+2. Dichiarazione della variabile globale `myVar` all'interno dello spazio di nomi.
+3. Dichiarazione della funzione `myFunction` all'interno dello spazio di nomi.
+
+Esempio di definizione dello spazio di nomi (`mymodule.cpp`):
+
+```cpp
+// mymodule.cpp
+#include "mymodule.h"
+#include <iostream>
+
+namespace mynamespace {
+    int myVar = 10;  // <1>
+
+    void myFunction() {
+        std::cout << "Funzione del namespace" << std::endl;  // <2>
+    }
+}
+```
+1. Definizione della variabile globale `myVar` all'interno dello spazio di nomi.
+2. Definizione della funzione `myFunction` all'interno dello spazio di nomi.
+
+Utilizzo dello spazio di nomi in un altro file sorgente (`main.cpp`):
+
+```cpp
+// main.cpp
+#include "mymodule.h"
+#include <iostream>
+
+int main() {
+    std::cout << mynamespace::myVar << std::endl;  // <1>
+    mynamespace::myFunction();  // <2>
+    return 0;
+}
+```
+1. Accesso alla variabile `myVar` all'interno dello spazio di nomi `mynamespace`.
+2. Chiamata della funzione `myFunction` all'interno dello spazio di nomi `mynamespace`.
+
+### Impatti
+
+L'uso di spazio di nomi, moduli e file di intestazione influisce sull'ambito e sulla visibilità delle variabili e delle funzioni. In generale, questi meccanismi consentono una maggiore modularità e organizzazione del codice, facilitando la gestione di grandi progetti.
+
+- Ambito: L'ambito delle variabili e delle funzioni può essere limitato a uno spazio di nomi o a un modulo, riducendo il rischio di conflitti di nome.
+
+- Visibilità: Le variabili e le funzioni dichiarate in namespace o moduli possono essere visibili solo all'interno di quel namespace o modulo, a meno che non vengano esplicitamente esportate.
+
+- Durata di vita degli oggetti: La durata di vita degli oggetti non è direttamente influenzata dallo spazio di nomi o moduli, ma l'organizzazione del codice può rendere più chiaro quando e dove gli oggetti vengono creati e distrutti.
 
 
 
 
-
-- Durata di vita di altri identificatori: 
-
-  - Funzioni: Le funzioni stesse generalmente hanno una durata di vita che coincide con la durata del programma. Tuttavia, i puntatori a funzione e le chiusure (in inglese, closures) possono avere durate di vita diverse in alcuni linguaggi.
-
-  - Classi e oggetti: Le classi hanno una durata di vita che coincide con la durata del programma, mentre gli oggetti (istanze di classi) hanno durate di vita dinamiche, determinate dalla loro allocazione e deallocazione.
-
-  - Moduli: In linguaggi come Python, i moduli hanno una durata di vita che coincide con la durata del programma o del processo di importazione.
 
 
