@@ -158,7 +158,6 @@ def mio_generatore():  # <12>
 
 mio_oggetto = MiaClasse(10)  # <13>
 ```
-
 1.  Identificatore di numero intero: `intero`
 2.  Identificatore di numero decimale: `decimale`
 3.  Identificatore di stringa: `testo`
@@ -179,34 +178,35 @@ Le parole chiave sono parole che non possono essere usate per scopi diversi da q
 
 Esistono anche delle parole chiave contestuali, cioè che sono tali solo in alcuni contesti ed altrove possono essee usate come identificatori. Usiamo il codice seguente per ottenere una lista di parole chiave e parole chiave contestuali:
 
-``` python
-import keyword
+```python
+import keyword  # <1>
 
-# Otteniamo la lista delle parole chiave
-parole_chiave = keyword.kwlist
+parole_chiave = keyword.kwlist  # <2>
 
-# Otteniamo la lista delle parole chiave contestuali
-parole_chiave_contestuale = keyword.softkwlist
+parole_chiave_contestuale = keyword.softkwlist  # <3>
 
-# Stampiamo la lista delle parole chiave
-print(parole_chiave)
+print(parole_chiave)  # <4>
 
-# Stampiamo la lista delle parole chiave contestuali
-print(parole_chiave_contestuale)
+print(parole_chiave_contestuale)  # <5>
 ```
+1. Importa il modulo `keyword`.
+2. Ottiene la lista delle parole chiave.
+3. Ottiene la lista delle parole chiave contestuali.
+4. Stampa la lista delle parole chiave.
+5. Stampa la lista delle parole chiave contestuali.
 
 Nella tabella seguente invece un elenco completo con breve descrizione:
 
 | Parola chiave | Descrizione |
 |------------------|------------------------------------------------------|
-| Valori booleani |  |
+| Valori booleani   |
 | `False` | Valore booleano falso |
 | `True` | Valore booleano vero |
-| Operatori logici |  |
+| Operatori logici   |
 | `and` | Operatore logico AND |
 | `or` | Operatore logico OR |
 | `not` | Operatore logico NOT |
-| Operatori di controllo di flusso |  |
+| Operatori di controllo di flusso   |
 | `if` | Utilizzato per creare un'istruzione condizionale |
 | `elif` | Utilizzato per aggiungere condizioni in un blocco if |
 | `else` | Utilizzato per specificare il blocco di codice da eseguire se le condizioni precedenti sono false |
@@ -216,36 +216,36 @@ Nella tabella seguente invece un elenco completo con breve descrizione:
 | `continue` | Salta l'iterazione corrente del ciclo e passa alla successiva |
 | `pass` | Indica un blocco di codice vuoto |
 | `return` | Utilizzato per restituire un valore da una funzione |
-| Gestione delle eccezioni |  |
+| Gestione delle eccezioni   |
 | `try` | Utilizzato per definire un blocco di codice da eseguire e gestire le eccezioni |
 | `except` | Utilizzato per catturare le eccezioni in un blocco try-except |
 | `finally` | Blocco di codice che viene eseguito alla fine di un blocco try, indipendentemente dal fatto che si sia verificata un'eccezione |
 | `raise` | Utilizzato per sollevare un'eccezione |
-| Definizione delle funzioni e classi |  |
+| Definizione delle funzioni e classi   |
 | `def` | Utilizzato per definire una funzione |
 | `class` | Utilizzato per definire una classe |
 | `lambda` | Utilizzato per creare funzioni anonime |
-| Gestione contesto di dichiarazione di variabili |  |
+| Gestione contesto di dichiarazione di variabili   |
 | `global` | Utilizzato per dichiarare variabili globali |
 | `nonlocal` | Utilizzato per dichiarare variabili non locali |
-| Operazioni su moduli |  |
+| Operazioni su moduli   |
 | `import` | Utilizzato per importare moduli |
 | `from` | Utilizzato per importare specifici elementi da un modulo |
 | `as` | Utilizzato per creare alias, ad esempio negli import |
-| Operatori di identità e appartenenza |  |
+| Operatori di identità e appartenenza   |
 | `in` | Utilizzato per verificare se un valore esiste in una sequenza |
 | `is` | Operatore di confronto di identità |
-| Gestione delle risorse |  |
+| Gestione delle risorse   |
 | `with` | Utilizzato per garantire un'azione di pulizia come il rilascio delle risorse |
-| Programmazione asincrona |  |
+| Programmazione asincrona   |
 | `async` | Utilizzato per definire funzioni asincrone |
 | `await` | Utilizzato per attendere un risultato in una funzione asincrona |
-| Varie |  |
+| Varie   |
 | `del` | Utilizzato per eliminare oggetti |
 | `assert` | Utilizzato per le asserzioni, verifica che un'espressione sia vera |
 | `yield` | Utilizzato per restituire un generatore da una funzione |
 | `None` | Rappresenta l'assenza di valore o un valore nullo |
-| Parole chiave contestuali |  |
+| Parole chiave contestuali   |
 | `match` | Utilizzato nell'istruzione `match` per il pattern matching |
 | `case` | Utilizzato nell'istruzione `match` per definire un ramo |
 | `_` | Utilizzato come identificatore speciale nell'istruzione `match` per indicare un pattern di default o ignorare valori |
@@ -269,20 +269,18 @@ Esempi di uso di parole chiave contestuali:
 
     match = "Questo è un identificatore valido" # <5>
 
-    # Test della funzione
     process_value(1)  # Output: Uno
     process_value(2)  # Output: Due
     process_value(3)  # Output: Altro
 
-    # Stampa della variabile `match`
-    print(match)  # Output: Questo è un identificatore valido
+    print(match)  # <6>
     ```
-
     1.  Definiamo una funzione che utilizza il pattern matching.
     2.  Uso di `match` come parola chiave.
     3.  Uso di `case` come parola chiave.
     4.  Uso di `_` come parola chiave.
     5.  Utilizzo di `match` come identificatore per una variabile.
+    6.  Output: Questo è un identificatore valido-
 
 -   `type`:
 
@@ -291,21 +289,20 @@ Esempi di uso di parole chiave contestuali:
 
     type Point = tuple[float, float] # <1>
 
-    # Utilizzo dell'alias di tipo
-    def distanza(p1: Point, p2: Point) -> float:
+    def distanza(p1: Point, p2: Point) -> float: # <2>
       return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
 
-    # Test della funzione con alias di tipo
     punto1: Point = (1.0, 2.0) 
     punto2: Point = (4.0, 6.0)
 
-    print(distanza(punto1, punto2))  # Output: 5.0
+    print(distanza(punto1, punto2)) # <3>
 
-    print(type(punto1)) # Output: <class 'tuple'> # <2>
+    print(type(punto1)) # <4>
     ```
-
     1.  Uso di `type` come parola chiave.
-    2.  Uso di `type` identificatore di una funzione.
+    2.  Utilizzo dell'alias di tipo `Point` per i parametri della funzione.
+    3.  Output: `5.0`.
+    4.  Uso di `type` identificatore di una funzione. Output: `<class 'tuple'>`.
 
 ### Classi riservate di identificatori
 
@@ -326,7 +323,6 @@ Identificatori speciali:
 
         print(_private_variable)  # <2> 
         ```
-
         1.  Nel modulo `example.py` viene definita la variabile come privata.
         2.  Genera un errore: `NameError: name '_private_variable' is not defined`
 
@@ -335,9 +331,12 @@ Identificatori speciali:
     -   Interprete interattivo: L'interprete interattivo rende disponibile il risultato dell'ultima valutazione nella variabile `_`. Il valore di `_` è memorizzato nel modulo [`builtins`](https://docs.python.org/3/library/builtins.html), insieme ad altre funzioni e variabili predefinite come `print()`, permettendo l'accesso globale a `_` durante una sessione interattiva. Esempio:
 
         ``` python
+        # Eseguire nel REPL
         result = 5 + 3
-        print(_)  # Output: 8 (nell'interprete interattivo)
+
+        print(_)  # <1>
         ```
+        1. Output: `8` (nell'interprete interattivo).
 
     -   Altro uso: Altrove, `_` è un identificatore regolare. Viene spesso usato per nominare elementi speciali per l'utente, ma non speciali per Python stesso. Il nome `_` è comunemente usato in congiunzione con l'internazionalizzazione (vedi la documentazione del modulo [`gettext`](https://docs.python.org/3/library/gettext.html) per ulteriori informazioni su questa convenzione) ed è anche comunemente utilizzato per variabili non usate. Esempio:
 
