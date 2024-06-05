@@ -352,7 +352,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#funzioni-di-ordine-superiore" id="toc-funzioni-di-ordine-superiore" class="nav-link" data-scroll-target="#funzioni-di-ordine-superiore"><span class="header-section-number">4.2.5</span> Funzioni di ordine superiore</a></li>
   <li><a href="#ambito-e-visibilità" id="toc-ambito-e-visibilità" class="nav-link" data-scroll-target="#ambito-e-visibilità"><span class="header-section-number">4.2.6</span> Ambito e visibilità</a></li>
   </ul></li>
-  <li><a href="#spazio-di-nomi-moduli-e-file" id="toc-spazio-di-nomi-moduli-e-file" class="nav-link" data-scroll-target="#spazio-di-nomi-moduli-e-file"><span class="header-section-number">4.3</span> Spazio di nomi, moduli e file</a>
+  <li><a href="#spazi-di-nomi-moduli-e-file" id="toc-spazi-di-nomi-moduli-e-file" class="nav-link" data-scroll-target="#spazi-di-nomi-moduli-e-file"><span class="header-section-number">4.3</span> Spazi di nomi, moduli e file</a>
   <ul class="collapse">
   <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python"><span class="header-section-number">4.3.1</span> Python</a></li>
   <li><a href="#java" id="toc-java" class="nav-link" data-scroll-target="#java"><span class="header-section-number">4.3.2</span> Java</a></li>
@@ -1010,8 +1010,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="spazio-di-nomi-moduli-e-file" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="spazio-di-nomi-moduli-e-file"><span class="header-section-number">4.3</span> Spazio di nomi, moduli e file</h2>
+<section id="spazi-di-nomi-moduli-e-file" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="spazi-di-nomi-moduli-e-file"><span class="header-section-number">4.3</span> Spazi di nomi, moduli e file</h2>
 <p>In molti linguaggi di programmazione, la gestione dell’ambito e della visibilità delle variabili e delle funzioni può essere ulteriormente organizzata utilizzando spazio di nomi (<em>namespace</em>), moduli, header e file separati. Questa organizzazione aiuta a evitare conflitti di nome e a mantenere il codice più modulare e manutenibile.</p>
 <section id="python" class="level3" data-number="4.3.1">
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="python"><span class="header-section-number">4.3.1</span> Python</h3>
@@ -1056,8 +1056,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="java" class="level3" data-number="4.3.2">
 <h3 data-number="4.3.2" class="anchored" data-anchor-id="java"><span class="header-section-number">4.3.2</span> Java</h3>
 <p>In Java, i pacchetti (<em>package</em>) sono utilizzati per organizzare le classi in namespace separati. Ogni classe deve dichiarare il pacchetto di appartenenza.</p>
-<section id="pacchetti" class="level4" data-number="4.3.2.1">
-<h4 data-number="4.3.2.1" class="anchored" data-anchor-id="pacchetti"><span class="header-section-number">4.3.2.1</span> Pacchetti</h4>
 <p>Esempio di classe in un pacchetto (<code>mypackage/MyClass.java</code>):</p>
 <div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1"></a><span class="co">// mypackage/MyClass.java</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2"></a><span class="kw">package</span><span class="im"> mypackage</span><span class="op">;</span></span>
@@ -1108,7 +1106,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 </section>
-</section>
 <section id="c" class="level3" data-number="4.3.3">
 <h3 data-number="4.3.3" class="anchored" data-anchor-id="c"><span class="header-section-number">4.3.3</span> C</h3>
 <p>In C, i file di intestazione (<em>header file</em>) sono utilizzati per dichiarare funzioni e variabili che possono essere utilizzate in più file sorgente, a mo’ di libreria.</p>
@@ -1133,48 +1130,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 <p>Esempio di file sorgente (<code>mymodule.c</code>):</p>
-<div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1"></a><span class="co">// mymodule.c</span></span>
-<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2"></a><span class="pp">#include </span><span class="im">"mymodule.h"</span></span>
-<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-4" class="code-annotation-target"><a href="#annotated-cell-9-4"></a><span class="dt">int</span> myVar <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5"></a></span>
-<span id="annotated-cell-9-6"><a href="#annotated-cell-9-6"></a><span class="dt">void</span> myFunction<span class="op">()</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-7" class="code-annotation-target"><a href="#annotated-cell-9-7"></a>    printf<span class="op">(</span><span class="st">"Funzione del modulo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1"></a><span class="pp">#include </span><span class="im">"mymodule.h"</span></span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3"></a><span class="dt">int</span> myVar <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="annotated-cell-9-4"><a href="#annotated-cell-9-4"></a></span>
+<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5"></a><span class="dt">void</span> myFunction<span class="op">()</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-6" class="code-annotation-target"><a href="#annotated-cell-9-6"></a>    printf<span class="op">(</span><span class="st">"Funzione del modulo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="annotated-cell-9-7"><a href="#annotated-cell-9-7"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="4" data-code-annotation="1">Definizione della variabile globale <code>myVar</code>.</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="3" data-code-annotation="1">Definizione della variabile globale <code>myVar</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="7" data-code-annotation="2">Definizione della funzione <code>myFunction</code>.</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="6" data-code-annotation="2">Definizione della funzione <code>myFunction</code>.</span>
 </dd>
 </dl>
 <p>Utilizzo del file di intestazione in un altro file sorgente (<code>main.c</code>):</p>
-<div class="sourceCode" id="annotated-cell-10"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1"></a><span class="co">// main.c</span></span>
-<span id="annotated-cell-10-2"><a href="#annotated-cell-10-2"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3"></a><span class="pp">#include </span><span class="im">"mymodule.h"</span></span>
-<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4"></a></span>
-<span id="annotated-cell-10-5"><a href="#annotated-cell-10-5"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-10-6" class="code-annotation-target"><a href="#annotated-cell-10-6"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> myVar<span class="op">);</span></span>
-<span id="annotated-cell-10-7"><a href="#annotated-cell-10-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-10-8" class="code-annotation-target"><a href="#annotated-cell-10-8"></a>    myFunction<span class="op">();</span></span>
-<span id="annotated-cell-10-9"><a href="#annotated-cell-10-9"></a></span>
-<span id="annotated-cell-10-10"><a href="#annotated-cell-10-10"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="annotated-cell-10-11"><a href="#annotated-cell-10-11"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-10"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-10-2" class="code-annotation-target"><a href="#annotated-cell-10-2"></a><span class="pp">#include </span><span class="im">"mymodule.h"</span></span>
+<span id="annotated-cell-10-3"><a href="#annotated-cell-10-3"></a></span>
+<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-10-5" class="code-annotation-target"><a href="#annotated-cell-10-5"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> myVar<span class="op">);</span></span>
+<span id="annotated-cell-10-6"><a href="#annotated-cell-10-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-10-7" class="code-annotation-target"><a href="#annotated-cell-10-7"></a>    myFunction<span class="op">();</span></span>
+<span id="annotated-cell-10-8"><a href="#annotated-cell-10-8"></a></span>
+<span id="annotated-cell-10-9"><a href="#annotated-cell-10-9"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="annotated-cell-10-10"><a href="#annotated-cell-10-10"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="3" data-code-annotation="1">Inclusione del file di intestazione <code>mymodule.h</code>.</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="2" data-code-annotation="1">Inclusione del file di intestazione <code>mymodule.h</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="6" data-code-annotation="2">Accesso alla variabile <code>myVar</code> dichiarata in <code>mymodule.h</code>.</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="5" data-code-annotation="2">Accesso alla variabile <code>myVar</code> dichiarata in <code>mymodule.h</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="8" data-code-annotation="3">Chiamata della funzione <code>myFunction</code> dichiarata in <code>mymodule.h</code>.</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="7" data-code-annotation="3">Chiamata della funzione <code>myFunction</code> dichiarata in <code>mymodule.h</code>.</span>
 </dd>
 </dl>
 </section>
@@ -1182,71 +1177,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="4.3.4" class="anchored" data-anchor-id="c-1"><span class="header-section-number">4.3.4</span> C++</h3>
 <p>In C++, la parola chiave <code>namespace</code> è utilizzata per organizzare le classi, le funzioni e le variabili in spazi di nomi separati, simili ai pacchetti in Java.</p>
 <p>Esempio di dichiarazione di uno spazio di nomi (<code>mymodule.h</code>):</p>
-<div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1"></a><span class="co">// mymodule.h</span></span>
-<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2"></a><span class="pp">#ifndef MYMODULE_H </span></span>
-<span id="annotated-cell-11-3"><a href="#annotated-cell-11-3"></a><span class="pp">#define MYMODULE_H</span></span>
-<span id="annotated-cell-11-4"><a href="#annotated-cell-11-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-5" class="code-annotation-target"><a href="#annotated-cell-11-5"></a><span class="kw">namespace</span> mynamespace <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-11-6" class="code-annotation-target"><a href="#annotated-cell-11-6"></a>    <span class="at">extern</span> <span class="dt">int</span> myVar<span class="op">;</span></span>
-<span id="annotated-cell-11-7"><a href="#annotated-cell-11-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-11-8" class="code-annotation-target"><a href="#annotated-cell-11-8"></a>    <span class="dt">void</span> myFunction<span class="op">();</span></span>
-<span id="annotated-cell-11-9"><a href="#annotated-cell-11-9"></a><span class="op">}</span></span>
-<span id="annotated-cell-11-10"><a href="#annotated-cell-11-10"></a></span>
-<span id="annotated-cell-11-11"><a href="#annotated-cell-11-11"></a><span class="pp">#endif</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1"></a><span class="pp">#ifndef MYMODULE_H </span></span>
+<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2"></a><span class="pp">#define MYMODULE_H</span></span>
+<span id="annotated-cell-11-3"><a href="#annotated-cell-11-3"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-4" class="code-annotation-target"><a href="#annotated-cell-11-4"></a><span class="kw">namespace</span> mynamespace <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-11-5" class="code-annotation-target"><a href="#annotated-cell-11-5"></a>    <span class="at">extern</span> <span class="dt">int</span> myVar<span class="op">;</span></span>
+<span id="annotated-cell-11-6"><a href="#annotated-cell-11-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-11-7" class="code-annotation-target"><a href="#annotated-cell-11-7"></a>    <span class="dt">void</span> myFunction<span class="op">();</span></span>
+<span id="annotated-cell-11-8"><a href="#annotated-cell-11-8"></a><span class="op">}</span></span>
+<span id="annotated-cell-11-9"><a href="#annotated-cell-11-9"></a></span>
+<span id="annotated-cell-11-10"><a href="#annotated-cell-11-10"></a><span class="pp">#endif</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="5" data-code-annotation="1">Dichiarazione dello spazio di nomi <code>mynamespace</code>.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="4" data-code-annotation="1">Dichiarazione dello spazio di nomi <code>mynamespace</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="6" data-code-annotation="2">Dichiarazione della variabile globale <code>myVar</code> all’interno dello spazio di nomi.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="5" data-code-annotation="2">Dichiarazione della variabile globale <code>myVar</code> all’interno dello spazio di nomi.</span>
 </dd>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="8" data-code-annotation="3">Dichiarazione della funzione <code>myFunction</code> all’interno dello spazio di nomi.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="7" data-code-annotation="3">Dichiarazione della funzione <code>myFunction</code> all’interno dello spazio di nomi.</span>
 </dd>
 </dl>
 <p>Esempio di definizione dello spazio di nomi (<code>mymodule.cpp</code>):</p>
-<div class="sourceCode" id="annotated-cell-12"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1"></a><span class="co">// mymodule.cpp</span></span>
-<span id="annotated-cell-12-2"><a href="#annotated-cell-12-2"></a><span class="pp">#include </span><span class="im">"mymodule.h"</span></span>
-<span id="annotated-cell-12-3"><a href="#annotated-cell-12-3"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="annotated-cell-12-4"><a href="#annotated-cell-12-4"></a></span>
-<span id="annotated-cell-12-5"><a href="#annotated-cell-12-5"></a><span class="kw">namespace</span> mynamespace <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-12-6" class="code-annotation-target"><a href="#annotated-cell-12-6"></a>    <span class="dt">int</span> myVar <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="annotated-cell-12-7"><a href="#annotated-cell-12-7"></a></span>
-<span id="annotated-cell-12-8"><a href="#annotated-cell-12-8"></a>    <span class="dt">void</span> myFunction<span class="op">()</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-12-9" class="code-annotation-target"><a href="#annotated-cell-12-9"></a>        <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Funzione del namespace"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="annotated-cell-12-10"><a href="#annotated-cell-12-10"></a>    <span class="op">}</span></span>
-<span id="annotated-cell-12-11"><a href="#annotated-cell-12-11"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-12"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1"></a><span class="pp">#include </span><span class="im">"mymodule.h"</span></span>
+<span id="annotated-cell-12-2"><a href="#annotated-cell-12-2"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="annotated-cell-12-3"><a href="#annotated-cell-12-3"></a></span>
+<span id="annotated-cell-12-4"><a href="#annotated-cell-12-4"></a><span class="kw">namespace</span> mynamespace <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-12-5" class="code-annotation-target"><a href="#annotated-cell-12-5"></a>    <span class="dt">int</span> myVar <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="annotated-cell-12-6"><a href="#annotated-cell-12-6"></a></span>
+<span id="annotated-cell-12-7"><a href="#annotated-cell-12-7"></a>    <span class="dt">void</span> myFunction<span class="op">()</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-12-8" class="code-annotation-target"><a href="#annotated-cell-12-8"></a>        <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Funzione del namespace"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="annotated-cell-12-9"><a href="#annotated-cell-12-9"></a>    <span class="op">}</span></span>
+<span id="annotated-cell-12-10"><a href="#annotated-cell-12-10"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-lines="6" data-code-annotation="1">Definizione della variabile globale <code>myVar</code> all’interno dello spazio di nomi.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="5" data-code-annotation="1">Definizione della variabile globale <code>myVar</code> all’interno dello spazio di nomi.</span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-lines="9" data-code-annotation="2">Definizione della funzione <code>myFunction</code> all’interno dello spazio di nomi.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="8" data-code-annotation="2">Definizione della funzione <code>myFunction</code> all’interno dello spazio di nomi.</span>
 </dd>
 </dl>
 <p>Utilizzo dello spazio di nomi in un altro file sorgente (<code>main.cpp</code>):</p>
-<div class="sourceCode" id="annotated-cell-13"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-13-1"><a href="#annotated-cell-13-1"></a><span class="co">// main.cpp</span></span>
-<span id="annotated-cell-13-2"><a href="#annotated-cell-13-2"></a><span class="pp">#include </span><span class="im">"mymodule.h"</span></span>
-<span id="annotated-cell-13-3"><a href="#annotated-cell-13-3"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="annotated-cell-13-4"><a href="#annotated-cell-13-4"></a></span>
-<span id="annotated-cell-13-5"><a href="#annotated-cell-13-5"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-6" class="code-annotation-target"><a href="#annotated-cell-13-6"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> mynamespace<span class="op">::</span>myVar <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-13-7" class="code-annotation-target"><a href="#annotated-cell-13-7"></a>    mynamespace<span class="op">::</span>myFunction<span class="op">();</span></span>
-<span id="annotated-cell-13-8"><a href="#annotated-cell-13-8"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="annotated-cell-13-9"><a href="#annotated-cell-13-9"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-13"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-13-1"><a href="#annotated-cell-13-1"></a><span class="pp">#include </span><span class="im">"mymodule.h"</span></span>
+<span id="annotated-cell-13-2"><a href="#annotated-cell-13-2"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="annotated-cell-13-3"><a href="#annotated-cell-13-3"></a></span>
+<span id="annotated-cell-13-4"><a href="#annotated-cell-13-4"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-5" class="code-annotation-target"><a href="#annotated-cell-13-5"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> mynamespace<span class="op">::</span>myVar <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-13-6" class="code-annotation-target"><a href="#annotated-cell-13-6"></a>    mynamespace<span class="op">::</span>myFunction<span class="op">();</span></span>
+<span id="annotated-cell-13-7"><a href="#annotated-cell-13-7"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="annotated-cell-13-8"><a href="#annotated-cell-13-8"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="6" data-code-annotation="1">Accesso alla variabile <code>myVar</code> all’interno dello spazio di nomi <code>mynamespace</code>.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="5" data-code-annotation="1">Accesso alla variabile <code>myVar</code> all’interno dello spazio di nomi <code>mynamespace</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="7" data-code-annotation="2">Chiamata della funzione <code>myFunction</code> all’interno dello spazio di nomi <code>mynamespace</code>.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="6" data-code-annotation="2">Chiamata della funzione <code>myFunction</code> all’interno dello spazio di nomi <code>mynamespace</code>.</span>
 </dd>
 </dl>
 </section>

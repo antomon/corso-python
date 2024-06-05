@@ -6,9 +6,21 @@ tbl-cap-location: margin
 
 # La sintassi
 
-Per iniziare ad imparare Python come linguaggio, partiamo da una semplificazione della stuttura lessicale, cioè dall'insieme di regole sintattiche più significative, sia per comprendere le regole di composizione di programmi comprensibili all'interprete, sia per sfrutturne appieno tutte le potenzialità.
+Per iniziare ad imparare Python come linguaggio, partiamo da una semplificazione della stuttura lessicale, cioè dall'insieme delle sue regole sintattiche più significative, sia per imparare le regole di composizione di programmi comprensibili all'interprete e sfrutturne appieno tutte le potenzialità, sia per essere in grado di utilizzare il codice scritto da altri.
 
-Ogni programma Python è costituito da una serie di file di testo contenenti il codice sorgente con una certa codifica, il default è l'UTF-8, ed ogni file si può vedere come una sequenza di istruzioni, righe e token. Le istruzioni danno la granularità dell'algoritmo, le righe definiscono come queste istruzioni sono distribuite nel testo e, infine, i token sono gli elementi atomici che hanno un significato per il linguaggio.
+Ogni programma Python è costituito da una serie di file di testo contenenti il codice sorgente con una certa codifica, il default essendo l'UTF-8, ed ogni file si può vedere come una sequenza di istruzioni, righe e token. Le istruzioni danno la granularità dell'algoritmo, le righe definiscono come queste istruzioni sono distribuite nel testo e, infine, i token sono gli elementi atomici che hanno un significato per il linguaggio.
+
+## Elementi semantici
+
+Per dare un senso, anche intuitivo, ai concetti sintattici che saranno introdotti nel seguito, è opportuno definire, informalmente, alcuni elementi semantici, a partire da nozioni di base:
+
+- Variabile: È un nome dato ad un valore presente in memoria.
+  
+- Funzione: È un insieme di istruzioni che può essere parametrizzato da una serie di input predefiniti e può avere una serie di output, a cui è associato un nome.
+
+- Classe: È una definizione che raggruppa un insieme di attributi (cioè nomi, ognuno associato ad un valore) e metodi (operazioni) che possono essere effettuati su questi attributi.
+
+- Oggetto: È un'istanza di una classe, cioè un particolare valore di una classe che è stato creato in memoria.
 
 ## Righe
 
@@ -66,7 +78,7 @@ if x > 5 and # Commento \ # <2>
 
 ## Indentazione
 
-Indentazione significa che spazi o, in alternativa, tabulazioni precedono un carattere che non sia nessuno dei due. Il numero di spazi ottenuto dopo la trasformazione delle tabulazioni in spazi, si definisce livello di indentazione. L'indentazione del codice è il modo che Python utilizza per raggruppare le istruzioni in un blocco, ove tutte devono presentare la medesima indentazione. La prima riga logica che ha una indentazione minore della precedente, segnala che il blocco è stato chiuso proprio da quest'ultima. Anche le clausole di un'istruzione composta devono avere la stessa indentazione.
+Indentazione significa che spazi o, in alternativa, tabulazioni precedono un carattere che non sia nessuno dei due. Il numero di spazi, ottenuto dopo la trasformazione delle tabulazioni in spazi, si definisce livello di indentazione. L'indentazione del codice è il modo che Python utilizza per raggruppare le istruzioni in un blocco, ove tutte devono presentare la medesima indentazione. La prima riga logica che ha una indentazione minore della precedente, segnala che il blocco è stato chiuso proprio da quest'ultima. Anche le clausole di un'istruzione composta devono avere la stessa indentazione.
 
 La prima istruzione di un file o la prima inserita al prompt `>>>` del REPL non deve presentare spazi o tabulazioni, cioè ha un livello di indentazione pari a 0.
 

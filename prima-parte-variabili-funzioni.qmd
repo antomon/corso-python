@@ -241,8 +241,6 @@ In alcuni linguaggi di programmazione è presente il **garbage collector**, cio�
 
 - In Python, la gestione della memoria è automatica grazie al garbage collector. Quando non ci sono più riferimenti di variabili a un oggetto, il garbage collector lo rimuove dalla memoria.
 
-
-
 ## Funzioni
 
 Le funzioni sono blocchi di codice riutilizzabili che eseguono una serie di istruzioni. Questi costrutti sono fondamentali per la strutturazione e la modularizzazione del codice, consentendo di definire operazioni che possono essere invocate più volte durante l'esecuzione di un programma. La distinzione tra funzioni e metodi è che le funzioni sono indipendenti, mentre i metodi sono associati a oggetti o classi.
@@ -487,7 +485,7 @@ Sebbene l'ambito e la visibilità delle funzioni condividano concetti simili con
   
 - Allocazione dinamica: In C++, le variabili e gli oggetti possono essere allocati dinamicamente usando `new` e deallocati usando `delete`. Le funzioni non richiedono un'allocazione esplicita di memoria; la loro dichiarazione è sufficiente per renderle utilizzabili nell'ambito definito.
 
-## Spazio di nomi, moduli e file
+## Spazi di nomi, moduli e file
 
 In molti linguaggi di programmazione, la gestione dell'ambito e della visibilità delle variabili e delle funzioni può essere ulteriormente organizzata utilizzando spazio di nomi (_namespace_), moduli, header e file separati. Questa organizzazione aiuta a evitare conflitti di nome e a mantenere il codice più modulare e manutenibile.
 
@@ -523,8 +521,6 @@ mymodule.my_function()  # <3>
 ### Java
 
 In Java, i pacchetti (_package_) sono utilizzati per organizzare le classi in namespace separati. Ogni classe deve dichiarare il pacchetto di appartenenza.
-
-#### Pacchetti
 
 Esempio di classe in un pacchetto (`mypackage/MyClass.java`):
 
@@ -584,7 +580,6 @@ void myFunction();  /* <2> */
 Esempio di file sorgente (`mymodule.c`):
 
 ```c
-// mymodule.c
 #include "mymodule.h"
 
 int myVar = 10;  /* <1> */
@@ -599,7 +594,6 @@ void myFunction() {
 Utilizzo del file di intestazione in un altro file sorgente (`main.c`):
 
 ```c
-// main.c
 #include <stdio.h>
 #include "mymodule.h"  /* <1> */
 
@@ -622,7 +616,6 @@ In C++, la parola chiave `namespace` è utilizzata per organizzare le classi, le
 Esempio di dichiarazione di uno spazio di nomi (`mymodule.h`):
 
 ```cpp
-// mymodule.h
 #ifndef MYMODULE_H 
 #define MYMODULE_H
 
@@ -641,7 +634,6 @@ namespace mynamespace {  // <1>
 Esempio di definizione dello spazio di nomi (`mymodule.cpp`):
 
 ```cpp
-// mymodule.cpp
 #include "mymodule.h"
 #include <iostream>
 
@@ -659,7 +651,6 @@ namespace mynamespace {
 Utilizzo dello spazio di nomi in un altro file sorgente (`main.cpp`):
 
 ```cpp
-// main.cpp
 #include "mymodule.h"
 #include <iostream>
 
