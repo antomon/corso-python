@@ -182,32 +182,19 @@ I tipi predefiniti numerici corrispondono agli interi, i numeri a virgola mobile
 
 Esistono anche altri tipi numerici nelle librerie fornite coll'interprete, per i numeri decimali a precisione arbitraria e i numeri razionali come frazioni.  
 
-I letterali numerici non hanno segno, cioè `+` e `-` sono operatori unari che precedono la rappresentazione di un numero, quindi `-3` è una espressione che diventa il valore di un oggetto intero di valore -3.
+I letterali numerici non hanno segno, cioè `+` e `-` sono operatori unari che precedono la rappresentazione di un numero, quindi `-3` è una espressione che diventa il valore di un oggetto intero di valore `-3`. Nei letterali numerici si può inserire un trattino basso (_underscore_) tra le cifre o dopo gli specificatori della base per gli interi.
 
 #### Interi
 
 Esistono due tipi di interi. Il primo è `int`, per gli usuali numeri interi, a cui corrispondono diverse rappresentazioni sintattiche in basi diverse, come i letterali decimali, binari, ottali o esadecimali:
 
-- Un letterale decimale inizia sempre con una cifra diversa da zero. 
+- Un letterale decimale inizia sempre con una cifra diversa da zero, esempi: `10`, `1_0`.
   
-- Quello binario inizia con `0b` o `0B` seguito da una sequenza di cifre binarie (0 o 1). 
+- Quello binario inizia con `0b` o `0B` seguito da una sequenza di cifre binarie (0 o 1), esempi: `0b1010`, `0B1010`, `0b_10_10`, `0b1_0_10`. 
 
-- L'ottale inizia con `0o` o `0O` seguito da una sequenza di cifre ottali (da 0 a 7). 
+- L'ottale inizia con `0o` o `0O` seguito da una sequenza di cifre ottali (da 0 a 7), esempi: `0o12`, `0O12`. 
 
-- L'esadecimale inizia con `0x` o `0X` seguito da una sequenza di cifre esadecimali (da 0 a 9 e da A a F, in maiuscolo o minuscolo).
-
-Ad esempio:
-
-```python
-dec = 10         # <1>
-bin = 0b1010     # <2>
-oct = 0o12       # <3>
-hex = 0xA        # <4>
-```
-1. Letterale decimale.
-2. Letterale binario.
-3. Letterale ottale.
-4. Letterale esadecimale.
+- L'esadecimale inizia con `0x` o `0X` seguito da una sequenza di cifre esadecimali (da 0 a 9 e da A a F, in maiuscolo o minuscolo), esempi: `0xA`, `0XA`.
 
 Gli interi in Python sono illimitati, al netto della finitezza della memoria del computer disponibile per la loro rappresentazione.
 
@@ -229,9 +216,9 @@ print(issubclass(int, object)) # <2>
 
 #### Numeri in virgola mobile 
 
-I numeri in virgola mobile in Python sono istanze della classe `float` e sono utilizzati per rappresentare numeri reali con una parte decimale. I letterali corrispondenti sono una sequenza di cifre in base 10, e solo in base 10, che include un punto (`.`), un suffisso di notazione scientifica (`e` o `E`, opzionalmente seguito da `+` o `-`, seguito da una o più cifre), o entrambi. Il carattere iniziale di un letterale in virgola mobile non può essere `e` o `E`, ma può essere qualsiasi cifra (anche zeri a differenza degli interi) o un punto (`.`) seguito da una cifra.
+I numeri in virgola mobile in Python sono istanze della classe `float` e sono utilizzati per rappresentare numeri reali con una parte decimale. I letterali corrispondenti sono una sequenza di cifre in base 10, e solo in base 10, che include un punto (`.`), un suffisso di notazione scientifica (`e` o `E`, opzionalmente seguito da `+` o `-` e da una o più cifre), o entrambi. Il carattere iniziale di un letterale in virgola mobile non può essere `e` o `E`, ma può essere qualsiasi cifra (anche zeri a differenza degli interi) o un punto (`.`) seguito da una cifra.
 
-Esempi di literali in virgola mobile: `0.`, `0.1`, `.0`, `1.`, `1.0`, `1e0`, `1.e0`, `1.0E0`. Attenzione: `1` è un intero, `1.` non lo è.
+Esempi di literali in virgola mobile: `0.`, `0.1`, `.0`, `1.`, `1.0`, `1e0`, `1.e0`, `1.0E0`, `1_0_0.0_1`. Attenzione: `1` è un intero, `1.` non lo è.
 
 Per conoscere l'intervallo esatto e la precisione dei valori in virgola mobile sulla piattaforma in uso, e molti altri dettagli, è possibile usare `sys.float_info` nel modo seguente:
 
@@ -278,10 +265,6 @@ print(z.imag) # <4>
 print(type(z.real)) # <5>
 print(type(z.imag)) # <6>
 print(type(z)) # <7>
-
-zc = z.conjugate() # <8>
-
-print(zc) # <9>
 ```
 1. Assegnamento di un numero complesso alla variabile `z`.
 2. Output: `(42+3.14j)`.
@@ -289,118 +272,172 @@ print(zc) # <9>
 4. Output: `3.14`.
 5. Output: `<class 'float'>`.
 6. Output: `<class 'float'>`.
-7. Otteniamo il complesso coniugato di `z`.
-8. Output: `(42-3.14j)`.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+7. Output: `<class 'complex'>`.
 
 ### Sequenze
 
-#### Stringhe (str)
-Le stringhe sono sequenze di caratteri Unicode. In Python, le stringhe sono immutabili.
+Una sequenza è un contenitore ordinato di oggetti, il cui indice è un intero che parte da `0`. Se la sequenza è referenziata da una variabile `c`, per ottenere il numero totale di oggetti contenuti si userà la funzione predefinita `len()`, cioè `len(c)`, e per l'oggetto i-esimo le parentesi quadre e l'indice, `c[i]`. È possibile usare indici negativi che sono interpretati come la somma di quello col numero totale di oggetti contenuti, quindi `-i` è pari a `len(c)-i` e l'indice risultante dovra sempre essere compreso tra `0` e `len(c)-1`.
 
-Esempio:
+Si può _sezionare_ (_slicing_) la sequenza per ottenere una sottosequenza, dello stesso tipo, di oggetti originariamente contigui tra gli indici `i` e `j`, cioè con indici `x` tali che `i≤x<j`, usando `c[i:j]`. Aggiungendo un terzo parametro di _passo_, `k`, si possono selezionare solo gli oggetti con indici `i+l*k` e `l≥0`, che siano compresi tra i due indici, cioè `i≤i+l*k<j`, con `c[i:j:k]`.
+
+Le sequenze sono categorizzate in base alla mutabilità:
+
+- Immutabili: stringhe, tuple, bytes.
+
+- Mutabili: liste e array di bytes.
+
+#### Stringhe
+
+Una stringa in Python è una sequenza di un numero non negativo di caratteri Unicode che, nei corrispondenti letterali, è racchiusa o tra apici singoli `'`, oppure doppi `"`. Per inserire un capo dovrà essere usato `\n` e un singolo backslash alla fine della riga fisica indicherà la continuazione nella riga fisica successiva.
+
+Alternativamente, si possono usare coppie di tripli apici singoli `'''` o doppi  `"""`, dove la differenza è che è possibile inserire un a capo nell'editor. Un singolo backslash non può essere presente.
+
+Nei letterali stringa si possono inserire caratteri non stampabili o caratteri che non sono disponibili a tastiera, usando le cosiddette sequenze di escape (da non confondere con i contenitori discussi nel presente paragrafo), come da tabella seguente:
+
+| Sequenza      | Significato                                             | Codice ASCII/ISO | Esempio di stringa Python  |
+|---------------|---------------------------------------------------------|------------------|----------------------------|
+| `\<newline>`    | Ignora fine linea                                       | -          | `"Questo è un testo\ con una linea continuata"` |
+| `\\`            | Backslash                                               | `0x5c`             | `"C:\\percorso\\al\\file"` |
+| `\'`            | Apice singolo                                           | `0x27`             | `"L'apice singolo: \' esempio"` |
+| `\"`            | Apice doppio                                            | `0x22`             | `"L'apice doppio: \" esempio"` |
+| `\a`            | Campanello                                              | `0x07`             | `"Suono del campanello\a"` |
+| `\b`            | Backspace                                               | `0x08`             | `"Carattere di backspace\b"` |
+| `\f`            | Form feed                                               | `0x0c`             | `"Form feed\f esempio"` |
+| `\n`            | Nuova linea                                             | `0x0a`             | `"Nuova linea\n esempio"` |
+| `\r`            | Ritorno carrello                                        | `0x0d`             | `"Ritorno carrello\r esempio"` |
+| `\t`            | Tabulazione                                             | `0x09`             | `"Tabulazione\tesempio"` |
+| `\v`            | Tabulazione verticale                                   | `0x0b`             | `"Tabulazione verticale\v esempio"` |
+| `\DDD`          | Valore ottale DDD del codice Unicode del carattere (solo per caratteri ASCII) | `DDD` (in ottale)        | `"Valore ottale: \101 esempio"` (`\101` rappresenta `'A'` che in ASCII è `65`) |
+| `\xXX`          | Valore esadecimale XX del codice Unicode del carattere  | `XX` (in esadecimale)       | `"Valore esadecimale: \x41 esempio"` (`\x41` rappresenta 'A') |
+| `\uXXXX`        | Carattere Unicode con valore esadecimale a 4 cifre      | `XXXX` (in esadecimale)        | `"Carattere cinese: \u4e2d"` (`\u4e2d` rappresenta '中') |
+| `\UXXXXXXXX`    | Carattere Unicode con valore esadecimale a 8 cifre      | `XXXXXXXX` (in esadecinale)        | `"Carattere: \U0001f600"` (`\U0001f600` rappresenta '😀') |
+| `\N{name}`      | Carattere Unicode                                       | -       | `"Carattere Unicode: \N{LATIN CAPITAL LETTER A} esempio"` |
+: Sequenze di escape {.hover}
+
+Esistono anche le stringhe _grezze_ (_raw_) sintatticamente identiche alle altre a meno di un suffisso  `r` o  `R` e sono utili quando si vuole evitare che le sequenze di escape siano interpretate. Si usano comunemente per esprimere pattern di espressioni regolari o percorsi di file in Windows. 
+
+#### Tuple
+
+Le tuple in Python sono sequenze ordinate immutabili, in cui gli oggetti contenuti possono essere di tipi diversi. La classe è `tuple` che deriva da `object`.
+
+Per creare una tupla, si può utilizzare una serie di espressioni separate da virgole (`,`), come elementi della tupla. Se ogni elemento è un letterale, l'intera costruzione è un letterale di tupla. Si può opzionalmente mettere una virgola ridondante dopo l'ultimo elemento, che è necessaria se si ha un solo elemento. Si possono raggruppare gli elementi della tupla tra parentesi, ma le parentesi sono necessarie solo quando le virgole avrebbero altrimenti un altro significato (ad esempio, nelle chiamate di funzione), o per denotare tuple vuote o annidate.
+
+Esempi di tuple costruite con letterali e espressioni:
+
 ```python
-a = "Hello, World!"
-print(type(a))  # <class 'str'>
+t1 = 42., "Hello", 0x42 # <1>
+t2 = (42,) # <2>
+t3 = 21+21, # <3>
+t4 = () # <4>
 ```
+1. Tupla con tre oggetti contenuti da letterale numerico, letterale stringa e ancora letterale numerico.
+2. Tupla con un solo oggetto da letterale numerico.
+3. Tupla con un solo oggetto da espressione.
+4. Tupla vuota.
 
-#### Liste (list)
-Le liste sono sequenze mutabili di oggetti. Possono contenere oggetti di tipi diversi.
+Possiamo creare le tuple usando la classe `tuple` oltre che i letterali:
 
-Esempio:
 ```python
-a = [1, 2, 3, "apple", [4, 5]]
-print(type(a))  # <class 'list'>
+t1 = tuple() # <1>
+t2 = tuple("Hello") # <2>
 ```
+1. Crea una tupla vuota.
+2. Crea una tupla con 5 stringhe, una per ogni carattere.
 
-#### Tuple (tuple)
-Le tuple sono sequenze immutabili di oggetti. Come le liste, possono contenere oggetti di tipi diversi.
+Operazioni sulle tuple:
 
-Esempio:
 ```python
-a = (1, 2, 3, "apple", [4, 5])
-print(type(a))  # <class 'tuple'>
+t1 = 42., "Hello", 0x42
+print(t1[1])  # <1>
+
+print(len(t1))  # <2>
+
+t2 = (42,)
+
+t3 = t1 + t2 # <3>
+
+print(t3[1:3])  # <4>
 ```
+1. Output: `"Hello"`.
+2. Output: `3`.
+3. Concatenazione di tuple che produce una nuova tupla.
+4. Output: `3`. Slicing di tupla che produce una nuova tupla `('Hello', 66)`.
 
-### Insiemi
+#### Liste
 
-#### Set (set)
-Gli insiemi sono contenitori mutabili che contengono elementi unici non ordinati.
+Le liste in Python sono sequenze ordinate mutabili, in cui gli oggetti contenuti possono essere di tipi diversi. La classe è `list` che deriva da `object`.
 
-Esempio:
+Per creare una lista, si utilizza una serie di espressioni, separate da virgole (`,`) all'interno di parentesi quadre, per indicare gli elementi della lista. Se ogni elemento è un letterale, l'intera costruzione è un letterale di lista. Si può opzionalmente mettere una virgola ridondante dopo l'ultimo elemento. Per denotare una lista vuota, si utilizza una coppia di parentesi quadre vuote.
+
+Esempi di letterali di lista:
+
+Esempi di liste costruite con letterali e espressioni:
+
 ```python
-a = {1, 2, 3, "apple"}
-print(type(a))  # <class 'set'>
+l1 = [42., "Hello", 0x42] # <1>
+l2 = [21+21] # <2>
+l3 = [] # <3>
 ```
+1. Lista con tre oggetti contenuti da letterale numerico, letterale stringa e ancora letterale numerico.
+2. Lista con un solo oggetto da espressione.
+3. Lista vuota.
 
-#### Frozen Set (frozenset)
-I frozen set sono insiemi immutabili.
+Possiamo creare le tuple usando la classe `tuple` oltre che i letterali:
 
-Esempio:
 ```python
-a = frozenset([1, 2, 3, "apple"])
-print(type(a))  # <class 'frozenset'>
+l1 = list() # <1>
+l2 = list("Hello") # <2>
 ```
+1. Crea una lista vuota.
+2. Crea una lista con 5 stringhe, una per ogni carattere. 
 
-### Dizionari (dict)
-I dizionari sono contenitori mutabili di coppie chiave-valore. Le chiavi devono essere uniche e immutabili.
+Operazioni sulle Liste:
 
-Esempio:
 ```python
-a = {"name": "Alice", "age": 30}
-print(type(a))  # <class 'dict'>
+l1 = [42., "Hello", 0x42]
+print(l1[1])  # <1>
+
+print(len(l1))  # <2>
+
+l2 = [42]
+
+l3 = l1 + l2 
+print(l3) # <3>
+
+l2 += l1 
+print(l2) # <4>
+
+l4 = []
+
+l4.extend(l1) 
+print(l4) # <5>
+
+l5 = []
+
+l5.append(l1) 
+print(l5) # <6>
+
+print(l2[1:3])   # <7>
+
+l1[1] = "Ciao"
+print(l1)  # <8>
+
+l1.remove("Ciao")
+print(l1)  # <9>
+
+l1.pop(0)
+print(l1)  # <10>
+
+del l4[1:2] # <11>
 ```
-
-### Altri
-
-#### None
-Il tipo `None` ha un solo valore, `None`, che rappresenta l'assenza di un valore. È spesso utilizzato come valore predefinito per variabili o come valore di ritorno per funzioni che non restituiscono nulla.
-
-Esempio:
-```python
-a = None
-print(type(a))  # <class 'NoneType'>
-```
-
-#### NotImplemented
-`NotImplemented` è un valore speciale che può essere restituito dai metodi aritmetici e di confronto quando l'operazione non è supportata per gli operandi forniti. Non dovrebbe essere valutato in un contesto booleano.
-
-Esempio:
-```python
-class MyNumber:
-    def __eq__(self, other):
-        if isinstance(other, MyNumber):
-            return True
-        return NotImplemented
-
-a = MyNumber()
-b = MyNumber()
-print(a == b)  # True
-print(a == 42)  # NotImplemented
-```
-
-#### Ellipsis
-`Ellipsis` ha un solo valore, rappresentato dal letterale `...` o dal nome predefinito `Ellipsis`. È utilizzato principalmente in contesti di slicing avanzati.
-
-Esempio:
-```python
-a = ...
-print(type(a))  # <class 'ellipsis'>
-```
-
-
-
+1. Output: `"Hello"`.
+2. Output: `3`.
+3. Output: `[42.0, 'Hello', 66, 42]`. Concatenazione di liste che produce una nuova lista.
+4. Output: `[42, 42.0, 'Hello', 66]`. Concatenazione sul posto modificando `l2`.
+5. Output: `[42.0, 'Hello', 66]`. Concatenazione sul posto modificando `l4`.
+6. Output: `[[42.0, 'Hello', 66]]`. Inserimento in fondo alla lista di un elemento.
+7. Output: `[42.0, 'Hello']`. Slicing di lista che produce una nuova lista.
+8. Output: `[42.0, 'Ciao', 66]`. Modifica della lista per assegnazione di un nuovo oggetto ad un indice.
+9. Output: `[42.0, 66]`. Rimozione di un elemento dalla lista usando un test di uguaglianza per stabilire che l'oggetto nella lista è uguale a quello passato come argomento.
+10. Output: `[66]`. Rimozione di un elemento della lista usando uno slicing.
 

@@ -643,3 +643,120 @@ code.interact()
 ----
 
 
+
+
+### Ambito e Visibilità degli Identificatori delle Funzioni
+
+L'ambito (scope) e la visibilità degli identificatori delle funzioni determinano dove nel codice una funzione può essere chiamata e utilizzata. Questi concetti sono simili a quelli delle variabili, ma presentano alcune differenze chiave che è importante comprendere.
+
+#### Ambito delle Funzioni
+
+L'ambito di una funzione si riferisce alla regione del codice in cui l'identificatore della funzione è valido e può essere utilizzato.
+
+- **Ambito Globale**: Una funzione dichiarata a livello globale, cioè al di fuori di qualsiasi altra funzione o blocco di codice, ha un ambito globale. Questo significa che la funzione è visibile e può essere chiamata da qualsiasi punto del programma dopo la sua dichiarazione.
+
+  Esempio in C++:
+
+  ```cpp
+  #include <iostream>
+
+  void globalFunction() {  // <1>
+      std::cout << "Funzione globale" << std::endl;
+  }
+
+  int main() {
+      globalFunction();  // <2>
+      return 0;
+  }
+  ```
+
+  1. Dichiarazione della funzione `globalFunction` a livello globale.
+  2. Chiamata della funzione `globalFunction` all'interno di `main`.
+
+  Il comportamento è identico in Java e C. In Python, le funzioni definite a livello globale hanno ambito globale, come mostrato nei precedenti esempi.
+
+- **Ambito Locale**: Una funzione dichiarata all'interno di un blocco di codice (come all'interno di una funzione o di una classe) ha un ambito locale. La funzione è visibile e può essere chiamata solo all'interno di quel blocco.
+
+  Esempio in Python:
+
+  ```python
+  def outerFunction():
+      def localFunction():  // <1>
+          print("Funzione locale")
+      localFunction()  # <2>
+
+  outerFunction()
+  # localFunction()  # <3> Errore: localFunction non è visibile qui
+  ```
+
+  1. Dichiarazione della funzione `localFunction` all'interno di `outerFunction`.
+  2. Chiamata della funzione `localFunction` all'interno di `outerFunction`.
+  3. Chiamata a `localFunction` al di fuori di `outerFunction`, che genera un errore poiché `localFunction` non è visibile
+
+ a questo livello.
+
+  In Java e C++, le funzioni dichiarate all'interno di un blocco (come metodi all'interno di una classe) sono accessibili solo all'interno di quel blocco, simile a Python. 
+
+  In C, le funzioni locali non sono standard, ma è possibile ottenere un comportamento simile usando funzioni statiche o funzioni inline definite all'interno di un file sorgente specifico.
+
+#### Visibilità delle Funzioni
+
+La visibilità si riferisce a dove nel codice l'identificatore di una funzione può essere utilizzato. La visibilità è strettamente legata all'ambito, ma può essere influenzata anche da altre considerazioni come la modularità e le regole di accesso.
+
+- **Visibilità Globale**: Le funzioni con ambito globale sono visibili ovunque nel programma. Tuttavia, la loro visibilità può essere limitata dall'uso di namespace (C++) o moduli (Python).
+
+  Esempio in C++ con namespace:
+
+  ```cpp
+  #include <iostream>
+
+  namespace MyNamespace {
+      void myFunction() {  // <1>
+          std::cout << "Funzione nel namespace" << std::endl;
+      }
+  }
+
+  int main() {
+      MyNamespace::myFunction();  // <2>
+      return 0;
+  }
+  ```
+
+  1. Dichiarazione della funzione `myFunction` all'interno di `MyNamespace`.
+  2. Chiamata della funzione `myFunction` utilizzando il qualificatore di namespace `MyNamespace::`.
+
+  Il comportamento è identico in C. In Python, i moduli e gli spazi dei nomi (`namespace`) possono essere utilizzati per limitare la visibilità delle funzioni.
+
+- **Visibilità Locale**: Le funzioni con ambito locale sono visibili solo all'interno del blocco in cui sono dichiarate. Questo è utile per creare funzioni helper o interne che non devono essere accessibili dall'esterno.
+
+  Esempio in Python:
+
+  ```python
+  def outerFunction():
+      def helperFunction():  # <1>
+          print("Funzione helper")
+      helperFunction()  # <2>
+      print("Funzione esterna")
+
+  outerFunction()
+  ```
+
+  1. Dichiarazione della funzione `helperFunction` all'interno di `outerFunction`.
+  2. Chiamata della funzione `helperFunction` all'interno di `outerFunction`.
+
+  Il comportamento è identico in C++ e Java, dove le funzioni dichiarate all'interno di un metodo o di una classe sono visibili solo all'interno di quel blocco.
+
+### Differenze tra Funzioni e Variabili/oggetti
+
+Sebbene l'ambito e la visibilità delle funzioni condividano concetti simili con le variabili e gli oggetti, ci sono alcune differenze chiave:
+
+- **Durata di vita**: Le variabili locali (automatiche) hanno una durata di vita limitata al blocco di codice in cui sono dichiarate. Quando il controllo esce dal blocco, la memoria allocata per la variabile viene liberata. Le funzioni, tuttavia, non vengono "distrutte" quando il controllo esce dal loro ambito; semplicemente non sono più visibili e chiamabili. In Python, le variabili definite all'interno di un blocco di un'istruzione composta rimangono accessibili finché sono nello stesso ambito di funzione o modulo, mentre le funzioni definite all'interno di un'altra funzione (nested functions) sono visibili solo all'interno di quella funzione.
+  
+- **Allocazione dinamica**: In C++, le variabili e gli oggetti possono essere allocati dinamicamente usando `new` e deallocati usando `delete`. Le funzioni non richiedono un'allocazione esplicita di memoria; la loro dichiarazione è sufficiente per renderle utilizzabili nell'ambito definito.
+
+---
+
+
+---
+
+Questa sezione riorganizzata presenta prima le funzioni, seguite dal capitolo su namespace, moduli e file, fornendo una spiegazione dettagliata di come ciascun concetto si applica ai diversi linguaggi di programmazione.
