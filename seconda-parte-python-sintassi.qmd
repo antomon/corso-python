@@ -681,7 +681,7 @@ Un programma Python è una sequenza di istruzioni che si distinguono in **sempli
 
 ### Istruzioni semplici
 
-Un'istruzione semplice è sempre contenuta in una riga logica, che può presentare più istruzioni semplici separate da `;`. È permesso ma scaonsigliato perché in pochi casi porta a codice leggibile.
+Un'istruzione semplice è sempre contenuta in una riga logica, che può presentare più istruzioni semplici separate da `;`. È permesso ma sconsigliato, perché in pochi casi porta a codice leggibile.
 
 In Python, le istruzioni semplici sono:
 
@@ -734,78 +734,78 @@ In Python, le istruzioni semplici sono:
     nonlocal y
     ```
 
-Un'espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne viene prodotto il risultato della valutazione. D'altronde, una espressione è spesso utilizzata per chiamare funzioni che hanno effetti collaterali, come, ad esempio, produrre un output:
+- Un'espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne viene prodotto il risultato della valutazione. D'altronde, una espressione è spesso utilizzata per chiamare funzioni che hanno effetti collaterali, come, ad esempio, produrre un output:
 
--   Produzione di output:
+  - Produzione di output:
 
-    ``` python
-    def stampa_messaggio(messaggio): # <1>
-      print(messaggio)
+      ``` python
+      def stampa_messaggio(messaggio): # <1>
+        print(messaggio)
 
-    stampa_messaggio("Ciao, mondo!") # <2>
-    ```
-    1. Funzione che stampa un messaggio.
-    2. Istruzione di espressione che chiama la funzione con un effetto collaterale (stampa del messaggio).
+      stampa_messaggio("Ciao, mondo!") # <2>
+      ```
+      1. Funzione che stampa un messaggio.
+      2. Istruzione di espressione che chiama la funzione con un effetto collaterale (stampa del messaggio).
 
--   Modifica di parametri:
+  - Modifica di parametri:
 
-    ``` python
-    def aggiungi_elemento(lista, elemento): # <1>
-      lista.append(elemento)
+      ``` python
+      def aggiungi_elemento(lista, elemento): # <1>
+        lista.append(elemento)
 
-    numeri = [1, 2, 3] # <2>
+      numeri = [1, 2, 3] # <2>
 
-    aggiungi_elemento(numeri, 4) # <3>
+      aggiungi_elemento(numeri, 4) # <3>
 
-    print(numeri)  # <4>
-    ```
-    1. Funzione che modifica un argomento mutabile (`lista`).
-    2. Lista iniziale.
-    3. Istruzione di espressione che chiama la funzione con un effetto collaterale (modifica dell'argomento).
-    4. Output: `[1, 2, 3, 4]`.
+      print(numeri)  # <4>
+      ```
+      1. Funzione che modifica un argomento mutabile (`lista`).
+      2. Lista iniziale.
+      3. Istruzione di espressione che chiama la funzione con un effetto collaterale (modifica dell'argomento).
+      4. Output: `[1, 2, 3, 4]`.
 
--   Modifica di variabili globali:
+  - Modifica di variabili globali:
 
-    ``` python
-    contatore = 0 # <1>
+      ``` python
+      contatore = 0 # <1>
 
-    def incrementa_contatore(): # <2>
-      global contatore
+      def incrementa_contatore(): # <2>
+        global contatore
 
-      contatore += 1
+        contatore += 1
 
-    incrementa_contatore() # <3>
+      incrementa_contatore() # <3>
 
-    print(contatore)  # <4> 
-    ```
-    1. Variabile globale.
-    2. Funzione che modifica una variabile globale.
-    3. Istruzione di espressione che chiama la funzione con un effetto collaterale (modifica della variabile globale).
-    4. Output: `1`.
+      print(contatore)  # <4> 
+      ```
+      1. Variabile globale.
+      2. Funzione che modifica una variabile globale.
+      3. Istruzione di espressione che chiama la funzione con un effetto collaterale (modifica della variabile globale).
+      4. Output: `1`.
 
--   Lancio di eccezioni:
+  - Lancio di eccezioni:
 
-    ``` python
-    def solleva_eccezione(messaggio): # <1>
-      raise ValueError(messaggio) 
+      ``` python
+      def solleva_eccezione(messaggio): # <1>
+        raise ValueError(messaggio) 
 
-    try: 
-      solleva_eccezione("Qualcosa è andato storto!") # <2>
+      try: 
+        solleva_eccezione("Qualcosa è andato storto!") # <2>
 
-    except ValueError as e:
-      print(e)   # <3>
-    ```
-    1. Funzione che solleva un'eccezione.
-    2. Istruzione di espressione che chiama la funzione con un effetto collaterale (sollevamento di un'eccezione).
-    3. Output: `Qualcosa è andato storto!`.
+      except ValueError as e:
+        print(e)   # <3>
+      ```
+      1. Funzione che solleva un'eccezione.
+      2. Istruzione di espressione che chiama la funzione con un effetto collaterale (sollevamento di un'eccezione).
+      3. Output: `Qualcosa è andato storto!`.
 
-Un assegnamento con `=` è anch'esso un'istruzione semplice e non può mai essere all'interno di una espressione, dove, invece, si può usare l'operatore *tricheco* `:=`:
+  - Un assegnamento con `=` è anch'esso un'istruzione semplice e non può mai essere all'interno di una espressione, dove, invece, si può usare l'operatore *tricheco* `:=`:
 
-``` python
-if (n := len("Python")) > 5:
-  print(f"La lunghezza della stringa è {n}")  # <1>
-```
-1. Output: `La lunghezza della stringa è 6`.
+  ``` python
+  if (n := len("Python")) > 5:
+    print(f"La lunghezza della stringa è {n}")  # <1>
+  ```
+  1. Output: `La lunghezza della stringa è 6`.
 
 ### Istruzioni composte
 
@@ -838,24 +838,24 @@ Alcuni esempi del rapporto tra istruzioni e righe:
 
 Ed ecco le principali istruzioni composte:
 
-- `if`, controlla l'esecuzione di un blocco di codice in base a una condizione:
+- `if`, controlla l'esecuzione di un blocco di codice in base a una espressione condizionale (tra parentesi angolari è presente dello pseudocodice, quindi non eseguire!):
 
   ``` python
-  if condizione:
+  if <espressione condizionale>:
     # blocco di codice
   ```
 
-- `for`, itera su una sequenza (come una lista, una tupla o una stringa):
+- `for`, itera sugli elementi (oggetti) presenti in un oggetto di tipo sequenza (come una lista, una tupla o una stringa):
 
   ``` python
-  for elemento in sequenza:
+  for <elemento> in <sequenza>:
     # blocco di codice
   ```
 
-- `while`, esegue un blocco di codice finché una condizione è vera:
+- `while`, esegue un blocco di codice finché una espressione condizionale è vera:
 
   ``` python
-  while condizione:
+  while <espressione condizionale>:
     # blocco di codice
   ```
 
@@ -864,21 +864,21 @@ Ed ecco le principali istruzioni composte:
   ``` python
   try:
     # blocco di codice
-  except Eccezione:
+  except <eccezione>:
     # blocco di codice per gestire l'eccezione
   ```
 
-- `with`, gestisce l'allocazione e la deallocazione di risorse:
+- `with`, gestisce le risorse come file, connessioni di rete, ecc., assicurandosi che siano aperte e chiuse correttamente, anche se si verifica un errore:
 
   ``` python
   with open('file.txt', 'r') as file:
     # blocco di codice
   ```
 
-- `def`, definisce una funzione:
+- `def`, definisce una funzione fatta da una testata (nome funzione ed elenco parametri) e il blocco di istruzioni tra cui, opzionalmente, la restituzione di output:
 
   ``` python
-  def nome_funzione(parametri):
+  def nome_funzione(<parametro, parametro, ...>):
     # blocco di codice
   ```
 
@@ -889,10 +889,10 @@ Ed ecco le principali istruzioni composte:
     # blocco di codice
   ```
 
-- `match`, esegue il pattern matching su un valore:
+- `match`, confronta un valore con diversi modelli (_pattern_) per trovare una corrispondenza ed esegue un blocco di istruzioni:
 
   ``` python
   match valore:
-      case pattern:
+      case <pattern>:
           # blocco di codice
   ```
