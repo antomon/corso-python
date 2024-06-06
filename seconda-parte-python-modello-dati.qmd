@@ -182,30 +182,134 @@ I tipi predefiniti numerici corrispondono agli interi, i numeri a virgola mobile
 
 Esistono anche altri tipi numerici nelle librerie fornite coll'interprete, per i numeri decimali a precisione arbitraria e i numeri razionali come frazioni.  
 
+I letterali numerici non hanno segno, cioè `+` e `-` sono operatori unari che precedono la rappresentazione di un numero, quindi `-3` è una espressione che diventa il valore di un oggetto intero di valore -3.
+
 #### Interi
 
-Gli interi rappresentano numeri senza la parte decimale. Python supporta interi di lunghezza arbitraria, limitati solo dalla memoria disponibile.
+Esistono due tipi di interi. Il primo è `int`, per gli usuali numeri interi, a cui corrispondono diverse rappresentazioni sintattiche in basi diverse, come i letterali decimali, binari, ottali o esadecimali:
 
-Esempio:
+- Un letterale decimale inizia sempre con una cifra diversa da zero. 
+  
+- Quello binario inizia con `0b` o `0B` seguito da una sequenza di cifre binarie (0 o 1). 
+
+- L'ottale inizia con `0o` o `0O` seguito da una sequenza di cifre ottali (da 0 a 7). 
+
+- L'esadecimale inizia con `0x` o `0X` seguito da una sequenza di cifre esadecimali (da 0 a 9 e da A a F, in maiuscolo o minuscolo).
+
+Ad esempio:
 
 ```python
-a = 42
-b = -3
-print(type(a))  # <class 'int'>
-print(type(b))  # <class 'int'>
+dec = 10         # <1>
+bin = 0b1010     # <2>
+oct = 0o12       # <3>
+hex = 0xA        # <4>
 ```
+1. Letterale decimale.
+2. Letterale binario.
+3. Letterale ottale.
+4. Letterale esadecimale.
+
+Gli interi in Python sono illimitati, al netto della finitezza della memoria del computer disponibile per la loro rappresentazione.
+
+```python
+large_int = 10**100
+
+print(f"Un intero molto grande: {large_int}") # <1>
+```
+1. Output: `10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000`.
+
+L'altro tipo è `bool`, che ha solo due oggetti possibili, che si comportano come quelli corrispondenti agli interi `1` e `0` per rappresentare i valori logici, rispettivamente, di vero e falso. `bool` come classe deriva da `int` che, a sua volta, deriva da `object`:
+
+```python
+print(issubclass(bool, int)) # <1>
+print(issubclass(int, object)) # <2>
+```
+1. Output: `True`.
+2. Output: `True`.
 
 #### Numeri in virgola mobile 
-I numeri in virgola mobile rappresentano numeri con la parte decimale. In Python, sono implementati come doppia precisione.
 
-Esempio:
+I numeri in virgola mobile in Python sono istanze della classe `float` e sono utilizzati per rappresentare numeri reali con una parte decimale. I letterali corrispondenti sono una sequenza di cifre in base 10, e solo in base 10, che include un punto (`.`), un suffisso di notazione scientifica (`e` o `E`, opzionalmente seguito da `+` o `-`, seguito da una o più cifre), o entrambi. Il carattere iniziale di un letterale in virgola mobile non può essere `e` o `E`, ma può essere qualsiasi cifra (anche zeri a differenza degli interi) o un punto (`.`) seguito da una cifra.
+
+Esempi di literali in virgola mobile: `0.`, `0.1`, `.0`, `1.`, `1.0`, `1e0`, `1.e0`, `1.0E0`. Attenzione: `1` è un intero, `1.` non lo è.
+
+Per conoscere l'intervallo esatto e la precisione dei valori in virgola mobile sulla piattaforma in uso, e molti altri dettagli, è possibile usare `sys.float_info` nel modo seguente:
 
 ```python
-a = 3.14
-b = -0.001
-print(type(a))  # <class 'float'>
-print(type(b))  # <class 'float'>
+import sys
+
+float_info = sys.float_info  # <1>
+
+print(f"Massimo valore rappresentabile (max): {float_info.max}")  # <2>
+print(f"Minimo valore rappresentabile positivo (min): {float_info.min}")  # <3>
+print(f"Massimo esponente base 10 (max_exp): {float_info.max_exp}")  # <4>
+print(f"Minimo esponente base 10 (min_exp): {float_info.min_exp}")  # <5>
+print(f"Massimo esponente base 2 (max_10_exp): {float_info.max_10_exp}")  # <6>
+print(f"Minimo esponente base 2 (min_10_exp): {float_info.min_10_exp}")  # <7>
+print(f"Precisione in bit (dig): {float_info.dig}")  # <8>
+print(f"Numero di bit di mantissa (mant_dig): {float_info.mant_dig}")  # <9>
+print(f"Epsilon macchina (epsilon): {float_info.epsilon}")  # <10>
 ```
+1. Oggetto con all'interno le informazioni 
+2. Output: `Massimo valore rappresentabile (max): 1.7976931348623157e+308`
+3. Output: `Minimo valore rappresentabile positivo (min): 2.2250738585072014e-308`
+4. Output: `Massimo esponente base 10 (max_exp): 1024`
+5. Output: `Minimo esponente base 10 (min_exp): -1021`
+6. Output: `Massimo esponente base 2 (max_10_exp): 308`
+7. Output: `Minimo esponente base 2 (min_10_exp): -307`
+8. Output: `Precisione in bit (dig): 15`
+9. Output: `Numero di bit di mantissa (mant_dig): 53`
+10. Output: `Epsilon macchina (epsilon): 2.220446049250313e-16`
+
+### Spiegazioni
+
+1. **float_info = sys.float_info**: 
+   - Output: Nessun output.
+   - Spiegazione: Ottiene le informazioni dettagliate sui numeri in virgola mobile.
+
+2. **print(f"Massimo valore rappresentabile (max): {float_info.max}")**:
+   - Output: Massimo valore rappresentabile (max): 1.7976931348623157e+308
+   - Spiegazione: Il massimo valore rappresentabile per un numero in virgola mobile.
+
+3. **print(f"Minimo valore rappresentabile positivo (min): {float_info.min}")**:
+   - Output: Minimo valore rappresentabile positivo (min): 2.2250738585072014e-308
+   - Spiegazione: Il minimo valore positivo rappresentabile per un numero in virgola mobile.
+
+4. **print(f"Massimo esponente base 10 (max_exp): {float_info.max_exp}")**:
+   - Output: Massimo esponente base 10 (max_exp): 1024
+   - Spiegazione: Il massimo esponente base 10.
+
+5. **print(f"Minimo esponente base 10 (min_exp): {float_info.min_exp}")**:
+   - Output: Minimo esponente base 10 (min_exp): -1021
+   - Spiegazione: Il minimo esponente base 10.
+
+6. **print(f"Massimo esponente base 2 (max_10_exp): {float_info.max_10_exp}")**:
+   - Output: Massimo esponente base 2 (max_10_exp): 308
+   - Spiegazione: Il massimo esponente base 2.
+
+7. **print(f"Minimo esponente base 2 (min_10_exp): {float_info.min_10_exp}")**:
+   - Output: Minimo esponente base 2 (min_10_exp): -307
+   - Spiegazione: Il minimo esponente base 2.
+
+8. **print(f"Precisione in bit (dig): {float_info.dig}")**:
+   - Output: Precisione in bit (dig): 15
+   - Spiegazione: La precisione in bit, cioè il numero di cifre decimali che possono essere rappresentate senza perdita di precisione.
+
+9. **print(f"Numero di bit di mantissa (mant_dig): {float_info.mant_dig}")**:
+   - Output: Numero di bit di mantissa (mant_dig): 53
+   - Spiegazione: Il numero di bit nella mantissa.
+
+10. **print(f"Epsilon macchina (epsilon): {float_info.epsilon}")**:
+    - Output: Epsilon macchina (epsilon): 2.220446049250313e-16
+    - Spiegazione: La differenza tra 1 e il numero più piccolo maggiore di 1 che può essere rappresentato.
+
+
+
+
+
+
+
+
 
 #### Numeri complessi (complex)
 I numeri complessi hanno una parte reale e una parte immaginaria. In Python, si rappresentano con la lettera `j` per indicare la parte immaginaria.
