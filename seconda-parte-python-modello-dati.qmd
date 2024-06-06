@@ -7,6 +7,312 @@ citation-location: margin
 
 Per comprendere il **modello dati** di Python, dobbiamo conoscere i tipi di dati del linguaggio e le relative operazioni, con ciò intendendo che dobbiamo sia elencare quelli predefiniti, che apprendere le modalità di definizione di nuovi tipi. 
 
-## Oggetti e classi
+## Oggetti
+
+Gli oggetti sono l'astrazione dei dati definita in Python. Ogni oggetto è caratterizzato da un'**identità**, un **tipo** e un **valore**. L'identità di un oggetto non cambia una volta creato e possiamo pensarlo come l'indirizzo dell'oggetto in memoria[^1]. Python permette di ricavarlo per mezzo della funzione predefinita (_built in_) `id()`:
+
+```python
+s = "Hello"
+
+print(id(s)) # <1>
+```
+1. Output: un numero come `4467381744`.
+
+Il tipo di un oggetto determina le operazioni che l'oggetto supporta per la manipolazione del proprio stato o di quello di altri oggetti, e definisce anche i possibili valori per gli oggetti di quel tipo (_dominio_ dei valori, per prendere in prestito un termine dalla matematica). Il linguaggio fornisce una funzione per conoscere il tipo dell'oggetto:
+
+```python
+s = "Hello"
+
+print(type(s)) # <1>
+```
+1. Output: `<class 'str'>`.
+
+[^1]: In CPython è effettivamente implementato così.
+
+Gli oggetti il cui valore può cambiare sono detti **mutabili**, mentre gli oggetti il cui valore non lo può una volta creati, sono chiamati **immutabili**. L'immutabilità di un oggetto è determinata dalla progettazione del suo tipo, ad esempio, per i tipi definiti nel linguaggio, numeri interi e in virgola mobile, stringhe e tuple sono immutabili, mentre dizionari e liste sono mutabili.
+
+Gli oggetti non vengono mai distrutti esplicitamente dall'utente, ma, quando diventano inaccessibili, possono essere raccolti dal garbage collector, che è eseguito contemporaneamente al codice del programma, come parte dell'interprete. L'implementazione specifica quando e come gli oggetti debbano essere distrutti.
+
+Alcuni oggetti contengono riferimenti a risorse _esterne_ rispetto al programma, come file aperti, connessioni di rete, finestre (_graphical user interface_, GUI) o dispositivi hardware. Queste risorse generalmente non vengono liberate dal garbage collector, perché le azioni corrispondenti sono particolari della risorsa stessa, pertanto, i loro oggetti forniscono anche un metodo esplicito di rilascio, solitamente chiamato `close()`. È molto importante tener conto di ciò per evitare effetti indesiderati. 
+
+Alcuni oggetti, chiamati **contenitori**, contengono riferimenti ad altri oggetti. Esempi di contenitori sono _tuple_, _liste_ e _dizionari_, strutture dati di base, definite in molti linguaggi di programmazione. I riferimenti ad altri oggetti fanno parte del valore di un contenitore e, nella maggior parte dei casi, quando parliamo del valore di un contenitore, intendiamo proprio i valori degli oggetti contenuti, non le loro identità. Ad esempio:
+
+```python
+t = (1, 2, 3) # <1>
+
+l = ["Qui", "Quo", "Qua"] # <2>
+```
+1. Tupla con tre oggetti al suo interno: `1`, `2`, `3`. Diciamo che la tupla contiene i tre valori interi. 
+2. lista com tre oggetti all'interno: `"Qui"`, `"Quo"`, `"Qua"`. Diciamoc he la lista contiene le tre stringhe. 
+
+La mutabilità di un contenitore si riferisce alla identità degli oggetti referenziati e non al loro valore, quindi, ad esempio, se una tupla contiene un riferimento ad un oggetto mutabile, il valore della tupla cambia se quell'oggetto mutabile viene modificato:
+
+```python
+s = ([1, 2, 3], ["Qui", "Quo", "Qua"])
+
+print(s) # <1>
+
+print(id(s[0])) # <2>
+print(id(s[1])) # <3>
+
+s[1][0] = "Huey" # <4>
+s[1][1] = "Dewey" 
+s[1][2] = "Louie"
+
+print(s) # <5>
+
+print(id(s[0])) # <6>
+print(id(s[1])) # <7>
+```
+1. Output: `([1, 2, 3], ['Qui', 'Quo', 'Qua'])`.
+2. Modifico gli elementi della lista, traducendoli in inglese.
+3. Output dell'identità del primo oggetto contenuto (su ogni computer e sessione sarà diverso): `4361472384`.
+4. Output dell'identità del secondo oggetto contenuto: `4361474176`.
+5. Output: `([1, 2, 3], ['Huey', 'Dewey', 'Louie'])`. La tupla è cambiata!
+6. Output: `4361472384`, l'identità del primo oggetto contenuto non è cambiata!
+7. Output: `4361474176`, l'identità del secondo oggetto contenuto non è cambiata!
+
+Ciò è un po' più generale, perché per gli oggetti di tipo immutabile, quando sono assegnati ad una variaible o risultato di un'espressione, a parità di valore, potrebbero avere la stessa identità, cioè essere lo stesso oggetto. Il condizionale è dovuto alla presenza e applicazione logiche di ottimizzazione, ad esempio della memoria, implementate nell'interprete.
+
+Ad esempio, dopo:
+
+```python
+s1 = "Qui, Quo, Qua"
+
+print(id(s1)) # <1>
+
+s2 = "Qui, Quo, Qua"
+
+print(id(s2)) # <2>
+```
+1. Output dell'identità di `s1`: `4432491760`.
+2. Output dell'identità di `s2`: `4432491760`, cioè è la medesima identità dell'oggetto il cui nome è `s1`.
+
+Per gli oggetti mutabili, questo non accade anche in casi su cui potrebbe essere ottimizzante:
+
+```python
+l1 = []
+
+print(id(l1)) # <1>
+
+l2 = []
+
+print(id(l2)) # <2>
+```
+1. Output dell'identità di `l1`: `4454287744`.
+2. Output dell'identità di `l2`: `4454289536`, cioè le identità sono diverse.
+
+Attenzione però ad alcune _scorciatoie_ di Python:
+
+```python
+c = d = []
+```
+
+è equivalente a:
+
+```python
+c = []
+d = c
+```
+
+cioè l'oggetto lista ha due nomi nel programma. 
+
+## Tipi e classi
+
+In Python, i tipi di dati sono implementati come _classi_. Una classe è la definizione di un tipo di oggetto che specifica gli attributi (complessivamente il valore dell'oggetto) e i metodi (le operazioni) che determinano lo stato e il comportamento degli oggetti. Gli oggetti creati da una classe possono essere manipolati attraverso i metodi della classe, permettendo di interagire e modificare i loro attributi per ottenere risultati desiderati. Quando creiamo un oggetto di una determinata classe, stiamo creando un'istanza di quella classe. 
+
+Ad esempio, per una stringa:
+
+```python
+s = "Hello" # <1>
+
+print(type(s))  # <2>
+```
+1. L'oggetto stringa il cui valore è `"Hello"` ha come nome `s`.
+2. Output: `<class 'str'>`. `type` conferma che l'oggetto è una istanza di `str` che è il tipo delle stringhe in Python.
+
+Le classi possono essere organizzate in una gerarchia. In cima alla gerarchia delle classi di Python c'è la classe `object`, un po' infelice come nome, da cui derivano tutte le altre classi. Questo significa che ogni classe in Python eredita gli attributi e i metodi della classe `object`. La funzione `isinstance` è utile per investigare questa gerarchia, poiché permette di verificare se un oggetto è un'istanza di una determinata classe o di una sua classe derivata.
+
+Ad esempio:
+
+```python
+s = "Hello" 
+
+print(isinstance(s, str))  # <1>
+
+print(isinstance(s, object))  # <2>
+```
+1. Output: `True`. `isinstance` conferma che `s` è un'istanza della classe `str`.
+2. Output: `True`. `isinstance` conferma che `s` è un'istanza anche della classe `object`, da cui deriva `str`.
+
+La funzione `issubclass` è altrettanto utile per esplorare le gerarchie delle classi, in quanto permette di verificare se una classe è una sottoclasse di un'altra.
+
+Ad esempio:
+
+```python
+print(issubclass(str, object))  # <1>
+```
+1. Output: `True`. `issubclass` conferma che `str` è una sottoclasse di `object`.
+
+## Tipi predefiniti
+
+Python mette a disposizione molti tipi _generali_, cioè utili alla gestione di dati comunemente presenti in algoritmi. Esistono, inoltre, sia meccanismi di estensione della distribuzione Python che modificano l'installazione sul proprio computer, sia la possibilità conferita al programmatore di creare i propri tipi o di importarli da librerie prodotte da terze parti.
+
+I tipi predefiniti sono immediatamente disponibili, cioè non necessitano di alcuna azione da parte del programmatore, come, ad esempio, l'importazione di moduli. 
+
+Per ragioni di esposizione, distingueremo tra tipi predefiniti fondamentali, cioè che possono essere introdotti con un insieme limitato di concetti, tipi legati alla astrazione del paradigma di orientamento agli oggetti e, infine, costruzioni del linguaggio legate all'esecuzione asincrona.
+
+## Tipi predefiniti fondamentali
+
+Prima di entrare nel dettaglio per ognuno, di seguito un elenco dei tipi predefiniti fondamentali:
+
+- Numeri: sia interi relativi che reali, cioè in virgola mobile, sia complessi.
+
+- Sequenze, cioè contenitori caratterizzati da un ordinamento degli oggetti al loro interno, sia mutabili che immutabili. 
+
+- Insiemi, cioè contenitori non caratterizzati da un ordinamento degli oggetti.
+
+- Dizionari, cioè contenitori di coppie di oggetti chiave e valore.
+
+- Altri: `None`, `NotImplemented`, `Ellipsis`.
+
+### Numeri
+
+I tipi predefiniti numerici corrispondono agli interi, i numeri a virgola mobile e quelli complessi. Sono immutabili, il che significa che effettuando una operazione su un oggetto numerico si produrrà sempre un nuovo oggetto e non una modifica del precedente.
+
+Esistono anche altri tipi numerici nelle librerie fornite coll'interprete, per i numeri decimali a precisione arbitraria e i numeri razionali come frazioni.  
+
+#### Interi
+
+Gli interi rappresentano numeri senza la parte decimale. Python supporta interi di lunghezza arbitraria, limitati solo dalla memoria disponibile.
+
+Esempio:
+
+```python
+a = 42
+b = -3
+print(type(a))  # <class 'int'>
+print(type(b))  # <class 'int'>
+```
+
+#### Numeri in virgola mobile 
+I numeri in virgola mobile rappresentano numeri con la parte decimale. In Python, sono implementati come doppia precisione.
+
+Esempio:
+
+```python
+a = 3.14
+b = -0.001
+print(type(a))  # <class 'float'>
+print(type(b))  # <class 'float'>
+```
+
+#### Numeri complessi (complex)
+I numeri complessi hanno una parte reale e una parte immaginaria. In Python, si rappresentano con la lettera `j` per indicare la parte immaginaria.
+
+Esempio:
+```python
+a = 1 + 2j
+b = complex(3, -5)
+print(type(a))  # <class 'complex'>
+print(type(b))  # <class 'complex'>
+```
+
+### Sequenze
+
+#### Stringhe (str)
+Le stringhe sono sequenze di caratteri Unicode. In Python, le stringhe sono immutabili.
+
+Esempio:
+```python
+a = "Hello, World!"
+print(type(a))  # <class 'str'>
+```
+
+#### Liste (list)
+Le liste sono sequenze mutabili di oggetti. Possono contenere oggetti di tipi diversi.
+
+Esempio:
+```python
+a = [1, 2, 3, "apple", [4, 5]]
+print(type(a))  # <class 'list'>
+```
+
+#### Tuple (tuple)
+Le tuple sono sequenze immutabili di oggetti. Come le liste, possono contenere oggetti di tipi diversi.
+
+Esempio:
+```python
+a = (1, 2, 3, "apple", [4, 5])
+print(type(a))  # <class 'tuple'>
+```
+
+### Insiemi
+
+#### Set (set)
+Gli insiemi sono contenitori mutabili che contengono elementi unici non ordinati.
+
+Esempio:
+```python
+a = {1, 2, 3, "apple"}
+print(type(a))  # <class 'set'>
+```
+
+#### Frozen Set (frozenset)
+I frozen set sono insiemi immutabili.
+
+Esempio:
+```python
+a = frozenset([1, 2, 3, "apple"])
+print(type(a))  # <class 'frozenset'>
+```
+
+### Dizionari (dict)
+I dizionari sono contenitori mutabili di coppie chiave-valore. Le chiavi devono essere uniche e immutabili.
+
+Esempio:
+```python
+a = {"name": "Alice", "age": 30}
+print(type(a))  # <class 'dict'>
+```
+
+### Altri
+
+#### None
+Il tipo `None` ha un solo valore, `None`, che rappresenta l'assenza di un valore. È spesso utilizzato come valore predefinito per variabili o come valore di ritorno per funzioni che non restituiscono nulla.
+
+Esempio:
+```python
+a = None
+print(type(a))  # <class 'NoneType'>
+```
+
+#### NotImplemented
+`NotImplemented` è un valore speciale che può essere restituito dai metodi aritmetici e di confronto quando l'operazione non è supportata per gli operandi forniti. Non dovrebbe essere valutato in un contesto booleano.
+
+Esempio:
+```python
+class MyNumber:
+    def __eq__(self, other):
+        if isinstance(other, MyNumber):
+            return True
+        return NotImplemented
+
+a = MyNumber()
+b = MyNumber()
+print(a == b)  # True
+print(a == 42)  # NotImplemented
+```
+
+#### Ellipsis
+`Ellipsis` ha un solo valore, rappresentato dal letterale `...` o dal nome predefinito `Ellipsis`. È utilizzato principalmente in contesti di slicing avanzati.
+
+Esempio:
+```python
+a = ...
+print(type(a))  # <class 'ellipsis'>
+```
+
+
 
 

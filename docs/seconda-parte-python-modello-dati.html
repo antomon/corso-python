@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -90,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -302,12 +336,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Indice</h2>
    
   <ul>
-  <li><a href="#oggetti-e-classi" id="toc-oggetti-e-classi" class="nav-link active" data-scroll-target="#oggetti-e-classi"><span class="header-section-number">10.1</span> Oggetti e classi</a></li>
+  <li><a href="#oggetti" id="toc-oggetti" class="nav-link active" data-scroll-target="#oggetti"><span class="header-section-number">10.1</span> Oggetti</a></li>
+  <li><a href="#tipi-e-classi" id="toc-tipi-e-classi" class="nav-link" data-scroll-target="#tipi-e-classi"><span class="header-section-number">10.2</span> Tipi e classi</a></li>
+  <li><a href="#tipi-predefiniti" id="toc-tipi-predefiniti" class="nav-link" data-scroll-target="#tipi-predefiniti"><span class="header-section-number">10.3</span> Tipi predefiniti</a></li>
+  <li><a href="#tipi-predefiniti-fondamentali" id="toc-tipi-predefiniti-fondamentali" class="nav-link" data-scroll-target="#tipi-predefiniti-fondamentali"><span class="header-section-number">10.4</span> Tipi predefiniti fondamentali</a>
+  <ul class="collapse">
+  <li><a href="#numeri" id="toc-numeri" class="nav-link" data-scroll-target="#numeri"><span class="header-section-number">10.4.1</span> Numeri</a></li>
+  <li><a href="#sequenze" id="toc-sequenze" class="nav-link" data-scroll-target="#sequenze"><span class="header-section-number">10.4.2</span> Sequenze</a></li>
+  <li><a href="#insiemi" id="toc-insiemi" class="nav-link" data-scroll-target="#insiemi"><span class="header-section-number">10.4.3</span> Insiemi</a></li>
+  <li><a href="#dizionari-dict" id="toc-dizionari-dict" class="nav-link" data-scroll-target="#dizionari-dict"><span class="header-section-number">10.4.4</span> Dizionari (dict)</a></li>
+  <li><a href="#altri" id="toc-altri" class="nav-link" data-scroll-target="#altri"><span class="header-section-number">10.4.5</span> Altri</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/seconda-parte-python-modello-dati.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./seconda-parte.html">Seconda parte: Le basi di Python</a></li><li class="breadcrumb-item"><a href="./seconda-parte-python-modello-dati.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Il modello dati</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -329,11 +373,311 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Per comprendere il <strong>modello dati</strong> di Python, dobbiamo conoscere i tipi di dati del linguaggio e le relative operazioni, con ciò intendendo che dobbiamo sia elencare quelli predefiniti, che apprendere le modalità di definizione di nuovi tipi.</p>
-<section id="oggetti-e-classi" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="oggetti-e-classi"><span class="header-section-number">10.1</span> Oggetti e classi</h2>
+<section id="oggetti" class="level2 page-columns page-full" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="oggetti"><span class="header-section-number">10.1</span> Oggetti</h2>
+<p>Gli oggetti sono l’astrazione dei dati definita in Python. Ogni oggetto è caratterizzato da un’<strong>identità</strong>, un <strong>tipo</strong> e un <strong>valore</strong>. L’identità di un oggetto non cambia una volta creato e possiamo pensarlo come l’indirizzo dell’oggetto in memoria<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Python permette di ricavarlo per mezzo della funzione predefinita (<em>built in</em>) <code>id()</code>:</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;In CPython è effettivamente implementato così.</p></div></div><div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1"></a>s <span class="op">=</span> <span class="st">"Hello"</span></span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3"></a><span class="bu">print</span>(<span class="bu">id</span>(s))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="1">Output: un numero come <code>4467381744</code>.</span>
+</dd>
+</dl>
+<p>Il tipo di un oggetto determina le operazioni che l’oggetto supporta per la manipolazione del proprio stato o di quello di altri oggetti, e definisce anche i possibili valori per gli oggetti di quel tipo (<em>dominio</em> dei valori, per prendere in prestito un termine dalla matematica). Il linguaggio fornisce una funzione per conoscere il tipo dell’oggetto:</p>
+<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1"></a>s <span class="op">=</span> <span class="st">"Hello"</span></span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3"></a><span class="bu">print</span>(<span class="bu">type</span>(s))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="1">Output: <code>&lt;class 'str'&gt;</code>.</span>
+</dd>
+</dl>
+<p>Gli oggetti il cui valore può cambiare sono detti <strong>mutabili</strong>, mentre gli oggetti il cui valore non lo può una volta creati, sono chiamati <strong>immutabili</strong>. L’immutabilità di un oggetto è determinata dalla progettazione del suo tipo, ad esempio, per i tipi definiti nel linguaggio, numeri interi e in virgola mobile, stringhe e tuple sono immutabili, mentre dizionari e liste sono mutabili.</p>
+<p>Gli oggetti non vengono mai distrutti esplicitamente dall’utente, ma, quando diventano inaccessibili, possono essere raccolti dal garbage collector, che è eseguito contemporaneamente al codice del programma, come parte dell’interprete. L’implementazione specifica quando e come gli oggetti debbano essere distrutti.</p>
+<p>Alcuni oggetti contengono riferimenti a risorse <em>esterne</em> rispetto al programma, come file aperti, connessioni di rete, finestre (<em>graphical user interface</em>, GUI) o dispositivi hardware. Queste risorse generalmente non vengono liberate dal garbage collector, perché le azioni corrispondenti sono particolari della risorsa stessa, pertanto, i loro oggetti forniscono anche un metodo esplicito di rilascio, solitamente chiamato <code>close()</code>. È molto importante tener conto di ciò per evitare effetti indesiderati.</p>
+<p>Alcuni oggetti, chiamati <strong>contenitori</strong>, contengono riferimenti ad altri oggetti. Esempi di contenitori sono <em>tuple</em>, <em>liste</em> e <em>dizionari</em>, strutture dati di base, definite in molti linguaggi di programmazione. I riferimenti ad altri oggetti fanno parte del valore di un contenitore e, nella maggior parte dei casi, quando parliamo del valore di un contenitore, intendiamo proprio i valori degli oggetti contenuti, non le loro identità. Ad esempio:</p>
+<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a>t <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-3" class="code-annotation-target"><a href="#annotated-cell-3-3"></a>l <span class="op">=</span> [<span class="st">"Qui"</span>, <span class="st">"Quo"</span>, <span class="st">"Qua"</span>]</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Tupla con tre oggetti al suo interno: <code>1</code>, <code>2</code>, <code>3</code>. Diciamo che la tupla contiene i tre valori interi.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="2">lista com tre oggetti all’interno: <code>"Qui"</code>, <code>"Quo"</code>, <code>"Qua"</code>. Diciamoc he la lista contiene le tre stringhe.</span>
+</dd>
+</dl>
+<p>La mutabilità di un contenitore si riferisce alla identità degli oggetti referenziati e non al loro valore, quindi, ad esempio, se una tupla contiene un riferimento ad un oggetto mutabile, il valore della tupla cambia se quell’oggetto mutabile viene modificato:</p>
+<div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1"></a>s <span class="op">=</span> ([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="st">"Qui"</span>, <span class="st">"Quo"</span>, <span class="st">"Qua"</span>])</span>
+<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3"></a><span class="bu">print</span>(s)</span>
+<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-4-5" class="code-annotation-target"><a href="#annotated-cell-4-5"></a><span class="bu">print</span>(<span class="bu">id</span>(s[<span class="dv">0</span>]))</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-4-6" class="code-annotation-target"><a href="#annotated-cell-4-6"></a><span class="bu">print</span>(<span class="bu">id</span>(s[<span class="dv">1</span>]))</span>
+<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-4-8" class="code-annotation-target"><a href="#annotated-cell-4-8"></a>s[<span class="dv">1</span>][<span class="dv">0</span>] <span class="op">=</span> <span class="st">"Huey"</span></span>
+<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9"></a>s[<span class="dv">1</span>][<span class="dv">1</span>] <span class="op">=</span> <span class="st">"Dewey"</span> </span>
+<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10"></a>s[<span class="dv">1</span>][<span class="dv">2</span>] <span class="op">=</span> <span class="st">"Louie"</span></span>
+<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-4-12" class="code-annotation-target"><a href="#annotated-cell-4-12"></a><span class="bu">print</span>(s)</span>
+<span id="annotated-cell-4-13"><a href="#annotated-cell-4-13"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-4-14" class="code-annotation-target"><a href="#annotated-cell-4-14"></a><span class="bu">print</span>(<span class="bu">id</span>(s[<span class="dv">0</span>]))</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-4-15" class="code-annotation-target"><a href="#annotated-cell-4-15"></a><span class="bu">print</span>(<span class="bu">id</span>(s[<span class="dv">1</span>]))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="1">Output: <code>([1, 2, 3], ['Qui', 'Quo', 'Qua'])</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="5" data-code-annotation="2">Modifico gli elementi della lista, traducendoli in inglese.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="6" data-code-annotation="3">Output dell’identità del primo oggetto contenuto (su ogni computer e sessione sarà diverso): <code>4361472384</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="8" data-code-annotation="4">Output dell’identità del secondo oggetto contenuto: <code>4361474176</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="12" data-code-annotation="5">Output: <code>([1, 2, 3], ['Huey', 'Dewey', 'Louie'])</code>. La tupla è cambiata!</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="14" data-code-annotation="6">Output: <code>4361472384</code>, l’identità del primo oggetto contenuto non è cambiata!</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="15" data-code-annotation="7">Output: <code>4361474176</code>, l’identità del secondo oggetto contenuto non è cambiata!</span>
+</dd>
+</dl>
+<p>Ciò è un po’ più generale, perché per gli oggetti di tipo immutabile, quando sono assegnati ad una variaible o risultato di un’espressione, a parità di valore, potrebbero avere la stessa identità, cioè essere lo stesso oggetto. Il condizionale è dovuto alla presenza e applicazione logiche di ottimizzazione, ad esempio della memoria, implementate nell’interprete.</p>
+<p>Ad esempio, dopo:</p>
+<div class="sourceCode" id="annotated-cell-5"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1"></a>s1 <span class="op">=</span> <span class="st">"Qui, Quo, Qua"</span></span>
+<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3"></a><span class="bu">print</span>(<span class="bu">id</span>(s1))</span>
+<span id="annotated-cell-5-4"><a href="#annotated-cell-5-4"></a></span>
+<span id="annotated-cell-5-5"><a href="#annotated-cell-5-5"></a>s2 <span class="op">=</span> <span class="st">"Qui, Quo, Qua"</span></span>
+<span id="annotated-cell-5-6"><a href="#annotated-cell-5-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-5-7" class="code-annotation-target"><a href="#annotated-cell-5-7"></a><span class="bu">print</span>(<span class="bu">id</span>(s2))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="3" data-code-annotation="1">Output dell’identità di <code>s1</code>: <code>4432491760</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="7" data-code-annotation="2">Output dell’identità di <code>s2</code>: <code>4432491760</code>, cioè è la medesima identità dell’oggetto il cui nome è <code>s1</code>.</span>
+</dd>
+</dl>
+<p>Per gli oggetti mutabili, questo non accade anche in casi su cui potrebbe essere ottimizzante:</p>
+<div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1"></a>l1 <span class="op">=</span> []</span>
+<span id="annotated-cell-6-2"><a href="#annotated-cell-6-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3"></a><span class="bu">print</span>(<span class="bu">id</span>(l1))</span>
+<span id="annotated-cell-6-4"><a href="#annotated-cell-6-4"></a></span>
+<span id="annotated-cell-6-5"><a href="#annotated-cell-6-5"></a>l2 <span class="op">=</span> []</span>
+<span id="annotated-cell-6-6"><a href="#annotated-cell-6-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-6-7" class="code-annotation-target"><a href="#annotated-cell-6-7"></a><span class="bu">print</span>(<span class="bu">id</span>(l2))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="1">Output dell’identità di <code>l1</code>: <code>4454287744</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="7" data-code-annotation="2">Output dell’identità di <code>l2</code>: <code>4454289536</code>, cioè le identità sono diverse.</span>
+</dd>
+</dl>
+<p>Attenzione però ad alcune <em>scorciatoie</em> di Python:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>c <span class="op">=</span> d <span class="op">=</span> []</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>è equivalente a:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>c <span class="op">=</span> []</span>
+<span id="cb2-2"><a href="#cb2-2"></a>d <span class="op">=</span> c</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>cioè l’oggetto lista ha due nomi nel programma.</p>
+</section>
+<section id="tipi-e-classi" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="tipi-e-classi"><span class="header-section-number">10.2</span> Tipi e classi</h2>
+<p>In Python, i tipi di dati sono implementati come <em>classi</em>. Una classe è la definizione di un tipo di oggetto che specifica gli attributi (complessivamente il valore dell’oggetto) e i metodi (le operazioni) che determinano lo stato e il comportamento degli oggetti. Gli oggetti creati da una classe possono essere manipolati attraverso i metodi della classe, permettendo di interagire e modificare i loro attributi per ottenere risultati desiderati. Quando creiamo un oggetto di una determinata classe, stiamo creando un’istanza di quella classe.</p>
+<p>Ad esempio, per una stringa:</p>
+<div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1"></a>s <span class="op">=</span> <span class="st">"Hello"</span></span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3"></a><span class="bu">print</span>(<span class="bu">type</span>(s))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="1" data-code-annotation="1">L’oggetto stringa il cui valore è <code>"Hello"</code> ha come nome <code>s</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="3" data-code-annotation="2">Output: <code>&lt;class 'str'&gt;</code>. <code>type</code> conferma che l’oggetto è una istanza di <code>str</code> che è il tipo delle stringhe in Python.</span>
+</dd>
+</dl>
+<p>Le classi possono essere organizzate in una gerarchia. In cima alla gerarchia delle classi di Python c’è la classe <code>object</code>, un po’ infelice come nome, da cui derivano tutte le altre classi. Questo significa che ogni classe in Python eredita gli attributi e i metodi della classe <code>object</code>. La funzione <code>isinstance</code> è utile per investigare questa gerarchia, poiché permette di verificare se un oggetto è un’istanza di una determinata classe o di una sua classe derivata.</p>
+<p>Ad esempio:</p>
+<div class="sourceCode" id="annotated-cell-10"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1"></a>s <span class="op">=</span> <span class="st">"Hello"</span> </span>
+<span id="annotated-cell-10-2"><a href="#annotated-cell-10-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3"></a><span class="bu">print</span>(<span class="bu">isinstance</span>(s, <span class="bu">str</span>))</span>
+<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-10-5" class="code-annotation-target"><a href="#annotated-cell-10-5"></a><span class="bu">print</span>(<span class="bu">isinstance</span>(s, <span class="bu">object</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="3" data-code-annotation="1">Output: <code>True</code>. <code>isinstance</code> conferma che <code>s</code> è un’istanza della classe <code>str</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="5" data-code-annotation="2">Output: <code>True</code>. <code>isinstance</code> conferma che <code>s</code> è un’istanza anche della classe <code>object</code>, da cui deriva <code>str</code>.</span>
+</dd>
+</dl>
+<p>La funzione <code>issubclass</code> è altrettanto utile per esplorare le gerarchie delle classi, in quanto permette di verificare se una classe è una sottoclasse di un’altra.</p>
+<p>Ad esempio:</p>
+<div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1"></a><span class="bu">print</span>(<span class="bu">issubclass</span>(<span class="bu">str</span>, <span class="bu">object</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1">Output: <code>True</code>. <code>issubclass</code> conferma che <code>str</code> è una sottoclasse di <code>object</code>.</span>
+</dd>
+</dl>
+</section>
+<section id="tipi-predefiniti" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="tipi-predefiniti"><span class="header-section-number">10.3</span> Tipi predefiniti</h2>
+<p>Python mette a disposizione molti tipi <em>generali</em>, cioè utili alla gestione di dati comunemente presenti in algoritmi. Esistono, inoltre, sia meccanismi di estensione della distribuzione Python che modificano l’installazione sul proprio computer, sia la possibilità conferita al programmatore di creare i propri tipi o di importarli da librerie prodotte da terze parti.</p>
+<p>I tipi predefiniti sono immediatamente disponibili, cioè non necessitano di alcuna azione da parte del programmatore, come, ad esempio, l’importazione di moduli.</p>
+<p>Per ragioni di esposizione, distingueremo tra tipi predefiniti fondamentali, cioè che possono essere introdotti con un insieme limitato di concetti, tipi legati alla astrazione del paradigma di orientamento agli oggetti e, infine, costruzioni del linguaggio legate all’esecuzione asincrona.</p>
+</section>
+<section id="tipi-predefiniti-fondamentali" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="tipi-predefiniti-fondamentali"><span class="header-section-number">10.4</span> Tipi predefiniti fondamentali</h2>
+<p>Prima di entrare nel dettaglio per ognuno, di seguito un elenco dei tipi predefiniti fondamentali:</p>
+<ul>
+<li><p>Numeri: sia interi relativi che reali, cioè in virgola mobile, sia complessi.</p></li>
+<li><p>Sequenze, cioè contenitori caratterizzati da un ordinamento degli oggetti al loro interno, sia mutabili che immutabili.</p></li>
+<li><p>Insiemi, cioè contenitori non caratterizzati da un ordinamento degli oggetti.</p></li>
+<li><p>Dizionari, cioè contenitori di coppie di oggetti chiave e valore.</p></li>
+<li><p>Altri: <code>None</code>, <code>NotImplemented</code>, <code>Ellipsis</code>.</p></li>
+</ul>
+<section id="numeri" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="numeri"><span class="header-section-number">10.4.1</span> Numeri</h3>
+<p>I tipi predefiniti numerici corrispondono agli interi, i numeri a virgola mobile e quelli complessi. Sono immutabili, il che significa che effettuando una operazione su un oggetto numerico si produrrà sempre un nuovo oggetto e non una modifica del precedente.</p>
+<p>Esistono anche altri tipi numerici nelle librerie fornite coll’interprete, per i numeri decimali a precisione arbitraria e i numeri razionali come frazioni.</p>
+<section id="interi" class="level4" data-number="10.4.1.1">
+<h4 data-number="10.4.1.1" class="anchored" data-anchor-id="interi"><span class="header-section-number">10.4.1.1</span> Interi</h4>
+<p>Gli interi rappresentano numeri senza la parte decimale. Python supporta interi di lunghezza arbitraria, limitati solo dalla memoria disponibile.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>a <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>b <span class="op">=</span> <span class="op">-</span><span class="dv">3</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="bu">print</span>(<span class="bu">type</span>(a))  <span class="co"># &lt;class 'int'&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="bu">print</span>(<span class="bu">type</span>(b))  <span class="co"># &lt;class 'int'&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="numeri-in-virgola-mobile" class="level4" data-number="10.4.1.2">
+<h4 data-number="10.4.1.2" class="anchored" data-anchor-id="numeri-in-virgola-mobile"><span class="header-section-number">10.4.1.2</span> Numeri in virgola mobile</h4>
+<p>I numeri in virgola mobile rappresentano numeri con la parte decimale. In Python, sono implementati come doppia precisione.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>a <span class="op">=</span> <span class="fl">3.14</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>b <span class="op">=</span> <span class="op">-</span><span class="fl">0.001</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="bu">print</span>(<span class="bu">type</span>(a))  <span class="co"># &lt;class 'float'&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="bu">print</span>(<span class="bu">type</span>(b))  <span class="co"># &lt;class 'float'&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="numeri-complessi-complex" class="level4" data-number="10.4.1.3">
+<h4 data-number="10.4.1.3" class="anchored" data-anchor-id="numeri-complessi-complex"><span class="header-section-number">10.4.1.3</span> Numeri complessi (complex)</h4>
+<p>I numeri complessi hanno una parte reale e una parte immaginaria. In Python, si rappresentano con la lettera <code>j</code> per indicare la parte immaginaria.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>a <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="ot">2j</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>b <span class="op">=</span> <span class="bu">complex</span>(<span class="dv">3</span>, <span class="op">-</span><span class="dv">5</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="bu">print</span>(<span class="bu">type</span>(a))  <span class="co"># &lt;class 'complex'&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="bu">print</span>(<span class="bu">type</span>(b))  <span class="co"># &lt;class 'complex'&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="sequenze" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="sequenze"><span class="header-section-number">10.4.2</span> Sequenze</h3>
+<section id="stringhe-str" class="level4" data-number="10.4.2.1">
+<h4 data-number="10.4.2.1" class="anchored" data-anchor-id="stringhe-str"><span class="header-section-number">10.4.2.1</span> Stringhe (str)</h4>
+<p>Le stringhe sono sequenze di caratteri Unicode. In Python, le stringhe sono immutabili.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>a <span class="op">=</span> <span class="st">"Hello, World!"</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="bu">print</span>(<span class="bu">type</span>(a))  <span class="co"># &lt;class 'str'&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="liste-list" class="level4" data-number="10.4.2.2">
+<h4 data-number="10.4.2.2" class="anchored" data-anchor-id="liste-list"><span class="header-section-number">10.4.2.2</span> Liste (list)</h4>
+<p>Le liste sono sequenze mutabili di oggetti. Possono contenere oggetti di tipi diversi.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">"apple"</span>, [<span class="dv">4</span>, <span class="dv">5</span>]]</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="bu">print</span>(<span class="bu">type</span>(a))  <span class="co"># &lt;class 'list'&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tuple-tuple" class="level4" data-number="10.4.2.3">
+<h4 data-number="10.4.2.3" class="anchored" data-anchor-id="tuple-tuple"><span class="header-section-number">10.4.2.3</span> Tuple (tuple)</h4>
+<p>Le tuple sono sequenze immutabili di oggetti. Come le liste, possono contenere oggetti di tipi diversi.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>a <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">"apple"</span>, [<span class="dv">4</span>, <span class="dv">5</span>])</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="bu">print</span>(<span class="bu">type</span>(a))  <span class="co"># &lt;class 'tuple'&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="insiemi" class="level3" data-number="10.4.3">
+<h3 data-number="10.4.3" class="anchored" data-anchor-id="insiemi"><span class="header-section-number">10.4.3</span> Insiemi</h3>
+<section id="set-set" class="level4" data-number="10.4.3.1">
+<h4 data-number="10.4.3.1" class="anchored" data-anchor-id="set-set"><span class="header-section-number">10.4.3.1</span> Set (set)</h4>
+<p>Gli insiemi sono contenitori mutabili che contengono elementi unici non ordinati.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>a <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">"apple"</span>}</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="bu">print</span>(<span class="bu">type</span>(a))  <span class="co"># &lt;class 'set'&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="frozen-set-frozenset" class="level4" data-number="10.4.3.2">
+<h4 data-number="10.4.3.2" class="anchored" data-anchor-id="frozen-set-frozenset"><span class="header-section-number">10.4.3.2</span> Frozen Set (frozenset)</h4>
+<p>I frozen set sono insiemi immutabili.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>a <span class="op">=</span> <span class="bu">frozenset</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">"apple"</span>])</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="bu">print</span>(<span class="bu">type</span>(a))  <span class="co"># &lt;class 'frozenset'&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="dizionari-dict" class="level3" data-number="10.4.4">
+<h3 data-number="10.4.4" class="anchored" data-anchor-id="dizionari-dict"><span class="header-section-number">10.4.4</span> Dizionari (dict)</h3>
+<p>I dizionari sono contenitori mutabili di coppie chiave-valore. Le chiavi devono essere uniche e immutabili.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>a <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: <span class="dv">30</span>}</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="bu">print</span>(<span class="bu">type</span>(a))  <span class="co"># &lt;class 'dict'&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="altri" class="level3" data-number="10.4.5">
+<h3 data-number="10.4.5" class="anchored" data-anchor-id="altri"><span class="header-section-number">10.4.5</span> Altri</h3>
+<section id="none" class="level4" data-number="10.4.5.1">
+<h4 data-number="10.4.5.1" class="anchored" data-anchor-id="none"><span class="header-section-number">10.4.5.1</span> None</h4>
+<p>Il tipo <code>None</code> ha un solo valore, <code>None</code>, che rappresenta l’assenza di un valore. È spesso utilizzato come valore predefinito per variabili o come valore di ritorno per funzioni che non restituiscono nulla.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>a <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="bu">print</span>(<span class="bu">type</span>(a))  <span class="co"># &lt;class 'NoneType'&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="notimplemented" class="level4" data-number="10.4.5.2">
+<h4 data-number="10.4.5.2" class="anchored" data-anchor-id="notimplemented"><span class="header-section-number">10.4.5.2</span> NotImplemented</h4>
+<p><code>NotImplemented</code> è un valore speciale che può essere restituito dai metodi aritmetici e di confronto quando l’operazione non è supportata per gli operandi forniti. Non dovrebbe essere valutato in un contesto booleano.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">class</span> MyNumber:</span>
+<span id="cb13-2"><a href="#cb13-2"></a>    <span class="kw">def</span> <span class="fu">__eq__</span>(<span class="va">self</span>, other):</span>
+<span id="cb13-3"><a href="#cb13-3"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(other, MyNumber):</span>
+<span id="cb13-4"><a href="#cb13-4"></a>            <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>        <span class="cf">return</span> <span class="va">NotImplemented</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a></span>
+<span id="cb13-7"><a href="#cb13-7"></a>a <span class="op">=</span> MyNumber()</span>
+<span id="cb13-8"><a href="#cb13-8"></a>b <span class="op">=</span> MyNumber()</span>
+<span id="cb13-9"><a href="#cb13-9"></a><span class="bu">print</span>(a <span class="op">==</span> b)  <span class="co"># True</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a><span class="bu">print</span>(a <span class="op">==</span> <span class="dv">42</span>)  <span class="co"># NotImplemented</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ellipsis" class="level4" data-number="10.4.5.3">
+<h4 data-number="10.4.5.3" class="anchored" data-anchor-id="ellipsis"><span class="header-section-number">10.4.5.3</span> Ellipsis</h4>
+<p><code>Ellipsis</code> ha un solo valore, rappresentato dal letterale <code>...</code> o dal nome predefinito <code>Ellipsis</code>. È utilizzato principalmente in contesti di slicing avanzati.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>a <span class="op">=</span> ...</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="bu">print</span>(<span class="bu">type</span>(a))  <span class="co"># &lt;class 'ellipsis'&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
+</section>
+</section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
