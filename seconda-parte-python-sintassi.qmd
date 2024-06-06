@@ -594,32 +594,32 @@ I letterali sono notazioni per valori costanti di alcuni tipi predefiniti nel li
 
 #### Numerici
 
-I letterali numerici includono interi, numeri a virgola mobile e numeri complessi:
+I letterali numerici includono interi, numeri a virgola mobile e numeri immaginari:
 
--   Interi, possono essere scritti in base decimale, ottale, esadecimale o binaria:
+- Interi, possono essere scritti in base decimale, ottale, esadecimale o binaria:
 
-    -   Decimale: `10`, `-3`.
-    -   Ottale: `0o12`, `-0o7`.
-    -   Esadecimale: `0xA`, `-0x1F`.
-    -   Binario: `0b1010`, `-0b11`.
+    - Decimale: `42`.
+    - Ottale: `0o12`, `0O7`.
+    - Esadecimale: `0xA`, `0X1F`.
+    - Binario: `0b1010`, `0B11`.
 
--   Virgola mobile, possono essere rappresentati con una parte intera e una decimale, oppure con notazione scientifica:
+- Virgola mobile, possono essere rappresentati con una parte intera e una decimale, oppure con notazione scientifica:
 
-    -   Virgola mobile: `3.14`, `-0.001`.
-    -   Notazione scientifica: `1e10`, `-2.5e-3`.
+    - Virgola mobile: `3.14`, `0.001`.
+    - Notazione scientifica: `1e10`, `2.5E-3`.
 
--   Complessi, appresentati da una parte reale e una parte immaginaria: `3+4j`, `-1-0.5j`.
+- Numeri immaginari, ottenuti da un letterale intero o a virgola mobile con un suffisso `j` o `J`: `4j`, `4.j`, `3.14e-10j`.
 
 #### Stringhe
 
 I letterali di stringa possono essere racchiusi tra virgolette singole o doppie. Possono anche essere multi-linea se racchiusi tra triple virgolette singole o doppie:
 
--   Stringhe racchiuse tra virgolette singole o doppie:
+- Stringhe racchiuse tra virgolette singole o doppie:
 
-    -   Singole: `'ciao'`.
-    -   Doppie: `"mondo"`.
+  - Singole: `'ciao'`.
+  - Doppie: `"mondo"`.
 
--   Stringhe multi-linea racchiuse tra triple virgolette singole o doppie:
+- Stringhe multi-linea racchiuse tra triple virgolette singole o doppie:
 
     -   Triple singole: `'''testo multi-linea'''`.
     -   Triple doppie: `"""testo multi-linea"""`.
@@ -646,8 +646,6 @@ Alcuni esempi comuni includono:
 - `\\` per inserire un backslash.
 - `\'` per il singolo apice.
 - `\"` per i doppi apici.
-
-Questi caratteri permettono di includere simboli speciali nelle stringhe senza interrompere la sintassi del codice.
 
 #### F-stringhe
 
@@ -695,111 +693,111 @@ In Python, le istruzioni semplici sono:
 
 - Istruzioni di importazione, permettono di utilizzare gli identificatori definiti in altri moduli:
 
-    ``` python
-    import math
-    from math import sqrt
-    ```
+  ``` python
+  import math
+  from math import sqrt
+  ```
 
 - Istruzioni di controllo del flusso nei cicli:
 
-    - `break`: Interrompe un ciclo.
-    - `continue`: Salta all'iterazione successiva di un ciclo.
-    - `pass`: Non esegue alcuna operazione.
+  - `break`: Interrompe un ciclo.
+  - `continue`: Salta all'iterazione successiva di un ciclo.
+  - `pass`: Non esegue alcuna operazione.
 
-    ``` python
-    for i in range(10):
-        if i == 5:
-            break
-    ```
+  ``` python
+  for i in range(10):
+      if i == 5:
+          break
+  ```
 
--   Istruzioni di gestione dell'uscita da una funzione, della generazione di valori o del sollevamento di eccezioni:
+- Istruzioni di gestione dell'uscita da una funzione, della generazione di valori o del sollevamento di eccezioni:
 
-    - `return`: Restituisce un valore da una funzione.
-    - `yield`: Restituisce un generatore.
-    - `raise`: Solleva un'eccezione per segnalare uan condizione di errore.
+  - `return`: Restituisce un valore da una funzione.
+  - `yield`: Restituisce un generatore.
+  - `raise`: Solleva un'eccezione per segnalare uan condizione di errore.
 
-    ``` python
-    def func():
-        return x
-    ```
+  ``` python
+  def func():
+      return x
+  ```
 
--   Istruzioni di asserzione in cui si verifica una condizione e viene generata un'eccezione se la condizione è falsa:
+- Istruzioni di asserzione in cui si verifica una condizione e viene generata un'eccezione se la condizione è falsa:
 
-    ``` python
-    assert x > 0, "x deve essere positivo"
-    ```
+  ``` python
+  assert x > 0, "x deve essere positivo"
+  ```
 
--   Istruzioni di diichiarazione di modifica dell'ambito di variabili:
+- Istruzioni di diichiarazione di modifica dell'ambito di variabili:
 
-    ``` python
-    global x
-    nonlocal y
-    ```
+  ``` python
+  global x
+  nonlocal y
+  ```
 
 - Un'espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne viene prodotto il risultato della valutazione. D'altronde, una espressione è spesso utilizzata per chiamare funzioni che hanno effetti collaterali, come, ad esempio, produrre un output:
 
   - Produzione di output:
 
-      ``` python
-      def stampa_messaggio(messaggio): # <1>
-        print(messaggio)
+    ``` python
+    def stampa_messaggio(messaggio): # <1>
+      print(messaggio)
 
-      stampa_messaggio("Ciao, mondo!") # <2>
-      ```
-      1. Funzione che stampa un messaggio.
-      2. Istruzione di espressione che chiama la funzione con un effetto collaterale (stampa del messaggio).
+    stampa_messaggio("Ciao, mondo!") # <2>
+    ```
+    1. Funzione che stampa un messaggio.
+    2. Istruzione di espressione che chiama la funzione con un effetto collaterale (stampa del messaggio).
 
   - Modifica di parametri:
 
-      ``` python
-      def aggiungi_elemento(lista, elemento): # <1>
-        lista.append(elemento)
+    ``` python
+    def aggiungi_elemento(lista, elemento): # <1>
+      lista.append(elemento)
 
-      numeri = [1, 2, 3] # <2>
+    numeri = [1, 2, 3] # <2>
 
-      aggiungi_elemento(numeri, 4) # <3>
+    aggiungi_elemento(numeri, 4) # <3>
 
-      print(numeri)  # <4>
-      ```
-      1. Funzione che modifica un argomento mutabile (`lista`).
-      2. Lista iniziale.
-      3. Istruzione di espressione che chiama la funzione con un effetto collaterale (modifica dell'argomento).
-      4. Output: `[1, 2, 3, 4]`.
+    print(numeri)  # <4>
+    ```
+    1. Funzione che modifica un argomento mutabile (`lista`).
+    2. Lista iniziale.
+    3. Istruzione di espressione che chiama la funzione con un effetto collaterale (modifica dell'argomento).
+    4. Output: `[1, 2, 3, 4]`.
 
   - Modifica di variabili globali:
 
-      ``` python
-      contatore = 0 # <1>
+    ``` python
+    contatore = 0 # <1>
 
-      def incrementa_contatore(): # <2>
-        global contatore
+    def incrementa_contatore(): # <2>
+      global contatore
 
-        contatore += 1
+      contatore += 1
 
-      incrementa_contatore() # <3>
+    incrementa_contatore() # <3>
 
-      print(contatore)  # <4> 
-      ```
-      1. Variabile globale.
-      2. Funzione che modifica una variabile globale.
-      3. Istruzione di espressione che chiama la funzione con un effetto collaterale (modifica della variabile globale).
-      4. Output: `1`.
+    print(contatore)  # <4> 
+    ```
+    1. Variabile globale.
+    2. Funzione che modifica una variabile globale.
+    3. Istruzione di espressione che chiama la funzione con un effetto collaterale (modifica della variabile globale).
+    4. Output: `1`.
 
   - Lancio di eccezioni:
 
-      ``` python
-      def solleva_eccezione(messaggio): # <1>
-        raise ValueError(messaggio) 
+    ``` python
+    def solleva_eccezione(messaggio): # <1>
+      raise ValueError(messaggio) 
 
-      try: 
-        solleva_eccezione("Qualcosa è andato storto!") # <2>
+    try: 
+      solleva_eccezione("Qualcosa è andato storto!") # <2>
 
-      except ValueError as e:
-        print(e)   # <3>
-      ```
-      1. Funzione che solleva un'eccezione.
-      2. Istruzione di espressione che chiama la funzione con un effetto collaterale (sollevamento di un'eccezione).
-      3. Output: `Qualcosa è andato storto!`.
+    except ValueError as e:
+      print(e)   # <3>
+    ```
+    1. Funzione che solleva un'eccezione.
+    2. Istruzione di espressione che chiama la funzione con un effetto collaterale (sollevamento di un'eccezione).
+    3. Output: `Qualcosa è andato storto!`.
 
   - Un assegnamento con `=` è anch'esso un'istruzione semplice e non può mai essere all'interno di una espressione, dove, invece, si può usare l'operatore *tricheco* `:=`:
 

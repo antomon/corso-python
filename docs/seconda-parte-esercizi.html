@@ -342,6 +342,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#numeri-pari-o-dispari" id="toc-numeri-pari-o-dispari" class="nav-link" data-scroll-target="#numeri-pari-o-dispari"><span class="header-section-number">11.2.1</span> ★★☆☆☆ Numeri pari o dispari</a></li>
   </ul></li>
+  <li><a href="#sequenze" id="toc-sequenze" class="nav-link" data-scroll-target="#sequenze"><span class="header-section-number">11.3</span> Sequenze</a>
+  <ul class="collapse">
+  <li><a href="#rimozione-di-duplicati-da-una-lista" id="toc-rimozione-di-duplicati-da-una-lista" class="nav-link" data-scroll-target="#rimozione-di-duplicati-da-una-lista"><span class="header-section-number">11.3.1</span> ★★★☆☆ Rimozione di duplicati da una lista</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/seconda-parte-esercizi.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
@@ -387,7 +391,7 @@ Suggerimento
 <p>Usare gli operatori matematici su costanti numeriche e osservare i risultati e gli errori nel REPL, perché è più immediato rispetto all’esecuzione completa del programma.</p>
 </div>
 </div>
-<div id="9cab2d0c" class="cell" data-execution_count="1">
+<div id="c79ac2c2" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Mostra il codice</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Se eseguite nel REPL i print sono inutili!</span></span>
@@ -451,7 +455,7 @@ Suggerimento
 <p>Usare gli operatori su stringhe, sempre nel REPL.</p>
 </div>
 </div>
-<div id="693708a5" class="cell" data-execution_count="2">
+<div id="23868731" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Mostra il codice</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Se eseguite nel REPL i print sono inutili!</span></span>
@@ -529,7 +533,7 @@ Suggerimento
 <p>Costruire delle espressioni per comprendere come mischiare numeri e stringhe, la precedenza degli operatori e le conversioni di tipo, sempre nel REPL.</p>
 </div>
 </div>
-<div id="1d7c42d1" class="cell" data-execution_count="3">
+<div id="9065d03a" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Mostra il codice</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>n <span class="op">=</span> <span class="dv">42</span></span>
@@ -596,7 +600,7 @@ Suggerimento
 <p>Usare l’operatore modulo <code>%</code> che restituisce il resto della divisione di due interi con diversi input sia pari che dispari ed anche non numerici per vedere cosa accade.</p>
 </div>
 </div>
-<div id="9dc438ba" class="cell" data-execution_count="4">
+<div id="2b5fe259" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Mostra il codice</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>n <span class="op">=</span> <span class="dv">42</span></span>
@@ -627,7 +631,7 @@ Suggerimento
 <p>Usare l’operatore modulo <code>%</code> che restituisce il resto della divisione di due interi all’interno di una funzione. Questa prende in input un numero intero e restituisce la stringa richiesta.</p>
 </div>
 </div>
-<div id="ceec3c73" class="cell" data-execution_count="5">
+<div id="c7cae8bc" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Mostra il codice</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
@@ -666,7 +670,7 @@ Suggerimento
 <p>Usare l’operatore modulo <code>%</code> e la funzione <code>isinstance</code> per verificare il tipo in input.</p>
 </div>
 </div>
-<div id="5dfd2428" class="cell" data-execution_count="6">
+<div id="d98da60a" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Mostra il codice</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
@@ -708,7 +712,7 @@ Suggerimento
 <p>Usare l’operatore modulo <code>%</code>, la funzione <code>isinstance</code> per verificare il tipo in input e <code>assert</code> in caso di input non corretto.</p>
 </div>
 </div>
-<div id="87599764" class="cell" data-execution_count="7">
+<div id="c62ef013" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Mostra il codice</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
@@ -763,7 +767,7 @@ Suggerimento
 <p>Usare la funzione <code>divmod</code> che restituisce il quoziente e il resto della divisione di due interi.</p>
 </div>
 </div>
-<div id="277a95e6" class="cell" data-execution_count="8">
+<div id="78d2cd26" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Mostra il codice</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
@@ -782,6 +786,81 @@ Suggerimento
 <div class="cell-output cell-output-stdout">
 <pre><code>Pari
 Dispari</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="sequenze" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="sequenze"><span class="header-section-number">11.3</span> Sequenze</h2>
+<section id="rimozione-di-duplicati-da-una-lista" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="rimozione-di-duplicati-da-una-lista"><span class="header-section-number">11.3.1</span> ★★★☆☆ Rimozione di duplicati da una lista</h3>
+<p>Scrivere una funzione che prende in input una lista e ne rimuove i duplicati, preservando l’ordinamento.</p>
+<section id="ciclo" class="level4" data-number="11.3.1.1">
+<h4 data-number="11.3.1.1" class="anchored" data-anchor-id="ciclo"><span class="header-section-number">11.3.1.1</span> Ciclo</h4>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Suggerimento
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Usare una seconda lista per travasare elementi non già presenti.</p>
+</div>
+</div>
+<div id="2a0fc415" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Mostra il codice</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">def</span> rimuovi_duplicati(lista):</span>
+<span id="cb18-2"><a href="#cb18-2"></a>    nuova_lista <span class="op">=</span> []</span>
+<span id="cb18-3"><a href="#cb18-3"></a></span>
+<span id="cb18-4"><a href="#cb18-4"></a>    <span class="cf">for</span> elemento <span class="kw">in</span> lista:</span>
+<span id="cb18-5"><a href="#cb18-5"></a>        <span class="cf">if</span> elemento <span class="kw">not</span> <span class="kw">in</span> nuova_lista:</span>
+<span id="cb18-6"><a href="#cb18-6"></a>            nuova_lista.append(elemento)</span>
+<span id="cb18-7"><a href="#cb18-7"></a></span>
+<span id="cb18-8"><a href="#cb18-8"></a>    <span class="cf">return</span> nuova_lista</span>
+<span id="cb18-9"><a href="#cb18-9"></a></span>
+<span id="cb18-10"><a href="#cb18-10"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="cb18-11"><a href="#cb18-11"></a>lista <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb18-12"><a href="#cb18-12"></a></span>
+<span id="cb18-13"><a href="#cb18-13"></a><span class="bu">print</span>(rimuovi_duplicati(lista))  <span class="co"># Output: [1, 2, 3, 4, 5]</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 2, 3, 4, 5]</code></pre>
+</div>
+</div>
+</section>
+<section id="dizionario" class="level4" data-number="11.3.1.2">
+<h4 data-number="11.3.1.2" class="anchored" data-anchor-id="dizionario"><span class="header-section-number">11.3.1.2</span> Dizionario</h4>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Suggerimento
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Usare la proprietà dei dizionari di preservare l’ordine di inserimento.</p>
+</div>
+</div>
+<div id="7ef41855" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Mostra il codice</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">def</span> rimuovi_duplicati(lista):</span>
+<span id="cb20-2"><a href="#cb20-2"></a>    <span class="cf">return</span> <span class="bu">list</span>(<span class="bu">dict</span>.fromkeys(lista))</span>
+<span id="cb20-3"><a href="#cb20-3"></a></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>lista <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb20-6"><a href="#cb20-6"></a></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="bu">print</span>(rimuovi_duplicati(lista))  <span class="co"># Output: [1, 2, 3, 4, 5]</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 2, 3, 4, 5]</code></pre>
 </div>
 </div>
 

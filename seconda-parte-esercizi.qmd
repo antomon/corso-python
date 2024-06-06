@@ -293,3 +293,53 @@ risultato = pari_o_dispari(73)
 print(risultato)
 ```
 
+## Sequenze
+
+### ★★★☆☆ Rimozione di duplicati da una lista
+
+Scrivere una funzione che prende in input una lista e ne rimuove i duplicati, preservando l'ordinamento.
+
+#### Ciclo
+
+::: {.callout-tip}
+## Suggerimento
+
+Usare una seconda lista per travasare elementi non già presenti.
+:::
+
+```{python}
+def rimuovi_duplicati(lista):
+    nuova_lista = []
+
+    for elemento in lista:
+        if elemento not in nuova_lista:
+            nuova_lista.append(elemento)
+
+    return nuova_lista
+
+# Esempio di utilizzo
+lista = [1, 2, 2, 3, 4, 4, 5]
+
+print(rimuovi_duplicati(lista))  # Output: [1, 2, 3, 4, 5]
+```
+
+#### Dizionario
+
+::: {.callout-tip}
+## Suggerimento
+
+Usare la proprietà dei dizionari di preservare l'ordine di inserimento.
+:::
+
+```{python}
+def rimuovi_duplicati(lista):
+    return list(dict.fromkeys(lista))
+
+# Esempio di utilizzo
+lista = [1, 2, 2, 3, 4, 4, 5]
+
+print(rimuovi_duplicati(lista))  # Output: [1, 2, 3, 4, 5]
+```
+
+
+

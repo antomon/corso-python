@@ -718,7 +718,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Una stringa in Python è una sequenza di un numero non negativo di caratteri Unicode che, nei corrispondenti letterali, è racchiusa o tra apici singoli <code>'</code>, oppure doppi <code>"</code>. Per inserire un capo dovrà essere usato <code>\n</code> e un singolo backslash alla fine della riga fisica indicherà la continuazione nella riga fisica successiva.</p>
 <p>Alternativamente, si possono usare coppie di tripli apici singoli <code>'''</code> o doppi <code>"""</code>, dove la differenza è che è possibile inserire un a capo nell’editor. Un singolo backslash non può essere presente.</p>
 <p>Nei letterali stringa si possono inserire caratteri non stampabili o caratteri che non sono disponibili a tastiera, usando le cosiddette sequenze di escape (da non confondere con i contenitori discussi nel presente paragrafo), come da tabella seguente:</p>
-<table class="table-hover caption-top table">
+<table class="table-hover table">
 <caption>Sequenze di escape</caption>
 <colgroup>
 <col style="width: 12%">
@@ -883,9 +883,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="annotated-cell-18-5"><a href="#annotated-cell-18-5"></a></span>
 <span id="annotated-cell-18-6"><a href="#annotated-cell-18-6"></a>t2 <span class="op">=</span> (<span class="dv">42</span>,)</span>
 <span id="annotated-cell-18-7"><a href="#annotated-cell-18-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-18-8" class="code-annotation-target"><a href="#annotated-cell-18-8"></a>t3 <span class="op">=</span> t1 <span class="op">+</span> t2</span>
-<span id="annotated-cell-18-9"><a href="#annotated-cell-18-9"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-18-10" class="code-annotation-target"><a href="#annotated-cell-18-10"></a><span class="bu">print</span>(t3[<span class="dv">1</span>:<span class="dv">3</span>])</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-18-8"><a href="#annotated-cell-18-8"></a>t3 <span class="op">=</span> t1 <span class="op">+</span> t2</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-18-9" class="code-annotation-target"><a href="#annotated-cell-18-9"></a><span class="bu">print</span>(t3)</span>
+<span id="annotated-cell-18-10"><a href="#annotated-cell-18-10"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-18-11" class="code-annotation-target"><a href="#annotated-cell-18-11"></a><span class="bu">print</span>(t3[<span class="dv">1</span>:<span class="dv">3</span>])</span>
+<span id="annotated-cell-18-12"><a href="#annotated-cell-18-12"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-18-13" class="code-annotation-target"><a href="#annotated-cell-18-13"></a><span class="bu">print</span>(<span class="fl">42.</span> <span class="kw">in</span> t3)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
 <dd>
@@ -897,11 +900,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-18" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="8" data-code-annotation="3">Concatenazione di tuple che produce una nuova tupla.</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="9" data-code-annotation="3">Output: <code>3</code>. Concatenazione di tuple che produce una nuova tupla <code>(42.0, 'Hello', 66, 42)</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-18" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="10" data-code-annotation="4">Output: <code>3</code>. Slicing di tupla che produce una nuova tupla <code>('Hello', 66)</code>.</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="11" data-code-annotation="4">Output: <code>3</code>. Slicing di tupla che produce una nuova tupla <code>('Hello', 66)</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-18" data-code-lines="13" data-code-annotation="5">Output: <code>True</code>. Test di appartenenza di <code>42.</code> nella tupla <code>(42.0, 'Hello', 66, 42)</code></span>
 </dd>
 </dl>
 </section>
