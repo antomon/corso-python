@@ -319,14 +319,14 @@ Identificatori speciali:
 
   - Non importato da `from module import *`: Gli identificatori che iniziano con un singolo underscore non vengono importati con un'istruzione di importazione globale. Questo è un meccanismo per indicare che tali variabili o funzioni sono destinate ad essere *private* al modulo e non dovrebbero essere usate direttamente da altri moduli. Esempio:
 
-  - In un file `example.py`:
+  In un file `example.py`:
 
     ```python
     _private_variable = "Variabile da non esportare'" # <1>
     ```
     1. Nel modulo `example.py` viene definita la variabile come privata.
 
-  - In altro modulo diverso da `example.py`:
+  In altro modulo diverso da `example.py`:
 
     ```python
     from example import * # <1>
@@ -734,7 +734,7 @@ In Python, le istruzioni semplici sono:
   nonlocal y
   ```
 
-- Un'espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne viene prodotto il risultato della valutazione. D'altronde, una espressione è spesso utilizzata per chiamare funzioni che hanno effetti collaterali, come, ad esempio, produrre un output:
+- Un'espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne viene prodotto il risultato della valutazione. D'altronde, una espressione è spesso utilizzata per chiamare funzioni che hanno effetti collaterali, come, ad esempio, produrre un output in console. Espressioni più importanti:
 
   - Produzione di output:
 
@@ -801,11 +801,11 @@ In Python, le istruzioni semplici sono:
 
   - Un assegnamento con `=` è anch'esso un'istruzione semplice e non può mai essere all'interno di una espressione, dove, invece, si può usare l'operatore *tricheco* `:=`:
 
-  ``` python
-  if (n := len("Python")) > 5:
-    print(f"La lunghezza della stringa è {n}")  # <1>
-  ```
-  1. Output: `La lunghezza della stringa è 6`.
+    ``` python
+    if (n := len("Python")) > 5:
+      print(f"La lunghezza della stringa è {n}")  # <1>
+    ```
+    1. Output: `La lunghezza della stringa è 6`.
 
 ### Istruzioni composte
 
@@ -816,13 +816,15 @@ Alcuni esempi del rapporto tra istruzioni e righe:
 - Blocco di istruzioni separato su più righe con medesima indentazione:
 
   ``` python
-  if x > 0:
-    print("x è positivo")
+  if x > 0: 
+    print("x è positivo") # <1> 
 
     x += 1
 
-    print(f"x ora è {x}")
+    print(f"x ora è {x}") # <2>
   ```
+  1. Prima riga fisica del blocco di codice del ramo eseguito quanto la condizione `x > 0` assume valore `True`.
+  2. Ultima riga fisica del medesimo blocco.
 
 - Blocco come singola istruzione sulla stessa riga logica:
 
