@@ -30,6 +30,120 @@ print(type(s)) # <1>
 
 [^1]: In CPython è effettivamente implementato così.
 
+## Tipi e classi
+
+In Python, i tipi di dati sono implementati come **classi**. Una classe è la definizione di un tipo di oggetto che specifica gli attributi (complessivamente il valore dell'oggetto) e i metodi (le operazioni) che determinano lo stato e il comportamento degli oggetti. Gli oggetti creati da una classe possono essere manipolati attraverso i metodi della classe, permettendo di interagire e modificarne il valore o quello di altri oggetti passati come argomenti. Inoltre, una classe può definire **metodi di istanza**, che operano su istanze specifiche della classe, **metodi di classe**, che operano a livello della classe stessa e possono accedere e modificare lo stato della classe tramite attributi di classe, e **metodi statici**, che sono funzioni associate alla classe ma non dipendono né dalla classe né dalle sue istanze.
+
+Ad esempio, per una stringa:
+
+```python
+s = "Hello" # <1>
+
+print(type(s))  # <2>
+```
+1. L'oggetto stringa il cui valore è `"Hello"` ha come nome `s`.
+2. Output: `<class 'str'>`. `type` conferma che l'oggetto è una istanza di `str` che è il tipo delle stringhe in Python.
+
+### Gerarchie di classi
+
+Le classi possono essere organizzate in una gerarchia. In cima alla gerarchia delle classi di Python c'è la classe `object`, un po' infelice come nome, da cui derivano tutte le altre classi. Questo significa che ogni classe in Python eredita gli attributi e i metodi della classe `object`. La funzione `isinstance` è utile per investigare questa gerarchia, poiché permette di verificare se un oggetto è un'istanza di una determinata classe o di una sua classe derivata. `isinstance`, pertanto, ha due parametri, l'identificatore dell'oggetto e l'identificatore della classe e resistuisce un valore logico, `True` o `False`.
+
+Ad esempio:
+
+```python
+s = "Hello" 
+
+print(isinstance(s, str))  # <1>
+
+print(isinstance(s, object))  # <2>
+```
+1. Output: `True`. `isinstance` conferma che `s` è un'istanza della classe `str`.
+2. Output: `True`. `isinstance` conferma che `s` è un'istanza anche della classe `object`, da cui deriva `str`.
+
+La funzione `issubclass` è altrettanto utile per esplorare le gerarchie delle classi, in quanto permette di verificare se una classe è una sottoclasse di un'altra.
+
+Ad esempio:
+
+```python
+print(issubclass(str, object))  # <1>
+```
+1. Output: `True`. `issubclass` conferma che `str` è una sottoclasse di `object`.
+
+## Creazione dell'oggetto
+
+Una volta definita una classe, si possono creare nuove istanze o oggetti di quella classe, il che rappresenta un modo efficiente per riutilizzare funzionalità nel proprio codice. Questo passaggio è spesso chiamato costruzione o **istanziazione** degli oggetti. Lo strumento responsabile per la specializzazione di questo processo, è comunemente noto come **costruttore** della classe.
+
+In Python, il costruttore è il metodo speciale `__init__` e può avere un numero arbitrario di parametri. Questo metodo viene eseguito automaticamente dall'interprete quando un nuovo oggetto della classe viene creato ed è il luogo possiamo scrivere delle istruzioni utili all'inizializzazione dell'oggetto, anche usando gli argomenti passati. La sintassi per l'istanziazione è data dall'identificatore della classe, seguita da una coppia di parentesi tonde, con all'interno l'elenco degli argomenti.
+
+Esempio:
+
+```python
+s = str(4) # <1>
+```
+1. L'identificatore della classe delle stringhe `str` è seguito da un unico argomento, `4` , dato da un letterale intero, passato al costruttore per l'inizializzazione.
+
+Il metodo `__init__` è sempre presente: se non è definito esplicitamente nella classe, viene ereditato dalla classe base `object`.
+
+La creazione di un oggetto avviene in diversi contesti:
+
+1. Uso di letterali. Ad esempio, per creare un oggetto stringa, si usano i letterali stringa e analogamente per gli altri:
+
+  ```python
+  s = "Hello" # <1>
+
+  n = 42 # <2>
+
+  f = 3.14 # <3>
+  ```
+  1. Creazione di un oggetto di tipo `str`.
+  2. Creazione di un oggetto di tipo `int`.
+  3. Creazione di un oggetto di tipo `float`.
+
+2. Chiamata del costruttore della classe, ad esempio a quello della classe `list` passiamo una sequenza di interi:
+
+  ```python
+  lista = list([1, 2, 3])
+  ```
+
+3. Utilizzo di funzioni e metodi che restituiscono oggetti. Ad esempio, il metodo `upper` della classe `str` restituisce un nuovo oggetto ottenuto a partire da quello su cui è eseguito:
+  
+  ```python
+  s1 = "Hello, World!"
+
+  su_1 = s1.upper() # <1>
+
+  s = "Hello, World!".upper() # <2>
+  ```
+
+4. Clonazione o copia utilizzando la funzione `copy` del modulo `copy`:
+
+  ```python
+  import copy
+
+  lista_originale = [1, 2, 3]
+
+  lista_copiata = copy.copy(lista_originale)
+  ```
+
+### Accesso a attributi e metodi
+
+In Python, si utilizza la notazione con il punto `.` per accedere agli attributi e ai metodi di un oggetto o di una classe, semplicemente accodando all'identificatore della variabile (che rappresenta un'istanza della classe) o a quello della classe, il punto e l'identificatore del membro (attributo o metodo).  
+
+Le stringhe in Python sono oggetti della classe `str` e hanno sia attributi che metodi. Ad esempio, il metodo `upper()` converte una stringa in maiuscolo: 
+
+```python
+s = "hello world"  # <1>
+
+s_upper = s.upper()  # <2>
+
+print(s_upper)  # <3>
+```
+1. Creazione di un oggetto stringa.
+2. Chiamata del metodo `upper()` usando l'identificatore `s`.
+3. Output: `HELLO WORLD`. 
+
+### Mutabilità e immutabilità
+
 Gli oggetti il cui valore può cambiare sono detti **mutabili**, mentre gli oggetti il cui valore non lo può una volta creati, sono chiamati **immutabili**. L'immutabilità di un oggetto è determinata dalla progettazione del suo tipo, ad esempio, per i tipi definiti nel linguaggio, numeri interi e in virgola mobile, stringhe e tuple sono immutabili, mentre dizionari e liste sono mutabili.
 
 Gli oggetti non vengono mai distrutti esplicitamente dall'utente, ma, quando diventano inaccessibili, possono essere raccolti dal garbage collector, che è eseguito contemporaneamente al codice del programma, come parte dell'interprete. L'implementazione specifica quando e come gli oggetti debbano essere distrutti.
@@ -118,43 +232,6 @@ d = c
 
 cioè l'oggetto lista ha due nomi nel programma. 
 
-## Tipi e classi
-
-In Python, i tipi di dati sono implementati come _classi_. Una classe è la definizione di un tipo di oggetto che specifica gli attributi (complessivamente il valore dell'oggetto) e i metodi (le operazioni) che determinano lo stato e il comportamento degli oggetti. Gli oggetti creati da una classe possono essere manipolati attraverso i metodi della classe, permettendo di interagire e modificare i loro attributi per ottenere risultati desiderati. Quando creiamo un oggetto di una determinata classe, stiamo creando un'istanza di quella classe. 
-
-Ad esempio, per una stringa:
-
-```python
-s = "Hello" # <1>
-
-print(type(s))  # <2>
-```
-1. L'oggetto stringa il cui valore è `"Hello"` ha come nome `s`.
-2. Output: `<class 'str'>`. `type` conferma che l'oggetto è una istanza di `str` che è il tipo delle stringhe in Python.
-
-Le classi possono essere organizzate in una gerarchia. In cima alla gerarchia delle classi di Python c'è la classe `object`, un po' infelice come nome, da cui derivano tutte le altre classi. Questo significa che ogni classe in Python eredita gli attributi e i metodi della classe `object`. La funzione `isinstance` è utile per investigare questa gerarchia, poiché permette di verificare se un oggetto è un'istanza di una determinata classe o di una sua classe derivata.
-
-Ad esempio:
-
-```python
-s = "Hello" 
-
-print(isinstance(s, str))  # <1>
-
-print(isinstance(s, object))  # <2>
-```
-1. Output: `True`. `isinstance` conferma che `s` è un'istanza della classe `str`.
-2. Output: `True`. `isinstance` conferma che `s` è un'istanza anche della classe `object`, da cui deriva `str`.
-
-La funzione `issubclass` è altrettanto utile per esplorare le gerarchie delle classi, in quanto permette di verificare se una classe è una sottoclasse di un'altra.
-
-Ad esempio:
-
-```python
-print(issubclass(str, object))  # <1>
-```
-1. Output: `True`. `issubclass` conferma che `str` è una sottoclasse di `object`.
-
 ## Tipi predefiniti
 
 Python mette a disposizione molti tipi _generali_, cioè utili alla gestione di dati comunemente presenti in algoritmi. Esistono, inoltre, sia meccanismi di estensione della distribuzione Python che modificano l'installazione sul proprio computer, sia la possibilità conferita al programmatore di creare i propri tipi o di importarli da librerie prodotte da terze parti.
@@ -163,7 +240,7 @@ I tipi predefiniti sono immediatamente disponibili, cioè non necessitano di alc
 
 Per ragioni di esposizione, distingueremo tra tipi predefiniti fondamentali, cioè che possono essere introdotti con un insieme limitato di concetti, tipi legati alla astrazione del paradigma di orientamento agli oggetti e, infine, costruzioni del linguaggio legate all'esecuzione asincrona.
 
-## Tipi predefiniti fondamentali
+### Tipi predefiniti fondamentali
 
 Prima di entrare nel dettaglio per ognuno, di seguito un elenco dei tipi predefiniti fondamentali:
 
@@ -277,7 +354,7 @@ print(type(z)) # <7>
 
 ### Sequenze
 
-Una sequenza è un contenitore ordinato di oggetti, il cui indice è un intero che parte da `0`. Se la sequenza è referenziata da una variabile `c`, per ottenere il numero totale di oggetti contenuti si userà la funzione predefinita `len()`, cioè `len(c)`, e per l'oggetto i-esimo le parentesi quadre e l'indice, `c[i]`. È possibile usare indici negativi che sono interpretati come la somma di quello col numero totale di oggetti contenuti, quindi `-i` è pari a `len(c)-i` e l'indice risultante dovra sempre essere compreso tra `0` e `len(c)-1`.
+Una sequenza è un contenitore ordinato di oggetti, il cui indice è un intero che parte da `0`. Se la sequenza è referenziata da una variabile `c`, per ottenere il numero totale di oggetti contenuti si userà la funzione predefinita `len()`, cioè `len(c)`, e per l'oggetto i-esimo le parentesi quadre e l'indice, `c[i]`. È possibile usare indici negativi che sono interpretati come la somma di quello col numero totale di oggetti contenuti, quindi `-i` è trattato come `len(c)-i` e l'indice risultante dovrà sempre essere compreso tra `0` e `len(c)-1`.
 
 Si può _sezionare_ (_slicing_) la sequenza per ottenere una sottosequenza, dello stesso tipo, di oggetti originariamente contigui tra gli indici `i` e `j`, cioè con indici `x` tali che `i≤x<j`, usando `c[i:j]`. Aggiungendo un terzo parametro di _passo_, `k`, si possono selezionare solo gli oggetti con indici `i+l*k` e `l≥0`, che siano compresi tra i due indici, cioè `i≤i+l*k<j`, con `c[i:j:k]`.
 
@@ -287,13 +364,59 @@ Le sequenze sono categorizzate in base alla mutabilità:
 
 - Mutabili: liste e array di bytes.
 
+#### Iterabilità
+
+Le sequenze sono iterabili cioè possono essere scorse in tutte per mezzo di un oggetto ad hoc detto **iteratore**. Un iteratore è un oggetto separato dalla sequenza stessa, che mantiene uno stato interno per tenere traccia dell'elemento successivo da restituire. Questo permette di iterare sulla sequenza senza modificarla direttamente. 
+L'iteratore prende in input un oggetto iterabile e ne restituisce i valori uno alla volta secondo un certo protocollo. Per le sequenze, questo protocollo consiste nel partire dal primo elemento e procedere fino all'ultimo.
+
 #### Stringhe
 
-Una stringa in Python è una sequenza di un numero non negativo di caratteri Unicode che, nei corrispondenti letterali, è racchiusa o tra apici singoli `'`, oppure doppi `"`. Per inserire un capo dovrà essere usato `\n` e un singolo backslash alla fine della riga fisica indicherà la continuazione nella riga fisica successiva.
+Una stringa in Python è un oggetto che si può creare a partire da un letterale composto di un numero non negativo di caratteri Unicode racchiusi o tra apici singoli `'`, oppure doppi `"`. Per inserire un a capo nella stringa dovrà essere usato `\n`, mentre per spezzarla su due righe fisiche dovrà essere usato un singolo backslash alla fine della prima riga fisica per indicare la continuazione nella riga fisica successiva.
 
-Alternativamente, si possono usare coppie di tripli apici singoli `'''` o doppi  `"""`, dove la differenza è che è possibile inserire un a capo nell'editor. Un singolo backslash non può essere presente.
+Esempi:
 
-Nei letterali stringa si possono inserire caratteri non stampabili o caratteri che non sono disponibili a tastiera, usando le cosiddette sequenze di escape (da non confondere con i contenitori discussi nel presente paragrafo), come da tabella seguente:
+```python
+s1 = "Hello " \
+    "World!" # <1>
+
+print(s1)  # <2>
+
+s2 = "Hello \n" \
+    "World!" # <3>
+
+print(s2)  # <4>
+```
+1. Stringa su due righe fisiche ma senza a capo all'interno.
+2. Output: `Hello World!`.
+3. Stringa su due righe fisiche con un a capo all'interno.
+4. Output: 
+  `Hello `
+  `World!`.
+
+Alternativamente, si possono usare letterali con coppie di tripli apici singoli `'''` o doppi  `"""`, dove la differenza è che è possibile inserire un a capo nell'editor e sarà mantenuto nella stringa. Un singolo backslash non può essere presente.
+
+```python
+s1 = """Hello 
+World!""" # <1>
+
+print(s1) # <2>
+
+s2 = """Hello \n
+        World!""" # <3>
+
+print(s2) # <4>
+```
+1. Stringa su due righe fisiche ma senza a capo all'interno.
+2. Output: 
+  `Hello `
+  `World!`.
+3. Stringa su due righe fisiche con un a capo all'interno.
+4. Output: 
+  `Hello `
+
+  `      World!`.
+
+Nei letterali stringa si possono inserire caratteri non stampabili o caratteri che non sono disponibili a tastiera, usando le cosiddette sequenze di escape, come da tabella seguente:
 
 | Sequenza      | Significato                                             | Codice ASCII/ISO | Esempio di stringa Python  |
 |---------------|---------------------------------------------------------|------------------|----------------------------|
@@ -315,13 +438,97 @@ Nei letterali stringa si possono inserire caratteri non stampabili o caratteri c
 | `\N{name}`      | Carattere Unicode                                       | -       | `"Carattere Unicode: \N{LATIN CAPITAL LETTER A} esempio"` |
 : Sequenze di escape {.hover}
 
-Esistono anche le stringhe _grezze_ (_raw_) sintatticamente identiche alle altre a meno di un suffisso  `r` o  `R` e sono utili quando si vuole evitare che le sequenze di escape siano interpretate. Si usano comunemente per esprimere pattern di espressioni regolari o percorsi di file in Windows. 
+Esistono anche i letterali di stringhe _grezze_ (_raw_), sintatticamente identiche alle altre a meno di un suffisso  `r` o  `R`, comportante che le sequenze di escape non siano interpretate. Si usano comunemente per esprimere pattern di espressioni regolari o percorsi di file in Windows. 
+
+```python
+url_regex = r"https:\/\/(?:www\.)?[a-zA-Z0-9\-]+(\.[a-zA-Z]{2,})+" # <1>
+
+print(url_regex)
+```
+1. `url_regex` è l'espressione regolare utile a validare URL in HTTPS ben formati. 
+
+Dopo aver identificato il letterale stringa, l'inteprete crea l'oggetto stringa in memoria con tipo `str`. Alternativamente, si può crearla in altri modi:
+
+1. Sebbene non sia comune usare il costruttore per creare una stringa da un letterale stringa, è comunque possibile:
+
+  ```python
+  s = str("Hello, World!") # <1>
+
+  print(s)  # <2>
+  ```
+  1. Passo 
+  2. Output: `Hello, World!`.
+
+2. Possiamo creare una stringa a partire da un numero (intero o in virgola mobile):
+  
+  ```python
+  s = str(42)
+
+  print(s)  # <1>
+
+  s = str(3.14)
+
+  print(s)  # <2>
+  ```
+  1. Output: `3.14`.
+  2. Output: `42`.
+
+3. Si può creare una stringa concatenando i caratteri di una lista:
+
+  ```python
+  cl = ['H', 'e', 'l', 'l', 'o']
+
+  s = ''.join(cl)
+
+  print(s)  # <1>
+  ```
+  1. Output: `Hello`.
+
+4. Se un oggetto definisce il metodo speciale `__str__` che restituisce una stringa, il costruttore di `str` lo chiama per ottenerla: 
+
+  ```python
+  l = ["Hello", " ", "World!"]
+
+  s = str(l)
+
+  print(s)
+  ```
+  1. Output: `['Hello', ' ', 'World!']`.
+
+5. Si può creare una nuova stringa da qualsiasi oggetto iterabile, come liste o tuple, utilizzando il metodo `join` che inserisce tra gli elementi della sequenza la stringa dell'oggetto di cui è membro:
+
+  ```python
+  lista = ['Python', 'è', 'fantastico']
+
+  s = ' '.join(lista)
+
+  print(s)  # <1>
+
+  tupla = ('Hello', 'World!')
+
+  s = ' '.join(tupla)
+
+  print(s)  # <2>
+  ```
+  1. Output: `Python è fantastico`. Lo spazio tra le parole è stato inserito perché `join` è stato chiamato su un oggetto la cui stringa era data dal solo carattere di spazio.
+  2. Output: `Hello World!`.
+
+6. È possibile creare una stringa a partire da un oggetto di bytes specificando la codifica:
+
+   ```python
+   b = b'Hello, World!'
+
+   s = str(b, 'utf-8')
+
+   print(s)  # Output: Hello, World!
+   ```
+   1. Output: `Hello World!`.
 
 #### Tuple
 
 Le tuple in Python sono sequenze ordinate immutabili, in cui gli oggetti contenuti possono essere di tipi diversi. La classe è `tuple` che deriva da `object`.
 
-Per creare una tupla, si può utilizzare una serie di espressioni separate da virgole (`,`), come elementi della tupla. Se ogni elemento è un letterale, l'intera costruzione è un letterale di tupla. Si può opzionalmente mettere una virgola ridondante dopo l'ultimo elemento, che è necessaria se si ha un solo elemento. Si possono raggruppare gli elementi della tupla tra parentesi, ma le parentesi sono necessarie solo quando le virgole avrebbero altrimenti un altro significato (ad esempio, nelle chiamate di funzione), o per denotare tuple vuote o annidate.
+Per creare una tupla, si può utilizzare una serie di espressioni separate da virgole (`,`), come elementi della tupla. Si può opzionalmente mettere una virgola ridondante dopo l'ultimo elemento, che è necessaria se si ha un solo elemento. Si possono raggruppare gli elementi della tupla tra parentesi, ma le parentesi sono necessarie solo quando le virgole avrebbero altrimenti un altro significato (ad esempio, nelle chiamate di funzione), o per denotare tuple vuote o annidate.
 
 Esempi di tuple costruite con letterali e espressioni:
 
@@ -336,14 +543,18 @@ t4 = () # <4>
 3. Tupla con un solo oggetto da espressione.
 4. Tupla vuota.
 
-Possiamo creare le tuple usando la classe `tuple` oltre che i letterali:
+Possiamo creare le tuple usando la classe `tuple` che accetta come argomento un iterabile:
 
 ```python
 t1 = tuple() # <1>
+
 t2 = tuple("Hello") # <2>
+
+t3 = tuple([1, 2, 3]) # <2>
 ```
 1. Crea una tupla vuota.
 2. Crea una tupla con 5 stringhe, una per ogni carattere.
+3. Crea una tupla con 3 interi.
 
 Operazioni sulle tuple:
 
@@ -396,7 +607,7 @@ l2 = list("Hello") # <2>
 1. Crea una lista vuota.
 2. Crea una lista con 5 stringhe, una per ogni carattere. 
 
-Operazioni sulle Liste:
+Operazioni sulle liste:
 
 ```python
 l1 = [42., "Hello", 0x42]
