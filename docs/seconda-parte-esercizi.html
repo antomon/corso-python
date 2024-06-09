@@ -375,6 +375,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="11.1" class="anchored" data-anchor-id="fondamenti"><span class="header-section-number">11.1</span> Fondamenti</h2>
 <section id="python-come-calcolatrice" class="level3" data-number="11.1.1">
 <h3 data-number="11.1.1" class="anchored" data-anchor-id="python-come-calcolatrice"><span class="header-section-number">11.1.1</span> ➀ Python come calcolatrice</h3>
+<p>Primi esperimenti con Python.</p>
 <section id="numeri-interi-e-in-virgola-mobile" class="level4" data-number="11.1.1.1">
 <h4 data-number="11.1.1.1" class="anchored" data-anchor-id="numeri-interi-e-in-virgola-mobile"><span class="header-section-number">11.1.1.1</span> Numeri interi e in virgola mobile</h4>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
@@ -536,207 +537,116 @@ Suggerimento
 <section id="numeri-pari-o-dispari" class="level3" data-number="11.2.1">
 <h3 data-number="11.2.1" class="anchored" data-anchor-id="numeri-pari-o-dispari"><span class="header-section-number">11.2.1</span> ➁ Numeri pari o dispari</h3>
 <p>Definire una funzione che prende in input un numero intero e restituisce una stringa di <code>Pari</code> o <code>Dispari</code>.</p>
-<section id="riscaldamento-sperimentazione-delloperatore-modulo" class="level4" data-number="11.2.1.1">
-<h4 data-number="11.2.1.1" class="anchored" data-anchor-id="riscaldamento-sperimentazione-delloperatore-modulo"><span class="header-section-number">11.2.1.1</span> Riscaldamento: sperimentazione dell’operatore modulo</h4>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="riscaldamento" class="level4" data-number="11.2.1.1">
+<h4 data-number="11.2.1.1" class="anchored" data-anchor-id="riscaldamento"><span class="header-section-number">11.2.1.1</span> Riscaldamento</h4>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Soluzione</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<p>Sperimentiamo l’operatore modulo <code>%</code>, che restituisce il resto della divisione di due interi, con diversi input sia pari che dispari usando un test condizionale.</p>
 </div>
-<div class="callout-title-container flex-fill">
-Suggerimento
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Usare l’operatore modulo <code>%</code> che restituisce il resto della divisione di due interi con diversi input sia pari che dispari ed anche non numerici per vedere cosa accade.</p>
-</div>
-</div>
-<div id="5c5cff6c" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Mostra il codice</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>n <span class="op">=</span> <span class="dv">42</span></span>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>n <span class="op">=</span> <span class="dv">42</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb4-4"><a href="#cb4-4"></a>  <span class="bu">print</span>(<span class="st">"Pari"</span>)</span>
 <span id="cb4-5"><a href="#cb4-5"></a></span>
 <span id="cb4-6"><a href="#cb4-6"></a><span class="cf">else</span>:</span>
-<span id="cb4-7"><a href="#cb4-7"></a>  <span class="bu">print</span>(Dispari)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Pari</code></pre>
+<span id="cb4-7"><a href="#cb4-7"></a>  <span class="bu">print</span>(<span class="st">"Dispari"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </section>
-<section id="soluzione-1-test-con-operatore-modulo" class="level4" data-number="11.2.1.2">
-<h4 data-number="11.2.1.2" class="anchored" data-anchor-id="soluzione-1-test-con-operatore-modulo"><span class="header-section-number">11.2.1.2</span> Soluzione 1: test con operatore modulo</h4>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="svolgimento" class="level4" data-number="11.2.1.2">
+<h4 data-number="11.2.1.2" class="anchored" data-anchor-id="svolgimento"><span class="header-section-number">11.2.1.2</span> Svolgimento</h4>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Soluzione 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false">Soluzione 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-4" role="tab" aria-controls="tabset-5-4" aria-selected="false">Soluzione 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-5" role="tab" aria-controls="tabset-5-5" aria-selected="false">Soluzione 4</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<p>Inserire le istruzioni in una funzione che prende in input un parametro, il numero intero, e restituisce una stringa, <code>Pari</code> o <code>Dispari</code>. Sperimentare soluzioni diverse.</p>
 </div>
-<div class="callout-title-container flex-fill">
-Suggerimento
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<p>Usiamo l’operatore modulo <code>%</code> che restituisce il resto della divisione di due interi all’interno di una funzione. Questa prende in input un numero intero e restituisce la stringa richiesta.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    <span class="cf">return</span> <span class="st">"Pari"</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="cf">else</span>:</span>
+<span id="cb5-6"><a href="#cb5-6"></a>    <span class="cf">return</span> <span class="st">"Dispari"</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a></span>
+<span id="cb5-8"><a href="#cb5-8"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">42</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="bu">print</span>(risultato)</span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">73</span>)</span>
+<span id="cb5-13"><a href="#cb5-13"></a></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="bu">print</span>(risultato)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Usare l’operatore modulo <code>%</code> che restituisce il resto della divisione di due interi all’interno di una funzione. Questa prende in input un numero intero e restituisce la stringa richiesta.</p>
-</div>
-</div>
-<div id="3580993d" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Mostra il codice</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb6-3"><a href="#cb6-3"></a>    <span class="cf">return</span> <span class="st">"Pari"</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a></span>
-<span id="cb6-5"><a href="#cb6-5"></a>  <span class="cf">else</span>:</span>
-<span id="cb6-6"><a href="#cb6-6"></a>    <span class="cf">return</span> <span class="st">"Dispari"</span></span>
+<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
+<p>Usiamo l’operatore modulo <code>%</code> per il test di parità sul numero intero e la funzione <code>isinstance</code> per verificare il tipo in input.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(n, <span class="bu">int</span>):</span>
+<span id="cb6-3"><a href="#cb6-3"></a>    <span class="cf">return</span> <span class="st">"Errore: l'input deve essere un numero intero!"</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>    </span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-6"><a href="#cb6-6"></a>    <span class="cf">return</span> <span class="st">"Pari"</span></span>
 <span id="cb6-7"><a href="#cb6-7"></a></span>
-<span id="cb6-8"><a href="#cb6-8"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">42</span>)</span>
-<span id="cb6-9"><a href="#cb6-9"></a></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="bu">print</span>(risultato)</span>
-<span id="cb6-11"><a href="#cb6-11"></a></span>
-<span id="cb6-12"><a href="#cb6-12"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">73</span>)</span>
-<span id="cb6-13"><a href="#cb6-13"></a></span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="bu">print</span>(risultato)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Pari
-Dispari</code></pre>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="cf">else</span>:</span>
+<span id="cb6-9"><a href="#cb6-9"></a>    <span class="cf">return</span> <span class="st">"Dispari"</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a></span>
+<span id="cb6-11"><a href="#cb6-11"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">42</span>)</span>
+<span id="cb6-12"><a href="#cb6-12"></a></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="bu">print</span>(risultato)</span>
+<span id="cb6-14"><a href="#cb6-14"></a></span>
+<span id="cb6-15"><a href="#cb6-15"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">73</span>)</span>
+<span id="cb6-16"><a href="#cb6-16"></a></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="bu">print</span>(risultato)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="tabset-5-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-4-tab">
+<p>Usiamo l’operatore modulo <code>%</code>, la funzione <code>isinstance</code> per verificare il tipo in input e <code>assert</code> in caso di input non corretto.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="cf">assert</span> <span class="bu">isinstance</span>(n, <span class="bu">int</span>), <span class="op">\</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>    <span class="st">"Errore: l'input deve essere un numero intero!"</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>    </span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb7-6"><a href="#cb7-6"></a>    <span class="cf">return</span> <span class="st">"Pari"</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a></span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="cf">else</span>:</span>
+<span id="cb7-9"><a href="#cb7-9"></a>    <span class="cf">return</span> <span class="st">"Dispari"</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a></span>
+<span id="cb7-11"><a href="#cb7-11"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">42</span>)</span>
+<span id="cb7-12"><a href="#cb7-12"></a></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="bu">print</span>(risultato)</span>
+<span id="cb7-14"><a href="#cb7-14"></a></span>
+<span id="cb7-15"><a href="#cb7-15"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">73</span>)</span>
+<span id="cb7-16"><a href="#cb7-16"></a></span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="bu">print</span>(risultato)</span>
+<span id="cb7-18"><a href="#cb7-18"></a></span>
+<span id="cb7-19"><a href="#cb7-19"></a><span class="co">'''</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="co">risultato = pari_o_dispari("42")</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a></span>
+<span id="cb7-22"><a href="#cb7-22"></a><span class="co">print(risultato)</span></span>
+<span id="cb7-23"><a href="#cb7-23"></a></span>
+<span id="cb7-24"><a href="#cb7-24"></a><span class="co">risultato = pari_o_dispari(73.)</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a></span>
+<span id="cb7-26"><a href="#cb7-26"></a><span class="co">print(risultato)</span></span>
+<span id="cb7-27"><a href="#cb7-27"></a><span class="co">'''</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="soluzione-2-test-con-operatore-modulo-e-controllo-degli-input" class="level4" data-number="11.2.1.3">
-<h4 data-number="11.2.1.3" class="anchored" data-anchor-id="soluzione-2-test-con-operatore-modulo-e-controllo-degli-input"><span class="header-section-number">11.2.1.3</span> Soluzione 2: test con operatore modulo e controllo degli input</h4>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Suggerimento
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Usare l’operatore modulo <code>%</code> e la funzione <code>isinstance</code> per verificare il tipo in input.</p>
-</div>
-</div>
-<div id="1ba9a099" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Mostra il codice</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(n, <span class="bu">int</span>):</span>
-<span id="cb8-3"><a href="#cb8-3"></a>    <span class="cf">return</span> <span class="st">"Errore: l'input deve essere un numero intero!"</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>    </span>
-<span id="cb8-5"><a href="#cb8-5"></a>  <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb8-6"><a href="#cb8-6"></a>    <span class="cf">return</span> <span class="st">"Pari"</span></span>
+<div id="tabset-5-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-5-tab">
+<p>Usiamo la funzione <code>divmod</code> che restituisce il quoziente e il resto della divisione di due interi.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
+<span id="cb8-2"><a href="#cb8-2"></a>  _, remainder <span class="op">=</span> <span class="bu">divmod</span>(n, <span class="dv">2</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="cf">return</span> <span class="st">"Pari"</span> <span class="cf">if</span> remainder <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"Dispari"</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">42</span>)</span>
 <span id="cb8-7"><a href="#cb8-7"></a></span>
-<span id="cb8-8"><a href="#cb8-8"></a>  <span class="cf">else</span>:</span>
-<span id="cb8-9"><a href="#cb8-9"></a>    <span class="cf">return</span> <span class="st">"Dispari"</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a></span>
-<span id="cb8-11"><a href="#cb8-11"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">42</span>)</span>
-<span id="cb8-12"><a href="#cb8-12"></a></span>
-<span id="cb8-13"><a href="#cb8-13"></a><span class="bu">print</span>(risultato)</span>
-<span id="cb8-14"><a href="#cb8-14"></a></span>
-<span id="cb8-15"><a href="#cb8-15"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">73</span>)</span>
-<span id="cb8-16"><a href="#cb8-16"></a></span>
-<span id="cb8-17"><a href="#cb8-17"></a><span class="bu">print</span>(risultato)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Pari
-Dispari</code></pre>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="bu">print</span>(risultato)</span>
+<span id="cb8-9"><a href="#cb8-9"></a></span>
+<span id="cb8-10"><a href="#cb8-10"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">73</span>)</span>
+<span id="cb8-11"><a href="#cb8-11"></a></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="bu">print</span>(risultato)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</section>
-<section id="soluzione-3-test-con-operatore-modulo-e-generazione-di-errore-su-input-non-intero" class="level4" data-number="11.2.1.4">
-<h4 data-number="11.2.1.4" class="anchored" data-anchor-id="soluzione-3-test-con-operatore-modulo-e-generazione-di-errore-su-input-non-intero"><span class="header-section-number">11.2.1.4</span> Soluzione 3: test con operatore modulo e generazione di errore su input non intero</h4>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Suggerimento
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Usare l’operatore modulo <code>%</code>, la funzione <code>isinstance</code> per verificare il tipo in input e <code>assert</code> in caso di input non corretto.</p>
-</div>
-</div>
-<div id="bdd70cc7" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Mostra il codice</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="cf">assert</span> <span class="bu">isinstance</span>(n, <span class="bu">int</span>), <span class="op">\</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>    <span class="st">"Errore: l'input deve essere un numero intero!"</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a>    </span>
-<span id="cb10-5"><a href="#cb10-5"></a>  <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb10-6"><a href="#cb10-6"></a>    <span class="cf">return</span> <span class="st">"Pari"</span></span>
-<span id="cb10-7"><a href="#cb10-7"></a></span>
-<span id="cb10-8"><a href="#cb10-8"></a>  <span class="cf">else</span>:</span>
-<span id="cb10-9"><a href="#cb10-9"></a>    <span class="cf">return</span> <span class="st">"Dispari"</span></span>
-<span id="cb10-10"><a href="#cb10-10"></a></span>
-<span id="cb10-11"><a href="#cb10-11"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">42</span>)</span>
-<span id="cb10-12"><a href="#cb10-12"></a></span>
-<span id="cb10-13"><a href="#cb10-13"></a><span class="bu">print</span>(risultato)</span>
-<span id="cb10-14"><a href="#cb10-14"></a></span>
-<span id="cb10-15"><a href="#cb10-15"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">73</span>)</span>
-<span id="cb10-16"><a href="#cb10-16"></a></span>
-<span id="cb10-17"><a href="#cb10-17"></a><span class="bu">print</span>(risultato)</span>
-<span id="cb10-18"><a href="#cb10-18"></a></span>
-<span id="cb10-19"><a href="#cb10-19"></a><span class="co">'''</span></span>
-<span id="cb10-20"><a href="#cb10-20"></a><span class="co">risultato = pari_o_dispari("42")</span></span>
-<span id="cb10-21"><a href="#cb10-21"></a></span>
-<span id="cb10-22"><a href="#cb10-22"></a><span class="co">print(risultato)</span></span>
-<span id="cb10-23"><a href="#cb10-23"></a></span>
-<span id="cb10-24"><a href="#cb10-24"></a><span class="co">risultato = pari_o_dispari(73.)</span></span>
-<span id="cb10-25"><a href="#cb10-25"></a></span>
-<span id="cb10-26"><a href="#cb10-26"></a><span class="co">print(risultato)</span></span>
-<span id="cb10-27"><a href="#cb10-27"></a><span class="co">'''</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Pari
-Dispari</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>'\nrisultato = pari_o_dispari("42")\n\nprint(risultato)\n\nrisultato = pari_o_dispari(73.)\n\nprint(risultato)\n'</code></pre>
-</div>
-</div>
-</section>
-<section id="soluzione-4-uso-di-funzione-built-in" class="level4" data-number="11.2.1.5">
-<h4 data-number="11.2.1.5" class="anchored" data-anchor-id="soluzione-4-uso-di-funzione-built-in"><span class="header-section-number">11.2.1.5</span> Soluzione 4: uso di funzione built-in</h4>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Suggerimento
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Usare la funzione <code>divmod</code> che restituisce il quoziente e il resto della divisione di due interi.</p>
-</div>
-</div>
-<div id="f54d08d0" class="cell" data-execution_count="5">
-<details class="code-fold">
-<summary>Mostra il codice</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">def</span> pari_o_dispari(n):</span>
-<span id="cb13-2"><a href="#cb13-2"></a>  _, remainder <span class="op">=</span> <span class="bu">divmod</span>(n, <span class="dv">2</span>)</span>
-<span id="cb13-3"><a href="#cb13-3"></a></span>
-<span id="cb13-4"><a href="#cb13-4"></a>  <span class="cf">return</span> <span class="st">"Pari"</span> <span class="cf">if</span> remainder <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"Dispari"</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a></span>
-<span id="cb13-6"><a href="#cb13-6"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">42</span>)</span>
-<span id="cb13-7"><a href="#cb13-7"></a></span>
-<span id="cb13-8"><a href="#cb13-8"></a><span class="bu">print</span>(risultato)</span>
-<span id="cb13-9"><a href="#cb13-9"></a></span>
-<span id="cb13-10"><a href="#cb13-10"></a>risultato <span class="op">=</span> pari_o_dispari(<span class="dv">73</span>)</span>
-<span id="cb13-11"><a href="#cb13-11"></a></span>
-<span id="cb13-12"><a href="#cb13-12"></a><span class="bu">print</span>(risultato)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Pari
-Dispari</code></pre>
 </div>
 </div>
 </section>
@@ -746,77 +656,42 @@ Dispari</code></pre>
 <h2 data-number="11.3" class="anchored" data-anchor-id="sequenze"><span class="header-section-number">11.3</span> Sequenze</h2>
 <section id="rimozione-di-duplicati-da-una-lista" class="level3" data-number="11.3.1">
 <h3 data-number="11.3.1" class="anchored" data-anchor-id="rimozione-di-duplicati-da-una-lista"><span class="header-section-number">11.3.1</span> ➂ Rimozione di duplicati da una lista</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Soluzione 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false">Soluzione 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <p>Scrivere una funzione che prende in input una lista e ne rimuove i duplicati, preservando l’ordinamento.</p>
-<section id="ciclo" class="level4" data-number="11.3.1.1">
-<h4 data-number="11.3.1.1" class="anchored" data-anchor-id="ciclo"><span class="header-section-number">11.3.1.1</span> Ciclo</h4>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Suggerimento
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<p>Usiamo una seconda lista per travasare elementi non già presenti.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">def</span> rimuovi_duplicati(lista):</span>
+<span id="cb9-2"><a href="#cb9-2"></a>    nuova_lista <span class="op">=</span> []</span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a>    <span class="cf">for</span> elemento <span class="kw">in</span> lista:</span>
+<span id="cb9-5"><a href="#cb9-5"></a>        <span class="cf">if</span> elemento <span class="kw">not</span> <span class="kw">in</span> nuova_lista:</span>
+<span id="cb9-6"><a href="#cb9-6"></a>            nuova_lista.append(elemento)</span>
+<span id="cb9-7"><a href="#cb9-7"></a></span>
+<span id="cb9-8"><a href="#cb9-8"></a>    <span class="cf">return</span> nuova_lista</span>
+<span id="cb9-9"><a href="#cb9-9"></a></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a>lista <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb9-12"><a href="#cb9-12"></a></span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="bu">print</span>(rimuovi_duplicati(lista))  <span class="co"># Output: [1, 2, 3, 4, 5]</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="tabset-6-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-3-tab">
+<p>Usiamo la proprietà dei dizionari di preservare l’ordine di inserimento.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">def</span> rimuovi_duplicati(lista):</span>
+<span id="cb10-2"><a href="#cb10-2"></a>    <span class="cf">return</span> <span class="bu">list</span>(<span class="bu">dict</span>.fromkeys(lista))</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>lista <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="bu">print</span>(rimuovi_duplicati(lista))  <span class="co"># Output: [1, 2, 3, 4, 5]</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Usare una seconda lista per travasare elementi non già presenti.</p>
-</div>
-</div>
-<div id="a26643a9" class="cell" data-execution_count="6">
-<details class="code-fold">
-<summary>Mostra il codice</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">def</span> rimuovi_duplicati(lista):</span>
-<span id="cb15-2"><a href="#cb15-2"></a>    nuova_lista <span class="op">=</span> []</span>
-<span id="cb15-3"><a href="#cb15-3"></a></span>
-<span id="cb15-4"><a href="#cb15-4"></a>    <span class="cf">for</span> elemento <span class="kw">in</span> lista:</span>
-<span id="cb15-5"><a href="#cb15-5"></a>        <span class="cf">if</span> elemento <span class="kw">not</span> <span class="kw">in</span> nuova_lista:</span>
-<span id="cb15-6"><a href="#cb15-6"></a>            nuova_lista.append(elemento)</span>
-<span id="cb15-7"><a href="#cb15-7"></a></span>
-<span id="cb15-8"><a href="#cb15-8"></a>    <span class="cf">return</span> nuova_lista</span>
-<span id="cb15-9"><a href="#cb15-9"></a></span>
-<span id="cb15-10"><a href="#cb15-10"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="cb15-11"><a href="#cb15-11"></a>lista <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb15-12"><a href="#cb15-12"></a></span>
-<span id="cb15-13"><a href="#cb15-13"></a><span class="bu">print</span>(rimuovi_duplicati(lista))  <span class="co"># Output: [1, 2, 3, 4, 5]</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1, 2, 3, 4, 5]</code></pre>
-</div>
-</div>
-</section>
-<section id="dizionario" class="level4" data-number="11.3.1.2">
-<h4 data-number="11.3.1.2" class="anchored" data-anchor-id="dizionario"><span class="header-section-number">11.3.1.2</span> Dizionario</h4>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Suggerimento
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Usare la proprietà dei dizionari di preservare l’ordine di inserimento.</p>
-</div>
-</div>
-<div id="d67fd419" class="cell" data-execution_count="7">
-<details class="code-fold">
-<summary>Mostra il codice</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">def</span> rimuovi_duplicati(lista):</span>
-<span id="cb17-2"><a href="#cb17-2"></a>    <span class="cf">return</span> <span class="bu">list</span>(<span class="bu">dict</span>.fromkeys(lista))</span>
-<span id="cb17-3"><a href="#cb17-3"></a></span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a>lista <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb17-6"><a href="#cb17-6"></a></span>
-<span id="cb17-7"><a href="#cb17-7"></a><span class="bu">print</span>(rimuovi_duplicati(lista))  <span class="co"># Output: [1, 2, 3, 4, 5]</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1, 2, 3, 4, 5]</code></pre>
 </div>
 </div>
 
 
-</section>
 </section>
 </section>
 

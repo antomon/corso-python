@@ -15,6 +15,8 @@ format:
 
 ### ➀ Python come calcolatrice
 
+Primi esperimenti con Python.
+
 #### Numeri interi e in virgola mobile
 
 ::: {.panel-tabset}
@@ -176,33 +178,41 @@ print(e) # Cosa notiamo?
 
 Definire una funzione che prende in input un numero intero e restituisce una stringa di `Pari` o `Dispari`.
 
-#### Riscaldamento: sperimentazione dell'operatore modulo
+#### Riscaldamento
 
-::: {.callout-tip}
-## Suggerimento
+::: {.panel-tabset}
 
-Usare l'operatore modulo `%` che restituisce il resto della divisione di due interi con diversi input sia pari che dispari ed anche non numerici per vedere cosa accade.
-:::
+## Problema
 
-```{python}
+Sperimentiamo l'operatore modulo `%`, che restituisce il resto della divisione di due interi, con diversi input sia pari che dispari usando un test condizionale.
+
+## Soluzione
+
+```python
 n = 42
 
 if n % 2 == 0:
   print("Pari")
 
 else:
-  print(Dispari)
+  print("Dispari")
 ```
 
-#### Soluzione 1: test con operatore modulo
-
-::: {.callout-tip}
-## Suggerimento
-
-Usare l'operatore modulo `%` che restituisce il resto della divisione di due interi all'interno di una funzione. Questa prende in input un numero intero e restituisce la stringa richiesta.
 :::
 
-```{python}
+#### Svolgimento
+
+::: {.panel-tabset}
+
+## Problema 
+
+Inserire le istruzioni in una funzione che prende in input un parametro, il numero intero, e restituisce una stringa, `Pari` o `Dispari`. Sperimentare soluzioni diverse.
+
+## Soluzione 1
+
+Usiamo l'operatore modulo `%` che restituisce il resto della divisione di due interi all'interno di una funzione. Questa prende in input un numero intero e restituisce la stringa richiesta.
+
+```python
 def pari_o_dispari(n):
   if n % 2 == 0:
     return "Pari"
@@ -219,15 +229,11 @@ risultato = pari_o_dispari(73)
 print(risultato)
 ```
 
-#### Soluzione 2: test con operatore modulo e controllo degli input
+## Soluzione 2
 
-::: {.callout-tip}
-## Suggerimento
+Usiamo l'operatore modulo `%` per il test di parità sul numero intero e la funzione `isinstance` per verificare il tipo in input.
 
-Usare l'operatore modulo `%` e la funzione `isinstance` per verificare il tipo in input.
-:::
-
-```{python}
+```python
 def pari_o_dispari(n):
   if not isinstance(n, int):
     return "Errore: l'input deve essere un numero intero!"
@@ -247,15 +253,11 @@ risultato = pari_o_dispari(73)
 print(risultato)
 ```
 
-#### Soluzione 3: test con operatore modulo e generazione di errore su input non intero
+## Soluzione 3
 
-::: {.callout-tip}
-## Suggerimento
+Usiamo l'operatore modulo `%`, la funzione `isinstance` per verificare il tipo in input e `assert` in caso di input non corretto.
 
-Usare l'operatore modulo `%`, la funzione `isinstance` per verificare il tipo in input e `assert` in caso di input non corretto.
-:::
-
-```{python}
+```python
 def pari_o_dispari(n):
   assert isinstance(n, int), \
     "Errore: l'input deve essere un numero intero!"
@@ -285,15 +287,11 @@ print(risultato)
 '''
 ```
 
-#### Soluzione 4: uso di funzione built-in
+## Soluzione 4
 
-::: {.callout-tip}
-## Suggerimento
+Usiamo la funzione `divmod` che restituisce il quoziente e il resto della divisione di due interi.
 
-Usare la funzione `divmod` che restituisce il quoziente e il resto della divisione di due interi.
-:::
-
-```{python}
+```python
 def pari_o_dispari(n):
   _, remainder = divmod(n, 2)
 
@@ -307,22 +305,23 @@ risultato = pari_o_dispari(73)
 
 print(risultato)
 ```
+:::
 
 ## Sequenze
 
 ### ➂ Rimozione di duplicati da una lista
 
+::: {.panel-tabset}
+
+## Problema
+
 Scrivere una funzione che prende in input una lista e ne rimuove i duplicati, preservando l'ordinamento.
 
-#### Ciclo
+## Soluzione 1
 
-::: {.callout-tip}
-## Suggerimento
+Usiamo una seconda lista per travasare elementi non già presenti.
 
-Usare una seconda lista per travasare elementi non già presenti.
-:::
-
-```{python}
+```python
 def rimuovi_duplicati(lista):
     nuova_lista = []
 
@@ -338,15 +337,11 @@ lista = [1, 2, 2, 3, 4, 4, 5]
 print(rimuovi_duplicati(lista))  # Output: [1, 2, 3, 4, 5]
 ```
 
-#### Dizionario
+## Soluzione 2
 
-::: {.callout-tip}
-## Suggerimento
+Usiamo la proprietà dei dizionari di preservare l'ordine di inserimento.
 
-Usare la proprietà dei dizionari di preservare l'ordine di inserimento.
-:::
-
-```{python}
+```python
 def rimuovi_duplicati(lista):
     return list(dict.fromkeys(lista))
 
@@ -356,5 +351,5 @@ lista = [1, 2, 2, 3, 4, 4, 5]
 print(rimuovi_duplicati(lista))  # Output: [1, 2, 3, 4, 5]
 ```
 
-
+:::
 
