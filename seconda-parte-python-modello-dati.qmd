@@ -441,11 +441,18 @@ Nei letterali stringa si possono inserire caratteri non stampabili o caratteri c
 Esistono anche i letterali di stringhe _grezze_ (_raw_), sintatticamente identiche alle altre a meno di un suffisso  `r` o  `R`, comportante che le sequenze di escape non siano interpretate. Si usano comunemente per esprimere pattern di espressioni regolari o percorsi di file in Windows. 
 
 ```python
-url_regex = r"https:\/\/(?:www\.)?[a-zA-Z0-9\-]+(\.[a-zA-Z]{2,})+" # <1>
+stringa = "C:\\Users\\username\\Documents\\file.txt" # <1>
 
-print(url_regex)
+print(stringa) # <2>
+
+stringa_raw = r"C:\Users\username\Documents\file.txt" # <3>
+
+print(stringa_raw) # <4>
 ```
-1. `url_regex` è l'espressione regolare utile a validare URL in HTTPS ben formati. 
+1. Perché un path sia corretto in Windows è necessario usare il backslash per escape del backslash come separatore di path. 
+2. Output: `C:\Users\username\Documents\file.txt`.
+3. Definendo la stringa come grezza allora il backslash è intepretato come tale, quindi separatore di path.
+4. Output: `C:\Users\username\Documents\file.txt`.
 
 Dopo aver identificato il letterale stringa, l'inteprete crea l'oggetto stringa in memoria con tipo `str`. Alternativamente, si può crearla in altri modi:
 

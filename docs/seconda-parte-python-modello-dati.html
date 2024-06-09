@@ -983,15 +983,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Esistono anche i letterali di stringhe <em>grezze</em> (<em>raw</em>), sintatticamente identiche alle altre a meno di un suffisso <code>r</code> o <code>R</code>, comportante che le sequenze di escape non siano interpretate. Si usano comunemente per esprimere pattern di espressioni regolari o percorsi di file in Windows.</p>
-<div class="sourceCode" id="annotated-cell-24"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-24-1" class="code-annotation-target"><a href="#annotated-cell-24-1"></a>url_regex <span class="op">=</span> <span class="vs">r"https:\/\/(?:www\.)?[a-zA-Z0-9\-]+(\.[a-zA-Z]{2,})+"</span></span>
-<span id="annotated-cell-24-2"><a href="#annotated-cell-24-2"></a></span>
-<span id="annotated-cell-24-3"><a href="#annotated-cell-24-3"></a><span class="bu">print</span>(url_regex)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-24" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="1" data-code-annotation="1"><code>url_regex</code> è l’espressione regolare utile a validare URL in HTTPS ben formati.</span>
-</dd>
-</dl>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>stringa <span class="op">=</span> <span class="st">"C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">username</span><span class="ch">\\</span><span class="st">Documents</span><span class="ch">\\</span><span class="st">file.txt"</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="bu">print</span>(stringa)</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a>stringa_raw <span class="op">=</span> <span class="st">"C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">username</span><span class="ch">\\</span><span class="st">Documents</span><span class="ch">\\</span><span class="st">file.txt"</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="bu">print</span>(stringa_raw)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li><code>url_regex</code> è l’espressione regolare utile a validare URL in HTTPS ben formati, contenente .</li>
+</ol>
 <p>Dopo aver identificato il letterale stringa, l’inteprete crea l’oggetto stringa in memoria con tipo <code>str</code>. Alternativamente, si può crearla in altri modi:</p>
 <ol type="1">
 <li>Sebbene non sia comune usare il costruttore per creare una stringa da un letterale stringa, è comunque possibile:</li>
@@ -1037,11 +1038,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span data-code-cell="annotated-cell-27" data-code-lines="5" data-code-annotation="1">Output: <code>Hello</code>.</span>
 </dd>
 </dl>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>l <span class="op">=</span> [<span class="st">"Hello"</span>, <span class="st">" "</span>, <span class="st">"World!"</span>]</span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a>s <span class="op">=</span> <span class="bu">str</span>(l)</span>
-<span id="cb5-4"><a href="#cb5-4"></a></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="bu">print</span>(s)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>l <span class="op">=</span> [<span class="st">"Hello"</span>, <span class="st">" "</span>, <span class="st">"World!"</span>]</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a>s <span class="op">=</span> <span class="bu">str</span>(l)</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="bu">print</span>(s)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
 <li><p>Output: <code>['Hello', ' ', 'World!']</code>.</p></li>
 <li><p>Si può creare una nuova stringa da qualsiasi oggetto iterabile, come liste o tuple, utilizzando il metodo <code>join</code> che inserisce tra gli elementi della sequenza la stringa dell’oggetto di cui è membro:</p></li>
