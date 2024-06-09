@@ -591,3 +591,245 @@ print(fattoriale(numero))  # <1>
 
 :::
 
+Ecco un esercizio divertente che coinvolge l'uso dei dizionari in Python:
+
+## ➁ Contare le parole in una frase in modo semplificato
+
+::: {.panel-tabset}
+
+## Problema
+
+Scrivere una funzione che prende in input una stringa contenente una frase e restituisce un dizionario con il conteggio di ciascuna parola nella frase. Le frasi non devono contenere punteggiatura e il confronto tiene conto della differenza tra lettere maiuscole e minuscole.
+
+## Soluzione 1
+
+Usiamo un ciclo `for` per iterare attraverso le parole della frase, aggiornando il conteggio di ciascuna parola in un dizionario.
+
+```python
+def conta_parole(frase):
+  parole = frase.split()
+  conteggio = {}
+  
+  for parola in parole:
+    if parola in conteggio:
+      conteggio[parola] += 1
+
+    else:
+      conteggio[parola] = 1
+
+  return conteggio
+
+# Esempio di utilizzo
+frase = "ciao ciao come stai ciao"
+
+print(conta_parole(frase))  # <1> # 
+```
+1. Output: `{'ciao': 3, 'come': 1, 'stai': 1}`.
+
+## Soluzione 2
+
+Usiamo il metodo `get` del dizionario per aggiornare il conteggio delle parole in un dizionario.
+
+```python
+def conta_parole(frase):
+  parole = frase.split()
+  conteggio = {}
+  
+  for parola in parole:
+    conteggio[parola] = conteggio.get(parola, 0) + 1
+  return conteggio
+
+# Esempio di utilizzo
+frase = "ciao ciao come stai ciao"
+
+print(conta_parole(frase))  
+```
+
+## ➂ Soluzione 3
+
+Usiamo il modulo `collections` e il `defaultdict` per semplificare il conteggio delle parole.
+
+```python
+from collections import defaultdict
+
+def conta_parole(frase):
+  parole = frase.split()
+  conteggio = defaultdict(int)
+
+  for parola in parole:
+    conteggio[parola] += 1
+      
+  return dict(conteggio)
+
+# Esempio di utilizzo
+frase = "ciao ciao come stai ciao"
+
+print(conta_parole(frase))  
+```
+
+## ➂ Soluzione 4
+
+Usiamo il modulo `collections` e `Counter` per contare le parole nella frase in modo conciso.
+
+```python
+from collections import Counter
+
+def conta_parole(frase):
+    parole = frase.split()
+
+    conteggio = Counter(parole)
+
+    return dict(conteggio)
+
+# Esempio di utilizzo
+frase = "ciao ciao come stai ciao"
+
+print(conta_parole(frase))  
+```
+
+:::
+
+## ➂ Contare le parole in una frase con esattezza
+
+::: {.panel-tabset}
+
+## Problema
+
+Scrivere una funzione che prende in input una stringa contenente una frase e un flag `maiuscolo_minuscolo` che controlla se il conteggio delle parole debba tener conto del maiuscolo o minuscolo. Inoltre considera parole senza terner conto di eventuale punteggiatura nel calcolo. La funzione restituisce un dizionario con il conteggio di ciascuna parola nella frase. 
+
+::: {.callout-tip}
+## Suggerimento
+
+Si può usare `string.punctuation` del modulo `string` che contiene tutti i caratteri di punteggiatura disponibili in Python. Include caratteri come `!"#$%&'()*+,-./:;<=>?@[\]^_``{|}~`.
+
+::: 
+
+::: {.panel-tabset}
+
+## Problema
+
+Scrivere una funzione che prende in input una stringa contenente una frase e un flag `maiuscolo_minuscolo` che controlla se il conteggio delle parole deve essere case sensitive o case insensitive. La funzione restituisce un dizionario con il conteggio di ciascuna parola nella frase.
+
+## Soluzione 1
+
+Usiamo un ciclo `for` per iterare attraverso le parole della frase, aggiornando il conteggio di ciascuna parola in un dizionario. Il comportamento è determinato dal flag `maiuscolo_minuscolo`.
+
+```python
+import string
+
+def conta_parole(frase, maiuscolo_minuscolo=False):
+  if not maiuscolo_minuscolo:
+    frase = frase.lower()
+
+  frase = ''.join(carattere for carattere in frase if carattere not in string.punctuation)
+
+  parole = frase.split()
+
+  conteggio = {}
+
+  for parola in parole:
+    if parola in conteggio:
+      conteggio[parola] += 1
+
+    else:
+      conteggio[parola] = 1
+
+  return conteggio
+
+# Esempio di utilizzo
+frase = "Ciao, ciao! Come stai? Ciao."
+
+print(conta_parole(frase, maiuscolo_minuscolo=False))  # <1>
+print(conta_parole(frase, maiuscolo_minuscolo=True))  # <2>
+```
+1. Output: `{'ciao': 3, 'come': 1, 'stai': 1}`.
+2. Output: `{'Ciao': 2, 'ciao': 1, 'Come': 1, 'stai': 1}`.
+
+## Soluzione 2
+
+Usiamo il metodo `get` del dizionario per aggiornare il conteggio delle parole in un dizionario. Il comportamento è determinato dal flag `maiuscolo_minuscolo`.
+
+```python
+import string
+
+def conta_parole(frase, maiuscolo_minuscolo=False):
+  if not maiuscolo_minuscolo:
+    frase = frase.lower()
+
+  frase = ''.join(carattere for carattere in frase if carattere not in string.punctuation)
+
+  parole = frase.split()
+
+  conteggio = {}
+
+  for parola in parole:
+    conteggio[parola] = conteggio.get(parola, 0) + 1
+      
+  return conteggio
+
+# Esempio di utilizzo
+frase = "Ciao, ciao! Come stai? Ciao."
+
+print(conta_parole(frase, maiuscolo_minuscolo=False))  
+print(conta_parole(frase, maiuscolo_minuscolo=True))  
+```
+
+## Soluzione 3
+
+Usiamo il modulo `collections` e il `defaultdict` per semplificare il conteggio delle parole. Il comportamento è determinato dal flag `maiuscolo_minuscolo`.
+
+```python
+import string
+from collections import defaultdict
+
+def conta_parole(frase, maiuscolo_minuscolo=False):
+  if not maiuscolo_minuscolo:
+    frase = frase.lower()
+
+  frase = ''.join(carattere for carattere in frase if carattere not in string.punctuation)
+
+  parole = frase.split()
+
+  conteggio = defaultdict(int)
+
+  for parola in parole:
+    conteggio[parola] += 1
+
+  return dict(conteggio)
+
+# Esempio di utilizzo
+frase = "Ciao, ciao! Come stai? Ciao."
+
+print(conta_parole(frase, maiuscolo_minuscolo=False)) 
+print(conta_parole(frase, maiuscolo_minuscolo=True))  
+```
+
+## Soluzione 4
+
+Usiamo il modulo `collections` e `Counter` per contare le parole nella frase in modo conciso. Il comportamento è determinato dal flag `maiuscolo_minuscolo`.
+
+```python
+import string
+from collections import Counter
+
+def conta_parole(frase, maiuscolo_minuscolo=False):
+  if not maiuscolo_minuscolo:
+    frase = frase.lower()
+    
+  frase = ''.join(carattere for carattere in frase if carattere not in string.punctuation)
+
+  parole = frase.split()
+
+  conteggio = Counter(parole)
+
+  return dict(conteggio)
+
+# Esempio di utilizzo
+frase = "Ciao, ciao! Come stai? Ciao."
+
+print(conta_parole(frase, maiuscolo_minuscolo=False)) 
+print(conta_parole(frase, maiuscolo_minuscolo=True)) 
+```
+
+:::
+

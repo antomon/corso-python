@@ -1,7 +1,26 @@
-def rimuovi_duplicati(lista):
-  return list(dict.fromkeys(lista))
+import string
+
+def conta_parole(frase, maiuscolo_minuscolo=False):
+  if not maiuscolo_minuscolo:
+    frase = frase.lower()
+
+  frase = ''.join(carattere for carattere in frase if carattere not in string.punctuation)
+
+  parole = frase.split()
+
+  conteggio = {}
+
+  for parola in parole:
+    if parola in conteggio:
+      conteggio[parola] += 1
+
+    else:
+      conteggio[parola] = 1
+
+  return conteggio
 
 # Esempio di utilizzo
-lista = [4, 2, 2, 3, 1, 4, 5]
+frase = "Ciao, ciao! Come stai? Ciao."
 
-print(rimuovi_duplicati(lista)) 
+print(conta_parole(frase, maiuscolo_minuscolo=False))  # <1>
+print(conta_parole(frase, maiuscolo_minuscolo=True))  # <2>
