@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.43">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Da neofita di Python a campione – 7&nbsp; Introduzione a Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./seconda-parte-python-installazione.html" rel="next">
+<link href="./seconda-parte.html" rel="prev">
+<link href="./red-python-logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.0/full/pyodide.js"></script>
+
+
+<meta property="og:title" content="Da neofita di Python a campione - 7&nbsp; Introduzione a Python">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="Da neofita di Python a campione">
+<meta name="twitter:title" content="Da neofita di Python a campione - 7&nbsp; Introduzione a Python">
+<meta name="twitter:description" content="">
+<meta name="twitter:creator" content="@antomon">
+<meta name="twitter:site" content="@antomon">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Da neofita di Python a campione</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> <i class="bi bi-house-fill" role="img">
+</i> 
+<span class="menu-text">Prefazione</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://4m4.it/"> 
+<span class="menu-text">4M4</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/antomon/corso-python" title="Eseguire il codice" class="quarto-navigation-tool px-1" aria-label="Eseguire il codice"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./Da-neofita-di-Python-a-campione.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./Da-neofita-di-Python-a-campione.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Attiva/disattiva la modalità oscura"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./seconda-parte.html">Seconda parte: Le basi di Python</a></li><li class="breadcrumb-item"><a href="./seconda-parte-python-introduzione.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduzione a Python</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefazione</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./prima-parte.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prima parte: I fondamenti della programmazione</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prima-parte-linguaggi-programmazione.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">I linguaggi di programmazione, i programmi e i programmatori</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prima-parte-paradigmi-programmazione.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">I paradigmi di programmazione</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prima-parte-sintassi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">La sintassi dei linguaggi di programmazione</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prima-parte-variabili-funzioni.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Le variabili e le funzioni</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prima-parte-modello-dati.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Il modello dati dei linguaggi di programmazione</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prima-parte-altri-concetti-semantici.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Altri concetti semantici dei linguaggi di programmazione</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./seconda-parte.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Seconda parte: Le basi di Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-python-introduzione.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduzione a Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-python-installazione.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-python-sintassi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">La sintassi</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-python-modello-dati.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Il modello dati</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-esercizi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Esercizi</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendici</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendice-riferimenti.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Riferimenti</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#perché-python-è-un-linguaggio-di-alto-livello" id="toc-perché-python-è-un-linguaggio-di-alto-livello" class="nav-link active" data-scroll-target="#perché-python-è-un-linguaggio-di-alto-livello"><span class="header-section-number">7.1</span> Perché Python è un linguaggio di alto livello?</a></li>
+  <li><a href="#python-come-linguaggio-multiparadigma" id="toc-python-come-linguaggio-multiparadigma" class="nav-link" data-scroll-target="#python-come-linguaggio-multiparadigma"><span class="header-section-number">7.2</span> Python come linguaggio multiparadigma</a></li>
+  <li><a href="#regole-formali-e-esperienziali" id="toc-regole-formali-e-esperienziali" class="nav-link" data-scroll-target="#regole-formali-e-esperienziali"><span class="header-section-number">7.3</span> Regole formali e esperienziali</a></li>
+  <li><a href="#lecosistema" id="toc-lecosistema" class="nav-link" data-scroll-target="#lecosistema"><span class="header-section-number">7.4</span> L’ecosistema</a>
+  <ul class="collapse">
+  <li><a href="#linterprete" id="toc-linterprete" class="nav-link" data-scroll-target="#linterprete"><span class="header-section-number">7.4.1</span> L’interprete</a></li>
+  <li><a href="#lambiente-di-sviluppo" id="toc-lambiente-di-sviluppo" class="nav-link" data-scroll-target="#lambiente-di-sviluppo"><span class="header-section-number">7.4.2</span> L’ambiente di sviluppo</a></li>
+  <li><a href="#le-librerie-standard" id="toc-le-librerie-standard" class="nav-link" data-scroll-target="#le-librerie-standard"><span class="header-section-number">7.4.3</span> Le librerie standard</a></li>
+  <li><a href="#moduli-di-estensione" id="toc-moduli-di-estensione" class="nav-link" data-scroll-target="#moduli-di-estensione"><span class="header-section-number">7.4.4</span> Moduli di estensione</a></li>
+  <li><a href="#le-utility-e-gli-strumenti-aggiuntivi" id="toc-le-utility-e-gli-strumenti-aggiuntivi" class="nav-link" data-scroll-target="#le-utility-e-gli-strumenti-aggiuntivi"><span class="header-section-number">7.4.5</span> Le utility e gli strumenti aggiuntivi</a></li>
+  </ul></li>
+  <li><a href="#un-esempio-di-algorimo-in-python-il-bubble-sort" id="toc-un-esempio-di-algorimo-in-python-il-bubble-sort" class="nav-link" data-scroll-target="#un-esempio-di-algorimo-in-python-il-bubble-sort"><span class="header-section-number">7.5</span> Un esempio di algorimo in Python: il bubble sort</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/seconda-parte-python-introduzione.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./seconda-parte.html">Seconda parte: Le basi di Python</a></li><li class="breadcrumb-item"><a href="./seconda-parte-python-introduzione.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduzione a Python</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduzione a Python</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Python è un linguaggio di programmazione multiparadigma, cioè abilita o supporta più paradigmi di programmazione, e multipiattaforma, potendo essere installato e utilizzato su gran parte dei sistemi operativi e hardware.</p>
+<p>La storia di Python inizia colla pubblicazione del codice sorgente, da parte del suo creatore Guido van Rossum, nel 1991, nella versione 0.9.0. Circa tre anni dopo, nel 1994, raggiungerà la prima versione definitiva, quindi nove anni dopo il C++ e un anno prima di PHP e due rispetto a Java.</p>
+<p>Python offre una combinazione unica di eleganza, semplicità, praticità e versatilità. Questa eleganza e semplicità derivano dal fatto che è stato progettato per essere molto simile al linguaggio naturale inglese, rendendo il codice leggibile e comprensibile. La sintassi di Python è pulita e minimalista, evitando simboli superflui come parentesi graffe e punti e virgola, e utilizzando indentazioni per definire blocchi di codice, il che forza una struttura coerente e essenziale. La semantica del linguaggio è intuitiva e coerente, il che riduce la curva di apprendimento e minimizza gli errori, anche per programmatori non professionali.</p>
+<p>Python è gestito dalla Python Software Foundation (PSF), un’organizzazione no-profit che si occupa dello sviluppo e della promozione del linguaggio. Il sito ufficiale di Python, <a href="https://www.python.org">python.org</a>, è la risorsa principale dove è possibile trovare la documentazione ufficiale, scaricare il linguaggio, e accedere a tutorial, guide e altre risorse utili.</p>
+<p>Il processo di aggiornamento di Python è trasparente e comunitario. Le proposte di miglioramento del linguaggio vengono discusse attraverso le <em>Python Enhancement Proposals</em> (proposte di aggiornamento di Python, PEP), documenti di design che forniscono informazioni alle comunità di Python su nuove funzionalità proposte, miglioramenti al linguaggio e altre questioni correlate. Le PEP vengono valutate e accettate da un comitato di sviluppo centrale.</p>
+<p>Python è distribuito sotto la Python Software Foundation License, una licenza open-source che consente l’uso, la modifica e la distribuzione del linguaggio senza costi. Questa licenza garantisce che Python rimanga libero e accessibile a tutti, permettendo l’uso commerciale e non commerciale. Per quanto riguarda i documenti e la documentazione, essi sono generalmente distribuiti sotto la licenza Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA), che consente di condividere e adattare il materiale, purché venga attribuito correttamente, non sia utilizzato per scopi commerciali e sia distribuito con la stessa licenza.</p>
+<p>Tecnicamente, Python è un linguaggio interpretato e dinamico. Essere interpretato significa che il codice sorgente di Python viene eseguito direttamente dall’interprete, senza la necessità di una fase di compilazione separata. Questo offre vantaggi come la facilità di esecuzione del codice e il supporto per il debugging interattivo, ma può comportare una velocità di esecuzione inferiore rispetto ai linguaggi compilati.</p>
+<p>Essere dinamico significa che molti aspetti del linguaggio, come i tipi delle variabili, vengono determinati a runtime piuttosto che a compile-time. Questo consente una maggiore flessibilità e facilita lo sviluppo rapido, poiché non è necessario dichiarare esplicitamente i tipi di variabili. Tuttavia, questo approccio può anche portare a errori di tipo che vengono rilevati solo durante l’esecuzione del programma.</p>
+<p>Diventerai rapidamente produttivo con Python grazie alla sua coerenza e regolarità, alla sua ricca libreria standard e ai numerosi pacchetti e strumenti di terze parti prontamente disponibili. Python è facile da imparare, quindi è molto adatto se sei nuovo alla programmazione, ma è anche potente abbastanza per i più sofisticati esperti. Questa semplicità ha attratto una comunità ampia e attiva che ha contribuito sia alle librerie di programmi incluse nell’implementazione ufficiale, che a molte librerie scaricabili liberamente, ampliando ulteriormente l’ecosistema di Python.</p>
+<section id="perché-python-è-un-linguaggio-di-alto-livello" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="perché-python-è-un-linguaggio-di-alto-livello"><span class="header-section-number">7.1</span> Perché Python è un linguaggio di alto livello?</h2>
+<p>Python è considerato un linguaggio di programmazione di alto livello, cioè utilizza un livello di astrazione elevato rispetto alla complessità dell’ambiente in cui i suoi programmi sono eseguiti. Il programmatore ha a disposizione una sintassi che è più intuitiva rispetto ad altri linguaggi come Java, C++, PHP tradizionalmente anch’essi definiti di alto livello.</p>
+<p>Infatti, consente ai programmatori di scrivere codice in modo più concettuale e indipendente dalle caratteristiche degli hardware, anche molto diversi, su cui è disponibile. Ad esempio, invece di preoccuparsi di allocare e deallocare memoria manualmente, Python gestisce queste operazioni automaticamente. Questo libera il programmatore dai dettagli del sistema operativo e dell’elettronica, permettendogli di concentrarsi sulla logica del problema da risolvere.</p>
+<p>Ciò ha un effetto importante sulla versatilità perché spesso è utilizzato come <em>interfaccia utente</em> per linguaggi di livello più basso come C, C++ o Fortran. Questo permette a Python di sfruttare le prestazioni dei linguaggi compilati per le parti critiche e computazionalmente intensive del codice, mantenendo al contempo una sintassi semplice e leggibile per la maggior parte del programma. Buoni compilatori per i linguaggi compilati classici possono sì generare codice binario che gira più velocemente di Python, tuttavia, nella maggior parte dei casi, le prestazioni delle applicazioni codificate in Python sono sufficienti.</p>
+</section>
+<section id="python-come-linguaggio-multiparadigma" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="python-come-linguaggio-multiparadigma"><span class="header-section-number">7.2</span> Python come linguaggio multiparadigma</h2>
+<p>Python è un linguaggio di programmazione multiparadigma, il che significa che supporta diversi paradigmi di programmazione, permettendo di mescolare e combinare gli stili a seconda delle necessità dell’applicazione. Ecco alcuni dei paradigmi supportati da Python:</p>
+<ul>
+<li><p>Programmazione imperativa: Puoi scrivere ed eseguire script Python direttamente dalla linea di comando, permettendo un approccio interattivo e immediato alla programmazione, come se fosse una calcolatrice.</p></li>
+<li><p>Programmazione procedurale: In Python, è possibile organizzare il codice in funzioni e moduli, rendendo più semplice la gestione e la riutilizzabilità del codice. Puoi raccogliere il codice in file separati e importarli come moduli, migliorando la struttura e la leggibilità del programma.</p></li>
+<li><p>Programmazione orientata agli oggetti: Python supporta pienamente la programmazione orientata agli oggetti, consentendo la definizione di classi e oggetti. Questo paradigma è utile per modellare dati complessi e relazioni tra essi. Le caratteristiche orientate agli oggetti di Python sono concettualmente simili a quelle del C++, ma più semplici da usare.</p></li>
+<li><p>Programmazione funzionale: Python include funzionalità di programmazione funzionale, come funzioni di prima classe e di ordine superiore, lambda e strumenti come <code>map</code>, <code>filter</code> e <code>reduce</code>.</p></li>
+</ul>
+<p>Questa flessibilità rende Python adatto a una vasta gamma di applicazioni e consente ai programmatori di scegliere l’approccio più adatto al problema da risolvere.</p>
+</section>
+<section id="regole-formali-e-esperienziali" class="level2 page-columns page-full" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="regole-formali-e-esperienziali"><span class="header-section-number">7.3</span> Regole formali e esperienziali</h2>
+<p>Python non è solo un linguaggio con regole sintattiche precise e ben progettate, ma possiede anche una propria filosofia, un insieme di regole di buon senso esperienziali che sono complementari alla sintassi formale. Questa filosofia è spesso riassunta nel <strong>zen di Python</strong>, una raccolta di aforismi che catturano i principi fondamentali del design di Python. Tali principi aiutano i programmatori a comprendere e utilizzare al meglio le potenzialità del linguaggio e dell’ecosistema Python.</p>
+<p>Ecco alcuni dei principi dello zen di Python<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;<a href="https://peps.python.org/pep-0020/">PEP 20 – The Zen of Python</a></p></div></div><ul>
+<li><p>La leggibilità conta: Il codice dovrebbe essere scritto in modo che sia facile da leggere e comprendere.</p></li>
+<li><p>Esplicito è meglio di implicito: È preferibile scrivere codice chiaro e diretto piuttosto che utilizzare scorciatoie criptiche.</p></li>
+<li><p>Semplice è meglio di complesso: Il codice dovrebbe essere il più semplice possibile per risolvere il problema.</p></li>
+<li><p>Complesso è meglio di complicato: Quando la semplicità non è sufficiente, la complessità è accettabile, ma il codice non dovrebbe mai essere complicato.</p></li>
+<li><p>Pratico batte puro: Le soluzioni pragmatiche sono preferibili alle soluzioni eleganti ma poco pratiche.</p></li>
+</ul>
+<p>Questi principi, insieme alle regole sintattiche, guidano il programmatore nell’adottare buone pratiche di sviluppo e nel creare codice che sia non solo funzionale ma anche mantenibile e comprensibile da altri.</p>
+</section>
+<section id="lecosistema" class="level2 page-columns page-full" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="lecosistema"><span class="header-section-number">7.4</span> L’ecosistema</h2>
+<p>Fino ad ora abbiamo visto Python come linguaggio, ma è molto di più: Python è anche una vasta collezione di strumenti e risorse a disposizione degli sviluppatori, strutturata in un ecosistema completo, di cui il linguaggio ne rappresenta la parte formale. Questo ecosistema è disponibile completamente, anche come sorgente, sul sito ufficiale <a href="https://www.python.org/">python.org</a>.</p>
+<section id="linterprete" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="linterprete"><span class="header-section-number">7.4.1</span> L’interprete</h3>
+<p>L’interprete Python è lo strumento di esecuzione dei programmi. È il software che legge ed esegue il codice Python. Python è un linguaggio interpretato, il che significa che il codice viene eseguito direttamente dall’interprete, senza bisogno di essere compilato in un linguaggio macchina. Esistono diverse implementazioni dell’interprete Python:</p>
+<ul>
+<li><p><strong>CPython</strong>: L’implementazione di riferimento dell’interprete Python, scritta in C. È la versione più utilizzata e quella ufficiale.</p></li>
+<li><p>PyPy: Un interprete alternativo che utilizza tecniche di compilazione just-in-time (JIT) per migliorare le prestazioni.</p></li>
+<li><p>Jython: Un’implementazione di Python che gira sulla JVM (Java Virtual Machine).</p></li>
+<li><p>IronPython: Un’implementazione di Python integrata col .NET Framework della Microsoft.</p></li>
+</ul>
+</section>
+<section id="lambiente-di-sviluppo" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="lambiente-di-sviluppo"><span class="header-section-number">7.4.2</span> L’ambiente di sviluppo</h3>
+<p>IDLE (integrated development and learning environment) è l’ambiente di sviluppo integrato ufficiale per Python. È incluso nell’installazione standard di Python ed è progettato per essere semplice e facile da usare, ideale per i principianti. Offre diverse funzionalità utili:</p>
+<ul>
+<li><p>Editor di codice: Con evidenziazione della sintassi, indentazione automatica e controllo degli errori.</p></li>
+<li><p>Shell interattiva: Permette di eseguire codice Python in modo interattivo.</p></li>
+<li><p>Strumenti di debug: Include un debugger integrato con punti di interruzione e stepping.</p></li>
+</ul>
+</section>
+<section id="le-librerie-standard" class="level3 page-columns page-full" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="le-librerie-standard"><span class="header-section-number">7.4.3</span> Le librerie standard</h3>
+<p>Una delle caratteristiche più potenti di Python è il vasto insieme di librerie<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> utilizzabili in CPython e IDLE, che fornisce moduli e pacchetti per quasi ogni necessità di programmazione. Alcuni esempi, tra le decine e al solo allo scopo di illustrarne la varietà, includono:</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;<a href="https://docs.python.org/3/library/index.html">Documentazione delle librerie standard di Python</a></p></div></div><ul>
+<li><p><code>os</code>: Fornisce funzioni per interagire con il sistema operativo.</p></li>
+<li><p><code>sys</code>: Offre accesso a funzioni e oggetti del runtime di Python.</p></li>
+<li><p><code>datetime</code>: Consente di lavorare con date e orari.</p></li>
+<li><p><code>json</code>: Permette di leggere e scrivere dati in formato JSON.</p></li>
+<li><p><code>re</code>: Supporta la manipolazione di stringhe tramite espressioni regolari.</p></li>
+<li><p><code>http</code>: Include moduli per l’implementazione di client e server HTTP.</p></li>
+<li><p><code>unittest</code>: Fornisce un framework per il testing del codice.</p></li>
+<li><p><code>math</code> e <code>cmath</code>: Contengono funzioni matematiche di base e complesse.</p></li>
+<li><p><code>itertools</code>, <code>functools</code>, <code>operator</code>: Offrono supporto per il paradigma di programmazione funzionale.</p></li>
+<li><p><code>csv</code>: Gestisce la lettura e scrittura di file CSV.</p></li>
+<li><p><code>typing</code>: Fornisce supporto per l’annotazione dei tipi di variabili, funzioni e classi.</p></li>
+<li><p><code>email</code>: Permette di creare, gestire e inviare email, facilitando la manipolazione di messaggi email MIME.</p></li>
+<li><p><code>hashlib</code>: Implementa algoritmi di hash sicuri come SHA-256 e MD5.</p></li>
+<li><p><code>asyncio</code>: Supporta la programmazione asincrona per la scrittura di codice concorrente e a bassa latenza.</p></li>
+<li><p><code>wave</code>: Fornisce strumenti per leggere e scrivere file audio WAV.</p></li>
+</ul>
+</section>
+<section id="moduli-di-estensione" class="level3" data-number="7.4.4">
+<h3 data-number="7.4.4" class="anchored" data-anchor-id="moduli-di-estensione"><span class="header-section-number">7.4.4</span> Moduli di estensione</h3>
+<p>Python supporta l’estensione del suo core tramite moduli scritti in C, C++ o altri linguaggi. Questi moduli permettono di ottimizzare parti critiche del codice o di interfacciarsi con librerie e API esterne:</p>
+<ul>
+<li><p><strong>Cython</strong>: Permette di scrivere moduli C estesi utilizzando una sintassi simile a Python. Cython è ampiamente utilizzato per migliorare le prestazioni di parti critiche del codice, specialmente in applicazioni scientifiche e di calcolo numerico. Ad esempio, molte librerie scientifiche popolari come SciPy e scikit-learn utilizzano Cython per accelerare le operazioni computazionalmente intensive.</p></li>
+<li><p><strong>ctypes</strong>: Permette di chiamare funzioni in librerie dinamiche C direttamente da Python. È utile per interfacciarsi con librerie esistenti scritte in C, rendendo Python estremamente versatile per l’integrazione con altre tecnologie. Ciò è utile in applicazioni che devono interfacciarsi con hardware specifico o utilizzare librerie legacy.</p></li>
+<li><p><strong>CFFI</strong> (C Foreign Function Interface): Un’altra interfaccia per chiamare librerie C da Python. È progettata per essere facile da usare e per supportare l’uso di librerie C complesse con Python. CFFI è utilizzato in progetti come PyPy e gevent, permettendo di scrivere codice ad alte prestazioni e di gestire le chiamate a funzioni C in modo efficiente.</p></li>
+</ul>
+</section>
+<section id="le-utility-e-gli-strumenti-aggiuntivi" class="level3" data-number="7.4.5">
+<h3 data-number="7.4.5" class="anchored" data-anchor-id="le-utility-e-gli-strumenti-aggiuntivi"><span class="header-section-number">7.4.5</span> Le utility e gli strumenti aggiuntivi</h3>
+<p>Python include anche una serie di strumenti e utility che facilitano lo sviluppo e la gestione dei progetti:</p>
+<ul>
+<li><p><strong>pip</strong>: Il gestore dei pacchetti di Python. Permette di installare e gestire moduli aggiuntivi, cioè non inclusi nello standard.</p></li>
+<li><p><strong>venv</strong>: Uno strumento per creare ambienti virtuali isolati, che permettono di gestire separatamente le dipendenze di diversi progetti.</p></li>
+<li><p>Documentazione: Python include una documentazione dettagliata, accessibile tramite il comando pydoc o attraverso il sito ufficiale.</p></li>
+</ul>
+</section>
+</section>
+<section id="un-esempio-di-algorimo-in-python-il-bubble-sort" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="un-esempio-di-algorimo-in-python-il-bubble-sort"><span class="header-section-number">7.5</span> Un esempio di algorimo in Python: il bubble sort</h2>
+<p>Per chiudere il capitolo sul primo approccio a Python, possiamo confrontare un algoritmo, di bassa complessità ma non triviale, in diversi linguaggi di programmazione. Un buon esempio potrebbe essere l’implementazione dell’algoritmo di ordinamento <em>bubble sort</em> di una lista di valori. Vediamo come viene scritto in Python, C, C++, Java, Rust e Scala:</p>
+<ul>
+<li><p>Python in versione procedurale:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> bubble_sort(arr):</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb1-6"><a href="#cb1-6"></a>      <span class="cf">if</span> arr[j] <span class="op">&gt;</span> arr[j<span class="op">+</span><span class="dv">1</span>]:</span>
+<span id="cb1-7"><a href="#cb1-7"></a>        arr[j], arr[j<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> arr[j<span class="op">+</span><span class="dv">1</span>], arr[j]</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a>bubble_sort(arr)</span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="bu">print</span>(<span class="st">"Array ordinato con bubble sort: "</span>, arr)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Python in versione sintatticamente orientata agli oggetti, ma praticamente procedurale:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">class</span> BubbleSort:</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="at">@staticmethod</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="kw">def</span> bubble_sort(arr):</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb2-7"><a href="#cb2-7"></a>      <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb2-8"><a href="#cb2-8"></a>        <span class="cf">if</span> arr[j] <span class="op">&gt;</span> arr[j<span class="op">+</span><span class="dv">1</span>]:</span>
+<span id="cb2-9"><a href="#cb2-9"></a>          arr[j], arr[j<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> arr[j<span class="op">+</span><span class="dv">1</span>], arr[j]</span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
+<span id="cb2-13"><a href="#cb2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14"></a>BubbleSort.bubble_sort(arr)</span>
+<span id="cb2-15"><a href="#cb2-15"></a></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="bu">print</span>(<span class="st">"Array ordinato con bubble sort: "</span>, arr)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Python in versione orientata agli oggetti, con una interfaccia di ordinamento implementata con due algoritmi (bubble e insertion sort):</p>
+<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a><span class="im">from</span> abc <span class="im">import</span> ABC, abstractmethod</span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2"></a></span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3"></a><span class="co"># Classe astratta per algoritmi di ordinamento</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4"></a><span class="kw">class</span> SortAlgorithm(ABC):</span>
+<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, arr):</span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6"></a>    <span class="va">self</span>._arr <span class="op">=</span> arr</span>
+<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7"></a></span>
+<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8"></a>  <span class="at">@abstractmethod</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-3-9" class="code-annotation-target"><a href="#annotated-cell-3-9"></a>  <span class="kw">def</span> sort(<span class="va">self</span>):</span>
+<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10"></a>    <span class="co"># Metodo astratto che deve essere implementato dalle sottoclassi</span></span>
+<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11"></a>    <span class="cf">pass</span></span>
+<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12"></a></span>
+<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13"></a>  <span class="kw">def</span> get_array(<span class="va">self</span>):</span>
+<span id="annotated-cell-3-14"><a href="#annotated-cell-3-14"></a>    <span class="co"># Metodo per ottenere l'array corrente</span></span>
+<span id="annotated-cell-3-15"><a href="#annotated-cell-3-15"></a>    <span class="cf">return</span> <span class="va">self</span>._arr</span>
+<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16"></a></span>
+<span id="annotated-cell-3-17"><a href="#annotated-cell-3-17"></a>  <span class="kw">def</span> set_array(<span class="va">self</span>, arr):</span>
+<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18"></a>    <span class="co"># Metodo per impostare un nuovo array</span></span>
+<span id="annotated-cell-3-19"><a href="#annotated-cell-3-19"></a>    <span class="va">self</span>._arr <span class="op">=</span> arr</span>
+<span id="annotated-cell-3-20"><a href="#annotated-cell-3-20"></a></span>
+<span id="annotated-cell-3-21"><a href="#annotated-cell-3-21"></a><span class="co"># Implementazione dell'algoritmo di bubble sort</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-3-22" class="code-annotation-target"><a href="#annotated-cell-3-22"></a><span class="kw">class</span> BubbleSort(SortAlgorithm):</span>
+<span id="annotated-cell-3-23"><a href="#annotated-cell-3-23"></a>  <span class="kw">def</span> sort(<span class="va">self</span>):</span>
+<span id="annotated-cell-3-24"><a href="#annotated-cell-3-24"></a>    n <span class="op">=</span> <span class="bu">len</span>(<span class="va">self</span>._arr)</span>
+<span id="annotated-cell-3-25"><a href="#annotated-cell-3-25"></a></span>
+<span id="annotated-cell-3-26"><a href="#annotated-cell-3-26"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="annotated-cell-3-27"><a href="#annotated-cell-3-27"></a>      <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="annotated-cell-3-28"><a href="#annotated-cell-3-28"></a>        <span class="cf">if</span> <span class="va">self</span>._arr[j] <span class="op">&gt;</span> <span class="va">self</span>._arr[j<span class="op">+</span><span class="dv">1</span>]:</span>
+<span id="annotated-cell-3-29"><a href="#annotated-cell-3-29"></a>          <span class="va">self</span>._arr[j], <span class="va">self</span>._arr[j<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> <span class="va">self</span>._arr[j<span class="op">+</span><span class="dv">1</span>], <span class="va">self</span>._arr[j]</span>
+<span id="annotated-cell-3-30"><a href="#annotated-cell-3-30"></a></span>
+<span id="annotated-cell-3-31"><a href="#annotated-cell-3-31"></a><span class="co"># Implementazione dell'algoritmo di insertion sort</span></span>
+<span id="annotated-cell-3-32"><a href="#annotated-cell-3-32"></a><span class="kw">class</span> InsertionSort(SortAlgorithm):</span>
+<span id="annotated-cell-3-33"><a href="#annotated-cell-3-33"></a>  <span class="kw">def</span> sort(<span class="va">self</span>):</span>
+<span id="annotated-cell-3-34"><a href="#annotated-cell-3-34"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(<span class="va">self</span>._arr)):</span>
+<span id="annotated-cell-3-35"><a href="#annotated-cell-3-35"></a>      key <span class="op">=</span> <span class="va">self</span>._arr[i]</span>
+<span id="annotated-cell-3-36"><a href="#annotated-cell-3-36"></a></span>
+<span id="annotated-cell-3-37"><a href="#annotated-cell-3-37"></a>      j <span class="op">=</span> i <span class="op">-</span> <span class="dv">1</span></span>
+<span id="annotated-cell-3-38"><a href="#annotated-cell-3-38"></a></span>
+<span id="annotated-cell-3-39"><a href="#annotated-cell-3-39"></a>      <span class="cf">while</span> j <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> key <span class="op">&lt;</span> <span class="va">self</span>._arr[j]:</span>
+<span id="annotated-cell-3-40"><a href="#annotated-cell-3-40"></a>        <span class="va">self</span>._arr[j <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> <span class="va">self</span>._arr[j]</span>
+<span id="annotated-cell-3-41"><a href="#annotated-cell-3-41"></a></span>
+<span id="annotated-cell-3-42"><a href="#annotated-cell-3-42"></a>        j <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="annotated-cell-3-43"><a href="#annotated-cell-3-43"></a></span>
+<span id="annotated-cell-3-44"><a href="#annotated-cell-3-44"></a>      <span class="va">self</span>._arr[j <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> key</span>
+<span id="annotated-cell-3-45"><a href="#annotated-cell-3-45"></a></span>
+<span id="annotated-cell-3-46"><a href="#annotated-cell-3-46"></a><span class="co"># Esempio di utilizzo con bubble sort</span></span>
+<span id="annotated-cell-3-47"><a href="#annotated-cell-3-47"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
+<span id="annotated-cell-3-48"><a href="#annotated-cell-3-48"></a></span>
+<span id="annotated-cell-3-49"><a href="#annotated-cell-3-49"></a>bubble_sorter <span class="op">=</span> BubbleSort(arr)</span>
+<span id="annotated-cell-3-50"><a href="#annotated-cell-3-50"></a></span>
+<span id="annotated-cell-3-51"><a href="#annotated-cell-3-51"></a>bubble_sorter.sort()</span>
+<span id="annotated-cell-3-52"><a href="#annotated-cell-3-52"></a></span>
+<span id="annotated-cell-3-53"><a href="#annotated-cell-3-53"></a><span class="bu">print</span>(<span class="st">"Array ordinato con bubble sort: "</span>, bubble_sorter.get_array())</span>
+<span id="annotated-cell-3-54"><a href="#annotated-cell-3-54"></a></span>
+<span id="annotated-cell-3-55"><a href="#annotated-cell-3-55"></a><span class="co"># Esempio di utilizzo con insertion sort</span></span>
+<span id="annotated-cell-3-56"><a href="#annotated-cell-3-56"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
+<span id="annotated-cell-3-57"><a href="#annotated-cell-3-57"></a></span>
+<span id="annotated-cell-3-58"><a href="#annotated-cell-3-58"></a>insertion_sorter <span class="op">=</span> InsertionSort(arr)</span>
+<span id="annotated-cell-3-59"><a href="#annotated-cell-3-59"></a></span>
+<span id="annotated-cell-3-60"><a href="#annotated-cell-3-60"></a>insertion_sorter.sort()</span>
+<span id="annotated-cell-3-61"><a href="#annotated-cell-3-61"></a></span>
+<span id="annotated-cell-3-62"><a href="#annotated-cell-3-62"></a><span class="bu">print</span>(<span class="st">"Array ordinato con insertion sort: "</span>, insertion_sorter.get_array())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Importiamo <code>ABC</code> e <code>abstractmethod</code> dal modulo <code>abc</code> per definire la classe astratta.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="2"><code>SortAlgorithm</code> è una classe astratta che rappresenta l’interfaccia di algoritmi di ordinamento.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="9" data-code-annotation="3"><code>sort</code> è un metodo astratto che deve essere implementato nelle sottoclassi.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="22" data-code-annotation="4"><code>BubbleSort</code> è una sottoclasse di <code>SortAlgorithm</code> che implementa l’algoritmo di ordinamento a bolle. Idem per <code>InsertionSort</code>.</span>
+</dd>
+</dl></li>
+<li><p>Python in versione funzionale:</p>
+<div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1"></a><span class="kw">def</span> bubble_sort(arr):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2"></a>  <span class="kw">def</span> sort_pass(arr, n):</span>
+<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4"></a>      <span class="cf">return</span> arr</span>
+<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-4-6" class="code-annotation-target"><a href="#annotated-cell-4-6"></a>    new_arr <span class="op">=</span> arr[:]</span>
+<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7"></a></span>
+<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9"></a>      <span class="cf">if</span> new_arr[i] <span class="op">&gt;</span> new_arr[i <span class="op">+</span> <span class="dv">1</span>]:</span>
+<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10"></a>        new_arr[i], new_arr[i <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> new_arr[i <span class="op">+</span> <span class="dv">1</span>], new_arr[i]</span>
+<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-4-12" class="code-annotation-target"><a href="#annotated-cell-4-12"></a>    <span class="cf">return</span> sort_pass(new_arr, n <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="annotated-cell-4-13"><a href="#annotated-cell-4-13"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-4-14" class="code-annotation-target"><a href="#annotated-cell-4-14"></a>  <span class="cf">return</span> sort_pass(arr, <span class="bu">len</span>(arr))</span>
+<span id="annotated-cell-4-15"><a href="#annotated-cell-4-15"></a></span>
+<span id="annotated-cell-4-16"><a href="#annotated-cell-4-16"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="annotated-cell-4-17"><a href="#annotated-cell-4-17"></a>arr <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
+<span id="annotated-cell-4-18"><a href="#annotated-cell-4-18"></a></span>
+<span id="annotated-cell-4-19"><a href="#annotated-cell-4-19"></a>sorted_arr <span class="op">=</span> bubble_sort(arr)</span>
+<span id="annotated-cell-4-20"><a href="#annotated-cell-4-20"></a></span>
+<span id="annotated-cell-4-21"><a href="#annotated-cell-4-21"></a><span class="bu">print</span>(<span class="st">"Sorted array is:"</span>, sorted_arr)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="1">All’interno di <code>bubble_sort</code>, è definita una funzione interna <code>sort_pass</code> che esegue un singolo passaggio dell’algoritmo di ordinamento a bolle.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="6" data-code-annotation="2">Viene creata una copia dell’array arr chiamata <code>new_arr</code>. Poi, per ogni coppia di elementi <code>(new_arr[i], new_arr[i + 1])</code>, se <code>new_arr[i]</code> è maggiore di <code>new_arr[i + 1]</code>, vengono scambiati.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="12" data-code-annotation="3">La funzione <code>sort_pass</code> viene chiamata ricorsivamente con <code>new_arr</code> e decrementando n di 1.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="14" data-code-annotation="4">La funzione <code>bubble_sort</code> avvia il processo chiamando <code>sort_pass</code> con l’array completo e la sua lunghezza.</span>
+</dd>
+</dl></li>
+<li><p>C:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="dt">void</span> bubble_sort<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="dt">int</span> i<span class="op">,</span> j<span class="op">,</span> temp<span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>    <span class="cf">for</span> <span class="op">(</span>j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>      <span class="cf">if</span> <span class="op">(</span>arr<span class="op">[</span>j<span class="op">]</span> <span class="op">&gt;</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>        temp <span class="op">=</span> arr<span class="op">[</span>j<span class="op">];</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a>        arr<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">];</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a></span>
+<span id="cb3-13"><a href="#cb3-13"></a>        arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> temp<span class="op">;</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>      <span class="op">}</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>    <span class="op">}</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>  <span class="op">}</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="op">}</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a>  <span class="dt">int</span> arr<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">};</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a>  <span class="dt">int</span> n <span class="op">=</span> <span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">)/</span><span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">[</span><span class="dv">0</span><span class="op">]);</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a></span>
+<span id="cb3-23"><a href="#cb3-23"></a>  bubble_sort<span class="op">(</span>arr<span class="op">,</span> n<span class="op">);</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a></span>
+<span id="cb3-25"><a href="#cb3-25"></a>  printf<span class="op">(</span><span class="st">"Array ordinato con bubble sort: "</span><span class="op">);</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a></span>
+<span id="cb3-27"><a href="#cb3-27"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%d</span><span class="st"> "</span><span class="op">,</span> arr<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a>  <span class="op">}</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a></span>
+<span id="cb3-31"><a href="#cb3-31"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>C++:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="kw">class</span> BubbleSort <span class="op">{</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="dt">void</span> sort<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>      <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>        <span class="cf">if</span> <span class="op">(</span>arr<span class="op">[</span>j<span class="op">]</span> <span class="op">&gt;</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>          <span class="dt">int</span> temp <span class="op">=</span> arr<span class="op">[</span>j<span class="op">];</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a></span>
+<span id="cb4-12"><a href="#cb4-12"></a>          arr<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">];</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a></span>
+<span id="cb4-14"><a href="#cb4-14"></a>          arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> temp<span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a>        <span class="op">}</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a>      <span class="op">}</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>    <span class="op">}</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a>  <span class="op">}</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a></span>
+<span id="cb4-20"><a href="#cb4-20"></a>  <span class="dt">void</span> printArray<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a>      cout <span class="op">&lt;&lt;</span> arr<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
+<span id="cb4-23"><a href="#cb4-23"></a>    <span class="op">}</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a></span>
+<span id="cb4-25"><a href="#cb4-25"></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a>  <span class="op">}</span></span>
+<span id="cb4-27"><a href="#cb4-27"></a><span class="op">};</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a></span>
+<span id="cb4-29"><a href="#cb4-29"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a>  <span class="dt">int</span> arr<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">};</span></span>
+<span id="cb4-31"><a href="#cb4-31"></a>  <span class="dt">int</span> n <span class="op">=</span> <span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">)/</span><span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">[</span><span class="dv">0</span><span class="op">]);</span></span>
+<span id="cb4-32"><a href="#cb4-32"></a></span>
+<span id="cb4-33"><a href="#cb4-33"></a>  BubbleSort bs<span class="op">;</span></span>
+<span id="cb4-34"><a href="#cb4-34"></a>  bs<span class="op">.</span>sort<span class="op">(</span>arr<span class="op">,</span> n<span class="op">);</span></span>
+<span id="cb4-35"><a href="#cb4-35"></a></span>
+<span id="cb4-36"><a href="#cb4-36"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">"Array ordinato con bubble sort: "</span><span class="op">;</span></span>
+<span id="cb4-37"><a href="#cb4-37"></a>  bs<span class="op">.</span>printArray<span class="op">(</span>arr<span class="op">,</span> n<span class="op">);</span></span>
+<span id="cb4-38"><a href="#cb4-38"></a></span>
+<span id="cb4-39"><a href="#cb4-39"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-40"><a href="#cb4-40"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Java:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">public</span> <span class="kw">class</span> BubbleSort <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">bubbleSort</span><span class="op">(</span><span class="dt">int</span> arr<span class="op">[])</span> <span class="op">{</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="dt">int</span> n <span class="op">=</span> arr<span class="op">.</span><span class="fu">length</span><span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a></span>
+<span id="cb5-6"><a href="#cb5-6"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>      <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>        <span class="cf">if</span> <span class="op">(</span>arr<span class="op">[</span>j<span class="op">]</span> <span class="op">&gt;</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a>          <span class="dt">int</span> temp <span class="op">=</span> arr<span class="op">[</span>j<span class="op">];</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a>          arr<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">];</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a></span>
+<span id="cb5-14"><a href="#cb5-14"></a>          arr<span class="op">[</span>j<span class="op">+</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> temp<span class="op">;</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a>        <span class="op">}</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a>      <span class="op">}</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a>    <span class="op">}</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a>  <span class="op">}</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a></span>
+<span id="cb5-20"><a href="#cb5-20"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span> args<span class="op">[])</span> <span class="op">{</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a>    <span class="dt">int</span> arr<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">};</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a></span>
+<span id="cb5-23"><a href="#cb5-23"></a>    <span class="fu">bubbleSort</span><span class="op">(</span>arr<span class="op">);</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a></span>
+<span id="cb5-25"><a href="#cb5-25"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Array ordinato con bubble sort: "</span><span class="op">);</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a></span>
+<span id="cb5-27"><a href="#cb5-27"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> arr<span class="op">.</span><span class="fu">length</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a>      <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span>arr<span class="op">[</span>i<span class="op">]</span> <span class="op">+</span> <span class="st">" "</span><span class="op">);</span></span>
+<span id="cb5-29"><a href="#cb5-29"></a>    <span class="op">}</span></span>
+<span id="cb5-30"><a href="#cb5-30"></a>  <span class="op">}</span></span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Rust:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource rust number-lines code-with-copy"><code class="sourceCode rust"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">fn</span> bubble_sort(arr<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> [<span class="dt">i32</span>]) <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="kw">let</span> n <span class="op">=</span> arr<span class="op">.</span>len()<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span>n <span class="op">{</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span>n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span> <span class="op">{</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>      <span class="cf">if</span> arr[j] <span class="op">&gt;</span> arr[j<span class="op">+</span><span class="dv">1</span>] <span class="op">{</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>        arr<span class="op">.</span>swap(j<span class="op">,</span> j<span class="op">+</span><span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>      <span class="op">}</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>    <span class="op">}</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>  <span class="op">}</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="op">}</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a>  <span class="kw">let</span> <span class="kw">mut</span> arr <span class="op">=</span> [<span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span>]<span class="op">;</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a></span>
+<span id="cb6-16"><a href="#cb6-16"></a>  bubble_sort(<span class="op">&amp;</span><span class="kw">mut</span> arr)<span class="op">;</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a></span>
+<span id="cb6-18"><a href="#cb6-18"></a>  <span class="pp">println!</span>(<span class="st">"Array ordinato con bubble sort: {:?}"</span><span class="op">,</span> arr)<span class="op">;</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Scala:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource scala number-lines code-with-copy"><code class="sourceCode scala"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">object</span> BubbleSort <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="kw">def</span> <span class="fu">bubbleSort</span><span class="op">(</span>arr<span class="op">:</span> <span class="ex">Array</span><span class="op">[</span><span class="bu">Int</span><span class="op">]):</span> <span class="bu">Unit</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>    <span class="kw">val</span> n <span class="op">=</span> arr<span class="op">.</span>length</span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">&lt;-</span> <span class="dv">0</span> until n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>      <span class="cf">for</span> <span class="op">(</span>j <span class="op">&lt;-</span> <span class="dv">0</span> until n <span class="op">-</span> i <span class="op">-</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>        <span class="cf">if</span> <span class="op">(</span><span class="fu">arr</span><span class="op">(</span>j<span class="op">)</span> <span class="op">&gt;</span> <span class="fu">arr</span><span class="op">(</span>j <span class="op">+</span> <span class="dv">1</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>          <span class="kw">val</span> temp <span class="op">=</span> <span class="fu">arr</span><span class="op">(</span>j<span class="op">)</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a></span>
+<span id="cb7-10"><a href="#cb7-10"></a>          <span class="fu">arr</span><span class="op">(</span>j<span class="op">)</span> <span class="op">=</span> <span class="fu">arr</span><span class="op">(</span>j <span class="op">+</span> <span class="dv">1</span><span class="op">)</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a></span>
+<span id="cb7-12"><a href="#cb7-12"></a>          <span class="fu">arr</span><span class="op">(</span>j <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">=</span> temp</span>
+<span id="cb7-13"><a href="#cb7-13"></a>        <span class="op">}</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a>      <span class="op">}</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a>    <span class="op">}</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a>  <span class="op">}</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a></span>
+<span id="cb7-18"><a href="#cb7-18"></a>  <span class="kw">def</span> <span class="fu">main</span><span class="op">(</span>args<span class="op">:</span> <span class="ex">Array</span><span class="op">[</span><span class="ex">String</span><span class="op">]):</span> <span class="bu">Unit</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a>    <span class="kw">val</span> arr <span class="op">=</span> <span class="ex">Array</span><span class="op">(</span><span class="dv">64</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">12</span><span class="op">,</span> <span class="dv">22</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">90</span><span class="op">)</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a></span>
+<span id="cb7-21"><a href="#cb7-21"></a>    <span class="fu">bubbleSort</span><span class="op">(</span>arr<span class="op">)</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a></span>
+<span id="cb7-23"><a href="#cb7-23"></a>    <span class="fu">println</span><span class="op">(</span><span class="st">"Array ordinato con bubble sort: "</span> <span class="op">+</span> arr<span class="op">.</span><span class="fu">mkString</span><span class="op">(</span><span class="st">", "</span><span class="op">))</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a>  <span class="op">}</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p>Confrontando questi esempi, possiamo osservare le differenze sintattiche e di stile tra Python ed altri, importanti, linguaggi. Python si distingue per la sua sintassi concisa e espressiva soprattutto nella versione procedurale. L’implementazione colla gerarchia di oggetti ha un piccolo incremento di complessità che è ripagato dalla possibilità di creare gerarchie di algoritmi di ordinamento, con impatti nulli sul codice preesistente.</p>
+<p>La versione procedurale in Python e l’implementazione C, già a primo acchito, presentano un evidente diverso grado di chiarezza del codice. Inoltre, la riga <code>int n = sizeof(arr)/sizeof(arr[0]);</code> in C si rende necessaria per calcolare il numero di valori a partire dalle dimensioni totale della lista e del singolo elemento, rispetto a <code>n = len(arr)</code> di Python, dove chiediamo direttamente il numero di valori.</p>
+<p>Il C++ e Java aggiungono caratteristiche relative agli oggetti e funzionalità di alto livello rispetto a C, al prezzo di una sintassi più complessa e verbosa. Rust e Scala sono linguaggi più moderni e si pongono nel mezzo tra C, C++ e Java e Python.</p>
+
+
+</section>
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiato!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiato!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./seconda-parte.html" class="pagination-link" aria-label="Seconda parte: Le basi di Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Seconda parte: Le basi di Python</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./seconda-parte-python-installazione.html" class="pagination-link" aria-label="Scaricare e installare Python">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./antonio.html">
+<p>Antonio Montano</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./come-collaborare.html">
+<p>Come collaborare</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://4m4.it">
+<p>4m4</p>
+</a>
+  </li>  
+</ul>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/seconda-parte-python-introduzione.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
