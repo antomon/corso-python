@@ -289,7 +289,7 @@ print(risultato)
 
 ## Soluzione 4
 
-Usiamo la funzione `divmod` che restituisce il quoziente e il resto della divisione di due interi.
+Usiamo la funzione `divmod` che restituisce il quoziente e il resto della divisione di due interi. Per ottenere documentazione su essa basterà digitare `help(divmod)` nel REPL.
 
 ```python
 def pari_o_dispari(n):
@@ -309,7 +309,7 @@ print(risultato)
 
 ## Sequenze
 
-### ➂ Rimozione di duplicati da una lista
+### ➂ Rimozione di duplicati da una lista preservando l'ordinamento
 
 ::: {.panel-tabset}
 
@@ -319,36 +319,165 @@ Scrivere una funzione che prende in input una lista e ne rimuove i duplicati, pr
 
 ## Soluzione 1
 
-Usiamo una seconda lista per travasare elementi non già presenti.
+Usiamo un ciclo `for` per iterare attraverso la lista originale e una lista di appoggio per memorizzare gli elementi unici. Gli elementi vengono aggiunti alla lista di appoggio solo se non sono già presenti in essa, preservando così l'ordine originale.
 
 ```python
 def rimuovi_duplicati(lista):
-    nuova_lista = []
+  lista_senza_duplicati = []
 
-    for elemento in lista:
-        if elemento not in nuova_lista:
-            nuova_lista.append(elemento)
+  for elemento in lista:
+    if elemento not in lista_senza_duplicati:
+      lista_senza_duplicati.append(elemento)
 
-    return nuova_lista
+  return lista_senza_duplicati
 
 # Esempio di utilizzo
-lista = [1, 2, 2, 3, 4, 4, 5]
+lista = [4, 2, 2, 3, 1, 4, 5]
 
-print(rimuovi_duplicati(lista))  # Output: [1, 2, 3, 4, 5]
+print(rimuovi_duplicati(lista)) 
 ```
 
 ## Soluzione 2
 
-Usiamo la proprietà dei dizionari di preservare l'ordine di inserimento.
+Usiamo un ciclo while per iterare attraverso la lista originale. Un `set` viene utilizzato per memorizzare gli elementi già visti e una lista di appoggio per memorizzare gli elementi unici. Gli elementi vengono aggiunti alla lista di appoggio solo se non sono già presenti nel `set`.
 
 ```python
 def rimuovi_duplicati(lista):
-    return list(dict.fromkeys(lista))
+  lista_senza_duplicati = []
+
+  visti = set()
+
+  i = 0
+  while i < len(lista):
+    if lista[i] not in visti:
+      lista_senza_duplicati.append(lista[i])
+
+      visti.add(lista[i])
+
+    i += 1
+
+  return lista_senza_duplicati
 
 # Esempio di utilizzo
-lista = [1, 2, 2, 3, 4, 4, 5]
+lista = [4, 2, 2, 3, 1, 4, 5]
 
-print(rimuovi_duplicati(lista))  # Output: [1, 2, 3, 4, 5]
+print(rimuovi_duplicati(lista)) 
+```
+
+## Soluzione 3
+
+Usiamo un dizionario per memorizzare gli elementi unici, sfruttando il fatto che i dizionari preservano l'ordine di inserimento a partire da Python 3.7. Gli elementi vengono aggiunti al dizionario come chiavi, e infine si restituisce la lista delle chiavi del dizionario.
+
+```python
+def rimuovi_duplicati(lista):
+  return list(dict.fromkeys(lista))
+
+# Esempio di utilizzo
+lista = [4, 2, 2, 3, 1, 4, 5]
+
+print(rimuovi_duplicati(lista)) 
+```
+
+## Soluzione 4
+
+Utilizziamo una list comprehension per creare una nuova lista. Un `set` viene usato per tenere traccia degli elementi già visti, e gli elementi vengono aggiunti alla lista finale solo se non sono già presenti nel `set`.
+
+```python
+def rimuovi_duplicati(lista):
+  return list(dict.fromkeys(lista))
+
+# Esempio di utilizzo
+lista = [4, 2, 2, 3, 1, 4, 5]
+
+print(rimuovi_duplicati(lista)) 
+```
+
+:::
+
+### ➂ Rimozione di duplicati da una lista e ordinamento
+
+::: {.panel-tabset}
+
+## Problema
+
+Scrivere una funzione che prende in input una lista e ne rimuove i duplicati, ordinando il risultato.
+
+## Soluzione 1
+
+Usiamo un ciclo `for` per iterare attraverso la lista originale e una lista di appoggio per memorizzare gli elementi unici. Gli elementi vengono aggiunti alla lista di appoggio solo se non sono già presenti in essa. Dopo aver rimosso i duplicati, ordiniamo la lista risultante.
+
+```python
+def rimuovi_duplicati(lista):
+  lista_senza_duplicati = []
+
+  for elemento in lista:
+    if elemento not in lista_senza_duplicati:
+      lista_senza_duplicati.append(elemento)
+
+  return sorted(lista_senza_duplicati)
+
+# Esempio di utilizzo
+lista = [4, 2, 2, 3, 1, 4, 5]
+
+print(rimuovi_duplicati(lista)) 
+```
+
+## Soluzione 2
+
+Usiamo un ciclo `while` per iterare attraverso la lista originale. Un `set` viene utilizzato per memorizzare gli elementi già visti e una lista di appoggio per memorizzare gli elementi unici. Gli elementi vengono aggiunti alla lista di appoggio solo se non sono già presenti nel `set`. Dopo aver rimosso i duplicati, ordiniamo la lista risultante.
+
+```python
+def rimuovi_duplicati(lista):
+  lista_senza_duplicati = []
+  visti = set()
+
+  i = 0
+  while i < len(lista):
+    if lista[i] not in visti:
+      lista_senza_duplicati.append(lista[i])
+
+      visti.add(lista[i])
+
+    i += 1
+
+  return sorted(lista_senza_duplicati)
+
+# Esempio di utilizzo
+lista = [4, 2, 2, 3, 1, 4, 5]
+
+print(rimuovi_duplicati(lista)) 
+```
+
+## Soluzione 3
+
+Usiamo un dizionario per memorizzare gli elementi unici, sfruttando il fatto che i dizionari preservano l'ordine di inserimento a partire da Python 3.7. Gli elementi vengono aggiunti al dizionario come chiavi. Dopo aver rimosso i duplicati, ordiniamo la lista delle chiavi del dizionario.
+
+```python
+def rimuovi_duplicati(lista):
+  return sorted(dict.fromkeys(lista))
+
+# Esempio di utilizzo
+lista = [4, 2, 2, 3, 1, 4, 5]
+
+print(rimuovi_duplicati(lista)) 
+```
+
+## Soluzione 4
+
+Utilizziamo una list comprehension per creare una nuova lista. Un `set` viene usato per tenere traccia degli elementi già visti, e gli elementi vengono aggiunti alla lista finale solo se non sono già presenti nel `set`. Dopo aver rimosso i duplicati, ordiniamo la lista risultante.
+
+```python
+def rimuovi_duplicati(lista):
+  visti = set()
+
+  lista_senza_duplicati = [x for x in lista if not (x in visti or visti.add(x))]
+
+  return sorted(lista_senza_duplicati)
+
+# Esempio di utilizzo
+lista = [4, 2, 2, 3, 1, 4, 5]
+
+print(rimuovi_duplicati(lista)) 
 ```
 
 :::

@@ -1,13 +1,7 @@
-lista = ['Python', 'è', 'fantastico']
+def rimuovi_duplicati(lista):
+  return list(dict.fromkeys(lista))
 
-so = "Esempio"
+# Esempio di utilizzo
+lista = [4, 2, 2, 3, 1, 4, 5]
 
-sn = so.join(lista)
-
-print(sn)  # Output: Python è fantastico
-
-tupla = ('Hello', 'World')
-s = ' '.join(tupla)
-print(s)  # Output: Hello World
-
-print(tuple(3))
+print(rimuovi_duplicati(lista)) 
