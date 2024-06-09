@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.41">
+<meta name="generator" content="quarto-1.5.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -340,17 +340,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#tipi-e-classi" id="toc-tipi-e-classi" class="nav-link" data-scroll-target="#tipi-e-classi"><span class="header-section-number">10.2</span> Tipi e classi</a>
   <ul class="collapse">
   <li><a href="#gerarchie-di-classi" id="toc-gerarchie-di-classi" class="nav-link" data-scroll-target="#gerarchie-di-classi"><span class="header-section-number">10.2.1</span> Gerarchie di classi</a></li>
+  <li><a href="#creazione-delloggetto" id="toc-creazione-delloggetto" class="nav-link" data-scroll-target="#creazione-delloggetto"><span class="header-section-number">10.2.2</span> Creazione dell’oggetto</a></li>
+  <li><a href="#accesso-a-attributi-e-metodi" id="toc-accesso-a-attributi-e-metodi" class="nav-link" data-scroll-target="#accesso-a-attributi-e-metodi"><span class="header-section-number">10.2.3</span> Accesso a attributi e metodi</a></li>
+  <li><a href="#mutabilità-e-immutabilità" id="toc-mutabilità-e-immutabilità" class="nav-link" data-scroll-target="#mutabilità-e-immutabilità"><span class="header-section-number">10.2.4</span> Mutabilità e immutabilità</a></li>
   </ul></li>
-  <li><a href="#creazione-delloggetto" id="toc-creazione-delloggetto" class="nav-link" data-scroll-target="#creazione-delloggetto"><span class="header-section-number">10.3</span> Creazione dell’oggetto</a>
+  <li><a href="#tipi-predefiniti" id="toc-tipi-predefiniti" class="nav-link" data-scroll-target="#tipi-predefiniti"><span class="header-section-number">10.3</span> Tipi predefiniti</a>
   <ul class="collapse">
-  <li><a href="#accesso-a-attributi-e-metodi" id="toc-accesso-a-attributi-e-metodi" class="nav-link" data-scroll-target="#accesso-a-attributi-e-metodi"><span class="header-section-number">10.3.1</span> Accesso a attributi e metodi</a></li>
-  <li><a href="#mutabilità-e-immutabilità" id="toc-mutabilità-e-immutabilità" class="nav-link" data-scroll-target="#mutabilità-e-immutabilità"><span class="header-section-number">10.3.2</span> Mutabilità e immutabilità</a></li>
-  </ul></li>
-  <li><a href="#tipi-predefiniti" id="toc-tipi-predefiniti" class="nav-link" data-scroll-target="#tipi-predefiniti"><span class="header-section-number">10.4</span> Tipi predefiniti</a>
-  <ul class="collapse">
-  <li><a href="#tipi-predefiniti-fondamentali" id="toc-tipi-predefiniti-fondamentali" class="nav-link" data-scroll-target="#tipi-predefiniti-fondamentali"><span class="header-section-number">10.4.1</span> Tipi predefiniti fondamentali</a></li>
-  <li><a href="#numeri" id="toc-numeri" class="nav-link" data-scroll-target="#numeri"><span class="header-section-number">10.4.2</span> Numeri</a></li>
-  <li><a href="#sequenze" id="toc-sequenze" class="nav-link" data-scroll-target="#sequenze"><span class="header-section-number">10.4.3</span> Sequenze</a></li>
+  <li><a href="#tipi-predefiniti-fondamentali" id="toc-tipi-predefiniti-fondamentali" class="nav-link" data-scroll-target="#tipi-predefiniti-fondamentali"><span class="header-section-number">10.3.1</span> Tipi predefiniti fondamentali</a></li>
+  <li><a href="#numeri" id="toc-numeri" class="nav-link" data-scroll-target="#numeri"><span class="header-section-number">10.3.2</span> Numeri</a></li>
+  <li><a href="#sequenze" id="toc-sequenze" class="nav-link" data-scroll-target="#sequenze"><span class="header-section-number">10.3.3</span> Sequenze</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/seconda-parte-python-modello-dati.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
@@ -447,9 +445,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 </section>
-</section>
-<section id="creazione-delloggetto" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="creazione-delloggetto"><span class="header-section-number">10.3</span> Creazione dell’oggetto</h2>
+<section id="creazione-delloggetto" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="creazione-delloggetto"><span class="header-section-number">10.2.2</span> Creazione dell’oggetto</h3>
 <p>Una volta definita una classe, si possono creare nuove istanze o oggetti di quella classe, il che rappresenta un modo efficiente per riutilizzare funzionalità nel proprio codice. Questo passaggio è spesso chiamato costruzione o <strong>istanziazione</strong> degli oggetti. Lo strumento responsabile per la specializzazione di questo processo, è comunemente noto come <strong>costruttore</strong> della classe.</p>
 <p>In Python, il costruttore è il metodo speciale <code>__init__</code> e può avere un numero arbitrario di parametri. Questo metodo viene eseguito automaticamente dall’interprete quando un nuovo oggetto della classe viene creato ed è il luogo possiamo scrivere delle istruzioni utili all’inizializzazione dell’oggetto, anche usando gli argomenti passati. La sintassi per l’istanziazione è data dall’identificatore della classe, seguita da una coppia di parentesi tonde, con all’interno l’elenco degli argomenti.</p>
 <p>Esempio:</p>
@@ -500,8 +497,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-3"><a href="#cb2-3"></a>lista_originale <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb2-4"><a href="#cb2-4"></a></span>
 <span id="cb2-5"><a href="#cb2-5"></a>lista_copiata <span class="op">=</span> copy.copy(lista_originale)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="accesso-a-attributi-e-metodi" class="level3" data-number="10.3.1">
-<h3 data-number="10.3.1" class="anchored" data-anchor-id="accesso-a-attributi-e-metodi"><span class="header-section-number">10.3.1</span> Accesso a attributi e metodi</h3>
+</section>
+<section id="accesso-a-attributi-e-metodi" class="level3" data-number="10.2.3">
+<h3 data-number="10.2.3" class="anchored" data-anchor-id="accesso-a-attributi-e-metodi"><span class="header-section-number">10.2.3</span> Accesso a attributi e metodi</h3>
 <p>In Python, si utilizza la notazione con il punto <code>.</code> per accedere agli attributi e ai metodi di un oggetto o di una classe, semplicemente accodando all’identificatore della variabile (che rappresenta un’istanza della classe) o a quello della classe, il punto e l’identificatore del membro (attributo o metodo).</p>
 <p>Le stringhe in Python sono oggetti della classe <code>str</code> e hanno sia attributi che metodi. Ad esempio, il metodo <code>upper()</code> converte una stringa in maiuscolo:</p>
 <div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1"></a>s <span class="op">=</span> <span class="st">"hello world"</span></span>
@@ -524,8 +522,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 </section>
-<section id="mutabilità-e-immutabilità" class="level3" data-number="10.3.2">
-<h3 data-number="10.3.2" class="anchored" data-anchor-id="mutabilità-e-immutabilità"><span class="header-section-number">10.3.2</span> Mutabilità e immutabilità</h3>
+<section id="mutabilità-e-immutabilità" class="level3" data-number="10.2.4">
+<h3 data-number="10.2.4" class="anchored" data-anchor-id="mutabilità-e-immutabilità"><span class="header-section-number">10.2.4</span> Mutabilità e immutabilità</h3>
 <p>Gli oggetti il cui valore può cambiare sono detti <strong>mutabili</strong>, mentre gli oggetti il cui valore non lo può una volta creati, sono chiamati <strong>immutabili</strong>. L’immutabilità di un oggetto è determinata dalla progettazione del suo tipo, ad esempio, per i tipi definiti nel linguaggio, numeri interi e in virgola mobile, stringhe e tuple sono immutabili, mentre dizionari e liste sono mutabili.</p>
 <p>Gli oggetti non vengono mai distrutti esplicitamente dall’utente, ma, quando diventano inaccessibili, possono essere raccolti dal garbage collector, che è eseguito contemporaneamente al codice del programma, come parte dell’interprete. L’implementazione specifica quando e come gli oggetti debbano essere distrutti.</p>
 <p>Alcuni oggetti contengono riferimenti a risorse <em>esterne</em> rispetto al programma, come file aperti, connessioni di rete, finestre (<em>graphical user interface</em>, GUI) o dispositivi hardware. Queste risorse generalmente non vengono liberate dal garbage collector, perché le azioni corrispondenti sono particolari della risorsa stessa, pertanto, i loro oggetti forniscono anche un metodo esplicito di rilascio, solitamente chiamato <code>close()</code>. È molto importante tener conto di ciò per evitare effetti indesiderati.</p>
@@ -634,13 +632,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>cioè l’oggetto lista ha due nomi nel programma.</p>
 </section>
 </section>
-<section id="tipi-predefiniti" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="tipi-predefiniti"><span class="header-section-number">10.4</span> Tipi predefiniti</h2>
+<section id="tipi-predefiniti" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="tipi-predefiniti"><span class="header-section-number">10.3</span> Tipi predefiniti</h2>
 <p>Python mette a disposizione molti tipi <em>generali</em>, cioè utili alla gestione di dati comunemente presenti in algoritmi. Esistono, inoltre, sia meccanismi di estensione della distribuzione Python che modificano l’installazione sul proprio computer, sia la possibilità conferita al programmatore di creare i propri tipi o di importarli da librerie prodotte da terze parti.</p>
 <p>I tipi predefiniti sono immediatamente disponibili, cioè non necessitano di alcuna azione da parte del programmatore, come, ad esempio, l’importazione di moduli.</p>
 <p>Per ragioni di esposizione, distingueremo tra tipi predefiniti fondamentali, cioè che possono essere introdotti con un insieme limitato di concetti, tipi legati alla astrazione del paradigma di orientamento agli oggetti e, infine, costruzioni del linguaggio legate all’esecuzione asincrona.</p>
-<section id="tipi-predefiniti-fondamentali" class="level3" data-number="10.4.1">
-<h3 data-number="10.4.1" class="anchored" data-anchor-id="tipi-predefiniti-fondamentali"><span class="header-section-number">10.4.1</span> Tipi predefiniti fondamentali</h3>
+<section id="tipi-predefiniti-fondamentali" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="tipi-predefiniti-fondamentali"><span class="header-section-number">10.3.1</span> Tipi predefiniti fondamentali</h3>
 <p>Prima di entrare nel dettaglio per ognuno, di seguito un elenco dei tipi predefiniti fondamentali:</p>
 <ul>
 <li><p>Numeri: sia interi relativi che reali, cioè in virgola mobile, sia complessi.</p></li>
@@ -650,13 +648,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Altri: <code>None</code>, <code>NotImplemented</code>, <code>Ellipsis</code>.</p></li>
 </ul>
 </section>
-<section id="numeri" class="level3" data-number="10.4.2">
-<h3 data-number="10.4.2" class="anchored" data-anchor-id="numeri"><span class="header-section-number">10.4.2</span> Numeri</h3>
+<section id="numeri" class="level3" data-number="10.3.2">
+<h3 data-number="10.3.2" class="anchored" data-anchor-id="numeri"><span class="header-section-number">10.3.2</span> Numeri</h3>
 <p>I tipi predefiniti numerici corrispondono agli interi, i numeri a virgola mobile e quelli complessi. Sono immutabili, il che significa che effettuando una operazione su un oggetto numerico si produrrà sempre un nuovo oggetto e non una modifica del precedente.</p>
 <p>Esistono anche altri tipi numerici nelle librerie fornite coll’interprete, per i numeri decimali a precisione arbitraria e i numeri razionali come frazioni.</p>
 <p>I letterali numerici non hanno segno, cioè <code>+</code> e <code>-</code> sono operatori unari che precedono la rappresentazione di un numero, quindi <code>-3</code> è una espressione che diventa il valore di un oggetto intero di valore <code>-3</code>. Nei letterali numerici si può inserire un trattino basso (<em>underscore</em>) tra le cifre o dopo gli specificatori della base per gli interi.</p>
-<section id="interi" class="level4" data-number="10.4.2.1">
-<h4 data-number="10.4.2.1" class="anchored" data-anchor-id="interi"><span class="header-section-number">10.4.2.1</span> Interi</h4>
+<section id="interi" class="level4" data-number="10.3.2.1">
+<h4 data-number="10.3.2.1" class="anchored" data-anchor-id="interi"><span class="header-section-number">10.3.2.1</span> Interi</h4>
 <p>Esistono due tipi di interi. Il primo è <code>int</code>, per gli usuali numeri interi, a cui corrispondono diverse rappresentazioni sintattiche in basi diverse, come i letterali decimali, binari, ottali o esadecimali:</p>
 <ul>
 <li><p>Un letterale decimale inizia sempre con una cifra diversa da zero, esempi: <code>10</code>, <code>1_0</code>.</p></li>
@@ -688,8 +686,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 </section>
-<section id="numeri-in-virgola-mobile" class="level4" data-number="10.4.2.2">
-<h4 data-number="10.4.2.2" class="anchored" data-anchor-id="numeri-in-virgola-mobile"><span class="header-section-number">10.4.2.2</span> Numeri in virgola mobile</h4>
+<section id="numeri-in-virgola-mobile" class="level4" data-number="10.3.2.2">
+<h4 data-number="10.3.2.2" class="anchored" data-anchor-id="numeri-in-virgola-mobile"><span class="header-section-number">10.3.2.2</span> Numeri in virgola mobile</h4>
 <p>I numeri in virgola mobile in Python sono istanze della classe <code>float</code> e sono utilizzati per rappresentare numeri reali con una parte decimale. I letterali corrispondenti sono una sequenza di cifre in base 10, e solo in base 10, che include un punto (<code>.</code>), un suffisso di notazione scientifica (<code>e</code> o <code>E</code>, opzionalmente seguito da <code>+</code> o <code>-</code> e da una o più cifre), o entrambi. Il carattere iniziale di un letterale in virgola mobile non può essere <code>e</code> o <code>E</code>, ma può essere qualsiasi cifra (anche zeri a differenza degli interi) o un punto (<code>.</code>) seguito da una cifra.</p>
 <p>Esempi di literali in virgola mobile: <code>0.</code>, <code>0.1</code>, <code>.0</code>, <code>1.</code>, <code>1.0</code>, <code>1e0</code>, <code>1.e0</code>, <code>1.0E0</code>, <code>1_0_0.0_1</code>. Attenzione: <code>1</code> è un intero, <code>1.</code> non lo è.</p>
 <p>Per conoscere l’intervallo esatto e la precisione dei valori in virgola mobile sulla piattaforma in uso, e molti altri dettagli, è possibile usare <code>sys.float_info</code> nel modo seguente:</p>
@@ -749,8 +747,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 </section>
-<section id="numeri-complessi" class="level4" data-number="10.4.2.3">
-<h4 data-number="10.4.2.3" class="anchored" data-anchor-id="numeri-complessi"><span class="header-section-number">10.4.2.3</span> Numeri complessi</h4>
+<section id="numeri-complessi" class="level4" data-number="10.3.2.3">
+<h4 data-number="10.3.2.3" class="anchored" data-anchor-id="numeri-complessi"><span class="header-section-number">10.3.2.3</span> Numeri complessi</h4>
 <p>Un numero complesso è composto da due valori in virgola mobile, uno per la parte reale e uno per la parte immaginaria. In Python, i numeri complessi sono istanze della classe <code>complex</code>, che presenta due attributi di sola lettura <code>real</code> e <code>imag</code>, rispettivamente per la parte reale e immaginaria, di tipo <code>float</code>.</p>
 <p>Un letterale immaginario può essere specificato come qualsiasi letterale decimale in virgola mobile o intero seguito da una <code>j</code> o <code>J</code>: <code>0j</code>, <code>0.j</code>, <code>0.0j</code>, <code>.0j</code>, <code>1j</code>, <code>1.j</code>, <code>1.0j</code>, <code>1e0j</code>, <code>1.e0j</code>, <code>1.0e0j</code>. La <code>j</code> alla fine del letterale immaginario indica la radice quadrata di <code>-1</code>. Per denotare un qualsiasi numero complesso costante, si potrà sommare o sottrarre un letterale in virgola mobile (o letterale intero) e uno immaginario.</p>
 <div class="sourceCode" id="annotated-cell-21"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-21-1" class="code-annotation-target"><a href="#annotated-cell-21-1"></a>z <span class="op">=</span> <span class="dv">42</span><span class="op">+</span><span class="ot">3.14j</span></span>
@@ -795,8 +793,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dl>
 </section>
 </section>
-<section id="sequenze" class="level3" data-number="10.4.3">
-<h3 data-number="10.4.3" class="anchored" data-anchor-id="sequenze"><span class="header-section-number">10.4.3</span> Sequenze</h3>
+<section id="sequenze" class="level3" data-number="10.3.3">
+<h3 data-number="10.3.3" class="anchored" data-anchor-id="sequenze"><span class="header-section-number">10.3.3</span> Sequenze</h3>
 <p>Una sequenza è un contenitore ordinato di oggetti, il cui indice è un intero che parte da <code>0</code>. Se la sequenza è referenziata da una variabile <code>c</code>, per ottenere il numero totale di oggetti contenuti si userà la funzione predefinita <code>len()</code>, cioè <code>len(c)</code>, e per l’oggetto i-esimo le parentesi quadre e l’indice, <code>c[i]</code>. È possibile usare indici negativi che sono interpretati come la somma di quello col numero totale di oggetti contenuti, quindi <code>-i</code> è trattato come <code>len(c)-i</code> e l’indice risultante dovrà sempre essere compreso tra <code>0</code> e <code>len(c)-1</code>.</p>
 <p>Si può <em>sezionare</em> (<em>slicing</em>) la sequenza per ottenere una sottosequenza, dello stesso tipo, di oggetti originariamente contigui tra gli indici <code>i</code> e <code>j</code>, cioè con indici <code>x</code> tali che <code>i≤x&lt;j</code>, usando <code>c[i:j]</code>. Aggiungendo un terzo parametro di <em>passo</em>, <code>k</code>, si possono selezionare solo gli oggetti con indici <code>i+l*k</code> e <code>l≥0</code>, che siano compresi tra i due indici, cioè <code>i≤i+l*k&lt;j</code>, con <code>c[i:j:k]</code>.</p>
 <p>Le sequenze sono categorizzate in base alla mutabilità:</p>
@@ -804,12 +802,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Immutabili: stringhe, tuple, bytes.</p></li>
 <li><p>Mutabili: liste e array di bytes.</p></li>
 </ul>
-<section id="iterabilità" class="level4" data-number="10.4.3.1">
-<h4 data-number="10.4.3.1" class="anchored" data-anchor-id="iterabilità"><span class="header-section-number">10.4.3.1</span> Iterabilità</h4>
+<section id="iterabilità" class="level4" data-number="10.3.3.1">
+<h4 data-number="10.3.3.1" class="anchored" data-anchor-id="iterabilità"><span class="header-section-number">10.3.3.1</span> Iterabilità</h4>
 <p>Le sequenze sono iterabili cioè possono essere scorse in tutte per mezzo di un oggetto ad hoc detto <strong>iteratore</strong>. Un iteratore è un oggetto separato dalla sequenza stessa, che mantiene uno stato interno per tenere traccia dell’elemento successivo da restituire. Questo permette di iterare sulla sequenza senza modificarla direttamente. L’iteratore prende in input un oggetto iterabile e ne restituisce i valori uno alla volta secondo un certo protocollo. Per le sequenze, questo protocollo consiste nel partire dal primo elemento e procedere fino all’ultimo.</p>
 </section>
-<section id="stringhe" class="level4" data-number="10.4.3.2">
-<h4 data-number="10.4.3.2" class="anchored" data-anchor-id="stringhe"><span class="header-section-number">10.4.3.2</span> Stringhe</h4>
+<section id="stringhe" class="level4" data-number="10.3.3.2">
+<h4 data-number="10.3.3.2" class="anchored" data-anchor-id="stringhe"><span class="header-section-number">10.3.3.2</span> Stringhe</h4>
 <p>Una stringa in Python è un oggetto che si può creare a partire da un letterale composto di un numero non negativo di caratteri Unicode racchiusi o tra apici singoli <code>'</code>, oppure doppi <code>"</code>. Per inserire un a capo nella stringa dovrà essere usato <code>\n</code>, mentre per spezzarla su due righe fisiche dovrà essere usato un singolo backslash alla fine della prima riga fisica per indicare la continuazione nella riga fisica successiva.</p>
 <p>Esempi:</p>
 <div class="sourceCode" id="annotated-cell-22"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-22-1"><a href="#annotated-cell-22-1"></a>s1 <span class="op">=</span> <span class="st">"Hello "</span> \</span>
@@ -1070,8 +1068,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 </section>
-<section id="tuple" class="level4" data-number="10.4.3.3">
-<h4 data-number="10.4.3.3" class="anchored" data-anchor-id="tuple"><span class="header-section-number">10.4.3.3</span> Tuple</h4>
+<section id="tuple" class="level4" data-number="10.3.3.3">
+<h4 data-number="10.3.3.3" class="anchored" data-anchor-id="tuple"><span class="header-section-number">10.3.3.3</span> Tuple</h4>
 <p>Le tuple in Python sono sequenze ordinate immutabili, in cui gli oggetti contenuti possono essere di tipi diversi. La classe è <code>tuple</code> che deriva da <code>object</code>.</p>
 <p>Per creare una tupla, si può utilizzare una serie di espressioni separate da virgole (<code>,</code>), come elementi della tupla. Si può opzionalmente mettere una virgola ridondante dopo l’ultimo elemento, che è necessaria se si ha un solo elemento. Si possono raggruppare gli elementi della tupla tra parentesi, ma le parentesi sono necessarie solo quando le virgole avrebbero altrimenti un altro significato (ad esempio, nelle chiamate di funzione), o per denotare tuple vuote o annidate.</p>
 <p>Esempi di tuple costruite con letterali e espressioni:</p>
@@ -1150,8 +1148,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 </section>
-<section id="liste" class="level4" data-number="10.4.3.4">
-<h4 data-number="10.4.3.4" class="anchored" data-anchor-id="liste"><span class="header-section-number">10.4.3.4</span> Liste</h4>
+<section id="liste" class="level4" data-number="10.3.3.4">
+<h4 data-number="10.3.3.4" class="anchored" data-anchor-id="liste"><span class="header-section-number">10.3.3.4</span> Liste</h4>
 <p>Le liste in Python sono sequenze ordinate mutabili, in cui gli oggetti contenuti possono essere di tipi diversi. La classe è <code>list</code> che deriva da <code>object</code>.</p>
 <p>Per creare una lista, si utilizza una serie di espressioni, separate da virgole (<code>,</code>) all’interno di parentesi quadre, per indicare gli elementi della lista. Se ogni elemento è un letterale, l’intera costruzione è un letterale di lista. Si può opzionalmente mettere una virgola ridondante dopo l’ultimo elemento. Per denotare una lista vuota, si utilizza una coppia di parentesi quadre vuote.</p>
 <p>Esempi di letterali di lista:</p>

@@ -15,19 +15,27 @@ format:
 
 ### ➀ Python come calcolatrice
 
+#### Numeri interi e in virgola mobile
+
+::: {.panel-tabset}
+
 Provare le operazioni su booleani, numeri interi, in virgola mobile e stringhe, nel REPL.
 
-#### Numeri
+## Problema
+
+Usare gli operatori matematici su costanti numeriche e osservare i risultati e gli errori nel REPL, perché è più immediato rispetto all'esecuzione completa del programma e permette di prendere dimistichezza velocemente con dei costrutti di base del linguaggio.
+
+## Soluzione
+
+Il codice seguente può essere eseguito sia nel REPL, riga per riga, sia come programma. 
 
 ::: {.callout-tip}
 ## Suggerimento
 
-Usare gli operatori matematici su costanti numeriche e osservare i risultati e gli errori nel REPL, perché è più immediato rispetto all'esecuzione completa del programma.
-:::
+Usando il REPL, basterà digitare l'espressione senza assegnamento per ottenere il risultato.
+::: 
 
-```{python}
-# Se eseguite nel REPL i print sono inutili!
-
+```python
 # Moltiplicazione
 x = 5 * 2
 print(x)
@@ -59,18 +67,19 @@ print(x) # Cosa notiamo?
 x = 0 != (1 - 1)
 print(x) # Cosa notiamo?
 ```
+:::
 
 #### Stringhe
 
-::: {.callout-tip}
-## Suggerimento
+::: {.panel-tabset}
+
+## Problema
 
 Usare gli operatori su stringhe, sempre nel REPL.
-:::
 
-```{python}
-# Se eseguite nel REPL i print sono inutili!
+## Soluzione
 
+```python
 s = "Hello" + ' ' + 'World!'
 print(s)
 
@@ -114,15 +123,19 @@ b = s == su
 print(b) # Cosa notiamo?
 ```
 
-#### Espressioni
-
-::: {.callout-tip}
-## Suggerimento
-
-Costruire delle espressioni per comprendere come mischiare numeri e stringhe, la precedenza degli operatori e le conversioni di tipo, sempre nel REPL.
 :::
 
-```{python}
+#### Espressioni
+
+::: {.panel-tabset}
+
+## Problema
+
+Costruire delle espressioni per comprendere come mischiare numeri e stringhe, la precedenza degli operatori e le conversioni di tipo, sempre nel REPL.
+
+## Soluzione
+
+```python
 n = 42
 s = "42"
 
@@ -154,6 +167,8 @@ print(e)
 e = (2 + n) * 3
 print(e) # Cosa notiamo?
 ```
+
+:::
 
 ## Funzioni e istruzioni composte
 
