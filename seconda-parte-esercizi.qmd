@@ -17,17 +17,17 @@ Legenda livelli:
 
 ➂ Principiante evoluto: Questi esercizi richiedono una comprensione più approfondita dei costrutti disponibili e delle operazioni sulle strutture dati fornite dal linguaggio. Gli studenti dovrebbero essere in grado di scrivere funzioni e manipolare collezioni di dati, usando la documentazione del linguaggio.
 
-➃ Autonomo: A questo livello, gli studenti devono saper gestire concetti come la gestione delle eccezioni, l'uso di moduli e pacchetti standard, e la scrittura di codice più organizzato e modulare. Gli stuedenti devono saper effettuare un debugging e fornire codice documentato.
+➃ Autonomo: A questo livello, gli studenti devono saper gestire concetti come il controllo del workflow di esecuzione per mezzo delle eccezioni, l'uso di moduli e pacchetti standard, nonché di quelli esterni al linguaggio. Gli studenti devono saper effettuare un debugging, fornire codice documentato e più organizzato e modulare. 
 
-➄ Intermedio: Gli esercizi richiedono la capacità di lavorare con librerie esterne, creare e gestire oggetti complessi, e utilizzare tecniche di programmazione più avanzate come le comprensioni di lista e le espressioni lambda. Gli studenti devono produrre codice robuto per mezzo di tecniche come i test di unità.
+➄ Intermedio: Gli esercizi richiedono la capacità di lavorare con librerie esterne, creare e gestire oggetti complessi, e utilizzare tecniche di programmazione più avanzate come le comprensioni di lista e le espressioni lambda, sapendo applicare pienamente sia lo stile orientato agli oggetti che quello funzionale. Gli studenti devono produrre codice robusto per mezzo di tecniche come i test di unità.
 
-➅ Esperto: A questo livello, gli esercizi implicano la conoscenza di concetti avanzati come il decoratori, i generatori, e la manipolazione avanzata dei dati. Gli studenti dovrebbero essere in grado di risolvere problemi complessi con soluzioni eleganti.
+➅ Esperto: A questo livello, gli esercizi implicano la padronanza di concetti avanzati come il decoratori, i generatori, e la manipolazione avanzata dei dati. Gli studenti dovrebbero essere in grado di risolvere problemi complessi con soluzioni eleganti.
 
-➆ Esperto evoluto: Gli studenti devono avere competenze solide nella programmazione orientata agli oggetti, nella gestione delle eccezioni avanzate e nell'ottimizzazione del codice per la performance.
+➆ Esperto evoluto: Gli studenti devono avere competenze solide di disegno di software basato sul paradigma dell'orientamento agli oggetti e funzionale, nonché nell'ottimizzazione del codice per la performance.
 
-➇ Maestro: Gli esercizi a questo livello richiedono la conoscenza approfondita di Python, comprese le tecniche di programmazione asincrona, il threading, e la gestione di progetti di grandi dimensioni.
+➇ Maestro: Gli esercizi a questo livello richiedono la conoscenza approfondita di Python, comprese le tecniche di programmazione asincrona, il threading e la gestione di progetti di grandi dimensioni in diversi ambiti.
 
-➈ Maestro evoluto: A questo livello, gli studenti devono padroneggiare l'uso avanzato delle librerie standard, la creazione di librerie proprie, e l'implementazione di algoritmi complessi e strutture dati personalizzate.
+➈ Maestro evoluto: A questo livello, gli studenti devono padroneggiare la creazione di librerie proprie anche usando le modalità di estensione di Python.
 
 ➉ Guru: Questo è il livello più alto di difficoltà, dove gli esercizi richiedono una comprensione approfondita e una padronanza assoluta di Python. Gli studenti devono essere in grado di risolvere problemi estremamente complessi, ottimizzare il codice a livello di prestazioni e memoria, e applicare concetti avanzati di ingegneria del software.
 
@@ -499,6 +499,101 @@ lista = [4, 2, 2, 3, 1, 4, 5]
 
 print(rimuovi_duplicati(lista)) 
 ```
+
+:::
+
+### ➁ Calcolo del Fattoriale di un Numero
+
+::: {.panel-tabset}
+
+## Problema
+
+Scrivere una funzione che prende in input un numero intero positivo e restituisce il suo fattoriale. 
+
+::: {.callout-tip}
+## Suggerimento
+
+Il fattoriale di un numero n è il prodotto di tutti i numeri interi positivi minori o uguali a n ed è denotato come n!.
+::: 
+
+## Soluzione 1
+
+Usiamo un ciclo `for` per calcolare il fattoriale. Partiamo da 1 e moltiplichiamo progressivamente tutti i numeri fino a n.
+
+```python
+def fattoriale(n):
+  risultato = 1
+
+  for i in range(1, n + 1):
+    risultato *= i
+
+  return risultato
+
+# Esempio di utilizzo
+numero = 5
+
+print(fattoriale(numero))  # <1>
+```
+1. Output: `120`.
+
+## Soluzione 2
+
+Usiamo un ciclo `while` per calcolare il fattoriale. Partiamo da 1 e moltiplichiamo progressivamente tutti i numeri fino a n, utilizzando una variabile di iterazione.
+
+```python
+def fattoriale(n):
+  risultato = 1
+  i = 1
+
+  while i <= n:
+    risultato *= i
+
+    i += 1
+
+  return risultato
+
+# Esempio di utilizzo
+numero = 5
+
+print(fattoriale(numero))  # <1>
+```
+1. Output: `120`.
+
+## ➂ Soluzione 3
+
+Utilizziamo la ricorsione per calcolare il fattoriale. La funzione richiama se stessa riducendo il problema fino a raggiungere il caso base n = 1.
+
+```python
+def fattoriale(n):
+  if n == 0 or n == 1:
+    return 1
+
+  else:
+    return n * fattoriale(n - 1)
+
+# Esempio di utilizzo
+numero = 5
+
+print(fattoriale(numero))  # <1>
+```
+1. Output: `120`.
+
+## ➃ Soluzione 4
+
+Usiamo la funzione `reduce` del modulo `functools` per calcolare il fattoriale. Questa soluzione utilizza un approccio funzionale per ridurre una sequenza di numeri a un singolo valore.
+
+```python
+from functools import reduce
+
+def fattoriale(n):
+  return reduce(lambda x, y: x * y, range(1, n + 1), 1)
+
+# Esempio di utilizzo
+numero = 5
+
+print(fattoriale(numero))  # <1>
+```
+1. Output: `120`.
 
 :::
 

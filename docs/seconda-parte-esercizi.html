@@ -348,6 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#rimozione-di-duplicati-da-una-lista-preservando-lordinamento" id="toc-rimozione-di-duplicati-da-una-lista-preservando-lordinamento" class="nav-link" data-scroll-target="#rimozione-di-duplicati-da-una-lista-preservando-lordinamento"><span class="header-section-number">11.3.1</span> ➁ Rimozione di duplicati da una lista preservando l’ordinamento</a></li>
   <li><a href="#rimozione-di-duplicati-da-una-lista-e-ordinamento" id="toc-rimozione-di-duplicati-da-una-lista-e-ordinamento" class="nav-link" data-scroll-target="#rimozione-di-duplicati-da-una-lista-e-ordinamento"><span class="header-section-number">11.3.2</span> ➁ Rimozione di duplicati da una lista e ordinamento</a></li>
+  <li><a href="#calcolo-del-fattoriale-di-un-numero" id="toc-calcolo-del-fattoriale-di-un-numero" class="nav-link" data-scroll-target="#calcolo-del-fattoriale-di-un-numero"><span class="header-section-number">11.3.3</span> ➁ Calcolo del Fattoriale di un Numero</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/seconda-parte-esercizi.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
@@ -378,12 +379,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>➀ Neofita: Adatto a chi è alle prime armi con la programmazione. Gli esercizi di questo livello richiedono una conoscenza basilare della sintassi di Python e dei concetti fondamentali come variabili, semplici espressioni, dimistichezza coll’esecuzione dell’interprete.</p>
 <p>➁ Principiante: Gli esercizi a questo livello sono pensati per chi ha familiarità con i costrutti di base di Python e vuole iniziare a esplorare le strutture dati come liste, tuple e dizionari.</p>
 <p>➂ Principiante evoluto: Questi esercizi richiedono una comprensione più approfondita dei costrutti disponibili e delle operazioni sulle strutture dati fornite dal linguaggio. Gli studenti dovrebbero essere in grado di scrivere funzioni e manipolare collezioni di dati, usando la documentazione del linguaggio.</p>
-<p>➃ Autonomo: A questo livello, gli studenti devono saper gestire concetti come la gestione delle eccezioni, l’uso di moduli e pacchetti standard, e la scrittura di codice più organizzato e modulare. Gli stuedenti devono saper effettuare un debugging e fornire codice documentato.</p>
-<p>➄ Intermedio: Gli esercizi richiedono la capacità di lavorare con librerie esterne, creare e gestire oggetti complessi, e utilizzare tecniche di programmazione più avanzate come le comprensioni di lista e le espressioni lambda. Gli studenti devono produrre codice robuto per mezzo di tecniche come i test di unità.</p>
-<p>➅ Esperto: A questo livello, gli esercizi implicano la conoscenza di concetti avanzati come il decoratori, i generatori, e la manipolazione avanzata dei dati. Gli studenti dovrebbero essere in grado di risolvere problemi complessi con soluzioni eleganti.</p>
-<p>➆ Esperto evoluto: Gli studenti devono avere competenze solide nella programmazione orientata agli oggetti, nella gestione delle eccezioni avanzate e nell’ottimizzazione del codice per la performance.</p>
-<p>➇ Maestro: Gli esercizi a questo livello richiedono la conoscenza approfondita di Python, comprese le tecniche di programmazione asincrona, il threading, e la gestione di progetti di grandi dimensioni.</p>
-<p>➈ Maestro evoluto: A questo livello, gli studenti devono padroneggiare l’uso avanzato delle librerie standard, la creazione di librerie proprie, e l’implementazione di algoritmi complessi e strutture dati personalizzate.</p>
+<p>➃ Autonomo: A questo livello, gli studenti devono saper gestire concetti come il controllo del workflow di esecuzione per mezzo delle eccezioni, l’uso di moduli e pacchetti standard, nonché di quelli esterni al linguaggio. Gli studenti devono saper effettuare un debugging, fornire codice documentato e più organizzato e modulare.</p>
+<p>➄ Intermedio: Gli esercizi richiedono la capacità di lavorare con librerie esterne, creare e gestire oggetti complessi, e utilizzare tecniche di programmazione più avanzate come le comprensioni di lista e le espressioni lambda, sapendo applicare pienamente sia lo stile orientato agli oggetti che quello funzionale. Gli studenti devono produrre codice robusto per mezzo di tecniche come i test di unità.</p>
+<p>➅ Esperto: A questo livello, gli esercizi implicano la padronanza di concetti avanzati come il decoratori, i generatori, e la manipolazione avanzata dei dati. Gli studenti dovrebbero essere in grado di risolvere problemi complessi con soluzioni eleganti.</p>
+<p>➆ Esperto evoluto: Gli studenti devono avere competenze solide di disegno di software basato sul paradigma dell’orientamento agli oggetti e funzionale, nonché nell’ottimizzazione del codice per la performance.</p>
+<p>➇ Maestro: Gli esercizi a questo livello richiedono la conoscenza approfondita di Python, comprese le tecniche di programmazione asincrona, il threading e la gestione di progetti di grandi dimensioni in diversi ambiti.</p>
+<p>➈ Maestro evoluto: A questo livello, gli studenti devono padroneggiare la creazione di librerie proprie anche usando le modalità di estensione di Python.</p>
 <p>➉ Guru: Questo è il livello più alto di difficoltà, dove gli esercizi richiedono una comprensione approfondita e una padronanza assoluta di Python. Gli studenti devono essere in grado di risolvere problemi estremamente complessi, ottimizzare il codice a livello di prestazioni e memoria, e applicare concetti avanzati di ingegneria del software.</p>
 <section id="fondamenti" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="fondamenti"><span class="header-section-number">11.1</span> Fondamenti</h2>
@@ -807,6 +808,113 @@ Suggerimento
 <span id="cb16-9"><a href="#cb16-9"></a>lista <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
 <span id="cb16-10"><a href="#cb16-10"></a></span>
 <span id="cb16-11"><a href="#cb16-11"></a><span class="bu">print</span>(rimuovi_duplicati(lista)) </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calcolo-del-fattoriale-di-un-numero" class="level3" data-number="11.3.3">
+<h3 data-number="11.3.3" class="anchored" data-anchor-id="calcolo-del-fattoriale-di-un-numero"><span class="header-section-number">11.3.3</span> ➁ Calcolo del Fattoriale di un Numero</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Soluzione 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-3" role="tab" aria-controls="tabset-8-3" aria-selected="false">Soluzione 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-4" role="tab" aria-controls="tabset-8-4" aria-selected="false">➂ Soluzione 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-5" role="tab" aria-controls="tabset-8-5" aria-selected="false">➃ Soluzione 4</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<p>Scrivere una funzione che prende in input un numero intero positivo e restituisce il suo fattoriale.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Suggerimento
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il fattoriale di un numero n è il prodotto di tutti i numeri interi positivi minori o uguali a n ed è denotato come n!.</p>
+</div>
+</div>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<p>Usiamo un ciclo <code>for</code> per calcolare il fattoriale. Partiamo da 1 e moltiplichiamo progressivamente tutti i numeri fino a n.</p>
+<div class="sourceCode" id="annotated-cell-17"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1"></a><span class="kw">def</span> fattoriale(n):</span>
+<span id="annotated-cell-17-2"><a href="#annotated-cell-17-2"></a>  risultato <span class="op">=</span> <span class="dv">1</span></span>
+<span id="annotated-cell-17-3"><a href="#annotated-cell-17-3"></a></span>
+<span id="annotated-cell-17-4"><a href="#annotated-cell-17-4"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5"></a>    risultato <span class="op">*=</span> i</span>
+<span id="annotated-cell-17-6"><a href="#annotated-cell-17-6"></a></span>
+<span id="annotated-cell-17-7"><a href="#annotated-cell-17-7"></a>  <span class="cf">return</span> risultato</span>
+<span id="annotated-cell-17-8"><a href="#annotated-cell-17-8"></a></span>
+<span id="annotated-cell-17-9"><a href="#annotated-cell-17-9"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="annotated-cell-17-10"><a href="#annotated-cell-17-10"></a>numero <span class="op">=</span> <span class="dv">5</span></span>
+<span id="annotated-cell-17-11"><a href="#annotated-cell-17-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-17-12" class="code-annotation-target"><a href="#annotated-cell-17-12"></a><span class="bu">print</span>(fattoriale(numero))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-17" data-code-lines="12" data-code-annotation="1">Output: <code>120</code>.</span>
+</dd>
+</dl>
+</div>
+<div id="tabset-8-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-3-tab">
+<p>Usiamo un ciclo <code>while</code> per calcolare il fattoriale. Partiamo da 1 e moltiplichiamo progressivamente tutti i numeri fino a n, utilizzando una variabile di iterazione.</p>
+<div class="sourceCode" id="annotated-cell-18"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-18-1"><a href="#annotated-cell-18-1"></a><span class="kw">def</span> fattoriale(n):</span>
+<span id="annotated-cell-18-2"><a href="#annotated-cell-18-2"></a>  risultato <span class="op">=</span> <span class="dv">1</span></span>
+<span id="annotated-cell-18-3"><a href="#annotated-cell-18-3"></a>  i <span class="op">=</span> <span class="dv">1</span></span>
+<span id="annotated-cell-18-4"><a href="#annotated-cell-18-4"></a></span>
+<span id="annotated-cell-18-5"><a href="#annotated-cell-18-5"></a>  <span class="cf">while</span> i <span class="op">&lt;=</span> n:</span>
+<span id="annotated-cell-18-6"><a href="#annotated-cell-18-6"></a>    risultato <span class="op">*=</span> i</span>
+<span id="annotated-cell-18-7"><a href="#annotated-cell-18-7"></a></span>
+<span id="annotated-cell-18-8"><a href="#annotated-cell-18-8"></a>    i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="annotated-cell-18-9"><a href="#annotated-cell-18-9"></a></span>
+<span id="annotated-cell-18-10"><a href="#annotated-cell-18-10"></a>  <span class="cf">return</span> risultato</span>
+<span id="annotated-cell-18-11"><a href="#annotated-cell-18-11"></a></span>
+<span id="annotated-cell-18-12"><a href="#annotated-cell-18-12"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="annotated-cell-18-13"><a href="#annotated-cell-18-13"></a>numero <span class="op">=</span> <span class="dv">5</span></span>
+<span id="annotated-cell-18-14"><a href="#annotated-cell-18-14"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-18-15" class="code-annotation-target"><a href="#annotated-cell-18-15"></a><span class="bu">print</span>(fattoriale(numero))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-18" data-code-lines="15" data-code-annotation="1">Output: <code>120</code>.</span>
+</dd>
+</dl>
+</div>
+<div id="tabset-8-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-4-tab">
+<p>Utilizziamo la ricorsione per calcolare il fattoriale. La funzione richiama se stessa riducendo il problema fino a raggiungere il caso base n = 1.</p>
+<div class="sourceCode" id="annotated-cell-19"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-19-1"><a href="#annotated-cell-19-1"></a><span class="kw">def</span> fattoriale(n):</span>
+<span id="annotated-cell-19-2"><a href="#annotated-cell-19-2"></a>  <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="annotated-cell-19-3"><a href="#annotated-cell-19-3"></a>    <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="annotated-cell-19-4"><a href="#annotated-cell-19-4"></a></span>
+<span id="annotated-cell-19-5"><a href="#annotated-cell-19-5"></a>  <span class="cf">else</span>:</span>
+<span id="annotated-cell-19-6"><a href="#annotated-cell-19-6"></a>    <span class="cf">return</span> n <span class="op">*</span> fattoriale(n <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="annotated-cell-19-7"><a href="#annotated-cell-19-7"></a></span>
+<span id="annotated-cell-19-8"><a href="#annotated-cell-19-8"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="annotated-cell-19-9"><a href="#annotated-cell-19-9"></a>numero <span class="op">=</span> <span class="dv">5</span></span>
+<span id="annotated-cell-19-10"><a href="#annotated-cell-19-10"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-19-11" class="code-annotation-target"><a href="#annotated-cell-19-11"></a><span class="bu">print</span>(fattoriale(numero))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-19" data-code-lines="11" data-code-annotation="1">Output: <code>120</code>.</span>
+</dd>
+</dl>
+</div>
+<div id="tabset-8-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-5-tab">
+<p>Usiamo la funzione <code>reduce</code> del modulo <code>functools</code> per calcolare il fattoriale. Questa soluzione utilizza un approccio funzionale per ridurre una sequenza di numeri a un singolo valore.</p>
+<div class="sourceCode" id="annotated-cell-20"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-20-1"><a href="#annotated-cell-20-1"></a><span class="im">from</span> functools <span class="im">import</span> <span class="bu">reduce</span></span>
+<span id="annotated-cell-20-2"><a href="#annotated-cell-20-2"></a></span>
+<span id="annotated-cell-20-3"><a href="#annotated-cell-20-3"></a><span class="kw">def</span> fattoriale(n):</span>
+<span id="annotated-cell-20-4"><a href="#annotated-cell-20-4"></a>  <span class="cf">return</span> <span class="bu">reduce</span>(<span class="kw">lambda</span> x, y: x <span class="op">*</span> y, <span class="bu">range</span>(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>), <span class="dv">1</span>)</span>
+<span id="annotated-cell-20-5"><a href="#annotated-cell-20-5"></a></span>
+<span id="annotated-cell-20-6"><a href="#annotated-cell-20-6"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="annotated-cell-20-7"><a href="#annotated-cell-20-7"></a>numero <span class="op">=</span> <span class="dv">5</span></span>
+<span id="annotated-cell-20-8"><a href="#annotated-cell-20-8"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-20-9" class="code-annotation-target"><a href="#annotated-cell-20-9"></a><span class="bu">print</span>(fattoriale(numero))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-20" data-code-lines="9" data-code-annotation="1">Output: <code>120</code>.</span>
+</dd>
+</dl>
 </div>
 </div>
 </div>
