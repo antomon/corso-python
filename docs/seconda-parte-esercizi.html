@@ -115,8 +115,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <meta property="og:title" content="Da neofita di Python a campione - 11&nbsp; Esercizi">
+<meta property="og:description" content="">
 <meta property="og:site_name" content="Da neofita di Python a campione">
 <meta name="twitter:title" content="Da neofita di Python a campione - 11&nbsp; Esercizi">
+<meta name="twitter:description" content="">
 <meta name="twitter:creator" content="@antomon">
 <meta name="twitter:site" content="@antomon">
 <meta name="twitter:card" content="summary">
@@ -344,8 +346,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#sequenze" id="toc-sequenze" class="nav-link" data-scroll-target="#sequenze"><span class="header-section-number">11.3</span> Sequenze</a>
   <ul class="collapse">
-  <li><a href="#rimozione-di-duplicati-da-una-lista-preservando-lordinamento" id="toc-rimozione-di-duplicati-da-una-lista-preservando-lordinamento" class="nav-link" data-scroll-target="#rimozione-di-duplicati-da-una-lista-preservando-lordinamento"><span class="header-section-number">11.3.1</span> ➂ Rimozione di duplicati da una lista preservando l’ordinamento</a></li>
-  <li><a href="#rimozione-di-duplicati-da-una-lista-e-ordinamento" id="toc-rimozione-di-duplicati-da-una-lista-e-ordinamento" class="nav-link" data-scroll-target="#rimozione-di-duplicati-da-una-lista-e-ordinamento"><span class="header-section-number">11.3.2</span> ➂ Rimozione di duplicati da una lista e ordinamento</a></li>
+  <li><a href="#rimozione-di-duplicati-da-una-lista-preservando-lordinamento" id="toc-rimozione-di-duplicati-da-una-lista-preservando-lordinamento" class="nav-link" data-scroll-target="#rimozione-di-duplicati-da-una-lista-preservando-lordinamento"><span class="header-section-number">11.3.1</span> ➁ Rimozione di duplicati da una lista preservando l’ordinamento</a></li>
+  <li><a href="#rimozione-di-duplicati-da-una-lista-e-ordinamento" id="toc-rimozione-di-duplicati-da-una-lista-e-ordinamento" class="nav-link" data-scroll-target="#rimozione-di-duplicati-da-una-lista-e-ordinamento"><span class="header-section-number">11.3.2</span> ➁ Rimozione di duplicati da una lista e ordinamento</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/seconda-parte-esercizi.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
@@ -372,6 +374,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>Legenda livelli:</p>
+<p>➀ Neofita: Adatto a chi è alle prime armi con la programmazione. Gli esercizi di questo livello richiedono una conoscenza basilare della sintassi di Python e dei concetti fondamentali come variabili, semplici espressioni, dimistichezza coll’esecuzione dell’interprete.</p>
+<p>➁ Principiante: Gli esercizi a questo livello sono pensati per chi ha familiarità con i costrutti di base di Python e vuole iniziare a esplorare le strutture dati come liste, tuple e dizionari.</p>
+<p>➂ Principiante evoluto: Questi esercizi richiedono una comprensione più approfondita dei costrutti disponibili e delle operazioni sulle strutture dati fornite dal linguaggio. Gli studenti dovrebbero essere in grado di scrivere funzioni e manipolare collezioni di dati, usando la documentazione del linguaggio.</p>
+<p>➃ Autonomo: A questo livello, gli studenti devono saper gestire concetti come la gestione delle eccezioni, l’uso di moduli e pacchetti standard, e la scrittura di codice più organizzato e modulare. Gli stuedenti devono saper effettuare un debugging e fornire codice documentato.</p>
+<p>➄ Intermedio: Gli esercizi richiedono la capacità di lavorare con librerie esterne, creare e gestire oggetti complessi, e utilizzare tecniche di programmazione più avanzate come le comprensioni di lista e le espressioni lambda. Gli studenti devono produrre codice robuto per mezzo di tecniche come i test di unità.</p>
+<p>➅ Esperto: A questo livello, gli esercizi implicano la conoscenza di concetti avanzati come il decoratori, i generatori, e la manipolazione avanzata dei dati. Gli studenti dovrebbero essere in grado di risolvere problemi complessi con soluzioni eleganti.</p>
+<p>➆ Esperto evoluto: Gli studenti devono avere competenze solide nella programmazione orientata agli oggetti, nella gestione delle eccezioni avanzate e nell’ottimizzazione del codice per la performance.</p>
+<p>➇ Maestro: Gli esercizi a questo livello richiedono la conoscenza approfondita di Python, comprese le tecniche di programmazione asincrona, il threading, e la gestione di progetti di grandi dimensioni.</p>
+<p>➈ Maestro evoluto: A questo livello, gli studenti devono padroneggiare l’uso avanzato delle librerie standard, la creazione di librerie proprie, e l’implementazione di algoritmi complessi e strutture dati personalizzate.</p>
+<p>➉ Guru: Questo è il livello più alto di difficoltà, dove gli esercizi richiedono una comprensione approfondita e una padronanza assoluta di Python. Gli studenti devono essere in grado di risolvere problemi estremamente complessi, ottimizzare il codice a livello di prestazioni e memoria, e applicare concetti avanzati di ingegneria del software.</p>
 <section id="fondamenti" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="fondamenti"><span class="header-section-number">11.1</span> Fondamenti</h2>
 <section id="python-come-calcolatrice" class="level3" data-number="11.1.1">
@@ -656,9 +669,9 @@ Suggerimento
 <section id="sequenze" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="sequenze"><span class="header-section-number">11.3</span> Sequenze</h2>
 <section id="rimozione-di-duplicati-da-una-lista-preservando-lordinamento" class="level3" data-number="11.3.1">
-<h3 data-number="11.3.1" class="anchored" data-anchor-id="rimozione-di-duplicati-da-una-lista-preservando-lordinamento"><span class="header-section-number">11.3.1</span> ➂ Rimozione di duplicati da una lista preservando l’ordinamento</h3>
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="rimozione-di-duplicati-da-una-lista-preservando-lordinamento"><span class="header-section-number">11.3.1</span> ➁ Rimozione di duplicati da una lista preservando l’ordinamento</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Soluzione 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false">Soluzione 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-4" role="tab" aria-controls="tabset-6-4" aria-selected="false">Soluzione 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-5" role="tab" aria-controls="tabset-6-5" aria-selected="false">Soluzione 4</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Soluzione 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false">Soluzione 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-4" role="tab" aria-controls="tabset-6-4" aria-selected="false">Soluzione 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-5" role="tab" aria-controls="tabset-6-5" aria-selected="false">➂ Soluzione 4</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <p>Scrivere una funzione che prende in input una lista e ne rimuove i duplicati, preservando l’ordinamento.</p>
@@ -726,9 +739,9 @@ Suggerimento
 </div>
 </section>
 <section id="rimozione-di-duplicati-da-una-lista-e-ordinamento" class="level3" data-number="11.3.2">
-<h3 data-number="11.3.2" class="anchored" data-anchor-id="rimozione-di-duplicati-da-una-lista-e-ordinamento"><span class="header-section-number">11.3.2</span> ➂ Rimozione di duplicati da una lista e ordinamento</h3>
+<h3 data-number="11.3.2" class="anchored" data-anchor-id="rimozione-di-duplicati-da-una-lista-e-ordinamento"><span class="header-section-number">11.3.2</span> ➁ Rimozione di duplicati da una lista e ordinamento</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Soluzione 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">Soluzione 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-4" role="tab" aria-controls="tabset-7-4" aria-selected="false">Soluzione 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-5" role="tab" aria-controls="tabset-7-5" aria-selected="false">Soluzione 4</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Soluzione 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">Soluzione 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-4" role="tab" aria-controls="tabset-7-4" aria-selected="false">Soluzione 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-5" role="tab" aria-controls="tabset-7-5" aria-selected="false">➂ Soluzione 4</a></li></ul>
 <div class="tab-content">
 <div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <p>Scrivere una funzione che prende in input una lista e ne rimuove i duplicati, ordinando il risultato.</p>
