@@ -8,7 +8,7 @@ tbl-cap-location: margin
 
 Per comprendere il **modello dati** di Python, dobbiamo conoscere i tipi di dati del linguaggio e le relative operazioni, con ciò intendendo che dobbiamo sia elencare quelli predefiniti, che apprendere le modalità di definizione di nuovi tipi. 
 
-## Oggetti
+## Elementi di programmazione orientata agli oggetti
 
 Gli oggetti sono l'astrazione dei dati definita in Python. Ogni oggetto è caratterizzato da un'**identità**, un **tipo** e un **valore**. L'identità di un oggetto non cambia una volta creato e possiamo pensarlo come l'indirizzo dell'oggetto in memoria[^1]. Python permette di ricavarlo per mezzo della funzione predefinita (_built in_) `id()`:
 
@@ -30,46 +30,59 @@ print(type(s)) # <1>
 
 [^1]: In CPython è effettivamente implementato così.
 
-## Tipi e classi
+### Tipi e classi
 
-In Python, i tipi di dati sono implementati come **classi**. Una classe è la definizione di un tipo di oggetto che specifica gli attributi (complessivamente il valore dell'oggetto) e i metodi (le operazioni) che determinano lo stato e il comportamento degli oggetti. Gli oggetti creati da una classe possono essere manipolati attraverso i metodi della classe, permettendo di interagire e modificarne il valore o quello di altri oggetti passati come argomenti. Inoltre, una classe può definire **metodi di istanza**, che operano su istanze specifiche della classe, **metodi di classe**, che operano a livello della classe stessa e possono accedere e modificare lo stato della classe tramite attributi di classe, e **metodi statici**, che sono funzioni associate alla classe ma non dipendono né dalla classe né dalle sue istanze.
+In Python, i tipi di dati sono implementati come **classi**. Una classe è una definizione che specifica una struttura di dati e il comportamento associato attraverso **attributi** e **metodi**. Gli attributi sono variabili legate alla classe o alle sue istanze e rappresentano lo stato, mentre i metodi sono funzioni che definiscono il comportamento.
 
-Ad esempio, per una stringa:
+Un'**istanza** (o **oggetto**) è un'implementazione concreta della classe. Mentre di una classe esiste una sola definizione, si possono creare infinite istanze della stessa classe, a meno che non siano state implementate limitazioni particolari. Ogni istanza ha il proprio stato (valore degli attributi). Gli attributi e i metodi possono essere membri sia delle classi che delle istanze. In generale, ogni oggetto può avere i propri attributi e metodi, ma può anche accedere agli attributi e ai metodi della classe a cui appartiene.
 
-```python
-s = "Hello" # <1>
+Gli attributi possono essere di classe o di istanza:
 
-print(type(s))  # <2>
-```
-1. L'oggetto stringa il cui valore è `"Hello"` ha come nome `s`.
-2. Output: `<class 'str'>`. `type` conferma che l'oggetto è una istanza di `str` che è il tipo delle stringhe in Python.
+- Gli **attributi di classe** sono condivisi tra tutte le istanze della classe. 
 
-### Gerarchie di classi
+- Gli **attributi di istanza** sono specifici di ogni istanza.
 
-Le classi possono essere organizzate in una gerarchia. In cima alla gerarchia delle classi di Python c'è la classe `object`, un po' infelice come nome, da cui derivano tutte le altre classi. Questo significa che ogni classe in Python eredita gli attributi e i metodi della classe `object`. La funzione `isinstance` è utile per investigare questa gerarchia, poiché permette di verificare se un oggetto è un'istanza di una determinata classe o di una sua classe derivata. `isinstance`, pertanto, ha due parametri, l'identificatore dell'oggetto e l'identificatore della classe e resistuisce un valore logico, `True` o `False`.
+I **metodi di istanza** operano su istanze specifiche della classe e possono accedere e modificare gli attributi dell'istanza stessa. I **metodi di classe**, invece, operano a livello della classe e possono accedere e modificare gli attributi della classe attraverso il parametro `cls`. Infine, i **metodi statici** sono funzioni associate alla classe che non dipendono né dalla classe né dalle sue istanze; non possono modificare lo stato della classe o delle sue istanze.
 
-Ad esempio:
+Ecco un esempio di definizione di una classe in Python, utile, per il momento, solo a mostrare la sintassi dei membri:
 
 ```python
-s = "Hello" 
+class Esempio:
+  attributo_di_classe = 'Valore di classe'  # <1>
 
-print(isinstance(s, str))  # <1>
+  def __init__(self, attributo):
+    self.attributo_di_istanza = attributo  # <2>
 
-print(isinstance(s, object))  # <2>
+  def metodo_di_istanza(self): # <3>
+    return f"Metodo di istanza: {self.attributo_di_istanza}"
+
+  @classmethod
+  def metodo_di_classe(cls): # <4>
+    return f"Metodo di classe: {cls.attributo_di_classe}"
+
+  @staticmethod
+  def metodo_statico(): # <5>
+    return "Metodo statico"
+
+oggetto = Esempio("Valore di istanza") # <6>
+
+print(oggetto.metodo_di_istanza()) # <7>  
+print(Esempio.metodo_di_classe())  # <8>  
+print(Esempio.metodo_statico())   # <9>   
 ```
-1. Output: `True`. `isinstance` conferma che `s` è un'istanza della classe `str`.
-2. Output: `True`. `isinstance` conferma che `s` è un'istanza anche della classe `object`, da cui deriva `str`.
+1. Attributo di classe.
+2. Attributo di istanza.
+3. Metodo di istanza.
+4. Metodo di classe `Esempio`.
+5. Metodo statico.
+6. Creazione di un oggetto della classe `Esempio` associato alla variabile `oggetto`.
+7. Output: `Metodo di istanza: Valore di istanza`.
+8. Output: `Metodo di classe: Valore di classe`.
+9. Output: `Metodo statico`.
 
-La funzione `issubclass` è altrettanto utile per esplorare le gerarchie delle classi, in quanto permette di verificare se una classe è una sottoclasse di un'altra.
+In questo esempio, `Esempio` è una classe con un attributo di classe, un attributo di istanza, un metodo di istanza, un metodo di classe e un metodo statico. La classe definisce la struttura e il comportamento, mentre l'oggetto `oggetto` è un'istanza concreta della classe. 
 
-Ad esempio:
-
-```python
-print(issubclass(str, object))  # <1>
-```
-1. Output: `True`. `issubclass` conferma che `str` è una sottoclasse di `object`.
-
-### Creazione dell'oggetto
+### Creazione di oggetti
 
 Una volta definita una classe, si possono creare nuove istanze o oggetti di quella classe, il che rappresenta un modo efficiente per riutilizzare funzionalità nel proprio codice. Questo passaggio è spesso chiamato costruzione o **istanziazione** degli oggetti. Lo strumento responsabile per la specializzazione di questo processo, è comunemente noto come **costruttore** della classe.
 
@@ -86,7 +99,7 @@ Il metodo `__init__` è sempre presente: se non è definito esplicitamente nella
 
 La creazione di un oggetto avviene in diversi contesti:
 
-1. Uso di letterali. Ad esempio, per creare un oggetto stringa, si usano i letterali stringa e analogamente per gli altri:
+- Uso di letterali. Ad esempio, per creare un oggetto stringa, si usano i letterali stringa e analogamente per gli altri:
 
   ```python
   s = "Hello" # <1>
@@ -99,31 +112,35 @@ La creazione di un oggetto avviene in diversi contesti:
   2. Creazione di un oggetto di tipo `int`.
   3. Creazione di un oggetto di tipo `float`.
 
-2. Chiamata del costruttore della classe, ad esempio a quello della classe `list` passiamo una sequenza di interi:
+- Chiamata del costruttore della classe, ad esempio a quello della classe `list` passiamo una sequenza di interi:
 
   ```python
   lista = list([1, 2, 3])
   ```
 
-3. Utilizzo di funzioni e metodi che restituiscono oggetti. Ad esempio, il metodo `upper` della classe `str` restituisce un nuovo oggetto ottenuto a partire da quello su cui è eseguito:
+- Utilizzo di funzioni e metodi che restituiscono oggetti. Ad esempio, il metodo `upper()` della classe `str` restituisce un nuovo oggetto di tipo `str` ottenuto a partire da quello su cui è eseguito:
   
   ```python
   s1 = "Hello, World!"
 
   su_1 = s1.upper() # <1>
 
-  s = "Hello, World!".upper() # <2>
+  su_2 = "Hello, World!".upper() # <2>
   ```
+  1. `upper()` crea un secondo oggetto stringa che viene associato alla variabile `su_1`.
+  2. Sintassi alternativa che ha il medesimo effetto.
 
-4. Clonazione o copia utilizzando la funzione `copy` del modulo `copy`:
+- Clonazione o copia utilizzando la funzione `copy` del modulo `copy`:
 
   ```python
   import copy
 
-  lista_originale = [1, 2, 3]
+  lista_originale = [1, 2, 3] # <1>
 
-  lista_copiata = copy.copy(lista_originale)
+  lista_copiata = copy.copy(lista_originale)  # <2>
   ```
+  1. `lista_originale` identifica un oggetto lista.
+  2. `copy()` produce una copia di `lista_originale` identificata da `lista_copiata`.
 
 ### Accesso a attributi e metodi
 
@@ -137,14 +154,42 @@ s = "hello world"  # <1>
 s_upper = s.upper()  # <2>
 
 print(s_upper)  # <3>
+
+print(s.__class__)  # <4>
 ```
 1. Creazione di un oggetto stringa.
 2. Chiamata del metodo `upper()` usando l'identificatore `s`.
 3. Output: `HELLO WORLD`. 
+4. Output: `<class 'str'>`.
+
+### Gerarchie di classi
+
+Le classi possono essere organizzate in una gerarchia. In cima alla gerarchia delle classi di Python c'è la classe `object`, un po' infelice come nome, da cui derivano tutte le altre classi. Questo significa che ogni classe in Python eredita gli attributi e i metodi della classe `object`. La funzione `isinstance()` è utile per investigare questa gerarchia, poiché permette di verificare se un oggetto è un'istanza di una determinata classe o di una sua classe derivata. `isinstance()`, pertanto, ha due parametri, l'identificatore dell'oggetto e l'identificatore della classe e restituisce un valore logico, `True` o `False`.
+
+Ad esempio:
+
+```python
+s = "Hello" 
+
+print(isinstance(s, str))  # <1>
+
+print(isinstance(s, object))  # <2>
+```
+1. Output: `True`. `isinstance` conferma che `s` è un'istanza della classe `str`.
+2. Output: `True`. `isinstance` conferma che `s` è un'istanza anche della classe `object`, da cui deriva `str`.
+
+La funzione `issubclass()` è altrettanto utile per esplorare le gerarchie delle classi, in quanto permette di verificare se una classe è una sottoclasse di un'altra.
+
+Ad esempio:
+
+```python
+print(issubclass(str, object))  # <1>
+```
+1. Output: `True`. `issubclass` conferma che `str` è una sottoclasse di `object`.
 
 ### Mutabilità e immutabilità
 
-Gli oggetti il cui valore può cambiare sono detti **mutabili**, mentre gli oggetti il cui valore non lo può una volta creati, sono chiamati **immutabili**. L'immutabilità di un oggetto è determinata dalla progettazione del suo tipo, ad esempio, per i tipi definiti nel linguaggio, numeri interi e in virgola mobile, stringhe e tuple sono immutabili, mentre dizionari e liste sono mutabili.
+Gli oggetti il cui valore può cambiare sono detti **mutabili**, mentre gli oggetti il cui valore non lo può, una volta creati, sono chiamati **immutabili**. L'immutabilità di un oggetto è determinata dalla progettazione del suo tipo. Ad esempio, per i tipi definiti nel linguaggio, numeri interi e in virgola mobile, stringhe e tuple sono immutabili, mentre dizionari e liste sono mutabili.
 
 Gli oggetti non vengono mai distrutti esplicitamente dall'utente, ma, quando diventano inaccessibili, possono essere raccolti dal garbage collector, che è eseguito contemporaneamente al codice del programma, come parte dell'interprete. L'implementazione specifica quando e come gli oggetti debbano essere distrutti.
 
@@ -456,17 +501,17 @@ print(stringa_raw) # <4>
 
 Dopo aver identificato il letterale stringa, l'inteprete crea l'oggetto stringa in memoria con tipo `str`. Alternativamente, si può crearla in altri modi:
 
-1. Sebbene non sia comune usare il costruttore per creare una stringa da un letterale stringa, è comunque possibile:
+- Sebbene non sia comune usare il costruttore per creare una stringa da un letterale stringa, è comunque possibile:
 
   ```python
   s = str("Hello, World!") # <1>
 
   print(s)  # <2>
   ```
-  1. Passo 
+  1. Passo `"Hello, World!"` al costruttore di `str`.
   2. Output: `Hello, World!`.
 
-2. Possiamo creare una stringa a partire da un numero (intero o in virgola mobile):
+- Possiamo creare una stringa a partire da un numero (intero o in virgola mobile):
   
   ```python
   s = str(42)
@@ -480,7 +525,7 @@ Dopo aver identificato il letterale stringa, l'inteprete crea l'oggetto stringa 
   1. Output: `3.14`.
   2. Output: `42`.
 
-3. Si può creare una stringa concatenando i caratteri di una lista:
+- Si può creare una stringa concatenando i caratteri di una lista:
 
   ```python
   cl = ['H', 'e', 'l', 'l', 'o']
@@ -491,18 +536,18 @@ Dopo aver identificato il letterale stringa, l'inteprete crea l'oggetto stringa 
   ```
   1. Output: `Hello`.
 
-4. Se un oggetto definisce il metodo speciale `__str__` che restituisce una stringa, il costruttore di `str` lo chiama per ottenerla: 
+- Se un oggetto definisce il metodo speciale `__str__` che restituisce una stringa, il costruttore di `str` lo chiama per ottenerla: 
 
   ```python
   l = ["Hello", " ", "World!"]
 
   s = str(l)
 
-  print(s)
+  print(s) # <1>
   ```
   1. Output: `['Hello', ' ', 'World!']`.
 
-5. Si può creare una nuova stringa da qualsiasi oggetto iterabile, come liste o tuple, utilizzando il metodo `join` che inserisce tra gli elementi della sequenza la stringa dell'oggetto di cui è membro:
+- Si può creare una nuova stringa da qualsiasi oggetto iterabile, come liste o tuple, utilizzando il metodo `join` che inserisce tra gli elementi della sequenza la stringa dell'oggetto di cui è membro:
 
   ```python
   lista = ['Python', 'è', 'fantastico']
@@ -520,16 +565,18 @@ Dopo aver identificato il letterale stringa, l'inteprete crea l'oggetto stringa 
   1. Output: `Python è fantastico`. Lo spazio tra le parole è stato inserito perché `join` è stato chiamato su un oggetto la cui stringa era data dal solo carattere di spazio.
   2. Output: `Hello World!`.
 
-6. È possibile creare una stringa a partire da un oggetto di bytes specificando la codifica:
+- È possibile creare una stringa a partire da un oggetto di bytes specificando la codifica:
 
-   ```python
-   b = b'Hello, World!'
+  ```python
+  b = b'Hello, World!' # <1>
 
-   s = str(b, 'utf-8')
+  s = str(b, 'ASCII') # <2>
 
-   print(s)  # Output: Hello, World!
-   ```
-   1. Output: `Hello World!`.
+  print(s)  # <3>
+  ```
+  1. Oggetto di tipo `bytes`.
+  2. Creazione di una stringa da oggetto di bytes che è codificato in ASCII.
+  3. Output: `Hello World!`.
 
 #### Tuple
 
@@ -557,7 +604,7 @@ t1 = tuple() # <1>
 
 t2 = tuple("Hello") # <2>
 
-t3 = tuple([1, 2, 3]) # <2>
+t3 = tuple([1, 2, 3]) # <3>
 ```
 1. Crea una tupla vuota.
 2. Crea una tupla con 5 stringhe, una per ogni carattere.
@@ -651,7 +698,8 @@ print(l1)  # <9>
 l1.pop(0)
 print(l1)  # <10>
 
-del l4[1:2] # <11>
+del l4[1:2] 
+print(l4) # <11>
 ```
 1. Output: `"Hello"`.
 2. Output: `3`.
@@ -662,5 +710,133 @@ del l4[1:2] # <11>
 7. Output: `[42.0, 'Hello']`. Slicing di lista che produce una nuova lista.
 8. Output: `[42.0, 'Ciao', 66]`. Modifica della lista per assegnazione di un nuovo oggetto ad un indice.
 9. Output: `[42.0, 66]`. Rimozione di un elemento dalla lista usando un test di uguaglianza per stabilire che l'oggetto nella lista è uguale a quello passato come argomento.
-10. Output: `[66]`. Rimozione di un elemento della lista usando uno slicing.
+10. Output: `[66]`. Rimozione di un elemento della lista usando `pop()`.
+11. Output: `[42.0, 66]`. Rimozione di un elemento della lista usando uno slicing e `del`.
 
+### Insiemi
+
+Python ha due tipi di insiemi incorporati per rappresentare collezioni di elementi unici con ordine arbitrario: `set` e `frozenset`. Gli elementi in un set possono essere di tipi diversi, ma devono essere tutti hashable. Le istanze del tipo `set` sono mutabili e quindi non hashable, mentre le istanze del tipo `frozenset` sono immutabili e hashable. Non è possibile avere un set i cui elementi siano altri set, ma è possibile avere un set (o un frozenset) i cui elementi siano frozenset. I set e i frozenset non sono ordinati.
+
+#### Creazione di Set e Frozenset
+
+##### Utilizzo di Letterali
+
+Per denotare un set, si utilizza una serie di espressioni (gli elementi del set) separate da virgole (,) all'interno di parentesi graffe ({}). Se ogni elemento è un letterale, l'intera costruzione è un letterale di set. Si può opzionalmente mettere una virgola ridondante dopo l'ultimo elemento.
+
+Esempi di letterali di set:
+
+- **Set con tre elementi**:
+
+  ```python
+  s = {42, 3.14, 'hello'}
+  ```
+
+- **Set con un elemento (opzionalmente con una virgola finale)**:
+
+  ```python
+  s = {100}
+  ```
+
+- **Set vuoto**:
+
+  Non esiste un letterale per un set vuoto; si deve usare il costruttore `set()`:
+
+  ```python
+  s = set()
+  ```
+
+##### Utilizzo della Classe `set`
+
+Si può creare un set chiamando il tipo built-in `set` senza argomenti (per un set vuoto) o con un argomento che è un oggetto iterabile (per un set i cui elementi sono quelli dell'iterabile).
+
+```python
+# Creazione di un set da una lista
+s = set([1, 2, 3, 4])
+print(s)  # Output: {1, 2, 3, 4}
+
+# Creazione di un set vuoto
+s_empty = set()
+print(s_empty)  # Output: set()
+```
+
+##### Utilizzo della Classe `frozenset`
+
+Allo stesso modo, si può creare un frozenset chiamando il tipo built-in `frozenset` senza argomenti (per un frozenset vuoto) o con un argomento che è un oggetto iterabile (per un frozenset i cui elementi sono quelli dell'iterabile).
+
+```python
+# Creazione di un frozenset da una lista
+fs = frozenset([1, 2, 3, 4])
+print(fs)  # Output: frozenset({1, 2, 3, 4})
+
+# Creazione di un frozenset vuoto
+fs_empty = frozenset()
+print(fs_empty)  # Output: frozenset()
+```
+
+#### Derivazione della Classe `set` e `frozenset`
+
+Entrambi i tipi `set` e `frozenset` derivano direttamente dalla classe base `object` e non hanno superclassi intermedie.
+
+### Caratteristiche dei Set e dei Frozenset
+
+#### Set
+
+I set sono mutabili, il che significa che una volta creati, possono essere modificati. Supportano operazioni come aggiunta, rimozione e controllo dell'esistenza di elementi.
+
+- **Aggiunta di Elementi**:
+
+  ```python
+  s = {1, 2, 3}
+  s.add(4)
+  print(s)  # Output: {1, 2, 3, 4}
+  ```
+
+- **Rimozione di Elementi**:
+
+  ```python
+  s = {1, 2, 3, 4}
+  s.remove(3)
+  print(s)  # Output: {1, 2, 4}
+  ```
+
+- **Controllo dell'Esistenza di un Elemento**:
+
+  ```python
+  s = {1, 2, 3}
+  print(2 in s)  # Output: True
+  print(5 in s)  # Output: False
+  ```
+
+#### Frozenset
+
+I frozenset sono immutabili, il che significa che una volta creati, non possono essere modificati. Supportano operazioni di lettura come controllo dell'esistenza di elementi e operazioni di set (unione, intersezione, differenza), ma non supportano operazioni di modifica.
+
+- **Controllo dell'Esistenza di un Elemento**:
+
+  ```python
+  fs = frozenset([1, 2, 3])
+  print(2 in fs)  # Output: True
+  print(5 in fs)  # Output: False
+  ```
+
+- **Operazioni di Set**:
+
+  ```python
+  fs1 = frozenset([1, 2, 3])
+  fs2 = frozenset([3, 4, 5])
+  
+  # Unione
+  print(fs1 | fs2)  # Output: frozenset({1, 2, 3, 4, 5})
+  
+  # Intersezione
+  print(fs1 & fs2)  # Output: frozenset({3})
+  
+  # Differenza
+  print(fs1 - fs2)  # Output: frozenset({1, 2})
+  ```
+
+### Hashability
+
+Un oggetto è considerato **hashable** se ha un valore hash che non cambia durante la sua vita (richiede un metodo `__hash__()`) e può essere confrontato con altri oggetti (richiede un metodo `__eq__()`). Gli oggetti hashable che confrontano uguali devono avere lo stesso valore hash.
+
+La hashability rende un oggetto utilizzabile come chiave in un dizionario o come membro di un set, poiché queste strutture dati usano internamente il valore hash. La maggior parte degli oggetti immutabili incorporati in Python sono hashable; i contenitori mutabili (come liste o dizionari) non lo sono; i contenitori immutabili (come tuple e frozenset) sono hashable solo se i loro elementi sono hashable. Gli oggetti che sono istanze di classi definite dall'utente sono hashable per impostazione predefinita. Confrontano sempre disuguali (tranne che con se stessi), e il loro valore hash è derivato dal loro id().
