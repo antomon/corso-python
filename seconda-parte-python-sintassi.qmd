@@ -24,13 +24,45 @@ Per dare un senso, anche intuitivo, ai concetti sintattici che saranno introdott
 
 - Modulo: È un file contenente definizioni di variabili, funzioni e classi che possono essere importate e utilizzate in altri programmi o moduli.
 
-## La funzione `print`
+## Le funzioni `print` e `help`
 
-La funzione `print` permette di visualizzare informazioni sullo schermo, che è fondamentale per capire cosa sta succedendo nel programma. Usare `print` è facile: basta scrivere `print()` e mettere tra parentesi quello che si vuole visualizzare. Ad esempio, per stampare `"Ciao, mondo!"`, si scrive:
+Nel seguito useremo molto la funzione `print` che permette di visualizzare informazioni sullo schermo. Ciò è fondamentale per capire cosa sta succedendo nel programma in modo immediato. 
+
+Usare `print` è facile: basta scrivere `print()` e mettere nelle parentesi quello che si vuole visualizzare. Ad esempio, per stampare `"Ciao, mondo!"`, si scrive:
 
 ```python
 print("Ciao, mondo!")
 ```
+
+Nel REPL, invece, ciò si ottiene semplicemente dando l'invio:
+
+```python
+>>> "Ciao, mondo!"
+'Ciao, mondo!'
+```
+
+Una seconda funzione molto utile è `help`, che fornisce informazioni sulla documentazione di moduli, funzioni, classi e metodi. Ad esempio, per ottenere informazioni sulla funzione `print`, possiamo scrivere:
+
+```python
+>>> help(print) # <1>
+```
+1. Output modalità di `help`:
+  ```python
+  Help on built-in function print in module builtins:
+  print(*args, sep=' ', end='\n', file=None, flush=False)
+    Prints the values to a stream, or to sys.stdout by default.
+
+    sep
+      string inserted between values, default a space.
+    end
+      string appended after the last value, default a newline.
+    file
+      a file-like object (stream); defaults to the current sys.stdout.
+    flush
+      whether to forcibly flush the stream.
+  ```
+
+Nel REPL ha la massima utilità perché eseguendo `help` si passa dalla modalità interattiva del REPL a quella di navigazione del contenuto testuale della risposta. Per ritornare al REPL, basta premere `q` e poi `Invio`.
 
 ## Righe
 
@@ -446,27 +478,27 @@ In tabella l'elenco degli operatori:
 | `%` | Modulo |
 | `**` | Esponenziazione |
 | `@` | Matrice (operatore di moltiplicazione) |
-| Confronto |  |
+| Di confronto |  |
 | `<` | Minore |
 | `>` | Maggiore |
 | `<=` | Minore o uguale |
 | `>=` | Maggiore o uguale |
 | `==` | Uguale |
 | `!=` | Diverso |
-| Bitwise |  |
+| Sui bit |  |
 | `&` | AND bit a bit |
 | `|` | OR bit a bit |
 | `^` | XOR bit a bit |
 | `~` | NOT bit a bit |
 | `<<` | Shift a sinistra |
 | `>>` | Shift a destra |
-| Assegnazione |  |
+| Di assegnazione |  |
 | `:=` | Operatore di assegnazione in espressione (walrus o tricheco) |
 : Operatori di Python {.hover}
 
+Una caratteristica molto potente del linguaggio è che gli operatori sono utilizzabili anche sui tipi creati dall'utente con logica determinata dalla implementazione. Pertanto, non vanno visti come limitati alle espressioni artimetiche o di assegnazione sui letterali definiti dal linguaggio, ma anche sugli identificatori corrispondenti a tipi più complessi, anche definiti nel programma o importati.
 
-
-Esempio su `@` che illustra un aspetto importante: il comportamento degli operatori può (o meglio, deve) essere definito quando si creano dei tipi di oggetto. Infatti, nel codice seguente, è definita una matrice assieme a una delle operazioni matematiche più comuni che è la moltiplicazione, implementata per mezzo di `__matmul__`:
+Un esempio è su `@` ove, nel codice seguente, è definita un nuovo tipi di oggetto corrispondente ad una matrice assieme a una delle operazioni matematiche più comuni che è la moltiplicazione, implementata per mezzo di `__matmul__`:
 
 ``` python
 class Matrice:
@@ -515,8 +547,8 @@ print(C) # <6>
 2.  Inizializza la matrice risultato con zeri.
 3.  Esegue la moltiplicazione delle matrici.
 4.  Rappresentazione leggibile della matrice.
-5.  Moltiplicazione di matrici utilizzando l'operatore `@`.
-6.  Chiama `__matmul__` per ottenere la stringa su due righe: `19 22` e `43 50`.
+5.  Moltiplicazione di matrici utilizzando l'operatore `@` che chiama `__matmul__` per il calcolo effettivo.
+6.  Chiama `__repr__` per ottenere la stringa su due righe: `19 22` e `43 50`.
 
 Infine, `@` è anche un delimitatore.
 
@@ -904,6 +936,6 @@ Ed ecco le principali istruzioni composte:
 
   ``` python
   match valore:
-      case <pattern>:
-          # blocco di codice
+    case <pattern>:
+      # blocco di codice
   ```
