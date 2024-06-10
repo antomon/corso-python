@@ -912,7 +912,6 @@ Suggerimento
 </div>
 </div>
 </div>
-<p>Ecco un esercizio divertente che coinvolge l’uso dei dizionari in Python:</p>
 </section>
 <section id="contare-le-parole-in-una-frase-in-modo-semplificato" class="level2" data-number="11.6">
 <h2 data-number="11.6" class="anchored" data-anchor-id="contare-le-parole-in-una-frase-in-modo-semplificato"><span class="header-section-number">11.6</span> ➁ Contare le parole in una frase in modo semplificato</h2>
@@ -1003,6 +1002,10 @@ Suggerimento
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">Problema</a></li></ul>
 <div class="tab-content">
 <div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Soluzione 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-3" role="tab" aria-controls="tabset-10-3" aria-selected="false">Soluzione 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-4" role="tab" aria-controls="tabset-10-4" aria-selected="false">Soluzione 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-5" role="tab" aria-controls="tabset-10-5" aria-selected="false">Soluzione 4</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
 <p>Scrivere una funzione che prende in input una stringa contenente una frase e un flag <code>maiuscolo_minuscolo</code> che controlla se il conteggio delle parole debba tener conto del maiuscolo o minuscolo. Inoltre considera parole senza terner conto di eventuale punteggiatura nel calcolo. La funzione restituisce un dizionario con il conteggio di ciascuna parola nella frase.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1017,11 +1020,6 @@ Suggerimento
 <p>Si può usare <code>string.punctuation</code> del modulo <code>string</code> che contiene tutti i caratteri di punteggiatura disponibili in Python. Include caratteri come <code>!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_``{|}~</code>.</p>
 </div>
 </div>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Soluzione 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-3" role="tab" aria-controls="tabset-10-3" aria-selected="false">Soluzione 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-4" role="tab" aria-controls="tabset-10-4" aria-selected="false">Soluzione 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-5" role="tab" aria-controls="tabset-10-5" aria-selected="false">Soluzione 4</a></li></ul>
-<div class="tab-content">
-<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
-<p>Scrivere una funzione che prende in input una stringa contenente una frase e un flag <code>maiuscolo_minuscolo</code> che controlla se il conteggio delle parole deve essere case sensitive o case insensitive. La funzione restituisce un dizionario con il conteggio di ciascuna parola nella frase.</p>
 </div>
 <div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
 <p>Usiamo un ciclo <code>for</code> per iterare attraverso le parole della frase, aggiornando il conteggio di ciascuna parola in un dizionario. Il comportamento è determinato dal flag <code>maiuscolo_minuscolo</code>.</p>
@@ -1121,7 +1119,7 @@ Suggerimento
 <span id="cb23-4"><a href="#cb23-4"></a><span class="kw">def</span> conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb23-5"><a href="#cb23-5"></a>  <span class="cf">if</span> <span class="kw">not</span> maiuscolo_minuscolo:</span>
 <span id="cb23-6"><a href="#cb23-6"></a>    frase <span class="op">=</span> frase.lower()</span>
-<span id="cb23-7"><a href="#cb23-7"></a>    </span>
+<span id="cb23-7"><a href="#cb23-7"></a></span>
 <span id="cb23-8"><a href="#cb23-8"></a>  frase <span class="op">=</span> <span class="st">''</span>.join(carattere <span class="cf">for</span> carattere <span class="kw">in</span> frase <span class="cf">if</span> carattere <span class="kw">not</span> <span class="kw">in</span> string.punctuation)</span>
 <span id="cb23-9"><a href="#cb23-9"></a></span>
 <span id="cb23-10"><a href="#cb23-10"></a>  parole <span class="op">=</span> frase.split()</span>

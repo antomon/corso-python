@@ -591,8 +591,6 @@ print(fattoriale(numero))  # <1>
 
 :::
 
-Ecco un esercizio divertente che coinvolge l'uso dei dizionari in Python:
-
 ## ➁ Contare le parole in una frase in modo semplificato
 
 ::: {.panel-tabset}
@@ -695,6 +693,10 @@ print(conta_parole(frase))
 
 ## Problema
 
+::: {.panel-tabset}
+
+## Problema
+
 Scrivere una funzione che prende in input una stringa contenente una frase e un flag `maiuscolo_minuscolo` che controlla se il conteggio delle parole debba tener conto del maiuscolo o minuscolo. Inoltre considera parole senza terner conto di eventuale punteggiatura nel calcolo. La funzione restituisce un dizionario con il conteggio di ciascuna parola nella frase. 
 
 ::: {.callout-tip}
@@ -703,12 +705,6 @@ Scrivere una funzione che prende in input una stringa contenente una frase e un 
 Si può usare `string.punctuation` del modulo `string` che contiene tutti i caratteri di punteggiatura disponibili in Python. Include caratteri come `!"#$%&'()*+,-./:;<=>?@[\]^_``{|}~`.
 
 ::: 
-
-::: {.panel-tabset}
-
-## Problema
-
-Scrivere una funzione che prende in input una stringa contenente una frase e un flag `maiuscolo_minuscolo` che controlla se il conteggio delle parole deve essere case sensitive o case insensitive. La funzione restituisce un dizionario con il conteggio di ciascuna parola nella frase.
 
 ## Soluzione 1
 
@@ -815,7 +811,7 @@ from collections import Counter
 def conta_parole(frase, maiuscolo_minuscolo=False):
   if not maiuscolo_minuscolo:
     frase = frase.lower()
-    
+
   frase = ''.join(carattere for carattere in frase if carattere not in string.punctuation)
 
   parole = frase.split()

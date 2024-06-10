@@ -24,6 +24,14 @@ Per dare un senso, anche intuitivo, ai concetti sintattici che saranno introdott
 
 - Modulo: È un file contenente definizioni di variabili, funzioni e classi che possono essere importate e utilizzate in altri programmi o moduli.
 
+## La funzione `print`
+
+La funzione `print` permette di visualizzare informazioni sullo schermo, che è fondamentale per capire cosa sta succedendo nel programma. Usare `print` è facile: basta scrivere `print()` e mettere tra parentesi quello che si vuole visualizzare. Ad esempio, per stampare `"Ciao, mondo!"`, si scrive:
+
+```python
+print("Ciao, mondo!")
+```
+
 ## Righe
 
 Le righe sono di due tipi: **logiche** e **fisiche**. Le seconde sono le più facilmente individuabili nel testo di un programma, perché sono terminate da un carattere di a capo. Una o più righe fisiche costituiscono una riga logica che corrisponde ad una istruzione. Esiste una eccezione, poco usata e consigliata in Python, per cui una riga fisica contiene più istruzioni separate da `;`.
@@ -36,6 +44,7 @@ x = 1 + 2 + \ # <1>
 
 if x > 5 and \ # <2>
    x < 9: # <3>
+
   print("5 < x < 9") 
 ```
 1.  L'istruzione di assegnamento è spezzata su due righe fisiche.
@@ -86,33 +95,33 @@ La prima istruzione di un file o la prima inserita al prompt `>>>` del REPL non 
 
 Alcuni esempi:
 
--   Definizione di una funzione:
+- Definizione di una funzione:
 
-    ``` python
-    def somma(a, b): # <1>
-      risultato = a + b # <2>
+  ``` python
+  def somma(a, b): # <1>
+    risultato = a + b # <2>
 
-      return risultato 
-    ```
-    1.  Prima riga senza indentazione.
-    2.  Questa riga e la successiva appartengono allo stesso blocco e, pertanto, hanno la medesima indentazione.
+    return risultato 
+  ```
+  1.  Prima riga senza indentazione.
+  2.  Questa riga e la successiva appartengono allo stesso blocco e, pertanto, hanno la medesima indentazione.
 
--   Test di condizione:
+- Test di condizione:
 
-    ``` python
-    x = 10
+  ``` python
+  x = 10
 
-    if x < 0: # <1>
-        print("x è negativo") # <2>
+  if x < 0: # <1>
+      print("x è negativo") # <2>
 
-    elif x == 0: 
-          print("x è zero") 
+  elif x == 0: 
+        print("x è zero") 
 
-    else: 
-            print("x è positivo") 
-    ```
-    1.  Le tre clausole `if` , `then` e `else` hanno identica indentazione.
-    2.  I tre blocchi hanno come unico vincolo quello di avere un livello maggiore della riga precedente. I blocchi corrispondenti alle diverse clausole non devono avere lo stesso livello di indentazione, anche se è buona prassi farlo.
+  else: 
+          print("x è positivo") 
+  ```
+  1.  Le tre clausole `if` , `then` e `else` hanno identica indentazione.
+  2.  I tre blocchi hanno come unico vincolo quello di avere un livello maggiore della riga precedente. I blocchi corrispondenti alle diverse clausole non devono avere lo stesso livello di indentazione, anche se è buona prassi farlo.
 
 ::: {.callout-warning title="Attenzione"}
 Non si possono avere sia spazi che tabulazioni per definire il livello di indentazione nello stesso file. Ciò perché renderebbe ambiguo il numero di spazi che si ottiene dopo la trasformazione delle tabulazioni in spazi. Quindi, o si usano spazi, scelta raccomandata, o tabulazioni.
@@ -455,6 +464,8 @@ In tabella l'elenco degli operatori:
 | `:=` | Operatore di assegnazione in espressione (walrus o tricheco) |
 : Operatori di Python {.hover}
 
+
+
 Esempio su `@` che illustra un aspetto importante: il comportamento degli operatori può (o meglio, deve) essere definito quando si creano dei tipi di oggetto. Infatti, nel codice seguente, è definita una matrice assieme a una delle operazioni matematiche più comuni che è la moltiplicazione, implementata per mezzo di `__matmul__`:
 
 ``` python
@@ -470,7 +481,7 @@ class Matrice:
                        "dimensioni incompatibili.")
     
     risultato = [[0 for _ in range(altra.num_colonne)] # <2>
-           for _ in range(self.num_righe)]
+                 for _ in range(self.num_righe)]
     
     for i in range(self.num_righe): # <3>
       for j in range(altra.num_colonne):
@@ -621,8 +632,8 @@ I letterali di stringa possono essere racchiusi tra virgolette singole o doppie.
 
 - Stringhe multi-linea racchiuse tra triple virgolette singole o doppie:
 
-    -   Triple singole: `'''testo multi-linea'''`.
-    -   Triple doppie: `"""testo multi-linea"""`.
+    - Triple singole: `'''testo multi-linea'''`.
+    - Triple doppie: `"""testo multi-linea"""`.
 
 Le stringhe tra tripli apici possono avere degli a capo e degli apici (non tripli) all'interno.
 
@@ -649,9 +660,7 @@ Alcuni esempi comuni includono:
 
 #### F-stringhe
 
-Le f-stringhe (stringhe formattate) sono racchiuse tra virgolette singole, doppie o triple e sono precedute dal prefisso `f` o `F`. Permettono di includere espressioni Python all'interno.
-
-Si possono avere stringhe formattate grezze ma non byte.
+Le f-stringhe (stringhe formattate) sono racchiuse tra virgolette singole, doppie o triple e sono precedute dal prefisso `f` o `F`. Il _formattato_ nel nome deriva dalla possibilità di includere espressioni Python all'interno che sono valutate all'atto della esecuzione della istruzione contenente la stringa. Si possono avere stringhe formattate grezze ma non byte.
 
 Esempio:
 
@@ -671,8 +680,8 @@ print(f_stringa) # <3>
 print(f_stringa_multi_linea) # <4>
 ```
 1.  Viene chiamato il metodo della stringa lower() per avere il maiuscolo.
-2.  Usiamo un'espressione di concatenazione di stringhe.
-3.  Output: `Output: Ciao, python!`.
+2.  Usiamo un'espressione di concatenazione di stringhe colla prima generata da un metodo che mette in minuscolo la stringa di `definizione`.
+3.  Output: `Ciao, python!`.
 4.  Output composto dalle tre righe `Questo è un esempio`, `di f-stringa multi-linea` e `in linguaggio Python`.
 
 ## Istruzioni
