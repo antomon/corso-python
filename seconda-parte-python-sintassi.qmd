@@ -48,7 +48,7 @@ Una seconda funzione molto utile è `help`, che fornisce informazioni sulla docu
 ```python
 >>> help(print) # <1>
 ```
-1. Output modalità di `help`:
+1. Output di `help`:
   ```python
   Help on built-in function print in module builtins:
   print(*args, sep=' ', end='\n', file=None, flush=False)
@@ -509,15 +509,15 @@ class Matrice:
     self.num_righe = len(righe)
     self.num_colonne = len(righe[0]) if righe else 0
 
-  def __matmul__(self, altra):
-    if self.num_colonne != altra.num_righe: # <1>
+  def __matmul__(self, altra): # <1>
+    if self.num_colonne != altra.num_righe: # <2>
       raise ValueError("Non è possibile moltiplicare le matrici: "
                        "dimensioni incompatibili.")
     
-    risultato = [[0 for _ in range(altra.num_colonne)] # <2>
+    risultato = [[0 for _ in range(altra.num_colonne)] # <3>
                  for _ in range(self.num_righe)]
     
-    for i in range(self.num_righe): # <3>
+    for i in range(self.num_righe): # <4>
       for j in range(altra.num_colonne):
         for k in range(self.num_colonne):
           risultato[i][j] += (self.righe[i][k] *
@@ -525,32 +525,35 @@ class Matrice:
     
     return Matrice(risultato)
 
-  def __repr__(self): # <4>
+  def __repr__(self): # <5>
     return '\n'.join([' '.join(map(str, riga)) for riga in self.righe])
 
-# Definizione di due matrici
-A = Matrice([[1, 2], 
+A = Matrice([[1, 2],  # <6>
              [3, 4]])
-B = Matrice([[5, 6], 
+B = Matrice([[5, 6], # <7>
              [7, 8]])
 
-C = A @ B # <5>
+C = A @ B # <8>
 
-print("Matrice A:")
-print(A)
+print("Matrice A:") 
+print(A) # <9>
 
 print("Matrice B:")
 print(B)
 
 print("Risultato di A @ B:")
-print(C) # <6>
+print(C) # <10>
 ```
-1.  Controlla se le dimensioni sono compatibili per la moltiplicazione.
-2.  Inizializza la matrice risultato con zeri.
-3.  Esegue la moltiplicazione delle matrici.
-4.  Rappresentazione leggibile della matrice.
-5.  Moltiplicazione di matrici utilizzando l'operatore `@` che chiama `__matmul__` per il calcolo effettivo.
-6.  Chiama `__repr__` per ottenere la stringa su due righe: `19 22` e `43 50`.
+1. Metodo di implementazione della moltiplicazione di matrici, chiamato da `@` usato come operatore su oggetti di tipo `Matrice`.
+2. Controlla se le dimensioni sono compatibili per la moltiplicazione.
+3. Inizializza la matrice risultato con zeri.
+4. Esegue la moltiplicazione delle matrici.
+5. Chiamato da `print()` quando applicato su oggetti di tipo `Matrice`.
+6. Rappresentazione leggibile della matrice operando di sinistra.
+7. Rappresentazione leggibile della matrice operando di destra.
+8. Moltiplicazione di matrici utilizzando l'operatore `@` che chiama `__matmul__()` per il calcolo effettivo.
+9. Chiama `__repr__()` di `Matrice` per ottenere la stringa su due righe per `A`: `1 2` e `3 4`.
+10. Chiama `__repr__()` di `Matrice` per ottenere la stringa su due righe per `C`: `19 22` e `43 50`.
 
 Infine, `@` è anche un delimitatore.
 
