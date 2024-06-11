@@ -277,6 +277,23 @@ d = c
 
 cioè l'oggetto lista ha due nomi nel programma. 
 
+### Tipi Hashable
+
+In Python, i tipi di dati possono essere classificati come **hashable** o non hashable. Un tipo è considerato hashable se gli oggetti creati da quel tipo hanno un valore di hash[^2] che rimane costante per tutta la durata della loro vita e possono essere confrontati con altri oggetti. Questo è garantito per i tipi immutabili, come numeri, stringhe e tuple.
+
+[^2]: In informatica, le tabelle hash (hash table) sono una struttura dati essenziale per l'efficienza e la velocità di accesso ai dati. Le tabelle hash sono costituite da coppie indice-valore e sono progettate per sostituire la ricerca sequenziale in array, che può essere lenta soprattutto per grandi quantità di dati.
+
+  Una funzione di hash prende un valore (come una stringa o un numero) e restituisce un numero di lunghezza fissa, chiamato **hash**. Questo hash viene utilizzato come indice per memorizzare il valore nella tabella di hash. Quando si desidera cercare un elemento, la funzione di hash calcola l'indice corrispondente, consentendo un accesso diretto all'elemento. Questo processo rende la ricerca, l'inserimento e la cancellazione degli elementi molto efficienti, con un tempo di accesso medio costante (O(1)).
+
+Gli oggetti di tipi hashable possiedono le seguenti caratteristiche principali:
+
+1. Valore di hash costante: Gli oggetti devono avere un valore di hash che non cambia durante la loro vita. Questo è tipico degli oggetti immutabili.
+2. Comparabilità: Gli oggetti devono poter essere confrontati con altri oggetti per determinare se sono uguali. Due oggetti che sono considerati uguali devono avere lo stesso valore di hash.
+
+La hashabilità è strettamente legata all'immutabilità. Gli oggetti immutabili sono naturalmente hashable perché il loro stato non cambia dopo la creazione, garantendo che il valore di hash rimanga costante. Ad esempio, tipi di dati immutabili come numeri, stringhe e tuple possono essere considerati hashable.
+
+Il viceversa non è vero, cioè esistono alcuni tipi mutabili che sono hashable.
+
 ## Tipi predefiniti
 
 Python mette a disposizione molti tipi _generali_, cioè utili alla gestione di dati comunemente presenti in algoritmi. Esistono, inoltre, sia meccanismi di estensione della distribuzione Python che modificano l'installazione sul proprio computer, sia la possibilità conferita al programmatore di creare i propri tipi o di importarli da librerie prodotte da terze parti.
@@ -835,8 +852,3 @@ I frozenset sono immutabili, il che significa che una volta creati, non possono 
   print(fs1 - fs2)  # Output: frozenset({1, 2})
   ```
 
-### Hashability
-
-Un oggetto è considerato **hashable** se ha un valore hash che non cambia durante la sua vita (richiede un metodo `__hash__()`) e può essere confrontato con altri oggetti (richiede un metodo `__eq__()`). Gli oggetti hashable che confrontano uguali devono avere lo stesso valore hash.
-
-La hashability rende un oggetto utilizzabile come chiave in un dizionario o come membro di un set, poiché queste strutture dati usano internamente il valore hash. La maggior parte degli oggetti immutabili incorporati in Python sono hashable; i contenitori mutabili (come liste o dizionari) non lo sono; i contenitori immutabili (come tuple e frozenset) sono hashable solo se i loro elementi sono hashable. Gli oggetti che sono istanze di classi definite dall'utente sono hashable per impostazione predefinita. Confrontano sempre disuguali (tranne che con se stessi), e il loro valore hash è derivato dal loro id().

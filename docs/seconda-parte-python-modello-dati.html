@@ -343,15 +343,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#accesso-a-attributi-e-metodi" id="toc-accesso-a-attributi-e-metodi" class="nav-link" data-scroll-target="#accesso-a-attributi-e-metodi"><span class="header-section-number">10.1.3</span> Accesso a attributi e metodi</a></li>
   <li><a href="#gerarchie-di-classi" id="toc-gerarchie-di-classi" class="nav-link" data-scroll-target="#gerarchie-di-classi"><span class="header-section-number">10.1.4</span> Gerarchie di classi</a></li>
   <li><a href="#mutabilità-e-immutabilità" id="toc-mutabilità-e-immutabilità" class="nav-link" data-scroll-target="#mutabilità-e-immutabilità"><span class="header-section-number">10.1.5</span> Mutabilità e immutabilità</a></li>
+  <li><a href="#tipi-hashable" id="toc-tipi-hashable" class="nav-link" data-scroll-target="#tipi-hashable"><span class="header-section-number">10.1.6</span> Tipi Hashable</a></li>
   </ul></li>
   <li><a href="#tipi-predefiniti" id="toc-tipi-predefiniti" class="nav-link" data-scroll-target="#tipi-predefiniti"><span class="header-section-number">10.2</span> Tipi predefiniti</a>
   <ul class="collapse">
   <li><a href="#tipi-predefiniti-fondamentali" id="toc-tipi-predefiniti-fondamentali" class="nav-link" data-scroll-target="#tipi-predefiniti-fondamentali"><span class="header-section-number">10.2.1</span> Tipi predefiniti fondamentali</a></li>
   <li><a href="#numeri" id="toc-numeri" class="nav-link" data-scroll-target="#numeri"><span class="header-section-number">10.2.2</span> Numeri</a></li>
   <li><a href="#sequenze" id="toc-sequenze" class="nav-link" data-scroll-target="#sequenze"><span class="header-section-number">10.2.3</span> Sequenze</a></li>
-  <li><a href="#set-e-frozenset" id="toc-set-e-frozenset" class="nav-link" data-scroll-target="#set-e-frozenset"><span class="header-section-number">10.2.4</span> Set e Frozenset</a></li>
+  <li><a href="#insiemi" id="toc-insiemi" class="nav-link" data-scroll-target="#insiemi"><span class="header-section-number">10.2.4</span> Insiemi</a></li>
   <li><a href="#caratteristiche-dei-set-e-dei-frozenset" id="toc-caratteristiche-dei-set-e-dei-frozenset" class="nav-link" data-scroll-target="#caratteristiche-dei-set-e-dei-frozenset"><span class="header-section-number">10.2.5</span> Caratteristiche dei Set e dei Frozenset</a></li>
-  <li><a href="#hashability" id="toc-hashability" class="nav-link" data-scroll-target="#hashability"><span class="header-section-number">10.2.6</span> Hashability</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/seconda-parte-python-modello-dati.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
@@ -712,6 +712,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>c <span class="op">=</span> []</span>
 <span id="cb3-2"><a href="#cb3-2"></a>d <span class="op">=</span> c</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>cioè l’oggetto lista ha due nomi nel programma.</p>
+</section>
+<section id="tipi-hashable" class="level3 page-columns page-full" data-number="10.1.6">
+<h3 data-number="10.1.6" class="anchored" data-anchor-id="tipi-hashable"><span class="header-section-number">10.1.6</span> Tipi Hashable</h3>
+<p>In Python, i tipi di dati possono essere classificati come <strong>hashable</strong> o non hashable. Un tipo è considerato hashable se gli oggetti creati da quel tipo hanno un valore di hash<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> che rimane costante per tutta la durata della loro vita e possono essere confrontati con altri oggetti. Questo è garantito per i tipi immutabili, come numeri, stringhe e tuple.</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;In informatica, le tabelle hash (hash table) sono una struttura dati essenziale per l’efficienza e la velocità di accesso ai dati. Le tabelle hash sono costituite da coppie indice-valore e sono progettate per sostituire la ricerca sequenziale in array, che può essere lenta soprattutto per grandi quantità di dati.</p></div></div><p>Una funzione di hash prende un valore (come una stringa o un numero) e restituisce un numero di lunghezza fissa, chiamato <strong>hash</strong>. Questo hash viene utilizzato come indice per memorizzare il valore nella tabella di hash. Quando si desidera cercare un elemento, la funzione di hash calcola l’indice corrispondente, consentendo un accesso diretto all’elemento. Questo processo rende la ricerca, l’inserimento e la cancellazione degli elementi molto efficienti, con un tempo di accesso medio costante (O(1)).</p>
+<p>Gli oggetti di tipi hashable possiedono le seguenti caratteristiche principali:</p>
+<ol type="1">
+<li>Valore di hash costante: Gli oggetti devono avere un valore di hash che non cambia durante la loro vita. Questo è tipico degli oggetti immutabili.</li>
+<li>Comparabilità: Gli oggetti devono poter essere confrontati con altri oggetti per determinare se sono uguali. Due oggetti che sono considerati uguali devono avere lo stesso valore di hash.</li>
+</ol>
+<p>La hashabilità è strettamente legata all’immutabilità. Gli oggetti immutabili sono naturalmente hashable perché il loro stato non cambia dopo la creazione, garantendo che il valore di hash rimanga costante. Ad esempio, tipi di dati immutabili come numeri, stringhe e tuple possono essere considerati hashable.</p>
+<p>Il viceversa non è vero, cioè esistono alcuni tipi mutabili che sono hashable.</p>
 </section>
 </section>
 <section id="tipi-predefiniti" class="level2" data-number="10.2">
@@ -1397,8 +1409,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dl>
 </section>
 </section>
-<section id="set-e-frozenset" class="level3" data-number="10.2.4">
-<h3 data-number="10.2.4" class="anchored" data-anchor-id="set-e-frozenset"><span class="header-section-number">10.2.4</span> Set e Frozenset</h3>
+<section id="insiemi" class="level3" data-number="10.2.4">
+<h3 data-number="10.2.4" class="anchored" data-anchor-id="insiemi"><span class="header-section-number">10.2.4</span> Insiemi</h3>
 <p>Python ha due tipi di insiemi incorporati per rappresentare collezioni di elementi unici con ordine arbitrario: <code>set</code> e <code>frozenset</code>. Gli elementi in un set possono essere di tipi diversi, ma devono essere tutti hashable. Le istanze del tipo <code>set</code> sono mutabili e quindi non hashable, mentre le istanze del tipo <code>frozenset</code> sono immutabili e hashable. Non è possibile avere un set i cui elementi siano altri set, ma è possibile avere un set (o un frozenset) i cui elementi siano frozenset. I set e i frozenset non sono ordinati.</p>
 <section id="creazione-di-set-e-frozenset" class="level4" data-number="10.2.4.1">
 <h4 data-number="10.2.4.1" class="anchored" data-anchor-id="creazione-di-set-e-frozenset"><span class="header-section-number">10.2.4.1</span> Creazione di Set e Frozenset</h4>
@@ -1485,14 +1497,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-10"><a href="#cb13-10"></a><span class="co"># Differenza</span></span>
 <span id="cb13-11"><a href="#cb13-11"></a><span class="bu">print</span>(fs1 <span class="op">-</span> fs2)  <span class="co"># Output: frozenset({1, 2})</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
-</section>
-</section>
-<section id="hashability" class="level3" data-number="10.2.6">
-<h3 data-number="10.2.6" class="anchored" data-anchor-id="hashability"><span class="header-section-number">10.2.6</span> Hashability</h3>
-<p>Un oggetto è considerato <strong>hashable</strong> se ha un valore hash che non cambia durante la sua vita (richiede un metodo <code>__hash__()</code>) e può essere confrontato con altri oggetti (richiede un metodo <code>__eq__()</code>). Gli oggetti hashable che confrontano uguali devono avere lo stesso valore hash.</p>
-<p>La hashability rende un oggetto utilizzabile come chiave in un dizionario o come membro di un set, poiché queste strutture dati usano internamente il valore hash. La maggior parte degli oggetti immutabili incorporati in Python sono hashable; i contenitori mutabili (come liste o dizionari) non lo sono; i contenitori immutabili (come tuple e frozenset) sono hashable solo se i loro elementi sono hashable. Gli oggetti che sono istanze di classi definite dall’utente sono hashable per impostazione predefinita. Confrontano sempre disuguali (tranne che con se stessi), e il loro valore hash è derivato dal loro id().</p>
 
 
+</section>
 </section>
 </section>
 
