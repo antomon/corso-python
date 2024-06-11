@@ -10,7 +10,7 @@ Per comprendere il **modello dati** di Python, dobbiamo conoscere i tipi di dati
 
 ## Elementi di programmazione orientata agli oggetti
 
-Gli oggetti sono l'astrazione dei dati definita in Python. Ogni oggetto è caratterizzato da un'**identità**, un **tipo** e un **valore**. L'identità di un oggetto non cambia una volta creato e possiamo pensarlo come l'indirizzo dell'oggetto in memoria[^1]. Python permette di ricavarlo per mezzo della funzione predefinita (_built in_) `id()`:
+Gli oggetti sono l'astrazione dei dati definita in Python. Ogni oggetto è caratterizzato da un'**identità**, un **tipo** e un **valore**. L'identità di un oggetto non cambia una volta creato e possiamo pensarlo come l'indirizzo dell'oggetto in memoria[^1-seconda-parte-python-modello-dati]. Python permette di ricavarlo per mezzo della funzione predefinita (_built-in_) `id()`:
 
 ```python
 s = "Hello"
@@ -28,7 +28,7 @@ print(type(s)) # <1>
 ```
 1. Output: `<class 'str'>`.
 
-[^1]: In CPython è effettivamente implementato così.
+[^1-seconda-parte-python-modello-dati]: In CPython è effettivamente implementato così.
 
 ### Tipi e classi
 
@@ -279,9 +279,9 @@ cioè l'oggetto lista ha due nomi nel programma.
 
 ### Tipi Hashable
 
-In Python, i tipi di dati possono essere classificati come **hashable** o non hashable. Un tipo è considerato hashable se gli oggetti creati da quel tipo hanno un valore di hash[^2] che rimane costante per tutta la durata della loro vita e possono essere confrontati con altri oggetti. Questo è garantito per i tipi immutabili, come numeri, stringhe e tuple.
+In Python, i tipi di dati possono essere classificati come **hashable** o non hashable. Un tipo è considerato hashable se gli oggetti creati da quel tipo hanno un valore di hash[^2-seconda-parte-python-modello-dati] che rimane costante per tutta la durata della loro vita e possono essere confrontati con altri oggetti. Questo è garantito per i tipi immutabili, come numeri, stringhe e tuple.
 
-[^2]: In informatica, le tabelle hash (hash table) sono una struttura dati essenziale per l'efficienza e la velocità di accesso ai dati. Le tabelle hash sono costituite da coppie indice-valore e sono progettate per sostituire la ricerca sequenziale in array, che può essere lenta soprattutto per grandi quantità di dati.
+[^2-seconda-parte-python-modello-dati]: In informatica, le tabelle hash (hash table) sono una struttura dati essenziale per l'efficienza e la velocità di accesso ai dati. Le tabelle hash sono costituite da coppie indice-valore e sono progettate per sostituire la ricerca sequenziale in array, che può essere lenta soprattutto per grandi quantità di dati.
 
   Una funzione di hash prende un valore (come una stringa o un numero) e restituisce un numero di lunghezza fissa, chiamato **hash**. Questo hash viene utilizzato come indice per memorizzare il valore nella tabella di hash. Quando si desidera cercare un elemento, la funzione di hash calcola l'indice corrispondente, consentendo un accesso diretto all'elemento. Questo processo rende la ricerca, l'inserimento e la cancellazione degli elementi molto efficienti, con un tempo di accesso medio costante (O(1)).
 

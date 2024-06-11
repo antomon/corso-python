@@ -1,40 +1,15 @@
-class Matrice:
-  def __init__(self, righe):
-    self.righe = righe
-    self.num_righe = len(righe)
-    self.num_colonne = len(righe[0]) if righe else 0
+from typing import TypeAlias
 
-  def __matmul__(self, altra): # <1>
-    if self.num_colonne != altra.num_righe: # <2>
-      raise ValueError("Non è possibile moltiplicare le matrici: "
-                       "dimensioni incompatibili.")
-    
-    risultato = [[0 for _ in range(altra.num_colonne)] # <3>
-                 for _ in range(self.num_righe)]
-    
-    for i in range(self.num_righe): # <4>
-      for j in range(altra.num_colonne):
-        for k in range(self.num_colonne):
-          risultato[i][j] += (self.righe[i][k] *
-                              altra.righe[k][j])
-    
-    return Matrice(risultato)
+type Point = tuple[float, float] # <1>
 
-  def __repr__(self): # <5>
-    return '\n'.join([' '.join(map(str, riga)) for riga in self.righe])
+def distanza(p1: Point, p2: Point) -> float: # <2>
+  return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
 
-A = Matrice([[1, 2],  # <6>
-             [3, 4]])
-B = Matrice([[5, 6], # <7>
-             [7, 8]])
+punto1: Point = (1.0, 2.0) # <3>
+punto2: Point = (4.0, 6.0)
 
-C = A @ B # <8>
+print(distanza(punto1, punto2)) # <4>
 
-print("Matrice A:") 
-print(A) # <9>
+print(type(punto1)) # <5>
 
-print("Matrice B:")
-print(B)
-
-print("Risultato di A @ B:")
-print(C) # <10>
+punto2: Point = "Coppia di coordinate"

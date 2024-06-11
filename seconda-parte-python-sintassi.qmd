@@ -6,7 +6,7 @@ tbl-cap-location: margin
 
 # La sintassi
 
-Per iniziare ad imparare Python come linguaggio, partiamo da una semplificazione della stuttura lessicale, cioè dall'insieme delle sue regole sintattiche più significative, sia per imparare le regole di composizione di programmi comprensibili all'interprete e sfrutturne appieno tutte le potenzialità, sia per essere in grado di utilizzare il codice scritto da altri.
+Per iniziare ad imparare Python come linguaggio, partiamo dalla sua stuttura lessicale, cioè dall'insieme delle sue regole sintattiche più significative, sia per imparare le regole di composizione di programmi comprensibili all'interprete e sfrutturne appieno tutte le potenzialità, sia per essere in grado di utilizzare il codice scritto da altri.
 
 Ogni programma Python è costituito da una serie di file di testo contenenti il codice sorgente con una certa codifica, il default essendo l'UTF-8, ed ogni file si può vedere come una sequenza di istruzioni, righe e token. Le istruzioni danno la granularità dell'algoritmo, le righe definiscono come queste istruzioni sono distribuite nel testo e, infine, i token sono gli elementi atomici che hanno un significato per il linguaggio.
 
@@ -14,23 +14,25 @@ Ogni programma Python è costituito da una serie di file di testo contenenti il 
 
 ### Elementi semantici
 
-Per dare un senso, anche intuitivo, ai concetti sintattici che saranno introdotti nel seguito, è opportuno definire, informalmente, alcuni elementi semantici, a partire da nozioni di base:
+Per dare un senso, anche intuitivo, agli esempi presentati assieme ai concetti sintattici che saranno introdotti nel seguito, è opportuno definire, informalmente, alcuni elementi semantici, a partire da nozioni di base:
 
 - Variabile: È un nome dato ad un valore presente in memoria.
   
 - Funzione: È un insieme di istruzioni che può essere parametrizzato da una serie di input predefiniti e può avere una serie di output, a cui è associato un nome.
 
-- Classe: È una definizione che raggruppa un insieme di attributi e operazioni che agiscono sugli atttributi della propria o di altre classi.
+- Classe: È una definizione che raggruppa un insieme di attributi e operazioni che agiscono sugli attributi della propria o di altre classi.
 
 - Oggetto: È un'istanza di una classe, cioè un particolare valore di una classe che è stato creato in memoria.
 
 - Modulo: È un file contenente definizioni di variabili, funzioni e classi che possono essere importate e utilizzate in altri programmi o moduli.
 
-### Le funzioni `print` e `help`
+### Le funzioni `print()` e `help()`
 
-Nel seguito useremo molto la funzione `print` che permette di visualizzare informazioni sullo schermo. Ciò è fondamentale per capire cosa sta succedendo nel programma in modo immediato. 
+Nel seguito useremo molto la funzione `print()` che permette di visualizzare informazioni sullo schermo. Ciò è fondamentale per capire cosa sta succedendo nel programma in modo immediato ed è una semplice alternativa a strumenti di _ispezione_ o _debugging_ messi a diposizione da IDE. 
 
-Usare `print` è facile: basta scrivere `print()` e mettere nelle parentesi quello che si vuole visualizzare. Ad esempio, per stampare `"Ciao, mondo!"`, si scrive:
+Usare `print()` è facile: basta scrivere `print(espressione)` e mettere nelle parentesi una `espressione` che si vuole visualizzare. 
+
+Ad esempio, per stampare `"Ciao, mondo!"`, si scrive:
 
 ```python
 print("Ciao, mondo!")
@@ -43,12 +45,14 @@ Nel REPL, invece, ciò si ottiene semplicemente dando l'invio:
 'Ciao, mondo!'
 ```
 
-Una seconda funzione molto utile è `help`, che fornisce informazioni sulla documentazione di moduli, funzioni, classi e metodi. Ad esempio, per ottenere informazioni sulla funzione `print`, possiamo scrivere:
+Una seconda funzione molto utile è `help()`. Fornisce informazioni sulla documentazione di moduli, funzioni, classi e metodi. 
+
+Ad esempio, per ottenere informazioni sulla funzione `print()`, possiamo scrivere:
 
 ```python
 >>> help(print) # <1>
 ```
-1. Output di `help`:
+1. Output di `help(print)`:
   ```python
   Help on built-in function print in module builtins:
   print(*args, sep=' ', end='\n', file=None, flush=False)
@@ -64,7 +68,7 @@ Una seconda funzione molto utile è `help`, che fornisce informazioni sulla docu
       whether to forcibly flush the stream.
   ```
 
-Nel REPL ha la massima utilità perché eseguendo `help` si passa dalla modalità interattiva del REPL a quella di navigazione del contenuto testuale della risposta. Per ritornare al REPL, basta premere `q` e poi `Invio`.
+Nel REPL offre la massima utilità, perché eseguendo `help()` si passa dalla modalità interattiva del REPL a quella di navigazione del contenuto testuale della risposta, funzionalità molto comoda soprattutto per testi lunghi. Per ritornare al REPL, basta premere `q` e poi `Invio`.
 
 ## Righe
 
@@ -106,7 +110,7 @@ z = [1, 2 # <3>
 
 ## Commenti
 
-Un commento inizia con un carattere cancelletto (`#`) e termina alla fine della riga fisica. I commenti non possono coesistere con il backslash come separatore di riga logica, giacché entrambi devono chiudere la riga fisica.
+Un **commento** inizia con un carattere cancelletto (`#`) e termina alla fine della riga fisica. I commenti non possono coesistere con il backslash come separatore di riga logica, giacché entrambi devono chiudere la riga fisica.
 
 Esempi non sintatticamente corretti:
 
@@ -123,7 +127,9 @@ if x > 5 and # Commento \ # <2>
 
 ## Indentazione
 
-Indentazione significa che spazi o, in alternativa, tabulazioni precedono un carattere che non sia nessuno dei due. Il numero di spazi, ottenuto dopo la trasformazione delle tabulazioni in spazi, si definisce livello di indentazione. L'indentazione del codice è il modo che Python utilizza per raggruppare le istruzioni in un blocco, ove tutte devono presentare la medesima indentazione. La prima riga logica che ha una indentazione minore della precedente, segnala che il blocco è stato chiuso proprio da quest'ultima. Anche le clausole di un'istruzione composta devono avere la stessa indentazione.
+**Indentazione** significa che spazi o, in alternativa, tabulazioni precedono un carattere che non sia nessuno dei due. Il numero di spazi, ottenuto dopo la trasformazione delle tabulazioni in spazi, si definisce livello di indentazione. 
+
+L'indentazione del codice è il modo che Python utilizza per raggruppare le istruzioni in un blocco, ove tutte devono presentare la medesima indentazione. La prima riga logica che ha una indentazione minore della precedente, segnala che il blocco è stato chiuso proprio da quest'ultima. Anche le clausole di un'istruzione composta devono avere la stessa indentazione.
 
 La prima istruzione di un file o la prima inserita al prompt `>>>` del REPL non deve presentare spazi o tabulazioni, cioè ha un livello di indentazione pari a 0.
 
@@ -137,8 +143,8 @@ Alcuni esempi:
 
     return risultato 
   ```
-  1.  Prima riga senza indentazione.
-  2.  Questa riga e la successiva appartengono allo stesso blocco e, pertanto, hanno la medesima indentazione.
+  1. Prima riga senza indentazione.
+  2. Questa riga e la successiva appartengono allo stesso blocco e, pertanto, hanno la medesima indentazione.
 
 - Test di condizione:
 
@@ -154,8 +160,8 @@ Alcuni esempi:
   else: 
           print("x è positivo") 
   ```
-  1.  Le tre clausole `if` , `then` e `else` hanno identica indentazione.
-  2.  I tre blocchi hanno come unico vincolo quello di avere un livello maggiore della riga precedente. I blocchi corrispondenti alle diverse clausole non devono avere lo stesso livello di indentazione, anche se è buona prassi farlo.
+  1. Le tre clausole `if` , `then` e `else` della medesima istruzione composta di test di condizione, devono avere identica indentazione.
+  2. I tre blocchi hanno come unico vincolo quello di avere un livello maggiore di indentazione della riga precedente. I blocchi corrispondenti alle diverse clausole non devono avere lo stesso livello di indentazione, anche se è buona prassi farlo.
 
 ::: {.callout-warning title="Attenzione"}
 Non si possono avere sia spazi che tabulazioni per definire il livello di indentazione nello stesso file. Ciò perché renderebbe ambiguo il numero di spazi che si ottiene dopo la trasformazione delle tabulazioni in spazi. Quindi, o si usano spazi, scelta raccomandata, o tabulazioni.
@@ -301,56 +307,57 @@ Nella tabella seguente invece un elenco completo con breve descrizione:
 
 Esempi di uso di parole chiave contestuali:
 
--   `match`, `case` e `_`:
+- `match`, `case` e `_`:
 
-    ``` python
-    def process_value(value): # <1>
-      match value: # <2>
-        case 1: # <3>
-          print("Uno")
+  ``` python
+  def process_value(value): # <1>
+    match value: # <2>
+      case 1: # <3>
+        print("Uno")
 
-        case 2:
-          print("Due")
+      case 2:
+        print("Due")
 
-        case _: # <4>
-          print("Altro")
+      case _: # <4>
+        print("Altro")
 
-    match = "Questo è un identificatore valido" # <5>
+  match = "Questo è un identificatore valido" # <5>
 
-    process_value(1)  # Output: Uno
-    process_value(2)  # Output: Due
-    process_value(3)  # Output: Altro
+  process_value(1)  # Output: Uno
+  process_value(2)  # Output: Due
+  process_value(3)  # Output: Altro
 
-    print(match)  # <6>
-    ```
-    1.  Definiamo una funzione che utilizza il pattern matching.
-    2.  Uso di `match` come parola chiave.
-    3.  Uso di `case` come parola chiave.
-    4.  Uso di `_` come parola chiave.
-    5.  Utilizzo di `match` come identificatore per una variabile.
-    6.  Output: Questo è un identificatore valido.
+  print(match)  # <6>
+  ```
+  1.  Definiamo una funzione che utilizza il pattern matching.
+  2.  Uso di `match` come parola chiave.
+  3.  Uso di `case` come parola chiave.
+  4.  Uso di `_` come parola chiave.
+  5.  Utilizzo di `match` come identificatore per una variabile.
+  6.  Output: `Questo è un identificatore valido`.
 
--   `type`:
+- `type`:
 
-    ``` python
-    from typing import TypeAlias
+  ``` python
+  from typing import TypeAlias
 
-    type Point = tuple[float, float] # <1>
+  type Point = tuple[float, float] # <1>
 
-    def distanza(p1: Point, p2: Point) -> float: # <2>
-      return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
+  def distanza(p1: Point, p2: Point) -> float: # <2>
+    return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
 
-    punto1: Point = (1.0, 2.0) 
-    punto2: Point = (4.0, 6.0)
+  punto1: Point = (1.0, 2.0) # <3>
+  punto2: Point = (4.0, 6.0)
 
-    print(distanza(punto1, punto2)) # <3>
+  print(distanza(punto1, punto2)) # <4>
 
-    print(type(punto1)) # <4>
-    ```
-    1.  Uso di `type` come parola chiave.
-    2.  Utilizzo dell'alias di tipo `Point` per i parametri della funzione.
-    3.  Output: `5.0`.
-    4.  Uso di `type` identificatore di una funzione. Output: `<class 'tuple'>`.
+  print(type(punto1)) # <5>
+  ```
+  1.  Uso di `type` come parola chiave.
+  2.  Utilizzo dell'alias di tipo `Point` per i parametri `p1` e `p2` della funzione.
+  3.  Definizione delle variabili `punto1` e `punto2` come `Point` utilizzando l'alias di tipo. Questo rende chiaro che entrambe le variabili sono tuple di due `float`, anche se l'interprete non controlla la coerenza tra oggetto e alias di tipo.
+  4.  Output: `5.0`.
+  5.  Uso di `type` identificatore di una funzione. Output: `<class 'tuple'>`.
 
 ### Classi riservate di identificatori
 
@@ -449,7 +456,7 @@ Identificatori speciali:
 
 ### Operatori
 
-Gli operatori sono rappresentati da simboli non alfanumerici e, quando applicati a uno o più identificatori, letterali o espressioni (definiti genericamente operandi), producono un risultato. Attenzione a non confondere la definizione di operatore come token, come considerata qui, con quella di operatore come funzionalità algoritmica, poiché alcune parole chiave sono operatori algoritmici e anche le funzioni possono agire come operatori.
+Gli operatori sono rappresentati da simboli non alfanumerici e, quando applicati a uno o più identificatori, letterali o espressioni (definiti genericamente operandi), producono un valore di risultato. Attenzione a non confondere la definizione di operatore come token, considerata qui, con quella di operatore come funzionalità algoritmica, poiché alcune parole chiave sono operatori algoritmici e anche le funzioni possono agire come operatori.
 
 Esempi:
 
@@ -464,7 +471,7 @@ sum = 3 + 4 # <2>
 result = (x * y) + (z / 2) # <3>
 ```
 1.  Utilizza l'operatore `+` sugli identificatori `x` e `y`.
-2.  Utilizza l'operatore `+` su letterali.
+2.  Utilizza l'operatore `+` su letterali numerici.
 3.  Utilizza vari operatori su espressioni.
 
 In tabella l'elenco degli operatori:
@@ -500,7 +507,9 @@ In tabella l'elenco degli operatori:
 
 Una caratteristica molto potente del linguaggio è che gli operatori sono utilizzabili anche sui tipi creati dall'utente con logica determinata dalla implementazione. Pertanto, non vanno visti come limitati alle espressioni artimetiche o di assegnazione sui letterali definiti dal linguaggio, ma anche sugli identificatori corrispondenti a tipi più complessi, anche definiti nel programma o importati.
 
-Un esempio è su `@` ove, nel codice seguente, è definita un nuovo tipi di oggetto corrispondente ad una matrice assieme a una delle operazioni matematiche più comuni che è la moltiplicazione, implementata per mezzo di `__matmul__`:
+Un esempio è dato dall'operatore `@` che, nel codice seguente, è applicato ad un nuovo tipo di oggetto corrispondente al concetto matematico di matrice. La classe `Matrice` presenta gli attributi per memorizzare gli elementi numerici e anche l'implementazione dell'operazione matematica di moltiplicazione, nel metodo `__matmul__`. Quando l'interprete trova `@`, chiama `__matmul__` dell'operando di sinistra e gli passa l'oggetto corrispondente all'operando di destra.
+
+Codice:
 
 ``` python
 class Matrice:
@@ -554,8 +563,6 @@ print(C) # <10>
 8. Moltiplicazione di matrici utilizzando l'operatore `@` che chiama `__matmul__()` per il calcolo effettivo.
 9. Chiama `__repr__()` di `Matrice` per ottenere la stringa su due righe per `A`: `1 2` e `3 4`.
 10. Chiama `__repr__()` di `Matrice` per ottenere la stringa su due righe per `C`: `19 22` e `43 50`.
-
-Infine, `@` è anche un delimitatore.
 
 ### Delimitatori
 
@@ -720,227 +727,3 @@ print(f_stringa_multi_linea) # <4>
 2.  Usiamo un'espressione di concatenazione di stringhe colla prima generata da un metodo che mette in minuscolo la stringa di `definizione`.
 3.  Output: `Ciao, python!`.
 4.  Output composto dalle tre righe `Questo è un esempio`, `di f-stringa multi-linea` e `in linguaggio Python`.
-
-## Istruzioni
-
-Un programma Python è una sequenza di istruzioni che si distinguono in **semplici** e **composte**.
-
-### Istruzioni semplici
-
-Un'istruzione semplice è sempre contenuta in una riga logica, che può presentare più istruzioni semplici separate da `;`. È permesso ma sconsigliato, perché in pochi casi porta a codice leggibile.
-
-In Python, le istruzioni semplici sono:
-
-- Assegnazione, attribuisce un valore a una variabile:
-
-    ``` python
-    x = 10
-    ```
-
-- Istruzioni di importazione, permettono di utilizzare gli identificatori definiti in altri moduli:
-
-  ``` python
-  import math
-  from math import sqrt
-  ```
-
-- Istruzioni di controllo del flusso nei cicli:
-
-  - `break`: Interrompe un ciclo.
-  - `continue`: Salta all'iterazione successiva di un ciclo.
-  - `pass`: Non esegue alcuna operazione.
-
-  ``` python
-  for i in range(10):
-      if i == 5:
-          break
-  ```
-
-- Istruzioni di gestione dell'uscita da una funzione, della generazione di valori o del sollevamento di eccezioni:
-
-  - `return`: Restituisce un valore da una funzione.
-  - `yield`: Restituisce un generatore.
-  - `raise`: Solleva un'eccezione per segnalare uan condizione di errore.
-
-  ``` python
-  def func():
-      return x
-  ```
-
-- Istruzioni di asserzione in cui si verifica una condizione e viene generata un'eccezione se la condizione è falsa:
-
-  ``` python
-  assert x > 0, "x deve essere positivo"
-  ```
-
-- Istruzioni di diichiarazione di modifica dell'ambito di variabili:
-
-  ``` python
-  global x
-  nonlocal y
-  ```
-
-- Un'espressione è una istruzione semplice ed, infatti, inserita nel REPL, ne viene prodotto il risultato della valutazione. D'altronde, una espressione è spesso utilizzata per chiamare funzioni che hanno effetti collaterali, come, ad esempio, produrre un output in console. Espressioni più importanti:
-
-  - Produzione di output:
-
-    ``` python
-    def stampa_messaggio(messaggio): # <1>
-      print(messaggio)
-
-    stampa_messaggio("Ciao, mondo!") # <2>
-    ```
-    1. Funzione che stampa un messaggio.
-    2. Istruzione di espressione che chiama la funzione con un effetto collaterale (stampa del messaggio).
-
-  - Modifica di parametri:
-
-    ``` python
-    def aggiungi_elemento(lista, elemento): # <1>
-      lista.append(elemento)
-
-    numeri = [1, 2, 3] # <2>
-
-    aggiungi_elemento(numeri, 4) # <3>
-
-    print(numeri)  # <4>
-    ```
-    1. Funzione che modifica un argomento mutabile (`lista`).
-    2. Lista iniziale.
-    3. Istruzione di espressione che chiama la funzione con un effetto collaterale (modifica dell'argomento).
-    4. Output: `[1, 2, 3, 4]`.
-
-  - Modifica di variabili globali:
-
-    ``` python
-    contatore = 0 # <1>
-
-    def incrementa_contatore(): # <2>
-      global contatore
-
-      contatore += 1
-
-    incrementa_contatore() # <3>
-
-    print(contatore)  # <4> 
-    ```
-    1. Variabile globale.
-    2. Funzione che modifica una variabile globale.
-    3. Istruzione di espressione che chiama la funzione con un effetto collaterale (modifica della variabile globale).
-    4. Output: `1`.
-
-  - Lancio di eccezioni:
-
-    ``` python
-    def solleva_eccezione(messaggio): # <1>
-      raise ValueError(messaggio) 
-
-    try: 
-      solleva_eccezione("Qualcosa è andato storto!") # <2>
-
-    except ValueError as e:
-      print(e)   # <3>
-    ```
-    1. Funzione che solleva un'eccezione.
-    2. Istruzione di espressione che chiama la funzione con un effetto collaterale (sollevamento di un'eccezione).
-    3. Output: `Qualcosa è andato storto!`.
-
-  - Un assegnamento con `=` è anch'esso un'istruzione semplice e non può mai essere all'interno di una espressione, dove, invece, si può usare l'operatore *tricheco* `:=`:
-
-    ``` python
-    if (n := len("Python")) > 5:
-      print(f"La lunghezza della stringa è {n}")  # <1>
-    ```
-    1. Output: `La lunghezza della stringa è 6`.
-
-### Istruzioni composte
-
-Una istruzione composta è costituita da altre istruzioni (semplici o composte). Il controllo dell'esecuzione delle istruzioni componenti avviene per mezzo di una o più clausole che iniziano tutte con una parola chiave, sono terminate da `:` e seguite da un blocco di codice. Ogni blocco deve avere almeno una istruzione semplice, ma può non avere una propria riga logica, cioè stare sulla stessa riga fisica e logica del `:`.
-
-Alcuni esempi del rapporto tra istruzioni e righe:
-
-- Blocco di istruzioni separato su più righe con medesima indentazione:
-
-  ``` python
-  if x > 0: 
-    print("x è positivo") # <1> 
-
-    x += 1
-
-    print(f"x ora è {x}") # <2>
-  ```
-  1. Prima riga fisica del blocco di codice del ramo eseguito quanto la condizione `x > 0` assume valore `True`.
-  2. Ultima riga fisica del medesimo blocco.
-
-- Blocco come singola istruzione sulla stessa riga logica:
-
-  ``` python
-  if x > 0: print("x è positivo")
-  ```
-
-- Diverse istruzioni semplici sulla stessa riga logica (non consigliato):
-
-  ``` python
-  if x > 0: print("x è positivo"); x += 1; print(f"x ora è {x}")
-  ```
-
-Ed ecco le principali istruzioni composte:
-
-- `if`, controlla l'esecuzione di un blocco di codice in base a una espressione condizionale (tra parentesi angolari è presente dello pseudocodice, quindi non eseguire!):
-
-  ``` python
-  if <espressione condizionale>:
-    # blocco di codice
-  ```
-
-- `for`, itera sugli elementi (oggetti) presenti in un oggetto di tipo sequenza (come una lista, una tupla o una stringa):
-
-  ``` python
-  for <elemento> in <sequenza>:
-    # blocco di codice
-  ```
-
-- `while`, esegue un blocco di codice finché una espressione condizionale è vera:
-
-  ``` python
-  while <espressione condizionale>:
-    # blocco di codice
-  ```
-
-- `try`, gestisce gli errori che possono verificarsi durante l'esecuzione di un blocco di codice:
-
-  ``` python
-  try:
-    # blocco di codice
-  except <eccezione>:
-    # blocco di codice per gestire l'eccezione
-  ```
-
-- `with`, gestisce le risorse come file, connessioni di rete, ecc., assicurandosi che siano aperte e chiuse correttamente, anche se si verifica un errore:
-
-  ``` python
-  with open('file.txt', 'r') as file:
-    # blocco di codice
-  ```
-
-- `def`, definisce una funzione fatta da una testata (nome funzione ed elenco parametri) e il blocco di istruzioni tra cui, opzionalmente, la restituzione di output:
-
-  ``` python
-  def nome_funzione(<parametro, parametro, ...>):
-    # blocco di codice
-  ```
-
-- `class`, definisce una classe:
-
-  ``` python
-  class NomeClasse:
-    # blocco di codice
-  ```
-
-- `match`, confronta un valore con diversi modelli (_pattern_) per trovare una corrispondenza ed esegue un blocco di istruzioni:
-
-  ``` python
-  match valore:
-    case <pattern>:
-      # blocco di codice
-  ```
