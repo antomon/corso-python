@@ -73,8 +73,8 @@ print(Esempio.metodo_statico())   # <9>
 1. Attributo di classe.
 2. Attributo di istanza.
 3. Metodo di istanza.
-4. Metodo di classe `Esempio`.
-5. Metodo statico.
+4. Metodo di classe, preceduto da `@classmethod`.
+5. Metodo statico, preceduto da `@staticmethod`.
 6. Creazione di un oggetto della classe `Esempio` associato alla variabile `oggetto`.
 7. Output: `Metodo di istanza: Valore di istanza`.
 8. Output: `Metodo di classe: Valore di classe`.
@@ -115,10 +115,10 @@ La creazione di un oggetto avviene in diversi contesti:
 - Chiamata del costruttore della classe, ad esempio a quello della classe `list` passiamo una sequenza di interi:
 
   ```python
-  lista = list([1, 2, 3])
+  lista = list((1, 2, 3))
   ```
 
-- Utilizzo di funzioni e metodi che restituiscono oggetti. Ad esempio, il metodo `upper()` della classe `str` restituisce un nuovo oggetto di tipo `str` ottenuto a partire da quello su cui è eseguito:
+- Utilizzo di funzioni e metodi che restituiscono oggetti. Ad esempio, il metodo `upper()` della classe `str` restituisce un nuovo oggetto di tipo `str`, ottenuto a partire da quello su cui è eseguito:
   
   ```python
   s1 = "Hello, World!"
@@ -146,7 +146,7 @@ La creazione di un oggetto avviene in diversi contesti:
 
 In Python, si utilizza la notazione con il punto `.` per accedere agli attributi e ai metodi di un oggetto o di una classe, semplicemente accodando all'identificatore della variabile (che rappresenta un'istanza della classe) o a quello della classe, il punto e l'identificatore del membro (attributo o metodo).  
 
-Le stringhe in Python sono oggetti della classe `str` e hanno sia attributi che metodi. Ad esempio, il metodo `upper()` converte una stringa in maiuscolo: 
+Esempio su `str`:
 
 ```python
 s = "hello world"  # <1>
@@ -160,11 +160,13 @@ print(s.__class__)  # <4>
 1. Creazione di un oggetto stringa.
 2. Chiamata del metodo `upper()` usando l'identificatore `s`.
 3. Output: `HELLO WORLD`. 
-4. Output: `<class 'str'>`.
+4. Output dell'attributo `__class__`: `<class 'str'>`.
 
 ### Gerarchie di classi
 
-Le classi possono essere organizzate in una gerarchia. In cima alla gerarchia delle classi di Python c'è la classe `object`, un po' infelice come nome, da cui derivano tutte le altre classi. Questo significa che ogni classe in Python eredita gli attributi e i metodi della classe `object`. La funzione `isinstance()` è utile per investigare questa gerarchia, poiché permette di verificare se un oggetto è un'istanza di una determinata classe o di una sua classe derivata. `isinstance()`, pertanto, ha due parametri, l'identificatore dell'oggetto e l'identificatore della classe e restituisce un valore logico, `True` o `False`.
+Le classi sono organizzate in una gerarchia. In cima alla gerarchia delle classi di Python c'è la classe `object`, con un nome po' infelice, da cui derivano tutte le altre classi. Questo significa che ogni classe in Python eredita gli attributi e i metodi della classe `object`. 
+
+La funzione `isinstance()` è utile per investigare questa gerarchia, poiché permette di verificare se un oggetto è un'istanza di una determinata classe o di una sua classe derivata. `isinstance()`, pertanto, ha due parametri, l'identificatore dell'oggetto e l'identificatore della classe e restituisce un valore logico, `True` o `False`.
 
 Ad esempio:
 
@@ -178,7 +180,7 @@ print(isinstance(s, object))  # <2>
 1. Output: `True`. `isinstance` conferma che `s` è un'istanza della classe `str`.
 2. Output: `True`. `isinstance` conferma che `s` è un'istanza anche della classe `object`, da cui deriva `str`.
 
-La funzione `issubclass()` è altrettanto utile per esplorare le gerarchie delle classi, in quanto permette di verificare se una classe è una sottoclasse di un'altra.
+La funzione `issubclass()` è altrettanto utile per esplorare le gerarchie delle classi, in quanto permette di verificare se una classe è una sottoclasse di un'altra. Ha due parametri, cioè il nome della classe derivata e quella base e restituisce un valore logico.
 
 Ad esempio:
 
@@ -191,11 +193,7 @@ print(issubclass(str, object))  # <1>
 
 Gli oggetti il cui valore può cambiare sono detti **mutabili**, mentre gli oggetti il cui valore non lo può, una volta creati, sono chiamati **immutabili**. L'immutabilità di un oggetto è determinata dalla progettazione del suo tipo. Ad esempio, per i tipi definiti nel linguaggio, numeri interi e in virgola mobile, stringhe e tuple sono immutabili, mentre dizionari e liste sono mutabili.
 
-Gli oggetti non vengono mai distrutti esplicitamente dall'utente, ma, quando diventano inaccessibili, possono essere raccolti dal garbage collector, che è eseguito contemporaneamente al codice del programma, come parte dell'interprete. L'implementazione specifica quando e come gli oggetti debbano essere distrutti.
-
-Alcuni oggetti contengono riferimenti a risorse _esterne_ rispetto al programma, come file aperti, connessioni di rete, finestre (_graphical user interface_, GUI) o dispositivi hardware. Queste risorse generalmente non vengono liberate dal garbage collector, perché le azioni corrispondenti sono particolari della risorsa stessa, pertanto, i loro oggetti forniscono anche un metodo esplicito di rilascio, solitamente chiamato `close()`. È molto importante tener conto di ciò per evitare effetti indesiderati. 
-
-Alcuni oggetti, chiamati **contenitori**, contengono riferimenti ad altri oggetti. Esempi di contenitori sono _tuple_, _liste_ e _dizionari_, strutture dati di base, definite in molti linguaggi di programmazione. I riferimenti ad altri oggetti fanno parte del valore di un contenitore e, nella maggior parte dei casi, quando parliamo del valore di un contenitore, intendiamo proprio i valori degli oggetti contenuti, non le loro identità. Ad esempio:
+Alcuni oggetti, chiamati **contenitori**, contengono riferimenti ad altri oggetti. Esempi di contenitori sono _tuple_, _liste_ e _dizionari_, strutture dati di base definite in molti linguaggi di programmazione. I riferimenti ad altri oggetti contribuiscono al valore di un contenitore e, nella maggior parte dei casi, quando parliamo del valore di un contenitore, intendiamo proprio i valori degli oggetti contenuti. Ad esempio:
 
 ```python
 t = (1, 2, 3) # <1>
@@ -203,7 +201,7 @@ t = (1, 2, 3) # <1>
 l = ["Qui", "Quo", "Qua"] # <2>
 ```
 1. Tupla con tre oggetti al suo interno: `1`, `2`, `3`. Diciamo che la tupla contiene i tre valori interi. 
-2. Lista com tre oggetti all'interno: `"Qui"`, `"Quo"`, `"Qua"`. Diciamo che la lista contiene le tre stringhe. 
+2. Lista con tre oggetti all'interno: `"Qui"`, `"Quo"`, `"Qua"`. Diciamo che la lista contiene le tre stringhe. 
 
 La mutabilità di un contenitore si riferisce alla identità degli oggetti referenziati e non al loro valore, quindi, ad esempio, se una tupla contiene un riferimento ad un oggetto mutabile, il valore della tupla cambia se quell'oggetto mutabile viene modificato:
 
@@ -277,9 +275,9 @@ d = c
 
 cioè l'oggetto lista ha due nomi nel programma. 
 
-### Tipi Hashable
+### Tipi hashable
 
-In Python, i tipi di dati possono essere classificati come **hashable** o non hashable. Un tipo è considerato hashable se gli oggetti creati da quel tipo hanno un valore di hash[^2-seconda-parte-python-modello-dati] che rimane costante per tutta la durata della loro vita e possono essere confrontati con altri oggetti. Questo è garantito per i tipi immutabili, come numeri, stringhe e tuple.
+I tipi di dati possono essere classificati come **hashable** o non hashable. Un tipo è considerato hashable se gli oggetti creati da quel tipo hanno un valore di hash[^2-seconda-parte-python-modello-dati] che rimane costante per tutta la durata della loro vita e possono essere confrontati con altri oggetti. Questo è garantito per i tipi immutabili, come numeri, stringhe e tuple.
 
 [^2-seconda-parte-python-modello-dati]: In informatica, le tabelle hash (hash table) sono una struttura dati essenziale per l'efficienza e la velocità di accesso ai dati. Le tabelle hash sono costituite da coppie indice-valore e sono progettate per sostituire la ricerca sequenziale in array, che può essere lenta soprattutto per grandi quantità di dati.
 
@@ -288,11 +286,16 @@ In Python, i tipi di dati possono essere classificati come **hashable** o non ha
 Gli oggetti di tipi hashable possiedono le seguenti caratteristiche principali:
 
 1. Valore di hash costante: Gli oggetti devono avere un valore di hash che non cambia durante la loro vita. Questo è tipico degli oggetti immutabili.
+
 2. Comparabilità: Gli oggetti devono poter essere confrontati con altri oggetti per determinare se sono uguali. Due oggetti che sono considerati uguali devono avere lo stesso valore di hash.
 
-La hashabilità è strettamente legata all'immutabilità. Gli oggetti immutabili sono naturalmente hashable perché il loro stato non cambia dopo la creazione, garantendo che il valore di hash rimanga costante. Ad esempio, tipi di dati immutabili come numeri, stringhe e tuple possono essere considerati hashable.
+La hashabilità è strettamente legata all'immutabilità. Gli oggetti immutabili sono naturalmente hashable perché il loro stato non cambia dopo la creazione, garantendo che il valore di hash rimanga costante. Ad esempio, tipi di dati immutabili come numeri, stringhe e tuple possono essere considerati hashable. Il viceversa non è vero, cioè esistono alcuni tipi mutabili che sono hashable.
 
-Il viceversa non è vero, cioè esistono alcuni tipi mutabili che sono hashable.
+### Eliminazione
+
+Gli oggetti non vengono mai eliminati esplicitamente dall'utente, ma, quando diventano inaccessibili, possono essere raccolti dal garbage collector, che è eseguito contemporaneamente al codice del programma, come parte dell'interprete. L'implementazione specifica quando e come la memoria debba essere liberata.
+
+Alcuni oggetti contengono riferimenti a risorse _esterne_ rispetto al programma, come file aperti, connessioni di rete, finestre (_graphical user interface_, GUI) o dispositivi hardware. Queste risorse generalmente non vengono liberate dal garbage collector, perché le azioni corrispondenti sono particolari della risorsa stessa. Pertanto, i loro oggetti forniscono anche un metodo esplicito di rilascio, solitamente chiamato `close()`. È molto importante tener conto di ciò per evitare effetti indesiderati. 
 
 ## Tipi predefiniti
 
@@ -306,13 +309,13 @@ Per ragioni di esposizione, distingueremo tra tipi predefiniti fondamentali, cio
 
 Prima di entrare nel dettaglio per ognuno, di seguito un elenco dei tipi predefiniti fondamentali:
 
-- Numeri: sia interi relativi che reali, cioè in virgola mobile, sia complessi.
+- Numeri: Sia interi relativi che reali, cioè in virgola mobile, sia complessi.
 
-- Sequenze, cioè contenitori caratterizzati da un ordinamento degli oggetti al loro interno, sia mutabili che immutabili. 
+- Sequenze: Contenitori caratterizzati da un ordinamento degli oggetti al loro interno, sia mutabili che immutabili. 
 
-- Insiemi, cioè contenitori non caratterizzati da un ordinamento degli oggetti.
+- Insiemi: Contenitori non caratterizzati da un ordinamento degli oggetti.
 
-- Dizionari, cioè contenitori di coppie di oggetti chiave e valore.
+- Dizionari: Contenitori di coppie di oggetti, rispettivamente, chiave e valore.
 
 - Altri: `None`, `NotImplemented`, `Ellipsis`.
 
@@ -416,9 +419,9 @@ print(type(z)) # <7>
 
 ### Sequenze
 
-Una sequenza è un contenitore ordinato di oggetti, il cui indice è un intero che parte da `0`. Se la sequenza è referenziata da una variabile `c`, per ottenere il numero totale di oggetti contenuti si userà la funzione predefinita `len()`, cioè `len(c)`, e per l'oggetto i-esimo le parentesi quadre e l'indice, `c[i]`. È possibile usare indici negativi che sono interpretati come la somma di quello col numero totale di oggetti contenuti, quindi `-i` è trattato come `len(c)-i` e l'indice risultante dovrà sempre essere compreso tra `0` e `len(c)-1`.
+Una sequenza è un contenitore ordinato di oggetti, il cui indice è un intero che parte da `0`. Se la sequenza è referenziata da una variabile `c`, per ottenere il numero totale di oggetti contenuti si userà la funzione predefinita `len()`, cioè `len(c)`, e per l'oggetto i-esimo le parentesi quadre e l'indice, `c[i]`. È possibile usare indici negativi che sono interpretati come la somma di tale indice col numero totale di oggetti contenuti, quindi `-i` è trattato come `len(c)-i` e l'indice risultante dovrà sempre essere compreso tra `0` e `len(c)-1`.
 
-Si può _sezionare_ (_slicing_) la sequenza per ottenere una sottosequenza, dello stesso tipo, di oggetti originariamente contigui tra gli indici `i` e `j`, cioè con indici `x` tali che `i≤x<j`, usando `c[i:j]`. Aggiungendo un terzo parametro di _passo_, `k`, si possono selezionare solo gli oggetti con indici `i+l*k` e `l≥0`, che siano compresi tra i due indici, cioè `i≤i+l*k<j`, con `c[i:j:k]`.
+Si può _sezionare_ (_slicing_) la sequenza per ottenere una nuova sottosequenza, dello stesso tipo, di oggetti originariamente contigui tra gli indici `i` e `j`, cioè con indici `x` tali che `i≤x<j`, usando `c[i:j]`. Aggiungendo un terzo parametro di _passo_, `k`, si possono selezionare solo gli oggetti con indici `i+l*k` e `l≥0`, che siano compresi tra i due indici, cioè `i≤i+l*k<j`, con `c[i:j:k]`.
 
 Le sequenze sono categorizzate in base alla mutabilità:
 
@@ -428,7 +431,7 @@ Le sequenze sono categorizzate in base alla mutabilità:
 
 #### Iterabilità
 
-Le sequenze sono iterabili cioè possono essere scorse in tutte per mezzo di un oggetto ad hoc detto **iteratore**. Un iteratore è un oggetto separato dalla sequenza stessa, che mantiene uno stato interno per tenere traccia dell'elemento successivo da restituire. Questo permette di iterare sulla sequenza senza modificarla direttamente. 
+Le sequenze sono iterabili, cioè possono essere ottenuti tutti gli oggetti contenuti nell'ordine corretto, per mezzo di un oggetto ad hoc detto **iteratore**. Un iteratore è un oggetto separato dalla sequenza stessa, che mantiene uno stato interno per tenere traccia dell'elemento successivo da restituire. Questo permette di iterare sulla sequenza senza modificarla direttamente. 
 L'iteratore prende in input un oggetto iterabile e ne restituisce i valori uno alla volta secondo un certo protocollo. Per le sequenze, questo protocollo consiste nel partire dal primo elemento e procedere fino all'ultimo.
 
 #### Stringhe
@@ -553,7 +556,7 @@ Dopo aver identificato il letterale stringa, l'inteprete crea l'oggetto stringa 
   ```
   1. Output: `Hello`.
 
-- Se un oggetto definisce il metodo speciale `__str__` che restituisce una stringa, il costruttore di `str` lo chiama per ottenerla: 
+- Se un oggetto definisce il metodo speciale `__str__()` che restituisce una stringa, il costruttore di `str` lo chiama per ottenerla: 
 
   ```python
   l = ["Hello", " ", "World!"]
@@ -582,7 +585,43 @@ Dopo aver identificato il letterale stringa, l'inteprete crea l'oggetto stringa 
   1. Output: `Python è fantastico`. Lo spazio tra le parole è stato inserito perché `join` è stato chiamato su un oggetto la cui stringa era data dal solo carattere di spazio.
   2. Output: `Hello World!`.
 
-- È possibile creare una stringa a partire da un oggetto di bytes specificando la codifica:
+#### Oggetti `bytes`
+
+Un oggetto `bytes` è un array immutabile i cui elementi sono byte a 8 bit, rappresentati da interi nel range da 0 a 255. Gli oggetti `bytes` sono utili per gestire dati binari, come quelli letti o scritti su file o trasmessi su reti.
+
+Esistono diversi modi per creare oggetti `bytes`:
+
+- È possibile creare oggetti `bytes` utilizzando letterali bytes, che sono simili ai letterali stringa, ma sono preceduti dal prefisso `b`. Ad esempio:
+
+  ```python
+  b'abc'  # <1>
+  ```
+  1. Crea un oggetto bytes con i byte corrispondenti ai caratteri ASCII `'a'`, `'b'`, `'c'`.
+
+- È possibile creare oggetti `bytes` utilizzando il costruttore `bytes()`, che può accettare diversi tipi di argomenti:
+
+  - Senza argomenti, crea un oggetto `bytes` vuoto:
+
+    ```python
+    bytes()  # <1>
+    ```
+    1. Output: `b''`.
+
+  - Da un oggetto iterabile contenente interi (ognuno dei quali deve essere nel range da 0 a 255):
+
+    ```python
+    bytes([97, 98, 99])  # <1> 
+    ```
+    1. Output: `b'abc'`.
+
+  - Da una stringa e una codifica:
+
+    ```python
+    bytes('abc', 'utf-8')  # Output: b'abc'
+    ```
+    1. Output: `b'abc'`.
+
+- È possibile creare una stringa a partire da un oggetto `bytes` specificando la codifica:
 
   ```python
   b = b'Hello, World!' # <1>
@@ -592,8 +631,53 @@ Dopo aver identificato il letterale stringa, l'inteprete crea l'oggetto stringa 
   print(s)  # <3>
   ```
   1. Oggetto di tipo `bytes`.
-  2. Creazione di una stringa da oggetto di bytes che è codificato in ASCII.
+  2. Creazione di una stringa da oggetto `bytes` che è codificato in ASCII.
   3. Output: `Hello World!`.
+
+Alcuni esempi di utilizzo degli oggetti `bytes`:
+
+- Creazione e accesso:
+  ```python
+  b = b'hello'
+
+  print(b[0])  # <1>
+
+  print(b[1:3])  # <2>
+  ```
+  1. Output: `104` (ASCII per 'h').
+  2. Output: `b'el'`.
+
+- Concatenazione e ripetizione:
+  
+  ```python
+  b1 = b'hello'
+  b2 = b'world'
+
+  b3 = b1 + b2
+
+  print(b3)  # <1>
+
+  b4 = b1 * 3
+
+  print(b4)  # <2>
+  ```
+  1. Output: `b'helloworld'`.
+  2. Output: `b'hellohellohello'`.
+
+- Conversione da e verso stringhe:
+  
+  ```python
+  s = "hello"
+  b = s.encode('utf-8')  # <1>
+  print(b)  # <2>
+
+  s2 = b.decode('utf-8')  # <3>
+  print(s2)  # <4>
+  ```
+  1. Converte la stringa in `bytes` usando la codifica UTF-8.
+  2. Output: `b'hello'`.
+  3. Decodifica i `bytes` in una stringa.
+  4. Output: `'hello'`.
 
 #### Tuple
 
@@ -606,7 +690,7 @@ Esempi di tuple costruite con letterali e espressioni:
 ```python
 t1 = 42., "Hello", 0x42 # <1>
 t2 = (42,) # <2>
-t3 = 21+21, # <3>
+t3 = 21 + 21, # <3>
 t4 = () # <4>
 ```
 1. Tupla con tre oggetti contenuti da letterale numerico, letterale stringa e ancora letterale numerico.
@@ -614,7 +698,7 @@ t4 = () # <4>
 3. Tupla con un solo oggetto da espressione.
 4. Tupla vuota.
 
-Possiamo creare le tuple usando la classe `tuple` che accetta come argomento un iterabile:
+Possiamo creare le tuple anche usando il costruttore di `tuple`, che accetta come argomento un iterabile:
 
 ```python
 t1 = tuple() # <1>
@@ -625,230 +709,445 @@ t3 = tuple([1, 2, 3]) # <3>
 ```
 1. Crea una tupla vuota.
 2. Crea una tupla con 5 stringhe, una per ogni carattere.
-3. Crea una tupla con 3 interi.
+3. Crea una tupla con una lista di 3 interi.
 
-Operazioni sulle tuple:
+Esempi di operazioni sulle tuple:
 
-```python
-t1 = 42., "Hello", 0x42
-print(t1[1])  # <1>
+- Accesso e numero di elementi: 
 
-print(len(t1))  # <2>
+  ```python
+  t1 = 42., "Hello", 0x42
 
-t2 = (42,)
+  print(t1[1])  # <1>
 
-t3 = t1 + t2
-print(t3) # <3>
+  print(t3[1:3])  # <2>
 
-print(t3[1:3])  # <4>
+  print(42. in t3) # <3>
 
-print(42. in t3) # <5>
-```
-1. Output: `"Hello"`.
-2. Output: `3`.
-3. Output: `(42.0, 'Hello', 66, 42)`. Concatenazione di tuple che produce una nuova tupla con 4 oggetti contenuti.
-4. Output: `('Hello', 66)`. Slicing di tupla che produce una nuova tupla con 2 oggetti.
-5. Output: `True`. Test di appartenenza di `42.` nella tupla `(42.0, 'Hello', 66, 42)`.
+  print(len(t1))  # <4>
+  ```
+  1. Output: `"Hello"`.
+  2. Output: `3`.
+  3. Output: `('Hello', 66)`. Slicing di tupla che produce una nuova tupla con 2 oggetti.
+  4. Test di appartenenza di `42.` nella tupla `(42.0, 'Hello', 66, 42)`. Output: `True`. 
 
-#### Liste
+- Concatenazione: 
+
+  ```python
+  t1 = 42., "Hello", 0x42
+  t2 = (42,)
+
+  t3 = t1 + t2
+
+  print(t3) # <1>
+  ```
+  1. Concatenazione di tuple che produce una nuova tupla con 4 oggetti contenuti. Output: `(42.0, 'Hello', 66, 42)`. 
+
+### Liste
 
 Le liste in Python sono sequenze ordinate mutabili, in cui gli oggetti contenuti possono essere di tipi diversi. La classe è `list` che deriva da `object`.
 
-Per creare una lista, si utilizza una serie di espressioni, separate da virgole (`,`) all'interno di parentesi quadre, per indicare gli elementi della lista. Se ogni elemento è un letterale, l'intera costruzione è un letterale di lista. Si può opzionalmente mettere una virgola ridondante dopo l'ultimo elemento. Per denotare una lista vuota, si utilizza una coppia di parentesi quadre vuote.
-
-Esempi di letterali di lista:
+Per creare una lista, si utilizza una serie di espressioni, separate da virgole (`,`), all'interno di parentesi quadre, per indicare gli elementi della lista. Si può opzionalmente mettere una virgola ridondante dopo l'ultimo elemento. Per denotare una lista vuota, si utilizza una coppia di parentesi quadre vuote.
 
 Esempi di liste costruite con letterali e espressioni:
 
 ```python
 l1 = [42., "Hello", 0x42] # <1>
-l2 = [21+21] # <2>
+
+l2 = [21 + 21] # <2>
+
 l3 = [] # <3>
 ```
-1. Lista con tre oggetti contenuti da letterale numerico, letterale stringa e ancora letterale numerico.
-2. Lista con un solo oggetto da espressione.
+1. Lista con tre oggetti: un letterale numerico, un letterale stringa e un altro letterale numerico.
+2. Lista con un solo oggetto creato da un'espressione.
 3. Lista vuota.
 
-Possiamo creare le tuple usando la classe `tuple` oltre che i letterali:
+Possiamo creare le liste usando il costruttore della classe `list`, passando come argomento un iterabile o nulla:
 
 ```python
 l1 = list() # <1>
+
 l2 = list("Hello") # <2>
 ```
 1. Crea una lista vuota.
-2. Crea una lista con 5 stringhe, una per ogni carattere. 
+2. Crea una lista con 5 stringhe, una per ogni carattere della stringa "Hello".
 
-Operazioni sulle liste:
+Le operazioni comuni sulle liste:
 
-```python
-l1 = [42., "Hello", 0x42]
-print(l1[1])  # <1>
+- Accesso e modifica:
 
-print(len(l1))  # <2>
+  ```python
+  l1 = [42., "Hello", 0x42]
 
-l2 = [42]
+  print(l1[1])  # <1>
 
-l3 = l1 + l2 
-print(l3) # <3>
+  print(len(l1))  # <2>
 
-l2 += l1 
-print(l2) # <4>
+  l1[1] = "Ciao"
 
-l4 = []
+  print(l1)  # <3>
+  ```
+  1. Output: `"Hello"`. Accesso all'elemento in posizione 1 della lista.
+  2. Output: `3`. Numero totale di elementi nella lista `l1`.
+  3. Modifica della lista con l'assegnazione di un nuovo valore a un indice. Output: `[42.0, 'Ciao', 66]`. 
 
-l4.extend(l1) 
-print(l4) # <5>
+- Concatenazione:
 
-l5 = []
+  ```python
+  l1 = [42., "Hello", 0x42]
+  l2 = [42]
+  l3 = l1 + l2 
 
-l5.append(l1) 
-print(l5) # <6>
+  print(l3) # <1>
 
-print(l2[1:3])   # <7>
+  l2 += l1 
+  print(l2) # <2>
+  ```
+  1. Concatenazione di liste che produce una nuova lista. Output: `[42.0, 'Hello', 66, 42]`. 
+  2. Concatenazione sul posto modificando `l2`. Output: `[42, 42.0, 'Hello', 66]`. 
 
-l1[1] = "Ciao"
-print(l1)  # <8>
+- Estensione e aggiunta di elementi:
 
-l1.remove("Ciao")
-print(l1)  # <9>
+  ```python
+  l1 = [42., "Hello", 0x42]
+  l4 = []
 
-l1.pop(0)
-print(l1)  # <10>
+  l4.extend(l1) 
 
-del l4[1:2] 
-print(l4) # <11>
-```
-1. Output: `"Hello"`.
-2. Output: `3`.
-3. Output: `[42.0, 'Hello', 66, 42]`. Concatenazione di liste che produce una nuova lista.
-4. Output: `[42, 42.0, 'Hello', 66]`. Concatenazione sul posto modificando `l2`.
-5. Output: `[42.0, 'Hello', 66]`. Concatenazione sul posto modificando `l4`.
-6. Output: `[[42.0, 'Hello', 66]]`. Inserimento in fondo alla lista di un elemento.
-7. Output: `[42.0, 'Hello']`. Slicing di lista che produce una nuova lista.
-8. Output: `[42.0, 'Ciao', 66]`. Modifica della lista per assegnazione di un nuovo oggetto ad un indice.
-9. Output: `[42.0, 66]`. Rimozione di un elemento dalla lista usando un test di uguaglianza per stabilire che l'oggetto nella lista è uguale a quello passato come argomento.
-10. Output: `[66]`. Rimozione di un elemento della lista usando `pop()`.
-11. Output: `[42.0, 66]`. Rimozione di un elemento della lista usando uno slicing e `del`.
+  print(l4) # <1>
+
+  l5 = []
+
+  l5.append(l1) 
+
+  print(l5) # <2>
+  ```
+  1. Estende `l4` aggiungendo gli elementi di `l1`. Output: `[42.0, 'Hello', 66]`. 
+  2. Aggiunge `l1` come un singolo elemento alla fine di `l5`. Output: `[[42.0, 'Hello', 66]]`. 
+
+- Slicing, rimozione e riassegnazione di elementi: 
+
+  ```python
+  l1 = [42., "Hello", 0x2A, "Hello", 0o52, "Hello", 42]
+  l2 = [42]
+
+  print(l1[1:3])   # <1>
+
+  l1.remove("Hello")
+  print(l1)  # <2>
+
+  l1.pop(0)
+  print(l1)  # <3>
+
+  del l1[0:2]
+  print(l1) # <4>
+
+  l1[1:3] = ["Ciao", 24]
+  print(l1) # <5>
+
+  l1[1:3] = []
+  print(l1) # <6>
+  ```
+  1. Slicing di lista che produce una nuova lista. Output: `['Hello', 66]`. 
+  2. Rimozione della prima occorrenza di elemento dalla lista usando `remove()` che, scorrendo la sequenza, applica un test di uguaglianza per stabilire che l'oggetto nella lista sia uguale a quello passato come argomento e, quindi, lo elimina. `remove()` non restituisce l'elemento eliminato. Output: `[42.0, 42, 'Hello', 42, 'Hello', 42]`. 
+  3. Rimozione di un elemento della lista usando `pop()` per eliminare l'elemento in posizione indicata dall'indice passato come argomento, qui `0`. `pop()` restituisce l'elemento eliminato. Output: `[42, 'Hello', 42, 'Hello', 42]`. 
+  4. Rimozione di elementi con slicing usando la parola chiave `del`. Output: `[42, 'Hello', 42]`.
+  5. Riassegnazione usando lo slicing. Output: `[42, 'Ciao', 24]`.
+  6. Eliminazione per mezzo di assegnazione e slicing. Output: `[42]`.
 
 ### Insiemi
 
-Python ha due tipi di insiemi incorporati per rappresentare collezioni di elementi unici con ordine arbitrario: `set` e `frozenset`. Gli elementi in un set possono essere di tipi diversi, ma devono essere tutti hashable. Le istanze del tipo `set` sono mutabili e quindi non hashable, mentre le istanze del tipo `frozenset` sono immutabili e hashable. Non è possibile avere un set i cui elementi siano altri set, ma è possibile avere un set (o un frozenset) i cui elementi siano frozenset. I set e i frozenset non sono ordinati.
+Python ha due tipi predefiniti di insiemi per rappresentare collezioni di elementi unici con ordine arbitrario: `set` e `frozenset`. 
 
-#### Creazione di Set e Frozenset
+Gli elementi in un `set` possono essere di tipi diversi, ma devono essere tutti hashable. Le istanze del tipo `set` sono mutabili e quindi non hashable, mentre le istanze del tipo `frozenset` sono immutabili e hashable.
 
-##### Utilizzo di Letterali
+Non è possibile avere un `set` i cui elementi siano altri `set`, ma è possibile avere un `set`, o un `frozenset`, i cui elementi siano `frozenset`. 
 
-Per denotare un set, si utilizza una serie di espressioni (gli elementi del set) separate da virgole (,) all'interno di parentesi graffe ({}). Se ogni elemento è un letterale, l'intera costruzione è un letterale di set. Si può opzionalmente mettere una virgola ridondante dopo l'ultimo elemento.
+Entrambi i tipi `set` e `frozenset` derivano direttamente dalla classe base `object`.
 
-Esempi di letterali di set:
+#### `set`
 
-- **Set con tre elementi**:
+Per denotare un `set`, si utilizza una serie di espressioni separate da virgole all'interno di parentesi graffe. Si può opzionalmente mettere una virgola ridondante dopo l'ultimo elemento.
 
-  ```python
-  s = {42, 3.14, 'hello'}
-  ```
-
-- **Set con un elemento (opzionalmente con una virgola finale)**:
-
-  ```python
-  s = {100}
-  ```
-
-- **Set vuoto**:
-
-  Non esiste un letterale per un set vuoto; si deve usare il costruttore `set()`:
-
-  ```python
-  s = set()
-  ```
-
-##### Utilizzo della Classe `set`
-
-Si può creare un set chiamando il tipo built-in `set` senza argomenti (per un set vuoto) o con un argomento che è un oggetto iterabile (per un set i cui elementi sono quelli dell'iterabile).
+Esempi di letterali di `set`:
 
 ```python
-# Creazione di un set da una lista
-s = set([1, 2, 3, 4])
-print(s)  # Output: {1, 2, 3, 4}
+s = {42, 3.14, 'hello'} # <1>
 
-# Creazione di un set vuoto
-s_empty = set()
-print(s_empty)  # Output: set()
+s = {100} # <2>
+
+s = set() # <3>
 ```
+1. `set` definito per mezzo di letterali e delimitatori.
+2. Non esiste un letterale per un `set` vuoto, pertanto si deve usare il costruttore `set()`.
 
-##### Utilizzo della Classe `frozenset`
+Si può creare una istanza di `set` chiamando il costruttore senza argomenti, per un `set` vuoto, o con un oggetto iterabile (per un `set` i cui elementi sono quelli dell'iterabile).
 
-Allo stesso modo, si può creare un frozenset chiamando il tipo built-in `frozenset` senza argomenti (per un frozenset vuoto) o con un argomento che è un oggetto iterabile (per un frozenset i cui elementi sono quelli dell'iterabile).
+I `set` sono mutabili, il che significa che una volta creati, possono essere modificati. Supportano operazioni come aggiunta, rimozione e controllo dell'esistenza di elementi.
 
-```python
-# Creazione di un frozenset da una lista
-fs = frozenset([1, 2, 3, 4])
-print(fs)  # Output: frozenset({1, 2, 3, 4})
-
-# Creazione di un frozenset vuoto
-fs_empty = frozenset()
-print(fs_empty)  # Output: frozenset()
-```
-
-#### Derivazione della Classe `set` e `frozenset`
-
-Entrambi i tipi `set` e `frozenset` derivano direttamente dalla classe base `object` e non hanno superclassi intermedie.
-
-### Caratteristiche dei Set e dei Frozenset
-
-#### Set
-
-I set sono mutabili, il che significa che una volta creati, possono essere modificati. Supportano operazioni come aggiunta, rimozione e controllo dell'esistenza di elementi.
-
-- **Aggiunta di Elementi**:
+- Aggiunta di elementi:
 
   ```python
   s = {1, 2, 3}
+
   s.add(4)
-  print(s)  # Output: {1, 2, 3, 4}
-  ```
 
-- **Rimozione di Elementi**:
+  print(s)  # <1>
+  ```
+  1. `add()` aggiunge un elemento. Output: `{1, 2, 3, 4}`.
+
+- Rimozione di elementi:
 
   ```python
-  s = {1, 2, 3, 4}
-  s.remove(3)
-  print(s)  # Output: {1, 2, 4}
-  ```
+  s = {1, 2, 3, 4, 3} # <1>
 
-- **Controllo dell'Esistenza di un Elemento**:
+  s.remove(3)
+
+  print(s)  # <2>
+  ```
+  1. Quando crei un `set` con elementi duplicati, come `{1, 2, 3, 4, 3}`, Python rimuove automaticamente i duplicati. Quindi, il `set` `s` diventerà `{1, 2, 3, 4}`.
+  2. `remove()` elimina l'elemento specificato dal `set`. Output: `{1, 2, 4}`.
+
+- Controllo dell'esistenza di un elemento:
 
   ```python
   s = {1, 2, 3}
-  print(2 in s)  # Output: True
-  print(5 in s)  # Output: False
+
+  print(2 in s)  # <1>
+
+  print(5 in s)  # <2>
   ```
+  1. Output: `True`.
+  2. Output: `False`.
 
-#### Frozenset
-
-I frozenset sono immutabili, il che significa che una volta creati, non possono essere modificati. Supportano operazioni di lettura come controllo dell'esistenza di elementi e operazioni di set (unione, intersezione, differenza), ma non supportano operazioni di modifica.
-
-- **Controllo dell'Esistenza di un Elemento**:
+- Operazioni insiemistiche:
 
   ```python
-  fs = frozenset([1, 2, 3])
-  print(2 in fs)  # Output: True
-  print(5 in fs)  # Output: False
-  ```
+  s1 = set([1, 2, 3])
+  s2 = set([3, 4, 5])
 
-- **Operazioni di Set**:
+  print(s1 | s2)  # <1>
+
+  print(s1 & s2)  # <2>
+
+  print(s1 - s2)  # <3>
+  ```
+  1. Operazione di unione insiemistica. Output: `set({1, 2, 3, 4, 5})`.
+  2. Operazione di intersezione insiemistica. Output: `set({3})`.
+  3. Operazione di differenza insiemistica. Output: `set({1, 2})`.
+
+#### `frozenset`
+
+Allo stesso modo, si può creare un `frozenset` per mezzo del costruttore, senza argomenti o con un iterabile.
+
+```python
+# 
+fs = frozenset([1, 2, 3, 4])
+
+print(fs)  # <1>
+
+fs_empty = frozenset()
+
+print(fs_empty)  # <2>
+```
+1. Creazione di un `frozenset` da una lista. Output: `frozenset({1, 2, 3, 4})`.
+2. Creazione di un `frozenset` vuoto. Output: `frozenset()`.
+
+I `frozenset` sono immutabili, il che significa che una volta creati, non possono essere modificati. Supportano operazioni di lettura come controllo dell'esistenza di elementi e operazioni insiemistiche (unione, intersezione, differenza), ma non supportano operazioni di modifica. Il comportamento è identico alle operazioni di `set`. 
+
+### Mappature
+
+Le mappature rappresentano insiemi finiti di oggetti indicizzati da insiemi di indici arbitrari. La notazione con le parentesi quadre, `a[k]`, seleziona l'elemento indicizzato da `k` nella mappatura `a` e può essere utilizzata all'interno di espressioni oppure a sinistra di assegnazioni o istruzioni `del`. La funzione `len()` restituisce il numero di elementi in una mappatura.
+
+Attualmente, esiste un solo tipo di mappatura predefinita in Python: il **dizionario**. È mutabile e la classe corrispondente è `dict` che deriva da `object`.
+
+I dizionari rappresentano insiemi finiti di oggetti indicizzati da valori quasi arbitrari, detti **chiavi**. Le chiavi nei dizionari devono essere di tipi arbitrati ma hashable e, come oggetti, uniche. La ragione è che l'implementazione efficiente dei dizionari richiede che il valore hash di una chiave rimanga costante. 
+
+I dizionari preservano l'ordine di inserimento, il che significa che le chiavi verranno prodotte nello stesso ordine in cui sono state aggiunte sequenzialmente al dizionario. Sostituire una chiave esistente non cambia l'ordine; tuttavia, rimuovere una chiave e reinserirla la aggiungerà alla fine invece di mantenerne la posizione precedente.
+
+I dizionari si possono creare per mezzo di una serie di coppie di espressioni, separate da virgole, all'interno di parentesi graffe. Le chiavi e i valori sono separati da due punti. È possibile inserire una virgola dopo l'ultimo elemento.
+
+Esempi:
+
+```python
+d1 = {"a": 42, "b": 2, 42: 3, "b": 24}  # <1>
+
+print(d1) # <2>
+
+x = 2.
+
+d2 = {2**2: "uno", 2 * x: "due", "hello".upper(): x, }  
+
+print(d2) # <3>
+
+d3 = {}  # <4>
+```
+1. Dizionario con tre coppie chiave-valore. 
+2. Le chiavi devono essere uniche quindi l'interprete mantiene solo una chiave con un valore arbitrario. Output: `{'a': 42, 'b': 24, 42: 3}`.
+3. Dizionario con due coppie chiave-valore e virgola opzionale in fondo. Output: `{4: 'due', 'HELLO': 2.0}`.
+4. Dizionario vuoto.
+
+Possiamo creare i dizionari anche usando la classe `dict` oltre che i letterali:
+
+```python
+d1 = dict()  # <1>
+
+d2 = dict(a=1, b=2, c=3)  # <2>
+
+d3 = dict([("a", 1), ("b", 2), ("c", 3)])  
+
+print(d3) # <3>
+```
+1. Crea un dizionario vuoto.
+2. Crea un dizionario con tre coppie chiave-valore specificate come argomenti. 
+3. Crea un dizionario a partire da un iterabile di tuple. Output: `{'a': 1, 'b': 2, 'c': 3}`.
+
+Operazioni sui dizionari:
+
+- Accesso e modifica degli elementi:
 
   ```python
-  fs1 = frozenset([1, 2, 3])
-  fs2 = frozenset([3, 4, 5])
-  
-  # Unione
-  print(fs1 | fs2)  # Output: frozenset({1, 2, 3, 4, 5})
-  
-  # Intersezione
-  print(fs1 & fs2)  # Output: frozenset({3})
-  
-  # Differenza
-  print(fs1 - fs2)  # Output: frozenset({1, 2})
+  d = {"a": 1, "b": 2, "c": 3}
+
+  print(d["a"])  # <1>
+
+  d["b"] = 20
+
+  print(d)  # <2>
+
+  d["d"] = 4
+
+  print(d)  # <3>
   ```
+  1. Accesso al valore associato alla chiave `"a"`. Output: `1`.
+  2. Modifica del valore associato alla chiave `"b"`. Output: `{"a": 1, "b": 20, "c": 3}`.
+  3. Aggiunta di una nuova coppia chiave-valore. Output: `{"a": 1, "b": 20, "c": 3, "d": 4}`.
+
+- Rimozione di elementi:
+
+  ```python
+  d = {"a": 1, "b": 2, "c": 3}
+
+  del d["b"]
+
+  print(d)  # <1>
+
+  valore = d.pop("c")
+
+  print(d)  # <2>
+
+  print(valore)  # <3>
+  ```
+  1. Rimozione della coppia chiave-valore con chiave `"b"` usando `del`. Output: `{"a": 1, "c": 3}`.
+  2. Rimozione della coppia chiave-valore con chiave `"c"` usando `pop()`, che restituisce il valore associato. Output: `{"a": 1}`.
+  3. Output: `3`.
+
+- Operazioni di controllo:
+
+  ```python
+  d = {"a": 1, "b": 2, "c": 3}
+
+  print("a" in d)  # <1>
+
+  print("z" in d)  # <2>
+  ```
+  1. Verifica se la chiave `"a"` è presente nel dizionario. Output: `True`.
+  2. Verifica se la chiave `"z"` è presente nel dizionario. Output: `False`.
+
+Lo spacchettamento (_unpacking_) è una funzionalità che permette di combinare i contenuti di più dizionari in un unico dizionario. Si utilizza l'operatore `**` per esplodere i contenuti del singolo dizionario. Alternativamente, si può effettuare l'unione di dizionari per mezzo dell'operatore `|`.
+
+Esempi:
+
+```python
+d1 = {'a': 1, 'b': 2}
+d2 = {'c': 3, 'd': 4}
+
+d3 = {**d1, **d2}  # <1>
+
+print(d3)  # <2>
+
+d4 = d1 | d2  # <3>
+
+print(d4)  # <4>
+
+d5 = dict.fromkeys('a', 1)  # <5>
+
+print(d5)  # <6>
+
+d6 = dict.fromkeys(['a', 'b', 'c'])  # <7>
+
+print(d6)  # <8>
+```
+1. Spacchettamento dei dizionari `d1` e `d2` in un nuovo dizionario `d3`. 
+2. Stampa del dizionario `d3`. Output: `{'a': 1, 'b': 2, 'c': 3, 'd': 4}`.
+3. Creazione di un nuovo dizionario `d4` unendo `d1` e `d2` per mezzo dell'operatore `|`.
+4. Stampa del dizionario `d4`. Output: `{'a': 1, 'x': 5, 'c': 2}`.
+5. Creazione di un dizionario `d5` usando `dict.fromkeys` con le chiavi dalla stringa `'a'` e valore `1`. 
+6. Stampa del dizionario `d5`. Output: `{'a': 1}`.
+7. Creazione di un dizionario `d6` usando `dict.fromkeys` con le chiavi dalla lista `[1, 2, 3]` e valori `None`. 
+8. Stampa del dizionario `d6`. Output: `{'a': None, 'b': None, 'c': None}`.
+
+### None
+
+`None` è un oggetto predefinito in Python che rappresenta un valore nullo. Non ha metodi né altri attributi. `None` può essere utilizzato per fare riferimento ad un oggetto qualsiasi, oppure quando si vuole indicare l'assenza di un oggetto. 
+
+Le funzioni restituiscono `None` come risultato a meno che `return` non sia seguito da elenco di oggetti. `None` è hashable e può essere utilizzato come chiave di un dizionario. `None` è un oggetto della classe `NoneType`, che deriva da `object` ed è unico, cioè non esiste una seconda istanza di `NoneType`.
+
+Esempi di utilizzo di `None`:
+
+```python
+x = None  # <1>
+
+def funzione():
+    pass
+
+print(funzione())  # <2>
+
+d = {None: "valore"}  # <3>
+
+print(d)  # <4>
+```
+1. Assegnazione di `None` a una variabile.
+2. Le funzioni che non hanno un'istruzione di ritorno specifica restituiscono `None`. Output: `None`.
+3. `None` può essere utilizzato come chiave in un dizionario.
+4. Output: `{None: 'valore'}`.
+
+### Ellissi
+
+L'ellissi, scritta come tre punti consecutivi senza spazi intermedi (`...`), è un oggetto speciale in Python utilizzato in applicazioni numeriche o come alternativa a `None` quando `None` è un valore valido. 
+
+Ad esempio, per inizializzare un dizionario che può accettare `None` come valore legittimo, si può inizializzare con `...` come indicatore di "nessun valore fornito, neanche `None`". `Ellipsis` è hashable e può essere utilizzato come chiave di un dizionario. `Ellipsis` è un oggetto della classe `ellipsis`, che deriva da `object` ed è unica come `None`.
+
+Esempi di utilizzo di `Ellipsis`:
+
+```python
+e = ...  # <1>
+
+print(e)  # <2>
+
+d = {None: "valore1", ...: "valore2"}  # <3>
+
+print(d)  # <4>
+
+def funzione():
+    ...
+
+print(funzione())  # <5>
+```
+1. Assegnazione di `Ellipsis` a una variabile.
+2. Output: `Ellipsis`.
+3. `Ellipsis` può essere utilizzato come chiave in un dizionario.
+4. Output: `{None: 'valore1', Ellipsis: 'valore2'}`.
+5. Le funzioni possono contenere `Ellipsis` come segnaposto per future implementazioni. Output: `None`.
+
+
+
+
+
+
+
+
+
+
+
 

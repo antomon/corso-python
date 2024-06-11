@@ -1,7 +1,12 @@
-import math
+e = ...  # <1>
 
-print(math.sqrt(4))  # <1>
+print(e)  # <2>
 
-del math
+d = {None: "valore1", ...: "valore2"}  # <3>
 
-print(math.sqrt(4))  # <2>
+print(d)  # <4>
+
+def funzione():
+    ...
+
+print(funzione())  # <5>
