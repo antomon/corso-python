@@ -729,12 +729,18 @@ Suggerimento
 <div id="tabset-6-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-5-tab">
 <p>Utilizziamo una list comprehension per creare una nuova lista. Un <code>set</code> viene usato per tenere traccia degli elementi già visti, e gli elementi vengono aggiunti alla lista finale solo se non sono già presenti nel <code>set</code>.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">def</span> rimuovi_duplicati(lista):</span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="cf">return</span> <span class="bu">list</span>(<span class="bu">dict</span>.fromkeys(lista))</span>
-<span id="cb12-3"><a href="#cb12-3"></a></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>lista <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb12-6"><a href="#cb12-6"></a></span>
-<span id="cb12-7"><a href="#cb12-7"></a><span class="bu">print</span>(rimuovi_duplicati(lista)) </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2"></a>    visti <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb12-3"><a href="#cb12-3"></a>    </span>
+<span id="cb12-4"><a href="#cb12-4"></a>    lista_senza_duplicati <span class="op">=</span> [elemento </span>
+<span id="cb12-5"><a href="#cb12-5"></a>                             <span class="cf">for</span> elemento <span class="kw">in</span> lista </span>
+<span id="cb12-6"><a href="#cb12-6"></a>                             <span class="cf">if</span> elemento <span class="kw">not</span> <span class="kw">in</span> visti <span class="kw">and</span> <span class="kw">not</span> visti.add(elemento)]</span>
+<span id="cb12-7"><a href="#cb12-7"></a>    </span>
+<span id="cb12-8"><a href="#cb12-8"></a>    <span class="cf">return</span> lista_senza_duplicati</span>
+<span id="cb12-9"><a href="#cb12-9"></a></span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a>lista <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb12-12"><a href="#cb12-12"></a></span>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="bu">print</span>(rimuovi_duplicati(lista)) </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>

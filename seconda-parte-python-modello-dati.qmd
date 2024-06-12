@@ -283,13 +283,13 @@ I tipi di dati possono essere classificati come **hashable** o non hashable. Un 
 
   Una funzione di hash prende un valore (come una stringa o un numero) e restituisce un numero di lunghezza fissa, chiamato **hash**. Questo hash viene utilizzato come indice per memorizzare il valore nella tabella di hash. Quando si desidera cercare un elemento, la funzione di hash calcola l'indice corrispondente, consentendo un accesso diretto all'elemento. Questo processo rende la ricerca, l'inserimento e la cancellazione degli elementi molto efficienti, con un tempo di accesso medio costante (O(1)).
 
-Gli oggetti di tipi hashable possiedono le seguenti caratteristiche principali:
+Gli oggetti di tipo hashable possiedono le seguenti caratteristiche principali:
 
 1. Valore di hash costante: Gli oggetti devono avere un valore di hash che non cambia durante la loro vita. Questo è tipico degli oggetti immutabili.
 
 2. Comparabilità: Gli oggetti devono poter essere confrontati con altri oggetti per determinare se sono uguali. Due oggetti che sono considerati uguali devono avere lo stesso valore di hash.
 
-La hashabilità è strettamente legata all'immutabilità. Gli oggetti immutabili sono naturalmente hashable perché il loro stato non cambia dopo la creazione, garantendo che il valore di hash rimanga costante. Ad esempio, tipi di dati immutabili come numeri, stringhe e tuple possono essere considerati hashable. Il viceversa non è vero, cioè esistono alcuni tipi mutabili che sono hashable.
+La proprietà di essere hashable è strettamente legata all'immutabilità. Gli oggetti immutabili sono naturalmente hashable perché il loro stato non cambia dopo la creazione, garantendo che il valore di hash rimanga costante. Ad esempio, tipi di dati immutabili come numeri, stringhe e tuple possono essere considerati hashable. Il viceversa non è vero, cioè esistono alcuni tipi mutabili che sono hashable.
 
 ### Eliminazione
 
@@ -720,16 +720,22 @@ Esempi di operazioni sulle tuple:
 
   print(t1[1])  # <1>
 
-  print(t3[1:3])  # <2>
+  print(t1[1:3])  # <2>
 
-  print(42. in t3) # <3>
+  print(42. in t1) # <3>
 
   print(len(t1))  # <4>
+
+  print(t1[2:6])  # <5>
+
+  print(t1[4:6])  # <6>
   ```
   1. Output: `"Hello"`.
   2. Output: `3`.
   3. Output: `('Hello', 66)`. Slicing di tupla che produce una nuova tupla con 2 oggetti.
   4. Test di appartenenza di `42.` nella tupla `(42.0, 'Hello', 66, 42)`. Output: `True`. 
+  5. Slicing con indice destro oltre la lunghezza della lista. Output: `(66,)`.
+  6. Slicing con entrambi gli indici oltre la lunghezza della lista. Output: `()`. 
 
 - Concatenazione: 
 
@@ -1004,43 +1010,68 @@ print(d3) # <3>
 
 Operazioni sui dizionari:
 
-- Accesso e modifica degli elementi:
+- Accesso agli elementi:
 
   ```python
   d = {"a": 1, "b": 2, "c": 3}
 
   print(d["a"])  # <1>
 
-  d["b"] = 20
+  print(d.get("b"))  # <2>
 
-  print(d)  # <2>
+  print(d.keys())  # <3>
 
-  d["d"] = 4
+  print(d.values())  # <4>
 
-  print(d)  # <3>
+  print(d.items())  # <5>
   ```
   1. Accesso al valore associato alla chiave `"a"`. Output: `1`.
-  2. Modifica del valore associato alla chiave `"b"`. Output: `{"a": 1, "b": 20, "c": 3}`.
-  3. Aggiunta di una nuova coppia chiave-valore. Output: `{"a": 1, "b": 20, "c": 3, "d": 4}`.
+  2. Utilizzo del metodo `get()` per accedere al valore associato alla chiave `"b"`. Output: `2`.
+  3. Accesso a tutte le chiavi del dizionario. Output: `dict_keys(['a', 'b', 'c'])`.
+  4. Accesso a tutti i valori del dizionario. Output: `dict_values([1, 2, 3])`.
+  5. Accesso a tutte le coppie chiave-valore del dizionario. Output: `dict_items([('a', 1), ('b', 2), ('c', 3)])`.
 
-- Rimozione di elementi:
+- Modifica degli elementi:
 
   ```python
   d = {"a": 1, "b": 2, "c": 3}
 
-  del d["b"]
+  d["b"] = 20  # <1>
 
-  print(d)  # <1>
+  d["d"] = 4  # <2>
 
-  valore = d.pop("c")
+  print(d)  # <3>
+  ```
+  1. Modifica del valore associato alla chiave `"b"`. Output: `{"a": 1, "b": 20, "c": 3}`.
+  2. Aggiunta di una nuova coppia chiave-valore. Output: `{"a": 1, "b": 20, "c": 3, "d": 4}`.
+  3. Output del dizionario dopo le modifiche: `{"a": 1, "b": 20, "c": 3, "d": 4}`.
+
+- Rimozione degli elementi:
+
+  ```python
+  d = {"a": 1, "b": 2, "c": 3}
+
+  del d["b"]  # <1>
 
   print(d)  # <2>
 
-  print(valore)  # <3>
+  valore = d.pop("c")  # <3>
+
+  print(d)  # <4>
+
+  print(valore)  # <5>
+
+  d.clear()  # <6>
+
+  print(d)  # <7>
   ```
-  1. Rimozione della coppia chiave-valore con chiave `"b"` usando `del`. Output: `{"a": 1, "c": 3}`.
-  2. Rimozione della coppia chiave-valore con chiave `"c"` usando `pop()`, che restituisce il valore associato. Output: `{"a": 1}`.
-  3. Output: `3`.
+  1. Rimozione della coppia chiave-valore con chiave `"b"` usando `del`.
+  2. Output dopo la rimozione con `del`. Output: `{"a": 1, "c": 3}`.
+  3. Rimozione della coppia chiave-valore con chiave `"c"` usando `pop()`, che restituisce il valore associato.
+  4. Output dopo la rimozione con `pop()`. Output: `{"a": 1}`.
+  5. Valore rimosso con `pop()`. Output: `3`.
+  6. Rimozione di tutte le coppie chiave-valore usando `clear()`.
+  7. Output dopo l'uso di `clear()`. Output: `{}`.
 
 - Operazioni di controllo:
 

@@ -1,12 +1,16 @@
-e = ...  # <1>
 
-print(e)  # <2>
 
-d = {None: "valore1", ...: "valore2"}  # <3>
 
-print(d)  # <4>
+def rimuovi_duplicati(lista):
+    visti = set()
+    
+    lista_senza_duplicati = [elemento 
+                             for elemento in lista 
+                             if elemento not in visti and not visti.add(elemento)]
+    
+    return lista_senza_duplicati
 
-def funzione():
-    ...
+# Esempio di utilizzo
+lista = [4, 2, 2, 3, 1, 4, 5]
 
-print(funzione())  # <5>
+print(rimuovi_duplicati(lista)) 

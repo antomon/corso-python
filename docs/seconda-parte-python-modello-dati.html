@@ -726,12 +726,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="10.1.6" class="anchored" data-anchor-id="tipi-hashable"><span class="header-section-number">10.1.6</span> Tipi hashable</h3>
 <p>I tipi di dati possono essere classificati come <strong>hashable</strong> o non hashable. Un tipo è considerato hashable se gli oggetti creati da quel tipo hanno un valore di hash<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> che rimane costante per tutta la durata della loro vita e possono essere confrontati con altri oggetti. Questo è garantito per i tipi immutabili, come numeri, stringhe e tuple.</p>
 <div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;In informatica, le tabelle hash (hash table) sono una struttura dati essenziale per l’efficienza e la velocità di accesso ai dati. Le tabelle hash sono costituite da coppie indice-valore e sono progettate per sostituire la ricerca sequenziale in array, che può essere lenta soprattutto per grandi quantità di dati.</p></div></div><p>Una funzione di hash prende un valore (come una stringa o un numero) e restituisce un numero di lunghezza fissa, chiamato <strong>hash</strong>. Questo hash viene utilizzato come indice per memorizzare il valore nella tabella di hash. Quando si desidera cercare un elemento, la funzione di hash calcola l’indice corrispondente, consentendo un accesso diretto all’elemento. Questo processo rende la ricerca, l’inserimento e la cancellazione degli elementi molto efficienti, con un tempo di accesso medio costante (O(1)).</p>
-<p>Gli oggetti di tipi hashable possiedono le seguenti caratteristiche principali:</p>
+<p>Gli oggetti di tipo hashable possiedono le seguenti caratteristiche principali:</p>
 <ol type="1">
 <li><p>Valore di hash costante: Gli oggetti devono avere un valore di hash che non cambia durante la loro vita. Questo è tipico degli oggetti immutabili.</p></li>
 <li><p>Comparabilità: Gli oggetti devono poter essere confrontati con altri oggetti per determinare se sono uguali. Due oggetti che sono considerati uguali devono avere lo stesso valore di hash.</p></li>
 </ol>
-<p>La hashabilità è strettamente legata all’immutabilità. Gli oggetti immutabili sono naturalmente hashable perché il loro stato non cambia dopo la creazione, garantendo che il valore di hash rimanga costante. Ad esempio, tipi di dati immutabili come numeri, stringhe e tuple possono essere considerati hashable. Il viceversa non è vero, cioè esistono alcuni tipi mutabili che sono hashable.</p>
+<p>La proprietà di essere hashable è strettamente legata all’immutabilità. Gli oggetti immutabili sono naturalmente hashable perché il loro stato non cambia dopo la creazione, garantendo che il valore di hash rimanga costante. Ad esempio, tipi di dati immutabili come numeri, stringhe e tuple possono essere considerati hashable. Il viceversa non è vero, cioè esistono alcuni tipi mutabili che sono hashable.</p>
 </section>
 <section id="eliminazione" class="level3" data-number="10.1.7">
 <h3 data-number="10.1.7" class="anchored" data-anchor-id="eliminazione"><span class="header-section-number">10.1.7</span> Eliminazione</h3>
@@ -1375,11 +1375,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="annotated-cell-49-2"><a href="#annotated-cell-49-2"></a></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-49" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-49-3" class="code-annotation-target"><a href="#annotated-cell-49-3"></a><span class="bu">print</span>(t1[<span class="dv">1</span>])</span>
 <span id="annotated-cell-49-4"><a href="#annotated-cell-49-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-49" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-49-5" class="code-annotation-target"><a href="#annotated-cell-49-5"></a><span class="bu">print</span>(t3[<span class="dv">1</span>:<span class="dv">3</span>])</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-49" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-49-5" class="code-annotation-target"><a href="#annotated-cell-49-5"></a><span class="bu">print</span>(t1[<span class="dv">1</span>:<span class="dv">3</span>])</span>
 <span id="annotated-cell-49-6"><a href="#annotated-cell-49-6"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-49" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-49-7" class="code-annotation-target"><a href="#annotated-cell-49-7"></a><span class="bu">print</span>(<span class="fl">42.</span> <span class="kw">in</span> t3)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-49" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-49-7" class="code-annotation-target"><a href="#annotated-cell-49-7"></a><span class="bu">print</span>(<span class="fl">42.</span> <span class="kw">in</span> t1)</span>
 <span id="annotated-cell-49-8"><a href="#annotated-cell-49-8"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-49" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-49-9" class="code-annotation-target"><a href="#annotated-cell-49-9"></a><span class="bu">print</span>(<span class="bu">len</span>(t1))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-49" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-49-9" class="code-annotation-target"><a href="#annotated-cell-49-9"></a><span class="bu">print</span>(<span class="bu">len</span>(t1))</span>
+<span id="annotated-cell-49-10"><a href="#annotated-cell-49-10"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-49" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-49-11" class="code-annotation-target"><a href="#annotated-cell-49-11"></a><span class="bu">print</span>(t1[<span class="dv">2</span>:<span class="dv">6</span>])</span>
+<span id="annotated-cell-49-12"><a href="#annotated-cell-49-12"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-49" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-49-13" class="code-annotation-target"><a href="#annotated-cell-49-13"></a><span class="bu">print</span>(t1[<span class="dv">4</span>:<span class="dv">6</span>])</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-49" data-target-annotation="1">1</dt>
 <dd>
@@ -1396,6 +1400,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dt data-target-cell="annotated-cell-49" data-target-annotation="4">4</dt>
 <dd>
 <span data-code-cell="annotated-cell-49" data-code-lines="9" data-code-annotation="4">Test di appartenenza di <code>42.</code> nella tupla <code>(42.0, 'Hello', 66, 42)</code>. Output: <code>True</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-49" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-49" data-code-lines="11" data-code-annotation="5">Slicing con indice destro oltre la lunghezza della lista. Output: <code>(66,)</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-49" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-49" data-code-lines="13" data-code-annotation="6">Slicing con entrambi gli indici oltre la lunghezza della lista. Output: <code>()</code>.</span>
 </dd>
 </dl></li>
 <li><p>Concatenazione:</p>
@@ -1750,18 +1762,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dl>
 <p>Operazioni sui dizionari:</p>
 <ul>
-<li><p>Accesso e modifica degli elementi:</p>
+<li><p>Accesso agli elementi:</p>
 <div class="sourceCode" id="annotated-cell-59"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-59-1"><a href="#annotated-cell-59-1"></a>d <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">1</span>, <span class="st">"b"</span>: <span class="dv">2</span>, <span class="st">"c"</span>: <span class="dv">3</span>}</span>
 <span id="annotated-cell-59-2"><a href="#annotated-cell-59-2"></a></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-59" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-59-3" class="code-annotation-target"><a href="#annotated-cell-59-3"></a><span class="bu">print</span>(d[<span class="st">"a"</span>])</span>
 <span id="annotated-cell-59-4"><a href="#annotated-cell-59-4"></a></span>
-<span id="annotated-cell-59-5"><a href="#annotated-cell-59-5"></a>d[<span class="st">"b"</span>] <span class="op">=</span> <span class="dv">20</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-59" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-59-5" class="code-annotation-target"><a href="#annotated-cell-59-5"></a><span class="bu">print</span>(d.get(<span class="st">"b"</span>))</span>
 <span id="annotated-cell-59-6"><a href="#annotated-cell-59-6"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-59" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-59-7" class="code-annotation-target"><a href="#annotated-cell-59-7"></a><span class="bu">print</span>(d)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-59" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-59-7" class="code-annotation-target"><a href="#annotated-cell-59-7"></a><span class="bu">print</span>(d.keys())</span>
 <span id="annotated-cell-59-8"><a href="#annotated-cell-59-8"></a></span>
-<span id="annotated-cell-59-9"><a href="#annotated-cell-59-9"></a>d[<span class="st">"d"</span>] <span class="op">=</span> <span class="dv">4</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-59" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-59-9" class="code-annotation-target"><a href="#annotated-cell-59-9"></a><span class="bu">print</span>(d.values())</span>
 <span id="annotated-cell-59-10"><a href="#annotated-cell-59-10"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-59" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-59-11" class="code-annotation-target"><a href="#annotated-cell-59-11"></a><span class="bu">print</span>(d)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-59" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-59-11" class="code-annotation-target"><a href="#annotated-cell-59-11"></a><span class="bu">print</span>(d.items())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-59" data-target-annotation="1">1</dt>
 <dd>
@@ -1769,53 +1781,103 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-59" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-59" data-code-lines="7" data-code-annotation="2">Modifica del valore associato alla chiave <code>"b"</code>. Output: <code>{"a": 1, "b": 20, "c": 3}</code>.</span>
+<span data-code-cell="annotated-cell-59" data-code-lines="5" data-code-annotation="2">Utilizzo del metodo <code>get()</code> per accedere al valore associato alla chiave <code>"b"</code>. Output: <code>2</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-59" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-59" data-code-lines="11" data-code-annotation="3">Aggiunta di una nuova coppia chiave-valore. Output: <code>{"a": 1, "b": 20, "c": 3, "d": 4}</code>.</span>
+<span data-code-cell="annotated-cell-59" data-code-lines="7" data-code-annotation="3">Accesso a tutte le chiavi del dizionario. Output: <code>dict_keys(['a', 'b', 'c'])</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-59" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-59" data-code-lines="9" data-code-annotation="4">Accesso a tutti i valori del dizionario. Output: <code>dict_values([1, 2, 3])</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-59" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-59" data-code-lines="11" data-code-annotation="5">Accesso a tutte le coppie chiave-valore del dizionario. Output: <code>dict_items([('a', 1), ('b', 2), ('c', 3)])</code>.</span>
 </dd>
 </dl></li>
-<li><p>Rimozione di elementi:</p>
+<li><p>Modifica degli elementi:</p>
 <div class="sourceCode" id="annotated-cell-60"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-60-1"><a href="#annotated-cell-60-1"></a>d <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">1</span>, <span class="st">"b"</span>: <span class="dv">2</span>, <span class="st">"c"</span>: <span class="dv">3</span>}</span>
 <span id="annotated-cell-60-2"><a href="#annotated-cell-60-2"></a></span>
-<span id="annotated-cell-60-3"><a href="#annotated-cell-60-3"></a><span class="kw">del</span> d[<span class="st">"b"</span>]</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-60" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-60-3" class="code-annotation-target"><a href="#annotated-cell-60-3"></a>d[<span class="st">"b"</span>] <span class="op">=</span> <span class="dv">20</span></span>
 <span id="annotated-cell-60-4"><a href="#annotated-cell-60-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-60" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-60-5" class="code-annotation-target"><a href="#annotated-cell-60-5"></a><span class="bu">print</span>(d)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-60" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-60-5" class="code-annotation-target"><a href="#annotated-cell-60-5"></a>d[<span class="st">"d"</span>] <span class="op">=</span> <span class="dv">4</span></span>
 <span id="annotated-cell-60-6"><a href="#annotated-cell-60-6"></a></span>
-<span id="annotated-cell-60-7"><a href="#annotated-cell-60-7"></a>valore <span class="op">=</span> d.pop(<span class="st">"c"</span>)</span>
-<span id="annotated-cell-60-8"><a href="#annotated-cell-60-8"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-60" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-60-9" class="code-annotation-target"><a href="#annotated-cell-60-9"></a><span class="bu">print</span>(d)</span>
-<span id="annotated-cell-60-10"><a href="#annotated-cell-60-10"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-60" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-60-11" class="code-annotation-target"><a href="#annotated-cell-60-11"></a><span class="bu">print</span>(valore)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-60" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-60-7" class="code-annotation-target"><a href="#annotated-cell-60-7"></a><span class="bu">print</span>(d)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-60" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-60" data-code-lines="5" data-code-annotation="1">Rimozione della coppia chiave-valore con chiave <code>"b"</code> usando <code>del</code>. Output: <code>{"a": 1, "c": 3}</code>.</span>
+<span data-code-cell="annotated-cell-60" data-code-lines="3" data-code-annotation="1">Modifica del valore associato alla chiave <code>"b"</code>. Output: <code>{"a": 1, "b": 20, "c": 3}</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-60" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-60" data-code-lines="9" data-code-annotation="2">Rimozione della coppia chiave-valore con chiave <code>"c"</code> usando <code>pop()</code>, che restituisce il valore associato. Output: <code>{"a": 1}</code>.</span>
+<span data-code-cell="annotated-cell-60" data-code-lines="5" data-code-annotation="2">Aggiunta di una nuova coppia chiave-valore. Output: <code>{"a": 1, "b": 20, "c": 3, "d": 4}</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-60" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-60" data-code-lines="11" data-code-annotation="3">Output: <code>3</code>.</span>
+<span data-code-cell="annotated-cell-60" data-code-lines="7" data-code-annotation="3">Output del dizionario dopo le modifiche: <code>{"a": 1, "b": 20, "c": 3, "d": 4}</code>.</span>
 </dd>
 </dl></li>
-<li><p>Operazioni di controllo:</p>
+<li><p>Rimozione degli elementi:</p>
 <div class="sourceCode" id="annotated-cell-61"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-61-1"><a href="#annotated-cell-61-1"></a>d <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">1</span>, <span class="st">"b"</span>: <span class="dv">2</span>, <span class="st">"c"</span>: <span class="dv">3</span>}</span>
 <span id="annotated-cell-61-2"><a href="#annotated-cell-61-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-61" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-61-3" class="code-annotation-target"><a href="#annotated-cell-61-3"></a><span class="bu">print</span>(<span class="st">"a"</span> <span class="kw">in</span> d)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-61" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-61-3" class="code-annotation-target"><a href="#annotated-cell-61-3"></a><span class="kw">del</span> d[<span class="st">"b"</span>]</span>
 <span id="annotated-cell-61-4"><a href="#annotated-cell-61-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-61" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-61-5" class="code-annotation-target"><a href="#annotated-cell-61-5"></a><span class="bu">print</span>(<span class="st">"z"</span> <span class="kw">in</span> d)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-61" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-61-5" class="code-annotation-target"><a href="#annotated-cell-61-5"></a><span class="bu">print</span>(d)</span>
+<span id="annotated-cell-61-6"><a href="#annotated-cell-61-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-61" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-61-7" class="code-annotation-target"><a href="#annotated-cell-61-7"></a>valore <span class="op">=</span> d.pop(<span class="st">"c"</span>)</span>
+<span id="annotated-cell-61-8"><a href="#annotated-cell-61-8"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-61" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-61-9" class="code-annotation-target"><a href="#annotated-cell-61-9"></a><span class="bu">print</span>(d)</span>
+<span id="annotated-cell-61-10"><a href="#annotated-cell-61-10"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-61" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-61-11" class="code-annotation-target"><a href="#annotated-cell-61-11"></a><span class="bu">print</span>(valore)</span>
+<span id="annotated-cell-61-12"><a href="#annotated-cell-61-12"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-61" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-61-13" class="code-annotation-target"><a href="#annotated-cell-61-13"></a>d.clear()</span>
+<span id="annotated-cell-61-14"><a href="#annotated-cell-61-14"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-61" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-61-15" class="code-annotation-target"><a href="#annotated-cell-61-15"></a><span class="bu">print</span>(d)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-61" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-61" data-code-lines="3" data-code-annotation="1">Verifica se la chiave <code>"a"</code> è presente nel dizionario. Output: <code>True</code>.</span>
+<span data-code-cell="annotated-cell-61" data-code-lines="3" data-code-annotation="1">Rimozione della coppia chiave-valore con chiave <code>"b"</code> usando <code>del</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-61" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-61" data-code-lines="5" data-code-annotation="2">Verifica se la chiave <code>"z"</code> è presente nel dizionario. Output: <code>False</code>.</span>
+<span data-code-cell="annotated-cell-61" data-code-lines="5" data-code-annotation="2">Output dopo la rimozione con <code>del</code>. Output: <code>{"a": 1, "c": 3}</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-61" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-61" data-code-lines="7" data-code-annotation="3">Rimozione della coppia chiave-valore con chiave <code>"c"</code> usando <code>pop()</code>, che restituisce il valore associato.</span>
+</dd>
+<dt data-target-cell="annotated-cell-61" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-61" data-code-lines="9" data-code-annotation="4">Output dopo la rimozione con <code>pop()</code>. Output: <code>{"a": 1}</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-61" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-61" data-code-lines="11" data-code-annotation="5">Valore rimosso con <code>pop()</code>. Output: <code>3</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-61" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-61" data-code-lines="13" data-code-annotation="6">Rimozione di tutte le coppie chiave-valore usando <code>clear()</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-61" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-61" data-code-lines="15" data-code-annotation="7">Output dopo l’uso di <code>clear()</code>. Output: <code>{}</code>.</span>
+</dd>
+</dl></li>
+<li><p>Operazioni di controllo:</p>
+<div class="sourceCode" id="annotated-cell-62"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-62-1"><a href="#annotated-cell-62-1"></a>d <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">1</span>, <span class="st">"b"</span>: <span class="dv">2</span>, <span class="st">"c"</span>: <span class="dv">3</span>}</span>
+<span id="annotated-cell-62-2"><a href="#annotated-cell-62-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-62" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-62-3" class="code-annotation-target"><a href="#annotated-cell-62-3"></a><span class="bu">print</span>(<span class="st">"a"</span> <span class="kw">in</span> d)</span>
+<span id="annotated-cell-62-4"><a href="#annotated-cell-62-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-62" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-62-5" class="code-annotation-target"><a href="#annotated-cell-62-5"></a><span class="bu">print</span>(<span class="st">"z"</span> <span class="kw">in</span> d)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-62" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-62" data-code-lines="3" data-code-annotation="1">Verifica se la chiave <code>"a"</code> è presente nel dizionario. Output: <code>True</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-62" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-62" data-code-lines="5" data-code-annotation="2">Verifica se la chiave <code>"z"</code> è presente nel dizionario. Output: <code>False</code>.</span>
 </dd>
 </dl></li>
 </ul>
