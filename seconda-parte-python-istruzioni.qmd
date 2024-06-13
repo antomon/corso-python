@@ -16,45 +16,129 @@ Le istruzioni si distinguono in **semplici** e **composte**:
 
 - Le istruzioni composte contengono altre istruzioni al loro interno. Queste istruzioni definiscono blocchi di codice che possono includere altre istruzioni semplici o composte e che non possono essere vuoti.
 
-## Istruzioni di Controllo di Flusso
+## Istruzione di gestione identificatori
+
+### Assegnamenti
+
+Gli assegnamenti in Python sono istruzioni semplici che collegano valori a variabili utilizzando l'operatore `=`. L'assegnamento in Python è una definizione e non può mai far parte di un'espressione. Per eseguire un'assegnamento come parte di un'espressione, è necessario utilizzare l'operatore `:=` (noto come operatore "walrus").
+
+Esempio di assegnamento semplice:
+
+```python
+x = 10 # <1>
+y = 20 # <2>
+print(x + y) # <3>
+```
+1. Assegna il valore `10` alla variabile `x`.
+2. Assegna il valore `20` alla variabile `y`.
+3. Output della somma di `x` e `y`: `30`.
+
+Esempio di assegnamento con l'operatore walrus:
+
+```python
+if (n := 10) > 5: # <1>
+    print(n) # <2>
+```
+1. Assegna il valore `10` a `n` e verifica se `n` è maggiore di `5`.
+2. Output di `n`: `10`.
+
+### Importazione di moduli
+
+L'istruzione semplice `import` viene utilizzata per importare moduli in un programma Python, permettendo l'accesso alle funzioni, classi e variabili definite al loro interno. 
+
+Tutti gli identificatori definiti nel modulo `nome_modulo` si importano colla sintassi `import nome_modulo` e dal quel punto fino alla fine del modulo importatore, sono accessibili colla notazione data dal nome del modulo seguito dal punto e l'identificatore di interesse, cioè `nome_modulo.nome_variabile` dove `nome_variabile` è l'identificatore importato. 
+
+Una sintassi alternativa è `from nome_modulo import *`, per cui gli identificatori sono utilizzabili senza preporre `nome_modulo.`.
+
+Infine, si possono importare identificatori particolari usando `from nome_modulo import` seguito dall'elenco degli identificatori necessari, separati da virgole.
+
+Esempi:
+
+- Importazione di tutti gli identificatori di un modulo:
+
+  ```python
+  import math # <1>
+
+  print(math.sqrt(4))  # <2>
+  ```
+  1. Si importa il modulo `math`.
+  2. Output: `2.0`.
+
+- Importazione di identificatori particolari:
+
+  ```python
+  from math import sqrt, pi
+
+  print(sqrt(4))  # <1>
+
+  print(pi)       # <2>
+  ```
+  1. Output: `2.0`.
+  2. Output: `3.141592653589793`.
+
+- Importazione di un modulo con un alias:
+
+  ```python
+  import numpy as np # <1>
+
+  array = np.array([1, 2, 3])
+
+  print(array)  # <2>
+  ```
+  1. `numpy` è una librarie non facente parte dello standard Python, importata solitamente con un identificatore abbreviato in `np`.
+  2. Output: `[1 2 3]`.
+
+- Importazione di tutti gli identificatori di un modulo con accesso semplificato:
+
+  ```python
+  from math import *
+
+  print(sqrt(4))  # <1>
+
+  print(pi)       # <2>
+  ```
+  1. Output: `2.0`.
+  2. Output: `3.141592653589793`.
+
+È importante notare che l'istruzione `import` carica e inizializza il modulo solo una volta per sessione del programma. Se il modulo è già stato importato in precedenza, Python utilizza la versione già caricata, riducendo così il tempo di esecuzione e il consumo di memoria.
+
+Quando si importa un modulo, Python cerca il modulo nelle directory specificate nella variabile `sys.path`. Questa variabile include la directory corrente, le directory specificate nella variabile d'ambiente `PYTHONPATH`, e le directory di installazione predefinite.
+
+Esempio:
+
+```python
+import sys
+
+print(sys.path)  # <1>
+```
+1. Elenco delle directory del computer dove Python cerca i moduli.
+
+## Istruzioni di controllo di flusso
 
 Il flusso di controllo di un programma regola l'ordine in cui le istruzioni vengno eseguite. Il flusso di controllo di un programma Python dipende principalmente da istruzioni condizionali, cicli e chiamate a funzioni. 
 
 Anche il sollevamento e la gestione delle eccezioni influenzano il flusso di controllo (tramite le istruzioni `try` e `with`).
 
+## Istruzioni di esecuzione condizionale
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### L'Istruzione `if`
+### L'istruzione `if`
 
 Spesso è necessario eseguire alcune istruzioni solo quando una certa condizione è vera o scegliere le istruzioni da eseguire a seconda di condizioni mutuamente esclusive. L'istruzione composta `if`, che comprende le clausole `if`, `elif` ed `else`, consente di eseguire condizionalmente blocchi di istruzioni. 
 
 La sintassi dell'istruzione `if` in pseudocodice è la seguente:
 
 ```python
-if *espressione*: # <1>
-  _istruzione(i)_ # <2>
+if espressione: # <1>
+  istruzione(i) # <2>
 
-elif <espressione>: # <3>
-  <istruzione(i)> # <4>
+elif espressione: # <3>
+  istruzione(i) # <4>
 
-elif <espressione>: # <5>
-  <istruzione(i)> # <6>
+elif espressione: # <5>
+  istruzione(i) # <6>
 
 else: # <7>
-  <istruzione(i)> # <8>
+  istruzione(i) # <8>
 ```
 1. Clausola `if` con una condizione, cioè una espressione con valore interpretato come logico.
 2. Blocco di codice eseguito se la condizione `if` è vera.
@@ -78,10 +162,10 @@ else:
   print('x è pari e non negativo')  # <5>
 ```
 1. Controlla se `x` è negativo.
-2. Stampa "x è negativo" se la condizione è vera.
+2. Stampa `"x è negativo"` se la condizione è vera.
 3. Controlla se `x` è positivo e dispari.
-4. Stampa "x è positivo e dispari" se la condizione è vera.
-5. Stampa "x è pari e non negativo" se nessuna delle condizioni precedenti è vera.
+4. Stampa `"x è positivo e dispari"` se la condizione è vera.
+5. Stampa `"x è pari e non negativo"` se nessuna delle condizioni precedenti è vera.
 
 Ogni clausola controlla una o più istruzioni raggruppate in un blocco di codice: si posizionano le istruzioni del blocco su righe logiche separate dopo la riga contenente la parola chiave della clausola (nota come riga intestazione della clausola), con un'indentazione tipicamente di quattro spazi oltre la riga intestazione. Il blocco termina quando l'indentazione torna al livello della riga intestazione della clausola o ulteriormente a sinistra (questo è lo stile imposto da PEP 8).
 
@@ -110,80 +194,114 @@ Quando la condizione della clausola `if` viene valutata come vera, le istruzioni
 
 ### L'Istruzione `match`
 
-L'istruzione `match` offre una potente alternativa alle catene di `if` e `elif` per la gestione delle condizioni multiple. La sintassi di base per l'istruzione `match` è la seguente:
+L'istruzione `match` introduce il pattern matching strutturale nel linguaggio Python. Questa funzionalità consente di testare facilmente la struttura e il contenuto degli oggetti Python. 
+
+La struttura sintattica generale dell'istruzione `match` è la seguente:
 
 ```python
-match espressione: # <1>
-    case <pattern1>: # <2>
-        <istruzione(i)> # <3>
+match espressione:  # <1>
+  case pattern1 [if guard1]:  # <2>
+    istruzione(i)  # <3>
 
-    case pattern2: # <4>
-        <istruzione(i)> # <5>
+  case pattern2 [if guard2]:
+    istruzione(i) # <4>
 
-    ...
+  ...
 
-    case _: # <6>
-        <istruzione(i)> # <7>
+  case _: # <5>
+    istruzione(i) # <6>
 ```
-1. Valore da confrontare ``.
-2. Primo pattern da confrontare.
-3. Blocco di codice eseguito se pattern1 corrisponde.
-4. Secondo pattern da confrontare.
-5. Blocco di codice eseguito se pattern2 corrisponde.
-6. Pattern wildcard che corrisponde a qualsiasi valore.
-7. Blocco di codice eseguito se nessun altro pattern corrisponde.
+1. La parola chiave `match` seguita da un'espressione il cui valore diventa il soggetto del matching.
+2. Clausole `case` indentate che controllano l'esecuzione del blocco di codice che contengono. Possono includere un'opzione `if guard` per ulteriori controlli.
+3. Blocco di istruzioni da eseguire se `pattern1` corrisponde.
+4. Blocco di istruzioni da eseguire se `pattern2` corrisponde.
+5. Pattern wildcard che corrisponde a qualsiasi valore.
+6. Blocco di codice eseguito se nessun altro pattern corrisponde.
+
+Durante l'esecuzione, Python prima valuta l'espressione, quindi testa il valore risultante contro il pattern in ciascuna clausola `case` a turno, dall'inizio alla fine, fino a quando uno corrisponde. A quel punto, il blocco di codice indentato all'interno della clausola `case` corrispondente viene eseguito. Un pattern può fare due cose:
+
+- Verificare che il soggetto sia un oggetto con una struttura particolare.
+
+- Associare componenti corrispondenti a nomi per un uso successivo (di solito all'interno della clausola `case` associata).
+
+Quando un pattern corrisponde al soggetto, il `guard` consente un controllo finale prima della selezione della clausola per l'esecuzione. Tutti i binding dei nomi del pattern sono già avvenuti, e si possono usare nel `guard`. Quando non c'è un `guard`, o quando il `guard` viene valutato come vero, il blocco di codice indentato della clausola `case` viene eseguito, dopo di che l'esecuzione dell'istruzione `match` è completa e non vengono controllate ulteriori clausole.
+
+L'istruzione `match`, di per sé, non prevede un'azione predefinita. Se ne serve una, l'ultima clausola `case` deve specificare un pattern wildcard, uno la cui sintassi garantisce che corrisponda a qualsiasi valore del soggetto. È un errore di sintassi seguire una clausola `case` con un pattern wildcard con ulteriori clausole `case`.
+
+Gli elementi del pattern non possono essere creati in anticipo, associati a variabili e riutilizzati in più punti. La sintassi del pattern è valida solo immediatamente dopo la parola chiave `case`, quindi non c'è modo di eseguire tale assegnazione. Per ogni esecuzione di un'istruzione `match`, l'interprete è libero di memorizzare nella cache le espressioni del pattern che si ripetono all'interno delle clausole, ma la cache inizia vuota per ogni nuova esecuzione.
 
 Esempio di utilizzo dell'istruzione `match`:
 
 ```python
-def azione(comando): # <1>
-    match comando: # <2>
-        case "start": # <3>
-            print("Avvio") # <4>
-        case "stop": # <5>
-            print("Arresto") # <6>
-        case "pause": # <7>
-            print("Pausa") # <8>
-        case _: # <9>
-            print("Comando sconosciuto") # <10>
+def azione(comando, livello): # <1>
+  match comando: # <2>
+    case "start" if livello > 1: # <3>
+      print("Avvio con livello alto") # <4>
 
-azione("start")  # <11>
-azione("pause")  # <12>
-azione("exit")   # <13>
+    case "start": # <5>
+      print("Avvio con livello basso") # <6>
+
+    case "stop" if livello > 1: # <7>
+      print("Arresto con livello alto") # <8>
+
+    case "stop": # <9>
+      print("Arresto con livello basso") # <10>
+
+    case "pause": # <11>
+      print("Pausa") # <12>
+        
+    case _: # <13>
+      print("Comando sconosciuto") # <14>
+
+azione("start", 2)  # <15>
+azione("start", 1)  # <16>
+azione("pause", 3)  # <17>
+azione("exit", 0)   # <18>
 ```
-1. Definizione della funzione `azione`.
+1. Definizione della funzione `azione` con due parametri: `comando` e `livello`.
 2. Inizia il blocco `match` per il valore `comando`.
-3. Pattern `"start"`.
-4. Output se `comando` è `"start"`.
-5. Pattern `"stop"`.
-6. Output se `comando` è `"stop"`.
-7. Pattern `"pause"`.
-8. Output se `comando` è `"pause"`.
-9. Pattern wildcard che corrisponde a qualsiasi altro valore.
-10. Output se `comando` non corrisponde a nessun altro pattern.
-11. Chiamata a `azione` con `"start"`. Output: `Avvio`.
-12. Chiamata a `azione` con `"pause"`. Output: `Pausa`.
-13. Chiamata a `azione` con `"exit"`. Output: `Comando sconosciuto`.
+3. Pattern `"start"` con guard che verifica se `livello` è maggiore di 1.
+4. Output se `comando` è `"start"` e `livello` è maggiore di 1.
+5. Pattern `"start"` senza guard.
+6. Output se `comando` è `"start"` e `livello` è minore o uguale a 1.
+7. Pattern `"stop"` con guard che verifica se `livello` è maggiore di 1.
+8. Output se `comando` è `"stop"` e `livello` è maggiore di 1.
+9. Pattern `"stop"` senza guard.
+10. Output se `comando` è `"stop"` e `livello` è minore o uguale a 1.
+11. Pattern `"pause"`.
+12. Output se `comando` è `"pause"`.
+13. Pattern wildcard che corrisponde a qualsiasi altro valore.
+14. Output se `comando` non corrisponde a nessun altro pattern.
+15. Chiamata a `azione` con `"start"` e livello `2`. Output: `Avvio con livello alto`.
+16. Chiamata a `azione` con `"start"` e livello `1`. Output: `Avvio con livello basso`.
+17. Chiamata a `azione` con `"pause"` e livello `3`. Output: `Pausa`.
+18. Chiamata a `azione` con `"exit"` e livello `0`. Output: `Comando sconosciuto`.
 
-### Tipi di Pattern
+In questo esempio, la guardia `if livello > 1` aggiunge una condizione extra per i casi `"start"` e `"stop"`, permettendo di distinguere tra diversi livelli di comando.
 
-#### Pattern Letterali
+#### Pattern letterali
 
 I pattern letterali corrispondono a valori letterali come interi, float, stringhe, ecc. La corrispondenza viene effettuata confrontando il valore del soggetto con il valore del pattern.
 
+Esempio:
+
 ```python
 def controlla_valore(valore): # <1>
-    match valore: # <2>
-        case 1: # <3>
-            return "Uno" # <4>
-        case "ciao": # <5>
-            return "Saluto" # <6>
-        case True: # <7>
-            return "Vero" # <8>
-        case None: # <9>
-            return "Nessuno" # <10>
-        case _: # <11>
-            return "Altro" # <12>
+  match valore: # <2>
+    case 1: # <3>
+      return "Uno" # <4>
+
+    case "ciao": # <5>
+      return "Saluto" # <6>
+
+    case True: # <7>
+      return "Vero" # <8>
+
+    case None: # <9>
+      return "Nessuno" # <10>
+
+    case _: # <11>
+      return "Altro" # <12>
 
 print(controlla_valore(1))  # <13>
 print(controlla_valore("ciao"))  # <14>
@@ -205,71 +323,301 @@ print(controlla_valore(False))  # <15>
 14. Chiamata a `controlla_valore` con `"ciao"`. Output: `Saluto`.
 15. Chiamata a `controlla_valore` con `False`. Output: `Altro`.
 
-#### Pattern di Cattura
+#### Pattern di cattura
 
-I pattern di cattura usano nomi di variabili per catturare valori dal soggetto. La variabile viene legata al valore corrispondente e può essere utilizzata nel blocco di codice della clausola `case`.
+I pattern di cattura utilizzano nomi non qualificati (nomi senza punti) per catturare valori all'interno di un pattern. Questi nomi sono wildcard che corrispondono a qualsiasi valore, ma con un effetto collaterale: il nome viene associato all'oggetto corrispondente nella corrispondente espressione di pattern matching. I binding creati dai pattern di cattura rimangono disponibili dopo l'esecuzione dell'istruzione `match`, permettendo alle istruzioni all'interno del blocco `case` e al codice successivo di processare i valori catturati.
+
+Un pattern di cattura semplice associa il nome della variabile al valore corrispondente. Se il pattern di cattura è combinato con altre forme di pattern, può catturare parti specifiche del soggetto.
+
+Esempio di utilizzo dei pattern di cattura:
 
 ```python
-def cattura_valore(valore): # <1>
-    match valore: # <2>
-        case x: # <3>
-            return f"Valore catturato: {x}" # <4>
+def descrivi_valore(valore):  # <1>
+  match valore:  # <2>
+    case x if x < 0:  # <3>
+      print(f"{x} è un numero negativo")  # <4>
 
-print(cattura_valore(10))  # <5>
-print(cattura_valore("ciao"))  # <6>
+    case x if x == 0:  # <5>
+      print(f"{x} è zero")  # <6>
+
+    case x if x > 0 and x % 2 == 0:  # <7>
+      print(f"{x} è un numero positivo pari")  # <8>
+
+    case x if x > 0 and x % 2 != 0:  # <9>
+      print(f"{x} è un numero positivo dispari")  # <10>
+
+    case _ if isinstance(valore, str):  # <11>
+      print(f'"{valore}" è una stringa')  # <12>
+
+    case _ if isinstance(valore, list):  # <13>
+      print(f"{valore} è una lista")  # <14>
+        
+    case _:  # <15>
+      print("Tipo di valore non riconosciuto")  # <16>
+
+# Esempi di utilizzo della funzione
+descrivi_valore(-5)  # <17>
+descrivi_valore(0)  # <18>
+descrivi_valore(4)  # <19>
+descrivi_valore(7)  # <20>
+descrivi_valore("ciao")  # <21>
+descrivi_valore([1, 2, 3])  # <22>
+descrivi_valore({"chiave": "valore"})  # <23>
 ```
-1. Definizione della funzione `cattura_valore`.
-2. Inizia il blocco `match` per il valore `valore`.
-3. Pattern di cattura `x`.
-4. Output con il valore catturato.
-5. Chiamata a `cattura_valore` con `10`. Output: `Valore catturato: 10`.
-6. Chiamata a `cattura_valore` con `"ciao"`. Output:
+1. Definizione della funzione `descrivi_valore`.
+2. Inizio del blocco `match` per il valore `valore`.
+3. Pattern di cattura `x` con guard `x < 0`.
+4. Output se `valore` è un numero negativo. Esempio di output: `-5 è un numero negativo`.
+5. Pattern di cattura `x` con guard `x == 0`.
+6. Output se `valore` è zero. Esempio di output: `0 è zero`.
+7. Pattern di cattura `x` con guard `x > 0 and x % 2 == 0`.
+8. Output se `valore` è un numero positivo pari. Esempio di output: `4 è un numero positivo pari`.
+9. Pattern di cattura `x` con guard `x > 0 and x % 2 != 0`.
+10. Output se `valore` è un numero positivo dispari. Esempio di output: `7 è un numero positivo dispari`.
+11. Pattern di guard `isinstance(valore, str)`.
+12. Output se `valore` è una stringa. Esempio di output: `"ciao" è una stringa`.
+13. Pattern di guard `isinstance(valore, list)`.
+14. Output se `valore` è una lista. Esempio di output: `[1, 2, 3] è una lista`.
+15. Pattern wildcard che corrisponde a qualsiasi altro valore.
+16. Output se `valore` non corrisponde a nessun altro pattern. Esempio di output: `Tipo di valore non riconosciuto`.
+17. Chiamata a `descrivi_valore` con `-5`. Output: `-5 è un numero negativo`.
+18. Chiamata a `descrivi_valore` con `0`. Output: `0 è zero`.
+19. Chiamata a `descrivi_valore` con `4`. Output: `4 è un numero positivo pari`.
+20. Chiamata a `descrivi_valore` con `7`. Output: `7 è un numero positivo dispari`.
+21. Chiamata a `descrivi_valore` con `"ciao"`. Output: `"ciao" è una stringa`.
+22. Chiamata a `descrivi_valore` con `[1, 2, 3]`. Output: `[1, 2, 3] è una lista`.
+23. Chiamata a `descrivi_valore` con `{"chiave": "valore"}`. Output: `Tipo di valore non riconosciuto`.
 
- `Valore catturato: ciao`.
+#### Pattern a valore
 
-#### Pattern di Sequenza
+I pattern a valore utilizzano nomi qualificati per rappresentare valori piuttosto che catturarli. In questo modo, puoi fare riferimento a valori specifici all'interno di un pattern senza rischiare di sovrascrivere variabili esistenti. I nomi qualificati possono essere attributi di una classe o attributi di istanze di classe.
 
-I pattern di sequenza corrispondono a sequenze come liste o tuple. Ogni elemento della sequenza viene confrontato con il pattern corrispondente.
+Poiché i nomi semplici catturano i valori durante il pattern matching, è necessario utilizzare riferimenti agli attributi (nomi qualificati come `nome.attr`) per esprimere valori che possono cambiare tra le diverse esecuzioni dello stesso statement `match`.
+
+Esempio di utilizzo dei pattern a valore:
+
+```python
+class Valori:
+  V1 = 42
+  V2 = "ciao"
+  V3 = [1, 2, 3]
+
+obj = Valori()
+obj.V4 = 99  # <1>
+
+def controlla_valore(valore):  # <2>
+  match valore:  # <3>
+    case Valori.V1:  # <4>
+      print("Valore uguale a 42")  # <5>
+
+    case Valori.V2:  # <6>
+      print('Valore uguale a "ciao"')  # <7>
+
+    case Valori.V3:  # <8>
+      print("Valore uguale a [1, 2, 3]")  # <9>
+
+    case obj.V4:  # <10>
+      print("Valore uguale a 99")  # <11>
+
+    case _:  # <12>
+      print("Valore non riconosciuto")  # <13>
+
+# Esempi di utilizzo della funzione
+controlla_valore(42)  # <14>
+controlla_valore("ciao")  # <15>
+controlla_valore([1, 2, 3])  # <16>
+controlla_valore(99)  # <17>
+controlla_valore(100)  # <18>
+```
+1. Assegna un nuovo attributo `V4` all'istanza `obj` della classe `Valori`.
+2. Definizione della funzione `controlla_valore`.
+3. Inizia il blocco `match` per il valore `valore`.
+4. Pattern a valore per `Valori.V1`.
+5. Output se `valore` è uguale a `42`. Esempio di output: `Valore uguale a 42`.
+6. Pattern a valore per `Valori.V2`.
+7. Output se `valore` è uguale a `"ciao"`. Esempio di output: `Valore uguale a "ciao"`.
+8. Pattern a valore per `Valori.V3`.
+9. Output se `valore` è uguale a `[1, 2, 3]`. Esempio di output: `Valore uguale a [1, 2, 3]`.
+10. Pattern a valore per `obj.V4`.
+11. Output se `valore` è uguale a `99`. Esempio di output: `Valore uguale a 99`.
+12. Pattern wildcard che corrisponde a qualsiasi altro valore.
+13. Output se `valore` non corrisponde a nessun altro pattern. Esempio di output: `Valore non riconosciuto`.
+14. Chiamata a `controlla_valore` con `42`. Output: `Valore uguale a 42`.
+15. Chiamata a `controlla_valore` con `"ciao"`. Output: `Valore uguale a "ciao"`.
+16. Chiamata a `controlla_valore` con `[1, 2, 3]`. Output: `Valore uguale a [1, 2, 3]`.
+17. Chiamata a `controlla_valore` con `99`. Output: `Valore uguale a 99`.
+18. Chiamata a `controlla_valore` con `100`. Output: `Valore non riconosciuto`.
+
+In questo esempio, `Valori.V1`, `Valori.V2`, e `Valori.V3` sono attributi della classe `Valori`, mentre `obj.V4` è un attributo dell'istanza `obj` della classe `Valori`.
+
+#### Pattern OR
+
+I pattern OR utilizzano l'operatore `|` per combinare più pattern. Il match ha successo se uno qualsiasi dei pattern combinati corrisponde al soggetto.
+
+Esempio di utilizzo dei pattern OR:
+
+```python
+def descrivi_numero(numero):  # <1>
+  match numero:  # <2>
+    case 0 | 1:  # <3>
+      print("Numero è 0 o 1")  # <4>
+
+    case 2 | 3:  # <5>
+      print("Numero è 2 o 3")  # <6>
+
+    case _ if numero > 3:  # <7>
+      print("Numero è maggiore di 3")  # <8>
+        
+    case _:  # <9>
+      print("Numero non riconosciuto")  # <10>
+
+# Esempi di utilizzo della funzione
+descrivi_numero(0)  # <11>
+descrivi_numero(2)  # <12>
+descrivi_numero(5)  # <13>
+descrivi_numero(-1)  # <14>
+```
+1. Definizione della funzione `descrivi_numero`.
+2. Inizia il blocco `match` per il valore `numero`.
+3. Pattern OR per `0 | 1`.
+4. Output se `numero` è `0` o `1`. Esempio di output: `Numero è 0 o 1`.
+5. Pattern OR per `2 | 3`.
+6. Output se `numero` è `2` o `3`. Esempio di output: `Numero è 2 o 3`.
+7. Pattern di guard per `numero > 3`.
+8. Output se `numero` è maggiore di `3`. Esempio di output: `Numero è maggiore di 3`.
+9. Pattern wildcard che corrisponde a qualsiasi altro valore.
+10. Output se `numero` non corrisponde a nessun altro pattern. Esempio di output: `Numero non riconosciuto`.
+11. Chiamata a `descrivi_numero` con `0`. Output: `Numero è 0 o 1`.
+12. Chiamata a `descrivi_numero` con `2`. Output: `Numero è 2 o 3`.
+13. Chiamata a `descrivi_numero` con `5`. Output: `Numero è maggiore di 3`.
+14. Chiamata a `descrivi_numero` con `-1`. Output: `Numero non riconosciuto`.
+
+#### Pattern di gruppo
+
+I pattern di gruppo utilizzano parentesi per raggruppare parti di un pattern, consentendo la combinazione di pattern complessi. Questa funzionalità è utile quando si vuole applicare operazioni di pattern matching su componenti specifici di un soggetto.
+
+Esempio di utilizzo dei pattern di gruppo:
+
+```python
+def analizza_tupla(tupla):  # <1>
+  match tupla:  # <2>
+    case (x, (y | z)):  # <3>
+      print(f"Primo elemento: {x}, Secondo elemento: {y} o {z}")  # <4>
+        
+    case _:  # <5>
+      print("Pattern non riconosciuto")  # <6>
+
+# Esempi di utilizzo della funzione
+analizza_tupla((1, 2))  # <7>
+analizza_tupla((1, 3))  # <8>
+analizza_tupla((1, (4, 5)))  # <9>
+```
+1. Definizione della funzione `analizza_tupla`.
+2. Inizia il blocco `match` per il valore `tupla`.
+3. Pattern di gruppo `(x, (y | z))`.
+4. Output se `tupla` corrisponde al pattern. Esempio di output: `Primo elemento: 1, Secondo elemento: 2 o 3`.
+5. Pattern wildcard che corrisponde a qualsiasi altro valore.
+6. Output se `tupla` non corrisponde a nessun altro pattern. Esempio di output: `Pattern non riconosciuto`.
+7. Chiamata a `analizza_tupla` con `(1, 2)`. Output: `Primo elemento: 1, Secondo elemento: 2 o 3`.
+8. Chiamata a `analizza_tupla` con `(1, 3)`. Output: `Primo elemento: 1, Secondo elemento: 2 o 3`.
+9. Chiamata a `analizza_tupla` con `(1, (4, 5))`. Output: `Pattern non riconosciuto`.
+
+#### Pattern di sequenza
+
+I pattern di sequenza corrispondono a sequenze come liste o tuple. Ogni elemento della sequenza viene confrontato con il pattern corrispondente. È possibile utilizzare l'asterisco (`*`) per catturare più elementi in una sottosequenza.
+
+Esempio:
 
 ```python
 def verifica_sequenza(sequenza): # <1>
-    match sequenza: # <2>
-        case [1, 2, 3]: # <3>
-            return "Sequenza 1, 2, 3" # <4>
-        case [x, y, z]: # <5>
-            return f"Sequenza generica: {x}, {y}, {z}" # <6>
-        case _: # <7>
-            return "Altro" # <8>
+  match sequenza: # <2>
+    case [1, 2, 3]: # <3>
+      return "Sequenza 1, 2, 3" # <4>
 
-print(verifica_sequenza([1, 2, 3]))  # <9>
-print(verifica_sequenza([4, 5, 6]))  # <10>
-print(verifica_sequenza([7, 8]))  # <11>
+    case [x, y, z]: # <5>
+      return f"Sequenza generica: {x}, {y}, {z}" # <6>
+
+    case [x, *y, z]: # <7>
+      return f"Sequenza con primo e ultimo elemento: {x}, {z}, e middle: {y}" # <8>
+        
+    case _: # <9>
+      return "Altro" # <10>
+
+print(verifica_sequenza([1, 2, 3]))  # <11>
+print(verifica_sequenza([4, 5, 6]))  # <12>
+print(verifica_sequenza([7, 8, 9, 10]))  # <13>
+print(verifica_sequenza([7, 8]))  # <14>
 ```
 1. Definizione della funzione `verifica_sequenza`.
 2. Inizia il blocco `match` per il valore `sequenza`.
 3. Pattern di sequenza `[1, 2, 3]`.
 4. Output se `sequenza` è `[1, 2, 3]`.
-5. Pattern di sequenza generico `[x, y, z]`.
+5. Pattern di sequenza generico `[x, y, z]` per una sequenza di esattamente tre elementi.
 6. Output con i valori catturati.
-7. Pattern wildcard che corrisponde a qualsiasi altro valore.
-8. Output se `sequenza` non corrisponde a nessun altro pattern.
-9. Chiamata a `verifica_sequenza` con `[1, 2, 3]`. Output: `Sequenza 1, 2, 3`.
-10. Chiamata a `verifica_sequenza` con `[4, 5, 6]`. Output: `Sequenza generica: 4, 5, 6`.
-11. Chiamata a `verifica_sequenza` con `[7, 8]`. Output: `Altro`.
+7. Pattern di sequenza con l'uso dell'asterisco (`*y`) per catturare tutti gli elementi intermedi tra il primo (`x`) e l'ultimo (`z`).
+8. Output con il primo, l'ultimo e gli elementi intermedi della sequenza.
+9. Pattern wildcard che corrisponde a qualsiasi altro valore.
+10. Output se `sequenza` non corrisponde a nessun altro pattern.
+11. Chiamata a `verifica_sequenza` con `[1, 2, 3]`. Output: `Sequenza 1, 2, 3`.
+12. Chiamata a `verifica_sequenza` con `[4, 5, 6]`. Output: `Sequenza generica: 4, 5, 6`.
+13. Chiamata a `verifica_sequenza` con `[7, 8, 9, 10]`. Output: `Sequenza con primo e ultimo elemento: 7, 10, e middle: [8, 9]`.
+14. Chiamata a `verifica_sequenza` con `[7, 8]`. Output: `Altro`.
 
-#### Pattern di Mappatura
+In questo esempio, l'uso dell'asterisco `*` nel pattern `[x, *y, z]` permette di catturare una sottosequenza di lunghezza arbitraria tra il primo e l'ultimo elemento della sequenza. Questo rende possibile gestire sequenze di lunghezza variabile, mentre il pattern `[x, y, z]` corrisponde solo a sequenze di esattamente tre elementi.
 
-I pattern di mappatura corrispondono a mappature come dizionari. Ogni coppia chiave-valore viene confrontata con il pattern corrispondente.
+#### Pattern `as`
+
+È possibile utilizzare i pattern `as` per catturare i valori abbinati da pattern più complessi o componenti di un pattern, che i semplici pattern di cattura non possono gestire. Quando `P1` è un pattern, allora `P1 as name` è anche un pattern; quando `P1` ha successo, Python associa il valore abbinato al nome `name` nel namespace locale.
+
+Esempio di utilizzo del pattern `as`:
+
+```python
+def analizza_comando(comando):
+  match comando:
+    case ("start", param) as c:
+      print(f"Avvio con parametro {param}. Comando completo: {c}")  # <1>
+
+    case ("stop", param) as c:
+      print(f"Arresto con parametro {param}. Comando completo: {c}")  # <2>
+
+    case ("pause", param) as c:
+      print(f"Pausa con parametro {param}. Comando completo: {c}")  # <3>
+        
+    case _ as c:
+      print(f"Comando sconosciuto: {c}")  # <4>
+
+# Esempi di utilizzo
+analizza_comando(("start", 5))  # <5>
+analizza_comando(("stop", 10))  # <6>
+analizza_comando(("pause", 15))  # <7>
+analizza_comando(("exit", 20))  # <8>
+```
+1. Caso in cui il comando è un avvio con un parametro. Output: `Avvio con parametro 5. Comando completo: ('start', 5)`.
+2. Caso in cui il comando è un arresto con un parametro. Output: `Arresto con parametro 10. Comando completo: ('stop', 10)`.
+3. Caso in cui il comando è una pausa con un parametro. Output: `Pausa con parametro 15. Comando completo: ('pause', 15)`.
+4. Caso wildcard che cattura qualsiasi altro comando. Output: `Comando sconosciuto: ('exit', 20)`.
+5. Chiamata a `analizza_comando` con `("start", 5)`.
+6. Chiamata a `analizza_comando` con `("stop", 10)`.
+7. Chiamata a `analizza_comando` con `("pause", 15)`.
+8. Chiamata a `analizza_comando` con `("exit", 20)`.
+
+#### Pattern di mappatura
+
+I pattern di mappatura corrispondono alle mappature definite nel linguaggio come i dizionari. Ogni coppia chiave-valore viene confrontata con il pattern corrispondente.
+
+Esempio:
 
 ```python
 def verifica_mappatura(mappatura): # <1>
-    match mappatura: # <2>
-        case {"a": 1, "b": 2}: # <3>
-            return "Mappatura a=1, b=2" # <4>
-        case {"a": x, "b": y}: # <5>
-            return f"Mappatura generica: a={x}, b={y}" # <6>
-        case _: # <7>
-            return "Altro" # <8>
+  match mappatura: # <2>
+    case {"a": 1, "b": 2}: # <3>
+      return "Mappatura a=1, b=2" # <4>
+
+    case {"a": x, "b": y}: # <5>
+      return f"Mappatura generica: a={x}, b={y}" # <6>
+
+    case _: # <7>
+      return "Altro" # <8>
 
 print(verifica_mappatura({"a": 1, "b": 2}))  # <9>
 print(verifica_mappatura({"a": 3, "b": 4}))  # <10>
@@ -287,113 +635,374 @@ print(verifica_mappatura({"c": 5}))  # <11>
 10. Chiamata a `verifica_mappatura` con `{"a": 3, "b": 4}`. Output: `Mappatura generica: a=3, b=4`.
 11. Chiamata a `verifica_mappatura` con `{"c": 5}`. Output: `Altro`.
 
-#### Pattern di Classe
+#### Pattern di classe
 
-I pattern di classe corrispondono a istanze di classi specifiche e possono confrontare gli attributi di queste istanze.
+I pattern di classe permettono di verificare se un oggetto è un'istanza di una particolare classe e di accedere ai suoi attributi. Un pattern di classe ha la forma generale `nome_o_attr(patterns)`, dove `nome_o_attr` è un nome semplice o qualificato legato a una classe, e `patterns` è una lista separata da virgole di specifiche di pattern.
 
-```python
-class Punto: # <1>
-    def __init__(self, x, y): # <2>
-        self.x = x # <3>
-        self.y = y # <4>
+Se non ci sono specifiche di pattern, il pattern di classe corrisponde a qualsiasi istanza della classe data. Se ci sono specifiche di pattern posizionali, queste devono precedere qualsiasi specifica di pattern nominata.
 
-def verifica_punto(p): # <5>
-    match p: # <6>
-        case Punto(0, 0): # <7>
-            return "Origine" # <8>
-        case Punto(x, y): # <9>
-            return f"Punto con coordinate: x={x}, y={y}" # <10>
-        case _: # <11>
-            return "Altro" # <12>
+Le classi predefinite di Python come `bool`, `bytearray`, `bytes`, `dict`, `float`, `frozenset`, `int`, `list`, `set`, `str` e `tuple` sono tutte configurate per accettare un singolo pattern posizionale, che viene confrontato con il valore dell'istanza.
 
-p1 = Punto(0, 0) # <13>
-p2 = Punto(1, 2) # <14>
-
-print(verifica_punto(p1))  # <15>
-print(verifica_punto(p2))  # <16>
-```
-1. Definizione della classe `Punto`.
-2. Inizializzazione della classe `Punto`.
-3. Assegnazione dell'attributo `x`.
-4. Assegnazione dell'attributo `y`.
-5. Definizione della funzione `verifica_punto`.
-6. Inizia il blocco `match` per il valore `p`.
-7. Pattern di classe `Punto(0, 0)`.
-8. Output se `p` è `Punto(0, 0)`.
-9. Pattern di classe generico `Punto(x, y)`.
-10. Output con i valori catturati.
-11. Pattern wildcard che corrisponde a qualsiasi altro valore.
-12. Output se `p` non corrisponde a nessun altro pattern.
-13. Creazione di un'istanza di `Punto` con coordinate `(0, 0)`.
-14. Creazione di un'istanza di `Punto` con coordinate `(1, 2)`.
-15. Chiamata a `verifica_punto` con `p1`. Output: `Origine`.
-16. Chiamata a `verifica_punto` con `p2`. Output: `Punto con coordinate: x=1, y=2`.
-
-### La Clausola `else` nei Cicli
-
-Le istruzioni `while` e `for` possono includere una clausola `else`. La clausola `else` viene eseguita quando il ciclo termina naturalmente (quando la condizione del `while` diventa falsa o l'iteratore del `for` viene esaurito), ma non quando il ciclo termina prematuramente (con `break`, `return` o un'eccezione).
-
-Esempio di utilizzo della clausola `else`:
+Esempio:
 
 ```python
-for i in range(10): # <1>
-    if i == 5: # <2>
-        break # <3>
-else: # <4>
-    print('Ciclo terminato naturalmente') # <5>
+class Punto:
+  def __init__(self, x, y):
+    self.x = x
+    self.y = y
+
+def descrivi_punto(p):
+  match p:
+    case Punto(0, 0):
+      return "Punto all'origine" # <1>
+
+    case Punto(x, 0):
+      return f"Punto sull'asse x a {x}" # <2>
+
+    case Punto(0, y):
+      return f"Punto sull'asse y a {y}" # <3>
+
+    case Punto(x, y) if x == y:
+      return f"Punto sulla bisettrice x=y a ({x}, {y})" # <4>
+
+    case Punto(x, y):
+      return f"Punto a ({x}, {y})" # <5>
+
+    case _:
+      return "Non è un punto" # <6>
+
+# Esempi di utilizzo
+p1 = Punto(0, 0)
+p2 = Punto(3, 0)
+p3 = Punto(0, 4)
+p4 = Punto(2, 2)
+p5 = Punto(1, 5)
+
+print(descrivi_punto(p1))  # <7>
+print(descrivi_punto(p2))  # <8>
+print(descrivi_punto(p3))  # <9>
+print(descrivi_punto(p4))  # <10>
+print(descrivi_punto(p5))  # <11>
 ```
-1. Ciclo `for` che itera su un range di numeri.
-2. Controlla se `i` è uguale a 5.
-3. Interrompe il ciclo quando `i` è 5.
-4. Clausola `else` che viene eseguita se il ciclo termina naturalmente.
-5. Output se il ciclo termina naturalmente.
+1. Pattern di classe che verifica se `p` è un'istanza di `Punto` con `x` e `y` uguali a `0`.
+2. Pattern di classe che verifica se `p` è un'istanza di `Punto` con `y` uguale a `0`.
+3. Pattern di classe che verifica se `p` è un'istanza di `Punto` con `x` uguale a `0`.
+4. Pattern di classe con guard che verifica se `p` è un'istanza di `Punto` con `x` uguale a `y`.
+5. Pattern di classe generico che verifica se `p` è un'istanza di `Punto` e cattura i valori di `x` e `y`.
+6. Pattern wildcard che corrisponde a qualsiasi altro valore.
+7. Chiamata a `descrivi_punto` con `Punto(0, 0)`. Output: `Punto all'origine`.
+8. Chiamata a `descrivi_punto` con `Punto(3, 0)`. Output: `Punto sull'asse x a 3`.
+9. Chiamata a `descrivi_punto` con `Punto(0, 4)`. Output: `Punto sull'asse y a 4`.
+10. Chiamata a `descrivi_punto` con `Punto(2, 2)`. Output: `Punto sulla bisettrice x=y a (2, 2)`.
+11. Chiamata a `descrivi_punto` con `Punto(1, 5)`. Output: `Punto a (1, 5)`.
 
-### L'Istruzione `pass`
+In questo esempio, `Punto` è una classe con attributi `x` e `y`. I pattern di classe permettono di verificare se un oggetto è un'istanza di `Punto` e di accedere ai suoi attributi per ulteriori controlli.
 
-Il corpo di un'istruzione composta in Python non può essere vuoto; deve contenere almeno un'istruzione. Si può utilizzare l'istruzione `pass`, che non esegue alcuna azione, come segnaposto esplicito quando è richiesta un'istruzione sintatticamente ma non c'è nulla da fare.
+## Cicli
 
-Esempio di utilizzo di `pass`:
+### L'istruzione `while`
+
+L'istruzione composta `while` ripete l'esecuzione di un blocco di istruzioni fintantoché un'espressione condizionale risulta vera. La clausola `else` viene eseguita quando il ciclo `while` termina naturalmente (cioè, la condizione del ciclo diventa falsa).
+
+Ecco la sintassi completa dello pseudocodice per l'istruzione `while` con la clausola `else`:
 
 ```python
-if True: # <1>
-    pass # <2>
+while espressione:  # <1>
+  istruzione(i)  # <2>
+
+else:  # <3>
+  istruzione(i)  # <4>
 ```
-1. Condizione sempre vera.
-2. Segnaposto che non esegue alcuna azione.
+1. L'interprete valuta l'espressione condizionale.
+2. Se l'espressione condizionale è vera, esegue il blocco di istruzioni all'interno del ciclo `while`. Al termine del blocco, torna a valutare l'espressione condizionale.
+3. Se l'espressione condizionale è falsa, esegue il blocco di istruzioni all'interno della clausola `else`.
+4. Il blocco di istruzioni all'interno della clausola `else` viene eseguito solo se il ciclo `while` termina naturalmente (cioè, la condizione del ciclo diventa falsa).
+
+Esempio pratico con `while` e `else`:
 
 ```python
-def funzione_non_implementata(): # <1>
-    pass # <2>
+x = 3
+
+while x > 0:  # <1>
+  print(x)  # <2>
+
+  x -= 1
+
+else:  # <3>
+  print("Ciclo terminato")  # <4>
 ```
-1. Definizione di una funzione.
-2. Segnaposto per una funzione non ancora implementata.
+1. Inizia il ciclo `while` finché `x` è maggiore di 0.
+2. Stampa il valore corrente di `x`.
+3. La clausola `else` viene eseguita quando il ciclo `while` termina naturalmente.
+4. Stampa "Ciclo terminato".
+
+L'istruzione `while` può anche includere una clausola `else` e le istruzioni `break` e `continue`. L'istruzione `break` interrompe il ciclo `while`, al pari di `return` se il ciclo si trova in una funzione. L'istruzione `continue` salta l'iterazione corrente e passa alla successiva.
+
+Esempio:
 
 ```python
-class ClasseVuota: # <1>
-    pass # <2>
+x = 10
+
+while x > 0: # <1>
+  x -= 1
+
+  if x == 5:
+    break  # <2>
+
+  if x % 2 == 0:
+    continue  # <3>
+
+  print(x)  # <4>
 ```
-1. Definizione di una classe.
-2. Segnaposto per una classe non ancora implementata.
+1. Inizia il ciclo `while` finché `x` è maggiore di `0`.
+2. Interrompe il ciclo quando `x` è uguale a `5`.
+3. Salta l'iterazione corrente se `x` è pari.
+4. Stampa il valore di `x` se non è stato saltato.
 
-### L'Istruzione `try` e `raise`
+### Il ciclo `for`
 
-Python supporta la gestione delle eccezioni con l'istruzione `try`, che include le clausole `try`, `except`, `finally` ed `else`. Il codice può anche sollevare esplicitamente un'eccezione con l'istruzione `raise`. Quando il codice solleva un'eccezione, il normale flusso di controllo del programma si interrompe e Python cerca un gestore di eccezioni adatto.
+L'istruzione `for` ripete l'esecuzione di un blocco di istruzioni controllata da un'espressione iterabile. La sintassi è:
+
+```python
+for indice in iterabile:  # <1>
+    istruzione(i)        # <2>
+```
+1. `indice` è normalmente un identificatore che funge da variabile di controllo del ciclo e viene associato a ciascun elemento dell'`iterabile`.
+2. `istruzione(i) ` rappresenta una o più istruzioni che vengono eseguite per ogni elemento dell'iterabile.
+
+Esempio tipico di `for`:
+
+```python
+for lettera in 'ciao':  # <1>
+    print(f'Dammi una {lettera}...')  # <2>
+```
+1. Inizia il ciclo `for` su ogni carattere della stringa `'ciao'`.
+2. Stampa `"Dammi una [lettera]..."` per ogni lettera della stringa.
+
+L'istruzione `for` può anche includere una clausola `else` che viene eseguita se il ciclo termina normalmente (cioè, non viene interrotto da un'istruzione `break` o `return`).
+
+```python
+numeri = [1, 2, 3, 4, 5]
+
+for numero in numeri:  # <1>
+  if numero == 3:  # <2>
+    break
+    
+  print(numero)  # <3>
+
+else:  # <4>
+    print("Ciclo completato")  # <5>
+```
+1. Inizia il ciclo `for` sulla lista `numeri`.
+2. Se il numero è 3, interrompe il ciclo con `break`.
+3. Stampa il numero corrente.
+4. La clausola `else` viene eseguita se il ciclo `for` termina naturalmente.
+5. Stampa "Ciclo completato".
+
+L'iterabile può essere qualsiasi espressione iterabile in Python. In particolare, qualsiasi sequenza è iterabile. L'interprete chiama implicitamente la funzione built-in `iter()` sull'iterabile, producendo un iteratore.
+
+### Iteratori e iterabili
+
+Un iteratore è un oggetto che permette di attraversare una collezione di elementi, uno alla volta. Gli iteratori sono utilizzati per rappresentare flussi di dati o collezioni di elementi che non sono necessariamente tutti disponibili in memoria contemporaneamente. Pertanto:
+
+- Un oggetto è iterabile se può restituire un iteratore. Un oggetto iterabile implementa il metodo `__iter__()` che deve restituire un iteratore.
+
+-  Un oggetto è un iteratore se implementa i metodi `__iter__()` e `__next__()`. Il metodo `__next__()` restituisce il prossimo elemento della collezione e solleva l'eccezione `StopIteration` quando non ci sono più elementi.
+
+Esempio di iteratore:
+
+```python
+numeri = [1, 2, 3]  # <1>
+iteratore = iter(numeri)  # <2>
+
+print(next(iteratore))  # <3>
+print(next(iteratore))  # <4>
+print(next(iteratore))  # <5>
+print(next(iteratore))  # <6> 
+```
+1. Definizione di una lista di numeri. 
+2. Creazione di un iteratore dall'iterabile numeri.
+3. Output: `1`.
+4. Output: `2`.
+5. Output: `3`.
+6. Solleva l'eccezione `StopIteration` perché non ci sono più elementi.
+
+L'istruzione `for` chiama implicitamente `iter` sul suo iterabile per ottenere un iteratore. Lo pseudocodice seguente mostra cosa accade dietro le quinte:
+
+```python
+_iteratore_temporaneo = iter(contenitore)
+while True:
+    try:
+        x = next(_iteratore_temporaneo)
+
+    except StopIteration:
+        break
+
+    istruzione(i)
+```
+
+### La funzione `range`
+
+La funzione `range` genera una sequenza di numeri interi. È comunemente usata nei cicli `for`.
+
+```python
+for i in range(5):  # <1>
+  print(i)  # <2>
+```
+1. Inizia il ciclo `for` sui numeri da `0` a `4`.
+2. Stampa il numero corrente.
+
+`range` può accettare fino a tre argomenti: `start`, `stop`, e `step`.
+
+```python
+for i in range(1, 10, 2):  # <1>
+  print(i)  # <2>
+```
+1. Inizia il ciclo `for` sui numeri da `1` a `9`, con incremento di `2`.
+2. Stampa il numero corrente.
+
+L'oggetto `range` è un iterabile ma non un iteratore. Tuttavia, è possibile ottenere un iteratore chiamando `iter()` su un oggetto `range`.
+
+```python
+r = range(5)
+i = iter(r)
+
+print(next(i))  # <1>
+print(next(i))  # <2>
+```
+1. Stampa il primo numero dell'oggetto `range`: `0`.
+2. Stampa il secondo numero dell'oggetto `range`: `1`.
+
+### Spacchettamento nei cicli `for`
+
+È possibile utilizzare un indice composto da più identificatori, come in un'assegnazione con spacchettamento. In questo caso, gli elementi dell'iteratore devono essere essi stessi iterabili, ciascuno con esattamente tanti elementi quanti sono gli identificatori nell'indice.
+
+Esempio di ciclo `for` su un dizionario:
+
+```python
+d = {'a': 1, 'b': 2, 'c': 3}
+
+for chiave, valore in d.items():  # <1>
+  if chiave and valore:  # <2>
+    print(chiave, valore)  # <3>
+```
+1. Inizia il ciclo `for` sugli elementi del dizionario `d`.
+2. Verifica se sia la chiave che il valore sono "truthy".
+3. Stampa la coppia chiave-valore.
+
+È possibile usare un identificatore preceduto da un asterisco `*` nel target. Questo identificatore verrà associato a una lista di tutti gli elementi non assegnati ad altri target.
+
+```python
+lista = [1, 2, 3, 4, 5]
+
+for primo, *centro, ultimo in [lista]:  # <1>
+  print(primo)  # <2>
+  print(centro)  # <3>
+  print(ultimo)  # <4>
+```
+1. Inizia il ciclo `for` sulla lista `lista`.
+2. Stampa il primo elemento della lista.
+3. Stampa tutti gli elementi centrali della lista.
+4. Stampa l'ultimo elemento della lista.
+
+## Comprensioni
+
+Le comprensioni _comprehension_ in Python sono un modo conciso e leggibile per creare nuove sequenze (liste, insiemi, dizionari) da iterabili esistenti. Sono un esempio di supporto alla programmazione funzionale in quanto permettono di creare nuove collezioni attraverso la trasformazione e il filtraggio di elementi, senza modificare l'iterabile originale. Questa capacità di trasformare dati in modo dichiarativo, senza effetti collaterali, è un principio fondamentale della programmazione funzionale.
+
+### Liste
+
+Le comprensioni di liste sono uno degli utilizzi più comuni. Permettono di ispezionare ogni elemento di un iterabile e costruire una nuova lista aggiungendo i risultati di un'espressione calcolata su alcuni o tutti gli elementi. Una compresa di lista ha la seguente sintassi:
+
+```python
+[espressione for indice in iterabile clausole]
+```
+
+- `indice` e `iterabile` in ogni clausola `for` di una compresa di lista hanno la stessa sintassi e significato di quelli in una normale istruzione `for`.
+
+- `espressione` può essere qualsiasi espressione Python valida e viene calcolata per ogni elemento della lista risultante.
+
+- `clausole` è una serie di zero o più clausole, ciascuna con la forma `for indice in iterabile` o `if espressione`.
+
+Esempio semplice:
+
+```python
+result = [x + 1 for x in range(5)]  # <1>
+
+print(result)  # <2>
+```
+1. Crea una lista di numeri incrementati di 1 da 0 a 4.
+2. Output: `[1, 2, 3, 4, 5]`.
+
+Esempio con condizione:
+
+```python
+result = [x + 1 for x in range(5) if x > 2]  # <1>
+
+print(result)  # <2>
+```
+1. Crea una lista con i numeri da 1 a 5, ma solo per i numeri maggiori di 2.
+2. Output: `[4, 5]`.
+
+Esempio con annidamento:
+
+```python
+lista_di_liste = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+result = [x for sublist in lista_di_liste for x in sublist]  # <1>
+print(result)  # <2>
+```
+1. Appiattisce una lista di liste in una singola lista.
+2. Output: `[1, 2, 3, 4, 5, 6, 7, 8, 9]`.
+
+### Insiemi
+
+Le comprensioni di insiemi hanno la stessa sintassi e semantica delle comprese di liste, ad eccezione che sono racchiuse tra parentesi graffe `{}` invece che tra parentesi quadre `[]`. Il risultato è un insieme.
+
+Esempio:
+
+```python
+s = {n // 2 for n in range(10)}  # <1>
+
+print(sorted(s))  # <2>
+```
+1. Crea un insieme con i risultati della divisione intera di `n` per 2, da 0 a 9.
+2. Output: `[0, 1, 2, 3, 4]`.
+
+### Dizionari
+
+Le comprensioni di dizionari hanno la stessa sintassi delle comprese di insiemi, ma invece di una singola espressione prima della clausola `for`, si usano due espressioni separate da un due punti `:`: `chiave:valore`. Il risultato è un dizionario che mantiene l'ordine di inserimento.
+
+Esempio:
+
+```python
+d = {s: i for i, s in enumerate(['zero', 'uno', 'due'])}  # <1>
+
+print(d)  # <2>
+```
+1. Crea un dizionario associando ogni stringa al suo indice nella lista.
+2. Output: `{'zero': 0, 'uno': 1, 'due': 2}`.
+
+## Gestione anomalie
+
+### Le istruzioni `try` e `raise`
+
+Python supporta la gestione delle eccezioni con l'istruzione composta `try`, che include le clausole `try`, `except`, `finally` ed `else`. Il codice può anche sollevare esplicitamente un'eccezione con l'istruzione `raise`. Quando il codice solleva un'eccezione, il normale flusso di controllo del programma si interrompe e Python cerca un gestore di eccezioni adatto.
 
 Esempio di utilizzo di `try` e `raise`:
 
 ```python
 def dividi(a, b): # <1>
-    try: # <2>
-        return a / b # <3>
-    except ZeroDivisionError: # <4>
-        raise ValueError("Divisione per zero non consentita") # <5>
+  try: # <2>
+    return a / b # <3>
 
-try:
+  except ZeroDivisionError: # <4>
+    raise ValueError("Divisione per zero non consentita") # <5>
 
- # <6>
-    risultato = dividi(10, 0) # <7>
+try: # <6>
+  risultato = dividi(10, 0) # <7>
+
 except ValueError as e: # <8>
-    print(e) # <9>
+  print(e) # <9>
 ```
 1. Definizione della funzione `dividi`.
 2. Inizia il blocco `try`.
@@ -405,178 +1014,105 @@ except ValueError as e: # <8>
 8. Gestione dell'eccezione `ValueError`.
 9. Output del messaggio di errore: `Divisione per zero non consentita`.
 
-### L'Istruzione `with`
+### Controllo condizioni anomale
 
-L'istruzione `with` può spesso essere un'alternativa più leggibile e utile all'istruzione `try/finally`. La `with` dichiarazione consente di gestire risorse in modo efficiente e sicuro, assicurando che le risorse siano correttamente rilasciate dopo l'uso. Un esempio comune è l'uso di `with` per gestire i file:
+L'istruzione `assert condizione, messaggio` viene utilizzata per eseguire controlli durante l'esecuzione del programma. Se la `condizione` è falsa, viene sollevata un'eccezione `AssertionError` che include il `messaggio`. Può essere usata per il debugging e per verificare condizioni che dovrebbero essere sempre vere in un punto specifico del codice.
+
+Esempi di utilizzo:
 
 ```python
-with open('file.txt', 'r') as file: # <1>
-    contenuto = file.read() # <2>
-    print(contenuto) # <3>
+x = 5
+
+assert x > 0, "x deve essere maggiore di zero"  # <1>
+assert x < 0, "x deve essere minore di zero"  # <2>
+```
+1. Non genera errore perché `x > 0` è vero.
+2. Genera `AssertionError` con il messaggio `"x deve essere minore di zero"` perché `x < 0` è falso.
+
+È importante notare che le asserzioni possono essere disabilitate a livello di runtime utilizzando l'opzione `-O` (ottimizzazione) quando si esegue lo script Python. Questo rimuoverà tutte le istruzioni `assert` dal bytecode generato.
+
+```bash
+python -O script.py
+```
+
+## Altre istruzioni
+
+### L'istruzione `pass`
+
+Il corpo di un'istruzione composta in Python non può essere vuoto; deve contenere almeno un'istruzione. Si può utilizzare l'istruzione `pass`, che non esegue alcuna azione, come segnaposto esplicito quando è richiesta un'istruzione sintatticamente ma non c'è nulla da fare.
+
+Esempio di utilizzo di `pass`:
+
+```python
+if True: # <1>
+  pass # <2>
+```
+1. Condizione sempre vera.
+2. Segnaposto che non esegue alcuna azione.
+
+```python
+def funzione_non_implementata(): # <1>
+  pass # <2>
+```
+1. Definizione di una funzione.
+2. Segnaposto per una funzione non ancora implementata.
+
+```python
+class ClasseVuota: # <1>
+  pass # <2>
+```
+1. Definizione di una classe.
+2. Segnaposto per una classe non ancora implementata.
+
+### L'istruzione `with`
+
+L'istruzione composta `with` può spesso essere un'alternativa più leggibile e utile all'istruzione `try/finally`. Essa consente di gestire risorse in modo efficiente e sicuro, assicurando che le risorse siano correttamente rilasciate dopo l'uso. Per essere gestita dall'istruzione `with`, una risorsa deve implementare il protocollo del context manager, che richiede i metodi speciali `__enter__` e `__exit__`.
+
+Un esempio comune è l'uso di `with` per gestire i file:
+
+```python
+with open('file.txt', 'r') as file:  # <1>
+  contenuto = file.read()  # <2>
+  
+  print(contenuto)  # <3>
 ```
 1. Apre il file `file.txt` in modalità lettura.
 2. Legge il contenuto del file.
 3. Output del contenuto del file.
 
-## Istruzioni Semplici
-
-### Assegnamenti
-
-Le assegnazioni in Python sono istruzioni semplici che assegnano valori a variabili utilizzando l'operatore `=`. L'assegnazione in Python è una dichiarazione e non può mai far parte di un'espressione. Per eseguire un'assegnazione come parte di un'espressione, è necessario utilizzare l'operatore `:=` (noto come operatore "walrus").
-
-Esempio di assegnazione semplice:
+Esempio di un contesto personalizzato:
 
 ```python
-x = 10 # <1>
-y = 20 # <2>
-print(x + y) # <3>
+class GestoreRisorsa:
+  def __enter__(self):  # <1>
+    print("Risorsa acquisita")  # <2>
+
+    return self
+    
+  def __exit__(self, tipo, valore, traceback):  # <3>
+    print("Risorsa rilasciata")  # <4>
+      
+with GestoreRisorsa() as risorsa:  # <5>
+  print("Usando la risorsa")  # <6>
 ```
-1. Assegna il valore `10` alla variabile `x`.
-2. Assegna il valore `20` alla variabile `y`.
-3. Output della somma di `x` e `y`: `30`.
+1. Metodo `__enter__` che viene chiamato all'inizio del blocco `with`.
+2. Output indicante che la risorsa è stata acquisita.
+3. Metodo `__exit__` che viene chiamato alla fine del blocco `with`, indipendentemente dal fatto che ci sia stata un'eccezione o meno.
+4. Output indicante che la risorsa è stata rilasciata.
+5. Inizia il blocco `with` usando il `GestoreRisorsa`.
+6. Output indicante l'uso della risorsa.
 
-Esempio di assegnazione con l'operatore walrus:
-
-```python
-if (n := 10) > 5: # <1>
-    print(n) # <2>
-```
-1. Assegna il valore `10` a `n` e verifica se `n` è maggiore di `5`.
-2. Output di `n`: `10`.
-
-### Istruzioni di Controllo di Flusso
-
-Le istruzioni di controllo di flusso regolano l'ordine in cui il codice del programma viene eseguito. Comprendono istruzioni condizionali, cicli e chiamate a funzioni.
-
-### L'Istruzione `while`
-
-L'istruzione `while` ripete l'esecuzione di un'istruzione o un blocco di istruzioni finché un'espressione condizionale è vera. La sintassi dell'istruzione `while` è la seguente:
-
-```python
-while espressione: # <1>
-    <istruzione(i)> # <2>
-```
-1. Condizione del ciclo.
-2. Blocco di codice eseguito finché la condizione è vera.
-
-Esempio di utilizzo dell'istruzione `while`:
-
-```python
-x = 5
-
-while x > 0: # <1>
-    print(x) # <2>
-    x -= 1 # <3>
-```
-1. Ciclo `while` che verifica se `x` è maggiore di `0`.
-2. Output del valore di `x`.
-3. Decremento di `x`.
-
-### L'Istruzione `for`
-
-L'istruzione `for` ripete l'esecuzione di un'istruzione o un blocco di istruzioni controllato da un'espressione iterabile. La sintassi dell'istruzione `for` è la seguente:
-
-```python
-for target in iterable: # <1>
-    <istruzione(i)> # <2>
-```
-1. Iterabile da attraversare.
-2. Blocco di codice eseguito per ogni elemento dell'iterabile.
-
-Esempio di utilizzo dell'istruzione `for`:
-
-```python
-for lettera in 'ciao': # <1>
-    print(f'dammi una {lettera}...') # <2>
-```
-1. Ciclo `for` che itera su ogni lettera della stringa `'ciao'`.
-2. Output per ogni lettera.
-
-### L'Istruzione `break`
-
-L'istruzione `break` può essere utilizzata solo all'interno del corpo di un ciclo. Quando `break` viene eseguito, il ciclo termina senza eseguire alcuna clausola `else` sul ciclo. Quando i cicli sono annidati, `break` termina solo il ciclo più interno.
-
-Esempio di utilizzo dell'istruzione `break`:
-
-```python
-while True: # <1>
-    x = int(input("Inserisci un numero (0 per terminare): ")) # <2>
-    if x == 0: # <3>
-        break # <4>
-    print(f"Hai inserito: {x}") # <5>
-```
-1. Ciclo `while` infinito.
-2. Input di un numero dall'utente.
-3. Controlla se il numero è `0`.
-4. Termina il ciclo se il numero è `0`.
-5. Output del numero inserito.
-
-### L'Istruzione `continue`
-
-L'istruzione `continue` può essere utilizzata solo all'interno del corpo di un ciclo. Causa la terminazione dell'iterazione corrente del ciclo e l'esecuzione continua con la prossima iterazione del ciclo.
-
-Esempio di utilizzo dell'istruzione `continue`:
-
-```python
-for i in range(5): # <1>
-    if i % 2 == 0: # <2>
-        continue # <3>
-    print(i) # <4>
-```
-1. Ciclo `for` che itera su un range di numeri.
-2. Controlla se il numero è pari.
-3. Salta l'iterazione corrente se il numero è pari.
-4. Output dei numeri dispari.
-
-### Istruzioni di Importazione
-
-Le istruzioni `import` consentono di includere moduli esterni nel proprio programma. Esistono diverse varianti dell'istruzione `import`.
-
-#### Importazione di un Modulo Intero
-
-```python
-import math # <1>
-
-print(math.sqrt(16)) # <2>
-```
-1. Importa il modulo `math`.
-2. Utilizza la funzione `sqrt` del modulo `math`. Output: `4.0`.
-
-#### Importazione di Specifici Identificatori da un Modulo
-
-```python
-from math import sqrt, pi # <1>
-
-print(sqrt(16)) # <2>
-print(pi) # <3>
-```
-1. Importa specifici identificatori (`sqrt` e `pi`) dal modulo `math`.
-2. Utilizza la funzione `sqrt`. Output: `4.0`.
-3. Utilizza la costante `pi`. Output: `3.141592653589793`.
-
-#### Importazione di Tutti gli Identificatori da un Modulo
-
-```python
-from math import * # <1>
-
-print(sqrt(16)) # <2>
-print(pi) # <3>
-```
-1. Importa tutti gli identificatori dal modulo `math`.
-2. Utilizza la funzione `sqrt`. Output: `4.0`.
-3. Utilizza la costante `pi`. Output: `3.141592653589793`.
-
-### Istruzioni di Ritorno
+### Istruzioni di ritorno
 
 Le istruzioni di ritorno vengono utilizzate per restituire valori da una funzione. Esistono due tipi principali di istruzioni di ritorno: `return` e `yield`.
 
-#### L'Istruzione `return`
+#### `return`
 
 L'istruzione `return` viene utilizzata per restituire un valore da una funzione e terminare l'esecuzione della funzione.
 
 ```python
 def somma(a, b): # <1>
-    return a + b # <2>
+  return a + b # <2>
 
 print(somma(3, 4)) # <3>
 ```
@@ -584,7 +1120,7 @@ print(somma(3, 4)) # <3>
 2. Restituisce la somma di `a` e `b`.
 3. Output della somma: `7`.
 
-#### L'Istruzione `yield`
+#### `yield`
 
 L'istruzione `yield` viene utilizzata per restituire un valore da una funzione generatore senza terminare l'esecuzione della funzione. La funzione può riprendere l'esecuzione dal punto in cui è stata interrotta al successivo ciclo di iterazione.
 
@@ -601,85 +1137,170 @@ for valore in generatore(): # <5>
 2. Restituisce `1` e sospende l'esecuzione.
 3. Restituisce `2` e sospende l'esecuzione.
 4. Restituisce `3` e sospende l'esecuzione.
-5
-
-. Itera sui valori restituiti dal generatore.
+5. Itera sui valori restituiti dal generatore.
 6. Output dei valori: `1`, `2`, `3`.
 
-### Istruzioni di Scope
+### Modificatori di ambito
 
-Le istruzioni `global` e `nonlocal` vengono utilizzate per dichiarare variabili che risiedono in scope differenti.
+Le istruzioni `global` e `nonlocal` sono utilizzate per modificare la visibilità delle variabili all'interno delle funzioni.
 
-#### L'Istruzione `global`
+L'istruzione `global` viene utilizzata per dichiarare che una variabile all'interno di una funzione fa riferimento a una variabile globale, cioè una variabile definita al di fuori di qualsiasi funzione. Senza `global`, tutte le assegnazioni di variabili all'interno di una funzione sono considerate locali alla funzione stessa.
 
-L'istruzione `global` viene utilizzata per dichiarare che una variabile in una funzione è globale.
+Esempio di utilizzo di `global`:
 
 ```python
 x = 10 # <1>
 
-def modifica_globale(): # <2>
-    global x # <3>
-    x = 20 # <4>
+def modifica_global():
+  global x # <2>
 
-modifica_globale() # <5>
-print(x) # <6>
+  x = 20
+
+modifica_global()
+
+print(x)  # <3>
 ```
-1. Definizione di una variabile globale `x`.
-2. Definizione della funzione `modifica_globale`.
-3. Dichiara che `x` è una variabile globale.
-4. Modifica il valore di `x`.
-5. Chiama la funzione `modifica_globale`.
-6. Output del valore di `x`: `20`.
+1. `x` è una variabile globale.
+2. L'istruzione `global` dichiara che `x` fa riferimento alla variabile globale `x`, permettendo alla funzione di modificarla.
+3. Output: `20`.
 
-#### L'Istruzione `nonlocal`
+L'istruzione `nonlocal` viene utilizzata per dichiarare che una variabile all'interno di una funzione fa riferimento a una variabile non locale, cioè una variabile definita in un contesto esterno ma non globale (ad esempio, all'interno di una funzione contenente). Senza `nonlocal`, tutte le assegnazioni di variabili all'interno di una funzione sono considerate locali alla funzione stessa.
 
-L'istruzione `nonlocal` viene utilizzata per dichiarare che una variabile in una funzione interna è non locale, ovvero è definita in un scope esterno ma non globale.
+Esempio di utilizzo di `nonlocal`:
 
 ```python
-def esterna(): # <1>
-    x = 10 # <2>
+def esterna():
+  x = 10 # <1>
+
+  def interna():
+    nonlocal x # <2>
     
-    def interna(): # <3>
-        nonlocal x # <4>
-        x = 20 # <5>
+    x = 20
 
-    interna() # <6>
-    print(x) # <7>
+  interna()
 
-esterna() # <8>
+  print(x)
+
+esterna()  # <3>
 ```
-1. Definizione della funzione `esterna`.
-2. Definizione di una variabile `x` in `esterna`.
-3. Definizione della funzione `interna` all'interno di `esterna`.
-4. Dichiara che `x` è una variabile non locale.
-5. Modifica il valore di `x`.
-6. Chiama la funzione `interna`.
-7. Output del valore di `x`: `20`.
-8. Chiama la funzione `esterna`.
+1. `x` è una variabile locale alla funzione `esterna`. 
+2. L'istruzione `nonlocal` dichiara che `x` fa riferimento alla variabile non locale `x`, permettendo alla funzione `interna` di modificarla.
+3. Output: `20`.
 
-### L'Istruzione `type` (introdotta in Python 3.12)
+### Alias di tipo
 
-Introdotta in Python 3.12, l'istruzione `type` permette di creare alias di tipo. Questa funzione può essere utilizzata per migliorare la leggibilità del codice e definire tipi specifici per annotazioni.
+L'istruzione `type` viene utilizzata per creare alias di tipo. Questo consente di assegnare nomi significativi ai tipi di dati complessi, migliorando la leggibilità del codice. Si possono definire anche alias di tipi generici, cioè tipi parametrizzati da altri tipi. 
 
-Esempio di utilizzo dell'istruzione `type`:
+È importante sottolineare che gli alias non sono da intendere come utili al controllo statico dei tipi durante l'esecuzione, ma come annotazione utile per strumenti di analisi del codice e miglioramento della leggibilità. 
 
-```python
-from typing import TypeAlias # <1>
+Esempi:
 
-Punto: TypeAlias = tuple[float, float] # <2>
+- Definizione di alias di tipo:
 
-def distanza(p1: Punto, p2: Punto) -> float: # <3>
-    return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
+  ```python
+  type lista_coppie = list[tuple[str, int]] # <1>
+  ```
+  1. `lista_coppie` è un alias di `list[tuple[str, int]]`.
 
-p1: Punto = (1.0, 2.0) # <4>
-p2: Punto = (4.0, 6.0)
+- Definizione di alias di tipo generico:
 
-print(distanza(p1, p2)) # <5>
-```
-1. Importa `TypeAlias` da `typing`.
-2. Definisce un alias di tipo `Punto` come una tupla di due `float`.
-3. Utilizza l'alias di tipo `Punto` per i parametri e il tipo di ritorno della funzione `distanza`.
-4. Assegna una tupla di due `float` a `p1` con l'alias di tipo `Punto`.
-5. Output della distanza tra `p1` e `p2`.
+  ```python
+  type contenitore_ordinato[T] = list[t] | tuple[T, ...] # <1>
+  ```
+  1. `contenitore_ordinato` può essere o una lista o una tupla con zero o più elementi.
 
-In questo capitolo, abbiamo introdotto diverse istruzioni di Python, inclusi assegnamenti, controllo di flusso, gestione delle eccezioni e altre istruzioni di uso comune. Questi concetti sono fondamentali per comprendere e scrivere codice Python efficace e leggibile.
+### Eliminazione di identificatori e elementi in contenitori
+
+L'istruzione `del` viene utilizzata per eliminare identificatori come variabili o di funzione e oggetti da contenitori, come elementi singoli o in sezioni (slice) di liste oppure chiavi di dizionari. `del` rimuovendo i riferimenti agli oggetti, segnala al garbage collector la possibilità di liberazione delle risorse associate.
+
+Esempi di utilizzo:
+
+- Eliminazione di una variabile:
+
+  ```python
+  x = 10
+
+  del x  # <1>
+
+  print(x) # <2>
+  ```
+  1. Elimina la variabile `x`.
+  2. Dà errore perché `x` non esiste. 
+
+- Eliminazione di un elemento da un contenitore di oggetti di tipo lista per indice:
+
+  ```python
+  lista = [1, 2, 3, 4]
+
+  del lista[0]  # <1>
+
+  print(lista)  # <2>
+  ```
+  1. Elimina il primo elemento dalla lista.
+  2. Output: `[2, 3, 4]`.
+
+- Eliminare di elementi contigui da una lista:
+
+  ```python
+  lista = [1, 2, 3, 4, 5, 6]
+
+  del lista[1:4]  # <1>
+
+  print(lista)  # <2>
+  ```
+  1. Elimina gli elementi dal secondo al quarto.
+  2. Output: `[1, 5, 6]`.
+
+- Eliminazione di una chiave da un dizionario:
+
+  ```python
+  dizionario = {'a': 1, 'b': 2, 'c': 3}
+
+  del dizionario['a']  # <1>
+
+  print(dizionario)  # <2> 
+  ```
+  1. Elimina la chiave `'a'` dal dizionario.
+  2. Output: `{'b': 2, 'c': 3}`. 
+
+- Eliminazione di un attributo da un oggetto:
+
+  ```python
+  class ClasseSemplice:
+    def __init__(self):
+      self.attr = 42
+
+  oggetto_semplice = ClasseSemplice()
+
+  del oggetto_semplice.attr  # <1>
+  ```
+  1. Elimina l'attributo `'attr'` dall'oggetto `'oggetto_semplice'`.
+
+- Eliminazione dell'identificatore di una funzione:
+
+  ```python
+  def somma_semplice(a, b):
+      return a + b
+
+  del somma_semplice  # <1>
+
+  somma_semplice(a, b) # <2>
+  ```
+  1. Elimina il riferimento `somma_semplice` alla funzione.
+  2. Errore. Output: `NameError: name 'somma_semplice' is not defined`.
+
+- Eliminazione dell'identificatore di un modulo:
+
+  ```python
+  import math
+
+  print(math.sqrt(4))  # <1>
+
+  del math
+
+  print(math)  # <2>
+  ```
+  1. Output: `2.0`.
+  2. Errore. Output: `NameError: name 'math' is not defined. Did you forget to import 'math'?`.
+
+
