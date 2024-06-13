@@ -22,31 +22,60 @@ Il flusso di controllo di un programma regola l'ordine in cui le istruzioni veng
 
 Anche il sollevamento e la gestione delle eccezioni influenzano il flusso di controllo (tramite le istruzioni `try` e `with`).
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### L'Istruzione `if`
 
-Spesso è necessario eseguire alcune istruzioni solo quando una certa condizione è vera o scegliere le istruzioni da eseguire a seconda di condizioni mutuamente esclusive. L'istruzione composta `if` — che comprende le clausole `if`, `elif` ed `else` — consente di eseguire condizionalmente blocchi di istruzioni. La sintassi per l'istruzione `if` è:
+Spesso è necessario eseguire alcune istruzioni solo quando una certa condizione è vera o scegliere le istruzioni da eseguire a seconda di condizioni mutuamente esclusive. L'istruzione composta `if`, che comprende le clausole `if`, `elif` ed `else`, consente di eseguire condizionalmente blocchi di istruzioni. 
+
+La sintassi dell'istruzione `if` in pseudocodice è la seguente:
 
 ```python
-if espressione:
-    istruzione(i)
-elif espressione:
-    istruzione(i)
-elif espressione:
-    istruzione(i)
-...
-else:
-    istruzione(i)
+if *espressione*: # <1>
+  _istruzione(i)_ # <2>
+
+elif <espressione>: # <3>
+  <istruzione(i)> # <4>
+
+elif <espressione>: # <5>
+  <istruzione(i)> # <6>
+
+else: # <7>
+  <istruzione(i)> # <8>
 ```
+1. Clausola `if` con una condizione, cioè una espressione con valore interpretato come logico.
+2. Blocco di codice eseguito se la condizione `if` è vera.
+3. Clausola `elif` con una condizione.
+4. Blocco di codice eseguito se la condizione `elif` è vera.
+5. Clausola `elif` con una condizione.
+6. Blocco di codice eseguito se la condizione `elif` è vera.
+7. Clausola `else` eseguita se tutte le condizioni precedenti sono false.
+8. Blocco di codice eseguito dalla clausola `else`.
 
 Le clausole `elif` ed `else` sono opzionali. Ecco un tipico esempio di istruzione `if` con tutti e tre i tipi di clausole:
 
 ```python
 if x < 0:  # <1>
-    print('x è negativo')  # <2>
+  print('x è negativo')  # <2>
+
 elif x % 2:  # <3>
-    print('x è positivo e dispari')  # <4>
+  print('x è positivo e dispari')  # <4>
+
 else:
-    print('x è pari e non negativo')  # <5>
+  print('x è pari e non negativo')  # <5>
 ```
 1. Controlla se `x` è negativo.
 2. Stampa "x è negativo" se la condizione è vera.
@@ -54,9 +83,11 @@ else:
 4. Stampa "x è positivo e dispari" se la condizione è vera.
 5. Stampa "x è pari e non negativo" se nessuna delle condizioni precedenti è vera.
 
-Ogni clausola controlla una o più istruzioni (note come blocco): si posizionano le istruzioni del blocco su righe logiche separate dopo la riga contenente la parola chiave della clausola (nota come riga intestazione della clausola), con un'indentazione di quattro spazi oltre la riga intestazione. Il blocco termina quando l'indentazione torna al livello della riga intestazione della clausola o ulteriormente a sinistra (questo è lo stile imposto da PEP 8).
+Ogni clausola controlla una o più istruzioni raggruppate in un blocco di codice: si posizionano le istruzioni del blocco su righe logiche separate dopo la riga contenente la parola chiave della clausola (nota come riga intestazione della clausola), con un'indentazione tipicamente di quattro spazi oltre la riga intestazione. Il blocco termina quando l'indentazione torna al livello della riga intestazione della clausola o ulteriormente a sinistra (questo è lo stile imposto da PEP 8).
 
-È possibile utilizzare qualsiasi espressione Python come condizione in una clausola `if` o `elif`. Utilizzare un'espressione in questo modo è noto come usarla in un contesto booleano. In questo contesto, qualsiasi valore viene considerato vero o falso. Come menzionato in precedenza, qualsiasi numero diverso da zero o contenitore non vuoto (stringa, tupla, lista, dizionario, set, ecc.) viene valutato come vero, mentre zero (0, di qualsiasi tipo numerico), `None` e contenitori vuoti vengono valutati come falsi. Per testare un valore `x` in un contesto booleano, utilizzare lo stile di codifica seguente:
+È possibile utilizzare qualsiasi espressione Python come condizione in una clausola `if` o `elif`. Utilizzare un'espressione in questo modo è noto come usarla in un contesto booleano. In questo contesto, qualsiasi valore viene considerato vero o falso. Qualsiasi numero diverso da zero o contenitore non vuoto (stringa, tupla, lista, dizionario, set, ecc.) viene valutato come vero, mentre zero (0, di qualsiasi tipo numerico), `None` e contenitori vuoti vengono valutati come falsi. 
+
+Per testare un valore `x` in un contesto booleano, utilizzare lo stile di codifica seguente:
 
 ```python
 if x:
@@ -64,30 +95,37 @@ if x:
 Questa è la forma più chiara e più "Pythonica".
 
 Non utilizzare nessuna delle seguenti forme:
+
 ```python
 if x is True:
+
 if x == True:
+
 if bool(x):
 ```
+
 C'è una differenza cruciale tra dire che un'espressione restituisce `True` (significa che l'espressione restituisce il valore 1 con il tipo `bool`) e dire che un'espressione viene valutata come vera (significa che l'espressione restituisce qualsiasi risultato che è vero in un contesto booleano). Quando si testa un'espressione, ad esempio in una clausola `if`, interessa solo come viene valutata, non cosa, precisamente, restituisce. Come menzionato in precedenza, "valutata come vera" è spesso espresso informalmente come "è veritiera", e "valutata come falsa" come "è falsa".
 
 Quando la condizione della clausola `if` viene valutata come vera, le istruzioni all'interno della clausola `if` vengono eseguite, quindi l'intera istruzione `if` termina. Altrimenti, Python valuta la condizione di ciascuna clausola `elif`, in ordine. Le istruzioni all'interno della prima clausola `elif` la cui condizione viene valutata come vera, se presente, vengono eseguite e l'intera istruzione `if` termina. Altrimenti, quando esiste una clausola `else`, essa viene eseguita. In ogni caso, le istruzioni successive all'intera costruzione `if`, allo stesso livello, vengono eseguite successivamente.
 
 ### L'Istruzione `match`
 
-Introdotta in Python 3.10, l'istruzione `match` offre una potente alternativa alle catene di `if` e `elif` per la gestione delle condizioni multiple. La sintassi del costrutto `match` è simile a quella di un'istruzione `switch` in altri linguaggi di programmazione. La sintassi di base per l'istruzione `match` è la seguente:
+L'istruzione `match` offre una potente alternativa alle catene di `if` e `elif` per la gestione delle condizioni multiple. La sintassi di base per l'istruzione `match` è la seguente:
 
 ```python
 match espressione: # <1>
-    case pattern1: # <2>
-        istruzione(i) # <3>
+    case <pattern1>: # <2>
+        <istruzione(i)> # <3>
+
     case pattern2: # <4>
-        istruzione(i) # <5>
+        <istruzione(i)> # <5>
+
     ...
+
     case _: # <6>
-        istruzione(i) # <7>
+        <istruzione(i)> # <7>
 ```
-1. Valore da confrontare.
+1. Valore da confrontare ``.
 2. Primo pattern da confrontare.
 3. Blocco di codice eseguito se pattern1 corrisponde.
 4. Secondo pattern da confrontare.
@@ -416,7 +454,7 @@ L'istruzione `while` ripete l'esecuzione di un'istruzione o un blocco di istruzi
 
 ```python
 while espressione: # <1>
-    istruzione(i) # <2>
+    <istruzione(i)> # <2>
 ```
 1. Condizione del ciclo.
 2. Blocco di codice eseguito finché la condizione è vera.
@@ -440,7 +478,7 @@ L'istruzione `for` ripete l'esecuzione di un'istruzione o un blocco di istruzion
 
 ```python
 for target in iterable: # <1>
-    istruzione(i) # <2>
+    <istruzione(i)> # <2>
 ```
 1. Iterabile da attraversare.
 2. Blocco di codice eseguito per ogni elemento dell'iterabile.
