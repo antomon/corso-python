@@ -1,5 +1,11 @@
 
 
+## Istruzioni semplici
+
+Un'istruzione semplice è sempre contenuta in una riga logica, che può presentare più istruzioni semplici separate da `;`. È permesso ma sconsigliato, perché in pochi casi porta a codice leggibile.
+
+### Assegnamenti
+
 Le istruzioni di assegnamento sono utilizzate per assegnare un valore a una variabile. Esempi: 
 
 ```python
@@ -136,7 +142,7 @@ Esempi:
   except ValueError as e:
     tb = e.__traceback__
 
-    raise RuntimeError("Errore successivo").with_traceback(tb)
+    raise RuntimeError("Errore successivo").with_traceback(tb) # <2>
   ```
   1. Viene sollevata una eccezione di tipo `RuntimeError`.
   2. Viene sollevata una seconda eccezione ma con lo stato dello stack della eccezione precedente, in pratica nascondendo la cattura effettuata e cambiando il tipo di eccezione.
@@ -428,7 +434,7 @@ Esempio di utilizzo di `nonlocal`:
 
     print(x)
 
-  esterna()  # Output: 20
+  esterna()  # <3>
   ```
   1. `x` è una variabile locale alla funzione `esterna`. 
   2. L'istruzione `nonlocal` dichiara che `x` fa riferimento alla variabile non locale `x`, permettendo alla funzione `interna` di modificarla.
@@ -436,22 +442,114 @@ Esempio di utilizzo di `nonlocal`:
 
 ### Alias di tipo
 
-L'istruzione `type` viene utilizzata per creare alias di tipo. Questo consente di assegnare nomi significativi ai tipi di dati complessi, migliorando la leggibilità del codice.
+L'istruzione `type` viene utilizzata per creare alias di tipo. Questo consente di assegnare nomi significativi ai tipi di dati complessi, migliorando la leggibilità del codice. Si possono definire anche alias di tipi generici, cioè tipi parametrizzati da altri tipi. 
 
-Si possono definire anche alias di tipi generici, cioè tipi parametrizzati da altri tipi. 
+È importante sottolineare che gli alias non sono da intendere come utili al controllo statico dei tipi durante l'esecuzione, ma come annotazione utile per strumenti di analisi del codice e miglioramento della leggibilità. 
 
 Esempi:
 
 - Definizione di alias di tipo:
 
   ```python
-  type lista_coppie = list[tuple[str, int]]
+  type lista_coppie = list[tuple[str, int]] # <1>
   ```
   1. `lista_coppie` è un alias di `list[tuple[str, int]]`.
 
 - Definizione di alias di tipo generico:
-- 
+
   ```python
   type contenitore_ordinato[T] = list[t] | tuple[T, ...] # <1>
   ```
   1. `contenitore_ordinato` può essere o una lista o una tupla con zero o più elementi.
+
+### Istruzioni composte
+
+Una istruzione composta è costituita da altre istruzioni (semplici o composte). Il controllo dell'esecuzione delle istruzioni componenti avviene per mezzo di una o più clausole che iniziano tutte con una parola chiave, sono terminate da `:` e seguite da un blocco di codice. Ogni blocco deve avere almeno una istruzione semplice, ma può non avere una propria riga logica, cioè stare sulla stessa riga fisica e logica del `:`.
+
+Alcuni esempi del rapporto tra istruzioni e righe:
+
+- Blocco di istruzioni separato su più righe con medesima indentazione:
+
+  ``` python
+  if x > 0: 
+    print("x è positivo") # <1> 
+
+    x += 1
+
+    print(f"x ora è {x}") # <2>
+  ```
+  1. Prima riga fisica del blocco di codice del ramo eseguito quanto la condizione `x > 0` assume valore `True`.
+  2. Ultima riga fisica del medesimo blocco.
+
+- Blocco come singola istruzione sulla stessa riga logica:
+
+  ``` python
+  if x > 0: print("x è positivo")
+  ```
+
+- Diverse istruzioni semplici sulla stessa riga logica (non consigliato):
+
+  ``` python
+  if x > 0: print("x è positivo"); x += 1; print(f"x ora è {x}")
+  ```
+
+Ed ecco le principali istruzioni composte:
+
+- `if`, controlla l'esecuzione di un blocco di codice in base a una espressione condizionale (tra parentesi angolari è presente dello pseudocodice, quindi non eseguire!):
+
+  ``` python
+  if <espressione condizionale>:
+    # blocco di codice
+  ```
+
+- `for`, itera sugli elementi (oggetti) presenti in un oggetto di tipo sequenza (come una lista, una tupla o una stringa):
+
+  ``` python
+  for <elemento> in <sequenza>:
+    # blocco di codice
+  ```
+
+- `while`, esegue un blocco di codice finché una espressione condizionale è vera:
+
+  ``` python
+  while <espressione condizionale>:
+    # blocco di codice
+  ```
+
+- `try`, gestisce gli errori che possono verificarsi durante l'esecuzione di un blocco di codice:
+
+  ``` python
+  try:
+    # blocco di codice
+  except <eccezione>:
+    # blocco di codice per gestire l'eccezione
+  ```
+
+- `with`, gestisce le risorse come file, connessioni di rete, ecc., assicurandosi che siano aperte e chiuse correttamente, anche se si verifica un errore:
+
+  ``` python
+  with open('file.txt', 'r') as file:
+    # blocco di codice
+  ```
+
+- `def`, definisce una funzione fatta da una testata (nome funzione ed elenco parametri) e il blocco di istruzioni tra cui, opzionalmente, la restituzione di output:
+
+  ``` python
+  def nome_funzione(<parametro, parametro, ...>):
+    # blocco di codice
+  ```
+
+- `class`, definisce una classe:
+
+  ``` python
+  class NomeClasse:
+    # blocco di codice
+  ```
+
+- `match`, confronta un valore con diversi modelli (_pattern_) per trovare una corrispondenza ed esegue un blocco di istruzioni:
+
+  ``` python
+  match valore:
+    case <pattern>:
+      # blocco di codice
+  ```
