@@ -1,0 +1,175 @@
+---
+reference-location: margin
+citation-location: margin
+tbl-cap-location: margin
+---
+
+# Esercitazione 1: analisi di un dataset di vendite
+
+In questa esercitazione, analizzeremo i dati di un negozio utilizzando [pandas](https://pandas.pydata.org/) per la manipolazione dei dati e Matplotlib per la visualizzazione. Impareremo a gestire i dati mancanti, filtrare e raggruppare i dati, e creare grafici significativi.
+
+Obiettivo:
+
+1. Caricare un dataset CSV in un `DataFrame` pandas.
+2. Gestire i dati mancanti nel dataset.
+3. Effettuare operazioni di filtro e raggruppamento sui dati.
+4. Creare grafici per visualizzare i dati analizzati.
+
+Dataset da salvare in un file di testo `vendite.csv`:
+
+```csv
+id,prodotto,categoria,prezzo,quantità,data_vendita,venditore
+1,Notebook X200,Elettronica,1200.5,2,2023-01-15,Anna
+2,Smartphone Y7,Elettronica,700.0,1,2023-01-17,Marco
+3,Tablet Z10,Elettronica,300.0,3,2023-01-20,Sara
+4,Notebook X200,Elettronica,1200.5,1,2023-01-22,Anna
+5,Smartphone Y7,Elettronica,700.0,2,2023-01-25,Marco
+6,TV Ultra HD 55",Elettrodomestici,800.0,1,2023-01-30,Anna
+7,Lavatrice 7kg,Elettrodomestici,500.0,1,2023-02-02,Sara
+8,Frigorifero 300L,Elettrodomestici,600.0,1,2023-02-10,Marco
+9,Notebook X200,Elettronica,1200.5,1,2023-02-12,Anna
+10,Smartphone Y7,Elettronica,700.0,1,2023-02-15,Marco
+11,Tablet Z10,Elettronica,300.0,2,2023-02-20,Sara
+12,TV Ultra HD 55",Elettrodomestici,800.0,1,2023-02-25,Anna
+```
+
+Passaggi di soluzione:
+
+1. Creiamo il file CSV fornito e carichiamolo in un DataFrame pandas.
+2. Controlliamo se ci sono valori mancanti nel dataset.
+3. Filtriamo le vendite del prodotto `Notebook X200` e visualizziamo il risultato.
+4. Raggruppiamo le vendite per venditore e calcoliamo la somma totale delle quantità vendute per ciascun venditore.
+5. Creiamo una tabella pivot per vedere le vendite per data e prodotto.
+6. Utilizziamo Matplotlib per creare un grafico a linee delle vendite totali per ciascun mese.
+
+## Operazioni di group by e pivot
+
+### Group by
+
+L'operazione di **group by** in pandas permette di raggruppare i dati in base a una o più colonne, e quindi applicare una funzione di aggregazione su ciascun gruppo. Questo è utile quando si vuole calcolare statistiche aggregate, come somme, medie, conteggi, ecc., per ciascun gruppo di dati.
+
+Ad esempio, se si dispone di un dataset delle vendite, è possibile raggruppare i dati per `venditore` e calcolare la somma delle `quantità` vendute da ciascun venditore. Questo può fornire una visione chiara delle prestazioni di ciascun venditore.
+
+### Pivot
+
+L'operazione di **pivot** in pandas permette di trasformare i dati rendendoli più comprensibili e facili da analizzare. Una tabella pivot ruota i dati in modo da creare una nuova tabella in cui le righe e le colonne rappresentano diverse dimensioni dei dati. In particolare, è possibile specificare quali valori devono essere visualizzati come righe, quali come colonne, e quale funzione di aggregazione applicare ai dati.
+
+Ad esempio, in un dataset delle vendite, è possibile creare una tabella pivot che mostra le `quantità` vendute per `data_vendita` e `prodotto`. Questo può aiutare a visualizzare come le vendite di ciascun prodotto cambiano nel tempo.
+
+## Passaggio 1: caricamento dell dataset
+
+Carichiamo le librerie necessarie:
+
+```python
+import pandas as pd  # <1>
+import matplotlib.pyplot as plt  # <2>
+```
+1. Importa la libreria Pandas per la manipolazione dei dati.
+2. Importa la libreria Matplotlib per la visualizzazione dei dati.
+
+Carichiamo il dataset:
+
+```python
+df_vendite = pd.read_csv('vendite.csv')  # <1>
+```
+1. Carica il dataset dal file CSV `vendite.csv`.
+
+## Passaggio 2: gestione dei dati mancanti
+
+Controlliamo se ci sono valori mancanti e rimuoviamo le righe con valori mancanti:
+
+```python
+print(df_vendite.isnull().sum())  # <1>
+
+df_vendite_ripulito = df_vendite.dropna()  # <2>
+```
+1. Stampa il conteggio dei valori mancanti per ciascuna colonna.
+2. Rimuove le righe con valori mancanti dal `DataFrame`.
+
+## Passaggio 3: operazioni di filtro
+
+Filtriamo le vendite del prodotto `Notebook X200`:
+
+```python
+vendite_notebook_x200 = df_vendite_ripulito[
+  df_vendite_ripulito['prodotto'] == 'Notebook X200']  # <1>
+
+print(vendite_notebook_x200)  # <2>
+```
+1. Filtra il DataFrame per il prodotto `Notebook X200`.
+2. Stampa le vendite del prodotto `Notebook X200`.
+
+## Passaggio 4: operazioni di raggruppamento e somma
+
+Raggruppiamo per venditore e calcoliamo la somma delle quantità vendute:
+
+```python
+vendite_per_venditore = df_vendite_ripulito.groupby('venditore')['quantità'].sum()  # <1>
+
+print(vendite_per_venditore)  # <2>
+```
+1. Raggruppa i dati per venditore e calcola la somma delle quantità vendute.
+2. Stampa la somma delle quantità vendute per ciascun venditore.
+
+## Passaggio 5: operazione di pivot
+
+Creiamo una tabella pivot per vedere le vendite per data e prodotto:
+
+```python
+pivot_table_data_prodotto = df_vendite_ripulito.pivot_table(
+  values='quantità',
+  index='data_vendita',
+  columns='prodotto',
+  aggfunc='sum',
+  fill_value=0)  # <1>
+
+print(pivot_table_data_prodotto)  # <2>
+```
+1. Crea una tabella pivot per visualizzare le vendite per data e prodotto.
+2. Stampa la tabella pivot delle vendite per data e prodotto.
+
+## Passaggio 6: visualizzazione con grafici
+
+Creiamo un grafico a barre delle vendite per venditore:
+
+```python
+vendite_per_venditore.plot(kind='bar')  # <1>
+
+plt.title('Vendite per Venditore')  # <2>
+plt.xlabel('Venditore')  # <3>
+plt.ylabel('Quantità Venduta')  # <4>
+plt.show()  # <5>
+```
+1. Crea un grafico a barre delle vendite per venditore.
+2. Imposta il titolo del grafico a barre.
+3. Imposta l'etichetta dell'asse x del grafico a barre.
+4. Imposta l'etichetta dell'asse y del grafico a barre.
+5. Mostra il grafico a barre.
+
+Creiamo un grafico a linee delle vendite totali per ciascun mese:
+
+```python
+df_vendite_ripulito['data_vendita'] = pd.to_datetime(df_vendite_ripulito['data_vendita'])  # <1>
+
+df_vendite_ripulito.set_index('data_vendita', inplace=True)  # <2>
+
+vendite_mensili = df_vendite_ripulito.resample('M')['quantità'].sum()  # <3>
+
+vendite_mensili.plot(kind='line')  # <4>
+
+plt.title('Vendite Mensili Totali')  # <5>
+plt.xlabel('Mese')  # <6>
+plt.ylabel('Quantità Venduta')  # <7>
+plt.show()  # <8>
+```
+1. Converte la colonna `data_vendita` in un oggetto `datetime`.
+2. Imposta `data_vendita` come indice del `DataFrame`.
+3. Raggruppa i dati per mese e calcola la somma delle quantità vendute.
+4. Crea un grafico a linee delle vendite mensili.
+5. Imposta il titolo del grafico a linee.
+6. Imposta l'etichetta dell'asse x del grafico a linee.
+7. Imposta l'etichetta dell'asse y del grafico a linee.
+8. Mostra il grafico a linee.
+
+
+

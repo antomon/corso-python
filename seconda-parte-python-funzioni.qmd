@@ -311,11 +311,13 @@ print(aggiungi_elemento(2))  # <7>
 
 In questo caso, ogni chiamata alla funzione `aggiungi_elemento` crea una nuova lista se `None` è passato come valore predefinito, garantendo che ogni chiamata non influenzi le altre.
 
-## Attributi degli Oggetti Funzione
+## Attributi
 
-L'istruzione `def` imposta alcuni attributi di un oggetto funzione. Di seguito sono spiegati i principali attributi e come possono essere utilizzati:
+L'istruzione `def` imposta alcuni attributi di un oggetto funzione. Di seguito sono spiegati i principali attributi e come possono essere utilizzati.
 
-- **`__name__`**: Questo attributo è l'identificatore che `def` utilizza come nome della funzione. Puoi riassegnare `__name__` a qualsiasi valore stringa, ma se cerchi di dissociarlo, Python genererà un'eccezione `TypeError`.
+### `__name__`
+
+Questo attributo è l'identificatore che `def` utilizza come nome della funzione. Puoi riassegnare `__name__` a qualsiasi valore stringa, ma se cerchi di dissociarlo, Python genererà un'eccezione `TypeError`.
 
 Esempio:
 
@@ -341,7 +343,9 @@ Se provi a dissociare `__name__`, otterrai un errore:
 del saluta.__name__  # Questo genererà TypeError
 ```
 
-- **`__defaults__`**: Questo attributo contiene una tupla dei valori predefiniti per i parametri nominati della funzione. Puoi riassegnare o dissociare liberamente questo attributo. Se la funzione non ha parametri nominati, `__defaults__` sarà una tupla vuota.
+### `__defaults__`
+
+Questo attributo contiene una tupla dei valori predefiniti per i parametri nominati della funzione. Puoi riassegnare o dissociare liberamente questo attributo. Se la funzione non ha parametri nominati, `__defaults__` sarà una tupla vuota.
 
 Esempio:
 

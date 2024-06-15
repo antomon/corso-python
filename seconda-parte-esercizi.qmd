@@ -679,11 +679,11 @@ Usiamo il modulo `collections` e `Counter` per contare le parole nella frase in 
 from collections import Counter
 
 def conta_parole(frase):
-    parole = frase.split()
+  parole = frase.split()
 
-    conteggio = Counter(parole)
+  conteggio = Counter(parole)
 
-    return dict(conteggio)
+  return dict(conteggio)
 
 # Esempio di utilizzo
 frase = "ciao ciao come stai ciao"
@@ -737,11 +737,9 @@ def conta_parole(frase, maiuscolo_minuscolo=False):
 # Esempio di utilizzo
 frase = "Ciao, ciao! Come stai? Ciao."
 
-print(conta_parole(frase, maiuscolo_minuscolo=False))  # <1>
-print(conta_parole(frase, maiuscolo_minuscolo=True))  # <2>
+print(conta_parole(frase, maiuscolo_minuscolo=False)) 
+print(conta_parole(frase, maiuscolo_minuscolo=True))  
 ```
-1. Output: `{'ciao': 3, 'come': 1, 'stai': 1}`.
-2. Output: `{'Ciao': 2, 'ciao': 1, 'Come': 1, 'stai': 1}`.
 
 ## Soluzione 2
 
