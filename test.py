@@ -1,15 +1,6 @@
-def analizza_tupla(tupla):  # <1>
-  match tupla:  # <2>
-    case (x, (y, z)):  # <3>
-      print(f"Primo elemento: {x}, Secondo elemento: ({y}, {z})")  # <4>
-        
-    case (x, y):  # <5>
-      print(f"Primo elemento: {x}, Secondo elemento: {y}")  # <6>
+def somma_numeri(numeri: list[int]) -> int:  # <1>
+    """Restituisce la somma di una lista di numeri interi."""  # <2>
+    return sum(numeri)  # <3>
 
-    case _:  # <7>
-      print("Pattern non riconosciuto")  # <8>
-
-# Esempi di utilizzo della funzione
-analizza_tupla((1, (2, 3)))  # <9>
-analizza_tupla((1, 4))  # <10>
-analizza_tupla((1, 2, 3))  # <11>
+print(somma_numeri([1, 2, 3, 4]))  # <4>
+print(somma_numeri.__annotations__)  # <5>

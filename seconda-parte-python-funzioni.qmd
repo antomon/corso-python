@@ -1,0 +1,745 @@
+---
+reference-location: margin
+citation-location: margin
+tbl-cap-location: margin
+---
+
+# Funzioni
+
+La maggior parte delle istruzioni in un tipico programma Python fa parte di una funzione. Inserire il codice nelle funzioni può migliorare la velocità di esecuzione rispetto al codice a livello di modulo. Ci sono ottime ragioni pratiche per inserire la maggior parte del codice nelle funzioni, e non ci sono svantaggi: chiarezza, leggibilità e riutilizzabilità del codice migliorano quando si evitano blocchi sostanziali di codice a livello di modulo.
+
+Una funzione è un gruppo di istruzioni eseguite su richiesta. Python fornisce molte funzioni predefinite e consente ai programmatori di definire le proprie. Una richiesta di eseguire una funzione è nota come chiamata di funzione. Quando chiamiamo una funzione, possiamo passare argomenti che specificano i dati su cui la funzione eseguirà il calcolo. In Python, una funzione restituisce sempre un risultato: o `None` o un valore, risultato del calcolo. Le funzioni definite all'interno delle dichiarazioni di classe sono note anche come metodi.
+
+Python è alquanto insolito nella flessibilità che offre al programmatore nel definire e chiamare funzioni. Questa flessibilità significa che alcuni vincoli non sono espressi adeguatamente solo dalla sintassi. In Python, le funzioni sono oggetti (valori), gestiti proprio come altri oggetti. Quindi, possiamo passare una funzione come argomento in una chiamata a un'altra funzione, e una funzione può restituire un'altra funzione come risultato di una chiamata. Una funzione, proprio come qualsiasi altro oggetto, può essere associata a una variabile, può essere un elemento in un contenitore e può essere un attributo di un oggetto. Le funzioni possono anche essere chiavi in un dizionario. Il fatto che le funzioni siano oggetti ordinari in Python è spesso espresso dicendo che le funzioni sono oggetti di prima classe.
+
+Esempio di funzione come oggetto di prima classe:
+
+```python
+def aggiungi_inverse(dizionario_inverse):  # <1>
+  for funzione in list(dizionario_inverse):  # <2>
+    dizionario_inverse[dizionario_inverse[funzione]] = funzione  # <3>
+
+math_map = {sin: asin, cos: acos, tan: atan, log: exp}  # <4>
+aggiungi_inverse(math_map)  # <5>
+```
+1. Definizione della funzione `aggiungi_inverse` che prende come parametro un dizionario chiamato `dizionario_inverse`.
+2. Itera su una lista delle chiavi del `dizionario_inverse`. La chiamata a `list(dizionario_inverse)` è necessaria per evitare problemi durante la modifica del dizionario stesso durante l'iterazione.
+3. Per ogni funzione nel dizionario, aggiunge una nuova coppia chiave-valore invertendo la chiave e il valore originali. In altre parole, per ogni chiave `funzione`, inserisce nel dizionario una nuova chiave che è il valore originale corrispondente a `funzione` e assegna a questa chiave il valore `funzione`.
+4. Crea un dizionario `math_map` che mappa alcune funzioni matematiche alle loro funzioni inverse utilizzando il modulo `math`.
+5. Chiama la funzione `aggiungi_inverse` passando `math_map` come argomento, completando il dizionario `math_map` con le coppie inverse.
+
+Dopo l'esecuzione, il dizionario `math_map` conterrà sia le funzioni originali che le loro inverse come chiavi e valori:
+
+```python
+{
+  sin: asin,
+  cos: acos,
+  tan: atan,
+  log: exp,
+  asin: sin,
+  acos: cos,
+  atan: tan,
+  exp: log
+}
+```
+
+In questo modo, il dizionario `math_map` diventa bidirezionale, mappando ogni funzione alla sua inversa e viceversa.
+
+Notiamo che in questo caso la funzione muta il suo argomento. In Python, la convenzione usuale è che tali funzioni non restituiscano un valore.
+
+## Definizione delle funzioni
+
+L'istruzione `def` è il modo usuale per creare una funzione. `def` è una dichiarazione composta a singola clausola con la seguente sintassi:
+
+```python
+def nome_funzione(parametri):  # <1>
+  istruzione(i)  # <2>
+```
+1. `nome_funzione` è un identificatore.
+2. Le istruzioni indentate costituiscono il corpo della funzione.
+
+Quando l'interprete incontra una dichiarazione `def`, compila il corpo della funzione, creando un oggetto funzione, e associa `nome_funzione` all'oggetto funzione compilato nello spazio dei nomi contenitore (tipicamente lo spazio dei nomi del modulo, o uno spazio dei nomi di classe quando si definiscono metodi).
+
+Esempio di funzione senza parametri:
+
+```python
+def saluta():  # <1>
+  print("Ciao!")  # <2>
+
+saluta()  # <3>
+```
+1. Definizione della funzione `saluta`.
+2. Stampa "Ciao!".
+3. Chiamata alla funzione `saluta`.
+
+Esempio di funzione con un parametro:
+
+```python
+def raddoppia(x):  # <1>
+  return x * 2  # <2>
+
+print(raddoppia(5))  # <3>
+print(raddoppia('ciao'))  # <4>
+```
+1. Definizione della funzione `raddoppia` con un parametro `x`.
+2. Restituisce il valore di `x` moltiplicato per `2`.
+3. Chiamata a `raddoppia` con l'argomento `5`. Output: `10`.
+4. Chiamata a `raddoppia` con l'argomento `'ciao'`. Output: `ciaociao`.
+
+## Parametri
+
+I parametri (formalmente, parametri formali) nominano i valori passati in una chiamata di funzione e possono specificare valori predefiniti per essi. Ogni volta che chiamiamo la funzione, la chiamata associa ogni nome di parametro al valore corrispondente in un nuovo spazio dei nomi locale, che Python distrugge successivamente all'uscita dalla funzione.
+
+### Parametri posizionali
+
+Un parametro posizionale è un identificatore, che nomina il parametro. Utilizziamo questi nomi all'interno del corpo della funzione per accedere ai valori degli argomenti della chiamata.
+
+Esempio di funzione con parametri posizionali:
+
+```python
+def somma(a, b):  # <1>
+  return a + b  # <2>
+
+print(somma(3, 5))  # <3>
+```
+1. Definizione della funzione `somma` con i parametri `a` e `b`.
+2. Restituisce la somma di `a` e `b`.
+3. Chiamata a `somma` con gli argomenti `3` e `5`. Output: `8`.
+
+### Parametri nominati
+
+I parametri nominati normalmente assumono la forma `nome=espressione`. Questi parametri agiscono come valori predefiniti valutati una sola volta dall'interprete.
+
+Esempio di funzione con parametri nominati:
+
+```python
+def saluta(nome="ospite"):  # <1>
+  print(f"Ciao, {nome}!")  # <2>
+
+saluta()  # <3>
+saluta("Maria")  # <4>
+```
+1. Definizione della funzione `saluta` con il parametro nominato `nome` e un valore predefinito.
+2. Stampa un messaggio di saluto.
+3. Chiamata a `saluta` senza argomenti. Output: `Ciao, ospite!`.
+4. Chiamata a `saluta` con l'argomento "Maria". Output: `Ciao, Maria!`.
+
+Ecco un esempio con un parametro che utilizza un'espressione come valore predefinito:
+
+```python
+from datetime import datetime  # <1>
+
+def saluta(nome="ospite", momento=datetime.now().strftime("%H:%M")):  # <2>
+  print(f"Ciao, {nome}! L'ora attuale è {momento}.")  # <3>
+
+saluta()  # <4>
+saluta("Maria")  # <5>
+saluta("Luigi", "14:30")  # <6>
+```
+1. Importa il modulo `datetime` che sarà usato per ottenere l'ora attuale.
+2. Definisce la funzione `saluta` con due parametri nominati: `nome` con un valore predefinito di "ospite" e `momento` con un valore predefinito che è l'ora corrente formattata come stringa "HH:MM".
+3. Stampa un messaggio di saluto che include il nome e il momento specificato.
+4. Chiamata a `saluta` senza argomenti. Utilizza entrambi i valori predefiniti. Output: `Ciao, ospite! L'ora attuale è <ora_attuale>.`.
+5. Chiamata a `saluta` con l'argomento "Maria". Utilizza il valore predefinito per `momento`. Output: `Ciao, Maria! L'ora attuale è <ora_attuale>.`.
+6. Chiamata a `saluta` con gli argomenti "Luigi" e "14:30". Non utilizza nessun valore predefinito. Output: `Ciao, Luigi! L'ora attuale è 14:30.`.
+
+In questo esempio, il parametro `momento` utilizza un'espressione come valore predefinito che viene valutata una volta sola al momento della definizione della funzione. Se viene chiamata senza argomenti, la funzione utilizza questi valori predefiniti.
+
+### Marcatore di parametri posizionali
+
+La firma di una funzione può contenere un marcatore di parametri posizionali (`/`) come parametro fittizio. I parametri che precedono il marcatore sono noti come parametri posizionali, e devono essere forniti come argomenti posizionali, non come argomenti nominati, quando si chiama la funzione; usare argomenti nominati per questi parametri genera un'eccezione `TypeError`.
+
+Ad esempio, il tipo built-in `int` ha la seguente firma:
+
+```python
+int(x, /, base=10)
+```
+
+Quando si chiama `int`, è necessario passare un valore per `x` e questo deve essere passato posizionalmente. `base` (usato quando `x` è una stringa da convertire in `int`) è opzionale e può essere passato sia posizionalmente che come argomento nominato. È un errore passare `x` come numero e anche passare `base`, ma la notazione non può catturare questa particolarità.
+
+Esempio di utilizzo del marcatore di parametri posizionali:
+
+Ecco il codice uniformato per entrambi i casi, con i parametri della funzione diversi ma con lo stesso corpo della funzione:
+
+### Con il marcatore posizionale `/`
+
+```python
+def funzione(x, /, base=10):  # <1>
+  return x + base  # <2>
+
+print(funzione(5))  # <3>
+print(funzione(5, base=2))  # <4>
+try:
+  print(funzione(x=5))  # <5>
+
+except TypeError as e:
+  print(e)
+```
+1. Definizione della funzione `funzione` con un parametro posizionale `x` e un parametro nominato `base` con un valore predefinito.
+2. La funzione ritorna la somma di `x` e `base`.
+3. Chiamata a `funzione` con l'argomento posizionale `5`. Utilizza il valore predefinito di `base`. Output: `15`.
+4. Chiamata a `funzione` con l'argomento posizionale `5` e l'argomento nominato `base=2`. Output: `7`.
+5. Chiamata a `funzione` con l'argomento nominato `x=5`. Genera un `TypeError` perché `x` deve essere fornito come argomento posizionale.
+
+Senza il marcatore posizionale `/`:
+
+```python
+def funzione(x, base=10):  # <1>
+  return x + base  # <2>
+
+print(funzione(5))  # <3>
+print(funzione(5, 2))  # <4>
+print(funzione(5, base=2))  # <5>
+print(funzione(x=5))  # <6>
+print(funzione(x=5, base=2))  # <7>
+```
+1. Definizione della funzione `funzione` con `x` e `base` come argomenti.
+2. La funzione ritorna la somma di `x` e `base`.
+3. Chiamata a `funzione` con l'argomento posizionale `5`. Utilizza il valore predefinito di `base`. Output: `15`.
+4. Chiamata a `funzione` con gli argomenti posizionali `5` e `2`. Output: `7`.
+5. Chiamata a `funzione` con l'argomento posizionale `5` e l'argomento nominato `base=2`. Output: `7`.
+6. Chiamata a `funzione` con l'argomento nominato `x=5`. Utilizza il valore predefinito di `base`. Output: `15`.
+7. Chiamata a `funzione` con gli argomenti nominati `x=5` e `base=2`. Output: `7`.
+
+### Collettori di argomenti
+
+Python consente di raccogliere argomenti che non corrispondono a parametri specifici utilizzando i collettori di argomenti posizionali (`*nome`) e nominati (`**nome`).
+
+Un collettore di argomenti posizionali crea una tupla, mentre un collettore di argomenti nominati crea un dizionario.
+
+Esempio di funzione con collettore di argomenti posizionali:
+
+```python
+def somma_tutti(*numeri):  # <1>
+  print(type(numeri))  # <2>
+
+  return sum(numeri)  # <3>
+
+print(somma_tutti(1, 2, 3, 4))  # <4>
+print(somma_tutti())  # <5>
+```
+1. Definizione della funzione `somma_tutti` con il collettore di argomenti `*numeri`.
+2. Stampa il tipo di `numeri`.
+3. Restituisce la somma di tutti i numeri.
+4. Chiamata a `somma_tutti` con gli argomenti 1, 2, 3, 4. Output: `10`.
+5. Chiamata a `somma_tutti` senza argomenti. Output: `0`.
+
+Esempio di funzione con collettore di argomenti nominati:
+
+```python
+def stampa_dizionario(**diz):  # <1>
+  print(type(diz))  # <2>
+
+  for chiave, valore in diz.items():  # <3>
+    print(f"{chiave}: {valore}")  # <4>
+
+stampa_dizionario(nome="Mario", eta=30)  # <5>
+stampa_dizionario(citta="Roma", paese="Italia")  # <6>
+```
+1. Definizione della funzione `stampa_dizionario` con il collettore di argomenti `**diz`.
+2. Stampa il tipo di `diz`.
+3. Itera sugli elementi del dizionario.
+4. Stampa ogni coppia chiave-valore.
+5. Chiamata a `stampa_dizionario` con argomenti nominati. Output: `nome: Mario`, `eta: 30`.
+6. Chiamata a `stampa_dizionario` con altri argomenti nominati. Output: `citta: Roma`, `paese: Italia`.
+
+Eseguendo questi esempi, si può vedere che `*numeri` crea una tupla e `**diz` crea un dizionario.
+
+È anche possibile combinare i collettori di argomenti posizionali e nominati nella stessa funzione.
+
+Esempio di funzione con collettore di argomenti posizionali e nominati:
+
+```python
+def mostra_tutti(*args, **kwargs):  # <1>
+  print("Argomenti posizionali:", args)  # <2>
+
+  print("Argomenti nominati:", kwargs)  # <3>
+
+mostra_tutti(1, 2, 3, nome="Alice", eta=25)  # <4>
+```
+1. Definizione della funzione `mostra_tutti` con i collettori di argomenti `*args` e `**kwargs`.
+2. Stampa gli argomenti posizionali.
+3. Stampa gli argomenti nominati.
+4. Chiamata a `mostra_tutti` con argomenti posizionali e nominati. Output: `Argomenti posizionali: (1, 2, 3)`, `Argomenti nominati: {'nome': 'Alice', 'eta': 25}`.
+
+### Valori predefiniti mutabili
+
+Quando il valore predefinito di un parametro è un oggetto mutabile, e il corpo della funzione altera il parametro, le cose possono complicarsi. Questo perché il valore predefinito viene valutato una sola volta, quando la funzione è definita, non ogni volta che la funzione è chiamata. Di conseguenza, se il valore predefinito viene modificato (come nel caso di una lista alla quale vengono aggiunti elementi), la modifica persiste attraverso le chiamate successive alla funzione.
+
+Esempio di funzione con valore predefinito mutabile:
+
+```python
+def aggiungi_elemento(elemento, lista=[]):  # <1>
+  lista.append(elemento)  # <2>
+
+  return lista  # <3>
+
+print(aggiungi_elemento(1))  # <4>
+print(aggiungi_elemento(2))  # <5>
+```
+1. Definizione della funzione `aggiungi_elemento` con il parametro `lista` avente un valore predefinito di lista vuota.
+2. Aggiunge l'elemento alla lista.
+3. Restituisce la lista.
+4. Chiamata a `aggiungi_elemento` con l'argomento 1. Output: `[1]`.
+5. Chiamata a `aggiungi_elemento` con l'argomento 2. Output: `[1, 2]`.
+
+Nel secondo caso, la lista restituita contiene `[1, 2]` anziché `[2]` perché il valore predefinito della lista è stato modificato dalla prima chiamata alla funzione e questa modifica persiste nella seconda chiamata. La lista usata come valore predefinito è la stessa in entrambe le chiamate.
+
+Per evitare questo comportamento, è meglio usare `None` come valore predefinito e creare una nuova lista all'interno della funzione se `None` è passato come argomento.
+
+Esempio di funzione con valore predefinito `None`:
+
+```python
+def aggiungi_elemento(elemento, lista=None):  # <1>
+  if lista is None:  # <2>
+    lista = []  # <3>
+
+  lista.append(elemento)  # <4>
+
+  return lista  # <5>
+
+print(aggiungi_elemento(1))  # <6>
+print(aggiungi_elemento(2))  # <7>
+```
+1. Definizione della funzione `aggiungi_elemento` con il parametro `lista` avente un valore predefinito di `None`.
+2. Controlla se `lista` è `None`.
+3. Se `lista` è `None`, crea una nuova lista vuota.
+4. Aggiunge l'elemento alla lista.
+5. Restituisce la lista.
+6. Chiamata a `aggiungi_elemento` con l'argomento 1. Output: `[1]`.
+7. Chiamata a `aggiungi_elemento` con l'argomento 2. Output: `[2]`.
+
+In questo caso, ogni chiamata alla funzione `aggiungi_elemento` crea una nuova lista se `None` è passato come valore predefinito, garantendo che ogni chiamata non influenzi le altre.
+
+## Attributi degli Oggetti Funzione
+
+L'istruzione `def` imposta alcuni attributi di un oggetto funzione. Di seguito sono spiegati i principali attributi e come possono essere utilizzati:
+
+- **`__name__`**: Questo attributo è l'identificatore che `def` utilizza come nome della funzione. Puoi riassegnare `__name__` a qualsiasi valore stringa, ma se cerchi di dissociarlo, Python genererà un'eccezione `TypeError`.
+
+Esempio:
+
+```python
+def saluta():  # <1>
+  print("Ciao!")  # <2>
+
+print(saluta.__name__)  # <3>
+
+saluta.__name__ = "greeting"  # <4>
+
+print(saluta.__name__)  # <5>
+```
+1. Definizione della funzione `saluta`.
+2. La funzione stampa `"Ciao!"`.
+3. Stampa il nome della funzione. Output: `saluta`.
+4. Cambia il nome della funzione in `"greeting"`.
+5. Stampa il nuovo nome della funzione. Output: `greeting`.
+
+Se provi a dissociare `__name__`, otterrai un errore:
+
+```python
+del saluta.__name__  # Questo genererà TypeError
+```
+
+- **`__defaults__`**: Questo attributo contiene una tupla dei valori predefiniti per i parametri nominati della funzione. Puoi riassegnare o dissociare liberamente questo attributo. Se la funzione non ha parametri nominati, `__defaults__` sarà una tupla vuota.
+
+Esempio:
+
+```python
+def saluta(nome="ospite"):  # <1>
+  print(f"Ciao, {nome}!")  # <2>
+
+print(saluta.__defaults__)  # <3>
+
+saluta.__defaults__ = ("amico",)  # <4>
+
+saluta()  # <5>
+```
+1. Definizione della funzione `saluta` con un parametro nominato `nome` avente un valore predefinito.
+2. La funzione stampa un messaggio di saluto.
+3. Stampa i valori predefiniti dei parametri della funzione. Output: `('ospite',)`.
+4. Cambia il valore predefinito del parametro `nome` in `"amico"`.
+5. Chiama la funzione senza argomenti. Output: `Ciao, amico!`.
+
+Se provi a dissociare `__defaults__`, l'attributo sarà semplicemente rimosso:
+
+```python
+del saluta.__defaults__
+
+print(saluta.__defaults__)  # 
+```
+1. Output: `None`.
+
+Questi attributi permettono una flessibilità aggiuntiva nella manipolazione delle funzioni, offrendo modi per ispezionare e modificare il comportamento predefinito di una funzione.
+
+### Docstring
+
+Un altro attributo della funzione è la stringa di documentazione, o docstring. Puoi utilizzare o riassegnare la docstring di una funzione come `__doc__`. Quando la prima istruzione nel corpo della funzione è un letterale stringa, il compilatore associa quella stringa come attributo docstring della funzione. Una regola simile si applica a classi e moduli. Le docstring possono estendersi su più righe fisiche, quindi è meglio specificarle in forma di stringa tra triple virgolette.
+
+Le docstring sono particolarmente utili perché vengono visualizzate dalla funzione built-in `help()` quando viene chiamata con il nome della funzione come argomento. Questo consente di fornire una descrizione dettagliata della funzione, delle sue aspettative di input e del suo comportamento, direttamente all'interno del codice.
+
+Esempio di docstring:
+
+```python
+def somma_sequenza(*numeri):  # <1>
+  """Restituisce la somma di più argomenti numerici.
+  
+  Gli argomenti sono zero o più numeri.
+  Il risultato è la loro somma.
+  """  # <2>
+  return sum(numeri)  # <3>
+
+help(somma_sequenza)  # <4>
+```
+1. Definizione della funzione `somma_sequenza` con il collettore di argomenti `*numeri`.
+2. Docstring della funzione che descrive il suo scopo e gli argomenti.
+3. Restituisce la somma degli argomenti.
+4. Chiamata alla funzione `help` con l'argomento `somma_sequenza`, che visualizza la docstring della funzione.
+
+Quando si utilizza la funzione `help()`, la docstring viene visualizzata, offrendo informazioni utili sull'utilizzo della funzione:
+
+```asciidoc
+Help on function somma_sequenza in module __main__:
+
+somma_sequenza(*numeri)
+  Restituisce la somma di più argomenti numerici.
+
+  Gli argomenti sono zero o più numeri.
+  Il risultato è la loro somma.
+```
+
+## Annotazioni
+
+Ogni parametro in una clausola `def` può essere annotato con un'espressione arbitraria. Puoi anche annotare il valore di ritorno della funzione utilizzando la forma `-> espressione` tra la parentesi `)` della clausola `def` e i due punti `:` che terminano la clausola `def`. Queste annotazioni sono memorizzate nell'attributo `__annotations__` della funzione e possono essere utilizzate per migliorare la leggibilità del codice e per il type hinting.
+
+Esempio di annotazioni delle funzioni:
+
+```python
+def f(a: 'foo', b) -> 'bar':  # <1>
+  pass  # <2>
+
+print(f.__annotations__)  # <3>
+```
+1. Definizione della funzione `f` con annotazioni per i parametri `a` e il valore di ritorno.
+2. Corpo della funzione vuoto.
+3. Stampa le annotazioni della funzione `f`. Output: `{'a': 'foo', 'return': 'bar'}`.
+
+Il type hinting è una applicazione pratica delle annotazioni, che consente di specificare i tipi di variabili, parametri e valori di ritorno, fornendo informazioni utili per il controllo dei tipi a tempo di esecuzione o per strumenti di analisi statica del codice. Il type hinting può essere particolarmente utile per migliorare la leggibilità del codice e facilitare la rilevazione di errori. 
+
+Di seguito, un esempio pratico che utilizza il type hinting:
+
+```python
+def somma_numeri(numeri: list[int]) -> int:  # <1>
+  """Restituisce la somma di una lista di numeri interi."""  # <2>
+  return sum(numeri)  # <3>
+
+print(somma_numeri([1, 2, 3, 4]))  # <4>
+print(somma_numeri.__annotations__)  # <5>
+```
+1. Definizione della funzione `somma_numeri` con annotazioni dei tipi per il parametro `numeri` e il valore di ritorno.
+2. Docstring della funzione che descrive il suo scopo e gli argomenti.
+3. Restituisce la somma degli elementi nella lista `numeri`.
+4. Chiamata alla funzione `somma_numeri` con una lista di numeri interi. Output: `10`.
+5. Stampa le annotazioni della funzione `somma_numeri`. Output: `{'numeri': list[int], 'return': <class 'int'>}`.
+
+Possiamo utilizzare annotazioni per funzioni che accettano e restituiscono tipi più complessi, come dizionari o tuple.
+
+Esempio:
+
+```python
+def processa_dati(dati: dict[str, tuple[int, int]]) -> dict[str, int]:  # <1>
+  """Elabora un dizionario di tuple e restituisce un dizionario di somme."""  # <2>
+  risultato = {}  # <3>
+
+  for chiave, (val1, val2) in dati.items():  # <4>
+    risultato[chiave] = val1 + val2  # <5>
+      
+  return risultato  # <6>
+
+dati_input = {"a": (1, 2), "b": (3, 4)}  # <7>
+
+print(processa_dati(dati_input))  # <8>
+
+print(processa_dati.__annotations__)  # <9>
+```
+1. Definizione della funzione `processa_dati` con annotazioni dei tipi per il parametro `dati` e il valore di ritorno.
+2. Docstring della funzione che descrive il suo scopo e gli argomenti.
+3. Inizializzazione del dizionario `risultato`.
+4. Iterazione sugli elementi del dizionario `dati`.
+5. Calcola la somma dei valori nella tupla e la assegna al dizionario `risultato`.
+6. Restituisce il dizionario `risultato`.
+7. Definizione di un dizionario di input `dati_input`.
+8. Chiamata alla funzione `processa_dati` con il dizionario di input. Output: `{'a': 3, 'b': 7}`.
+9. Stampa le annotazioni della funzione `processa_dati`. Output: `{'dati': dict[str, tuple[int, int]], 'return': dict[str, int]}`.
+
+## L'Istruzione `return`
+
+La parola chiave `return` può essere utilizzata per terminare una funzione e opzionalmente restituire un valore. Quando una funzione non include una istruzione `return`, restituisce implicitamente `None`.
+
+Esempio di utilizzo di `return`:
+
+```python
+def quadrato(x):  # <1>
+  return x * x  # <2>
+
+print(quadrato(5))  # <3>
+```
+1. Definizione della funzione `quadrato` con il parametro `x`.
+2. Restituisce il quadrato di `x`.
+3. Chiamata alla funzione `quadrato` con l'argomento 5. Output: `25`.
+
+Esempio di funzione che restituisce `None`:
+
+```python
+def saluta():  # <1>
+  print("Ciao!")  # <2>
+
+risultato = saluta()  # <3>
+print(risultato)  # <4>
+```
+1. Definizione della funzione `saluta`.
+2. Stampa `"Ciao!"`.
+3. Chiamata alla funzione `saluta` e assegnazione del risultato a `risultato`.
+4. Stampa il valore di `risultato`. Output: `Ciao!` seguito da `None`.
+
+## Chiamate
+
+Una chiamata di funzione è un'espressione con la seguente sintassi:
+
+```python
+oggetto_funzione(argomenti)
+```
+
+`oggetto_funzione` può essere qualsiasi riferimento a un oggetto funzione (o altro oggetto chiamabile); più spesso, è solo il nome della funzione. Le parentesi denotano l'operazione di chiamata della funzione stessa. `argomenti`, nel caso più semplice, è una serie di zero o più espressioni separate da virgole `,`, che forniscono i valori per i parametri corrispondenti della funzione.
+
+Esempio di chiamata di funzione:
+
+```python
+def saluta(nome):  # <1>
+  print(f"Ciao, {nome}!")  # <2>
+
+saluta("Luigi")  # <3>
+```
+1. Definizione della funzione `saluta` con il parametro `nome`.
+2. Stampa un messaggio di saluto con il nome.
+3. Chiamata a `saluta` con l'argomento "Luigi". Output: `Ciao, Luigi!`.
+
+### Argomenti
+
+Gli argomenti possono essere di due tipi. Gli argomenti posizionali sono semplici espressioni; gli argomenti nominati assumono la forma:
+
+```python
+identificatore=espressione  
+```
+
+È un errore di sintassi che gli argomenti nominati precedano quelli posizionali in una chiamata di funzione. Zero o più argomenti posizionali possono essere seguiti da zero o più argomenti nominati. Ogni argomento posizionale fornisce il valore per il parametro che corrisponde a esso per posizione (ordine) nella definizione della funzione.
+
+Esempio di funzione con argomenti posizionali e nominati:
+
+```python
+def f(a, b, c=23, d=42, *x):  # <1>
+  print(a, b, c, d, x)  # <2>
+
+f(1, 2, 3, 4, 5, 6)  # <3>
+```
+1. Definizione della funzione `f` con parametri posizionali, nominati e un collettore di argomenti.
+2. Stampa i valori dei parametri e degli argomenti.
+3. Chiamata a `f` con argomenti. Output: `1 2 3 4 (5, 6)`.
+
+### Associazione degli argomenti ai parametri
+
+Una chiamata deve fornire un argomento per tutti i parametri posizionali e può farlo per i parametri nominati che non sono esclusivamente nominati. La corrispondenza avviene come segue:
+
+1. Gli argomenti nella forma `*espressione` vengono internamente sostituiti da una sequenza di argomenti posizionali ottenuti iterando su `espressione`.
+
+2. Gli argomenti nella forma `**espressione` vengono internamente sostituiti da una sequenza di argomenti nominati i cui nomi e valori sono ottenuti iterando sugli elementi di `espressione`.
+
+3. Diciamo che la funzione ha `N` parametri posizionali e la chiamata ha `M` argomenti posizionali:
+
+    - Quando `M <= N`, tutti gli argomenti posizionali vengono associati ai primi `M` parametri posizionali; i parametri posizionali rimanenti, se presenti, devono essere associati tramite argomenti nominati.
+
+    - Quando `M > N`, i rimanenti argomenti posizionali vengono associati ai parametri nominati nell'ordine in cui appaiono nella firma. Questo processo termina in uno dei seguenti modi:
+
+        1. Tutti gli argomenti posizionali sono stati associati.
+        2. Il prossimo elemento nella firma è un collettore di argomenti `*`: l'interprete solleva un'eccezione `TypeError`.
+        3. Il prossimo elemento nella firma è un collettore di argomenti `*nome`: gli argomenti posizionali rimanenti vengono raccolti in una tupla che viene quindi associata a `nome` nello spazio dei nomi della chiamata alla funzione.
+
+4. Gli argomenti nominati vengono quindi associati, nell'ordine delle occorrenze degli argomenti nella chiamata, per nome con i parametri, sia posizionali che nominati. I tentativi di riassociare un nome di parametro già associato sollevano un'eccezione `TypeError`.
+
+5. Se a questo punto rimangono argomenti nominati non associati:
+
+    - Quando la firma della funzione include un collettore di argomenti `**nome`, l'interprete crea un dizionario con coppie chiave/valore (nome_argomento, valore_argomento) e lo associa a `nome` nello spazio dei nomi della chiamata alla funzione.
+
+    - In assenza di un tale collettore di argomenti, Python solleva un'eccezione `TypeError`.
+
+6. I parametri nominati rimanenti non associati vengono associati ai loro valori predefiniti.
+
+A questo punto, lo spazio dei nomi della chiamata alla funzione è completamente popolato e l'interprete esegue il corpo della funzione utilizzando quello spazio dei nomi come spazio dei nomi locale per la funzione.
+
+## Spazi di nomi
+
+I parametri di una funzione, insieme a qualsiasi nome che viene associato (attraverso un'assegnazione o altre istruzioni di binding, come `def`) nel corpo della funzione, costituiscono lo spazio dei nomi locale della funzione, noto anche come ambito locale. Ognuna di queste variabili è nota come variabile locale della funzione.
+
+Le variabili che non sono locali sono conosciute come variabili globali (in assenza di definizioni di funzioni annidate, di cui parleremo a breve). Le variabili globali sono attributi dell'oggetto modulo. Ogni volta che una variabile locale di una funzione ha lo stesso nome di una variabile globale, quel nome, all'interno del corpo della funzione, si riferisce alla variabile locale, non a quella globale. Esprimiamo questo dicendo che la variabile locale nasconde la variabile globale con lo stesso nome in tutto il corpo della funzione.
+
+### L'istruzione `global`
+
+Per impostazione predefinita, qualsiasi variabile associata in un corpo di funzione è locale alla funzione. Se una funzione ha bisogno di associare o riassociare alcune variabili globali (pratica non consigliata!), la prima istruzione del corpo della funzione deve essere:
+
+```python
+global identificatori
+```
+
+dove `identificatori` è uno o più identificatori separati da virgole `,`. Gli identificatori elencati in un'istruzione `global` si riferiscono alle variabili globali (cioè attributi dell'oggetto modulo) che la funzione deve associare o riassociare.
+
+Esempio di utilizzo di `global`:
+
+```python
+_count = 0  # <1>
+
+def contatore():  # <2>
+  global _count  # <3>
+
+  _count += 1  # <4>
+
+  return _count  # <5>
+
+print(contatore())  # <6>
+print(contatore())  # <7>
+```
+1. Variabile globale `_count` inizializzata a 0.
+2. Definizione della funzione `contatore`.
+3. Dichiarazione di `_count` come variabile globale.
+4. Incremento della variabile globale `_count`.
+5. Restituzione del valore di `_count`.
+6. Chiamata a `contatore`. Output: `1`.
+7. Chiamata a `contatore` nuovamente. Output: `2`.
+
+Senza l'istruzione `global`, la funzione `contatore` solleverebbe un'eccezione `UnboundLocalError` quando viene chiamata, perché `_count` sarebbe una variabile locale non inizializzata (non associata). Sebbene l'istruzione `global` consenta questo tipo di programmazione, questo stile è inefficace e sconsigliato. Come menzionato in precedenza, quando si desidera raggruppare uno stato e un comportamento, i meccanismi orientati agli oggetti sono generalmente i migliori.
+
+### Funzioni annidate e ambiti annidati
+
+Un'istruzione `def` all'interno del corpo di una funzione definisce una funzione annidata, e la funzione il cui corpo include la `def` è conosciuta come funzione esterna a quella annidata. Il codice nel corpo di una funzione annidata può accedere (ma non riassociare) variabili locali di una funzione esterna, note anche come variabili libere della funzione annidata.
+
+Esempio di funzione annidata che accede a variabili esterne:
+
+```python
+def esterna(a, b, c):  # <1>
+  def annidata(x):  # <2>
+    return (x * 100.0) / (a + b + c)  # <3>
+
+  print('Percentuali:', annidata(a), annidata(b), annidata(c))  # <4>
+
+esterna(10, 20, 30)  # <5>
+```
+1. Definizione della funzione esterna `esterna`.
+2. Definizione della funzione annidata `annidata`.
+3. La funzione annidata accede alle variabili `a`, `b` e `c` della funzione esterna.
+4. Stampa le percentuali calcolate dalla funzione annidata.
+5. Chiamata alla funzione `esterna` con argomenti `10, 20, 30`.
+
+Una funzione annidata che accede ai valori dalle variabili locali delle funzioni contenenti è anche nota come chiusura (_closure_).
+
+Esempio di chiusura:
+
+```python
+def crea_sommatore(augendo):  # <1>
+  def somma(addendo):  # <2>
+    return addendo + augendo  # <3>
+
+  return somma  # <4>
+
+somma5 = crea_sommatore(5)  # <5>
+somma9 = crea_sommatore(9)  # <6>
+
+print(somma5(10))  # <7>
+print(somma9(10))  # <8>
+```
+1. Definizione della funzione esterna `crea_sommatore`.
+2. Definizione della funzione annidata `somma`.
+3. La funzione `somma` accede alla variabile `augendo` della funzione esterna.
+4. La funzione esterna `crea_sommatore` ritorna la funzione `somma`.
+5. Creazione di una funzione che somma `5` a un numero.
+6. Creazione di una funzione che somma `9` a un numero.
+7. Chiamata alla funzione `somma5` con argomento `10`. Output: `15`.
+8. Chiamata alla funzione `somma9` con argomento `10`. Output: `19`.
+
+La parola chiave `nonlocal` funziona in modo simile a `global`, ma si riferisce a un nome nello spazio dei nomi di una funzione che circonda lessicamente. 
+
+Esempio di `nonlocal`:
+
+```python
+def crea_contatore():  # <1>
+  conteggio = 0  # <2>
+  
+  def contatore():  # <3>
+    nonlocal conteggio  # <4>
+
+    conteggio += 1  # <5>
+    
+    return conteggio  # <6>
+  
+  return contatore  # <7>
+
+c1 = crea_contatore()  # <8>
+c2 = crea_contatore()  # <9>
+
+print(c1(), c1(), c1())  # <10>
+print(c2(), c2())  # <11>
+print(c1(), c2(), c1())  # <12>
+```
+1. Definizione della funzione `crea_contatore`.
+2. Inizializzazione della variabile `conteggio`.
+3. Definizione della funzione annidata `contatore`.
+4. Dichiarazione di `conteggio` come `nonlocal`.
+5. Incremento della variabile `conteggio`.
+6. Restituzione del valore di `conteggio`.
+7. Restituzione della funzione `contatore`.
+8. Creazione di un contatore `c1`.
+9. Creazione di un contatore `c2`.
+10. Chiamata a `c1` tre volte. Output: `1 2 3`.
+11. Chiamata a `c2` due volte. Output: `1 2`.
+12. Chiamata a `c1` e `c2` alternata. Output: `4 3 5`.
+
+## Espressioni `lambda`
+
+Se il corpo di una funzione è una singola espressione `return`, possiamo (opzionalmente) scegliere di sostituire la funzione con la speciale forma di espressione `lambda`:
+
+```python
+lambda parametri: espressione
+```
+
+Un'espressione `lambda` è l'equivalente anonimo di una funzione normale il cui corpo è una singola istruzione `return`. La sintassi `lambda` non utilizza la parola chiave `return`. Possiamo usare un'espressione `lambda` ovunque potremmo usare un riferimento a una funzione.
+
+Esempio di utilizzo di una `lambda`:
+
+```python
+numeri = [5, 2, 8, 3]  # <1>
+
+ordinati = sorted(numeri, key=lambda x: x)  # <2>
+
+print(ordinati)  # <3>
+```
+1. Lista di numeri.
+2. Utilizzo di una `lambda` per ordinare la lista.
+3. Output: `[2, 3, 5, 8]`.
+
+Le espressioni `lambda` possono essere utili quando desideriamo utilizzare una funzione estremamente semplice come argomento o valore di ritorno.
+
+Esempio alternativo con `def`:
+
+```python
+def quadrato(valore):  # <1>
+  return valore * valore  # <2>
+
+numeri = [5, 2, 8, 3]  # <3>
+ordinati = sorted(numeri, key=quadrato)  # <4>
+print(ordinati)  # <5>
+```
+1. Definizione della funzione `quadrato`.
+2. La funzione ritorna il quadrato di `valore`.
+3. Lista di numeri.
+4. Utilizzo della funzione `quadrato` per ordinare la lista.
+5. Output: `[2, 3, 5, 8]`.
+
+Mentre `lambda` può essere utile, `def` è solitamente preferibile: è più generale e ti aiuta a rendere il codice più leggibile, poiché si può scegliere un nome chiaro per la funzione.
