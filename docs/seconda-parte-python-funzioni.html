@@ -319,6 +319,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Esercizi</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-python-esercitazione-uno.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Esercitazione 1: analisi di un dataset di vendite</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -358,9 +364,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#collettori-di-argomenti" id="toc-collettori-di-argomenti" class="nav-link" data-scroll-target="#collettori-di-argomenti"><span class="header-section-number">12.2.5</span> Collettori di argomenti</a></li>
   <li><a href="#valori-predefiniti-mutabili" id="toc-valori-predefiniti-mutabili" class="nav-link" data-scroll-target="#valori-predefiniti-mutabili"><span class="header-section-number">12.2.6</span> Valori predefiniti mutabili</a></li>
   </ul></li>
-  <li><a href="#attributi-degli-oggetti-funzione" id="toc-attributi-degli-oggetti-funzione" class="nav-link" data-scroll-target="#attributi-degli-oggetti-funzione"><span class="header-section-number">12.3</span> Attributi degli Oggetti Funzione</a>
+  <li><a href="#attributi" id="toc-attributi" class="nav-link" data-scroll-target="#attributi"><span class="header-section-number">12.3</span> Attributi</a>
   <ul class="collapse">
-  <li><a href="#docstring" id="toc-docstring" class="nav-link" data-scroll-target="#docstring"><span class="header-section-number">12.3.1</span> Docstring</a></li>
+  <li><a href="#name__" id="toc-name__" class="nav-link" data-scroll-target="#name__"><span class="header-section-number">12.3.1</span> <code>__name__</code></a></li>
+  <li><a href="#defaults__" id="toc-defaults__" class="nav-link" data-scroll-target="#defaults__"><span class="header-section-number">12.3.2</span> <code>__defaults__</code></a></li>
+  <li><a href="#docstring" id="toc-docstring" class="nav-link" data-scroll-target="#docstring"><span class="header-section-number">12.3.3</span> Docstring</a></li>
   </ul></li>
   <li><a href="#annotazioni" id="toc-annotazioni" class="nav-link" data-scroll-target="#annotazioni"><span class="header-section-number">12.4</span> Annotazioni</a></li>
   <li><a href="#listruzione-return" id="toc-listruzione-return" class="nav-link" data-scroll-target="#listruzione-return"><span class="header-section-number">12.5</span> L’Istruzione <code>return</code></a></li>
@@ -854,12 +862,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In questo caso, ogni chiamata alla funzione <code>aggiungi_elemento</code> crea una nuova lista se <code>None</code> è passato come valore predefinito, garantendo che ogni chiamata non influenzi le altre.</p>
 </section>
 </section>
-<section id="attributi-degli-oggetti-funzione" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="attributi-degli-oggetti-funzione"><span class="header-section-number">12.3</span> Attributi degli Oggetti Funzione</h2>
-<p>L’istruzione <code>def</code> imposta alcuni attributi di un oggetto funzione. Di seguito sono spiegati i principali attributi e come possono essere utilizzati:</p>
-<ul>
-<li><strong><code>__name__</code></strong>: Questo attributo è l’identificatore che <code>def</code> utilizza come nome della funzione. Puoi riassegnare <code>__name__</code> a qualsiasi valore stringa, ma se cerchi di dissociarlo, Python genererà un’eccezione <code>TypeError</code>.</li>
-</ul>
+<section id="attributi" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="attributi"><span class="header-section-number">12.3</span> Attributi</h2>
+<p>L’istruzione <code>def</code> imposta alcuni attributi di un oggetto funzione. Di seguito sono spiegati i principali attributi e come possono essere utilizzati.</p>
+<section id="name__" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="name__"><span class="header-section-number">12.3.1</span> <code>__name__</code></h3>
+<p>Questo attributo è l’identificatore che <code>def</code> utilizza come nome della funzione. Puoi riassegnare <code>__name__</code> a qualsiasi valore stringa, ma se cerchi di dissociarlo, Python genererà un’eccezione <code>TypeError</code>.</p>
 <p>Esempio:</p>
 <div class="sourceCode" id="annotated-cell-17"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-17-1" class="code-annotation-target"><a href="#annotated-cell-17-1"></a><span class="kw">def</span> saluta():</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-17-2" class="code-annotation-target"><a href="#annotated-cell-17-2"></a>  <span class="bu">print</span>(<span class="st">"Ciao!"</span>)</span>
@@ -893,9 +901,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dl>
 <p>Se provi a dissociare <code>__name__</code>, otterrai un errore:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">del</span> saluta.<span class="va">__name__</span>  <span class="co"># Questo genererà TypeError</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><strong><code>__defaults__</code></strong>: Questo attributo contiene una tupla dei valori predefiniti per i parametri nominati della funzione. Puoi riassegnare o dissociare liberamente questo attributo. Se la funzione non ha parametri nominati, <code>__defaults__</code> sarà una tupla vuota.</li>
-</ul>
+</section>
+<section id="defaults__" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="defaults__"><span class="header-section-number">12.3.2</span> <code>__defaults__</code></h3>
+<p>Questo attributo contiene una tupla dei valori predefiniti per i parametri nominati della funzione. Puoi riassegnare o dissociare liberamente questo attributo. Se la funzione non ha parametri nominati, <code>__defaults__</code> sarà una tupla vuota.</p>
 <p>Esempio:</p>
 <div class="sourceCode" id="annotated-cell-19"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-19-1" class="code-annotation-target"><a href="#annotated-cell-19-1"></a><span class="kw">def</span> saluta(nome<span class="op">=</span><span class="st">"ospite"</span>):</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-19-2" class="code-annotation-target"><a href="#annotated-cell-19-2"></a>  <span class="bu">print</span>(<span class="ss">f"Ciao, </span><span class="sc">{</span>nome<span class="sc">}</span><span class="ss">!"</span>)</span>
@@ -935,8 +944,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Output: <code>None</code>.</li>
 </ol>
 <p>Questi attributi permettono una flessibilità aggiuntiva nella manipolazione delle funzioni, offrendo modi per ispezionare e modificare il comportamento predefinito di una funzione.</p>
-<section id="docstring" class="level3" data-number="12.3.1">
-<h3 data-number="12.3.1" class="anchored" data-anchor-id="docstring"><span class="header-section-number">12.3.1</span> Docstring</h3>
+</section>
+<section id="docstring" class="level3" data-number="12.3.3">
+<h3 data-number="12.3.3" class="anchored" data-anchor-id="docstring"><span class="header-section-number">12.3.3</span> Docstring</h3>
 <p>Un altro attributo della funzione è la stringa di documentazione, o docstring. Puoi utilizzare o riassegnare la docstring di una funzione come <code>__doc__</code>. Quando la prima istruzione nel corpo della funzione è un letterale stringa, il compilatore associa quella stringa come attributo docstring della funzione. Una regola simile si applica a classi e moduli. Le docstring possono estendersi su più righe fisiche, quindi è meglio specificarle in forma di stringa tra triple virgolette.</p>
 <p>Le docstring sono particolarmente utili perché vengono visualizzate dalla funzione built-in <code>help()</code> quando viene chiamata con il nome della funzione come argomento. Questo consente di fornire una descrizione dettagliata della funzione, delle sue aspettative di input e del suo comportamento, direttamente all’interno del codice.</p>
 <p>Esempio di docstring:</p>

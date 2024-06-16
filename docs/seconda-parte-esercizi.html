@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./appendice-riferimenti.html" rel="next">
+<link href="./seconda-parte-python-esercitazione-uno.html" rel="next">
 <link href="./seconda-parte-python-funzioni.html" rel="prev">
 <link href="./red-python-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -317,6 +317,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./seconda-parte-esercizi.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Esercizi</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-python-esercitazione-uno.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Esercitazione 1: analisi di un dataset di vendite</span></span></a>
   </div>
 </li>
       </ul>
@@ -1000,11 +1006,11 @@ Suggerimento
 <div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb20-2"><a href="#cb20-2"></a></span>
 <span id="cb20-3"><a href="#cb20-3"></a><span class="kw">def</span> conta_parole(frase):</span>
-<span id="cb20-4"><a href="#cb20-4"></a>    parole <span class="op">=</span> frase.split()</span>
+<span id="cb20-4"><a href="#cb20-4"></a>  parole <span class="op">=</span> frase.split()</span>
 <span id="cb20-5"><a href="#cb20-5"></a></span>
-<span id="cb20-6"><a href="#cb20-6"></a>    conteggio <span class="op">=</span> Counter(parole)</span>
+<span id="cb20-6"><a href="#cb20-6"></a>  conteggio <span class="op">=</span> Counter(parole)</span>
 <span id="cb20-7"><a href="#cb20-7"></a></span>
-<span id="cb20-8"><a href="#cb20-8"></a>    <span class="cf">return</span> <span class="bu">dict</span>(conteggio)</span>
+<span id="cb20-8"><a href="#cb20-8"></a>  <span class="cf">return</span> <span class="bu">dict</span>(conteggio)</span>
 <span id="cb20-9"><a href="#cb20-9"></a></span>
 <span id="cb20-10"><a href="#cb20-10"></a><span class="co"># Esempio di utilizzo</span></span>
 <span id="cb20-11"><a href="#cb20-11"></a>frase <span class="op">=</span> <span class="st">"ciao ciao come stai ciao"</span></span>
@@ -1037,45 +1043,6 @@ Suggerimento
 </div>
 <div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
 <p>Usiamo un ciclo <code>for</code> per iterare attraverso le parole della frase, aggiornando il conteggio di ciascuna parola in un dizionario. Il comportamento è determinato dal flag <code>maiuscolo_minuscolo</code>.</p>
-<div class="sourceCode" id="annotated-cell-25"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-25-1"><a href="#annotated-cell-25-1"></a><span class="im">import</span> string</span>
-<span id="annotated-cell-25-2"><a href="#annotated-cell-25-2"></a></span>
-<span id="annotated-cell-25-3"><a href="#annotated-cell-25-3"></a><span class="kw">def</span> conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">False</span>):</span>
-<span id="annotated-cell-25-4"><a href="#annotated-cell-25-4"></a>  <span class="cf">if</span> <span class="kw">not</span> maiuscolo_minuscolo:</span>
-<span id="annotated-cell-25-5"><a href="#annotated-cell-25-5"></a>    frase <span class="op">=</span> frase.lower()</span>
-<span id="annotated-cell-25-6"><a href="#annotated-cell-25-6"></a></span>
-<span id="annotated-cell-25-7"><a href="#annotated-cell-25-7"></a>  frase <span class="op">=</span> <span class="st">''</span>.join(carattere <span class="cf">for</span> carattere <span class="kw">in</span> frase <span class="cf">if</span> carattere <span class="kw">not</span> <span class="kw">in</span> string.punctuation)</span>
-<span id="annotated-cell-25-8"><a href="#annotated-cell-25-8"></a></span>
-<span id="annotated-cell-25-9"><a href="#annotated-cell-25-9"></a>  parole <span class="op">=</span> frase.split()</span>
-<span id="annotated-cell-25-10"><a href="#annotated-cell-25-10"></a></span>
-<span id="annotated-cell-25-11"><a href="#annotated-cell-25-11"></a>  conteggio <span class="op">=</span> {}</span>
-<span id="annotated-cell-25-12"><a href="#annotated-cell-25-12"></a></span>
-<span id="annotated-cell-25-13"><a href="#annotated-cell-25-13"></a>  <span class="cf">for</span> parola <span class="kw">in</span> parole:</span>
-<span id="annotated-cell-25-14"><a href="#annotated-cell-25-14"></a>    <span class="cf">if</span> parola <span class="kw">in</span> conteggio:</span>
-<span id="annotated-cell-25-15"><a href="#annotated-cell-25-15"></a>      conteggio[parola] <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="annotated-cell-25-16"><a href="#annotated-cell-25-16"></a></span>
-<span id="annotated-cell-25-17"><a href="#annotated-cell-25-17"></a>    <span class="cf">else</span>:</span>
-<span id="annotated-cell-25-18"><a href="#annotated-cell-25-18"></a>      conteggio[parola] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="annotated-cell-25-19"><a href="#annotated-cell-25-19"></a></span>
-<span id="annotated-cell-25-20"><a href="#annotated-cell-25-20"></a>  <span class="cf">return</span> conteggio</span>
-<span id="annotated-cell-25-21"><a href="#annotated-cell-25-21"></a></span>
-<span id="annotated-cell-25-22"><a href="#annotated-cell-25-22"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="annotated-cell-25-23"><a href="#annotated-cell-25-23"></a>frase <span class="op">=</span> <span class="st">"Ciao, ciao! Come stai? Ciao."</span></span>
-<span id="annotated-cell-25-24"><a href="#annotated-cell-25-24"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-25-25" class="code-annotation-target"><a href="#annotated-cell-25-25"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">False</span>))</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-25-26" class="code-annotation-target"><a href="#annotated-cell-25-26"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">True</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="25" data-code-annotation="1">Output: <code>{'ciao': 3, 'come': 1, 'stai': 1}</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="26" data-code-annotation="2">Output: <code>{'Ciao': 2, 'ciao': 1, 'Come': 1, 'stai': 1}</code>.</span>
-</dd>
-</dl>
-</div>
-<div id="tabset-10-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-3-tab">
-<p>Usiamo il metodo <code>get</code> del dizionario per aggiornare il conteggio delle parole in un dizionario. Il comportamento è determinato dal flag <code>maiuscolo_minuscolo</code>.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">import</span> string</span>
 <span id="cb21-2"><a href="#cb21-2"></a></span>
 <span id="cb21-3"><a href="#cb21-3"></a><span class="kw">def</span> conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">False</span>):</span>
@@ -1089,46 +1056,49 @@ Suggerimento
 <span id="cb21-11"><a href="#cb21-11"></a>  conteggio <span class="op">=</span> {}</span>
 <span id="cb21-12"><a href="#cb21-12"></a></span>
 <span id="cb21-13"><a href="#cb21-13"></a>  <span class="cf">for</span> parola <span class="kw">in</span> parole:</span>
-<span id="cb21-14"><a href="#cb21-14"></a>    conteggio[parola] <span class="op">=</span> conteggio.get(parola, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb21-15"><a href="#cb21-15"></a>      </span>
-<span id="cb21-16"><a href="#cb21-16"></a>  <span class="cf">return</span> conteggio</span>
-<span id="cb21-17"><a href="#cb21-17"></a></span>
-<span id="cb21-18"><a href="#cb21-18"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="cb21-19"><a href="#cb21-19"></a>frase <span class="op">=</span> <span class="st">"Ciao, ciao! Come stai? Ciao."</span></span>
-<span id="cb21-20"><a href="#cb21-20"></a></span>
-<span id="cb21-21"><a href="#cb21-21"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">False</span>))  </span>
-<span id="cb21-22"><a href="#cb21-22"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">True</span>))  </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-14"><a href="#cb21-14"></a>    <span class="cf">if</span> parola <span class="kw">in</span> conteggio:</span>
+<span id="cb21-15"><a href="#cb21-15"></a>      conteggio[parola] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb21-16"><a href="#cb21-16"></a></span>
+<span id="cb21-17"><a href="#cb21-17"></a>    <span class="cf">else</span>:</span>
+<span id="cb21-18"><a href="#cb21-18"></a>      conteggio[parola] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb21-19"><a href="#cb21-19"></a></span>
+<span id="cb21-20"><a href="#cb21-20"></a>  <span class="cf">return</span> conteggio</span>
+<span id="cb21-21"><a href="#cb21-21"></a></span>
+<span id="cb21-22"><a href="#cb21-22"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="cb21-23"><a href="#cb21-23"></a>frase <span class="op">=</span> <span class="st">"Ciao, ciao! Come stai? Ciao."</span></span>
+<span id="cb21-24"><a href="#cb21-24"></a></span>
+<span id="cb21-25"><a href="#cb21-25"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">False</span>)) </span>
+<span id="cb21-26"><a href="#cb21-26"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">True</span>))  </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-10-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-3-tab">
+<p>Usiamo il metodo <code>get</code> del dizionario per aggiornare il conteggio delle parole in un dizionario. Il comportamento è determinato dal flag <code>maiuscolo_minuscolo</code>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="im">import</span> string</span>
+<span id="cb22-2"><a href="#cb22-2"></a></span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="kw">def</span> conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="cf">if</span> <span class="kw">not</span> maiuscolo_minuscolo:</span>
+<span id="cb22-5"><a href="#cb22-5"></a>    frase <span class="op">=</span> frase.lower()</span>
+<span id="cb22-6"><a href="#cb22-6"></a></span>
+<span id="cb22-7"><a href="#cb22-7"></a>  frase <span class="op">=</span> <span class="st">''</span>.join(carattere <span class="cf">for</span> carattere <span class="kw">in</span> frase <span class="cf">if</span> carattere <span class="kw">not</span> <span class="kw">in</span> string.punctuation)</span>
+<span id="cb22-8"><a href="#cb22-8"></a></span>
+<span id="cb22-9"><a href="#cb22-9"></a>  parole <span class="op">=</span> frase.split()</span>
+<span id="cb22-10"><a href="#cb22-10"></a></span>
+<span id="cb22-11"><a href="#cb22-11"></a>  conteggio <span class="op">=</span> {}</span>
+<span id="cb22-12"><a href="#cb22-12"></a></span>
+<span id="cb22-13"><a href="#cb22-13"></a>  <span class="cf">for</span> parola <span class="kw">in</span> parole:</span>
+<span id="cb22-14"><a href="#cb22-14"></a>    conteggio[parola] <span class="op">=</span> conteggio.get(parola, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb22-15"><a href="#cb22-15"></a>      </span>
+<span id="cb22-16"><a href="#cb22-16"></a>  <span class="cf">return</span> conteggio</span>
+<span id="cb22-17"><a href="#cb22-17"></a></span>
+<span id="cb22-18"><a href="#cb22-18"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="cb22-19"><a href="#cb22-19"></a>frase <span class="op">=</span> <span class="st">"Ciao, ciao! Come stai? Ciao."</span></span>
+<span id="cb22-20"><a href="#cb22-20"></a></span>
+<span id="cb22-21"><a href="#cb22-21"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">False</span>))  </span>
+<span id="cb22-22"><a href="#cb22-22"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">True</span>))  </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-10-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-4-tab">
 <p>Usiamo il modulo <code>collections</code> e il <code>defaultdict</code> per semplificare il conteggio delle parole. Il comportamento è determinato dal flag <code>maiuscolo_minuscolo</code>.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="im">import</span> string</span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
-<span id="cb22-3"><a href="#cb22-3"></a></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="kw">def</span> conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">False</span>):</span>
-<span id="cb22-5"><a href="#cb22-5"></a>  <span class="cf">if</span> <span class="kw">not</span> maiuscolo_minuscolo:</span>
-<span id="cb22-6"><a href="#cb22-6"></a>    frase <span class="op">=</span> frase.lower()</span>
-<span id="cb22-7"><a href="#cb22-7"></a></span>
-<span id="cb22-8"><a href="#cb22-8"></a>  frase <span class="op">=</span> <span class="st">''</span>.join(carattere <span class="cf">for</span> carattere <span class="kw">in</span> frase <span class="cf">if</span> carattere <span class="kw">not</span> <span class="kw">in</span> string.punctuation)</span>
-<span id="cb22-9"><a href="#cb22-9"></a></span>
-<span id="cb22-10"><a href="#cb22-10"></a>  parole <span class="op">=</span> frase.split()</span>
-<span id="cb22-11"><a href="#cb22-11"></a></span>
-<span id="cb22-12"><a href="#cb22-12"></a>  conteggio <span class="op">=</span> defaultdict(<span class="bu">int</span>)</span>
-<span id="cb22-13"><a href="#cb22-13"></a></span>
-<span id="cb22-14"><a href="#cb22-14"></a>  <span class="cf">for</span> parola <span class="kw">in</span> parole:</span>
-<span id="cb22-15"><a href="#cb22-15"></a>    conteggio[parola] <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb22-16"><a href="#cb22-16"></a></span>
-<span id="cb22-17"><a href="#cb22-17"></a>  <span class="cf">return</span> <span class="bu">dict</span>(conteggio)</span>
-<span id="cb22-18"><a href="#cb22-18"></a></span>
-<span id="cb22-19"><a href="#cb22-19"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="cb22-20"><a href="#cb22-20"></a>frase <span class="op">=</span> <span class="st">"Ciao, ciao! Come stai? Ciao."</span></span>
-<span id="cb22-21"><a href="#cb22-21"></a></span>
-<span id="cb22-22"><a href="#cb22-22"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">False</span>)) </span>
-<span id="cb22-23"><a href="#cb22-23"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">True</span>))  </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-10-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-5-tab">
-<p>Usiamo il modulo <code>collections</code> e <code>Counter</code> per contare le parole nella frase in modo conciso. Il comportamento è determinato dal flag <code>maiuscolo_minuscolo</code>.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">import</span> string</span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
 <span id="cb23-3"><a href="#cb23-3"></a></span>
 <span id="cb23-4"><a href="#cb23-4"></a><span class="kw">def</span> conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb23-5"><a href="#cb23-5"></a>  <span class="cf">if</span> <span class="kw">not</span> maiuscolo_minuscolo:</span>
@@ -1138,15 +1108,41 @@ Suggerimento
 <span id="cb23-9"><a href="#cb23-9"></a></span>
 <span id="cb23-10"><a href="#cb23-10"></a>  parole <span class="op">=</span> frase.split()</span>
 <span id="cb23-11"><a href="#cb23-11"></a></span>
-<span id="cb23-12"><a href="#cb23-12"></a>  conteggio <span class="op">=</span> Counter(parole)</span>
+<span id="cb23-12"><a href="#cb23-12"></a>  conteggio <span class="op">=</span> defaultdict(<span class="bu">int</span>)</span>
 <span id="cb23-13"><a href="#cb23-13"></a></span>
-<span id="cb23-14"><a href="#cb23-14"></a>  <span class="cf">return</span> <span class="bu">dict</span>(conteggio)</span>
-<span id="cb23-15"><a href="#cb23-15"></a></span>
-<span id="cb23-16"><a href="#cb23-16"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="cb23-17"><a href="#cb23-17"></a>frase <span class="op">=</span> <span class="st">"Ciao, ciao! Come stai? Ciao."</span></span>
+<span id="cb23-14"><a href="#cb23-14"></a>  <span class="cf">for</span> parola <span class="kw">in</span> parole:</span>
+<span id="cb23-15"><a href="#cb23-15"></a>    conteggio[parola] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb23-16"><a href="#cb23-16"></a></span>
+<span id="cb23-17"><a href="#cb23-17"></a>  <span class="cf">return</span> <span class="bu">dict</span>(conteggio)</span>
 <span id="cb23-18"><a href="#cb23-18"></a></span>
-<span id="cb23-19"><a href="#cb23-19"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">False</span>)) </span>
-<span id="cb23-20"><a href="#cb23-20"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">True</span>)) </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-19"><a href="#cb23-19"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="cb23-20"><a href="#cb23-20"></a>frase <span class="op">=</span> <span class="st">"Ciao, ciao! Come stai? Ciao."</span></span>
+<span id="cb23-21"><a href="#cb23-21"></a></span>
+<span id="cb23-22"><a href="#cb23-22"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">False</span>)) </span>
+<span id="cb23-23"><a href="#cb23-23"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">True</span>))  </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-10-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-5-tab">
+<p>Usiamo il modulo <code>collections</code> e <code>Counter</code> per contare le parole nella frase in modo conciso. Il comportamento è determinato dal flag <code>maiuscolo_minuscolo</code>.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">import</span> string</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb24-3"><a href="#cb24-3"></a></span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="kw">def</span> conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="cf">if</span> <span class="kw">not</span> maiuscolo_minuscolo:</span>
+<span id="cb24-6"><a href="#cb24-6"></a>    frase <span class="op">=</span> frase.lower()</span>
+<span id="cb24-7"><a href="#cb24-7"></a></span>
+<span id="cb24-8"><a href="#cb24-8"></a>  frase <span class="op">=</span> <span class="st">''</span>.join(carattere <span class="cf">for</span> carattere <span class="kw">in</span> frase <span class="cf">if</span> carattere <span class="kw">not</span> <span class="kw">in</span> string.punctuation)</span>
+<span id="cb24-9"><a href="#cb24-9"></a></span>
+<span id="cb24-10"><a href="#cb24-10"></a>  parole <span class="op">=</span> frase.split()</span>
+<span id="cb24-11"><a href="#cb24-11"></a></span>
+<span id="cb24-12"><a href="#cb24-12"></a>  conteggio <span class="op">=</span> Counter(parole)</span>
+<span id="cb24-13"><a href="#cb24-13"></a></span>
+<span id="cb24-14"><a href="#cb24-14"></a>  <span class="cf">return</span> <span class="bu">dict</span>(conteggio)</span>
+<span id="cb24-15"><a href="#cb24-15"></a></span>
+<span id="cb24-16"><a href="#cb24-16"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="cb24-17"><a href="#cb24-17"></a>frase <span class="op">=</span> <span class="st">"Ciao, ciao! Come stai? Ciao."</span></span>
+<span id="cb24-18"><a href="#cb24-18"></a></span>
+<span id="cb24-19"><a href="#cb24-19"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">False</span>)) </span>
+<span id="cb24-20"><a href="#cb24-20"></a><span class="bu">print</span>(conta_parole(frase, maiuscolo_minuscolo<span class="op">=</span><span class="va">True</span>)) </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1726,8 +1722,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./appendice-riferimenti.html" class="pagination-link" aria-label="Riferimenti">
-        <span class="nav-page-text">Riferimenti</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./seconda-parte-python-esercitazione-uno.html" class="pagination-link" aria-label="Esercitazione 1: analisi di un dataset di vendite">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Esercitazione 1: analisi di un dataset di vendite</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
