@@ -56,28 +56,33 @@ import numpy as np  # <2>
 1. Importa la libreria pandas.
 2. Importa la libreria numpy, spesso utilizzata insieme a pandas.
 
-### Creazione di `DataFrame`
+### Il `DataFrame`
 
-Un `DataFrame` è una struttura dati bidimensionale simile a una tabella:
+Un `DataFrame` è una struttura dati bidimensionale con dati allineati in righe e colonne. Ogni colonna può contenere dati di tipo diverso (numeri, stringhe, ecc.).
+
+Puoi inizializzare un `DataFrame` utilizzando dizionari, liste di liste, liste di dizionari, array numpy, file CSV, file Excel, ecc.
+
+Esempio di inizializzazione da dizionario:
 
 ```python
-data = {
-    'Nome': ['Anna', 'Luca', 'Marta'],  # <1>
-    'Età': [28, 22, 35],  # <2>
-    'Città': ['Roma', 'Milano', 'Torino']  # <3>
-}
+import pandas as pd
 
-df = pd.DataFrame(data)  # <4>
+data = {'Nome': ['Alice', 'Bob', 'Charlie'], 'Età': [25, 30, 35]}
 
-print(df)  # <5>
+df = pd.DataFrame(data)  # <1>
+
+print(df)  # <2>
 ```
-1. Dizionario con la colonna `'Nome'`.
-2. Dizionario con la colonna `'Età'`.
-3. Dizionario con la colonna `'Città'`.
-4. Creazione del `DataFrame`.
-5. Stampa del `DataFrame`.
+1. Creazione di un `DataFrame` da un dizionario.
+2. Stampa del `DataFrame`:
 
-### Lettura di file
+  |    | Nome    |   Età |
+  |---:|:--------|------:|
+  |  0 | Alice   |    25 |
+  |  1 | Bob     |    30 |
+  |  2 | Charlie |    35 |
+
+Esempio di inizializzazione da CSV:
 
 ```python
 df = pd.read_csv('data.csv')  # <1>
@@ -87,6 +92,8 @@ print(df.head())  # <2>
 1. Lettura di un file CSV.
 2. Visualizza le prime 5 righe del `DataFrame`.
 
+Esempio di inizializzazione da Excel:
+
 ```python
 df_excel = pd.read_excel('data.xlsx')  # <1>
 
@@ -95,136 +102,133 @@ print(df_excel.head())  # <2>
 1. Lettura di un file Excel.
 2. Visualizza le prime 5 righe del `DataFrame`.
 
-### Esplorazione dei dati
+### Ispezione
+
+Puoi ispezionare le righe e le colonne di un DataFrame utilizzando vari metodi come `.head()`, `.tail()`, `.loc[]`, e `.iloc[]`.
+
+Esempio:
 
 ```python
-print(df.info())  # <1>
+print(df.head())  # <1>
 
-print(df.describe())  # <2>
+print(df['Nome'])  # <2>
 
-print(df['Colonna'].unique())  # <3>
+print(df.loc[0])  # <3>
 
-print(df['Colonna'].value_counts())  # <4>
+print(df.iloc[1])  # <4>
 ```
-1. Ottiene informazioni generali sul `DataFrame`.
-2. Ottiene statistiche descrittive sul `DataFrame`.
-3. Visualizza i valori unici di una colonna.
-4. Conta i valori unici di una colonna.
+1. Stampa delle prime righe del `DataFrame`:
+  |    | Nome    |   Età |
+  |---:|:--------|------:|
+  |  0 | Alice   |    25 |
+  |  1 | Bob     |    30 |
+  |  2 | Charlie |    35 |
 
-### Selezione di dati
+2. Stampa della colonna `Nome`:
+  0      Alice
+  1        Bob
+  2    Charlie
+  Name: Nome, dtype: object
+
+3. Stampa della prima riga utilizzando l'etichetta:
+  Nome    Alice
+  Età        25
+  Name: 0, dtype: object
+
+4. Stampa della seconda riga utilizzando l'indice:
+  Nome    Bob
+  Età       30
+  Name: 1, dtype: object
+
+### Filtri, raggruppamenti, pivot
+
+Puoi filtrare, raggruppare e pivotare i dati utilizzando metodi come `.query()`, `.groupby()`, e `.pivot_table()`.
+
+Esempio:
 
 ```python
-print(df['Colonna'])  # <1>
+df_filtrato = df[df['Età'] > 25]  # <1>
+print(df_filtrato)  # <2>
 
-print(df.iloc[0])  # <2>
+df_gruppato = df.groupby('Età').size()  # <3>
+print(df_gruppato)  # <4>
 
-print(df[df['Colonna'] > 10])  # <3>
+pivot_data = {'A': ['foo', 'foo', 'foo', 'bar', 'bar', 'bar'],
+              'B': ['one', 'one', 'two', 'two', 'one', 'one'],
+              'C': [1, 3, 2, 5, 4, 6]}
+
+df_pivot = pd.DataFrame(pivot_data)  # <5>
+
+pivot_table = df_pivot.pivot_table(values='C', index='A', columns='B', aggfunc='sum')  # <6>
+print(pivot_table)  # <7>
 ```
-1. Seleziona una colonna.
-2. Seleziona la prima riga (indice 0).
-3. Seleziona le righe dove il valore della colonna è maggiore di 10.
+1. Filtro delle righe dove l'età è maggiore di `25`.
+2. Stampa del `DataFrame` filtrato:
+  |    | Nome    |   Età |
+  |---:|:--------|------:|
+  |  1 | Bob     |    30 |
+  |  2 | Charlie |    35 |
 
-### Modifica di dati
+3. Raggruppamento per colonna `Età`.
+4. Stampa del `DataFrame` raggruppato:
+  Età
+  25    1
+  30    1
+  35    1
+  dtype: int64
+
+5. Creazione di un `DataFrame` di esempio per il pivot.
+6. Creazione di una pivot table.
+7. Stampa della pivot table:
+  | B   |   one |   two |
+  |:----|------:|------:|
+  | A   |       |       |
+  | bar |    10 |     5 |
+  | foo |     4 |     2 |
+
+### Modifica
+
+Puoi modificare i dati di un `DataFrame` assegnando nuovi valori agli elementi, alle colonne o utilizzando metodi di modifica in-place.
+
+Esempio:
 
 ```python
-df['Nuova Colonna'] = df['Colonna'] * 2  # <1>
+df['Altezza'] = [165, 180, 175]  # <1>
+print(df)  # <2>
 
-df.loc[df['Colonna'] > 10, 'Colonna'] = 10  # <2>
-
-df = df.drop('Colonna', axis=1)  # <3>
+df.loc[0, 'Età'] = 26  # <3>
+print(df)  # <4>
 ```
-1. Aggiunge una nuova colonna calcolata.
-2. Modifica i valori di una colonna basandosi su una condizione.
-3. Rimuove una colonna.
+1. Aggiunta di una nuova colonna 'Altezza'.
+2. Stampa del DataFrame modificato:
+  |    | Nome    |   Età |   Altezza |
+  |---:|:--------|------:|----------:|
+  |  0 | Alice   |    25 |       165 |
+  |  1 | Bob     |    30 |       180 |
+  |  2 | Charlie |    35 |       175 |
 
-### Gestione di valori mancanti
+3. Modifica del valore dell'età per la prima riga.
+4. Stampa del DataFrame modificato:
+  |    | Nome    |   Età |   Altezza |
+  |---:|:--------|------:|----------:|
+  |  0 | Alice   |    26 |       165 |
+  |  1 | Bob     |    30 |       180 |
+  |  2 | Charlie |    35 |       175 |
+
+### Salvataggio
+
+Puoi salvare un DataFrame in vari formati di file, come CSV, Excel, JSON, ecc., utilizzando metodi come `.to_csv()`, `.to_excel()`, `.to_json()`.
 
 ```python
-print(df.isnull().sum())  # <1>
+df.to_csv('data.csv', index=False)  # <1>
 
-df = df.dropna()  # <2>
+df.to_excel('data.xlsx', index=False)  # <2>
 
-df = df.fillna(0)  # <3>
+df.to_json('data.json')  # <3>
 ```
-1. Controlla quanti valori mancanti ci sono in ogni colonna.
-2. Rimuove le righe che contengono valori mancanti.
-3. Sostituisce i valori mancanti con 0.
-
-### Raggruppamento di dati
-
-```python
-grouped = df.groupby('Colonna').sum()  # <1>
-
-print(grouped)  # <2>
-```
-1. Raggruppa i dati per una colonna e calcola la somma.
-2. Visualizza il risultato del raggruppamento.
-
-### Pivot
-
-```python
-pivot = df.pivot_table(
-    values='Valore', 
-    index='Riga', 
-    columns='Colonna', 
-    aggfunc='sum', 
-    fill_value=0
-)  # <1>
-
-print(pivot)  # <2>
-```
-1. Crea una tabella pivot.
-2. Visualizza la tabella pivot.
-
-### Unione di `DataFrame`
-
-```python
-df1 = pd.DataFrame({'A': [1, 2], 'B': [3, 4]})  # <1>
-df2 = pd.DataFrame({'A': [5, 6], 'B': [7, 8]})  # <2>
-
-df_concat = pd.concat([df1, df2])  # <3>
-print(df_concat)  # <4>
-
-df3 = pd.DataFrame({'Key': ['K0', 'K1'], 'C': [1, 2]})  # <5>
-df4 = pd.DataFrame({'Key': ['K0', 'K1'], 'D': [3, 4]})  # <6>
-
-df_merge = pd.merge(df3, df4, on='Key')  # <7>
-print(df_merge)  # <8>
-```
-1. Creazione del primo `DataFrame`.
-2. Creazione del secondo `DataFrame`.
-3. Concatenazione dei `DataFrame`.
-4. Visualizzazione del `DataFrame` concatenato.
-5. Creazione del terzo `DataFrame` con chiave.
-6. Creazione del quarto `DataFrame` con chiave.
-7. Merge dei `DataFrame`.
-8. Visualizzazione del `DataFrame` unito.
-
-### Salvataggio di dati
-
-```python
-df.to_csv('output.csv', index=False)  # <1>
-
-df.to_excel('output.xlsx', index=False)  # <2>
-```
-1. Salva il `DataFrame` in un file CSV senza l'indice.
-2. Salva il `DataFrame` in un file Excel senza l'indice.
-
-Questa introduzione copre solo alcune delle molte funzionalità di pandas. La documentazione ufficiale e altre risorse online possono fornire ulteriori dettagli e esempi avanzati.
-
-### Operazioni di group by e pivot
-
-#### Group by
-
-L'operazione di group by in pandas permette di raggruppare i dati in base a una o più colonne, e quindi applicare una funzione di aggregazione su ciascun gruppo. Questo è utile quando si vuole calcolare statistiche aggregate, come somme, medie, conteggi, ecc., per ciascun gruppo di dati.
-
-Ad esempio, se si dispone di un dataset delle vendite, è possibile raggruppare i dati per `venditore` e calcolare la somma delle `quantità` vendute da ciascun venditore. Questo può fornire una visione chiara delle prestazioni di ciascun venditore.
-
-#### Pivot
-
-L'operazione di pivot in pandas permette di trasformare i dati rendendoli più comprensibili e facili da analizzare. Una tabella pivot ruota i dati in modo da creare una nuova tabella in cui le righe e le colonne rappresentano diverse dimensioni dei dati. In particolare, è possibile specificare quali valori devono essere visualizzati come righe, quali come colonne, e quale funzione di aggregazione applicare ai dati.
-
-Ad esempio, in un dataset delle vendite, è possibile creare una tabella pivot che mostra le `quantità` vendute per `data_vendita` e `prodotto`. Questo può aiutare a visualizzare come le vendite di ciascun prodotto cambiano nel tempo.
+1. Salvataggio del `DataFrame` in un file CSV senza includere gli indici.
+2. Salvataggio del `DataFrame` in un file Excel senza includere gli indici.
+3. Salvataggio del `DataFrame` in un file JSON.
 
 ## La soluzione
 
@@ -282,6 +286,10 @@ print(vendite_notebook_x200)  # <2>
 
 ### Passaggio 4: operazioni di raggruppamento e somma
 
+L'operazione di group by in pandas permette di raggruppare i dati in base a una o più colonne, e quindi applicare una funzione di aggregazione su ciascun gruppo. Questo è utile quando si vuole calcolare statistiche aggregate, come somme, medie, conteggi, ecc., per ciascun gruppo di dati.
+
+Ad esempio, se si dispone di un dataset delle vendite, è possibile raggruppare i dati per `venditore` e calcolare la somma delle `quantità` vendute da ciascun venditore. Questo può fornire una visione chiara delle prestazioni di ciascun venditore.
+
 Raggruppiamo per venditore e calcoliamo la somma delle quantità vendute:
 
 ```python
@@ -293,6 +301,10 @@ print(vendite_per_venditore)  # <2>
 2. Stampa la somma delle quantità vendute per ciascun venditore.
 
 ### Passaggio 5: operazione di pivot
+
+L'operazione di pivot in pandas permette di trasformare i dati rendendoli più comprensibili e facili da analizzare. Una tabella pivot ruota i dati in modo da creare una nuova tabella in cui le righe e le colonne rappresentano diverse dimensioni dei dati. In particolare, è possibile specificare quali valori devono essere visualizzati come righe, quali come colonne, e quale funzione di aggregazione applicare ai dati.
+
+Ad esempio, in un dataset delle vendite, è possibile creare una tabella pivot che mostra le `quantità` vendute per `data_vendita` e `prodotto`. Questo può aiutare a visualizzare come le vendite di ciascun prodotto cambiano nel tempo.
 
 Creiamo una tabella pivot per vedere le vendite per data e prodotto:
 
