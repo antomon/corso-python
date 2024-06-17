@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./terza-parte.html">terza-parte.html</a></li><li class="breadcrumb-item"><a href="./terza-parte-python-esercitazione-uno.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Esercitazione 1: web app con Flask</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./terza-parte.html">Terza parte: Python orientato agli oggetti</a></li><li class="breadcrumb-item"><a href="./terza-parte-python-esercitazione-uno.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Esercitazione 1: web app con Flask</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -330,7 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./terza-parte.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">terza-parte.html</span></a>
+ <span class="menu-text">Terza parte: Python orientato agli oggetti</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -378,7 +378,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#il-problema" id="toc-il-problema" class="nav-link active" data-scroll-target="#il-problema"><span class="header-section-number">16.1</span> Il problema</a></li>
-  <li><a href="#prerequisiti" id="toc-prerequisiti" class="nav-link" data-scroll-target="#prerequisiti"><span class="header-section-number">16.2</span> Prerequisiti</a></li>
+  <li><a href="#flask" id="toc-flask" class="nav-link" data-scroll-target="#flask"><span class="header-section-number">16.2</span> Flask</a>
+  <ul class="collapse">
+  <li><a href="#installazione" id="toc-installazione" class="nav-link" data-scroll-target="#installazione"><span class="header-section-number">16.2.1</span> Installazione</a></li>
+  <li><a href="#creazione-di-una-semplice-web-app" id="toc-creazione-di-una-semplice-web-app" class="nav-link" data-scroll-target="#creazione-di-una-semplice-web-app"><span class="header-section-number">16.2.2</span> Creazione di una semplice web app</a></li>
+  <li><a href="#esecuzione-della-web-app" id="toc-esecuzione-della-web-app" class="nav-link" data-scroll-target="#esecuzione-della-web-app"><span class="header-section-number">16.2.3</span> Esecuzione della web app</a></li>
+  <li><a href="#template" id="toc-template" class="nav-link" data-scroll-target="#template"><span class="header-section-number">16.2.4</span> Template</a></li>
+  <li><a href="#jinja2" id="toc-jinja2" class="nav-link" data-scroll-target="#jinja2"><span class="header-section-number">16.2.5</span> Jinja2</a></li>
+  <li><a href="#metodi-http" id="toc-metodi-http" class="nav-link" data-scroll-target="#metodi-http"><span class="header-section-number">16.2.6</span> Metodi HTTP</a></li>
+  <li><a href="#per-continuare" id="toc-per-continuare" class="nav-link" data-scroll-target="#per-continuare"><span class="header-section-number">16.2.7</span> Per continuare</a></li>
+  </ul></li>
   <li><a href="#passaggi-dellesercitazione" id="toc-passaggi-dellesercitazione" class="nav-link" data-scroll-target="#passaggi-dellesercitazione"><span class="header-section-number">16.3</span> Passaggi dell’Esercitazione</a>
   <ul class="collapse">
   <li><a href="#passaggio-1-creazione-di-unapplicazione-flask" id="toc-passaggio-1-creazione-di-unapplicazione-flask" class="nav-link" data-scroll-target="#passaggio-1-creazione-di-unapplicazione-flask"><span class="header-section-number">16.3.1</span> Passaggio 1: creazione di un’applicazione Flask</a></li>
@@ -392,7 +401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./terza-parte.html">terza-parte.html</a></li><li class="breadcrumb-item"><a href="./terza-parte-python-esercitazione-uno.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Esercitazione 1: web app con Flask</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./terza-parte.html">Terza parte: Python orientato agli oggetti</a></li><li class="breadcrumb-item"><a href="./terza-parte-python-esercitazione-uno.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Esercitazione 1: web app con Flask</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Esercitazione 1: web app con Flask</span></h1>
 </div>
@@ -415,11 +424,248 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="16.1" class="anchored" data-anchor-id="il-problema"><span class="header-section-number">16.1</span> Il problema</h2>
 <p>In questa esercitazione, svilupperemo una semplice web app utilizzando Flask. L’applicazione accetterà in input un indirizzo dall’utente e mostrerà la mappa corrispondente utilizzando Google Maps, consentendo all’utente di scegliere il tipo di visualizzazione della mappa (mappa normale, satellite, terreno).</p>
 </section>
-<section id="prerequisiti" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="prerequisiti"><span class="header-section-number">16.2</span> Prerequisiti</h2>
-<p>Per seguire questa esercitazione, è necessario avere installato Flask e richiedere una chiave API di Google Maps.</p>
-<p>Installazione di Flask:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pip</span> install flask</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="flask" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="flask"><span class="header-section-number">16.2</span> Flask</h2>
+<p>Flask è un micro-framework per il web sviluppato in Python. È semplice da usare e molto flessibile, rendendolo ideale per piccoli progetti web e prototipi. Flask utilizza Jinja2 per il rendering dei template HTML e supporta vari metodi HTTP per la gestione delle richieste web.</p>
+<section id="installazione" class="level3" data-number="16.2.1">
+<h3 data-number="16.2.1" class="anchored" data-anchor-id="installazione"><span class="header-section-number">16.2.1</span> Installazione</h3>
+<p>Per installare Flask, è possibile utilizzare pip:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pip</span> install Flask</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="creazione-di-una-semplice-web-app" class="level3" data-number="16.2.2">
+<h3 data-number="16.2.2" class="anchored" data-anchor-id="creazione-di-una-semplice-web-app"><span class="header-section-number">16.2.2</span> Creazione di una semplice web app</h3>
+<p>Iniziamo creando una semplice applicazione Flask che visualizza <code>Hello, World!</code> quando si accede alla homepage.</p>
+<p>Crea un file chiamato <code>app.py</code> e aggiungi il seguente codice:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="at">@app.route</span>(<span class="st">'/'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="kw">def</span> hello_world():</span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="cf">return</span> <span class="st">'Hello, World!'</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb2-10"><a href="#cb2-10"></a>  app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>Importiamo la classe <code>Flask</code> dal modulo <code>flask</code>.</li>
+<li>Creiamo un’istanza di Flask.</li>
+<li>Utilizziamo il decoratore <code>@app.route('/')</code> per definire la route per la homepage alla posizione <code>/</code>.</li>
+<li>Definiamo la funzione <code>hello_world</code> che restituisce il testo <code>Hello, World!</code>.</li>
+<li>Avviamo l’applicazione con <code>app.run(debug=True)</code>, abilitando la modalità di debug per lo sviluppo.</li>
+</ol>
+</section>
+<section id="esecuzione-della-web-app" class="level3" data-number="16.2.3">
+<h3 data-number="16.2.3" class="anchored" data-anchor-id="esecuzione-della-web-app"><span class="header-section-number">16.2.3</span> Esecuzione della web app</h3>
+<p>Per eseguire l’applicazione, utilizza il comando:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">python</span> app.py</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Naviga verso <code>http://127.0.0.1:5000/</code> nel browser per vedere il risultato.</p>
+</section>
+<section id="template" class="level3" data-number="16.2.4">
+<h3 data-number="16.2.4" class="anchored" data-anchor-id="template"><span class="header-section-number">16.2.4</span> Template</h3>
+<p>Flask utilizza Jinja2 come motore di template. I template permettono di separare la logica dell’applicazione dalla presentazione. Possiamo creare file HTML che contengono variabili e istruzioni di controllo che vengono sostituite con i dati reali al momento del rendering.</p>
+<p>Per utilizzare i template, crea una cartella chiamata <code>templates</code> nella directory del tuo progetto. All’interno di <code>templates</code>, crea un file chiamato <code>index.html</code>:</p>
+<div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode numberSource html code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode html"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-4" class="code-annotation-target"><a href="#annotated-cell-4-4"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Home<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-4-6"><a href="#annotated-cell-4-6"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-4-7" class="code-annotation-target"><a href="#annotated-cell-4-7"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>{{ title }}<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-4-8" class="code-annotation-target"><a href="#annotated-cell-4-8"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>{{ message }}<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="4" data-code-annotation="1">Titolo della pagina: Il titolo della pagina HTML, visualizzato nella barra del titolo del browser.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="7" data-code-annotation="2">Variabile Jinja2 per il titolo: Variabile Jinja2 <code>title</code> che sarà sostituita con il valore passato dal codice Python.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="8" data-code-annotation="3">Variabile Jinja2 per il messaggio: Variabile Jinja2 <code>message</code> che sarà sostituita con il valore passato dal codice Python.</span>
+</dd>
+</dl>
+<p>Aggiorniamo <code>app.py</code> per utilizzare il template <code>index.html</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, render_template</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="at">@app.route</span>(<span class="st">'/'</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="kw">def</span> home():</span>
+<span id="cb4-7"><a href="#cb4-7"></a>  <span class="cf">return</span> render_template(<span class="st">'index.html'</span>, </span>
+<span id="cb4-8"><a href="#cb4-8"></a>                          title<span class="op">=</span><span class="st">'Hello, World!'</span>, </span>
+<span id="cb4-9"><a href="#cb4-9"></a>                          message<span class="op">=</span><span class="st">'Welcome to my Flask app'</span>)</span>
+<span id="cb4-10"><a href="#cb4-10"></a></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb4-12"><a href="#cb4-12"></a>  app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>Importiamo la funzione <code>render_template</code> da Flask.</li>
+<li>Utilizziamo <code>render_template</code> nella funzione <code>home</code> per renderizzare il template <code>index.html</code> e passare i valori per <code>title</code> e <code>message</code>.</li>
+</ol>
+</section>
+<section id="jinja2" class="level3" data-number="16.2.5">
+<h3 data-number="16.2.5" class="anchored" data-anchor-id="jinja2"><span class="header-section-number">16.2.5</span> Jinja2</h3>
+<p>Jinja2 è il motore di template utilizzato da Flask. Permette di inserire variabili, eseguire cicli e condizioni, e molto altro nei file HTML.</p>
+<p>Sintassi di base di Jinja2:</p>
+<ul>
+<li><p>Variabili <code>{ variabile }</code>.</p></li>
+<li><p>Condizioni <code>{% if condizione %} ... {% endif %}</code>.</p></li>
+<li><p>Cicli <code>{% for item in lista %} ... {% endfor %}</code>.</p></li>
+</ul>
+<p>Esempio con ciclo e condizione:</p>
+<p>Aggiorniamo <code>index.html</code> per includere un ciclo e una condizione:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Home<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>{{ title }}<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>{{ message }}<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>  <span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>  {% for item in items %}</span>
+<span id="cb5-11"><a href="#cb5-11"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>{% if item == 'Special' %}<span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>{{ item }}<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span>{% else %}{{ item }}{% endif %}<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a>  {% endfor %}</span>
+<span id="cb5-13"><a href="#cb5-13"></a>  <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Aggiorniamo <code>app.py</code> per passare una lista di elementi al template:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, render_template</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="at">@app.route</span>(<span class="st">'/'</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="kw">def</span> home():</span>
+<span id="cb6-7"><a href="#cb6-7"></a>  items <span class="op">=</span> [<span class="st">'Item 1'</span>, <span class="st">'Item 2'</span>, <span class="st">'Special'</span>, <span class="st">'Item 3'</span>]</span>
+<span id="cb6-8"><a href="#cb6-8"></a></span>
+<span id="cb6-9"><a href="#cb6-9"></a>  <span class="cf">return</span> render_template(<span class="st">'index.html'</span>, </span>
+<span id="cb6-10"><a href="#cb6-10"></a>                          title<span class="op">=</span><span class="st">'Hello, World!'</span>, </span>
+<span id="cb6-11"><a href="#cb6-11"></a>                          message<span class="op">=</span><span class="st">'Welcome to my Flask app'</span>, </span>
+<span id="cb6-12"><a href="#cb6-12"></a>                          items<span class="op">=</span>items)</span>
+<span id="cb6-13"><a href="#cb6-13"></a></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb6-15"><a href="#cb6-15"></a>  app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="metodi-http" class="level3" data-number="16.2.6">
+<h3 data-number="16.2.6" class="anchored" data-anchor-id="metodi-http"><span class="header-section-number">16.2.6</span> Metodi HTTP</h3>
+<p>Flask supporta vari metodi HTTP, inclusi GET e POST, che sono i più comunemente utilizzati. I metodi HTTP sono modi standard per inviare e ricevere dati tra il client (come il browser web) e il server. In Flask, dobbiamo considerare questi metodi perché determinano come i dati vengono inviati e ricevuti dall’applicazione. Ad esempio, il metodo GET viene utilizzato per richiedere dati dal server (come caricare una pagina web), mentre il metodo POST viene utilizzato per inviare dati al server (come inviare un modulo).</p>
+<p>Creiamo un semplice modulo di contatto che utilizza sia GET che POST.</p>
+<p>Form HTML (templates/contact.html):</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Contattaci<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Contattaci<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> method</span><span class="op">=</span><span class="st">"post"</span><span class="dt">&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"nome"</span><span class="dt">&gt;</span>Nome:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"text"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"nome"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"nome"</span><span class="ot"> required</span><span class="dt">&gt;</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"messaggio"</span><span class="dt">&gt;</span>Messaggio:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a>    <span class="dt">&lt;</span><span class="kw">textarea</span><span class="ot"> id</span><span class="op">=</span><span class="st">"messaggio"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"messaggio"</span><span class="ot"> required</span><span class="dt">&gt;&lt;/</span><span class="kw">textarea</span><span class="dt">&gt;</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"submit"</span><span class="ot"> value</span><span class="op">=</span><span class="st">"Invia"</span><span class="dt">&gt;</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a>  <span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Aggiornamento di <code>app.py</code>:</p>
+<div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, render_template, request</span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="annotated-cell-9-4"><a href="#annotated-cell-9-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-9-5" class="code-annotation-target"><a href="#annotated-cell-9-5"></a><span class="at">@app.route</span>(<span class="st">'/'</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-9-6" class="code-annotation-target"><a href="#annotated-cell-9-6"></a><span class="kw">def</span> home():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-9-7" class="code-annotation-target"><a href="#annotated-cell-9-7"></a>    items <span class="op">=</span> [<span class="st">'Item 1'</span>, <span class="st">'Item 2'</span>, <span class="st">'Special'</span>, <span class="st">'Item 3'</span>]</span>
+<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8"></a>    <span class="cf">return</span> render_template(<span class="st">'index.html'</span>, </span>
+<span id="annotated-cell-9-9"><a href="#annotated-cell-9-9"></a>                           title<span class="op">=</span><span class="st">'Hello, World!'</span>, </span>
+<span id="annotated-cell-9-10"><a href="#annotated-cell-9-10"></a>                           message<span class="op">=</span><span class="st">'Welcome to my Flask app'</span>, </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-9-11" class="code-annotation-target"><a href="#annotated-cell-9-11"></a>                           items<span class="op">=</span>items)</span>
+<span id="annotated-cell-9-12"><a href="#annotated-cell-9-12"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-9-13" class="code-annotation-target"><a href="#annotated-cell-9-13"></a><span class="at">@app.route</span>(<span class="st">'/contact'</span>, methods<span class="op">=</span>[<span class="st">'GET'</span>, <span class="st">'POST'</span>])</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-9-14" class="code-annotation-target"><a href="#annotated-cell-9-14"></a><span class="kw">def</span> contact():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-9-15" class="code-annotation-target"><a href="#annotated-cell-9-15"></a>    <span class="cf">if</span> request.method <span class="op">==</span> <span class="st">'POST'</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-9-16" class="code-annotation-target"><a href="#annotated-cell-9-16"></a>        nome <span class="op">=</span> request.form[<span class="st">'nome'</span>]</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="11" onclick="event.preventDefault();">11</a><span id="annotated-cell-9-17" class="code-annotation-target"><a href="#annotated-cell-9-17"></a>        messaggio <span class="op">=</span> request.form[<span class="st">'messaggio'</span>]</span>
+<span id="annotated-cell-9-18"><a href="#annotated-cell-9-18"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="12" onclick="event.preventDefault();">12</a><span id="annotated-cell-9-19" class="code-annotation-target"><a href="#annotated-cell-9-19"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="13" onclick="event.preventDefault();">13</a><span id="annotated-cell-9-20" class="code-annotation-target"><a href="#annotated-cell-9-20"></a>        <span class="cf">return</span> <span class="ss">f'Thank you </span><span class="sc">{</span>nome<span class="sc">}</span><span class="ss">, your message has been received.'</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="14" onclick="event.preventDefault();">14</a><span id="annotated-cell-9-21" class="code-annotation-target"><a href="#annotated-cell-9-21"></a>    <span class="cf">return</span> render_template(<span class="st">'contact.html'</span>)</span>
+<span id="annotated-cell-9-22"><a href="#annotated-cell-9-22"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="15" onclick="event.preventDefault();">15</a><span id="annotated-cell-9-23" class="code-annotation-target"><a href="#annotated-cell-9-23"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="16" onclick="event.preventDefault();">16</a><span id="annotated-cell-9-24" class="code-annotation-target"><a href="#annotated-cell-9-24"></a>    app.run(debug<span class="op">=</span><span class="va">True</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="1" data-code-annotation="1">Importiamo <code>Flask</code>, <code>render_template</code> e <code>request</code> da Flask per gestire i dati dei moduli.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="3" data-code-annotation="2">Creiamo un’applicazione Flask.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="5" data-code-annotation="3">Definiamo la route per la homepage con il decoratore <code>@app.route('/')</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="6" data-code-annotation="4">Definiamo la funzione <code>home</code> che viene chiamata quando la homepage viene richiesta.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="7" data-code-annotation="5">Creiamo una lista di oggetti da passare al template.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="11" data-code-annotation="6">Utilizziamo <code>render_template</code> per rendere il template <code>index.html</code> con variabili <code>title</code>, <code>message</code> e <code>items</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="13" data-code-annotation="7">Definiamo la route <code>/contact</code> che gestisce sia le richieste GET che POST.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="14" data-code-annotation="8">Definiamo la funzione <code>contact</code> che gestisce la logica per la route <code>/contact</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="15" data-code-annotation="9">Se il metodo della richiesta è POST, elaboriamo i dati del modulo.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="10">10</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="16" data-code-annotation="10">Otteniamo il valore del campo <code>nome</code> dal modulo.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="11">11</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="17" data-code-annotation="11">Otteniamo il valore del campo <code>messaggio</code> dal modulo.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="12">12</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="19" data-code-annotation="12">Qui, è possibile aggiungere codice per elaborare i dati del modulo, come inviarli via email.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="13">13</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="20" data-code-annotation="13">Restituiamo un messaggio di ringraziamento con il nome dell’utente.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="14">14</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="21" data-code-annotation="14">Se il metodo è GET, visualizziamo il modulo di contatto.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="15">15</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="23" data-code-annotation="15">Eseguiamo l’applicazione Flask in modalità di debug.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="16">16</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="24" data-code-annotation="16">Avviamo il server Flask.</span>
+</dd>
+</dl>
+</section>
+<section id="per-continuare" class="level3" data-number="16.2.7">
+<h3 data-number="16.2.7" class="anchored" data-anchor-id="per-continuare"><span class="header-section-number">16.2.7</span> Per continuare</h3>
+<p>Questa introduzione copre le basi di Flask, inclusi template, Jinja2 e metodi HTTP. Flask è un framework potente e flessibile che rende lo sviluppo web con Python semplice ed efficace. Per ulteriori approfondimenti, è possibile consultare la <a href="https://flask.palletsprojects.com/">documentazione ufficiale di Flask</a>.</p>
+</section>
 </section>
 <section id="passaggi-dellesercitazione" class="level2" data-number="16.3">
 <h2 data-number="16.3" class="anchored" data-anchor-id="passaggi-dellesercitazione"><span class="header-section-number">16.3</span> Passaggi dell’Esercitazione</h2>
@@ -431,168 +677,176 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <section id="passaggio-1-creazione-di-unapplicazione-flask" class="level3" data-number="16.3.1">
 <h3 data-number="16.3.1" class="anchored" data-anchor-id="passaggio-1-creazione-di-unapplicazione-flask"><span class="header-section-number">16.3.1</span> Passaggio 1: creazione di un’applicazione Flask</h3>
-<p>Il primo passo è creare una semplice applicazione Flask. Creiamo un file chiamato <code>app.py</code>.</p>
-<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, render_template, request</span>
-<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
-<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5"></a><span class="at">@app.route</span>(<span class="st">'/'</span>, methods<span class="op">=</span>[<span class="st">'GET'</span>, <span class="st">'POST'</span>])</span>
-<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6"></a><span class="kw">def</span> home():</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7"></a>  <span class="cf">if</span> request.method <span class="op">==</span> <span class="st">'POST'</span>:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-2-8" class="code-annotation-target"><a href="#annotated-cell-2-8"></a>    indirizzo <span class="op">=</span> request.form[<span class="st">'indirizzo'</span>]</span>
-<span id="annotated-cell-2-9"><a href="#annotated-cell-2-9"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-2-10" class="code-annotation-target"><a href="#annotated-cell-2-10"></a>    visualizzazione <span class="op">=</span> request.form[<span class="st">'visualizzazione'</span>]</span>
-<span id="annotated-cell-2-11"><a href="#annotated-cell-2-11"></a></span>
-<span id="annotated-cell-2-12"><a href="#annotated-cell-2-12"></a>    <span class="cf">return</span> render_template(<span class="st">'mappa.html'</span>, </span>
-<span id="annotated-cell-2-13"><a href="#annotated-cell-2-13"></a>                           indirizzo<span class="op">=</span>indirizzo, </span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-2-14" class="code-annotation-target"><a href="#annotated-cell-2-14"></a>                           visualizzazione<span class="op">=</span>visualizzazione)</span>
-<span id="annotated-cell-2-15"><a href="#annotated-cell-2-15"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-2-16" class="code-annotation-target"><a href="#annotated-cell-2-16"></a>  <span class="cf">return</span> render_template(<span class="st">'index.html'</span>)</span>
-<span id="annotated-cell-2-17"><a href="#annotated-cell-2-17"></a></span>
-<span id="annotated-cell-2-18"><a href="#annotated-cell-2-18"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-2-19" class="code-annotation-target"><a href="#annotated-cell-2-19"></a>  app.run(debug<span class="op">=</span><span class="va">True</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Il primo passo è creare una semplice applicazione Flask. Creiamo un file chiamato <code>app.py</code> che analizza due template cioè due file HTML delle variabili i cui valori saranno definiti al tempo di esecuzione.</p>
+<p>La struttura dei file su disco prevede una cartella radice dove posizioniamo <code>app.py</code>, <code>VisualizzaMappa</code> e la sottocartella <code>templates</code> dove andranno i template delle pagine HTML:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">VisualizzaMappa/</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="ex">├──</span> app.py</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="ex">├──</span> templates/</span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="ex">│</span>   ├── index.html</span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="ex">│</span>   └── map.html</span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="ex">└──</span> static/</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>app.py</code>:</p>
+<div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, render_template, request</span>
+<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-11-3" class="code-annotation-target"><a href="#annotated-cell-11-3"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="annotated-cell-11-4"><a href="#annotated-cell-11-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-11-5" class="code-annotation-target"><a href="#annotated-cell-11-5"></a><span class="at">@app.route</span>(<span class="st">'/'</span>, methods<span class="op">=</span>[<span class="st">'GET'</span>, <span class="st">'POST'</span>])</span>
+<span id="annotated-cell-11-6"><a href="#annotated-cell-11-6"></a><span class="kw">def</span> home():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-11-7" class="code-annotation-target"><a href="#annotated-cell-11-7"></a>  <span class="cf">if</span> request.method <span class="op">==</span> <span class="st">'POST'</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-11-8" class="code-annotation-target"><a href="#annotated-cell-11-8"></a>    indirizzo <span class="op">=</span> request.form[<span class="st">'indirizzo'</span>]</span>
+<span id="annotated-cell-11-9"><a href="#annotated-cell-11-9"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-11-10" class="code-annotation-target"><a href="#annotated-cell-11-10"></a>    visualizzazione <span class="op">=</span> request.form[<span class="st">'visualizzazione'</span>]</span>
+<span id="annotated-cell-11-11"><a href="#annotated-cell-11-11"></a></span>
+<span id="annotated-cell-11-12"><a href="#annotated-cell-11-12"></a>    <span class="cf">return</span> render_template(<span class="st">'mappa.html'</span>, </span>
+<span id="annotated-cell-11-13"><a href="#annotated-cell-11-13"></a>                           indirizzo<span class="op">=</span>indirizzo, </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-11-14" class="code-annotation-target"><a href="#annotated-cell-11-14"></a>                           visualizzazione<span class="op">=</span>visualizzazione)</span>
+<span id="annotated-cell-11-15"><a href="#annotated-cell-11-15"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-11-16" class="code-annotation-target"><a href="#annotated-cell-11-16"></a>  <span class="cf">return</span> render_template(<span class="st">'index.html'</span>)</span>
+<span id="annotated-cell-11-17"><a href="#annotated-cell-11-17"></a></span>
+<span id="annotated-cell-11-18"><a href="#annotated-cell-11-18"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-11-19" class="code-annotation-target"><a href="#annotated-cell-11-19"></a>  app.run(debug<span class="op">=</span><span class="va">True</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Importa Flask e i moduli necessari per gestire le richieste e i template.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1">Importa Flask e i moduli necessari per gestire le richieste e i template.</span>
 </dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="2">Crea l’istanza dell’applicazione Flask.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="3" data-code-annotation="2">Crea l’istanza dell’applicazione Flask.</span>
 </dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="3">Definisce una route per la homepage, che accetta sia richieste <code>GET</code> che <code>POST</code>.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="5" data-code-annotation="3">Definisce una route per la homepage, che accetta sia richieste <code>GET</code> che <code>POST</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="7" data-code-annotation="4">Controlla se la richiesta è di tipo <code>POST</code>.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="7" data-code-annotation="4">Controlla se la richiesta è di tipo <code>POST</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="8" data-code-annotation="5">Ottiene l’indirizzo inserito dall’utente nel modulo HTML.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="8" data-code-annotation="5">Ottiene l’indirizzo inserito dall’utente nel modulo HTML.</span>
 </dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="10" data-code-annotation="6">Ottiene il tipo di visualizzazione selezionato dall’utente nel modulo HTML.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="10" data-code-annotation="6">Ottiene il tipo di visualizzazione selezionato dall’utente nel modulo HTML.</span>
 </dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="14" data-code-annotation="7">Renderizza il template <code>mappa.html</code>, passando l’indirizzo e il tipo di visualizzazione come variabili.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="14" data-code-annotation="7">Renderizza il template <code>mappa.html</code>, passando l’indirizzo e il tipo di visualizzazione come variabili.</span>
 </dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="8">8</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="16" data-code-annotation="8">Renderizza il template <code>index.html</code> per le richieste <code>GET</code>.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="16" data-code-annotation="8">Renderizza il template <code>index.html</code> per le richieste <code>GET</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="9">9</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="9">9</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="19" data-code-annotation="9">Avvia l’applicazione Flask in modalità debug.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="19" data-code-annotation="9">Avvia l’applicazione Flask in modalità debug.</span>
 </dd>
 </dl>
 </section>
 <section id="passaggio-2-implementazione-della-pagina-web-per-inserimento-indirizzo" class="level3" data-number="16.3.2">
 <h3 data-number="16.3.2" class="anchored" data-anchor-id="passaggio-2-implementazione-della-pagina-web-per-inserimento-indirizzo"><span class="header-section-number">16.3.2</span> Passaggio 2: implementazione della pagina web per inserimento indirizzo</h3>
 <p>Creiamo una pagina web che permetta agli utenti di inserire un indirizzo e selezionare il tipo di visualizzazione della mappa. Creiamo un file chiamato <code>templates/index.html</code>.</p>
-<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource html code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode html"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Inserisci Indirizzo<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Inserisci un indirizzo<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8"></a>  <span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> method</span><span class="op">=</span><span class="st">"post"</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-9"><a href="#annotated-cell-3-9"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"indirizzo"</span><span class="dt">&gt;</span>Indirizzo:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-10" class="code-annotation-target"><a href="#annotated-cell-3-10"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"text"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"indirizzo"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"indirizzo"</span><span class="ot"> required</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"visualizzazione"</span><span class="dt">&gt;</span>Visualizzazione:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-12" class="code-annotation-target"><a href="#annotated-cell-3-12"></a>    <span class="dt">&lt;</span><span class="kw">select</span><span class="ot"> id</span><span class="op">=</span><span class="st">"visualizzazione"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"visualizzazione"</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13"></a>      <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">"roadmap"</span><span class="dt">&gt;</span>Mappa<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-14"><a href="#annotated-cell-3-14"></a>      <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">"satellite"</span><span class="dt">&gt;</span>Satellite<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-15"><a href="#annotated-cell-3-15"></a>      <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">"terrain"</span><span class="dt">&gt;</span>Terreno<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16"></a>    <span class="dt">&lt;/</span><span class="kw">select</span><span class="dt">&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-3-17" class="code-annotation-target"><a href="#annotated-cell-3-17"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"submit"</span><span class="ot"> value</span><span class="op">=</span><span class="st">"Mostra Mappa"</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18"></a>  <span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-19"><a href="#annotated-cell-3-19"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-3-20"><a href="#annotated-cell-3-20"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-12"><pre class="sourceCode numberSource html code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode html"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-2"><a href="#annotated-cell-12-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-3"><a href="#annotated-cell-12-3"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-4"><a href="#annotated-cell-12-4"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Inserisci Indirizzo<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-5"><a href="#annotated-cell-12-5"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-6"><a href="#annotated-cell-12-6"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-7"><a href="#annotated-cell-12-7"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Inserisci un indirizzo<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-8"><a href="#annotated-cell-12-8"></a>  <span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> method</span><span class="op">=</span><span class="st">"post"</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-9"><a href="#annotated-cell-12-9"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"indirizzo"</span><span class="dt">&gt;</span>Indirizzo:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-12-10" class="code-annotation-target"><a href="#annotated-cell-12-10"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"text"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"indirizzo"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"indirizzo"</span><span class="ot"> required</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-11"><a href="#annotated-cell-12-11"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"visualizzazione"</span><span class="dt">&gt;</span>Visualizzazione:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-12-12" class="code-annotation-target"><a href="#annotated-cell-12-12"></a>    <span class="dt">&lt;</span><span class="kw">select</span><span class="ot"> id</span><span class="op">=</span><span class="st">"visualizzazione"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"visualizzazione"</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-13"><a href="#annotated-cell-12-13"></a>      <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">"roadmap"</span><span class="dt">&gt;</span>Mappa<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-14"><a href="#annotated-cell-12-14"></a>      <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">"satellite"</span><span class="dt">&gt;</span>Satellite<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-15"><a href="#annotated-cell-12-15"></a>      <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">"terrain"</span><span class="dt">&gt;</span>Terreno<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-16"><a href="#annotated-cell-12-16"></a>    <span class="dt">&lt;/</span><span class="kw">select</span><span class="dt">&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-12-17" class="code-annotation-target"><a href="#annotated-cell-12-17"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"submit"</span><span class="ot"> value</span><span class="op">=</span><span class="st">"Mostra Mappa"</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-18"><a href="#annotated-cell-12-18"></a>  <span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-19"><a href="#annotated-cell-12-19"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-12-20"><a href="#annotated-cell-12-20"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="10" data-code-annotation="1">Campo di input per l’indirizzo.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="10" data-code-annotation="1">Campo di input per l’indirizzo.</span>
 </dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="12" data-code-annotation="2">Dropdown per selezionare il tipo di visualizzazione della mappa.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="12" data-code-annotation="2">Dropdown per selezionare il tipo di visualizzazione della mappa.</span>
 </dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="17" data-code-annotation="3">Pulsante di invio per il modulo.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="17" data-code-annotation="3">Pulsante di invio per il modulo.</span>
 </dd>
 </dl>
 </section>
 <section id="passaggio-3-integrazione-di-google-maps" class="level3" data-number="16.3.3">
 <h3 data-number="16.3.3" class="anchored" data-anchor-id="passaggio-3-integrazione-di-google-maps"><span class="header-section-number">16.3.3</span> Passaggio 3: integrazione di Google Maps</h3>
 <p>Creiamo un template per visualizzare la mappa di Google. Creiamo un file chiamato <code>templates/mappa.html</code>.</p>
-<div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode numberSource html code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode html"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
-<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Mappa<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-5" class="code-annotation-target"><a href="#annotated-cell-4-5"></a>  <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-4-6"><a href="#annotated-cell-4-6"></a>  <span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7"></a>    <span class="kw">function</span> <span class="fu">initMap</span>() {</span>
-<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8"></a>      <span class="kw">var</span> geocoder <span class="op">=</span> <span class="kw">new</span> google<span class="op">.</span><span class="at">maps</span><span class="op">.</span><span class="fu">Geocoder</span>()<span class="op">;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-4-9" class="code-annotation-target"><a href="#annotated-cell-4-9"></a>      <span class="kw">var</span> indirizzo <span class="op">=</span> <span class="st">"{{ indirizzo }}"</span><span class="op">;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-4-10" class="code-annotation-target"><a href="#annotated-cell-4-10"></a>      <span class="kw">var</span> visualizzazione <span class="op">=</span> <span class="st">"{{ visualizzazione }}"</span><span class="op">;</span></span>
-<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11"></a>      geocoder<span class="op">.</span><span class="fu">geocode</span>({<span class="st">'address'</span><span class="op">:</span> indirizzo}<span class="op">,</span> <span class="kw">function</span>(results<span class="op">,</span> status) {</span>
-<span id="annotated-cell-4-12"><a href="#annotated-cell-4-12"></a>        <span class="cf">if</span> (status <span class="op">===</span> <span class="st">'OK'</span>) {</span>
-<span id="annotated-cell-4-13"><a href="#annotated-cell-4-13"></a>          <span class="kw">var</span> mapOptions <span class="op">=</span> {</span>
-<span id="annotated-cell-4-14"><a href="#annotated-cell-4-14"></a>            <span class="dt">zoom</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span></span>
-<span id="annotated-cell-4-15"><a href="#annotated-cell-4-15"></a>            <span class="dt">center</span><span class="op">:</span> results[<span class="dv">0</span>]<span class="op">.</span><span class="at">geometry</span><span class="op">.</span><span class="at">location</span><span class="op">,</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-4-16" class="code-annotation-target"><a href="#annotated-cell-4-16"></a>            <span class="dt">mapTypeId</span><span class="op">:</span> visualizzazione</span>
-<span id="annotated-cell-4-17"><a href="#annotated-cell-4-17"></a>          }<span class="op">;</span></span>
-<span id="annotated-cell-4-18"><a href="#annotated-cell-4-18"></a>          <span class="kw">var</span> map <span class="op">=</span> <span class="kw">new</span> google<span class="op">.</span><span class="at">maps</span><span class="op">.</span><span class="fu">Map</span>(<span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'map'</span>)<span class="op">,</span> mapOptions)<span class="op">;</span></span>
-<span id="annotated-cell-4-19"><a href="#annotated-cell-4-19"></a>        } <span class="cf">else</span> {</span>
-<span id="annotated-cell-4-20"><a href="#annotated-cell-4-20"></a>          <span class="fu">alert</span>(<span class="st">'Geocode non riuscito per il seguente motivo: '</span> <span class="op">+</span> status)<span class="op">;</span></span>
-<span id="annotated-cell-4-21"><a href="#annotated-cell-4-21"></a>        }</span>
-<span id="annotated-cell-4-22"><a href="#annotated-cell-4-22"></a>      })<span class="op">;</span></span>
-<span id="annotated-cell-4-23"><a href="#annotated-cell-4-23"></a>    }</span>
-<span id="annotated-cell-4-24"><a href="#annotated-cell-4-24"></a>  <span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-4-25"><a href="#annotated-cell-4-25"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-4-26" class="code-annotation-target"><a href="#annotated-cell-4-26"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="ot"> onload</span><span class="op">=</span><span class="st">"initMap()"</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-4-27"><a href="#annotated-cell-4-27"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Mappa di {{ indirizzo }}<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-4-28" class="code-annotation-target"><a href="#annotated-cell-4-28"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">"map"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"height: 500px; width: 100%;"</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-4-29"><a href="#annotated-cell-4-29"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="annotated-cell-4-30"><a href="#annotated-cell-4-30"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-13"><pre class="sourceCode numberSource html code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode html"><span id="annotated-cell-13-1"><a href="#annotated-cell-13-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="annotated-cell-13-2"><a href="#annotated-cell-13-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-13-3"><a href="#annotated-cell-13-3"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-13-4"><a href="#annotated-cell-13-4"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Mappa<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-5" class="code-annotation-target"><a href="#annotated-cell-13-5"></a>  <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-13-6"><a href="#annotated-cell-13-6"></a>  <span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-13-7"><a href="#annotated-cell-13-7"></a>    <span class="kw">function</span> <span class="fu">initMap</span>() {</span>
+<span id="annotated-cell-13-8"><a href="#annotated-cell-13-8"></a>      <span class="kw">var</span> geocoder <span class="op">=</span> <span class="kw">new</span> google<span class="op">.</span><span class="at">maps</span><span class="op">.</span><span class="fu">Geocoder</span>()<span class="op">;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-13-9" class="code-annotation-target"><a href="#annotated-cell-13-9"></a>      <span class="kw">var</span> indirizzo <span class="op">=</span> <span class="st">"{{ indirizzo }}"</span><span class="op">;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-13-10" class="code-annotation-target"><a href="#annotated-cell-13-10"></a>      <span class="kw">var</span> visualizzazione <span class="op">=</span> <span class="st">"{{ visualizzazione }}"</span><span class="op">;</span></span>
+<span id="annotated-cell-13-11"><a href="#annotated-cell-13-11"></a>      geocoder<span class="op">.</span><span class="fu">geocode</span>({<span class="st">'address'</span><span class="op">:</span> indirizzo}<span class="op">,</span> <span class="kw">function</span>(results<span class="op">,</span> status) {</span>
+<span id="annotated-cell-13-12"><a href="#annotated-cell-13-12"></a>        <span class="cf">if</span> (status <span class="op">===</span> <span class="st">'OK'</span>) {</span>
+<span id="annotated-cell-13-13"><a href="#annotated-cell-13-13"></a>          <span class="kw">var</span> mapOptions <span class="op">=</span> {</span>
+<span id="annotated-cell-13-14"><a href="#annotated-cell-13-14"></a>            <span class="dt">zoom</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span></span>
+<span id="annotated-cell-13-15"><a href="#annotated-cell-13-15"></a>            <span class="dt">center</span><span class="op">:</span> results[<span class="dv">0</span>]<span class="op">.</span><span class="at">geometry</span><span class="op">.</span><span class="at">location</span><span class="op">,</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-13-16" class="code-annotation-target"><a href="#annotated-cell-13-16"></a>            <span class="dt">mapTypeId</span><span class="op">:</span> visualizzazione</span>
+<span id="annotated-cell-13-17"><a href="#annotated-cell-13-17"></a>          }<span class="op">;</span></span>
+<span id="annotated-cell-13-18"><a href="#annotated-cell-13-18"></a>          <span class="kw">var</span> map <span class="op">=</span> <span class="kw">new</span> google<span class="op">.</span><span class="at">maps</span><span class="op">.</span><span class="fu">Map</span>(<span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'map'</span>)<span class="op">,</span> mapOptions)<span class="op">;</span></span>
+<span id="annotated-cell-13-19"><a href="#annotated-cell-13-19"></a>        } <span class="cf">else</span> {</span>
+<span id="annotated-cell-13-20"><a href="#annotated-cell-13-20"></a>          <span class="fu">alert</span>(<span class="st">'Geocode non riuscito per il seguente motivo: '</span> <span class="op">+</span> status)<span class="op">;</span></span>
+<span id="annotated-cell-13-21"><a href="#annotated-cell-13-21"></a>        }</span>
+<span id="annotated-cell-13-22"><a href="#annotated-cell-13-22"></a>      })<span class="op">;</span></span>
+<span id="annotated-cell-13-23"><a href="#annotated-cell-13-23"></a>    }</span>
+<span id="annotated-cell-13-24"><a href="#annotated-cell-13-24"></a>  <span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-13-25"><a href="#annotated-cell-13-25"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-13-26" class="code-annotation-target"><a href="#annotated-cell-13-26"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="ot"> onload</span><span class="op">=</span><span class="st">"initMap()"</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-13-27"><a href="#annotated-cell-13-27"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Mappa di {{ indirizzo }}<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-13-28" class="code-annotation-target"><a href="#annotated-cell-13-28"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">"map"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"height: 500px; width: 100%;"</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-13-29"><a href="#annotated-cell-13-29"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="annotated-cell-13-30"><a href="#annotated-cell-13-30"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="5" data-code-annotation="1">Carica l’API di Google Maps con la chiave API.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="5" data-code-annotation="1">Carica l’API di Google Maps con la chiave API.</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="9" data-code-annotation="2">Inserisce l’indirizzo passato dal backend.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="9" data-code-annotation="2">Inserisce l’indirizzo passato dal backend.</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="10" data-code-annotation="3">Inserisce il tipo di visualizzazione passato dal backend.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="10" data-code-annotation="3">Inserisce il tipo di visualizzazione passato dal backend.</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="16" data-code-annotation="4">Imposta il tipo di visualizzazione della mappa.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="16" data-code-annotation="4">Imposta il tipo di visualizzazione della mappa.</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="26" data-code-annotation="5">Chiama la funzione <code>initMap</code> quando la pagina è caricata.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="26" data-code-annotation="5">Chiama la funzione <code>initMap</code> quando la pagina è caricata.</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="28" data-code-annotation="6">Div per visualizzare la mappa.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="28" data-code-annotation="6">Div per visualizzare la mappa.</span>
 </dd>
 </dl>
 </section>
 <section id="passaggio-4-test-dellapplicazione" class="level3" data-number="16.3.4">
 <h3 data-number="16.3.4" class="anchored" data-anchor-id="passaggio-4-test-dellapplicazione"><span class="header-section-number">16.3.4</span> Passaggio 4: test dell’applicazione</h3>
 <p>Eseguiamo l’applicazione Flask:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">python</span> app.py</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Apriamo il browser e navighiamo all’indirizzo <code>http://127.0.0.1:5000/</code>. Inseriamo un indirizzo, selezioniamo il tipo di visualizzazione e clicchiamo su “Mostra Mappa”. La mappa di Google dovrebbe essere visualizzata con l’indirizzo inserito e il tipo di visualizzazione selezionato.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">python</span> app.py</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Apriamo il browser e navighiamo all’indirizzo <code>http://127.0.0.1:5000/</code>. Inseriamo un indirizzo, selezioniamo il tipo di visualizzazione e clicchiamo su <code>Mostra Mappa</code>. La mappa di Google dovrebbe essere visualizzata con l’indirizzo inserito e il tipo di visualizzazione selezionato.</p>
 
 
 </section>

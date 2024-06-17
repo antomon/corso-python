@@ -1,4 +1,3 @@
-
 ---
 reference-location: margin
 citation-location: margin
@@ -11,15 +10,222 @@ tbl-cap-location: margin
 
 In questa esercitazione, svilupperemo una semplice web app utilizzando Flask. L'applicazione accetterà in input un indirizzo dall'utente e mostrerà la mappa corrispondente utilizzando Google Maps, consentendo all'utente di scegliere il tipo di visualizzazione della mappa (mappa normale, satellite, terreno).
 
-## Prerequisiti
+## Flask
 
-Per seguire questa esercitazione, è necessario avere installato Flask e richiedere una chiave API di Google Maps.
+Flask è un micro-framework per il web sviluppato in Python. È semplice da usare e molto flessibile, rendendolo ideale per piccoli progetti web e prototipi. Flask utilizza Jinja2 per il rendering dei template HTML e supporta vari metodi HTTP per la gestione delle richieste web.
 
-Installazione di Flask:
+### Installazione
+
+Per installare Flask, è possibile utilizzare pip:
 
 ```bash
-pip install flask
+pip install Flask
 ```
+
+### Creazione di una semplice web app
+
+Iniziamo creando una semplice applicazione Flask che visualizza `Hello, World!` quando si accede alla homepage.
+
+Crea un file chiamato `app.py` e aggiungi il seguente codice:
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+  return 'Hello, World!'
+
+if __name__ == '__main__':
+  app.run(debug=True)
+```
+1. Importiamo la classe `Flask` dal modulo `flask`.
+2. Creiamo un'istanza di Flask.
+3. Utilizziamo il decoratore `@app.route('/')` per definire la route per la homepage alla posizione `/`.
+4. Definiamo la funzione `hello_world` che restituisce il testo `Hello, World!`.
+5. Avviamo l'applicazione con `app.run(debug=True)`, abilitando la modalità di debug per lo sviluppo.
+
+### Esecuzione della web app
+
+Per eseguire l'applicazione, utilizza il comando:
+
+```bash
+python app.py
+```
+
+Naviga verso `http://127.0.0.1:5000/` nel browser per vedere il risultato.
+
+### Template
+
+Flask utilizza Jinja2 come motore di template. I template permettono di separare la logica dell'applicazione dalla presentazione. Possiamo creare file HTML che contengono variabili e istruzioni di controllo che vengono sostituite con i dati reali al momento del rendering.
+
+Per utilizzare i template, crea una cartella chiamata `templates` nella directory del tuo progetto. All'interno di `templates`, crea un file chiamato `index.html`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title> <!-- <1> -->
+</head>
+<body>
+  <h1>{{ title }}</h1> <!-- <2> -->
+  <p>{{ message }}</p> <!-- <3> -->
+</body>
+</html>
+```
+1. Titolo della pagina: Il titolo della pagina HTML, visualizzato nella barra del titolo del browser.
+2. Variabile Jinja2 per il titolo: Variabile Jinja2 `title` che sarà sostituita con il valore passato dal codice Python.
+3. Variabile Jinja2 per il messaggio: Variabile Jinja2 `message` che sarà sostituita con il valore passato dal codice Python.
+
+Aggiorniamo `app.py` per utilizzare il template `index.html`:
+
+```python
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+  return render_template('index.html', 
+                          title='Hello, World!', 
+                          message='Welcome to my Flask app')
+
+if __name__ == '__main__':
+  app.run(debug=True)
+```
+1. Importiamo la funzione `render_template` da Flask.
+2. Utilizziamo `render_template` nella funzione `home` per renderizzare il template `index.html` e passare i valori per `title` e `message`.
+
+### Jinja2
+
+Jinja2 è il motore di template utilizzato da Flask. Permette di inserire variabili, eseguire cicli e condizioni, e molto altro nei file HTML.
+
+Sintassi di base di Jinja2:
+
+- Variabili `{{ variabile }}`.
+
+- Condizioni `{% if condizione %} ... {% endif %}`.
+
+- Cicli `{% for item in lista %} ... {% endfor %}`.
+
+Esempio con ciclo e condizione:
+
+Aggiorniamo `index.html` per includere un ciclo e una condizione:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+</head>
+<body>
+  <h1>{{ title }}</h1>
+  <p>{{ message }}</p>
+  <ul>
+  {% for item in items %}
+    <li>{% if item == 'Special' %}<strong>{{ item }}</strong>{% else %}{{ item }}{% endif %}</li>
+  {% endfor %}
+  </ul>
+</body>
+</html>
+```
+
+Aggiorniamo `app.py` per passare una lista di elementi al template:
+
+```python
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+  items = ['Item 1', 'Item 2', 'Special', 'Item 3']
+
+  return render_template('index.html', 
+                          title='Hello, World!', 
+                          message='Welcome to my Flask app', 
+                          items=items)
+
+if __name__ == '__main__':
+  app.run(debug=True)
+```
+
+### Metodi HTTP
+
+Flask supporta vari metodi HTTP, inclusi GET e POST, che sono i più comunemente utilizzati. I metodi HTTP sono modi standard per inviare e ricevere dati tra il client (come il browser web) e il server. In Flask, dobbiamo considerare questi metodi perché determinano come i dati vengono inviati e ricevuti dall'applicazione. Ad esempio, il metodo GET viene utilizzato per richiedere dati dal server (come caricare una pagina web), mentre il metodo POST viene utilizzato per inviare dati al server (come inviare un modulo).
+
+Creiamo un semplice modulo di contatto che utilizza sia GET che POST.
+
+Form HTML (templates/contact.html):
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contattaci</title>
+</head>
+<body>
+  <h1>Contattaci</h1>
+  <form method="post">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
+    <label for="messaggio">Messaggio:</label>
+    <textarea id="messaggio" name="messaggio" required></textarea>
+    <input type="submit" value="Invia">
+  </form>
+</body>
+</html>
+```
+
+Aggiornamento di `app.py`:
+
+```python
+from flask import Flask, render_template, request  # <1>
+
+app = Flask(__name__)  # <2>
+
+@app.route('/')  # <3>
+def home():  # <4>
+    items = ['Item 1', 'Item 2', 'Special', 'Item 3']  # <5>
+    return render_template('index.html', 
+                           title='Hello, World!', 
+                           message='Welcome to my Flask app', 
+                           items=items)  # <6>
+
+@app.route('/contact', methods=['GET', 'POST'])  # <7>
+def contact():  # <8>
+    if request.method == 'POST':  # <9>
+        nome = request.form['nome']  # <10>
+        messaggio = request.form['messaggio']  # <11>
+
+         # <12>
+        return f'Thank you {nome}, your message has been received.'  # <13>
+    return render_template('contact.html')  # <14>
+
+if __name__ == '__main__':  # <15>
+    app.run(debug=True)  # <16>
+```
+1. Importiamo `Flask`, `render_template` e `request` da Flask per gestire i dati dei moduli.
+2. Creiamo un'applicazione Flask.
+3. Definiamo la route per la homepage con il decoratore `@app.route('/')`.
+4. Definiamo la funzione `home` che viene chiamata quando la homepage viene richiesta.
+5. Creiamo una lista di oggetti da passare al template.
+6. Utilizziamo `render_template` per rendere il template `index.html` con variabili `title`, `message` e `items`.
+7. Definiamo la route `/contact` che gestisce sia le richieste GET che POST.
+8. Definiamo la funzione `contact` che gestisce la logica per la route `/contact`.
+9. Se il metodo della richiesta è POST, elaboriamo i dati del modulo.
+10. Otteniamo il valore del campo `nome` dal modulo.
+11. Otteniamo il valore del campo `messaggio` dal modulo.
+12. Qui, è possibile aggiungere codice per elaborare i dati del modulo, come inviarli via email.
+13. Restituiamo un messaggio di ringraziamento con il nome dell'utente.
+14. Se il metodo è GET, visualizziamo il modulo di contatto.
+15. Eseguiamo l'applicazione Flask in modalità di debug.
+16. Avviamo il server Flask.
+
+### Per continuare
+
+Questa introduzione copre le basi di Flask, inclusi template, Jinja2 e metodi HTTP. Flask è un framework potente e flessibile che rende lo sviluppo web con Python semplice ed efficace. Per ulteriori approfondimenti, è possibile consultare la [documentazione ufficiale di Flask](https://flask.palletsprojects.com/).
 
 ## Passaggi dell'Esercitazione
 
@@ -30,7 +236,20 @@ pip install flask
 
 ### Passaggio 1: creazione di un'applicazione Flask
 
-Il primo passo è creare una semplice applicazione Flask. Creiamo un file chiamato `app.py`.
+Il primo passo è creare una semplice applicazione Flask. Creiamo un file chiamato `app.py` che analizza due template cioè due file HTML delle variabili i cui valori saranno definiti al tempo di esecuzione.
+
+La struttura dei file su disco prevede una cartella radice dove posizioniamo `app.py`, `VisualizzaMappa` e la sottocartella `templates` dove andranno i template delle pagine HTML: 
+
+```bash
+VisualizzaMappa/
+├── app.py
+├── templates/
+│   ├── index.html
+│   └── map.html
+└── static/
+```
+
+`app.py`:
 
 ```python
 from flask import Flask, render_template, request  # <1>
@@ -144,4 +363,4 @@ Eseguiamo l'applicazione Flask:
 python app.py
 ```
 
-Apriamo il browser e navighiamo all'indirizzo `http://127.0.0.1:5000/`. Inseriamo un indirizzo, selezioniamo il tipo di visualizzazione e clicchiamo su "Mostra Mappa". La mappa di Google dovrebbe essere visualizzata con l'indirizzo inserito e il tipo di visualizzazione selezionato.
+Apriamo il browser e navighiamo all'indirizzo `http://127.0.0.1:5000/`. Inseriamo un indirizzo, selezioniamo il tipo di visualizzazione e clicchiamo su `Mostra Mappa`. La mappa di Google dovrebbe essere visualizzata con l'indirizzo inserito e il tipo di visualizzazione selezionato.
