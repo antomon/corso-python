@@ -69,7 +69,7 @@ def saluta():  # <1>
 saluta()  # <3>
 ```
 1. Definizione della funzione `saluta`.
-2. Stampa "Ciao!".
+2. Stampa `Ciao!`.
 3. Chiamata alla funzione `saluta`.
 
 Esempio di funzione con un parametro:
@@ -137,17 +137,17 @@ saluta("Maria")  # <5>
 saluta("Luigi", "14:30")  # <6>
 ```
 1. Importa il modulo `datetime` che sarà usato per ottenere l'ora attuale.
-2. Definisce la funzione `saluta` con due parametri nominati: `nome` con un valore predefinito di "ospite" e `momento` con un valore predefinito che è l'ora corrente formattata come stringa "HH:MM".
+2. Definisce la funzione `saluta` con due parametri nominati: `nome` con un valore predefinito di `ospite` e `momento` con un valore predefinito che è l'ora corrente formattata come stringa `HH:MM`.
 3. Stampa un messaggio di saluto che include il nome e il momento specificato.
 4. Chiamata a `saluta` senza argomenti. Utilizza entrambi i valori predefiniti. Output: `Ciao, ospite! L'ora attuale è <ora_attuale>.`.
-5. Chiamata a `saluta` con l'argomento "Maria". Utilizza il valore predefinito per `momento`. Output: `Ciao, Maria! L'ora attuale è <ora_attuale>.`.
-6. Chiamata a `saluta` con gli argomenti "Luigi" e "14:30". Non utilizza nessun valore predefinito. Output: `Ciao, Luigi! L'ora attuale è 14:30.`.
+5. Chiamata a `saluta` con l'argomento `Maria`. Utilizza il valore predefinito per `momento`. Output: `Ciao, Maria! L'ora attuale è <ora_attuale>.`.
+6. Chiamata a `saluta` con gli argomenti `Luigi` e `14:30`. Non utilizza nessun valore predefinito. Output: `Ciao, Luigi! L'ora attuale è 14:30.`.
 
 In questo esempio, il parametro `momento` utilizza un'espressione come valore predefinito che viene valutata una volta sola al momento della definizione della funzione. Se viene chiamata senza argomenti, la funzione utilizza questi valori predefiniti.
 
 ### Marcatore di parametri posizionali
 
-La firma di una funzione può contenere un marcatore di parametri posizionali (`/`) come parametro fittizio. I parametri che precedono il marcatore sono noti come parametri posizionali, e devono essere forniti come argomenti posizionali, non come argomenti nominati, quando si chiama la funzione; usare argomenti nominati per questi parametri genera un'eccezione `TypeError`.
+La firma di una funzione può contenere un marcatore di parametri posizionali `/` come parametro fittizio. I parametri che precedono il marcatore sono noti come parametri posizionali, e devono essere forniti come argomenti posizionali, non come argomenti nominati, quando si chiama la funzione; usare argomenti nominati per questi parametri genera un'eccezione `TypeError`.
 
 Ad esempio, il tipo built-in `int` ha la seguente firma:
 
@@ -221,7 +221,7 @@ print(somma_tutti())  # <5>
 1. Definizione della funzione `somma_tutti` con il collettore di argomenti `*numeri`.
 2. Stampa il tipo di `numeri`.
 3. Restituisce la somma di tutti i numeri.
-4. Chiamata a `somma_tutti` con gli argomenti 1, 2, 3, 4. Output: `10`.
+4. Chiamata a `somma_tutti` con gli argomenti `1`, `2`, `3`, `4`. Output: `10`.
 5. Chiamata a `somma_tutti` senza argomenti. Output: `0`.
 
 Esempio di funzione con collettore di argomenti nominati:
@@ -370,7 +370,7 @@ Se provi a dissociare `__defaults__`, l'attributo sarà semplicemente rimosso:
 ```python
 del saluta.__defaults__
 
-print(saluta.__defaults__)  # 
+print(saluta.__defaults__)  # <1>
 ```
 1. Output: `None`.
 

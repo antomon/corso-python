@@ -504,7 +504,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="2">Stampa “Ciao!”.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="2">Stampa <code>Ciao!</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
@@ -605,7 +605,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="3" data-code-annotation="2">Definisce la funzione <code>saluta</code> con due parametri nominati: <code>nome</code> con un valore predefinito di “ospite” e <code>momento</code> con un valore predefinito che è l’ora corrente formattata come stringa “HH:MM”.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="3" data-code-annotation="2">Definisce la funzione <code>saluta</code> con due parametri nominati: <code>nome</code> con un valore predefinito di <code>ospite</code> e <code>momento</code> con un valore predefinito che è l’ora corrente formattata come stringa <code>HH:MM</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
 <dd>
@@ -617,18 +617,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="7" data-code-annotation="5">Chiamata a <code>saluta</code> con l’argomento “Maria”. Utilizza il valore predefinito per <code>momento</code>. Output: <code>Ciao, Maria! L'ora attuale è &lt;ora_attuale&gt;.</code>.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="7" data-code-annotation="5">Chiamata a <code>saluta</code> con l’argomento <code>Maria</code>. Utilizza il valore predefinito per <code>momento</code>. Output: <code>Ciao, Maria! L'ora attuale è &lt;ora_attuale&gt;.</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="8" data-code-annotation="6">Chiamata a <code>saluta</code> con gli argomenti “Luigi” e “14:30”. Non utilizza nessun valore predefinito. Output: <code>Ciao, Luigi! L'ora attuale è 14:30.</code>.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="8" data-code-annotation="6">Chiamata a <code>saluta</code> con gli argomenti <code>Luigi</code> e <code>14:30</code>. Non utilizza nessun valore predefinito. Output: <code>Ciao, Luigi! L'ora attuale è 14:30.</code>.</span>
 </dd>
 </dl>
 <p>In questo esempio, il parametro <code>momento</code> utilizza un’espressione come valore predefinito che viene valutata una volta sola al momento della definizione della funzione. Se viene chiamata senza argomenti, la funzione utilizza questi valori predefiniti.</p>
 </section>
 <section id="marcatore-di-parametri-posizionali" class="level3" data-number="12.2.3">
 <h3 data-number="12.2.3" class="anchored" data-anchor-id="marcatore-di-parametri-posizionali"><span class="header-section-number">12.2.3</span> Marcatore di parametri posizionali</h3>
-<p>La firma di una funzione può contenere un marcatore di parametri posizionali (<code>/</code>) come parametro fittizio. I parametri che precedono il marcatore sono noti come parametri posizionali, e devono essere forniti come argomenti posizionali, non come argomenti nominati, quando si chiama la funzione; usare argomenti nominati per questi parametri genera un’eccezione <code>TypeError</code>.</p>
+<p>La firma di una funzione può contenere un marcatore di parametri posizionali <code>/</code> come parametro fittizio. I parametri che precedono il marcatore sono noti come parametri posizionali, e devono essere forniti come argomenti posizionali, non come argomenti nominati, quando si chiama la funzione; usare argomenti nominati per questi parametri genera un’eccezione <code>TypeError</code>.</p>
 <p>Ad esempio, il tipo built-in <code>int</code> ha la seguente firma:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="bu">int</span>(x, <span class="op">/</span>, base<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Quando si chiama <code>int</code>, è necessario passare un valore per <code>x</code> e questo deve essere passato posizionalmente. <code>base</code> (usato quando <code>x</code> è una stringa da convertire in <code>int</code>) è opzionale e può essere passato sia posizionalmente che come argomento nominato. È un errore passare <code>x</code> come numero e anche passare <code>base</code>, ma la notazione non può catturare questa particolarità.</p>
@@ -736,7 +736,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-lines="6" data-code-annotation="4">Chiamata a <code>somma_tutti</code> con gli argomenti 1, 2, 3, 4. Output: <code>10</code>.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="6" data-code-annotation="4">Chiamata a <code>somma_tutti</code> con gli argomenti <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>. Output: <code>10</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="5">5</dt>
 <dd>
@@ -960,12 +960,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 <p>Se provi a dissociare <code>__defaults__</code>, l’attributo sarà semplicemente rimosso:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">del</span> saluta.__defaults__</span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="bu">print</span>(saluta.__defaults__)  <span class="co"># </span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li>Output: <code>None</code>.</li>
-</ol>
+<div class="sourceCode" id="annotated-cell-20"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-20-1"><a href="#annotated-cell-20-1"></a><span class="kw">del</span> saluta.__defaults__</span>
+<span id="annotated-cell-20-2"><a href="#annotated-cell-20-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-20-3" class="code-annotation-target"><a href="#annotated-cell-20-3"></a><span class="bu">print</span>(saluta.__defaults__)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-20" data-code-lines="3" data-code-annotation="1">Output: <code>None</code>.</span>
+</dd>
+</dl>
 <p>Questi attributi permettono una flessibilità aggiuntiva nella manipolazione delle funzioni, offrendo modi per ispezionare e modificare il comportamento predefinito di una funzione.</p>
 </section>
 <section id="docstring" class="level3" data-number="12.3.3">
@@ -1001,13 +1004,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 <p>Quando si utilizza la funzione <code>help()</code>, la docstring viene visualizzata, offrendo informazioni utili sull’utilizzo della funzione:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource asciidoc number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>Help on function somma_sequenza in module __main__:</span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a>somma_sequenza(*numeri)</span>
-<span id="cb5-4"><a href="#cb5-4"></a>  Restituisce la somma di più argomenti numerici.</span>
-<span id="cb5-5"><a href="#cb5-5"></a></span>
-<span id="cb5-6"><a href="#cb5-6"></a>  Gli argomenti sono zero o più numeri.</span>
-<span id="cb5-7"><a href="#cb5-7"></a>  Il risultato è la loro somma.</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource asciidoc number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>Help on function somma_sequenza in module __main__:</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>somma_sequenza(*numeri)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  Restituisce la somma di più argomenti numerici.</span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  Gli argomenti sono zero o più numeri.</span>
+<span id="cb4-7"><a href="#cb4-7"></a>  Il risultato è la loro somma.</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="annotazioni" class="level2" data-number="12.4">
@@ -1167,7 +1170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="chiamate" class="level2" data-number="12.6">
 <h2 data-number="12.6" class="anchored" data-anchor-id="chiamate"><span class="header-section-number">12.6</span> Chiamate</h2>
 <p>Una chiamata di funzione è un’espressione con la seguente sintassi:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>oggetto_funzione(argomenti)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>oggetto_funzione(argomenti)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>oggetto_funzione</code> può essere qualsiasi riferimento a un oggetto funzione (o altro oggetto chiamabile); più spesso, è solo il nome della funzione. Le parentesi denotano l’operazione di chiamata della funzione stessa. <code>argomenti</code>, nel caso più semplice, è una serie di zero o più espressioni separate da virgole <code>,</code>, che forniscono i valori per i parametri corrispondenti della funzione.</p>
 <p>Esempio di chiamata di funzione:</p>
 <div class="sourceCode" id="annotated-cell-29"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-29-1" class="code-annotation-target"><a href="#annotated-cell-29-1"></a><span class="kw">def</span> saluta(nome):</span>
@@ -1191,7 +1194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="argomenti" class="level3" data-number="12.6.1">
 <h3 data-number="12.6.1" class="anchored" data-anchor-id="argomenti"><span class="header-section-number">12.6.1</span> Argomenti</h3>
 <p>Gli argomenti possono essere di due tipi. Gli argomenti posizionali sono semplici espressioni; gli argomenti nominati assumono la forma:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>identificatore<span class="op">=</span>espressione  </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>identificatore<span class="op">=</span>espressione  </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>È un errore di sintassi che gli argomenti nominati precedano quelli posizionali in una chiamata di funzione. Zero o più argomenti posizionali possono essere seguiti da zero o più argomenti nominati. Ogni argomento posizionale fornisce il valore per il parametro che corrisponde a esso per posizione (ordine) nella definizione della funzione.</p>
 <p>Esempio di funzione con argomenti posizionali e nominati:</p>
 <div class="sourceCode" id="annotated-cell-31"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-31-1" class="code-annotation-target"><a href="#annotated-cell-31-1"></a><span class="kw">def</span> f(a, b, c<span class="op">=</span><span class="dv">23</span>, d<span class="op">=</span><span class="dv">42</span>, <span class="op">*</span>x):</span>
@@ -1247,7 +1250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="listruzione-global" class="level3" data-number="12.7.1">
 <h3 data-number="12.7.1" class="anchored" data-anchor-id="listruzione-global"><span class="header-section-number">12.7.1</span> L’istruzione <code>global</code></h3>
 <p>Per impostazione predefinita, qualsiasi variabile associata in un corpo di funzione è locale alla funzione. Se una funzione ha bisogno di associare o riassociare alcune variabili globali (pratica non consigliata!), la prima istruzione del corpo della funzione deve essere:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">global</span> identificatori</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">global</span> identificatori</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>dove <code>identificatori</code> è uno o più identificatori separati da virgole <code>,</code>. Gli identificatori elencati in un’istruzione <code>global</code> si riferiscono alle variabili globali (cioè attributi dell’oggetto modulo) che la funzione deve associare o riassociare.</p>
 <p>Esempio di utilizzo di <code>global</code>:</p>
 <div class="sourceCode" id="annotated-cell-33"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-33-1" class="code-annotation-target"><a href="#annotated-cell-33-1"></a>_count <span class="op">=</span> <span class="dv">0</span></span>
@@ -1448,7 +1451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="espressioni-lambda" class="level2" data-number="12.8">
 <h2 data-number="12.8" class="anchored" data-anchor-id="espressioni-lambda"><span class="header-section-number">12.8</span> Espressioni <code>lambda</code></h2>
 <p>Se il corpo di una funzione è una singola espressione <code>return</code>, possiamo (opzionalmente) scegliere di sostituire la funzione con la speciale forma di espressione <code>lambda</code>:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">lambda</span> parametri: espressione</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">lambda</span> parametri: espressione</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Un’espressione <code>lambda</code> è l’equivalente anonimo di una funzione normale il cui corpo è una singola istruzione <code>return</code>. La sintassi <code>lambda</code> non utilizza la parola chiave <code>return</code>. Possiamo usare un’espressione <code>lambda</code> ovunque potremmo usare un riferimento a una funzione.</p>
 <p>Esempio di utilizzo di una <code>lambda</code>:</p>
 <div class="sourceCode" id="annotated-cell-38"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-38-1" class="code-annotation-target"><a href="#annotated-cell-38-1"></a>numeri <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">3</span>]</span>
