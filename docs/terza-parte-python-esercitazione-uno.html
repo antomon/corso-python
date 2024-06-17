@@ -436,28 +436,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="16.2.2" class="anchored" data-anchor-id="creazione-di-una-semplice-web-app"><span class="header-section-number">16.2.2</span> Creazione di una semplice web app</h3>
 <p>Iniziamo creando una semplice applicazione Flask che visualizza <code>Hello, World!</code> quando si accede alla homepage.</p>
 <p>Crea un file chiamato <code>app.py</code> e aggiungi il seguente codice:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask</span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="at">@app.route</span>(<span class="st">'/'</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="kw">def</span> hello_world():</span>
-<span id="cb2-7"><a href="#cb2-7"></a>  <span class="cf">return</span> <span class="st">'Hello, World!'</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb2-10"><a href="#cb2-10"></a>  app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li>Importiamo la classe <code>Flask</code> dal modulo <code>flask</code>.</li>
-<li>Creiamo un’istanza di Flask.</li>
-<li>Utilizziamo il decoratore <code>@app.route('/')</code> per definire la route per la homepage alla posizione <code>/</code>.</li>
-<li>Definiamo la funzione <code>hello_world</code> che restituisce il testo <code>Hello, World!</code>.</li>
-<li>Avviamo l’applicazione con <code>app.run(debug=True)</code>, abilitando la modalità di debug per lo sviluppo.</li>
-</ol>
+<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask</span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5"></a><span class="at">@app.route</span>(<span class="st">'/'</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-2-6" class="code-annotation-target"><a href="#annotated-cell-2-6"></a><span class="kw">def</span> hello_world():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7"></a>  <span class="cf">return</span> <span class="st">'Hello, World!'</span></span>
+<span id="annotated-cell-2-8"><a href="#annotated-cell-2-8"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-2-9" class="code-annotation-target"><a href="#annotated-cell-2-9"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-2-10" class="code-annotation-target"><a href="#annotated-cell-2-10"></a>  app.run(debug<span class="op">=</span><span class="va">True</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Importiamo la classe <code>Flask</code> dal modulo <code>flask</code>. Questa classe viene utilizzata per creare un’applicazione Flask.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="2">Creiamo un’istanza dell’applicazione Flask. <code>__name__</code> è una variabile speciale che indica il nome del modulo corrente. Flask usa questa variabile per sapere dove trovare risorse come i file di template e di configurazione.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="3">Utilizziamo il decoratore <code>@app.route('/')</code> per definire una “route” per la nostra applicazione. Una route è un URL specifico che l’utente può visitare nel browser. In questo caso, la route è la homepage, rappresentata da <code>/</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="6" data-code-annotation="4">Definiamo una funzione chiamata <code>hello_world</code> che viene eseguita quando un utente visita la route <code>/</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="7" data-code-annotation="5">La funzione <code>hello_world</code> restituisce una stringa <code>'Hello, World!'</code>. Questo è il contenuto che verrà visualizzato nel browser dell’utente quando visiterà la homepage dell’applicazione.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="9" data-code-annotation="6">Controlliamo se lo script è eseguito direttamente (non importato come modulo in un altro script). Se è così, eseguiamo il codice nel blocco.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="10" data-code-annotation="7">Avviamo l’applicazione Flask. <code>app.run(debug=True)</code> avvia un server web integrato che esegue l’applicazione. L’opzione <code>debug=True</code> abilita la modalità di debug, che fornisce informazioni dettagliate sugli errori e ricarica automaticamente l’applicazione quando i file di codice vengono modificati.</span>
+</dd>
+</dl>
 </section>
 <section id="esecuzione-della-web-app" class="level3" data-number="16.2.3">
 <h3 data-number="16.2.3" class="anchored" data-anchor-id="esecuzione-della-web-app"><span class="header-section-number">16.2.3</span> Esecuzione della web app</h3>
 <p>Per eseguire l’applicazione, utilizza il comando:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">python</span> app.py</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">python</span> app.py</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Naviga verso <code>http://127.0.0.1:5000/</code> nel browser per vedere il risultato.</p>
 </section>
 <section id="template" class="level3" data-number="16.2.4">
@@ -489,18 +512,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 <p>Aggiorniamo <code>app.py</code> per utilizzare il template <code>index.html</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, render_template</span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
-<span id="cb4-4"><a href="#cb4-4"></a></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="at">@app.route</span>(<span class="st">'/'</span>)</span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="kw">def</span> home():</span>
-<span id="cb4-7"><a href="#cb4-7"></a>  <span class="cf">return</span> render_template(<span class="st">'index.html'</span>, </span>
-<span id="cb4-8"><a href="#cb4-8"></a>                          title<span class="op">=</span><span class="st">'Hello, World!'</span>, </span>
-<span id="cb4-9"><a href="#cb4-9"></a>                          message<span class="op">=</span><span class="st">'Welcome to my Flask app'</span>)</span>
-<span id="cb4-10"><a href="#cb4-10"></a></span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb4-12"><a href="#cb4-12"></a>  app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, render_template</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="at">@app.route</span>(<span class="st">'/'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="kw">def</span> home():</span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="cf">return</span> render_template(<span class="st">'index.html'</span>, </span>
+<span id="cb3-8"><a href="#cb3-8"></a>                          title<span class="op">=</span><span class="st">'Hello, World!'</span>, </span>
+<span id="cb3-9"><a href="#cb3-9"></a>                          message<span class="op">=</span><span class="st">'Welcome to my Flask app'</span>)</span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb3-12"><a href="#cb3-12"></a>  app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
 <li>Importiamo la funzione <code>render_template</code> da Flask.</li>
 <li>Utilizziamo <code>render_template</code> nella funzione <code>home</code> per renderizzare il template <code>index.html</code> e passare i valori per <code>title</code> e <code>message</code>.</li>
@@ -517,59 +540,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Esempio con ciclo e condizione:</p>
 <p>Aggiorniamo <code>index.html</code> per includere un ciclo e una condizione:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Home<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>{{ title }}<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>{{ message }}<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a>  <span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a>  {% for item in items %}</span>
-<span id="cb5-11"><a href="#cb5-11"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>{% if item == 'Special' %}<span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>{{ item }}<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span>{% else %}{{ item }}{% endif %}<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a>  {% endfor %}</span>
-<span id="cb5-13"><a href="#cb5-13"></a>  <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Home<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>{{ title }}<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>{{ message }}<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>  <span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>  {% for item in items %}</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>{% if item == 'Special' %}<span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>{{ item }}<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span>{% else %}{{ item }}{% endif %}<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>  {% endfor %}</span>
+<span id="cb4-13"><a href="#cb4-13"></a>  <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Aggiorniamo <code>app.py</code> per passare una lista di elementi al template:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, render_template</span>
-<span id="cb6-2"><a href="#cb6-2"></a></span>
-<span id="cb6-3"><a href="#cb6-3"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
-<span id="cb6-4"><a href="#cb6-4"></a></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="at">@app.route</span>(<span class="st">'/'</span>)</span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="kw">def</span> home():</span>
-<span id="cb6-7"><a href="#cb6-7"></a>  items <span class="op">=</span> [<span class="st">'Item 1'</span>, <span class="st">'Item 2'</span>, <span class="st">'Special'</span>, <span class="st">'Item 3'</span>]</span>
-<span id="cb6-8"><a href="#cb6-8"></a></span>
-<span id="cb6-9"><a href="#cb6-9"></a>  <span class="cf">return</span> render_template(<span class="st">'index.html'</span>, </span>
-<span id="cb6-10"><a href="#cb6-10"></a>                          title<span class="op">=</span><span class="st">'Hello, World!'</span>, </span>
-<span id="cb6-11"><a href="#cb6-11"></a>                          message<span class="op">=</span><span class="st">'Welcome to my Flask app'</span>, </span>
-<span id="cb6-12"><a href="#cb6-12"></a>                          items<span class="op">=</span>items)</span>
-<span id="cb6-13"><a href="#cb6-13"></a></span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb6-15"><a href="#cb6-15"></a>  app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, render_template</span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="at">@app.route</span>(<span class="st">'/'</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="kw">def</span> home():</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  items <span class="op">=</span> [<span class="st">'Item 1'</span>, <span class="st">'Item 2'</span>, <span class="st">'Special'</span>, <span class="st">'Item 3'</span>]</span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a>  <span class="cf">return</span> render_template(<span class="st">'index.html'</span>, </span>
+<span id="cb5-10"><a href="#cb5-10"></a>                          title<span class="op">=</span><span class="st">'Hello, World!'</span>, </span>
+<span id="cb5-11"><a href="#cb5-11"></a>                          message<span class="op">=</span><span class="st">'Welcome to my Flask app'</span>, </span>
+<span id="cb5-12"><a href="#cb5-12"></a>                          items<span class="op">=</span>items)</span>
+<span id="cb5-13"><a href="#cb5-13"></a></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb5-15"><a href="#cb5-15"></a>  app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="metodi-http" class="level3" data-number="16.2.6">
 <h3 data-number="16.2.6" class="anchored" data-anchor-id="metodi-http"><span class="header-section-number">16.2.6</span> Metodi HTTP</h3>
 <p>Flask supporta vari metodi HTTP, inclusi GET e POST, che sono i più comunemente utilizzati. I metodi HTTP sono modi standard per inviare e ricevere dati tra il client (come il browser web) e il server. In Flask, dobbiamo considerare questi metodi perché determinano come i dati vengono inviati e ricevuti dall’applicazione. Ad esempio, il metodo GET viene utilizzato per richiedere dati dal server (come caricare una pagina web), mentre il metodo POST viene utilizzato per inviare dati al server (come inviare un modulo).</p>
 <p>Creiamo un semplice modulo di contatto che utilizza sia GET che POST.</p>
 <p>Form HTML (templates/contact.html):</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Contattaci<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Contattaci<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>  <span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> method</span><span class="op">=</span><span class="st">"post"</span><span class="dt">&gt;</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"nome"</span><span class="dt">&gt;</span>Nome:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"text"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"nome"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"nome"</span><span class="ot"> required</span><span class="dt">&gt;</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"messaggio"</span><span class="dt">&gt;</span>Messaggio:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a>    <span class="dt">&lt;</span><span class="kw">textarea</span><span class="ot"> id</span><span class="op">=</span><span class="st">"messaggio"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"messaggio"</span><span class="ot"> required</span><span class="dt">&gt;&lt;/</span><span class="kw">textarea</span><span class="dt">&gt;</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"submit"</span><span class="ot"> value</span><span class="op">=</span><span class="st">"Invia"</span><span class="dt">&gt;</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a>  <span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
-<span id="cb7-15"><a href="#cb7-15"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb7-16"><a href="#cb7-16"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Contattaci<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Contattaci<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> method</span><span class="op">=</span><span class="st">"post"</span><span class="dt">&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"nome"</span><span class="dt">&gt;</span>Nome:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"text"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"nome"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"nome"</span><span class="ot"> required</span><span class="dt">&gt;</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"messaggio"</span><span class="dt">&gt;</span>Messaggio:<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a>    <span class="dt">&lt;</span><span class="kw">textarea</span><span class="ot"> id</span><span class="op">=</span><span class="st">"messaggio"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"messaggio"</span><span class="ot"> required</span><span class="dt">&gt;&lt;/</span><span class="kw">textarea</span><span class="dt">&gt;</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"submit"</span><span class="ot"> value</span><span class="op">=</span><span class="st">"Invia"</span><span class="dt">&gt;</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a>  <span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Aggiornamento di <code>app.py</code>:</p>
 <div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, render_template, request</span>
 <span id="annotated-cell-9-2"><a href="#annotated-cell-9-2"></a></span>
@@ -679,12 +702,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="16.3.1" class="anchored" data-anchor-id="passaggio-1-creazione-di-unapplicazione-flask"><span class="header-section-number">16.3.1</span> Passaggio 1: creazione di un’applicazione Flask</h3>
 <p>Il primo passo è creare una semplice applicazione Flask. Creiamo un file chiamato <code>app.py</code> che analizza due template cioè due file HTML delle variabili i cui valori saranno definiti al tempo di esecuzione.</p>
 <p>La struttura dei file su disco prevede una cartella radice dove posizioniamo <code>app.py</code>, <code>VisualizzaMappa</code> e la sottocartella <code>templates</code> dove andranno i template delle pagine HTML:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">VisualizzaMappa/</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="ex">├──</span> app.py</span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="ex">├──</span> templates/</span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="ex">│</span>   ├── index.html</span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="ex">│</span>   └── map.html</span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="ex">└──</span> static/</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">VisualizzaMappa/</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="ex">├──</span> app.py</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="ex">├──</span> templates/</span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="ex">│</span>   ├── index.html</span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="ex">│</span>   └── map.html</span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="ex">└──</span> static/</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>app.py</code>:</p>
 <div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, render_template, request</span>
 <span id="annotated-cell-11-2"><a href="#annotated-cell-11-2"></a></span>
@@ -845,7 +868,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="passaggio-4-test-dellapplicazione" class="level3" data-number="16.3.4">
 <h3 data-number="16.3.4" class="anchored" data-anchor-id="passaggio-4-test-dellapplicazione"><span class="header-section-number">16.3.4</span> Passaggio 4: test dell’applicazione</h3>
 <p>Eseguiamo l’applicazione Flask:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">python</span> app.py</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">python</span> app.py</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Apriamo il browser e navighiamo all’indirizzo <code>http://127.0.0.1:5000/</code>. Inseriamo un indirizzo, selezioniamo il tipo di visualizzazione e clicchiamo su <code>Mostra Mappa</code>. La mappa di Google dovrebbe essere visualizzata con l’indirizzo inserito e il tipo di visualizzazione selezionato.</p>
 
 

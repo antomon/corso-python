@@ -29,22 +29,24 @@ Iniziamo creando una semplice applicazione Flask che visualizza `Hello, World!` 
 Crea un file chiamato `app.py` e aggiungi il seguente codice:
 
 ```python
-from flask import Flask
+from flask import Flask  # <1>
 
-app = Flask(__name__)
+app = Flask(__name__)  # <2>
 
-@app.route('/')
-def hello_world():
-  return 'Hello, World!'
+@app.route('/')  # <3>
+def hello_world():  # <4>
+  return 'Hello, World!'  # <5>
 
-if __name__ == '__main__':
-  app.run(debug=True)
+if __name__ == '__main__':  # <6>
+  app.run(debug=True)  # <7>
 ```
-1. Importiamo la classe `Flask` dal modulo `flask`.
-2. Creiamo un'istanza di Flask.
-3. Utilizziamo il decoratore `@app.route('/')` per definire la route per la homepage alla posizione `/`.
-4. Definiamo la funzione `hello_world` che restituisce il testo `Hello, World!`.
-5. Avviamo l'applicazione con `app.run(debug=True)`, abilitando la modalità di debug per lo sviluppo.
+1. Importiamo la classe `Flask` dal modulo `flask`. Questa classe viene utilizzata per creare un'applicazione Flask.
+2. Creiamo un'istanza dell'applicazione Flask. `__name__` è una variabile speciale che indica il nome del modulo corrente. Flask usa questa variabile per sapere dove trovare risorse come i file di template e di configurazione.
+3. Utilizziamo il decoratore `@app.route('/')` per definire una "route" per la nostra applicazione. Una route è un URL specifico che l'utente può visitare nel browser. In questo caso, la route è la homepage, rappresentata da `/`.
+4. Definiamo una funzione chiamata `hello_world` che viene eseguita quando un utente visita la route `/`.
+5. La funzione `hello_world` restituisce una stringa `'Hello, World!'`. Questo è il contenuto che verrà visualizzato nel browser dell'utente quando visiterà la homepage dell'applicazione.
+6. Controlliamo se lo script è eseguito direttamente (non importato come modulo in un altro script). Se è così, eseguiamo il codice nel blocco.
+7. Avviamo l'applicazione Flask. `app.run(debug=True)` avvia un server web integrato che esegue l'applicazione. L'opzione `debug=True` abilita la modalità di debug, che fornisce informazioni dettagliate sugli errori e ricarica automaticamente l'applicazione quando i file di codice vengono modificati.
 
 ### Esecuzione della web app
 
