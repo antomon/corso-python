@@ -6,7 +6,9 @@ tbl-cap-location: margin
 
 # Esercitazione 1: analisi di un dataset di vendite
 
-In questa esercitazione, analizzeremo i dati di un negozio utilizzando [pandas](https://pandas.pydata.org/) per la manipolazione dei dati e Matplotlib per la visualizzazione. Impareremo a gestire i dati mancanti, filtrare e raggruppare i dati, e creare grafici significativi.
+## Il problema
+
+In questa esercitazione, analizzeremo i dati di vendita di un negozio utilizzando [pandas](https://pandas.pydata.org/) per la manipolazione dei dati e Matplotlib per la visualizzazione. Impareremo a gestire i dati mancanti, filtrare e raggruppare i dati, e creare grafici significativi.
 
 Obiettivo:
 
@@ -33,30 +35,209 @@ id,prodotto,categoria,prezzo,quantità,data_vendita,venditore
 12,TV Ultra HD 55",Elettrodomestici,800.0,1,2023-02-25,Anna
 ```
 
+## Introduzione a pandas
+
+Pandas è una libreria Python potente e flessibile per l'analisi e la manipolazione dei dati. Questa introduzione copre alcuni dei comandi principali che è utile conoscere, inclusa la manipolazione di file Excel.
+
+### Installazione
+
+Prima di tutto, installiamo pandas (e numpy, che è una dipendenza):
+
+```bash
+pip install pandas numpy openpyxl
+```
+
+### Importazione della libreria
+
+```python
+import pandas as pd  # <1>
+import numpy as np  # <2>
+```
+1. Importa la libreria pandas.
+2. Importa la libreria numpy, spesso utilizzata insieme a pandas.
+
+### Creazione di `DataFrame`
+
+Un `DataFrame` è una struttura dati bidimensionale simile a una tabella:
+
+```python
+data = {
+    'Nome': ['Anna', 'Luca', 'Marta'],  # <1>
+    'Età': [28, 22, 35],  # <2>
+    'Città': ['Roma', 'Milano', 'Torino']  # <3>
+}
+
+df = pd.DataFrame(data)  # <4>
+
+print(df)  # <5>
+```
+1. Dizionario con la colonna `'Nome'`.
+2. Dizionario con la colonna `'Età'`.
+3. Dizionario con la colonna `'Città'`.
+4. Creazione del `DataFrame`.
+5. Stampa del `DataFrame`.
+
+### Lettura di file
+
+```python
+df = pd.read_csv('data.csv')  # <1>
+
+print(df.head())  # <2>
+```
+1. Lettura di un file CSV.
+2. Visualizza le prime 5 righe del `DataFrame`.
+
+```python
+df_excel = pd.read_excel('data.xlsx')  # <1>
+
+print(df_excel.head())  # <2>
+```
+1. Lettura di un file Excel.
+2. Visualizza le prime 5 righe del `DataFrame`.
+
+### Esplorazione dei dati
+
+```python
+print(df.info())  # <1>
+
+print(df.describe())  # <2>
+
+print(df['Colonna'].unique())  # <3>
+
+print(df['Colonna'].value_counts())  # <4>
+```
+1. Ottiene informazioni generali sul `DataFrame`.
+2. Ottiene statistiche descrittive sul `DataFrame`.
+3. Visualizza i valori unici di una colonna.
+4. Conta i valori unici di una colonna.
+
+### Selezione di dati
+
+```python
+print(df['Colonna'])  # <1>
+
+print(df.iloc[0])  # <2>
+
+print(df[df['Colonna'] > 10])  # <3>
+```
+1. Seleziona una colonna.
+2. Seleziona la prima riga (indice 0).
+3. Seleziona le righe dove il valore della colonna è maggiore di 10.
+
+### Modifica di dati
+
+```python
+df['Nuova Colonna'] = df['Colonna'] * 2  # <1>
+
+df.loc[df['Colonna'] > 10, 'Colonna'] = 10  # <2>
+
+df = df.drop('Colonna', axis=1)  # <3>
+```
+1. Aggiunge una nuova colonna calcolata.
+2. Modifica i valori di una colonna basandosi su una condizione.
+3. Rimuove una colonna.
+
+### Gestione di valori mancanti
+
+```python
+print(df.isnull().sum())  # <1>
+
+df = df.dropna()  # <2>
+
+df = df.fillna(0)  # <3>
+```
+1. Controlla quanti valori mancanti ci sono in ogni colonna.
+2. Rimuove le righe che contengono valori mancanti.
+3. Sostituisce i valori mancanti con 0.
+
+### Raggruppamento di dati
+
+```python
+grouped = df.groupby('Colonna').sum()  # <1>
+
+print(grouped)  # <2>
+```
+1. Raggruppa i dati per una colonna e calcola la somma.
+2. Visualizza il risultato del raggruppamento.
+
+### Pivot
+
+```python
+pivot = df.pivot_table(
+    values='Valore', 
+    index='Riga', 
+    columns='Colonna', 
+    aggfunc='sum', 
+    fill_value=0
+)  # <1>
+
+print(pivot)  # <2>
+```
+1. Crea una tabella pivot.
+2. Visualizza la tabella pivot.
+
+### Unione di `DataFrame`
+
+```python
+df1 = pd.DataFrame({'A': [1, 2], 'B': [3, 4]})  # <1>
+df2 = pd.DataFrame({'A': [5, 6], 'B': [7, 8]})  # <2>
+
+df_concat = pd.concat([df1, df2])  # <3>
+print(df_concat)  # <4>
+
+df3 = pd.DataFrame({'Key': ['K0', 'K1'], 'C': [1, 2]})  # <5>
+df4 = pd.DataFrame({'Key': ['K0', 'K1'], 'D': [3, 4]})  # <6>
+
+df_merge = pd.merge(df3, df4, on='Key')  # <7>
+print(df_merge)  # <8>
+```
+1. Creazione del primo `DataFrame`.
+2. Creazione del secondo `DataFrame`.
+3. Concatenazione dei `DataFrame`.
+4. Visualizzazione del `DataFrame` concatenato.
+5. Creazione del terzo `DataFrame` con chiave.
+6. Creazione del quarto `DataFrame` con chiave.
+7. Merge dei `DataFrame`.
+8. Visualizzazione del `DataFrame` unito.
+
+### Salvataggio di dati
+
+```python
+df.to_csv('output.csv', index=False)  # <1>
+
+df.to_excel('output.xlsx', index=False)  # <2>
+```
+1. Salva il `DataFrame` in un file CSV senza l'indice.
+2. Salva il `DataFrame` in un file Excel senza l'indice.
+
+Questa introduzione copre solo alcune delle molte funzionalità di pandas. La documentazione ufficiale e altre risorse online possono fornire ulteriori dettagli e esempi avanzati.
+
+### Operazioni di group by e pivot
+
+#### Group by
+
+L'operazione di group by in pandas permette di raggruppare i dati in base a una o più colonne, e quindi applicare una funzione di aggregazione su ciascun gruppo. Questo è utile quando si vuole calcolare statistiche aggregate, come somme, medie, conteggi, ecc., per ciascun gruppo di dati.
+
+Ad esempio, se si dispone di un dataset delle vendite, è possibile raggruppare i dati per `venditore` e calcolare la somma delle `quantità` vendute da ciascun venditore. Questo può fornire una visione chiara delle prestazioni di ciascun venditore.
+
+#### Pivot
+
+L'operazione di pivot in pandas permette di trasformare i dati rendendoli più comprensibili e facili da analizzare. Una tabella pivot ruota i dati in modo da creare una nuova tabella in cui le righe e le colonne rappresentano diverse dimensioni dei dati. In particolare, è possibile specificare quali valori devono essere visualizzati come righe, quali come colonne, e quale funzione di aggregazione applicare ai dati.
+
+Ad esempio, in un dataset delle vendite, è possibile creare una tabella pivot che mostra le `quantità` vendute per `data_vendita` e `prodotto`. Questo può aiutare a visualizzare come le vendite di ciascun prodotto cambiano nel tempo.
+
+## La soluzione
+
 Passaggi di soluzione:
 
-1. Creiamo il file CSV fornito e carichiamolo in un DataFrame pandas.
+1. Creiamo il file CSV fornito e carichiamolo in un `DataFrame` pandas.
 2. Controlliamo se ci sono valori mancanti nel dataset.
 3. Filtriamo le vendite del prodotto `Notebook X200` e visualizziamo il risultato.
 4. Raggruppiamo le vendite per venditore e calcoliamo la somma totale delle quantità vendute per ciascun venditore.
 5. Creiamo una tabella pivot per vedere le vendite per data e prodotto.
 6. Utilizziamo Matplotlib per creare un grafico a linee delle vendite totali per ciascun mese.
 
-## Operazioni di group by e pivot
-
-### Group by
-
-L'operazione di **group by** in pandas permette di raggruppare i dati in base a una o più colonne, e quindi applicare una funzione di aggregazione su ciascun gruppo. Questo è utile quando si vuole calcolare statistiche aggregate, come somme, medie, conteggi, ecc., per ciascun gruppo di dati.
-
-Ad esempio, se si dispone di un dataset delle vendite, è possibile raggruppare i dati per `venditore` e calcolare la somma delle `quantità` vendute da ciascun venditore. Questo può fornire una visione chiara delle prestazioni di ciascun venditore.
-
-### Pivot
-
-L'operazione di **pivot** in pandas permette di trasformare i dati rendendoli più comprensibili e facili da analizzare. Una tabella pivot ruota i dati in modo da creare una nuova tabella in cui le righe e le colonne rappresentano diverse dimensioni dei dati. In particolare, è possibile specificare quali valori devono essere visualizzati come righe, quali come colonne, e quale funzione di aggregazione applicare ai dati.
-
-Ad esempio, in un dataset delle vendite, è possibile creare una tabella pivot che mostra le `quantità` vendute per `data_vendita` e `prodotto`. Questo può aiutare a visualizzare come le vendite di ciascun prodotto cambiano nel tempo.
-
-## Passaggio 1: caricamento dell dataset
+### Passaggio 1: caricamento del dataset
 
 Carichiamo le librerie necessarie:
 
@@ -74,7 +255,7 @@ df_vendite = pd.read_csv('esercitazione-uno-vendite.csv')  # <1>
 ```
 1. Carica il dataset dal file CSV `esercitazione-uno-vendite.csv`.
 
-## Passaggio 2: gestione dei dati mancanti
+### Passaggio 2: gestione dei dati mancanti
 
 Controlliamo se ci sono valori mancanti e rimuoviamo le righe con valori mancanti:
 
@@ -86,7 +267,7 @@ df_vendite_ripulito = df_vendite.dropna()  # <2>
 1. Stampa il conteggio dei valori mancanti per ciascuna colonna.
 2. Rimuove le righe con valori mancanti dal `DataFrame`.
 
-## Passaggio 3: operazioni di filtro
+### Passaggio 3: operazioni di filtro
 
 Filtriamo le vendite del prodotto `Notebook X200`:
 
@@ -99,7 +280,7 @@ print(vendite_notebook_x200)  # <2>
 1. Filtra il DataFrame per il prodotto `Notebook X200`.
 2. Stampa le vendite del prodotto `Notebook X200`.
 
-## Passaggio 4: operazioni di raggruppamento e somma
+### Passaggio 4: operazioni di raggruppamento e somma
 
 Raggruppiamo per venditore e calcoliamo la somma delle quantità vendute:
 
@@ -111,7 +292,7 @@ print(vendite_per_venditore)  # <2>
 1. Raggruppa i dati per venditore e calcola la somma delle quantità vendute.
 2. Stampa la somma delle quantità vendute per ciascun venditore.
 
-## Passaggio 5: operazione di pivot
+### Passaggio 5: operazione di pivot
 
 Creiamo una tabella pivot per vedere le vendite per data e prodotto:
 
@@ -128,7 +309,7 @@ print(pivot_table_data_prodotto)  # <2>
 1. Crea una tabella pivot per visualizzare le vendite per data e prodotto.
 2. Stampa la tabella pivot delle vendite per data e prodotto.
 
-## Passaggio 6: visualizzazione con grafici
+### Passaggio 6: visualizzazione con grafici
 
 Creiamo un grafico a barre delle vendite per venditore:
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mappa</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script> <!-- <1> -->
+  <script>
+    function initMap() {
+      var geocoder = new google.maps.Geocoder();
+      var indirizzo = "{{ indirizzo }}"; <!-- <2> -->
+      var visualizzazione = "{{ visualizzazione }}"; <!-- <3> -->
+      geocoder.geocode({'address': indirizzo}, function(results, status) {
+        if (status === 'OK') {
+          var mapOptions = {
+            zoom: 15,
+            center: results[0].geometry.location,
+            mapTypeId: visualizzazione <!-- <4> -->
+          };
+          var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        } else {
+          alert('Geocode non riuscito per il seguente motivo: ' + status);
+        }
+      });
+    }
+  </script>
+</head>
+<body onload="initMap()"> <!-- <5> -->
+  <h1>Mappa di {{ indirizzo }}</h1>
+  <div id="map" style="height: 500px; width: 100%;"></div> <!-- <6> -->
+</body>
+</html>

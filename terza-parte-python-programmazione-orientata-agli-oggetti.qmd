@@ -1,0 +1,604 @@
+---
+reference-location: margin
+citation-location: margin
+tbl-cap-location: margin
+---
+
+# Programmazione orientata agli oggetti
+
+Python è un linguaggio di programmazione orientato agli oggetti. A differenza di altri linguaggi orientati agli oggetti, tuttavia, Python non costringe ad utilizzare esclusivamente il paradigma orientato agli oggetti: supporta anche la programmazione procedurale, con moduli e funzioni, consentendo di scegliere il miglior paradigma per ogni parte del programma. 
+
+Il paradigma orientato agli oggetti aiuta a raggruppare stato (dati) e comportamento (codice) in comode unità di funzionalità. Inoltre, offre alcuni meccanismi specializzati utili, come l'ereditarietà e i metodi speciali. L'approccio procedurale più semplice, basato su moduli e funzioni, può essere più adatto quando non è necessario sfruttare i vantaggi della programmazione orientata agli oggetti. Con Python, possiamo combinare e mescolare paradigmi.
+
+## Classi e istanze
+
+Una classe è un tipo definibile dall'utente, che possiamo istanziare per costruire istanze, ovvero oggetti di quel tipo. Python supporta questo attraverso le sue classi e oggetti istanza.
+
+### Classi
+
+Una classe è un oggetto Python con le seguenti caratteristiche:
+
+- Possiamo chiamare un oggetto classe come chiameremmo una funzione. La chiamata, nota come istanziazione, restituisce un oggetto noto come istanza della classe; la classe è anche nota come tipo dell'istanza.
+
+- Una classe ha attributi con nomi arbitrari che possiamo associare e referenziare.
+
+- I valori degli attributi della classe possono essere descrittori (inclusi funzioni) o oggetti dati ordinari.
+
+- Gli attributi della classe associati a funzioni sono noti anche come metodi della classe.
+
+- Un metodo può avere uno dei tanti nomi definiti da Python con due trattini bassi all'inizio e alla fine (noti come nomi dunder, abbreviazione di "double-underscore names" - ad esempio, il nome `__init__` è pronunciato "dunder init"). Python chiama implicitamente questi metodi speciali, quando una classe li fornisce, quando si verificano vari tipi di operazioni su quella classe o sulle sue istanze.
+
+- Una classe può ereditare da una o più classi, il che significa che delega ad altri oggetti classe la ricerca di alcuni attributi (inclusi metodi regolari e dunder) che non sono nella classe stessa.
+
+Un'istanza di una classe è un oggetto Python con attributi con nomi arbitrari che possiamo associare e referenziare. Ogni oggetto istanza delega la ricerca degli attributi alla sua classe per qualsiasi attributo non trovato nell'istanza stessa. La classe, a sua volta, può delegare la ricerca alle classi da cui eredita, se presenti.
+
+In Python, le classi sono oggetti (valori), gestiti proprio come altri oggetti. Possiamo passare una classe come argomento in una chiamata a una funzione e una funzione può restituire una classe come risultato di una chiamata. Possiamo associare una classe a una variabile, a un elemento in un contenitore o a un attributo di un oggetto. Le classi possono anche essere chiavi in un dizionario. Poiché le classi sono oggetti perfettamente ordinari in Python, spesso diciamo che le classi sono oggetti di prima classe.
+
+### L'istruzione `class`
+
+L'istruzione `class` è il modo più usuale per creare un oggetto classe. `class` è un'istruzione composta a singola clausola con la seguente sintassi:
+
+```python
+class NomeClasse(classi-base, *, **kw):  # <1>
+  statement(s)  # <2>
+```
+
+- `NomeClasse` è un identificatore: una variabile che la dichiarazione `class`, quando completata, associa (o riassocia) all'oggetto classe appena creato. Le convenzioni di denominazione Python consigliano di utilizzare il maiuscolo per i nomi delle classi, come `Item`, `PrivilegedUser`, `MultiUseFacility`, ecc.
+
+- `classi-base` è una serie di espressioni delimitate da virgole i cui valori sono oggetti classe. Vari linguaggi di programmazione utilizzano nomi diversi per questi oggetti classe: possiamo chiamarli basi, superclasse o genitori della classe. Possiamo dire che la classe creata eredita da, deriva da, estende o sottoclasse le sue classi base; in questo capitolo, generalmente usiamo il termine estendere. Questa classe è una sottoclasse diretta o discendente delle sue classi base. `**kw` può includere un argomento denominato `metaclass` per stabilire la metaclasse della classe.
+
+Sintatticamente, includere le classi base è facoltativo: per indicare che stiamo creando una classe senza basi, basta omettere `classi-base` (e, facoltativamente, omettere anche le parentesi attorno ad esso, posizionando i due punti subito dopo il nome della classe). Ogni classe eredita da `object`, sia che specifichiamo basi esplicite o meno.
+
+La relazione di sottoclasse tra classi è transitiva: se `C1` estende `C2`, e `C2` estende `C3`, allora `C1` estende `C3`. La funzione incorporata `issubclass(C1, C2)` accetta due oggetti classe: restituisce `True` quando `C1` estende `C2`, e altrimenti restituisce `False`. Qualsiasi classe è una sottoclasse di se stessa; quindi, `issubclass(C, C)` restituisce `True` per qualsiasi classe `C`. 
+
+La sequenza non vuota di istruzioni indentate che segue la definizione della classe è il corpo della classe. Un corpo di classe viene eseguito immediatamente come parte dell'esecuzione della definizione della classe. Fino a quando il corpo non termina l'esecuzione, il nuovo oggetto classe non esiste ancora e l'identificatore `NomeClasse` non è ancora associato (o riassociato). Nota che la definizione di classe non crea immediatamente nessuna istanza della nuova classe, ma piuttosto determina l'insieme di attributi condivisi da tutte le istanze quando in seguito creiamo istanze chiamando la classe.
+
+## Il corpo della classe
+
+Il corpo di una classe è dove normalmente specifichiamo gli attributi della classe; questi attributi possono essere oggetti descrittori (incluse funzioni) o oggetti dati ordinari di qualsiasi tipo. Un attributo di una classe può essere un'altra classe, quindi, ad esempio, possiamo avere una dichiarazione di classe "nidificata" all'interno di un'altra dichiarazione di classe.
+
+### Attributi degli oggetti classe
+
+Di solito specifichiamo un attributo di un oggetto classe associando un valore a un identificatore all'interno del corpo della classe. Per esempio:
+
+```python
+class C1:  # <1>
+  x = 23  # <2>
+
+print(C1.x)  # <3>
+```
+1. Definizione della classe `C1`.
+2. L'attributo `x` della classe `C1` è associato al valore `23`.
+3. Stampa del valore dell'attributo x della classe `C1`.
+
+Possiamo anche associare o disassociare attributi della classe al di fuori del corpo della classe. Per esempio:
+
+```python
+class C2:  # <1>
+  pass  # <2>
+
+C2.x = 23  # <3>
+
+print(C2.x)  # <4>
+```
+1. Definizione della classe `C2`.
+2. Corpo della classe vuoto.
+3. Associazione dell'attributo x della classe `C2` al valore `23`.
+4. Stampa del valore dell'attributo `x` della classe `C2`.
+
+Il nostro programma è solitamente più leggibile se associamo attributi della classe solo con istruzioni all'interno del corpo della classe. Tuttavia, riassociarli altrove può essere necessario se vogliamo mantenere informazioni di stato a livello di classe, piuttosto che a livello di istanza; Python ci permette di farlo, se lo desideriamo. Non c'è differenza tra un attributo di classe associato nel corpo della classe e uno associato o riassociato al di fuori del corpo associando un attributo.
+
+Come discuteremo a breve, tutte le istanze della classe condividono tutti gli attributi della classe.
+
+L'istruzione della classe implicitamente imposta alcuni attributi della classe. L'attributo `__name__` è la stringa dell'identificatore NomeClasse utilizzato nella dichiarazione della classe. L'attributo `__bases__` è la tupla di oggetti classe forniti (o impliciti) come classi base nella dichiarazione della classe. Per esempio, utilizzando la classe C1 appena creata:
+
+```python
+print(C1.__name__, C1.__bases__)  # <1>
+```
+1. Stampa del nome della classe e delle classi base.
+
+Una classe ha anche un attributo chiamato `__dict__`, che è la mappatura di sola lettura che la classe utilizza per mantenere altri attributi (noto anche, informalmente, come spazio dei nomi della classe).
+
+Nelle istruzioni direttamente nel corpo di una classe, i riferimenti agli attributi della classe devono utilizzare un nome semplice, non un nome completamente qualificato. Per esempio:
+
+```python
+class C3:  # <1>
+  x = 23  # <2>
+  y = x + 22  # <3>
+
+print(C3.y)  # <4>
+```
+1. Definizione della classe `C3`.
+2. L'attributo x della classe `C3` è associato al valore `23`.
+3. L'attributo y della classe `C3` è associato alla somma di `x` e `22`.
+4. Stampa del valore dell'attributo `y` della classe `C3`.
+
+Tuttavia, nelle istruzioni all'interno dei metodi definiti in un corpo di classe, i riferimenti agli attributi della classe devono utilizzare un nome completamente qualificato, non un nome semplice. Per esempio:
+
+```python
+class C4:  # <1>
+  x = 23  # <2>
+  
+  def metodo(self):  # <3>
+    print(C4.x)  # <4>
+
+c = C4()  # <5>
+
+c.metodo()  # <6>
+```
+1. Definizione della classe `C4`.
+2. L'attributo x della classe `C4` è associato al valore `23`.
+3. Definizione di un metodo della classe `C4`.
+4. Stampa del valore dell'attributo `x` della classe `C4`.
+5. Creazione di un'istanza della classe `C4`.
+6. Chiamata del metodo dell'istanza `c`.
+
+### Definizioni di funzioni nel corpo di una classe
+
+La maggior parte dei corpi delle classi include alcune istruzioni `def`, poiché le funzioni (note come metodi in questo contesto) sono importanti attributi per la maggior parte delle istanze delle classi. Un'istruzione `def` in un corpo di classe obbedisce alle regole viste per le funzioni ordinarie. Inoltre, un metodo definito in un corpo di classe ha un parametro obbligatorio come primo parametro, convenzionalmente sempre chiamato `self`, che si riferisce all'istanza su cui chiamiamo il metodo. Il parametro `self` gioca un ruolo speciale nelle chiamate ai metodi.
+
+Ecco un esempio di una classe che include una definizione di metodo:
+
+```python
+class C5:  # <1>
+  def ciao(self):  # <2>
+    print('Ciao')  # <3>
+
+c = C5()  # <4>
+c.ciao()  # <5>
+```
+1. Definizione della classe `C5`.
+2. Definizione di un metodo della classe `C5`.
+3. Stampa del messaggio `Ciao`.
+4. Creazione di un'istanza della classe `C5`.
+5. Chiamata del metodo `ciao()` dell'istanza `c`.
+
+Una classe può definire una varietà di metodi speciali dunder relativi a operazioni specifiche sulle sue istanze. Discuteremo questi metodi in dettaglio nella sezione "Metodi Speciali".
+
+### Variabili private della classe
+
+Quando un'istruzione in un corpo di classe (o in un metodo nel corpo) utilizza un identificatore che inizia (ma non termina) con due trattini bassi, come `__ident`, Python cambia implicitamente l'identificatore in `_NomeClasse__ident`, dove `NomeClasse` è il nome della classe. Questo cambiamento implicito consente a una classe di utilizzare nomi "privati" per attributi, metodi, variabili globali e altri scopi, riducendo il rischio di duplicare accidentalmente i nomi utilizzati altrove (particolarmente nelle sottoclassi).
+
+Per convenzione, gli identificatori che iniziano con un trattino basso sono privati all'ambito che li associa, che tale ambito sia o meno una classe. Il compilatore Python non impone questa convenzione di privacy: è responsabilità dei programmatori rispettarla.
+
+### Stringhe di documentazione della classe
+
+Se la prima istruzione nel corpo della classe è un letterale stringa, il compilatore associa quella stringa come stringa di documentazione (o docstring) per la classe. La docstring per la classe è disponibile nell'attributo `__doc__`; se la prima istruzione nel corpo della classe non è un letterale stringa, il suo valore è `None`.
+
+Esempio di docstring di una classe:
+
+```python
+class C6:  # <1>
+  """Questa è una classe di esempio."""  # <2>
+  
+  def metodo(self):  # <3>
+    pass  # <4>
+
+print(C6.__doc__)  # <5>
+```
+1. Definizione della classe `C6`.
+2. Stringa di documentazione della classe `C6`.
+3. Definizione di un metodo della classe `C6`.
+4. Corpo del metodo vuoto.
+5. Stampa della docstring della classe `C6`.
+
+### Descrittori
+
+Un descrittore è un oggetto la cui classe fornisce uno o più metodi speciali chiamati `__get__`, `__set__` o `__delete__`. I descrittori che sono attributi di classe controllano la semantica di accesso e impostazione degli attributi sulle istanze di quella classe.
+
+Esempio di un descrittore:
+
+```python
+class Const:  # <1>
+  def __init__(self, value):  # <2>
+    self.__dict__['value'] = value  # <3>
+
+  def __set__(self, *_):  # <4>
+    pass  # <5>
+
+  def __get__(self, *_):  # <6>
+    return self.__dict__['value']  # <7>
+
+  def __delete__(self, *_):  # <8>
+    pass  # <9>
+
+class X:  # <10>
+  c = Const(23)  # <11>
+
+x = X()  # <12>
+print(x.c)  # <13>
+
+x.c = 42  # <14>
+print(x.c)  # <15>
+
+del x.c  # <16>
+print(x.c)  # <17>
+```
+1. Definizione della classe `Const`.
+2. Inizializzazione del descrittore con un valore.
+3. Memorizzazione del valore nel dizionario dell'istanza.
+4. Metodo `__set__` del descrittore.
+5. Ignora qualsiasi tentativo di impostazione del valore.
+6. Metodo `__get__` del descrittore.
+7. Restituisce il valore memorizzato nel dizionario dell'istanza.
+8. Metodo `__delete__` del descrittore.
+9. Ignora qualsiasi tentativo di eliminazione del valore.
+10. Definizione della classe `X`.
+11. L'attributo c della classe `X` è un descrittore di tipo `Const`.
+12. Creazione di un'istanza della classe `X`.
+13. Stampa del valore dell'attributo `c` dell'istanza `x`.
+14. Tentativo di impostazione del valore dell'attributo `c` dell'istanza `x` (ignorato).
+15. Stampa del valore dell'attributo `c` dell'istanza `x`.
+16. Tentativo di eliminazione dell'attributo `c` dell'istanza `x` (ignorato).
+17. Stampa del valore dell'attributo `c` dell'istanza `x`.
+
+## Istanze
+
+Per creare un'istanza di una classe, chiamiamo l'oggetto classe come se fosse una funzione. Ogni chiamata restituisce una nuova istanza il cui tipo è quella classe:
+
+```python
+un_istanza = C5()  # <1>
+```
+1. Creazione di un'istanza della classe `C5`.
+
+La funzione predefinita `isinstance(i, C)`, con una classe come argomento `C`, restituisce `True` quando `i` è un'istanza della classe `C` o di qualsiasi sottoclasse di `C`. Altrimenti, `isinstance` restituisce `False`. Se `C` è una tupla di tipi (o più tipi uniti utilizzando l'operatore `|`), `isinstance` restituisce `True` se `i` è un'istanza o sottoclasse di uno dei tipi dati, e `False` altrimenti.
+
+### `__init__`
+
+Quando una classe definisce o eredita un metodo chiamato `__init__`, chiamare l'oggetto classe esegue `__init__` sulla nuova istanza per eseguire l'inizializzazione per istanza. Gli argomenti passati nella chiamata devono corrispondere ai parametri di `__init__`, eccetto per il parametro `self`. Per esempio, consideriamo la seguente definizione di classe:
+
+```python
+class C6:  # <1>
+  def __init__(self, n):  # <2>
+    self.x = n  # <3>
+
+un_altra_istanza = C6(42)  # <4>
+```
+1. Definizione della classe `C6`.
+2. Definizione del metodo `__init__` con il parametro `n`.
+3. Associazione dell'attributo `x` al valore del parametro `n`.
+4. Creazione di un'istanza della classe `C6` con il valore `42` per il parametro `n`.
+
+Il metodo `__init__` di solito contiene istruzioni che associano attributi di istanza. Un metodo `__init__` non deve restituire un valore diverso da `None`; se lo fa, Python solleva un'eccezione `TypeError`.
+
+### Attributi degli oggetti istanza
+
+Una volta creata un'istanza, possiamo accedere ai suoi attributi (dati e metodi) utilizzando l'operatore punto `.`.
+
+```python
+un_istanza.ciao()  # <1>
+
+print(un_altra_istanza.x)  # <2>
+```
+1. Chiamata del metodo `ciao` dell'istanza `un_istanza`.
+2. Stampa del valore dell'attributo `x` dell'istanza `un_altra_istanza`.
+
+Possiamo dare a un oggetto istanza un attributo associando un valore a un riferimento di attributo.
+
+```python
+class C7:  # <1>
+  pass  # <2>
+
+z = C7()  # <3>
+
+z.x = 23  # <4>
+
+print(z.x)  # <5>
+```
+1. Definizione della classe `C7`.
+2. Corpo della classe vuoto.
+3. Creazione di un'istanza della classe `C7`.
+4. Associazione dell'attributo `x` dell'istanza `z` al valore `23`.
+5. Stampa del valore dell'attributo `x` dell'istanza `z`.
+
+## Riferimenti agli attributi
+
+Un riferimento a un attributo è un'espressione della forma `x.nome`, dove `x` è qualsiasi espressione e `nome` è un identificatore chiamato nome dell'attributo. Molti oggetti Python hanno attributi, ma un riferimento a un attributo ha una semantica speciale e ricca quando `x` si riferisce a una classe o a un'istanza. I metodi sono attributi, quindi tutto ciò che diciamo sugli attributi in generale si applica anche agli attributi chiamabili (cioè, metodi).
+
+Quando utilizziamo la sintassi `x.nome` per riferirci a un attributo di un'istanza `x` di una classe `C`, la ricerca dell'attributo procede in tre passi:
+
+1. Attributo nell'istanza: Se `'nome'` è una chiave in `x.__dict__`, `x.nome` restituisce il valore associato a quella chiave. Questo è il caso più semplice e veloce.
+
+2. Attributo nella classe o nelle sue basi: Se `'nome'` non è una chiave in `x.__dict__`, la ricerca dell'attributo procede nella classe di `x` (`x.__class__`) e nelle sue basi, seguendo l'ordine di risoluzione dei metodi (Method Resolution Order, MRO). Durante questa ricerca:
+
+   - Se l'attributo è un descrittore non sovrascrivente (ovvero, un descrittore che implementa solo il metodo `__get__`), viene restituito il valore del descrittore stesso.
+
+   - Se l'attributo è un descrittore sovrascrivente (ovvero, un descrittore che implementa i metodi `__get__` e `__set__`), viene chiamato il metodo `__get__` del descrittore, che restituisce il valore dell'attributo.
+
+   - Se l'attributo non è un descrittore, viene restituito il valore associato all'attributo.
+
+3. Metodo `__getattr__`: Se l'attributo non è trovato né nell'istanza né nella classe e nelle sue basi, viene chiamato il metodo speciale `__getattr__`, se definito. Questo metodo può fornire un valore di ritorno per l'attributo o sollevare un'eccezione `AttributeError`.
+
+Esempio di riferimento agli attributi:
+
+```python
+class Base:  # <1>
+    a = 23  # <2>
+
+class Derivata(Base):  # <3>
+    b = 45  # <4>
+
+d = Derivata()  # <5>
+
+d.c = 67  # <6>
+
+print(d.a)  # <7>
+print(d.b)  # <8>
+print(d.c)  # <9>
+```
+1. Definizione della classe `Base`.
+2. L'attributo `a` della classe `Base` è associato al valore `23`.
+3. Definizione della classe `Derivata` che eredita da `Base`.
+4. L'attributo `b` della classe `Derivata` è associato al valore `45`.
+5. Creazione di un'istanza della classe `Derivata`.
+6. Associazione dell'attributo `c` dell'istanza `d` al valore `67`.
+7. Stampa del valore dell'attributo `a` dell'istanza `d`, trovato nella classe base. Output: `23`.
+8. Stampa del valore dell'attributo `b` dell'istanza `d`, trovato nella classe derivata. Output: `45`.
+9. Stampa del valore dell'attributo `c` dell'istanza `d`, trovato nell'istanza stessa. Output: `67`.
+
+Questo esempio illustra come la ricerca di un attributo procede dall'istanza alla classe e, infine, alle basi della classe.
+
+## Metodi vincolati e non vincolati
+
+Il metodo `__get__` di un oggetto funzione può restituire l'oggetto funzione stesso o un oggetto metodo vincolato che avvolge la funzione; un metodo vincolato è associato all'istanza specifica da cui è ottenuto. Un metodo vincolato è un'istanza di un metodo che è legato a un oggetto particolare, il che significa che può essere chiamato senza dover passare l'oggetto come parametro. Al contrario, un metodo non vincolato non è legato a un'istanza e deve essere esplicitamente passato un oggetto come parametro.
+
+Quando un metodo è chiamato su un'istanza di una classe, Python crea un metodo vincolato, che ha un riferimento implicito all'istanza, passato come il primo argomento `self`. Questo permette al metodo di accedere agli attributi e ad altri metodi della classe tramite `self`.
+
+Esempio di metodo vincolato:
+
+```python
+class C8:  # <1>
+  def saluta(self):  # <2>
+    print("Ciao!")  # <3>
+
+x = C8()  # <4>
+
+metodo_vincolato = x.saluta  # <5>
+
+metodo_vincolato()  # <6>
+```
+1. Definizione della classe `C8`.
+2. Definizione di un metodo della classe `C8` chiamato `saluta`.
+3. Il metodo `saluta` stampa il messaggio `"Ciao!"`.
+4. Creazione di un'istanza della classe `C8` e assegnazione a `x`.
+5. Ottenimento di un metodo vincolato dall'istanza `x` e assegnazione a `metodo_vincolato`. Questo passo associa il metodo `saluta` all'istanza `x`, creando un metodo vincolato.
+6. Chiamata del metodo vincolato. Questa chiamata è equivalente a `x.saluta()` e stampa `"Ciao!"`.
+
+Quando `metodo_vincolato` è chiamato, non c'è bisogno di passare `x` come argomento perché `x` è già legato al metodo vincolato. Questo è ciò che rende i metodi vincolati potenti e comodi da usare.
+
+In contrasto, un metodo non vincolato può essere ottenuto dalla classe stessa. In tal caso, è necessario passare esplicitamente l'istanza come primo argomento.
+
+Esempio di metodo non vincolato:
+
+```python
+metodo_non_vincolato = C8.saluta  # <1>
+
+metodo_non_vincolato(x)  # <2>
+```
+1. Ottenimento di un metodo non vincolato dalla classe `C8` e assegnazione a `metodo_non_vincolato`. 
+2. Chiamata del metodo non vincolato, passando esplicitamente l'istanza `x` come argomento. Questo passo è necessario per fornire il contesto (`self`) per il metodo, poiché `metodo_non_vincolato` non è legato a nessuna istanza.
+
+In sintesi, i metodi vincolati consentono di chiamare metodi di istanza senza dover passare esplicitamente l'istanza, rendendo il codice più pulito e intuitivo.
+
+## Ereditarietà
+
+Quando utilizziamo un riferimento a un attributo `C.nome` su un oggetto classe `C`, e `nome` non è una chiave in `C.__dict__`, la ricerca procede implicitamente su ogni oggetto classe che è in `C.__bases__` in un ordine specifico (noto storicamente come ordine di risoluzione dei metodi, o MRO, ma che in realtà si applica a tutti gli attributi, non solo ai metodi). Le classi base di `C` possono a loro volta avere le proprie basi. La ricerca controlla gli antenati diretti e indiretti, uno per uno, nell'MRO, fermandosi quando `nome` viene trovato.
+
+Esempio di ereditarietà:
+
+```python
+class Base:  # <1>
+  a = 23  # <2>
+
+  def saluta(self):  # <3>
+    print("Ciao dal Base")  # <4>
+
+class Derivata(Base):  # <5>
+  b = 45  # <6>
+
+d = Derivata()  # <7>
+
+print(d.a)  # <8>
+
+d.saluta()  # <9>
+```
+1. Definizione della classe `Base`.
+2. L'attributo `a` della classe Base è associato al valore `23`.
+3. Definizione di un metodo della classe `Base`.
+4. Stampa del messaggio `Ciao dal Base`.
+5. Definizione della classe Derivata che eredita da `Base`.
+6. L'attributo `b` della classe Derivata è associato al valore `45`.
+7. Creazione di un'istanza della classe `Derivata`.
+8. Stampa del valore dell'attributo `a` dell'istanza `d`.
+9. Chiamata del metodo `saluta` dell'istanza `d`.
+
+## Metodi speciali
+
+I metodi speciali in Python sono metodi con due trattini bassi all'inizio e alla fine del loro nome (dunder). Questi metodi vengono chiamati implicitamente in determinate situazioni. Ad esempio, il metodo `__init__` viene chiamato quando viene creata una nuova istanza di una classe.
+
+Esempio di metodo speciale:
+
+```python
+class C9:  # <1>
+  def __init__(self, valore):  # <2>
+    self.valore = valore  # <3>
+
+  def __str__(self):  # <4>
+    return f"C9 con valore: {self.valore}"  # <5>
+
+c = C9(10)  # <6>
+
+print(c)  # <7>
+```
+1. Definizione della classe `C9`.
+2. Definizione del metodo `__init__` con il parametro `valore`.
+3. Associazione dell'attributo `valore` al valore del parametro `valore`.
+4. Definizione del metodo `__str__`.
+5. Restituzione di una stringa rappresentativa dell'istanza.
+6. Creazione di un'istanza della classe `C9` con il valore `10`.
+7. Stampa della rappresentazione dell'istanza `c`.
+
+## Metodi di classe e metodi statici
+
+Python fornisce due tipi di metodi a livello di classe: metodi statici e metodi di classe. I metodi statici sono definiti utilizzando il decoratore `@staticmethod` e non ricevono automaticamente il riferimento all'istanza o alla classe come primo argomento. I metodi di classe sono definiti utilizzando il decoratore `@classmethod` e ricevono il riferimento alla classe come primo argomento, convenzionalmente chiamato `cls`.
+
+Esempio di metodo statico e metodo di classe:
+
+```python
+class C10:  # <1>
+  @staticmethod  # <2>
+  def metodo_statico():  # <3>
+    print("Metodo statico")  # <4>
+
+  @classmethod  # <5>
+  def metodo_di_classe(cls):  # <6>
+    print(f"Metodo di classe per {cls.__name__}")  # <7>
+
+C10.metodo_statico()  # <8>
+
+C10.metodo_di_classe()  # <9>
+```
+1. Definizione della classe `C10`.
+2. Decoratore `@staticmethod` per definire un metodo statico.
+3. Definizione del metodo statico `metodo_statico`.
+4. Stampa del messaggio `Metodo statico`.
+5. Decoratore `@classmethod` per definire un metodo di classe.
+6. Definizione del metodo di classe `metodo_di_classe`.
+7. Stampa del messaggio con il nome della classe.
+8. Chiamata del metodo statico `metodo_statico`.
+9. Chiamata del metodo di classe `metodo_di_classe`.
+
+## Decoratori
+
+I decoratori in Python sono funzioni che modificano il comportamento di altre funzioni o metodi. Sono utili per estendere la funzionalità di funzioni o metodi senza modificarne il codice.
+
+Esempio di decoratore:
+
+```python
+def mio_decoratore(f):  # <1>
+  def wrapper():  # <2>
+    print("Qualcosa prima della funzione")  # <3>
+
+    f()  # <4>
+
+    print("Qualcosa dopo la funzione")  # <5>
+
+  return wrapper  # <6>
+
+@mio_decoratore  # <7>
+def di_ciao():  # <8>
+  print("Ciao!")  # <9>
+
+di_ciao()  # <10>
+```
+1. Definizione del decoratore `mio_decoratore`.
+2. Definizione della funzione `wrapper` interna.
+3. Stampa di un messaggio prima della chiamata della funzione decorata.
+4. Chiamata della funzione decorata.
+5. Stampa di un messaggio dopo la chiamata della funzione decorata.
+6. Restituzione della funzione `wrapper`.
+7. Applicazione del decoratore `mio_decoratore` alla funzione `di_ciao`.
+8. Definizione della funzione `di_ciao`.
+9. Stampa del messaggio `Ciao!`.
+10. Chiamata della funzione `di_ciao` decorata.
+
+## Spazio dei nomi
+
+I parametri di una funzione, insieme a qualsiasi nome che viene associato (mediante assegnazione o altre istruzioni di associazione, come `def`) nel corpo della funzione, costituiscono lo spazio dei nomi locale della funzione, noto anche come ambito locale. Ognuna di queste variabili è nota come variabile locale della funzione.
+
+Le variabili che non sono locali sono note come variabili globali. Le variabili globali sono attributi dell'oggetto modulo. Ogni volta che una variabile locale ha lo stesso nome di una variabile globale, quel nome, all'interno del corpo della funzione, si riferisce alla variabile locale, non a quella globale. Espressiamo questo dicendo che la variabile locale nasconde la variabile globale dello stesso nome in tutto il corpo della funzione.
+
+### `global`
+
+Per impostazione predefinita, qualsiasi variabile associata nel corpo di una funzione è locale alla funzione. Se una funzione ha bisogno di associare o riassociare alcune variabili globali (non è una buona pratica!), la prima istruzione del corpo della funzione deve essere:
+
+```python
+global identificatori
+```
+
+dove `identificatori` è uno o più identificatori separati da virgole. Gli identificatori elencati in una dichiarazione `global` si riferiscono alle variabili globali (cioè, attributi dell'oggetto modulo) che la funzione ha bisogno di associare o riassociare.
+
+Esempio di utilizzo di `global`:
+
+```python
+_conta = 0  # <1>
+
+def contatore():  # <2>
+    global _conta  # <3>
+
+    _conta += 1  # <4>
+
+    return _conta  # <5>
+
+print(contatore())  # <6>
+print(contatore())  # <7>
+```
+1. Definizione di una variabile globale `_conta`.
+2. Definizione della funzione `contatore`.
+3. Dichiarazione che `_conta` è una variabile globale.
+4. Incremento della variabile globale `_conta`.
+5. Restituzione del valore di `_conta`.
+6. Chiamata della funzione `contatore`. Output: 1.
+7. Chiamata della funzione `contatore`. Output: 2.
+
+### Funzioni Annidate e Ambiti Annidati
+
+Un'istruzione `def` all'interno di un corpo di funzione definisce una funzione annidata e la funzione il cui corpo include il `def` è nota come funzione esterna a quella annidata. Il codice nel corpo di una funzione annidata può accedere (ma non riassociare) variabili locali di una funzione esterna, note anche come variabili libere della funzione annidata.
+
+Esempio di funzione annidata:
+
+```python
+def esterna(a, b, c):  # <1>
+    def annidata(x):  # <2>
+        return (x * 100.0) / (a + b + c)  # <3>
+    print('Percentuali:', annidata(a), annidata(b), annidata(c))  # <4>
+
+esterna(10, 20, 30)  # <5>
+```
+1. Definizione della funzione esterna `esterna` con i parametri `a`, `b` e `c`.
+2. Definizione della funzione annidata `annidata` con il parametro `x`.
+3. Calcolo e restituzione della percentuale di `x` rispetto alla somma di `a`, `b` e `c`.
+4. Stampa delle percentuali di `a`, `b` e `c` calcolate dalla funzione annidata.
+5. Chiamata della funzione esterna `esterna`.
+
+### Espressioni `lambda`
+
+Se il corpo di una funzione è una singola istruzione di espressione return, possiamo (opzionalmente) scegliere di sostituire la funzione con una forma speciale di espressione lambda:
+
+```python
+lambda parametri: espressione
+```
+
+Un'espressione lambda è l'equivalente anonimo di una funzione normale il cui corpo è una singola istruzione di return. La sintassi lambda non utilizza la parola chiave return. Possiamo utilizzare un'espressione lambda ovunque potremmo utilizzare un riferimento a una funzione. Le espressioni lambda possono essere utili quando vogliamo utilizzare una funzione estremamente semplice come argomento o valore di ritorno.
+
+Esempio di espressione lambda:
+
+```python
+lista = [-2, -1, 0, 1, 2]  # <1>
+ordinata = sorted(lista, key=lambda x: x * x)  # <2>
+print(ordinata)  # <3>
+```
+1. Definizione di una lista di numeri.
+2. Ordinamento della lista utilizzando una funzione lambda che restituisce il quadrato di ciascun elemento come chiave di ordinamento.
+3. Stampa della lista ordinata. Output: [0, -1, 1, -2, 2].
+
+In alternativa, possiamo sempre utilizzare una dichiarazione `def` locale per dare un nome all'oggetto funzione, quindi utilizzare questo nome come argomento o valore di ritorno.
+
+Esempio alternativo senza `lambda`:
+
+```python
+def quadrato(valore):  # <1>
+    return valore * valore  # <2>
+
+lista = [-2, -1, 0, 1, 2]  # <3>
+ordinata = sorted(lista, key=quadrato)  # <4>
+print(ordinata)  # <5>
+```
+1. Definizione della funzione `quadrato` con il parametro `valore`.
+2. Calcolo e restituzione del quadrato del valore.
+3. Definizione di una lista di numeri.
+4. Ordinamento della lista utilizzando la funzione `quadrato` come chiave di ordinamento.
+5. Stampa della lista ordinata. Output: [0, -1, 1, -2, 2].
+
+Mentre `lambda` può essere utile in alcuni casi, `def` è di solito preferibile: è più generale e aiuta a rendere il nostro codice più leggibile, poiché possiamo scegliere un nome chiaro per la funzione.
+

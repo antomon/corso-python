@@ -1,0 +1,147 @@
+
+---
+reference-location: margin
+citation-location: margin
+tbl-cap-location: margin
+---
+
+# Esercitazione 1: web app con Flask
+
+## Il problema
+
+In questa esercitazione, svilupperemo una semplice web app utilizzando Flask. L'applicazione accetterà in input un indirizzo dall'utente e mostrerà la mappa corrispondente utilizzando Google Maps, consentendo all'utente di scegliere il tipo di visualizzazione della mappa (mappa normale, satellite, terreno).
+
+## Prerequisiti
+
+Per seguire questa esercitazione, è necessario avere installato Flask e richiedere una chiave API di Google Maps.
+
+Installazione di Flask:
+
+```bash
+pip install flask
+```
+
+## Passaggi dell'Esercitazione
+
+1. Creare un'applicazione Flask.
+2. Implementare della pagina web per l'inserimento dell'indirizzo.
+3. Integrare Google Maps per visualizzare la mappa basata sull'indirizzo inserito.
+4. Consentire la selezione del tipo di visualizzazione della mappa.
+
+### Passaggio 1: creazione di un'applicazione Flask
+
+Il primo passo è creare una semplice applicazione Flask. Creiamo un file chiamato `app.py`.
+
+```python
+from flask import Flask, render_template, request  # <1>
+
+app = Flask(__name__)  # <2>
+
+@app.route('/', methods=['GET', 'POST'])  # <3>
+def home():
+  if request.method == 'POST':  # <4>
+    indirizzo = request.form['indirizzo']  # <5>
+
+    visualizzazione = request.form['visualizzazione']  # <6>
+
+    return render_template('mappa.html', 
+                           indirizzo=indirizzo, 
+                           visualizzazione=visualizzazione)  # <7>
+
+  return render_template('index.html')  # <8>
+
+if __name__ == '__main__':
+  app.run(debug=True)  # <9>
+```
+1. Importa Flask e i moduli necessari per gestire le richieste e i template.
+2. Crea l'istanza dell'applicazione Flask.
+3. Definisce una route per la homepage, che accetta sia richieste `GET` che `POST`.
+4. Controlla se la richiesta è di tipo `POST`.
+5. Ottiene l'indirizzo inserito dall'utente nel modulo HTML.
+6. Ottiene il tipo di visualizzazione selezionato dall'utente nel modulo HTML.
+7. Renderizza il template `mappa.html`, passando l'indirizzo e il tipo di visualizzazione come variabili.
+8. Renderizza il template `index.html` per le richieste `GET`.
+9. Avvia l'applicazione Flask in modalità debug.
+
+### Passaggio 2: implementazione della pagina web per inserimento indirizzo
+
+Creiamo una pagina web che permetta agli utenti di inserire un indirizzo e selezionare il tipo di visualizzazione della mappa. Creiamo un file chiamato `templates/index.html`.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inserisci Indirizzo</title>
+</head>
+<body>
+  <h1>Inserisci un indirizzo</h1>
+  <form method="post">
+    <label for="indirizzo">Indirizzo:</label>
+    <input type="text" id="indirizzo" name="indirizzo" required> <!-- <1> -->
+    <label for="visualizzazione">Visualizzazione:</label>
+    <select id="visualizzazione" name="visualizzazione"> <!-- <2> -->
+      <option value="roadmap">Mappa</option>
+      <option value="satellite">Satellite</option>
+      <option value="terrain">Terreno</option>
+    </select>
+    <input type="submit" value="Mostra Mappa"> <!-- <3> -->
+  </form>
+</body>
+</html>
+```
+1. Campo di input per l'indirizzo.
+2. Dropdown per selezionare il tipo di visualizzazione della mappa.
+3. Pulsante di invio per il modulo.
+
+### Passaggio 3: integrazione di Google Maps
+
+Creiamo un template per visualizzare la mappa di Google. Creiamo un file chiamato `templates/mappa.html`.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mappa</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script> <!-- <1> -->
+  <script>
+    function initMap() {
+      var geocoder = new google.maps.Geocoder();
+      var indirizzo = "{{ indirizzo }}"; <!-- <2> -->
+      var visualizzazione = "{{ visualizzazione }}"; <!-- <3> -->
+      geocoder.geocode({'address': indirizzo}, function(results, status) {
+        if (status === 'OK') {
+          var mapOptions = {
+            zoom: 15,
+            center: results[0].geometry.location,
+            mapTypeId: visualizzazione <!-- <4> -->
+          };
+          var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        } else {
+          alert('Geocode non riuscito per il seguente motivo: ' + status);
+        }
+      });
+    }
+  </script>
+</head>
+<body onload="initMap()"> <!-- <5> -->
+  <h1>Mappa di {{ indirizzo }}</h1>
+  <div id="map" style="height: 500px; width: 100%;"></div> <!-- <6> -->
+</body>
+</html>
+```
+1. Carica l'API di Google Maps con la chiave API.
+2. Inserisce l'indirizzo passato dal backend.
+3. Inserisce il tipo di visualizzazione passato dal backend.
+4. Imposta il tipo di visualizzazione della mappa.
+5. Chiama la funzione `initMap` quando la pagina è caricata.
+6. Div per visualizzare la mappa.
+
+### Passaggio 4: test dell'applicazione
+
+Eseguiamo l'applicazione Flask:
+
+```bash
+python app.py
+```
+
+Apriamo il browser e navighiamo all'indirizzo `http://127.0.0.1:5000/`. Inseriamo un indirizzo, selezioniamo il tipo di visualizzazione e clicchiamo su "Mostra Mappa". La mappa di Google dovrebbe essere visualizzata con l'indirizzo inserito e il tipo di visualizzazione selezionato.
