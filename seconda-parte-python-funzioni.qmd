@@ -14,38 +14,53 @@ Python è alquanto insolito nella flessibilità che offre al programmatore nel d
 
 Esempio di funzione come oggetto di prima classe:
 
-```python
-def aggiungi_inverse(dizionario_inverse):  # <1>
-  for funzione in list(dizionario_inverse):  # <2>
-    dizionario_inverse[dizionario_inverse[funzione]] = funzione  # <3>
-
-math_map = {sin: asin, cos: acos, tan: atan, log: exp}  # <4>
-aggiungi_inverse(math_map)  # <5>
-```
-1. Definizione della funzione `aggiungi_inverse` che prende come parametro un dizionario chiamato `dizionario_inverse`.
-2. Itera su una lista delle chiavi del `dizionario_inverse`. La chiamata a `list(dizionario_inverse)` è necessaria per evitare problemi durante la modifica del dizionario stesso durante l'iterazione.
-3. Per ogni funzione nel dizionario, aggiunge una nuova coppia chiave-valore invertendo la chiave e il valore originali. In altre parole, per ogni chiave `funzione`, inserisce nel dizionario una nuova chiave che è il valore originale corrispondente a `funzione` e assegna a questa chiave il valore `funzione`.
-4. Crea un dizionario `math_map` che mappa alcune funzioni matematiche alle loro funzioni inverse utilizzando il modulo `math`.
-5. Chiama la funzione `aggiungi_inverse` passando `math_map` come argomento, completando il dizionario `math_map` con le coppie inverse.
-
-Dopo l'esecuzione, il dizionario `math_map` conterrà sia le funzioni originali che le loro inverse come chiavi e valori:
+Capisco meglio il problema ora. Hai ragione, il controllo dovrebbe verificare se la funzione è una chiave e l'inversa è un valore nel dizionario. Ecco il codice corretto:
 
 ```python
-{
-  sin: asin,
-  cos: acos,
-  tan: atan,
-  log: exp,
-  asin: sin,
-  acos: cos,
-  atan: tan,
-  exp: log
-}
+from math import sin, cos, tan, asin, acos, atan, log, exp  # <1>
+
+def aggiungi_inverse(dizionario_inverse, funzione, inverse_funzione):  # <2>
+  if not callable(funzione) or not callable(inverse_funzione):  # <3>
+      raise ValueError("Entrambi i parametri devono essere funzioni")  # <4>
+
+  if funzione not in dizionario_inverse and inverse_funzione not in dizionario_inverse.values():  # <5>
+    dizionario_inverse[funzione] = inverse_funzione  # <6>
+    dizionario_inverse[inverse_funzione] = funzione  # <7>
+
+# Dizionario di funzioni matematiche e le loro inverse
+math_map = {sin: asin, cos: acos, tan: atan, log: exp}  # <8>
+
+# Aggiungi nuove funzioni e le loro inverse
+aggiungi_inverse(math_map, exp, log)  # <9>
+aggiungi_inverse(math_map, asin, sin)  # <10>
+
+# Import del modulo pprint per una stampa formattata del dizionario
+import pprint
+
+# Stampa del dizionario aggiornato per verificare il risultato
+pprint.pprint(math_map)  # <11>
 ```
+1. Import delle funzioni matematiche dal modulo `math`.
+2. La funzione `aggiungi_inverse` accetta un dizionario e due funzioni.
+3. Controlla che i parametri siano funzioni: Verifica che i parametri siano funzioni utilizzando `callable`.
+4. Errore se i parametri non sono funzioni: Solleva un'eccezione se uno dei parametri non è una funzione.
+5. Controlla se la funzione non è già una chiave e se l'inversa non è già un valore nel dizionario: Verifica che la funzione non sia già presente come chiave e che l'inversa non sia già presente come valore nel dizionario.
+6. Aggiunge la funzione al dizionario con la sua inversa come valore.
+7. Aggiunge l'inversa della funzione al dizionario con la funzione originale come valore.
+8. Creazione di un dizionario iniziale con alcune funzioni matematiche e le loro inverse.
+9. Chiamata alla funzione `aggiungi_inverse` con nuove funzioni da aggiungere.
+10. Aggiunta di un'altra coppia funzione-inversa.
+11. Stampa del dizionario per verificare che le nuove coppie siano state aggiunte correttamente.
+  ```python
+  {<built-in function cos>: <built-in function acos>,
+  <built-in function log>: <built-in function exp>,
+  <built-in function sin>: <built-in function asin>,
+  <built-in function tan>: <built-in function atan>}
+  ```
 
-In questo modo, il dizionario `math_map` diventa bidirezionale, mappando ogni funzione alla sua inversa e viceversa.
+In questo modo, la funzione `aggiungi_inverse` aggiunge solo le coppie funzione-inversa che non sono già presenti nel dizionario, evitando duplicazioni o errori.
 
-Notiamo che in questo caso la funzione muta il suo argomento. In Python, la convenzione usuale è che tali funzioni non restituiscano un valore.
+Il dizionario `math_map` diventa bidirezionale, mappando ogni funzione alla sua inversa e viceversa. Notiamo che in questo caso la funzione muta il suo argomento. In Python, la convenzione usuale è che tali funzioni non restituiscano un valore.
 
 ## Definizione delle funzioni
 
@@ -58,7 +73,7 @@ def nome_funzione(parametri):  # <1>
 1. `nome_funzione` è un identificatore.
 2. Le istruzioni indentate costituiscono il corpo della funzione.
 
-Quando l'interprete incontra una dichiarazione `def`, compila il corpo della funzione, creando un oggetto funzione, e associa `nome_funzione` all'oggetto funzione compilato nello spazio dei nomi contenitore (tipicamente lo spazio dei nomi del modulo, o uno spazio dei nomi di classe quando si definiscono metodi).
+Quando l'interprete incontra una definizione `def`, compila il corpo della funzione, creando un oggetto funzione, e associa `nome_funzione` all'oggetto funzione compilato nello spazio dei nomi contenitore (tipicamente lo spazio dei nomi del modulo, o uno spazio dei nomi di classe quando si definiscono metodi).
 
 Esempio di funzione senza parametri:
 
@@ -88,7 +103,37 @@ print(raddoppia('ciao'))  # <4>
 
 ## Parametri
 
-I parametri (formalmente, parametri formali) nominano i valori passati in una chiamata di funzione e possono specificare valori predefiniti per essi. Ogni volta che chiamiamo la funzione, la chiamata associa ogni nome di parametro al valore corrispondente in un nuovo spazio dei nomi locale, che Python distrugge successivamente all'uscita dalla funzione.
+I parametri (anche detti parametri formali) nominano i valori passati in una chiamata di funzione e possono specificare valori predefiniti. Ogni volta che chiamiamo una funzione, la chiamata associa ogni nome di parametro al valore corrispondente (argomento) in un nuovo spazio dei nomi locale. Questo spazio dei nomi locale esiste solo per la durata della funzione, e Python lo distrugge al termine dell'esecuzione della funzione. È importante notare che gli argomenti sono oggetti e che le modifiche a questi oggetti mutabili (come liste o dizionari) all'interno della funzione sono visibili anche al di fuori della funzione, nell'ambito del chiamante. Tuttavia, gli identificatori dei parametri non sono accessibili fuori dalla funzione.
+
+Certo, ecco un esempio illustrativo che mostra come i parametri di una funzione si comportano in Python, specialmente quando si tratta di oggetti mutabili:
+
+```python
+def modifica_lista(lista):  # <1>
+  lista.append(4)  # <2>
+
+  lista = [1, 2, 3]  # <3>
+  
+  print("Dentro la funzione:", lista)  # <4>
+
+mia_lista = [1, 2]  # <5>
+
+modifica_lista(mia_lista)  # <6>
+
+print("Fuori dalla funzione:", mia_lista)  # <7>
+```
+1. La funzione prende un parametro `lista`, che è un riferimento a una lista passata come argomento.
+2. La funzione modifica la lista originale aggiungendo un nuovo elemento `4`. Questa modifica sarà visibile anche al di fuori della funzione perché `lista` è un riferimento all'oggetto lista originale.
+3. `lista` viene riassegnata a una nuova lista `[1, 2, 3]`. Questa riassegnazione non modifica l'oggetto originale passato come argomento, ma crea un nuovo oggetto locale a cui `lista` ora punta. Questa modifica non sarà visibile al di fuori della funzione.
+4. Stampa il contenuto dell'identificatore `lista` all'interno della funzione, che ora è `[1, 2, 3]` a causa della riassegnazione.
+5. Creiamo una lista chiamata `mia_lista` con i valori `[1, 2]`.
+6. Passiamo `mia_lista` alla funzione `modifica_lista`.
+7. Stampa il contenuto di `mia_lista` dopo la chiamata alla funzione, mostrando che l'elemento `4` è stato aggiunto, ma la riassegnazione a `[1, 2, 3]` non ha avuto effetto:
+  ```python
+  Dentro la funzione: [1, 2, 3]
+  Fuori dalla funzione: [1, 2, 4]
+  ```
+
+Questo esempio mostra come l'oggetto mutabile (la lista) può essere modificato all'interno della funzione, e tali modifiche sono visibili al di fuori della funzione. Tuttavia, l'identificatore del parametro (in questo caso `lista`) viene distrutto dopo l'uscita dalla funzione e non è accessibile al di fuori della funzione.
 
 ### Parametri posizionali
 
@@ -159,16 +204,14 @@ Quando si chiama `int`, è necessario passare un valore per `x` e questo deve es
 
 Esempio di utilizzo del marcatore di parametri posizionali:
 
-Ecco il codice uniformato per entrambi i casi, con i parametri della funzione diversi ma con lo stesso corpo della funzione:
-
-### Con il marcatore posizionale `/`
-
 ```python
 def funzione(x, /, base=10):  # <1>
   return x + base  # <2>
 
 print(funzione(5))  # <3>
+
 print(funzione(5, base=2))  # <4>
+
 try:
   print(funzione(x=5))  # <5>
 
@@ -188,9 +231,13 @@ def funzione(x, base=10):  # <1>
   return x + base  # <2>
 
 print(funzione(5))  # <3>
+
 print(funzione(5, 2))  # <4>
+
 print(funzione(5, base=2))  # <5>
+
 print(funzione(x=5))  # <6>
+
 print(funzione(x=5, base=2))  # <7>
 ```
 1. Definizione della funzione `funzione` con `x` e `base` come argomenti.
@@ -552,31 +599,131 @@ f(1, 2, 3, 4, 5, 6)  # <3>
 
 ### Associazione degli argomenti ai parametri
 
-Una chiamata deve fornire un argomento per tutti i parametri posizionali e può farlo per i parametri nominati che non sono esclusivamente nominati. La corrispondenza avviene come segue:
+Una chiamata deve fornire un argomento per tutti i parametri posizionali obbligatori e può farlo per i parametri nominati che non sono esclusivamente nominati. 
 
-1. Gli argomenti nella forma `*espressione` vengono internamente sostituiti da una sequenza di argomenti posizionali ottenuti iterando su `espressione`.
+La corrispondenza avviene come segue:
 
-2. Gli argomenti nella forma `**espressione` vengono internamente sostituiti da una sequenza di argomenti nominati i cui nomi e valori sono ottenuti iterando sugli elementi di `espressione`.
+- I parametri nella forma `*espressione` catturano tutti gli argomenti posizionali rimanenti come una tupla.
 
-3. Diciamo che la funzione ha `N` parametri posizionali e la chiamata ha `M` argomenti posizionali:
+  ```python
+  def f(a, b, *args):  # <1>
+    print(a, b, args)
 
-    - Quando `M <= N`, tutti gli argomenti posizionali vengono associati ai primi `M` parametri posizionali; i parametri posizionali rimanenti, se presenti, devono essere associati tramite argomenti nominati.
+  f(1, 2, 3, 4, 5)  # <2>
+  ```
+  1. Funzione con tre parametri posizionali di cui uno è il collettore.
+  2. Chiamata con 5 argomenti posizionali.
 
-    - Quando `M > N`, i rimanenti argomenti posizionali vengono associati ai parametri nominati nell'ordine in cui appaiono nella firma. Questo processo termina in uno dei seguenti modi:
+- I parametri nella forma `**espressione` catturano tutti gli argomenti nominati rimanenti come un dizionario.
 
-        1. Tutti gli argomenti posizionali sono stati associati.
-        2. Il prossimo elemento nella firma è un collettore di argomenti `*`: l'interprete solleva un'eccezione `TypeError`.
-        3. Il prossimo elemento nella firma è un collettore di argomenti `*nome`: gli argomenti posizionali rimanenti vengono raccolti in una tupla che viene quindi associata a `nome` nello spazio dei nomi della chiamata alla funzione.
+  ```python
+  def f(a, b, **kwargs):  # <1>
+    print(a, b, kwargs)
 
-4. Gli argomenti nominati vengono quindi associati, nell'ordine delle occorrenze degli argomenti nella chiamata, per nome con i parametri, sia posizionali che nominati. I tentativi di riassociare un nome di parametro già associato sollevano un'eccezione `TypeError`.
+  f(1, 2, c=3, d=4)  # <2>
+  ```
+  1. Funzione con due parametri posizionali e un collettore di argomenti nominati.
+  2. Chiamata con due argomenti posizionali e due argomenti nominati.
 
-5. Se a questo punto rimangono argomenti nominati non associati:
+- Supponiamo che la funzione abbia `N` parametri posizionali e la chiamata abbia `M` argomenti posizionali:
 
-    - Quando la firma della funzione include un collettore di argomenti `**nome`, l'interprete crea un dizionario con coppie chiave/valore (nome_argomento, valore_argomento) e lo associa a `nome` nello spazio dei nomi della chiamata alla funzione.
+  - Quando `M <= N`, tutti gli argomenti posizionali vengono associati ai primi `M` parametri posizionali; i parametri posizionali rimanenti, se presenti, devono essere associati tramite argomenti nominati o avere valori predefiniti.
 
-    - In assenza di un tale collettore di argomenti, Python solleva un'eccezione `TypeError`.
+    ```python
+    def f(a, b, c=3):  # <1>
+      print(a, b, c)
 
-6. I parametri nominati rimanenti non associati vengono associati ai loro valori predefiniti.
+    f(1, 2)  # <2>
+    ```
+    1. Funzione con due parametri posizionali obbligatori e uno opzionale con valore predefinito.
+    2. Chiamata con due argomenti posizionali.
+
+  - Quando `M > N`, i rimanenti argomenti posizionali devono essere catturati da `*espressione`.
+
+    ```python
+    def f(a, b, *args):  # <1>
+      print(a, b, args)
+
+    f(1, 2, 3, 4)  # <2>
+    ```
+    1. Funzione con due parametri posizionali obbligatori e un parametro `*args` per raccogliere argomenti posizionali rimanenti.
+    2. Chiamata con quattro argomenti posizionali.
+
+  - Quando `M > N` e non c'è un parametro `*espressione`, Python solleva un'eccezione `TypeError`.
+
+    ```python
+    def f(a, b):  # <1>
+      print(a, b)
+
+    try:
+      f(1, 2, 3)  # <2>
+
+    except TypeError as e:
+      print(e)  # <3>
+    ```
+    1. Funzione con due parametri posizionali obbligatori.
+    2. Chiamata con tre argomenti posizionali, che solleva un `TypeError`.
+    3. Output dell'eccezione.
+
+- Gli argomenti nominati vengono quindi associati, nell'ordine delle occorrenze degli argomenti nella chiamata, ai parametri corrispondenti per nome. I tentativi di riassociare un nome di parametro già associato sollevano un'eccezione `TypeError`.
+
+  ```python
+  def f(a, b, c):  # <1>
+    print(a, b, c)
+
+  f(a=1, b=2, c=3)  # <2>
+
+  try:
+    f(a=1, b=2, a=3)  # <3>
+
+  except TypeError as e:
+    print(e)  # <4>
+  ```
+  1. Funzione con tre parametri posizionali obbligatori.
+  2. Chiamata con tre argomenti nominati.
+  3. Chiamata con un argomento nominato duplicato, che solleva un `TypeError`.
+  4. Output dell'eccezione.
+
+- Se a questo punto rimangono argomenti nominati non associati:
+
+  - Quando la firma della funzione include un parametro `**nome`, l'interprete crea un dizionario con coppie chiave/valore (nome_argomento, valore_argomento) e lo associa a `nome` nello spazio dei nomi della chiamata alla funzione.
+
+    ```python
+    def f(a, **kwargs):  # <1>
+      print(a, kwargs)
+
+    f(1, b=2, c=3)  # <2>
+    ```
+    1. Funzione con un parametro posizionale obbligatorio e un parametro `**kwargs` per raccogliere argomenti nominati rimanenti.
+    2. Chiamata con un argomento posizionale e due argomenti nominati.
+
+  - In assenza di un tale parametro, Python solleva un'eccezione `TypeError`.
+
+    ```python
+    def f(a):  # <1>
+        print(a)
+
+    try:
+        f(a=1, b=2)  # <2>
+    except TypeError as e:
+        print(e)  # <3>
+    ```
+    1. Funzione con un parametro posizionale obbligatorio.
+    2. Chiamata con un argomento posizionale e uno nominato, che solleva un TypeError.
+    3. Output dell'eccezione.
+
+- I parametri nominati rimanenti non associati vengono associati ai loro valori predefiniti.
+
+  ```python
+  def f(a, b=2, c=3):  # <1>
+      print(a, b, c)
+
+  f(1)  # <2>
+  f(1, c=4)  # <3>
+  ```
+  1. Funzione con un parametro posizionale obbligatorio e due parametri con valori predefiniti.
+  2. Chiamata con un argomento posizionale.
+  3. Chiamata con un argomento posizionale e uno nominato.
 
 A questo punto, lo spazio dei nomi della chiamata alla funzione è completamente popolato e l'interprete esegue il corpo della funzione utilizzando quello spazio dei nomi come spazio dei nomi locale per la funzione.
 
@@ -730,20 +877,21 @@ print(ordinati)  # <3>
 
 Le espressioni `lambda` possono essere utili quando desideriamo utilizzare una funzione estremamente semplice come argomento o valore di ritorno.
 
-Esempio alternativo con `def`:
+Altro esempio:
 
 ```python
-def quadrato(valore):  # <1>
-  return valore * valore  # <2>
+calcola_area = lambda lunghezza, larghezza: lunghezza * larghezza  # <1>
 
-numeri = [5, 2, 8, 3]  # <3>
-ordinati = sorted(numeri, key=quadrato)  # <4>
-print(ordinati)  # <5>
+area1 = calcola_area(5, 10)  # <2>
+area2 = calcola_area(7, 3)  # <3>
+
+print(f"L'area del rettangolo 1 è: {area1}")  # <4>
+print(f"L'area del rettangolo 2 è: {area2}")  # <5>
 ```
-1. Definizione della funzione `quadrato`.
-2. La funzione ritorna il quadrato di `valore`.
-3. Lista di numeri.
-4. Utilizzo della funzione `quadrato` per ordinare la lista.
-5. Output: `[2, 3, 5, 8]`.
+1. Definisce una lambda che prende due parametri, `lunghezza` e `larghezza`, e ritorna il loro prodotto, che rappresenta l'area del rettangolo.
+2. Utilizza la lambda per calcolare l'area di un rettangolo con lunghezza 5 e larghezza 10.
+3. Utilizza la lambda per calcolare l'area di un rettangolo con lunghezza 7 e larghezza 3.
+4. Stampa l'area del primo rettangolo: `"L'area del rettangolo 1 è: 50"`.
+5. Stampa l'area del secondo rettangolo: `"L'area del rettangolo 2 è: 21"`.
 
 Mentre `lambda` può essere utile, `def` è solitamente preferibile: è più generale e ti aiuta a rendere il codice più leggibile, poiché si può scegliere un nome chiaro per la funzione.
