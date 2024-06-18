@@ -554,127 +554,257 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Esempio:</p>
 <div class="sourceCode" id="annotated-cell-7"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1"></a><span class="bu">print</span>(df.head())</span>
 <span id="annotated-cell-7-2"><a href="#annotated-cell-7-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-3" class="code-annotation-target"><a href="#annotated-cell-7-3"></a><span class="bu">print</span>(df[<span class="st">'Nome'</span>])</span>
+<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3"></a><span class="bu">print</span>(df[<span class="st">'Nome'</span>])</span>
 <span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-7-5" class="code-annotation-target"><a href="#annotated-cell-7-5"></a><span class="bu">print</span>(df.loc[<span class="dv">0</span>])</span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5"></a><span class="bu">print</span>(df.loc[<span class="dv">0</span>])</span>
 <span id="annotated-cell-7-6"><a href="#annotated-cell-7-6"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-7-7" class="code-annotation-target"><a href="#annotated-cell-7-7"></a><span class="bu">print</span>(df.iloc[<span class="dv">1</span>])</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7"></a><span class="bu">print</span>(df.iloc[<span class="dv">1</span>])</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="1" data-code-annotation="1">Stampa delle prime righe del <code>DataFrame</code>: | | Nome | Età | |—:|:——–|——:| | 0 | Alice | 25 | | 1 | Bob | 30 | | 2 | Charlie | 35 |</span>
-</dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="3" data-code-annotation="2">Stampa della colonna <code>Nome</code>: 0 Alice 1 Bob 2 Charlie Name: Nome, dtype: object</span>
-</dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="5" data-code-annotation="3">Stampa della prima riga utilizzando l’etichetta: Nome Alice Età 25 Name: 0, dtype: object</span>
-</dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="7" data-code-annotation="4">Stampa della seconda riga utilizzando l’indice: Nome Bob Età 30 Name: 1, dtype: object</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="1" data-code-annotation="1">Stampa delle prime righe del <code>DataFrame</code>:</span>
 </dd>
 </dl>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: left;">Nome</th>
+<th style="text-align: right;">Età</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Alice</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Bob</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Charlie</td>
+<td style="text-align: right;">35</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>Stampa della colonna <code>Nome</code>:</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="dv">0</span>      Alice</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="dv">1</span>        Bob</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="dv">2</span>    Charlie</span>
+<span id="cb3-4"><a href="#cb3-4"></a>Name: Nome, dtype: <span class="bu">object</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Stampa della prima riga utilizzando l’etichetta:</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>Nome    Alice</span>
+<span id="cb4-2"><a href="#cb4-2"></a>Età        <span class="dv">25</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>Name: <span class="dv">0</span>, dtype: <span class="bu">object</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li>Stampa della seconda riga utilizzando l’indice:</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>Nome    Bob</span>
+<span id="cb5-2"><a href="#cb5-2"></a>Età       <span class="dv">30</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>Name: <span class="dv">1</span>, dtype: <span class="bu">object</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="filtri-raggruppamenti-pivot" class="level3" data-number="14.2.5">
 <h3 data-number="14.2.5" class="anchored" data-anchor-id="filtri-raggruppamenti-pivot"><span class="header-section-number">14.2.5</span> Filtri, raggruppamenti, pivot</h3>
 <p>Puoi filtrare, raggruppare e pivotare i dati utilizzando metodi come <code>.query()</code>, <code>.groupby()</code>, e <code>.pivot_table()</code>.</p>
 <p>Esempio:</p>
-<div class="sourceCode" id="annotated-cell-8"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-1" class="code-annotation-target"><a href="#annotated-cell-8-1"></a>df_filtrato <span class="op">=</span> df[df[<span class="st">'Età'</span>] <span class="op">&gt;</span> <span class="dv">25</span>]</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2"></a><span class="bu">print</span>(df_filtrato)</span>
-<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-8-4" class="code-annotation-target"><a href="#annotated-cell-8-4"></a>df_gruppato <span class="op">=</span> df.groupby(<span class="st">'Età'</span>).size()</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-8-5" class="code-annotation-target"><a href="#annotated-cell-8-5"></a><span class="bu">print</span>(df_gruppato)</span>
-<span id="annotated-cell-8-6"><a href="#annotated-cell-8-6"></a></span>
-<span id="annotated-cell-8-7"><a href="#annotated-cell-8-7"></a>pivot_data <span class="op">=</span> {<span class="st">'A'</span>: [<span class="st">'foo'</span>, <span class="st">'foo'</span>, <span class="st">'foo'</span>, <span class="st">'bar'</span>, <span class="st">'bar'</span>, <span class="st">'bar'</span>],</span>
-<span id="annotated-cell-8-8"><a href="#annotated-cell-8-8"></a>              <span class="st">'B'</span>: [<span class="st">'one'</span>, <span class="st">'one'</span>, <span class="st">'two'</span>, <span class="st">'two'</span>, <span class="st">'one'</span>, <span class="st">'one'</span>],</span>
-<span id="annotated-cell-8-9"><a href="#annotated-cell-8-9"></a>              <span class="st">'C'</span>: [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>]}</span>
-<span id="annotated-cell-8-10"><a href="#annotated-cell-8-10"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-8-11" class="code-annotation-target"><a href="#annotated-cell-8-11"></a>df_pivot <span class="op">=</span> pd.DataFrame(pivot_data)</span>
-<span id="annotated-cell-8-12"><a href="#annotated-cell-8-12"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-8-13" class="code-annotation-target"><a href="#annotated-cell-8-13"></a>pivot_table <span class="op">=</span> df_pivot.pivot_table(values<span class="op">=</span><span class="st">'C'</span>, index<span class="op">=</span><span class="st">'A'</span>, columns<span class="op">=</span><span class="st">'B'</span>, aggfunc<span class="op">=</span><span class="st">'sum'</span>)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-8-14" class="code-annotation-target"><a href="#annotated-cell-8-14"></a><span class="bu">print</span>(pivot_table)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1"></a>df_filtrato <span class="op">=</span> df[df[<span class="st">'Età'</span>] <span class="op">&gt;</span> <span class="dv">25</span>]</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-11-2" class="code-annotation-target"><a href="#annotated-cell-11-2"></a><span class="bu">print</span>(df_filtrato)</span>
+<span id="annotated-cell-11-3"><a href="#annotated-cell-11-3"></a></span>
+<span id="annotated-cell-11-4"><a href="#annotated-cell-11-4"></a>df_gruppato <span class="op">=</span> df.groupby(<span class="st">'Età'</span>).size()</span>
+<span id="annotated-cell-11-5"><a href="#annotated-cell-11-5"></a><span class="bu">print</span>(df_gruppato)</span>
+<span id="annotated-cell-11-6"><a href="#annotated-cell-11-6"></a></span>
+<span id="annotated-cell-11-7"><a href="#annotated-cell-11-7"></a>pivot_data <span class="op">=</span> {<span class="st">'A'</span>: [<span class="st">'foo'</span>, <span class="st">'foo'</span>, <span class="st">'foo'</span>, <span class="st">'bar'</span>, <span class="st">'bar'</span>, <span class="st">'bar'</span>],</span>
+<span id="annotated-cell-11-8"><a href="#annotated-cell-11-8"></a>              <span class="st">'B'</span>: [<span class="st">'one'</span>, <span class="st">'one'</span>, <span class="st">'two'</span>, <span class="st">'two'</span>, <span class="st">'one'</span>, <span class="st">'one'</span>],</span>
+<span id="annotated-cell-11-9"><a href="#annotated-cell-11-9"></a>              <span class="st">'C'</span>: [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>]}</span>
+<span id="annotated-cell-11-10"><a href="#annotated-cell-11-10"></a></span>
+<span id="annotated-cell-11-11"><a href="#annotated-cell-11-11"></a>df_pivot <span class="op">=</span> pd.DataFrame(pivot_data)</span>
+<span id="annotated-cell-11-12"><a href="#annotated-cell-11-12"></a></span>
+<span id="annotated-cell-11-13"><a href="#annotated-cell-11-13"></a>pivot_table <span class="op">=</span> df_pivot.pivot_table(values<span class="op">=</span><span class="st">'C'</span>, index<span class="op">=</span><span class="st">'A'</span>, columns<span class="op">=</span><span class="st">'B'</span>, aggfunc<span class="op">=</span><span class="st">'sum'</span>)</span>
+<span id="annotated-cell-11-14"><a href="#annotated-cell-11-14"></a><span class="bu">print</span>(pivot_table)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="1" data-code-annotation="1">Filtro delle righe dove l’età è maggiore di <code>25</code>.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1">Filtro delle righe dove l’età è maggiore di <code>25</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="2" data-code-annotation="2">Stampa del <code>DataFrame</code> filtrato: | | Nome | Età | |—:|:——–|——:| | 1 | Bob | 30 | | 2 | Charlie | 35 |</span>
-</dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="4" data-code-annotation="3">Raggruppamento per colonna <code>Età</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="5" data-code-annotation="4">Stampa del <code>DataFrame</code> raggruppato: Età 25 1 30 1 35 1 dtype: int64</span>
-</dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="11" data-code-annotation="5">Creazione di un <code>DataFrame</code> di esempio per il pivot.</span>
-</dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="13" data-code-annotation="6">Creazione di una pivot table.</span>
-</dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="7">7</dt>
-<dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="14" data-code-annotation="7">Stampa della pivot table: | B | one | two | |:—-|——:|——:| | A | | | | bar | 10 | 5 | | foo | 4 | 2 |</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="2" data-code-annotation="2">Stampa del <code>DataFrame</code> filtrato:</span>
 </dd>
 </dl>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: left;">Nome</th>
+<th style="text-align: right;">Età</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Bob</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Charlie</td>
+<td style="text-align: right;">35</td>
+</tr>
+</tbody>
+</table>
+<ol start="3" type="1">
+<li>Raggruppamento per colonna <code>Età</code>.</li>
+<li>Stampa del <code>DataFrame</code> raggruppato:</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>Età</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="dv">25</span>    <span class="dv">1</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="dv">30</span>    <span class="dv">1</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="dv">35</span>    <span class="dv">1</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>dtype: int64</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="5" type="1">
+<li>Creazione di un <code>DataFrame</code> di esempio per il pivot.</li>
+<li>Creazione di una pivot table.</li>
+<li>Stampa della pivot table:</li>
+</ol>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">B</th>
+<th style="text-align: right;">one</th>
+<th style="text-align: right;">two</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bar</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">foo</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="modifica" class="level3" data-number="14.2.6">
 <h3 data-number="14.2.6" class="anchored" data-anchor-id="modifica"><span class="header-section-number">14.2.6</span> Modifica</h3>
 <p>Puoi modificare i dati di un <code>DataFrame</code> assegnando nuovi valori agli elementi, alle colonne o utilizzando metodi di modifica in-place.</p>
 <p>Esempio:</p>
-<div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1"></a>df[<span class="st">'Altezza'</span>] <span class="op">=</span> [<span class="dv">165</span>, <span class="dv">180</span>, <span class="dv">175</span>]</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-2" class="code-annotation-target"><a href="#annotated-cell-9-2"></a><span class="bu">print</span>(df)</span>
-<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-9-4" class="code-annotation-target"><a href="#annotated-cell-9-4"></a>df.loc[<span class="dv">0</span>, <span class="st">'Età'</span>] <span class="op">=</span> <span class="dv">26</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-9-5" class="code-annotation-target"><a href="#annotated-cell-9-5"></a><span class="bu">print</span>(df)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-13"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1"></a>df[<span class="st">'Altezza'</span>] <span class="op">=</span> [<span class="dv">165</span>, <span class="dv">180</span>, <span class="dv">175</span>]</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-13-2" class="code-annotation-target"><a href="#annotated-cell-13-2"></a><span class="bu">print</span>(df)</span>
+<span id="annotated-cell-13-3"><a href="#annotated-cell-13-3"></a></span>
+<span id="annotated-cell-13-4"><a href="#annotated-cell-13-4"></a>df.loc[<span class="dv">0</span>, <span class="st">'Età'</span>] <span class="op">=</span> <span class="dv">26</span></span>
+<span id="annotated-cell-13-5"><a href="#annotated-cell-13-5"></a><span class="bu">print</span>(df)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="1" data-code-annotation="1">Aggiunta di una nuova colonna ‘Altezza’.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="1" data-code-annotation="1">Aggiunta di una nuova colonna ‘Altezza’.</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="2" data-code-annotation="2">Stampa del DataFrame modificato: | | Nome | Età | Altezza | |—:|:——–|——:|———-:| | 0 | Alice | 25 | 165 | | 1 | Bob | 30 | 180 | | 2 | Charlie | 35 | 175 |</span>
-</dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="4" data-code-annotation="3">Modifica del valore dell’età per la prima riga.</span>
-</dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="5" data-code-annotation="4">Stampa del DataFrame modificato: | | Nome | Età | Altezza | |—:|:——–|——:|———-:| | 0 | Alice | 26 | 165 | | 1 | Bob | 30 | 180 | | 2 | Charlie | 35 | 175 |</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="2" data-code-annotation="2">Stampa del DataFrame modificato:</span>
 </dd>
 </dl>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: left;">Nome</th>
+<th style="text-align: right;">Età</th>
+<th style="text-align: right;">Altezza</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Alice</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">165</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Bob</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">180</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Charlie</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">175</td>
+</tr>
+</tbody>
+</table>
+<ol start="3" type="1">
+<li>Modifica del valore dell’età per la prima riga.</li>
+<li>Stampa del DataFrame modificato:</li>
+</ol>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: left;">Nome</th>
+<th style="text-align: right;">Età</th>
+<th style="text-align: right;">Altezza</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Alice</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">165</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Bob</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">180</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Charlie</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">175</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="salvataggio" class="level3" data-number="14.2.7">
 <h3 data-number="14.2.7" class="anchored" data-anchor-id="salvataggio"><span class="header-section-number">14.2.7</span> Salvataggio</h3>
 <p>Puoi salvare un DataFrame in vari formati di file, come CSV, Excel, JSON, ecc., utilizzando metodi come <code>.to_csv()</code>, <code>.to_excel()</code>, <code>.to_json()</code>.</p>
-<div class="sourceCode" id="annotated-cell-10"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-10-1" class="code-annotation-target"><a href="#annotated-cell-10-1"></a>df.to_csv(<span class="st">'data.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="annotated-cell-10-2"><a href="#annotated-cell-10-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3"></a>df.to_excel(<span class="st">'data.xlsx'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-10-5" class="code-annotation-target"><a href="#annotated-cell-10-5"></a>df.to_json(<span class="st">'data.json'</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-1" class="code-annotation-target"><a href="#annotated-cell-14-1"></a>df.to_csv(<span class="st">'data.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3"></a>df.to_excel(<span class="st">'data.xlsx'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="annotated-cell-14-4"><a href="#annotated-cell-14-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-14-5" class="code-annotation-target"><a href="#annotated-cell-14-5"></a>df.to_json(<span class="st">'data.json'</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="1" data-code-annotation="1">Salvataggio del <code>DataFrame</code> in un file CSV senza includere gli indici.</span>
+<span data-code-cell="annotated-cell-14" data-code-lines="1" data-code-annotation="1">Salvataggio del <code>DataFrame</code> in un file CSV senza includere gli indici.</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="3" data-code-annotation="2">Salvataggio del <code>DataFrame</code> in un file Excel senza includere gli indici.</span>
+<span data-code-cell="annotated-cell-14" data-code-lines="3" data-code-annotation="2">Salvataggio del <code>DataFrame</code> in un file Excel senza includere gli indici.</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="5" data-code-annotation="3">Salvataggio del <code>DataFrame</code> in un file JSON.</span>
+<span data-code-cell="annotated-cell-14" data-code-lines="5" data-code-annotation="3">Salvataggio del <code>DataFrame</code> in un file JSON.</span>
 </dd>
 </dl>
 </section>
@@ -693,59 +823,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="passaggio-1-caricamento-del-dataset" class="level3" data-number="14.3.1">
 <h3 data-number="14.3.1" class="anchored" data-anchor-id="passaggio-1-caricamento-del-dataset"><span class="header-section-number">14.3.1</span> Passaggio 1: caricamento del dataset</h3>
 <p>Carichiamo le librerie necessarie:</p>
-<div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-11-2" class="code-annotation-target"><a href="#annotated-cell-11-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-15"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1">Importa la libreria Pandas per la manipolazione dei dati.</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="1" data-code-annotation="1">Importa la libreria Pandas per la manipolazione dei dati.</span>
 </dd>
-<dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="2" data-code-annotation="2">Importa la libreria Matplotlib per la visualizzazione dei dati.</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="2" data-code-annotation="2">Importa la libreria Matplotlib per la visualizzazione dei dati.</span>
 </dd>
 </dl>
 <p>Carichiamo il dataset:</p>
-<div class="sourceCode" id="annotated-cell-12"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1"></a>df_vendite <span class="op">=</span> pd.read_csv(<span class="st">'esercitazione-uno-vendite.csv'</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-1" class="code-annotation-target"><a href="#annotated-cell-16-1"></a>df_vendite <span class="op">=</span> pd.read_csv(<span class="st">'esercitazione-uno-vendite.csv'</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-lines="1" data-code-annotation="1">Carica il dataset dal file CSV <code>esercitazione-uno-vendite.csv</code>.</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="1" data-code-annotation="1">Carica il dataset dal file CSV <code>esercitazione-uno-vendite.csv</code>.</span>
 </dd>
 </dl>
 </section>
 <section id="passaggio-2-gestione-dei-dati-mancanti" class="level3" data-number="14.3.2">
 <h3 data-number="14.3.2" class="anchored" data-anchor-id="passaggio-2-gestione-dei-dati-mancanti"><span class="header-section-number">14.3.2</span> Passaggio 2: gestione dei dati mancanti</h3>
 <p>Controlliamo se ci sono valori mancanti e rimuoviamo le righe con valori mancanti:</p>
-<div class="sourceCode" id="annotated-cell-13"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1"></a><span class="bu">print</span>(df_vendite.isnull().<span class="bu">sum</span>())</span>
-<span id="annotated-cell-13-2"><a href="#annotated-cell-13-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-13-3" class="code-annotation-target"><a href="#annotated-cell-13-3"></a>df_vendite_ripulito <span class="op">=</span> df_vendite.dropna()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-17"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-17-1" class="code-annotation-target"><a href="#annotated-cell-17-1"></a><span class="bu">print</span>(df_vendite.isnull().<span class="bu">sum</span>())</span>
+<span id="annotated-cell-17-2"><a href="#annotated-cell-17-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-17-3" class="code-annotation-target"><a href="#annotated-cell-17-3"></a>df_vendite_ripulito <span class="op">=</span> df_vendite.dropna()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="1" data-code-annotation="1">Stampa il conteggio dei valori mancanti per ciascuna colonna.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="1" data-code-annotation="1">Stampa il conteggio dei valori mancanti per ciascuna colonna.</span>
 </dd>
-<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="3" data-code-annotation="2">Rimuove le righe con valori mancanti dal <code>DataFrame</code>.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="3" data-code-annotation="2">Rimuove le righe con valori mancanti dal <code>DataFrame</code>.</span>
 </dd>
 </dl>
 </section>
 <section id="passaggio-3-operazioni-di-filtro" class="level3" data-number="14.3.3">
 <h3 data-number="14.3.3" class="anchored" data-anchor-id="passaggio-3-operazioni-di-filtro"><span class="header-section-number">14.3.3</span> Passaggio 3: operazioni di filtro</h3>
 <p>Filtriamo le vendite del prodotto <code>Notebook X200</code>:</p>
-<div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a>vendite_notebook_x200 <span class="op">=</span> df_vendite_ripulito[</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2"></a>  df_vendite_ripulito[<span class="st">'prodotto'</span>] <span class="op">==</span> <span class="st">'Notebook X200'</span>]</span>
-<span id="annotated-cell-14-3"><a href="#annotated-cell-14-3"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-4" class="code-annotation-target"><a href="#annotated-cell-14-4"></a><span class="bu">print</span>(vendite_notebook_x200)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-18"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-18-1"><a href="#annotated-cell-18-1"></a>vendite_notebook_x200 <span class="op">=</span> df_vendite_ripulito[</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-18-2" class="code-annotation-target"><a href="#annotated-cell-18-2"></a>  df_vendite_ripulito[<span class="st">'prodotto'</span>] <span class="op">==</span> <span class="st">'Notebook X200'</span>]</span>
+<span id="annotated-cell-18-3"><a href="#annotated-cell-18-3"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-18-4" class="code-annotation-target"><a href="#annotated-cell-18-4"></a><span class="bu">print</span>(vendite_notebook_x200)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="2" data-code-annotation="1">Filtra il DataFrame per il prodotto <code>Notebook X200</code>.</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="2" data-code-annotation="1">Filtra il <code>DataFrame</code> per il prodotto <code>Notebook X200</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="4" data-code-annotation="2">Stampa le vendite del prodotto <code>Notebook X200</code>.</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="4" data-code-annotation="2">Stampa le vendite del prodotto <code>Notebook X200</code>.</span>
 </dd>
 </dl>
 </section>
@@ -754,17 +884,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>L’operazione di group by in pandas permette di raggruppare i dati in base a una o più colonne, e quindi applicare una funzione di aggregazione su ciascun gruppo. Questo è utile quando si vuole calcolare statistiche aggregate, come somme, medie, conteggi, ecc., per ciascun gruppo di dati.</p>
 <p>Ad esempio, se si dispone di un dataset delle vendite, è possibile raggruppare i dati per <code>venditore</code> e calcolare la somma delle <code>quantità</code> vendute da ciascun venditore. Questo può fornire una visione chiara delle prestazioni di ciascun venditore.</p>
 <p>Raggruppiamo per venditore e calcoliamo la somma delle quantità vendute:</p>
-<div class="sourceCode" id="annotated-cell-15"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1"></a>vendite_per_venditore <span class="op">=</span> df_vendite_ripulito.groupby(<span class="st">'venditore'</span>)[<span class="st">'quantità'</span>].<span class="bu">sum</span>()</span>
-<span id="annotated-cell-15-2"><a href="#annotated-cell-15-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-15-3" class="code-annotation-target"><a href="#annotated-cell-15-3"></a><span class="bu">print</span>(vendite_per_venditore)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-19"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-19-1" class="code-annotation-target"><a href="#annotated-cell-19-1"></a>vendite_per_venditore <span class="op">=</span> df_vendite_ripulito.groupby(<span class="st">'venditore'</span>)[<span class="st">'quantità'</span>].<span class="bu">sum</span>()</span>
+<span id="annotated-cell-19-2"><a href="#annotated-cell-19-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-19-3" class="code-annotation-target"><a href="#annotated-cell-19-3"></a><span class="bu">print</span>(vendite_per_venditore)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="1" data-code-annotation="1">Raggruppa i dati per venditore e calcola la somma delle quantità vendute.</span>
+<span data-code-cell="annotated-cell-19" data-code-lines="1" data-code-annotation="1">Raggruppa i dati per venditore e calcola la somma delle quantità vendute.</span>
 </dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="3" data-code-annotation="2">Stampa la somma delle quantità vendute per ciascun venditore.</span>
+<span data-code-cell="annotated-cell-19" data-code-lines="3" data-code-annotation="2">Stampa la somma delle quantità vendute per ciascun venditore.</span>
 </dd>
 </dl>
 </section>
@@ -773,101 +903,101 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>L’operazione di pivot in pandas permette di trasformare i dati rendendoli più comprensibili e facili da analizzare. Una tabella pivot ruota i dati in modo da creare una nuova tabella in cui le righe e le colonne rappresentano diverse dimensioni dei dati. In particolare, è possibile specificare quali valori devono essere visualizzati come righe, quali come colonne, e quale funzione di aggregazione applicare ai dati.</p>
 <p>Ad esempio, in un dataset delle vendite, è possibile creare una tabella pivot che mostra le <code>quantità</code> vendute per <code>data_vendita</code> e <code>prodotto</code>. Questo può aiutare a visualizzare come le vendite di ciascun prodotto cambiano nel tempo.</p>
 <p>Creiamo una tabella pivot per vedere le vendite per data e prodotto:</p>
-<div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1"></a>pivot_table_data_prodotto <span class="op">=</span> df_vendite_ripulito.pivot_table(</span>
-<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2"></a>  values<span class="op">=</span><span class="st">'quantità'</span>,</span>
-<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3"></a>  index<span class="op">=</span><span class="st">'data_vendita'</span>,</span>
-<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4"></a>  columns<span class="op">=</span><span class="st">'prodotto'</span>,</span>
-<span id="annotated-cell-16-5"><a href="#annotated-cell-16-5"></a>  aggfunc<span class="op">=</span><span class="st">'sum'</span>,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-6" class="code-annotation-target"><a href="#annotated-cell-16-6"></a>  fill_value<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="annotated-cell-16-7"><a href="#annotated-cell-16-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-16-8" class="code-annotation-target"><a href="#annotated-cell-16-8"></a><span class="bu">print</span>(pivot_table_data_prodotto)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-20"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-20-1"><a href="#annotated-cell-20-1"></a>pivot_table_data_prodotto <span class="op">=</span> df_vendite_ripulito.pivot_table(</span>
+<span id="annotated-cell-20-2"><a href="#annotated-cell-20-2"></a>  values<span class="op">=</span><span class="st">'quantità'</span>,</span>
+<span id="annotated-cell-20-3"><a href="#annotated-cell-20-3"></a>  index<span class="op">=</span><span class="st">'data_vendita'</span>,</span>
+<span id="annotated-cell-20-4"><a href="#annotated-cell-20-4"></a>  columns<span class="op">=</span><span class="st">'prodotto'</span>,</span>
+<span id="annotated-cell-20-5"><a href="#annotated-cell-20-5"></a>  aggfunc<span class="op">=</span><span class="st">'sum'</span>,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-20-6" class="code-annotation-target"><a href="#annotated-cell-20-6"></a>  fill_value<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="annotated-cell-20-7"><a href="#annotated-cell-20-7"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-20-8" class="code-annotation-target"><a href="#annotated-cell-20-8"></a><span class="bu">print</span>(pivot_table_data_prodotto)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="6" data-code-annotation="1">Crea una tabella pivot per visualizzare le vendite per data e prodotto.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="6" data-code-annotation="1">Crea una tabella pivot per visualizzare le vendite per data e prodotto.</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-20" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="8" data-code-annotation="2">Stampa la tabella pivot delle vendite per data e prodotto.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="8" data-code-annotation="2">Stampa la tabella pivot delle vendite per data e prodotto.</span>
 </dd>
 </dl>
 </section>
 <section id="passaggio-6-visualizzazione-con-grafici" class="level3" data-number="14.3.6">
 <h3 data-number="14.3.6" class="anchored" data-anchor-id="passaggio-6-visualizzazione-con-grafici"><span class="header-section-number">14.3.6</span> Passaggio 6: visualizzazione con grafici</h3>
 <p>Creiamo un grafico a barre delle vendite per venditore:</p>
-<div class="sourceCode" id="annotated-cell-17"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-17-1" class="code-annotation-target"><a href="#annotated-cell-17-1"></a>vendite_per_venditore.plot(kind<span class="op">=</span><span class="st">'bar'</span>)</span>
-<span id="annotated-cell-17-2"><a href="#annotated-cell-17-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-17-3" class="code-annotation-target"><a href="#annotated-cell-17-3"></a>plt.title(<span class="st">'Vendite per Venditore'</span>)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-17-4" class="code-annotation-target"><a href="#annotated-cell-17-4"></a>plt.xlabel(<span class="st">'Venditore'</span>)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-17-5" class="code-annotation-target"><a href="#annotated-cell-17-5"></a>plt.ylabel(<span class="st">'Quantità Venduta'</span>)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-17-6" class="code-annotation-target"><a href="#annotated-cell-17-6"></a>plt.show()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-21"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-21-1" class="code-annotation-target"><a href="#annotated-cell-21-1"></a>vendite_per_venditore.plot(kind<span class="op">=</span><span class="st">'bar'</span>)</span>
+<span id="annotated-cell-21-2"><a href="#annotated-cell-21-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-21-3" class="code-annotation-target"><a href="#annotated-cell-21-3"></a>plt.title(<span class="st">'Vendite per Venditore'</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-21-4" class="code-annotation-target"><a href="#annotated-cell-21-4"></a>plt.xlabel(<span class="st">'Venditore'</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-21-5" class="code-annotation-target"><a href="#annotated-cell-21-5"></a>plt.ylabel(<span class="st">'Quantità Venduta'</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-21-6" class="code-annotation-target"><a href="#annotated-cell-21-6"></a>plt.show()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-21" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="1" data-code-annotation="1">Crea un grafico a barre delle vendite per venditore.</span>
+<span data-code-cell="annotated-cell-21" data-code-lines="1" data-code-annotation="1">Crea un grafico a barre delle vendite per venditore.</span>
 </dd>
-<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-21" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="3" data-code-annotation="2">Imposta il titolo del grafico a barre.</span>
+<span data-code-cell="annotated-cell-21" data-code-lines="3" data-code-annotation="2">Imposta il titolo del grafico a barre.</span>
 </dd>
-<dt data-target-cell="annotated-cell-17" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-21" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="4" data-code-annotation="3">Imposta l’etichetta dell’asse x del grafico a barre.</span>
+<span data-code-cell="annotated-cell-21" data-code-lines="4" data-code-annotation="3">Imposta l’etichetta dell’asse x del grafico a barre.</span>
 </dd>
-<dt data-target-cell="annotated-cell-17" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-21" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="5" data-code-annotation="4">Imposta l’etichetta dell’asse y del grafico a barre.</span>
+<span data-code-cell="annotated-cell-21" data-code-lines="5" data-code-annotation="4">Imposta l’etichetta dell’asse y del grafico a barre.</span>
 </dd>
-<dt data-target-cell="annotated-cell-17" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-21" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="6" data-code-annotation="5">Mostra il grafico a barre.</span>
+<span data-code-cell="annotated-cell-21" data-code-lines="6" data-code-annotation="5">Mostra il grafico a barre.</span>
 </dd>
 </dl>
 <p>Creiamo un grafico a linee delle vendite totali per ciascun mese:</p>
-<div class="sourceCode" id="annotated-cell-18"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-18-1" class="code-annotation-target"><a href="#annotated-cell-18-1"></a>df_vendite_ripulito[<span class="st">'data_vendita'</span>] <span class="op">=</span> pd.to_datetime(df_vendite_ripulito[<span class="st">'data_vendita'</span>])</span>
-<span id="annotated-cell-18-2"><a href="#annotated-cell-18-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-18-3" class="code-annotation-target"><a href="#annotated-cell-18-3"></a>df_vendite_ripulito.set_index(<span class="st">'data_vendita'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="annotated-cell-18-4"><a href="#annotated-cell-18-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-18-5" class="code-annotation-target"><a href="#annotated-cell-18-5"></a>vendite_mensili <span class="op">=</span> df_vendite_ripulito.resample(<span class="st">'M'</span>)[<span class="st">'quantità'</span>].<span class="bu">sum</span>()</span>
-<span id="annotated-cell-18-6"><a href="#annotated-cell-18-6"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-18-7" class="code-annotation-target"><a href="#annotated-cell-18-7"></a>vendite_mensili.plot(kind<span class="op">=</span><span class="st">'line'</span>)</span>
-<span id="annotated-cell-18-8"><a href="#annotated-cell-18-8"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-18-9" class="code-annotation-target"><a href="#annotated-cell-18-9"></a>plt.title(<span class="st">'Vendite Mensili Totali'</span>)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-18-10" class="code-annotation-target"><a href="#annotated-cell-18-10"></a>plt.xlabel(<span class="st">'Mese'</span>)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-18-11" class="code-annotation-target"><a href="#annotated-cell-18-11"></a>plt.ylabel(<span class="st">'Quantità Venduta'</span>)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-18-12" class="code-annotation-target"><a href="#annotated-cell-18-12"></a>plt.show()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-22"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-22-1" class="code-annotation-target"><a href="#annotated-cell-22-1"></a>df_vendite_ripulito[<span class="st">'data_vendita'</span>] <span class="op">=</span> pd.to_datetime(df_vendite_ripulito[<span class="st">'data_vendita'</span>])</span>
+<span id="annotated-cell-22-2"><a href="#annotated-cell-22-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-22-3" class="code-annotation-target"><a href="#annotated-cell-22-3"></a>df_vendite_ripulito.set_index(<span class="st">'data_vendita'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="annotated-cell-22-4"><a href="#annotated-cell-22-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-22-5" class="code-annotation-target"><a href="#annotated-cell-22-5"></a>vendite_mensili <span class="op">=</span> df_vendite_ripulito.resample(<span class="st">'M'</span>)[<span class="st">'quantità'</span>].<span class="bu">sum</span>()</span>
+<span id="annotated-cell-22-6"><a href="#annotated-cell-22-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-22-7" class="code-annotation-target"><a href="#annotated-cell-22-7"></a>vendite_mensili.plot(kind<span class="op">=</span><span class="st">'line'</span>)</span>
+<span id="annotated-cell-22-8"><a href="#annotated-cell-22-8"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-22-9" class="code-annotation-target"><a href="#annotated-cell-22-9"></a>plt.title(<span class="st">'Vendite Mensili Totali'</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-22-10" class="code-annotation-target"><a href="#annotated-cell-22-10"></a>plt.xlabel(<span class="st">'Mese'</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-22-11" class="code-annotation-target"><a href="#annotated-cell-22-11"></a>plt.ylabel(<span class="st">'Quantità Venduta'</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-22-12" class="code-annotation-target"><a href="#annotated-cell-22-12"></a>plt.show()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="1" data-code-annotation="1">Converte la colonna <code>data_vendita</code> in un oggetto <code>datetime</code>.</span>
+<span data-code-cell="annotated-cell-22" data-code-lines="1" data-code-annotation="1">Converte la colonna <code>data_vendita</code> in un oggetto <code>datetime</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-18" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="3" data-code-annotation="2">Imposta <code>data_vendita</code> come indice del <code>DataFrame</code>.</span>
+<span data-code-cell="annotated-cell-22" data-code-lines="3" data-code-annotation="2">Imposta <code>data_vendita</code> come indice del <code>DataFrame</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-18" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="5" data-code-annotation="3">Raggruppa i dati per mese e calcola la somma delle quantità vendute.</span>
+<span data-code-cell="annotated-cell-22" data-code-lines="5" data-code-annotation="3">Raggruppa i dati per mese e calcola la somma delle quantità vendute.</span>
 </dd>
-<dt data-target-cell="annotated-cell-18" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="7" data-code-annotation="4">Crea un grafico a linee delle vendite mensili.</span>
+<span data-code-cell="annotated-cell-22" data-code-lines="7" data-code-annotation="4">Crea un grafico a linee delle vendite mensili.</span>
 </dd>
-<dt data-target-cell="annotated-cell-18" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="9" data-code-annotation="5">Imposta il titolo del grafico a linee.</span>
+<span data-code-cell="annotated-cell-22" data-code-lines="9" data-code-annotation="5">Imposta il titolo del grafico a linee.</span>
 </dd>
-<dt data-target-cell="annotated-cell-18" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="10" data-code-annotation="6">Imposta l’etichetta dell’asse x del grafico a linee.</span>
+<span data-code-cell="annotated-cell-22" data-code-lines="10" data-code-annotation="6">Imposta l’etichetta dell’asse x del grafico a linee.</span>
 </dd>
-<dt data-target-cell="annotated-cell-18" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="11" data-code-annotation="7">Imposta l’etichetta dell’asse y del grafico a linee.</span>
+<span data-code-cell="annotated-cell-22" data-code-lines="11" data-code-annotation="7">Imposta l’etichetta dell’asse y del grafico a linee.</span>
 </dd>
-<dt data-target-cell="annotated-cell-18" data-target-annotation="8">8</dt>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="12" data-code-annotation="8">Mostra il grafico a linee.</span>
+<span data-code-cell="annotated-cell-22" data-code-lines="12" data-code-annotation="8">Mostra il grafico a linee.</span>
 </dd>
 </dl>
 </section>

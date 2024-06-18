@@ -27,17 +27,13 @@ def aggiungi_inverse(dizionario_inverse, funzione, inverse_funzione):  # <2>
     dizionario_inverse[funzione] = inverse_funzione  # <6>
     dizionario_inverse[inverse_funzione] = funzione  # <7>
 
-# Dizionario di funzioni matematiche e le loro inverse
 math_map = {sin: asin, cos: acos, tan: atan, log: exp}  # <8>
 
-# Aggiungi nuove funzioni e le loro inverse
 aggiungi_inverse(math_map, exp, log)  # <9>
 aggiungi_inverse(math_map, asin, sin)  # <10>
 
-# Import del modulo pprint per una stampa formattata del dizionario
 import pprint
 
-# Stampa del dizionario aggiornato per verificare il risultato
 pprint.pprint(math_map)  # <11>
 ```
 1. Import delle funzioni matematiche dal modulo `math`.
@@ -50,7 +46,7 @@ pprint.pprint(math_map)  # <11>
 8. Creazione di un dizionario iniziale con alcune funzioni matematiche e le loro inverse.
 9. Chiamata alla funzione `aggiungi_inverse` con nuove funzioni da aggiungere.
 10. Aggiunta di un'altra coppia funzione-inversa.
-11. Stampa del dizionario per verificare che le nuove coppie siano state aggiunte correttamente.
+11. Stampa del dizionario per verificare che le nuove coppie siano state aggiunte correttamente:
   ```python
   {<built-in function cos>: <built-in function acos>,
   <built-in function log>: <built-in function exp>,
