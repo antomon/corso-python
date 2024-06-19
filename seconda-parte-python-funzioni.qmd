@@ -14,8 +14,6 @@ Python è alquanto insolito nella flessibilità che offre al programmatore nel d
 
 Esempio di funzione come oggetto di prima classe:
 
-Capisco meglio il problema ora. Hai ragione, il controllo dovrebbe verificare se la funzione è una chiave e l'inversa è un valore nel dizionario. Ecco il codice corretto:
-
 ```python
 from math import sin, cos, tan, asin, acos, atan, log, exp  # <1>
 
@@ -95,13 +93,13 @@ print(raddoppia('ciao'))  # <4>
 1. Definizione della funzione `raddoppia` con un parametro `x`.
 2. Restituisce il valore di `x` moltiplicato per `2`.
 3. Chiamata a `raddoppia` con l'argomento `5`. Output: `10`.
-4. Chiamata a `raddoppia` con l'argomento `'ciao'`. Output: `ciaociao`.
+4. Chiamata a `raddoppia` con l'argomento `'ciao'`. Output: `ciaociao`. 
 
 ## Parametri
 
 I parametri (anche detti parametri formali) nominano i valori passati in una chiamata di funzione e possono specificare valori predefiniti. Ogni volta che chiamiamo una funzione, la chiamata associa ogni nome di parametro al valore corrispondente (argomento) in un nuovo spazio dei nomi locale. Questo spazio dei nomi locale esiste solo per la durata della funzione, e Python lo distrugge al termine dell'esecuzione della funzione. È importante notare che gli argomenti sono oggetti e che le modifiche a questi oggetti mutabili (come liste o dizionari) all'interno della funzione sono visibili anche al di fuori della funzione, nell'ambito del chiamante. Tuttavia, gli identificatori dei parametri non sono accessibili fuori dalla funzione.
 
-Certo, ecco un esempio illustrativo che mostra come i parametri di una funzione si comportano in Python, specialmente quando si tratta di oggetti mutabili:
+Ecco un esempio illustrativo che mostra come i parametri di una funzione si comportano in Python, specialmente quando si tratta di oggetti mutabili:
 
 ```python
 def modifica_lista(lista):  # <1>
