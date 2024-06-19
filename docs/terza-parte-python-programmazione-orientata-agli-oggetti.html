@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./terza-parte-python-esercitazione-uno.html" rel="next">
+<link href="./terza-parte-python-moduli.html" rel="next">
 <link href="./terza-parte.html" rel="prev">
 <link href="./red-python-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -344,8 +344,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./terza-parte-python-moduli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Moduli</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./terza-parte-python-esercitazione-uno.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Esercitazione 1: web app con Flask</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Esercitazione 1: web app con Flask</span></span></a>
   </div>
 </li>
       </ul>
@@ -401,12 +407,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#metodi-speciali" id="toc-metodi-speciali" class="nav-link" data-scroll-target="#metodi-speciali"><span class="header-section-number">15.7</span> Metodi speciali</a></li>
   <li><a href="#metodi-di-classe-e-metodi-statici" id="toc-metodi-di-classe-e-metodi-statici" class="nav-link" data-scroll-target="#metodi-di-classe-e-metodi-statici"><span class="header-section-number">15.8</span> Metodi di classe e metodi statici</a></li>
   <li><a href="#decoratori" id="toc-decoratori" class="nav-link" data-scroll-target="#decoratori"><span class="header-section-number">15.9</span> Decoratori</a></li>
-  <li><a href="#spazio-dei-nomi" id="toc-spazio-dei-nomi" class="nav-link" data-scroll-target="#spazio-dei-nomi"><span class="header-section-number">15.10</span> Spazio dei nomi</a>
-  <ul class="collapse">
-  <li><a href="#global" id="toc-global" class="nav-link" data-scroll-target="#global"><span class="header-section-number">15.10.1</span> <code>global</code></a></li>
-  <li><a href="#funzioni-annidate-e-ambiti-annidati" id="toc-funzioni-annidate-e-ambiti-annidati" class="nav-link" data-scroll-target="#funzioni-annidate-e-ambiti-annidati"><span class="header-section-number">15.10.2</span> Funzioni Annidate e Ambiti Annidati</a></li>
-  <li><a href="#espressioni-lambda" id="toc-espressioni-lambda" class="nav-link" data-scroll-target="#espressioni-lambda"><span class="header-section-number">15.10.3</span> Espressioni <code>lambda</code></a></li>
-  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/terza-parte-python-programmazione-orientata-agli-oggetti.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
@@ -1191,149 +1191,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span data-code-cell="annotated-cell-20" data-code-lines="15" data-code-annotation="10">Chiamata della funzione <code>di_ciao</code> decorata.</span>
 </dd>
 </dl>
-</section>
-<section id="spazio-dei-nomi" class="level2" data-number="15.10">
-<h2 data-number="15.10" class="anchored" data-anchor-id="spazio-dei-nomi"><span class="header-section-number">15.10</span> Spazio dei nomi</h2>
-<p>I parametri di una funzione, insieme a qualsiasi nome che viene associato (mediante assegnazione o altre istruzioni di associazione, come <code>def</code>) nel corpo della funzione, costituiscono lo spazio dei nomi locale della funzione, noto anche come ambito locale. Ognuna di queste variabili è nota come variabile locale della funzione.</p>
-<p>Le variabili che non sono locali sono note come variabili globali. Le variabili globali sono attributi dell’oggetto modulo. Ogni volta che una variabile locale ha lo stesso nome di una variabile globale, quel nome, all’interno del corpo della funzione, si riferisce alla variabile locale, non a quella globale. Espressiamo questo dicendo che la variabile locale nasconde la variabile globale dello stesso nome in tutto il corpo della funzione.</p>
-<section id="global" class="level3" data-number="15.10.1">
-<h3 data-number="15.10.1" class="anchored" data-anchor-id="global"><span class="header-section-number">15.10.1</span> <code>global</code></h3>
-<p>Per impostazione predefinita, qualsiasi variabile associata nel corpo di una funzione è locale alla funzione. Se una funzione ha bisogno di associare o riassociare alcune variabili globali (non è una buona pratica!), la prima istruzione del corpo della funzione deve essere:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">global</span> identificatori</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>dove <code>identificatori</code> è uno o più identificatori separati da virgole. Gli identificatori elencati in una dichiarazione <code>global</code> si riferiscono alle variabili globali (cioè, attributi dell’oggetto modulo) che la funzione ha bisogno di associare o riassociare.</p>
-<p>Esempio di utilizzo di <code>global</code>:</p>
-<div class="sourceCode" id="annotated-cell-22"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-22-1" class="code-annotation-target"><a href="#annotated-cell-22-1"></a>_conta <span class="op">=</span> <span class="dv">0</span></span>
-<span id="annotated-cell-22-2"><a href="#annotated-cell-22-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-22-3" class="code-annotation-target"><a href="#annotated-cell-22-3"></a><span class="kw">def</span> contatore():</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-22-4" class="code-annotation-target"><a href="#annotated-cell-22-4"></a>    <span class="kw">global</span> _conta</span>
-<span id="annotated-cell-22-5"><a href="#annotated-cell-22-5"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-22-6" class="code-annotation-target"><a href="#annotated-cell-22-6"></a>    _conta <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="annotated-cell-22-7"><a href="#annotated-cell-22-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-22-8" class="code-annotation-target"><a href="#annotated-cell-22-8"></a>    <span class="cf">return</span> _conta</span>
-<span id="annotated-cell-22-9"><a href="#annotated-cell-22-9"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-22-10" class="code-annotation-target"><a href="#annotated-cell-22-10"></a><span class="bu">print</span>(contatore())</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-22-11" class="code-annotation-target"><a href="#annotated-cell-22-11"></a><span class="bu">print</span>(contatore())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-22" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="1" data-code-annotation="1">Definizione di una variabile globale <code>_conta</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="3" data-code-annotation="2">Definizione della funzione <code>contatore</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="4" data-code-annotation="3">Dichiarazione che <code>_conta</code> è una variabile globale.</span>
-</dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="6" data-code-annotation="4">Incremento della variabile globale <code>_conta</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="8" data-code-annotation="5">Restituzione del valore di <code>_conta</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="10" data-code-annotation="6">Chiamata della funzione <code>contatore</code>. Output: 1.</span>
-</dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="7">7</dt>
-<dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="11" data-code-annotation="7">Chiamata della funzione <code>contatore</code>. Output: 2.</span>
-</dd>
-</dl>
-</section>
-<section id="funzioni-annidate-e-ambiti-annidati" class="level3" data-number="15.10.2">
-<h3 data-number="15.10.2" class="anchored" data-anchor-id="funzioni-annidate-e-ambiti-annidati"><span class="header-section-number">15.10.2</span> Funzioni Annidate e Ambiti Annidati</h3>
-<p>Un’istruzione <code>def</code> all’interno di un corpo di funzione definisce una funzione annidata e la funzione il cui corpo include il <code>def</code> è nota come funzione esterna a quella annidata. Il codice nel corpo di una funzione annidata può accedere (ma non riassociare) variabili locali di una funzione esterna, note anche come variabili libere della funzione annidata.</p>
-<p>Esempio di funzione annidata:</p>
-<div class="sourceCode" id="annotated-cell-23"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-23-1" class="code-annotation-target"><a href="#annotated-cell-23-1"></a><span class="kw">def</span> esterna(a, b, c):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-23-2" class="code-annotation-target"><a href="#annotated-cell-23-2"></a>    <span class="kw">def</span> annidata(x):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-23-3" class="code-annotation-target"><a href="#annotated-cell-23-3"></a>        <span class="cf">return</span> (x <span class="op">*</span> <span class="fl">100.0</span>) <span class="op">/</span> (a <span class="op">+</span> b <span class="op">+</span> c)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-23-4" class="code-annotation-target"><a href="#annotated-cell-23-4"></a>    <span class="bu">print</span>(<span class="st">'Percentuali:'</span>, annidata(a), annidata(b), annidata(c))</span>
-<span id="annotated-cell-23-5"><a href="#annotated-cell-23-5"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-23-6" class="code-annotation-target"><a href="#annotated-cell-23-6"></a>esterna(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-23" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-23" data-code-lines="1" data-code-annotation="1">Definizione della funzione esterna <code>esterna</code> con i parametri <code>a</code>, <code>b</code> e <code>c</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-23" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-23" data-code-lines="2" data-code-annotation="2">Definizione della funzione annidata <code>annidata</code> con il parametro <code>x</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-23" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-23" data-code-lines="3" data-code-annotation="3">Calcolo e restituzione della percentuale di <code>x</code> rispetto alla somma di <code>a</code>, <code>b</code> e <code>c</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-23" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-23" data-code-lines="4" data-code-annotation="4">Stampa delle percentuali di <code>a</code>, <code>b</code> e <code>c</code> calcolate dalla funzione annidata.</span>
-</dd>
-<dt data-target-cell="annotated-cell-23" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-23" data-code-lines="6" data-code-annotation="5">Chiamata della funzione esterna <code>esterna</code>.</span>
-</dd>
-</dl>
-</section>
-<section id="espressioni-lambda" class="level3" data-number="15.10.3">
-<h3 data-number="15.10.3" class="anchored" data-anchor-id="espressioni-lambda"><span class="header-section-number">15.10.3</span> Espressioni <code>lambda</code></h3>
-<p>Se il corpo di una funzione è una singola istruzione di espressione return, possiamo (opzionalmente) scegliere di sostituire la funzione con una forma speciale di espressione lambda:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">lambda</span> parametri: espressione</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Un’espressione lambda è l’equivalente anonimo di una funzione normale il cui corpo è una singola istruzione di return. La sintassi lambda non utilizza la parola chiave return. Possiamo utilizzare un’espressione lambda ovunque potremmo utilizzare un riferimento a una funzione. Le espressioni lambda possono essere utili quando vogliamo utilizzare una funzione estremamente semplice come argomento o valore di ritorno.</p>
-<p>Esempio di espressione lambda:</p>
-<div class="sourceCode" id="annotated-cell-25"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-25-1" class="code-annotation-target"><a href="#annotated-cell-25-1"></a>lista <span class="op">=</span> [<span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-25-2" class="code-annotation-target"><a href="#annotated-cell-25-2"></a>ordinata <span class="op">=</span> <span class="bu">sorted</span>(lista, key<span class="op">=</span><span class="kw">lambda</span> x: x <span class="op">*</span> x)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-25-3" class="code-annotation-target"><a href="#annotated-cell-25-3"></a><span class="bu">print</span>(ordinata)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="1" data-code-annotation="1">Definizione di una lista di numeri.</span>
-</dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="2" data-code-annotation="2">Ordinamento della lista utilizzando una funzione lambda che restituisce il quadrato di ciascun elemento come chiave di ordinamento.</span>
-</dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="3" data-code-annotation="3">Stampa della lista ordinata. Output: [0, -1, 1, -2, 2].</span>
-</dd>
-</dl>
-<p>In alternativa, possiamo sempre utilizzare una dichiarazione <code>def</code> locale per dare un nome all’oggetto funzione, quindi utilizzare questo nome come argomento o valore di ritorno.</p>
-<p>Esempio alternativo senza <code>lambda</code>:</p>
-<div class="sourceCode" id="annotated-cell-26"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-26-1" class="code-annotation-target"><a href="#annotated-cell-26-1"></a><span class="kw">def</span> quadrato(valore):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-26-2" class="code-annotation-target"><a href="#annotated-cell-26-2"></a>    <span class="cf">return</span> valore <span class="op">*</span> valore</span>
-<span id="annotated-cell-26-3"><a href="#annotated-cell-26-3"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-26-4" class="code-annotation-target"><a href="#annotated-cell-26-4"></a>lista <span class="op">=</span> [<span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-26-5" class="code-annotation-target"><a href="#annotated-cell-26-5"></a>ordinata <span class="op">=</span> <span class="bu">sorted</span>(lista, key<span class="op">=</span>quadrato)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-26-6" class="code-annotation-target"><a href="#annotated-cell-26-6"></a><span class="bu">print</span>(ordinata)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-26" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-26" data-code-lines="1" data-code-annotation="1">Definizione della funzione <code>quadrato</code> con il parametro <code>valore</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-26" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-26" data-code-lines="2" data-code-annotation="2">Calcolo e restituzione del quadrato del valore.</span>
-</dd>
-<dt data-target-cell="annotated-cell-26" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-26" data-code-lines="4" data-code-annotation="3">Definizione di una lista di numeri.</span>
-</dd>
-<dt data-target-cell="annotated-cell-26" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-26" data-code-lines="5" data-code-annotation="4">Ordinamento della lista utilizzando la funzione <code>quadrato</code> come chiave di ordinamento.</span>
-</dd>
-<dt data-target-cell="annotated-cell-26" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-26" data-code-lines="6" data-code-annotation="5">Stampa della lista ordinata. Output: [0, -1, 1, -2, 2].</span>
-</dd>
-</dl>
-<p>Mentre <code>lambda</code> può essere utile in alcuni casi, <code>def</code> è di solito preferibile: è più generale e aiuta a rendere il nostro codice più leggibile, poiché possiamo scegliere un nome chiaro per la funzione.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1908,8 +1767,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./terza-parte-python-esercitazione-uno.html" class="pagination-link" aria-label="Esercitazione 1: web app con Flask">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Esercitazione 1: web app con Flask</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./terza-parte-python-moduli.html" class="pagination-link" aria-label="Moduli">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Moduli</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
