@@ -8,7 +8,7 @@ tbl-cap-location: margin
 
 ## Il problema
 
-In questa esercitazione, svilupperemo una semplice web app utilizzando Flask. L'applicazione accetterà in input un indirizzo dall'utente e mostrerà la mappa corrispondente utilizzando Google Maps, consentendo all'utente di scegliere il tipo di visualizzazione della mappa (mappa normale, satellite, terreno).
+In questa esercitazione, svilupperemo una semplice web app utilizzando Flask. L'applicazione accetterà in input un indirizzo dall'utente e mostrerà la mappa corrispondente utilizzando Google Maps, consentendo all'utente di scegliere il tipo di visualizzazione della mappa (mappa normale, satellite, terreno). Inoltre, permetteremo all'utente di visualizzare punti di interesse (POI) come ristoranti e ospedali e di tracciare un percorso tra due indirizzi.
 
 ## Flask
 
@@ -83,15 +83,15 @@ Per utilizzare i template, crea una cartella chiamata `templates` nella director
 Aggiorniamo `app.py` per utilizzare il template `index.html`:
 
 ```python
-from flask import Flask, render_template
+from flask import Flask, render_template # <1>
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-  return render_template('index.html', 
-                          title='Hello, World!', 
-                          message='Welcome to my Flask app')
+  return render_template('index.html', # <2>
+                         title='Hello, World!', 
+                         message='Welcome to my Flask app')
 
 if __name__ == '__main__':
   app.run(debug=True)
@@ -152,6 +152,232 @@ def home():
 if __name__ == '__main__':
   app.run(debug=True)
 ```
+
+### Metodi HTTP
+
+Flask supporta vari metodi HTTP, inclusi GET e POST, che sono i più comunemente utilizzati. I metodi HTTP sono modi standard per inviare e ricevere dati tra il client (come il browser web) e il server. In Flask, dobbiamo considerare questi metodi perché determinano come i dati vengono inviati e ricevuti dall'applicazione. Ad esempio, il metodo GET viene utilizzato per richiedere dati dal server (come caricare una pagina web), mentre il metodo POST viene utilizzato per inviare dati al server (come inviare un modulo).
+
+Creiamo un semplice modulo di contatto che utilizza sia GET che POST.
+
+Form HTML, da salvare in `templates/contact.html`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contattaci</title>
+</head>
+<body>
+  <h1>Contattaci</h1>
+  <form method="post">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
+    <label for="messaggio">Messaggio:</label>
+    <textarea id="messaggio" name="messaggio" required></textarea>
+    <input type="submit" value="Invia">
+  </form>
+</body>
+</html>
+```
+
+Aggiornamento di `app.py`:
+
+```python
+from flask import Flask, render_template, request  # <1>
+
+app = Flask(__name__)  # <2>
+
+@app.route('/')  # <3>
+def home():  # <4>
+  items = ['Item 1', 'Item 2', 'Special', 'Item 3']  # <5>
+
+  return render_template('index.html', 
+                         title='Hello, World!', 
+                         message='Welcome to my Flask app', 
+                         items=items)  # <6>
+
+@app.route('/contact', methods=['GET', 'POST'])  # <7>
+def contact():  # <8>
+  if request.method == 'POST':  # <9>
+    nome = request.form['nome']# <10>
+
+    messaggio = request.form['messaggio']  # <11>
+
+    # <12>
+
+    return f'Thank you {nome}, your message has been received.'  # <13>
+
+  return render_template('contact.html')  # <14>
+
+if __name__ == '__main__':  # <15>
+  app.run(debug=True)  # <16>
+```
+1. Importiamo `Flask`, `render_template` e `request` da Flask per gestire i dati dei moduli.
+2. Creiamo un'applicazione Flask.
+3. Definiamo la route per la homepage con il decoratore `@app.route('/')`.
+4. Definiamo la funzione `home` che viene chiamata quando la homepage viene richiesta.
+5. Creiamo una lista di oggetti da passare al template.
+6. Utilizziamo `render_template` per rendere il template `index.html` con variabili `title`, `message` e `items`.
+7. Definiamo la route `/contact` che gestisce sia le richieste GET che POST.
+8. Definiamo la funzione `contact` che gestisce la logica per la route `/contact`.
+9. Se il metodo della richiesta è POST, elaboriamo i dati del modulo.
+10. Otteniamo il valore del campo `nome` dal modulo.
+11. Otteniamo il valore del campo `messaggio` dal modulo.
+12. Qui, è possibile aggiungere codice per elaborare i dati del modulo, come inviarli via email.
+13. Restituiamo un messaggio di ringraziamento con il nome dell'utente.
+14. Se il metodo è GET, visualizziamo il modulo di contatto.
+15. Eseguiamo l'applicazione Flask in modalità di debug.
+16. Avviamo il server Flask.
+
+### Per continuare
+
+Questa introduzione copre le basi di Flask, inclusi template, Jinja2 e metodi HTTP. Flask è un framework potente e flessibile che rende lo sviluppo web con Python semplice ed efficace. Per ulteriori approfondimenti, è possibile consultare la [documentazione ufficiale di Flask](https://flask.palletsprojects.com/).
+
+### Esercitazione 1: web app con Flask
+
+## Il problema
+
+In questa esercitazione, svilupperemo una semplice web app utilizzando Flask. L'applicazione accetterà in input un indirizzo dall'utente e mostrerà la mappa corrispondente utilizzando Google Maps, consentendo all'utente di scegliere il tipo di visualizzazione della mappa (mappa normale, satellite, terreno) e visualizzare i dettagli dell'indirizzo. Inoltre, sarà possibile tracciare un percorso tra due indirizzi.
+
+## Flask
+
+Flask è un micro-framework per il web sviluppato in Python. È semplice da usare e molto flessibile, rendendolo ideale per piccoli progetti web e prototipi. Flask utilizza Jinja2 per il rendering dei template HTML e supporta vari metodi HTTP per la gestione delle richieste web.
+
+### Installazione
+
+Per installare Flask, è possibile utilizzare pip:
+
+```bash
+pip install Flask
+```
+
+### Creazione di una semplice web app
+
+Iniziamo creando una semplice applicazione Flask che visualizza `Hello, World!` quando si accede alla homepage.
+
+Crea un file chiamato `app.py` e aggiungi il seguente codice:
+
+```python
+from flask import Flask  # <1>
+
+app = Flask(__name__)  # <2>
+
+@app.route('/')  # <3>
+def hello_world():  # <4>
+    return 'Hello, World!'  # <5>
+
+if __name__ == '__main__':  # <6>
+    app.run(debug=True)  # <7>
+```
+1. Importiamo la classe `Flask` dal modulo `flask`.
+2. Creiamo un'istanza dell'applicazione Flask.
+3. Utilizziamo il decoratore `@app.route('/')` per definire una route per la nostra applicazione.
+4. Definiamo una funzione chiamata `hello_world` che viene eseguita quando un utente visita la route `/`.
+5. La funzione `hello_world` restituisce una stringa `'Hello, World!'`.
+6. Controlliamo se lo script è eseguito direttamente.
+7. Avviamo l'applicazione Flask in modalità debug.
+
+### Esecuzione della web app
+
+Per eseguire l'applicazione, utilizza il comando:
+
+```bash
+python app.py
+```
+
+Naviga verso `http://127.0.0.1:5000/` nel browser per vedere il risultato.
+
+### Template
+
+Flask utilizza Jinja2 come motore di template. I template permettono di separare la logica dell'applicazione dalla presentazione. Possiamo creare file HTML che contengono variabili e istruzioni di controllo che vengono sostituite con i dati reali al momento del rendering.
+
+Per utilizzare i template, crea una cartella chiamata `templates` nella directory del tuo progetto. All'interno di `templates`, crea un file chiamato `index.html`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title> <!-- <1> -->
+</head>
+<body>
+  <h1>{{ title }}</h1> <!-- <2> -->
+  <p>{{ message }}</p> <!-- <3> -->
+</body>
+</html>
+```
+1. Titolo della pagina.
+2. Variabile Jinja2 per il titolo.
+3. Variabile Jinja2 per il messaggio.
+
+Aggiorniamo `app.py` per utilizzare il template `index.html`:
+
+```python
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html', 
+                           title='Hello, World!', 
+                           message='Welcome to my Flask app')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+1. Importiamo la funzione `render_template` da Flask.
+2. Utilizziamo `render_template` nella funzione `home` per rendere il template `index.html` e passare i valori per `title` e `message`.
+
+### Jinja2
+
+Jinja2 è il motore di template utilizzato da Flask. Permette di inserire variabili, eseguire cicli e condizioni, e molto altro nei file HTML.
+
+Sintassi di base di Jinja2:
+
+- Variabili `{{ variabile }}`.
+- Condizioni `{% if condizione %} ... {% endif %}`.
+- Cicli `{% for item in lista %} ... {% endfor %}`.
+
+Aggiorniamo `index.html` per includere un ciclo e una condizione:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+</head>
+<body>
+  <h1>{{ title }}</h1>
+  <p>{{ message }}</p>
+  <ul>
+  {% for item in items %}
+    <li>{% if item == 'Special' %}<strong>{{ item }}</strong>{% else %}{{ item }}{% endif %}</li>
+  {% endfor %}
+  </ul>
+</body>
+</html>
+```
+
+Aggiorniamo `app.py` per passare una lista di elementi al template:
+
+```python
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    items = ['Item 1', 'Item 2', 'Special', 'Item 3']
+    return render_template('index.html', 
+                           title='Hello, World!', 
+                           message='Welcome to my Flask app', 
+                           items=items)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+1. Definiamo una lista di oggetti da passare al template.
+2. Passiamo la lista di oggetti `items` al template.
 
 ### Metodi HTTP
 
@@ -229,12 +455,14 @@ if __name__ == '__main__':  # <15>
 
 Questa introduzione copre le basi di Flask, inclusi template, Jinja2 e metodi HTTP. Flask è un framework potente e flessibile che rende lo sviluppo web con Python semplice ed efficace. Per ulteriori approfondimenti, è possibile consultare la [documentazione ufficiale di Flask](https://flask.palletsprojects.com/).
 
-## Passaggi dell'Esercitazione
+## Passaggi dell'esercitazione
 
 1. Creare un'applicazione Flask.
 2. Implementare della pagina web per l'inserimento dell'indirizzo.
 3. Integrare Google Maps per visualizzare la mappa basata sull'indirizzo inserito.
 4. Consentire la selezione del tipo di visualizzazione della mappa.
+5. Visualizzare una tabella con i dettagli dell'indirizzo.
+6. Permettere di tracciare un percorso tra due indirizzi.
 
 ### Passaggio 1: creazione di un'applicazione Flask
 
@@ -247,7 +475,8 @@ VisualizzaMappa/
 ├── app.py
 ├── templates/
 │   ├── index.html
-│   └── map.html
+│   └── mappa.html
+│   └── route.html
 └── static/
 ```
 
@@ -255,34 +484,85 @@ VisualizzaMappa/
 
 ```python
 from flask import Flask, render_template, request  # <1>
+import requests  # <2>
 
-app = Flask(__name__)  # <2>
+app = Flask(__name__)  # <3>
 
-@app.route('/', methods=['GET', 'POST'])  # <3>
+GOOGLE_API_KEY = "INSERIRE CHIAVE API GOOGLE MAPS"
+
+
+@app.route('/', methods=['GET', 'POST'])  # <4>
 def home():
-  if request.method == 'POST':  # <4>
-    indirizzo = request.form['indirizzo']  # <5>
+  if request.method == 'POST':  # <5>
+    indirizzo = request.form['indirizzo']  # <6>
+    visualizzazione = request.form['visualizzazione']  # <7>
 
-    visualizzazione = request.form['visualizzazione']  # <6>
+    geocode_url = f"https://maps.googleapis.com/maps/api/geocode/json?" + \
+                  f"address={indirizzo}&key={GOOGLE_API_KEY}"  # <8>
 
-    return render_template('mappa.html', 
-                           indirizzo=indirizzo, 
-                           visualizzazione=visualizzazione)  # <7>
+    response = requests.get(geocode_url)  # <9>
+    data = response.json()  # <10>
 
-  return render_template('index.html')  # <8>
+    if data['status'] == 'OK':  # <11>
+      result = data['results'][0]  # <12>
+      dettagli = {  # <13>
+        'Indirizzo Formattato': result['formatted_address'],
+        'Latitudine': result['geometry']['location']['lat'],
+        'Longitudine': result['geometry']['location']['lng'],
+        'Tipo di Luogo': result['types']
+      }
+    else:
+      dettagli = None  # <14>
+
+    return render_template('mappa.html',
+                           indirizzo=indirizzo,
+                           visualizzazione=visualizzazione,
+                           dettagli=dettagli,
+                           api_key=GOOGLE_API_KEY)  # <15>
+
+  return render_template('index.html')  # <16>
+
+
+@app.route('/route', methods=['GET', 'POST'])  # <17>
+def route():
+  if request.method == 'POST':  # <18>
+    start = request.form['start']  # <19>
+    end = request.form['end']  # <20>
+
+    return render_template('route.html',
+                           start=start,
+                           end=end,
+                           api_key=GOOGLE_API_KEY)  # <21>
+
+  return render_template('route_form.html')  # <22>
+
 
 if __name__ == '__main__':
-  app.run(debug=True)  # <9>
+  app.run(debug=True)  # <23>
 ```
 1. Importa Flask e i moduli necessari per gestire le richieste e i template.
-2. Crea l'istanza dell'applicazione Flask.
-3. Definisce una route per la homepage, che accetta sia richieste `GET` che `POST`.
-4. Controlla se la richiesta è di tipo `POST`.
-5. Ottiene l'indirizzo inserito dall'utente nel modulo HTML.
-6. Ottiene il tipo di visualizzazione selezionato dall'utente nel modulo HTML.
-7. Renderizza il template `mappa.html`, passando l'indirizzo e il tipo di visualizzazione come variabili.
-8. Renderizza il template `index.html` per le richieste `GET`.
-9. Avvia l'applicazione Flask in modalità debug.
+2. Importa il modulo requests per effettuare richieste HTTP.
+3. Crea l'istanza dell'applicazione Flask.
+4. Definisce una route per la homepage, che accetta sia richieste `GET` che `POST`.
+5. Controlla se la richiesta è di tipo `POST`.
+6. Ottiene l'indirizzo inserito dall'utente nel modulo HTML.
+7. Ottiene il tipo di visualizzazione selezionato dall'utente nel modulo HTML.
+8. Costruisce l'URL per l'API di Google Maps per ottenere i dettagli dell'indirizzo.
+9. Effettua una richiesta HTTP all'API di Google Maps.
+10. Converte la risposta JSON in un dizionario Python.
+11. Controlla se la richiesta all'API di Google Maps è andata a buon fine.
+12. Ottiene il primo risultato dalla risposta dell'API.
+13. Estrae i dettagli dell'indirizzo dalla risposta dell'API.
+14. Se la richiesta all'API di Google Maps non è andata a buon fine, imposta `dettagli` a `None`.
+15. Renderizza il template `mappa.html`, passando l'indirizzo, il tipo di visualizzazione e i dettagli come variabili.
+16. Renderizza il template `index.html` per le richieste `GET`.
+17. Definisce una route per il percorso, che accetta sia richieste `GET` che `POST`.
+18. Controlla se la richiesta è di tipo `POST`.
+19. Ottiene l'indirizzo di partenza inserito dall'utente nel modulo HTML.
+20. Ottiene l'indirizzo di arrivo inserito dall'utente nel modulo HTML.
+21. Renderizza il template `route.html`, passando gli indirizzi di partenza e arrivo come variabili.
+22. Renderizza il template `route_form.html` per le richieste `GET`.
+23. Avvia l'applicazione Flask in modalità debug.
 
 ### Passaggio 2: implementazione della pagina web per inserimento indirizzo
 
@@ -307,6 +587,14 @@ Creiamo una pagina web che permetta agli utenti di inserire un indirizzo e selez
     </select>
     <input type="submit" value="Mostra Mappa"> <!-- <3> -->
   </form>
+  <h1>Traccia un percorso</h1>
+  <form method="post" action="/route">
+    <label for="start">Partenza:</label>
+    <input type="text" id="start" name="start" required>
+    <label for="end">Arrivo:</label>
+    <input type="text" id="end" name="end" required>
+    <input type="submit" value="Traccia Percorso">
+  </form>
 </body>
 </html>
 ```
@@ -323,7 +611,7 @@ Creiamo un template per visualizzare la mappa di Google. Creiamo un file chiamat
 <html>
 <head>
   <title>Mappa</title>
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script> <!-- <1> -->
+  <script src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&libraries=places"></script> <!-- <1> -->
   <script>
     function initMap() {
       var geocoder = new google.maps.Geocoder();
@@ -334,9 +622,38 @@ Creiamo un template per visualizzare la mappa di Google. Creiamo un file chiamat
           var mapOptions = {
             zoom: 15,
             center: results[0].geometry.location,
-            mapTypeId: visualizzazione <!-- <4> -->
+            mapTypeId: visualizzazione, <!-- <4> -->
+            tilt: 45 <!-- <5> -->
           };
           var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+          var service = new google.maps.places.PlacesService(map);
+          service.nearbySearch({
+            location: results[0].geometry.location,
+            radius: 1000,
+            type: ['restaurant']
+          }, function(results, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              for (var i = 0; i < results.length; i++) {
+                var place = results[i];
+                new google.maps.Marker({
+                  position: place.geometry.location,
+                  map: map,
+                  title: place.name
+                });
+              }
+            }
+          });
+
+          var panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('street-view'), {
+              position: results[0].geometry.location,
+              pov: {
+                heading: 34,
+                pitch: 10
+              }
+            });
+          map.setStreetView(panorama); <!-- <6> -->
         } else {
           alert('Geocode non riuscito per il seguente motivo: ' + status);
         }
@@ -344,9 +661,21 @@ Creiamo un template per visualizzare la mappa di Google. Creiamo un file chiamat
     }
   </script>
 </head>
-<body onload="initMap()"> <!-- <5> -->
+<body onload="initMap()"> <!-- <7> -->
   <h1>Mappa di {{ indirizzo }}</h1>
-  <div id="map" style="height: 500px; width: 100%;"></div> <!-- <6> -->
+  <div id="map" style="height: 500px; width: 100%;"></div> <!-- <8> -->
+  <div id="street-view" style="height: 500px; width: 100%; margin-top: 20px;"></div> <!-- <9> -->
+  {% if dettagli %} <!-- <10> -->
+  <h2>Dettagli Indirizzo</h2>
+  <table>
+    <tr><th>Chiave</th><th>Valore</th></tr>
+    {% for chiave, valore in dettagli.items() %}
+    <tr><td>{{ chiave }}</td><td>{{ valore }}</td></tr>
+    {% endfor %}
+  </table>
+  {% else %} <!-- <11> -->
+  <p>Dettagli non disponibili.</p>
+  {% endif %}
 </body>
 </html>
 ```
@@ -354,8 +683,59 @@ Creiamo un template per visualizzare la mappa di Google. Creiamo un file chiamat
 2. Inserisce l'indirizzo passato dal backend.
 3. Inserisce il tipo di visualizzazione passato dal backend.
 4. Imposta il tipo di visualizzazione della mappa.
-5. Chiama la funzione `initMap` quando la pagina è caricata.
-6. Div per visualizzare la mappa.
+5. Aggiunge l'inclinazione per la visualizzazione 3D.
+6. Utilizza l'API di Street View per creare una vista 3D interattiva.
+7. Chiama la funzione `initMap` quando la pagina è caricata.
+8. `div` per visualizzare la mappa.
+9. `div` per visualizzare la Street View sotto la mappa principale.
+10. Controlla se i dettagli dell'indirizzo sono disponibili.
+11. Messaggio di fallback se i dettagli non sono disponibili.
+
+Creiamo un template per tracciare il percorso. Creiamo un file chiamato `templates/route.html`.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Percorso</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}"></script> <!-- <1> -->
+  <script>
+    function initMap() {
+      var directionsService = new google.maps.DirectionsService();
+      var directionsRenderer = new google.maps.DirectionsRenderer();
+      var start = "{{ start }}"; <!-- <2> -->
+      var end = "{{ end }}"; <!-- <3> -->
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 7,
+        center: {lat: 41.85, lng: -87.65}
+      });
+      directionsRenderer.setMap(map);
+      var request = {
+        origin: start,
+        destination: end,
+        travelMode: 'DRIVING'
+      };
+      directionsService.route(request, function(result, status) {
+        if (status === 'OK') {
+          directionsRenderer.setDirections(result);
+        } else {
+          alert('Directions request failed due to ' + status);
+        }
+      });
+    }
+  </script>
+</head>
+<body onload="initMap()"> <!-- <4> -->
+  <h1>Percorso da {{ start }} a {{ end }}</h1>
+  <div id="map" style="height: 500px; width: 100%;"></div> <!-- <5> -->
+</body>
+</html>
+```
+1. Carica l'API di Google Maps con la chiave API.
+2. Inserisce l'indirizzo di partenza passato dal backend.
+3. Inserisce l'indirizzo di arrivo passato dal backend.
+4. Chiama la funzione `initMap` quando la pagina è caricata.
+5. `div` per visualizzare il percorso sulla mappa.
 
 ### Passaggio 4: test dell'applicazione
 
@@ -365,4 +745,14 @@ Eseguiamo l'applicazione Flask:
 python app.py
 ```
 
-Apriamo il browser e navighiamo all'indirizzo `http://127.0.0.1:5000/`. Inseriamo un indirizzo, selezioniamo il tipo di visualizzazione e clicchiamo su `Mostra Mappa`. La mappa di Google dovrebbe essere visualizzata con l'indirizzo inserito e il tipo di visualizzazione selezionato.
+Apriamo il browser e navighiamo all'indirizzo `http://127.0.0.1:5000/`. Inseriamo un indirizzo, selezioniamo il tipo di visualizzazione e clicchiamo su `Mostra Mappa`. La mappa di Google dovrebbe essere visualizzata con l'indirizzo inserito e il tipo di visualizzazione selezionato. Inoltre, possiamo inserire gli indirizzi di partenza e arrivo per tracciare un percorso sulla mappa. I dettagli dell'indirizzo verranno mostrati in una tabella sotto la mappa.
+
+## File
+
+[app.py](esercitazioni/3.1/app.py)
+
+[index.html](esercitazioni/3.1/index.html)
+
+[mappa.html](esercitazioni/3.1/mappa.html)
+
+[route.html](esercitazioni/3.1/route.html)
