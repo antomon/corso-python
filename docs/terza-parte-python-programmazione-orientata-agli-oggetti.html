@@ -413,7 +413,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#metodi-vincolati-e-non-vincolati" id="toc-metodi-vincolati-e-non-vincolati" class="nav-link" data-scroll-target="#metodi-vincolati-e-non-vincolati"><span class="header-section-number">15.6</span> Metodi vincolati e non vincolati</a></li>
   <li><a href="#ereditarietà" id="toc-ereditarietà" class="nav-link" data-scroll-target="#ereditarietà"><span class="header-section-number">15.7</span> Ereditarietà</a></li>
   <li><a href="#metodi-speciali" id="toc-metodi-speciali" class="nav-link" data-scroll-target="#metodi-speciali"><span class="header-section-number">15.8</span> Metodi speciali</a></li>
-  <li><a href="#metodi-di-classe-e-metodi-statici" id="toc-metodi-di-classe-e-metodi-statici" class="nav-link" data-scroll-target="#metodi-di-classe-e-metodi-statici"><span class="header-section-number">15.9</span> Metodi di classe e metodi statici</a></li>
+  <li><a href="#metodi-di-classe-e-metodi-statici" id="toc-metodi-di-classe-e-metodi-statici" class="nav-link" data-scroll-target="#metodi-di-classe-e-metodi-statici"><span class="header-section-number">15.9</span> Metodi di classe e metodi statici</a>
+  <ul class="collapse">
+  <li><a href="#metodi-statici" id="toc-metodi-statici" class="nav-link" data-scroll-target="#metodi-statici"><span class="header-section-number">15.9.1</span> Metodi statici</a></li>
+  <li><a href="#metodi-di-classe" id="toc-metodi-di-classe" class="nav-link" data-scroll-target="#metodi-di-classe"><span class="header-section-number">15.9.2</span> Metodi di classe</a></li>
+  <li><a href="#differenza-tra-metodi-statici-e-metodi-di-classe" id="toc-differenza-tra-metodi-statici-e-metodi-di-classe" class="nav-link" data-scroll-target="#differenza-tra-metodi-statici-e-metodi-di-classe"><span class="header-section-number">15.9.3</span> Differenza tra metodi statici e metodi di classe</a></li>
+  <li><a href="#casi-duso" id="toc-casi-duso" class="nav-link" data-scroll-target="#casi-duso"><span class="header-section-number">15.9.4</span> Casi d’uso</a></li>
+  </ul></li>
   <li><a href="#descrittori" id="toc-descrittori" class="nav-link" data-scroll-target="#descrittori"><span class="header-section-number">15.10</span> Descrittori</a>
   <ul class="collapse">
   <li><a href="#accesso" id="toc-accesso" class="nav-link" data-scroll-target="#accesso"><span class="header-section-number">15.10.1</span> Accesso</a></li>
@@ -747,45 +753,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>La definizione di una classe crea un oggetto classe, proprio come la definizione di una funzione crea un oggetto funzione. L’oggetto classe ha tipo <code>type</code>, da non confondere con la funzione predefinita <code>type()</code>. Quando si chiama una classe come se fosse una funzione, avviene l’istanziazione, che crea un nuovo oggetto istanza della classe con un tipo corrispondente alla classe stessa.</p>
 <p>Esempio:</p>
-<div class="sourceCode" id="annotated-cell-34"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-34-1" class="code-annotation-target"><a href="#annotated-cell-34-1"></a><span class="kw">class</span> MiaClasse:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-34-2" class="code-annotation-target"><a href="#annotated-cell-34-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, valore):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-34-3" class="code-annotation-target"><a href="#annotated-cell-34-3"></a>    <span class="va">self</span>.valore <span class="op">=</span> valore</span>
-<span id="annotated-cell-34-4"><a href="#annotated-cell-34-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-34-5" class="code-annotation-target"><a href="#annotated-cell-34-5"></a>istanza <span class="op">=</span> MiaClasse(<span class="dv">10</span>)</span>
-<span id="annotated-cell-34-6"><a href="#annotated-cell-34-6"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-34-7" class="code-annotation-target"><a href="#annotated-cell-34-7"></a><span class="bu">print</span>(<span class="bu">type</span>(MiaClasse))</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-34-8" class="code-annotation-target"><a href="#annotated-cell-34-8"></a><span class="bu">print</span>(<span class="bu">type</span>(istanza))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-34" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="1" data-code-annotation="1">Definisce una classe <code>MiaClasse</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-34" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="2" data-code-annotation="2">Definisce il metodo speciale <code>__init__</code> per l’inizializzazione.</span>
-</dd>
-<dt data-target-cell="annotated-cell-34" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="3" data-code-annotation="3">Associa un valore all’attributo <code>valore</code> dell’istanza.</span>
-</dd>
-<dt data-target-cell="annotated-cell-34" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="5" data-code-annotation="4">Crea un’istanza della classe <code>MiaClasse</code> con valore 10.</span>
-</dd>
-<dt data-target-cell="annotated-cell-34" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="7" data-code-annotation="5">Stampa il tipo di <code>MiaClasse</code>, che sarà <code>&lt;class 'type'&gt;</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-34" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="8" data-code-annotation="6">Stampa il tipo di <code>istanza</code>, che sarà <code>&lt;class '__main__.MiaClasse'&gt;</code>.</span>
-</dd>
-</dl></li>
-<li><p>Una classe ha membri con nomi arbitrari che possiamo associare e referenziare:</p>
 <div class="sourceCode" id="annotated-cell-35"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-35-1" class="code-annotation-target"><a href="#annotated-cell-35-1"></a><span class="kw">class</span> MiaClasse:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-35-2" class="code-annotation-target"><a href="#annotated-cell-35-2"></a>  primo_attributo <span class="op">=</span> <span class="st">"esempio"</span></span>
-<span id="annotated-cell-35-3"><a href="#annotated-cell-35-3"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-35-4" class="code-annotation-target"><a href="#annotated-cell-35-4"></a><span class="bu">print</span>(MiaClasse.primo_attributo)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-35-2" class="code-annotation-target"><a href="#annotated-cell-35-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, valore):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-35-3" class="code-annotation-target"><a href="#annotated-cell-35-3"></a>    <span class="va">self</span>.valore <span class="op">=</span> valore</span>
+<span id="annotated-cell-35-4"><a href="#annotated-cell-35-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-35-5" class="code-annotation-target"><a href="#annotated-cell-35-5"></a>istanza <span class="op">=</span> MiaClasse(<span class="dv">10</span>)</span>
+<span id="annotated-cell-35-6"><a href="#annotated-cell-35-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-35-7" class="code-annotation-target"><a href="#annotated-cell-35-7"></a><span class="bu">print</span>(<span class="bu">type</span>(MiaClasse))</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-35-8" class="code-annotation-target"><a href="#annotated-cell-35-8"></a><span class="bu">print</span>(<span class="bu">type</span>(istanza))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-35" data-target-annotation="1">1</dt>
 <dd>
@@ -793,26 +768,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-35" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-35" data-code-lines="2" data-code-annotation="2">Associa un attributo di classe <code>primo_attributo</code> con valore <code>esempio</code>.</span>
+<span data-code-cell="annotated-cell-35" data-code-lines="2" data-code-annotation="2">Definisce il metodo speciale <code>__init__</code> per l’inizializzazione.</span>
 </dd>
 <dt data-target-cell="annotated-cell-35" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-35" data-code-lines="4" data-code-annotation="3">Stampa il valore dell’attributo di classe <code>primo_attributo</code>.</span>
+<span data-code-cell="annotated-cell-35" data-code-lines="3" data-code-annotation="3">Associa un valore all’attributo <code>valore</code> dell’istanza.</span>
+</dd>
+<dt data-target-cell="annotated-cell-35" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-35" data-code-lines="5" data-code-annotation="4">Crea un’istanza della classe <code>MiaClasse</code> con valore 10.</span>
+</dd>
+<dt data-target-cell="annotated-cell-35" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-35" data-code-lines="7" data-code-annotation="5">Stampa il tipo di <code>MiaClasse</code>, che sarà <code>&lt;class 'type'&gt;</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-35" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-35" data-code-lines="8" data-code-annotation="6">Stampa il tipo di <code>istanza</code>, che sarà <code>&lt;class '__main__.MiaClasse'&gt;</code>.</span>
 </dd>
 </dl></li>
-<li><p>I membri della classe possono essere metodi (funzioni) o dati ordinari (variabili):</p>
+<li><p>Una classe ha membri con nomi arbitrari che possiamo associare e referenziare:</p>
 <div class="sourceCode" id="annotated-cell-36"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-36-1" class="code-annotation-target"><a href="#annotated-cell-36-1"></a><span class="kw">class</span> MiaClasse:</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-36-2" class="code-annotation-target"><a href="#annotated-cell-36-2"></a>  primo_attributo <span class="op">=</span> <span class="st">"esempio"</span></span>
 <span id="annotated-cell-36-3"><a href="#annotated-cell-36-3"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-36-4" class="code-annotation-target"><a href="#annotated-cell-36-4"></a>  <span class="kw">def</span> primo_metodo(<span class="va">self</span>):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-36-5" class="code-annotation-target"><a href="#annotated-cell-36-5"></a>    <span class="cf">return</span> <span class="st">"Ciao, mondo!"</span></span>
-<span id="annotated-cell-36-6"><a href="#annotated-cell-36-6"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-36-7" class="code-annotation-target"><a href="#annotated-cell-36-7"></a><span class="bu">print</span>(MiaClasse.primo_attributo)</span>
-<span id="annotated-cell-36-8"><a href="#annotated-cell-36-8"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-36-9" class="code-annotation-target"><a href="#annotated-cell-36-9"></a>mia_istanza <span class="op">=</span> MiaClasse()</span>
-<span id="annotated-cell-36-10"><a href="#annotated-cell-36-10"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-36-11" class="code-annotation-target"><a href="#annotated-cell-36-11"></a><span class="bu">print</span>(mia_istanza.primo_metodo())</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-36-12" class="code-annotation-target"><a href="#annotated-cell-36-12"></a><span class="bu">print</span>(MiaClasse.primo_metodo(mia_istanza))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-36-4" class="code-annotation-target"><a href="#annotated-cell-36-4"></a><span class="bu">print</span>(MiaClasse.primo_attributo)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-36" data-target-annotation="1">1</dt>
 <dd>
@@ -820,41 +799,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-36" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-36" data-code-lines="2" data-code-annotation="2">Definisce un attributo di classe <code>primo_attributo</code> con valore <code>esempio</code>.</span>
+<span data-code-cell="annotated-cell-36" data-code-lines="2" data-code-annotation="2">Associa un attributo di classe <code>primo_attributo</code> con valore <code>esempio</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-36" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-36" data-code-lines="4" data-code-annotation="3">Definisce un metodo <code>primo_metodo</code> con un parametro <code>self</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-36" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-36" data-code-lines="5" data-code-annotation="4">Il metodo <code>primo_metodo</code> restituisce una stringa <code>Ciao, mondo!</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-36" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-36" data-code-lines="7" data-code-annotation="5">Stampa il valore dell’attributo di classe <code>primo_attributo</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-36" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-36" data-code-lines="9" data-code-annotation="6">Crea un’istanza della classe <code>MiaClasse</code> e la associa a <code>mia_istanza</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-36" data-target-annotation="7">7</dt>
-<dd>
-<span data-code-cell="annotated-cell-36" data-code-lines="11" data-code-annotation="7">Chiama il metodo <code>primo_metodo</code> sull’istanza <code>mia_istanza</code>. Python passa automaticamente <code>mia_istanza</code> come argomento per <code>self</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-36" data-target-annotation="8">8</dt>
-<dd>
-<span data-code-cell="annotated-cell-36" data-code-lines="12" data-code-annotation="8">Chiama il metodo <code>primo_metodo</code> direttamente sulla classe <code>MiaClasse</code>, passando esplicitamente <code>mia_istanza</code> come argomento per <code>self</code>.</span>
+<span data-code-cell="annotated-cell-36" data-code-lines="4" data-code-annotation="3">Stampa il valore dell’attributo di classe <code>primo_attributo</code>.</span>
 </dd>
 </dl></li>
-<li><p>Gli attributi della classe associati a funzioni sono noti anche come metodi della classe:</p>
+<li><p>I membri della classe possono essere metodi (funzioni) o dati ordinari (variabili):</p>
 <div class="sourceCode" id="annotated-cell-37"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-37-1" class="code-annotation-target"><a href="#annotated-cell-37-1"></a><span class="kw">class</span> MiaClasse:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-37-2" class="code-annotation-target"><a href="#annotated-cell-37-2"></a>  <span class="kw">def</span> primo_metodo(<span class="va">self</span>):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-37-3" class="code-annotation-target"><a href="#annotated-cell-37-3"></a>    <span class="cf">return</span> <span class="st">"Questo è un metodo"</span></span>
-<span id="annotated-cell-37-4"><a href="#annotated-cell-37-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-37-5" class="code-annotation-target"><a href="#annotated-cell-37-5"></a>istanza <span class="op">=</span> MiaClasse()</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-37-2" class="code-annotation-target"><a href="#annotated-cell-37-2"></a>  primo_attributo <span class="op">=</span> <span class="st">"esempio"</span></span>
+<span id="annotated-cell-37-3"><a href="#annotated-cell-37-3"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-37-4" class="code-annotation-target"><a href="#annotated-cell-37-4"></a>  <span class="kw">def</span> primo_metodo(<span class="va">self</span>):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-37-5" class="code-annotation-target"><a href="#annotated-cell-37-5"></a>    <span class="cf">return</span> <span class="st">"Ciao, mondo!"</span></span>
 <span id="annotated-cell-37-6"><a href="#annotated-cell-37-6"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-37-7" class="code-annotation-target"><a href="#annotated-cell-37-7"></a><span class="bu">print</span>(istanza.primo_metodo())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-37-7" class="code-annotation-target"><a href="#annotated-cell-37-7"></a><span class="bu">print</span>(MiaClasse.primo_attributo)</span>
+<span id="annotated-cell-37-8"><a href="#annotated-cell-37-8"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-37-9" class="code-annotation-target"><a href="#annotated-cell-37-9"></a>mia_istanza <span class="op">=</span> MiaClasse()</span>
+<span id="annotated-cell-37-10"><a href="#annotated-cell-37-10"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-37-11" class="code-annotation-target"><a href="#annotated-cell-37-11"></a><span class="bu">print</span>(mia_istanza.primo_metodo())</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-37-12" class="code-annotation-target"><a href="#annotated-cell-37-12"></a><span class="bu">print</span>(MiaClasse.primo_metodo(mia_istanza))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-37" data-target-annotation="1">1</dt>
 <dd>
@@ -862,32 +826,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-37" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-37" data-code-lines="2" data-code-annotation="2">Definisce un metodo <code>primo_metodo</code>.</span>
+<span data-code-cell="annotated-cell-37" data-code-lines="2" data-code-annotation="2">Definisce un attributo di classe <code>primo_attributo</code> con valore <code>esempio</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-37" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-37" data-code-lines="3" data-code-annotation="3">Il metodo <code>primo_metodo</code> restituisce una stringa <code>Questo è un metodo</code>.</span>
+<span data-code-cell="annotated-cell-37" data-code-lines="4" data-code-annotation="3">Definisce un metodo <code>primo_metodo</code> con un parametro <code>self</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-37" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-37" data-code-lines="5" data-code-annotation="4">Crea un’istanza della classe <code>MiaClasse</code>.</span>
+<span data-code-cell="annotated-cell-37" data-code-lines="5" data-code-annotation="4">Il metodo <code>primo_metodo</code> restituisce una stringa <code>Ciao, mondo!</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-37" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-37" data-code-lines="7" data-code-annotation="5">Chiama il metodo <code>primo_metodo</code> sull’istanza e stampa il risultato.</span>
+<span data-code-cell="annotated-cell-37" data-code-lines="7" data-code-annotation="5">Stampa il valore dell’attributo di classe <code>primo_attributo</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-37" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-37" data-code-lines="9" data-code-annotation="6">Crea un’istanza della classe <code>MiaClasse</code> e la associa a <code>mia_istanza</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-37" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-37" data-code-lines="11" data-code-annotation="7">Chiama il metodo <code>primo_metodo</code> sull’istanza <code>mia_istanza</code>. Python passa automaticamente <code>mia_istanza</code> come argomento per <code>self</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-37" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-37" data-code-lines="12" data-code-annotation="8">Chiama il metodo <code>primo_metodo</code> direttamente sulla classe <code>MiaClasse</code>, passando esplicitamente <code>mia_istanza</code> come argomento per <code>self</code>.</span>
 </dd>
 </dl></li>
-<li><p>Un metodo può avere uno dei tanti nomi definiti da Python con due trattini bassi all’inizio e alla fine (noti come nomi dunder, abbreviazione di “double-underscore names” - ad esempio, il nome <code>__init__</code> è pronunciato “dunder init”). Python chiama implicitamente questi metodi speciali, quando una classe li fornisce, quando si verificano vari tipi di operazioni su quella classe o sulle sue istanze.</p>
+<li><p>Gli attributi della classe associati a funzioni sono noti anche come metodi della classe:</p>
 <div class="sourceCode" id="annotated-cell-38"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-38-1" class="code-annotation-target"><a href="#annotated-cell-38-1"></a><span class="kw">class</span> MiaClasse:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-38-2" class="code-annotation-target"><a href="#annotated-cell-38-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, valore):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-38-3" class="code-annotation-target"><a href="#annotated-cell-38-3"></a>    <span class="va">self</span>.valore <span class="op">=</span> valore</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-38-2" class="code-annotation-target"><a href="#annotated-cell-38-2"></a>  <span class="kw">def</span> primo_metodo(<span class="va">self</span>):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-38-3" class="code-annotation-target"><a href="#annotated-cell-38-3"></a>    <span class="cf">return</span> <span class="st">"Questo è un metodo"</span></span>
 <span id="annotated-cell-38-4"><a href="#annotated-cell-38-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-38-5" class="code-annotation-target"><a href="#annotated-cell-38-5"></a>  <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-38-6" class="code-annotation-target"><a href="#annotated-cell-38-6"></a>    <span class="cf">return</span> <span class="ss">f"MiaClasse con valore </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>valore<span class="sc">}</span><span class="ss">"</span></span>
-<span id="annotated-cell-38-7"><a href="#annotated-cell-38-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-38-8" class="code-annotation-target"><a href="#annotated-cell-38-8"></a>istanza <span class="op">=</span> MiaClasse(<span class="dv">10</span>)</span>
-<span id="annotated-cell-38-9"><a href="#annotated-cell-38-9"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-38-10" class="code-annotation-target"><a href="#annotated-cell-38-10"></a><span class="bu">print</span>(istanza)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-38-5" class="code-annotation-target"><a href="#annotated-cell-38-5"></a>istanza <span class="op">=</span> MiaClasse()</span>
+<span id="annotated-cell-38-6"><a href="#annotated-cell-38-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-38-7" class="code-annotation-target"><a href="#annotated-cell-38-7"></a><span class="bu">print</span>(istanza.primo_metodo())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-38" data-target-annotation="1">1</dt>
 <dd>
@@ -895,78 +868,111 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-38" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-38" data-code-lines="2" data-code-annotation="2">Definisce il metodo speciale <code>__init__</code> per l’inizializzazione.</span>
+<span data-code-cell="annotated-cell-38" data-code-lines="2" data-code-annotation="2">Definisce un metodo <code>primo_metodo</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-38" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-38" data-code-lines="3" data-code-annotation="3">Associa un valore all’attributo <code>valore</code> dell’istanza.</span>
+<span data-code-cell="annotated-cell-38" data-code-lines="3" data-code-annotation="3">Il metodo <code>primo_metodo</code> restituisce una stringa <code>Questo è un metodo</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-38" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-38" data-code-lines="5" data-code-annotation="4">Definisce il metodo speciale <code>__str__</code> per la rappresentazione stringa.</span>
+<span data-code-cell="annotated-cell-38" data-code-lines="5" data-code-annotation="4">Crea un’istanza della classe <code>MiaClasse</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-38" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-38" data-code-lines="6" data-code-annotation="5"><code>__str__</code> restituisce una stringa rappresentativa dell’istanza.</span>
-</dd>
-<dt data-target-cell="annotated-cell-38" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-38" data-code-lines="8" data-code-annotation="6">Crea un’istanza della classe <code>MiaClasse</code> con valore <code>10</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-38" data-target-annotation="7">7</dt>
-<dd>
-<span data-code-cell="annotated-cell-38" data-code-lines="10" data-code-annotation="7">Stampa la rappresentazione stringa dell’istanza, chiamando implicitamente <code>__str__</code>.</span>
+<span data-code-cell="annotated-cell-38" data-code-lines="7" data-code-annotation="5">Chiama il metodo <code>primo_metodo</code> sull’istanza e stampa il risultato.</span>
 </dd>
 </dl></li>
-<li><p>Una classe può ereditare da una o più classi, il che significa che delega ad altri oggetti classe la ricerca di alcuni attributi (inclusi metodi regolari e dunder) che non sono nella classe stessa.</p>
-<div class="sourceCode" id="annotated-cell-39"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-39-1" class="code-annotation-target"><a href="#annotated-cell-39-1"></a><span class="kw">class</span> ClasseBase:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-39-2" class="code-annotation-target"><a href="#annotated-cell-39-2"></a>  <span class="kw">def</span> metodo_base(<span class="va">self</span>):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-39-3" class="code-annotation-target"><a href="#annotated-cell-39-3"></a>    <span class="cf">return</span> <span class="st">"Metodo base"</span></span>
+<li><p>Un metodo può avere uno dei tanti nomi definiti da Python con due trattini bassi all’inizio e alla fine (noti come nomi dunder, abbreviazione di “double-underscore names” - ad esempio, il nome <code>__init__</code> è pronunciato “dunder init”). Python chiama implicitamente questi metodi speciali, quando una classe li fornisce, quando si verificano vari tipi di operazioni su quella classe o sulle sue istanze.</p>
+<div class="sourceCode" id="annotated-cell-39"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-39-1" class="code-annotation-target"><a href="#annotated-cell-39-1"></a><span class="kw">class</span> MiaClasse:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-39-2" class="code-annotation-target"><a href="#annotated-cell-39-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, valore):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-39-3" class="code-annotation-target"><a href="#annotated-cell-39-3"></a>    <span class="va">self</span>.valore <span class="op">=</span> valore</span>
 <span id="annotated-cell-39-4"><a href="#annotated-cell-39-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-39-5" class="code-annotation-target"><a href="#annotated-cell-39-5"></a><span class="kw">class</span> ClasseDerivata(ClasseBase):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-39-6" class="code-annotation-target"><a href="#annotated-cell-39-6"></a>  <span class="kw">def</span> metodo_derivato(<span class="va">self</span>):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-39-7" class="code-annotation-target"><a href="#annotated-cell-39-7"></a>    <span class="cf">return</span> <span class="st">"Metodo derivato"</span></span>
-<span id="annotated-cell-39-8"><a href="#annotated-cell-39-8"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-39-9" class="code-annotation-target"><a href="#annotated-cell-39-9"></a>istanza <span class="op">=</span> ClasseDerivata()</span>
-<span id="annotated-cell-39-10"><a href="#annotated-cell-39-10"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-39-11" class="code-annotation-target"><a href="#annotated-cell-39-11"></a><span class="bu">print</span>(istanza.metodo_base())</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-39-12" class="code-annotation-target"><a href="#annotated-cell-39-12"></a><span class="bu">print</span>(istanza.metodo_derivato())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-39-5" class="code-annotation-target"><a href="#annotated-cell-39-5"></a>  <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-39-6" class="code-annotation-target"><a href="#annotated-cell-39-6"></a>    <span class="cf">return</span> <span class="ss">f"MiaClasse con valore </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>valore<span class="sc">}</span><span class="ss">"</span></span>
+<span id="annotated-cell-39-7"><a href="#annotated-cell-39-7"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-39-8" class="code-annotation-target"><a href="#annotated-cell-39-8"></a>istanza <span class="op">=</span> MiaClasse(<span class="dv">10</span>)</span>
+<span id="annotated-cell-39-9"><a href="#annotated-cell-39-9"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-39-10" class="code-annotation-target"><a href="#annotated-cell-39-10"></a><span class="bu">print</span>(istanza)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-39" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-39" data-code-lines="1" data-code-annotation="1">Definisce una classe <code>ClasseBase</code>.</span>
+<span data-code-cell="annotated-cell-39" data-code-lines="1" data-code-annotation="1">Definisce una classe <code>MiaClasse</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-39" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-39" data-code-lines="2" data-code-annotation="2">Definisce un metodo <code>metodo_base</code>.</span>
+<span data-code-cell="annotated-cell-39" data-code-lines="2" data-code-annotation="2">Definisce il metodo speciale <code>__init__</code> per l’inizializzazione.</span>
 </dd>
 <dt data-target-cell="annotated-cell-39" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-39" data-code-lines="3" data-code-annotation="3"><code>metodo_base</code> restituisce una stringa “Metodo base”.</span>
+<span data-code-cell="annotated-cell-39" data-code-lines="3" data-code-annotation="3">Associa un valore all’attributo <code>valore</code> dell’istanza.</span>
 </dd>
 <dt data-target-cell="annotated-cell-39" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-39" data-code-lines="5" data-code-annotation="4">Definisce una classe <code>ClasseDerivata</code> che eredita da <code>ClasseBase</code>.</span>
+<span data-code-cell="annotated-cell-39" data-code-lines="5" data-code-annotation="4">Definisce il metodo speciale <code>__str__</code> per la rappresentazione stringa.</span>
 </dd>
 <dt data-target-cell="annotated-cell-39" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-39" data-code-lines="6" data-code-annotation="5">Definisce un metodo <code>metodo_derivato</code>.</span>
+<span data-code-cell="annotated-cell-39" data-code-lines="6" data-code-annotation="5"><code>__str__</code> restituisce una stringa rappresentativa dell’istanza.</span>
 </dd>
 <dt data-target-cell="annotated-cell-39" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-39" data-code-lines="7" data-code-annotation="6"><code>metodo_derivato</code> restituisce una stringa “Metodo derivato”.</span>
+<span data-code-cell="annotated-cell-39" data-code-lines="8" data-code-annotation="6">Crea un’istanza della classe <code>MiaClasse</code> con valore <code>10</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-39" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-39" data-code-lines="9" data-code-annotation="7">Crea un’istanza della classe <code>ClasseDerivata</code>.</span>
+<span data-code-cell="annotated-cell-39" data-code-lines="10" data-code-annotation="7">Stampa la rappresentazione stringa dell’istanza, chiamando implicitamente <code>__str__</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-39" data-target-annotation="8">8</dt>
+</dl></li>
+<li><p>Una classe può ereditare da una o più classi, il che significa che delega ad altri oggetti classe la ricerca di alcuni attributi (inclusi metodi regolari e dunder) che non sono nella classe stessa.</p>
+<div class="sourceCode" id="annotated-cell-40"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-40-1" class="code-annotation-target"><a href="#annotated-cell-40-1"></a><span class="kw">class</span> ClasseBase:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-40-2" class="code-annotation-target"><a href="#annotated-cell-40-2"></a>  <span class="kw">def</span> metodo_base(<span class="va">self</span>):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-40-3" class="code-annotation-target"><a href="#annotated-cell-40-3"></a>    <span class="cf">return</span> <span class="st">"Metodo base"</span></span>
+<span id="annotated-cell-40-4"><a href="#annotated-cell-40-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-40-5" class="code-annotation-target"><a href="#annotated-cell-40-5"></a><span class="kw">class</span> ClasseDerivata(ClasseBase):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-40-6" class="code-annotation-target"><a href="#annotated-cell-40-6"></a>  <span class="kw">def</span> metodo_derivato(<span class="va">self</span>):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-40-7" class="code-annotation-target"><a href="#annotated-cell-40-7"></a>    <span class="cf">return</span> <span class="st">"Metodo derivato"</span></span>
+<span id="annotated-cell-40-8"><a href="#annotated-cell-40-8"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-40-9" class="code-annotation-target"><a href="#annotated-cell-40-9"></a>istanza <span class="op">=</span> ClasseDerivata()</span>
+<span id="annotated-cell-40-10"><a href="#annotated-cell-40-10"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-40-11" class="code-annotation-target"><a href="#annotated-cell-40-11"></a><span class="bu">print</span>(istanza.metodo_base())</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-40-12" class="code-annotation-target"><a href="#annotated-cell-40-12"></a><span class="bu">print</span>(istanza.metodo_derivato())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-40" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-39" data-code-lines="11" data-code-annotation="8">Chiama il metodo <code>metodo_base</code> ereditato dall’istanza e stampa il risultato.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="1" data-code-annotation="1">Definisce una classe <code>ClasseBase</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-39" data-target-annotation="9">9</dt>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-39" data-code-lines="12" data-code-annotation="9">Chiama il metodo <code>metodo_derivato</code> dell’istanza e stampa il risultato.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="2" data-code-annotation="2">Definisce un metodo <code>metodo_base</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-40" data-code-lines="3" data-code-annotation="3"><code>metodo_base</code> restituisce una stringa “Metodo base”.</span>
+</dd>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-40" data-code-lines="5" data-code-annotation="4">Definisce una classe <code>ClasseDerivata</code> che eredita da <code>ClasseBase</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-40" data-code-lines="6" data-code-annotation="5">Definisce un metodo <code>metodo_derivato</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-40" data-code-lines="7" data-code-annotation="6"><code>metodo_derivato</code> restituisce una stringa “Metodo derivato”.</span>
+</dd>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-40" data-code-lines="9" data-code-annotation="7">Crea un’istanza della classe <code>ClasseDerivata</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-40" data-code-lines="11" data-code-annotation="8">Chiama il metodo <code>metodo_base</code> ereditato dall’istanza e stampa il risultato.</span>
+</dd>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-40" data-code-lines="12" data-code-annotation="9">Chiama il metodo <code>metodo_derivato</code> dell’istanza e stampa il risultato.</span>
 </dd>
 </dl></li>
 </ul>
@@ -1560,24 +1566,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="metodi-di-classe-e-metodi-statici" class="level2" data-number="15.9">
 <h2 data-number="15.9" class="anchored" data-anchor-id="metodi-di-classe-e-metodi-statici"><span class="header-section-number">15.9</span> Metodi di classe e metodi statici</h2>
-<p>Python fornisce due tipi di metodi a livello di classe: metodi statici e metodi di classe. I metodi statici sono definiti utilizzando il decoratore <code>@staticmethod</code> e non ricevono automaticamente il riferimento all’istanza o alla classe come primo argomento. I metodi di classe sono definiti utilizzando il decoratore <code>@classmethod</code> e ricevono il riferimento alla classe come primo argomento, convenzionalmente chiamato <code>cls</code>.</p>
-<p>Esempio di metodo statico e metodo di classe:</p>
-<div class="sourceCode" id="annotated-cell-24"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-24-1" class="code-annotation-target"><a href="#annotated-cell-24-1"></a><span class="kw">class</span> C10:</span>
+<p>In Python, i metodi possono essere definiti a livello di classe in due modi principali: come metodi statici e come metodi di classe. Entrambi offrono funzionalità diverse rispetto ai metodi di istanza.</p>
+<section id="metodi-statici" class="level3" data-number="15.9.1">
+<h3 data-number="15.9.1" class="anchored" data-anchor-id="metodi-statici"><span class="header-section-number">15.9.1</span> Metodi statici</h3>
+<p>I metodi statici sono definiti utilizzando il decoratore <code>@staticmethod</code>. Questi metodi non ricevono automaticamente né il riferimento all’istanza (<code>self</code>) né alla classe (<code>cls</code>) come primo argomento. Sono simili alle funzioni normali, ma sono chiamati come membri della classe. Sono utili quando non è necessario accedere né alle variabili di istanza né alle variabili di classe all’interno del metodo.</p>
+<p>Esempio di metodo statico:</p>
+<div class="sourceCode" id="annotated-cell-24"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-24-1" class="code-annotation-target"><a href="#annotated-cell-24-1"></a><span class="kw">class</span> Utilita:</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-24-2" class="code-annotation-target"><a href="#annotated-cell-24-2"></a>  <span class="at">@staticmethod</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-24-3" class="code-annotation-target"><a href="#annotated-cell-24-3"></a>  <span class="kw">def</span> metodo_statico():</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-24-4" class="code-annotation-target"><a href="#annotated-cell-24-4"></a>    <span class="bu">print</span>(<span class="st">"Metodo statico"</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-24-3" class="code-annotation-target"><a href="#annotated-cell-24-3"></a>  <span class="kw">def</span> somma(a, b):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-24-4" class="code-annotation-target"><a href="#annotated-cell-24-4"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
 <span id="annotated-cell-24-5"><a href="#annotated-cell-24-5"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-24-6" class="code-annotation-target"><a href="#annotated-cell-24-6"></a>  <span class="at">@classmethod</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-24-7" class="code-annotation-target"><a href="#annotated-cell-24-7"></a>  <span class="kw">def</span> metodo_di_classe(cls):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-24-8" class="code-annotation-target"><a href="#annotated-cell-24-8"></a>    <span class="bu">print</span>(<span class="ss">f"Metodo di classe per </span><span class="sc">{</span>cls<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="annotated-cell-24-9"><a href="#annotated-cell-24-9"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-24-10" class="code-annotation-target"><a href="#annotated-cell-24-10"></a>C10.metodo_statico()</span>
-<span id="annotated-cell-24-11"><a href="#annotated-cell-24-11"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-24-12" class="code-annotation-target"><a href="#annotated-cell-24-12"></a>C10.metodo_di_classe()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-24-6"><a href="#annotated-cell-24-6"></a><span class="co"># Chiamata al metodo statico senza creare un'istanza</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-24-7" class="code-annotation-target"><a href="#annotated-cell-24-7"></a><span class="bu">print</span>(Utilita.somma(<span class="dv">10</span>, <span class="dv">5</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-24" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="1" data-code-annotation="1">Definizione della classe <code>C10</code>.</span>
+<span data-code-cell="annotated-cell-24" data-code-lines="1" data-code-annotation="1">Definizione della classe <code>Utilita</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-24" data-target-annotation="2">2</dt>
 <dd>
@@ -1585,130 +1589,238 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-24" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="3" data-code-annotation="3">Definizione del metodo statico <code>metodo_statico</code>.</span>
+<span data-code-cell="annotated-cell-24" data-code-lines="3" data-code-annotation="3">Definizione del metodo statico <code>somma</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-24" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="4" data-code-annotation="4">Stampa del messaggio <code>Metodo statico</code>.</span>
+<span data-code-cell="annotated-cell-24" data-code-lines="4" data-code-annotation="4">Il metodo <code>somma</code> prende due argomenti e restituisce la loro somma.</span>
 </dd>
 <dt data-target-cell="annotated-cell-24" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="6" data-code-annotation="5">Decoratore <code>@classmethod</code> per definire un metodo di classe.</span>
-</dd>
-<dt data-target-cell="annotated-cell-24" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="7" data-code-annotation="6">Definizione del metodo di classe <code>metodo_di_classe</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-24" data-target-annotation="7">7</dt>
-<dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="8" data-code-annotation="7">Stampa del messaggio con il nome della classe.</span>
-</dd>
-<dt data-target-cell="annotated-cell-24" data-target-annotation="8">8</dt>
-<dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="10" data-code-annotation="8">Chiamata del metodo statico <code>metodo_statico</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-24" data-target-annotation="9">9</dt>
-<dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="12" data-code-annotation="9">Chiamata del metodo di classe <code>metodo_di_classe</code>.</span>
+<span data-code-cell="annotated-cell-24" data-code-lines="7" data-code-annotation="5">Chiamata al metodo statico <code>somma</code> senza creare un’istanza della classe.</span>
 </dd>
 </dl>
+</section>
+<section id="metodi-di-classe" class="level3" data-number="15.9.2">
+<h3 data-number="15.9.2" class="anchored" data-anchor-id="metodi-di-classe"><span class="header-section-number">15.9.2</span> Metodi di classe</h3>
+<p>I metodi di classe sono definiti utilizzando il decoratore <code>@classmethod</code>. Questi metodi ricevono automaticamente un riferimento alla classe (<code>cls</code>) come primo argomento. Sono utili quando si ha bisogno di accedere o modificare lo stato della classe piuttosto che quello dell’istanza.</p>
+<p>Esempio di metodo di classe:</p>
+<div class="sourceCode" id="annotated-cell-25"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-25-1" class="code-annotation-target"><a href="#annotated-cell-25-1"></a><span class="kw">class</span> Contatore:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-25-2" class="code-annotation-target"><a href="#annotated-cell-25-2"></a>  contatore_comune <span class="op">=</span> <span class="dv">0</span></span>
+<span id="annotated-cell-25-3"><a href="#annotated-cell-25-3"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-25-4" class="code-annotation-target"><a href="#annotated-cell-25-4"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-25-5" class="code-annotation-target"><a href="#annotated-cell-25-5"></a>    Contatore.contatore_comune <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="annotated-cell-25-6"><a href="#annotated-cell-25-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-25-7" class="code-annotation-target"><a href="#annotated-cell-25-7"></a>  <span class="at">@classmethod</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-25-8" class="code-annotation-target"><a href="#annotated-cell-25-8"></a>  <span class="kw">def</span> ottieni_contatore(cls):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-25-9" class="code-annotation-target"><a href="#annotated-cell-25-9"></a>    <span class="cf">return</span> cls.contatore_comune</span>
+<span id="annotated-cell-25-10"><a href="#annotated-cell-25-10"></a></span>
+<span id="annotated-cell-25-11"><a href="#annotated-cell-25-11"></a><span class="co"># Creazione di istanze</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-25-12" class="code-annotation-target"><a href="#annotated-cell-25-12"></a>c1 <span class="op">=</span> Contatore()</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-25-13" class="code-annotation-target"><a href="#annotated-cell-25-13"></a>c2 <span class="op">=</span> Contatore()</span>
+<span id="annotated-cell-25-14"><a href="#annotated-cell-25-14"></a></span>
+<span id="annotated-cell-25-15"><a href="#annotated-cell-25-15"></a><span class="co"># Chiamata al metodo di classe</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-25-16" class="code-annotation-target"><a href="#annotated-cell-25-16"></a><span class="bu">print</span>(Contatore.ottieni_contatore())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="1" data-code-annotation="1">Definizione della classe <code>Contatore</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="2" data-code-annotation="2">Attributo di classe <code>contatore_comune</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="4" data-code-annotation="3">Metodo speciale <code>__init__</code> per l’inizializzazione.</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="5" data-code-annotation="4">Incrementa l’attributo di classe <code>contatore_comune</code> ogni volta che viene creata una nuova istanza.</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="7" data-code-annotation="5">Decoratore <code>@classmethod</code> per definire un metodo di classe.</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="8" data-code-annotation="6">Definizione del metodo di classe <code>ottieni_contatore</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="9" data-code-annotation="7">Il metodo <code>ottieni_contatore</code> restituisce il valore dell’attributo di classe <code>contatore_comune</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="12" data-code-annotation="8">Creazione di un’istanza della classe <code>Contatore</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="13" data-code-annotation="9">Creazione di un’altra istanza della classe <code>Contatore</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="10">10</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="16" data-code-annotation="10">Chiamata al metodo di classe <code>ottieni_contatore</code> senza creare un’istanza della classe.</span>
+</dd>
+</dl>
+</section>
+<section id="differenza-tra-metodi-statici-e-metodi-di-classe" class="level3" data-number="15.9.3">
+<h3 data-number="15.9.3" class="anchored" data-anchor-id="differenza-tra-metodi-statici-e-metodi-di-classe"><span class="header-section-number">15.9.3</span> Differenza tra metodi statici e metodi di classe</h3>
+<ul>
+<li><p>Metodi statici:</p>
+<ul>
+<li>Non ricevono né l’istanza (<code>self</code>) né la classe (<code>cls</code>) come primo argomento.</li>
+<li>Sono simili alle funzioni normali, ma possono essere chiamati attraverso il nome della classe.</li>
+<li>Utili per operazioni che non dipendono dallo stato della classe o dell’istanza.</li>
+</ul></li>
+<li><p>Metodi di classe:</p>
+<ul>
+<li>Ricevono il riferimento alla classe (<code>cls</code>) come primo argomento.</li>
+<li>Possono accedere e modificare lo stato della classe.</li>
+<li>Utili per operazioni che riguardano lo stato globale della classe.</li>
+</ul></li>
+</ul>
+</section>
+<section id="casi-duso" class="level3" data-number="15.9.4">
+<h3 data-number="15.9.4" class="anchored" data-anchor-id="casi-duso"><span class="header-section-number">15.9.4</span> Casi d’uso</h3>
+<ul>
+<li><p>Utilizzare un metodo statico per una funzione di utilità che non necessita di accedere o modificare lo stato della classe o dell’istanza.</p>
+<div class="sourceCode" id="annotated-cell-41"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy"><code class="sourceCode python"><span id="annotated-cell-41-1"><a href="#annotated-cell-41-1"></a><span class="kw">class</span> Matematica:</span>
+<span id="annotated-cell-41-2"><a href="#annotated-cell-41-2"></a>  <span class="at">@staticmethod</span></span>
+<span id="annotated-cell-41-3"><a href="#annotated-cell-41-3"></a>  <span class="kw">def</span> moltiplica(a, b):</span>
+<span id="annotated-cell-41-4"><a href="#annotated-cell-41-4"></a>    <span class="cf">return</span> a <span class="op">*</span> b</span>
+<span id="annotated-cell-41-5"><a href="#annotated-cell-41-5"></a></span>
+<span id="annotated-cell-41-6"><a href="#annotated-cell-41-6"></a>  <span class="at">@staticmethod</span></span>
+<span id="annotated-cell-41-7"><a href="#annotated-cell-41-7"></a>  <span class="kw">def</span> dividi(a, b):</span>
+<span id="annotated-cell-41-8"><a href="#annotated-cell-41-8"></a>    <span class="cf">return</span> a <span class="op">/</span> b</span>
+<span id="annotated-cell-41-9"><a href="#annotated-cell-41-9"></a></span>
+<span id="annotated-cell-41-10"><a href="#annotated-cell-41-10"></a><span class="bu">print</span>(Matematica.moltiplica(<span class="dv">3</span>, <span class="dv">4</span>))</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<ol type="1">
+<li>Output: <code>12</code>.</li>
+</ol>
+<ul>
+<li><p>Utilizzare un metodo di classe per mantenere o ottenere lo stato della classe, come contare il numero di istanze create.</p>
+<div class="sourceCode" id="annotated-cell-42"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-42-1"><a href="#annotated-cell-42-1"></a><span class="kw">class</span> Giocatore:</span>
+<span id="annotated-cell-42-2"><a href="#annotated-cell-42-2"></a>  numero_giocatori <span class="op">=</span> <span class="dv">0</span></span>
+<span id="annotated-cell-42-3"><a href="#annotated-cell-42-3"></a></span>
+<span id="annotated-cell-42-4"><a href="#annotated-cell-42-4"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, nome):</span>
+<span id="annotated-cell-42-5"><a href="#annotated-cell-42-5"></a>    <span class="va">self</span>.nome <span class="op">=</span> nome</span>
+<span id="annotated-cell-42-6"><a href="#annotated-cell-42-6"></a>    Giocatore.numero_giocatori <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="annotated-cell-42-7"><a href="#annotated-cell-42-7"></a></span>
+<span id="annotated-cell-42-8"><a href="#annotated-cell-42-8"></a>  <span class="at">@classmethod</span></span>
+<span id="annotated-cell-42-9"><a href="#annotated-cell-42-9"></a>  <span class="kw">def</span> ottieni_numero_giocatori(cls):</span>
+<span id="annotated-cell-42-10"><a href="#annotated-cell-42-10"></a>    <span class="cf">return</span> cls.numero_giocatori</span>
+<span id="annotated-cell-42-11"><a href="#annotated-cell-42-11"></a></span>
+<span id="annotated-cell-42-12"><a href="#annotated-cell-42-12"></a>g1 <span class="op">=</span> Giocatore(<span class="st">"Mario"</span>)</span>
+<span id="annotated-cell-42-13"><a href="#annotated-cell-42-13"></a>g2 <span class="op">=</span> Giocatore(<span class="st">"Luigi"</span>)</span>
+<span id="annotated-cell-42-14"><a href="#annotated-cell-42-14"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-42" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-42-15" class="code-annotation-target"><a href="#annotated-cell-42-15"></a><span class="bu">print</span>(Giocatore.ottieni_numero_giocatori())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-42" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-42" data-code-lines="15" data-code-annotation="1">Output: <code>2</code>.</span>
+</dd>
+</dl></li>
+</ul>
+</section>
 </section>
 <section id="descrittori" class="level2" data-number="15.10">
 <h2 data-number="15.10" class="anchored" data-anchor-id="descrittori"><span class="header-section-number">15.10</span> Descrittori</h2>
 <p>Un descrittore è un oggetto la cui classe fornisce uno o più metodi speciali chiamati <code>__get__</code>, <code>__set__</code> o <code>__delete__</code>. I descrittori che sono attributi di classe controllano la semantica di accesso e impostazione degli attributi sulle istanze di quella classe.</p>
 <p>Esempio di un descrittore:</p>
-<div class="sourceCode" id="annotated-cell-25"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-25-1" class="code-annotation-target"><a href="#annotated-cell-25-1"></a><span class="kw">class</span> Const:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-25-2" class="code-annotation-target"><a href="#annotated-cell-25-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, value):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-25-3" class="code-annotation-target"><a href="#annotated-cell-25-3"></a>    <span class="va">self</span>.__dict__[<span class="st">'value'</span>] <span class="op">=</span> value</span>
-<span id="annotated-cell-25-4"><a href="#annotated-cell-25-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-25-5" class="code-annotation-target"><a href="#annotated-cell-25-5"></a>  <span class="kw">def</span> <span class="fu">__set__</span>(<span class="va">self</span>, <span class="op">*</span>_):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-25-6" class="code-annotation-target"><a href="#annotated-cell-25-6"></a>    <span class="cf">pass</span></span>
-<span id="annotated-cell-25-7"><a href="#annotated-cell-25-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-25-8" class="code-annotation-target"><a href="#annotated-cell-25-8"></a>  <span class="kw">def</span> <span class="fu">__get__</span>(<span class="va">self</span>, <span class="op">*</span>_):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-25-9" class="code-annotation-target"><a href="#annotated-cell-25-9"></a>    <span class="cf">return</span> <span class="va">self</span>.__dict__[<span class="st">'value'</span>]</span>
-<span id="annotated-cell-25-10"><a href="#annotated-cell-25-10"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-25-11" class="code-annotation-target"><a href="#annotated-cell-25-11"></a>  <span class="kw">def</span> <span class="fu">__delete__</span>(<span class="va">self</span>, <span class="op">*</span>_):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-25-12" class="code-annotation-target"><a href="#annotated-cell-25-12"></a>    <span class="cf">pass</span></span>
-<span id="annotated-cell-25-13"><a href="#annotated-cell-25-13"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-25-14" class="code-annotation-target"><a href="#annotated-cell-25-14"></a><span class="kw">class</span> X:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="11" onclick="event.preventDefault();">11</a><span id="annotated-cell-25-15" class="code-annotation-target"><a href="#annotated-cell-25-15"></a>  c <span class="op">=</span> Const(<span class="dv">23</span>)</span>
-<span id="annotated-cell-25-16"><a href="#annotated-cell-25-16"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="12" onclick="event.preventDefault();">12</a><span id="annotated-cell-25-17" class="code-annotation-target"><a href="#annotated-cell-25-17"></a>x <span class="op">=</span> X()</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="13" onclick="event.preventDefault();">13</a><span id="annotated-cell-25-18" class="code-annotation-target"><a href="#annotated-cell-25-18"></a><span class="bu">print</span>(x.c)</span>
-<span id="annotated-cell-25-19"><a href="#annotated-cell-25-19"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="14" onclick="event.preventDefault();">14</a><span id="annotated-cell-25-20" class="code-annotation-target"><a href="#annotated-cell-25-20"></a>x.c <span class="op">=</span> <span class="dv">42</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="15" onclick="event.preventDefault();">15</a><span id="annotated-cell-25-21" class="code-annotation-target"><a href="#annotated-cell-25-21"></a><span class="bu">print</span>(x.c)</span>
-<span id="annotated-cell-25-22"><a href="#annotated-cell-25-22"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="16" onclick="event.preventDefault();">16</a><span id="annotated-cell-25-23" class="code-annotation-target"><a href="#annotated-cell-25-23"></a><span class="kw">del</span> x.c</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="17" onclick="event.preventDefault();">17</a><span id="annotated-cell-25-24" class="code-annotation-target"><a href="#annotated-cell-25-24"></a><span class="bu">print</span>(x.c)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-26"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-26-1" class="code-annotation-target"><a href="#annotated-cell-26-1"></a><span class="kw">class</span> Const:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-26-2" class="code-annotation-target"><a href="#annotated-cell-26-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, value):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-26-3" class="code-annotation-target"><a href="#annotated-cell-26-3"></a>    <span class="va">self</span>.__dict__[<span class="st">'value'</span>] <span class="op">=</span> value</span>
+<span id="annotated-cell-26-4"><a href="#annotated-cell-26-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-26-5" class="code-annotation-target"><a href="#annotated-cell-26-5"></a>  <span class="kw">def</span> <span class="fu">__set__</span>(<span class="va">self</span>, <span class="op">*</span>_):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-26-6" class="code-annotation-target"><a href="#annotated-cell-26-6"></a>    <span class="cf">pass</span></span>
+<span id="annotated-cell-26-7"><a href="#annotated-cell-26-7"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-26-8" class="code-annotation-target"><a href="#annotated-cell-26-8"></a>  <span class="kw">def</span> <span class="fu">__get__</span>(<span class="va">self</span>, <span class="op">*</span>_):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-26-9" class="code-annotation-target"><a href="#annotated-cell-26-9"></a>    <span class="cf">return</span> <span class="va">self</span>.__dict__[<span class="st">'value'</span>]</span>
+<span id="annotated-cell-26-10"><a href="#annotated-cell-26-10"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-26-11" class="code-annotation-target"><a href="#annotated-cell-26-11"></a>  <span class="kw">def</span> <span class="fu">__delete__</span>(<span class="va">self</span>, <span class="op">*</span>_):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-26-12" class="code-annotation-target"><a href="#annotated-cell-26-12"></a>    <span class="cf">pass</span></span>
+<span id="annotated-cell-26-13"><a href="#annotated-cell-26-13"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-26-14" class="code-annotation-target"><a href="#annotated-cell-26-14"></a><span class="kw">class</span> X:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="11" onclick="event.preventDefault();">11</a><span id="annotated-cell-26-15" class="code-annotation-target"><a href="#annotated-cell-26-15"></a>  c <span class="op">=</span> Const(<span class="dv">23</span>)</span>
+<span id="annotated-cell-26-16"><a href="#annotated-cell-26-16"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="12" onclick="event.preventDefault();">12</a><span id="annotated-cell-26-17" class="code-annotation-target"><a href="#annotated-cell-26-17"></a>x <span class="op">=</span> X()</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="13" onclick="event.preventDefault();">13</a><span id="annotated-cell-26-18" class="code-annotation-target"><a href="#annotated-cell-26-18"></a><span class="bu">print</span>(x.c)</span>
+<span id="annotated-cell-26-19"><a href="#annotated-cell-26-19"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="14" onclick="event.preventDefault();">14</a><span id="annotated-cell-26-20" class="code-annotation-target"><a href="#annotated-cell-26-20"></a>x.c <span class="op">=</span> <span class="dv">42</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="15" onclick="event.preventDefault();">15</a><span id="annotated-cell-26-21" class="code-annotation-target"><a href="#annotated-cell-26-21"></a><span class="bu">print</span>(x.c)</span>
+<span id="annotated-cell-26-22"><a href="#annotated-cell-26-22"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="16" onclick="event.preventDefault();">16</a><span id="annotated-cell-26-23" class="code-annotation-target"><a href="#annotated-cell-26-23"></a><span class="kw">del</span> x.c</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="17" onclick="event.preventDefault();">17</a><span id="annotated-cell-26-24" class="code-annotation-target"><a href="#annotated-cell-26-24"></a><span class="bu">print</span>(x.c)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="1" data-code-annotation="1">Definizione della classe <code>Const</code>.</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="1" data-code-annotation="1">Definizione della classe <code>Const</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="2" data-code-annotation="2">Inizializzazione del descrittore con un valore.</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="2" data-code-annotation="2">Inizializzazione del descrittore con un valore.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="3" data-code-annotation="3">Memorizzazione del valore nel dizionario dell’istanza.</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="3" data-code-annotation="3">Memorizzazione del valore nel dizionario dell’istanza.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="5" data-code-annotation="4">Metodo <code>__set__</code> del descrittore.</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="5" data-code-annotation="4">Metodo <code>__set__</code> del descrittore.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="6" data-code-annotation="5">Ignora qualsiasi tentativo di impostazione del valore.</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="6" data-code-annotation="5">Ignora qualsiasi tentativo di impostazione del valore.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="8" data-code-annotation="6">Metodo <code>__get__</code> del descrittore.</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="8" data-code-annotation="6">Metodo <code>__get__</code> del descrittore.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="9" data-code-annotation="7">Restituisce il valore memorizzato nel dizionario dell’istanza.</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="9" data-code-annotation="7">Restituisce il valore memorizzato nel dizionario dell’istanza.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="8">8</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="11" data-code-annotation="8">Metodo <code>__delete__</code> del descrittore.</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="11" data-code-annotation="8">Metodo <code>__delete__</code> del descrittore.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="9">9</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="9">9</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="12" data-code-annotation="9">Ignora qualsiasi tentativo di eliminazione del valore.</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="12" data-code-annotation="9">Ignora qualsiasi tentativo di eliminazione del valore.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="10">10</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="10">10</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="14" data-code-annotation="10">Definizione della classe <code>X</code>.</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="14" data-code-annotation="10">Definizione della classe <code>X</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="11">11</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="11">11</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="15" data-code-annotation="11">L’attributo <code>c</code> della classe <code>X</code> è un descrittore di tipo <code>Const</code>.</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="15" data-code-annotation="11">L’attributo <code>c</code> della classe <code>X</code> è un descrittore di tipo <code>Const</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="12">12</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="12">12</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="17" data-code-annotation="12">Creazione di un’istanza della classe <code>X</code>.</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="17" data-code-annotation="12">Creazione di un’istanza della classe <code>X</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="13">13</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="13">13</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="18" data-code-annotation="13">Stampa del valore dell’attributo <code>c</code> dell’istanza <code>x</code>.</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="18" data-code-annotation="13">Stampa del valore dell’attributo <code>c</code> dell’istanza <code>x</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="14">14</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="14">14</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="20" data-code-annotation="14">Tentativo di impostazione del valore dell’attributo <code>c</code> dell’istanza <code>x</code> (ignorato).</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="20" data-code-annotation="14">Tentativo di impostazione del valore dell’attributo <code>c</code> dell’istanza <code>x</code> (ignorato).</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="15">15</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="15">15</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="21" data-code-annotation="15">Stampa del valore dell’attributo <code>c</code> dell’istanza <code>x</code>.</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="21" data-code-annotation="15">Stampa del valore dell’attributo <code>c</code> dell’istanza <code>x</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="16">16</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="16">16</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="23" data-code-annotation="16">Tentativo di eliminazione dell’attributo <code>c</code> dell’istanza <code>x</code> (ignorato).</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="23" data-code-annotation="16">Tentativo di eliminazione dell’attributo <code>c</code> dell’istanza <code>x</code> (ignorato).</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="17">17</dt>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="17">17</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="24" data-code-annotation="17">Stampa del valore dell’attributo <code>c</code> dell’istanza <code>x</code>.</span>
+<span data-code-cell="annotated-cell-26" data-code-lines="24" data-code-annotation="17">Stampa del valore dell’attributo <code>c</code> dell’istanza <code>x</code>.</span>
 </dd>
 </dl>
 <section id="accesso" class="level3" data-number="15.10.1">
@@ -1717,53 +1829,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Se il membro è un descrittore non sovrascrivente (ovvero, un descrittore che implementa solo il metodo <code>__get__</code>), viene restituito il risultato del metodo <code>__get__</code> del descrittore. Esempio:</li>
 </ul>
-<div class="sourceCode" id="annotated-cell-26"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-26-1"><a href="#annotated-cell-26-1"></a><span class="kw">class</span> DescrittoreNonSovrascrivente:</span>
-<span id="annotated-cell-26-2"><a href="#annotated-cell-26-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, valore):</span>
-<span id="annotated-cell-26-3"><a href="#annotated-cell-26-3"></a>    <span class="va">self</span>.valore <span class="op">=</span> valore</span>
-<span id="annotated-cell-26-4"><a href="#annotated-cell-26-4"></a>  </span>
-<span id="annotated-cell-26-5"><a href="#annotated-cell-26-5"></a>  <span class="kw">def</span> <span class="fu">__get__</span>(<span class="va">self</span>, istanza, proprietario):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-26-6" class="code-annotation-target"><a href="#annotated-cell-26-6"></a>    <span class="cf">return</span> <span class="va">self</span>.valore</span>
-<span id="annotated-cell-26-7"><a href="#annotated-cell-26-7"></a></span>
-<span id="annotated-cell-26-8"><a href="#annotated-cell-26-8"></a><span class="kw">class</span> MiaClasse:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-26-9" class="code-annotation-target"><a href="#annotated-cell-26-9"></a>  descrittore <span class="op">=</span> DescrittoreNonSovrascrivente(<span class="st">"valore descrittore"</span>)</span>
-<span id="annotated-cell-26-10"><a href="#annotated-cell-26-10"></a></span>
-<span id="annotated-cell-26-11"><a href="#annotated-cell-26-11"></a>istanza <span class="op">=</span> MiaClasse()</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-26-12" class="code-annotation-target"><a href="#annotated-cell-26-12"></a><span class="bu">print</span>(istanza.descrittore)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-26" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-26" data-code-lines="6" data-code-annotation="1">Il metodo <code>__get__</code> restituisce il valore del descrittore.</span>
-</dd>
-<dt data-target-cell="annotated-cell-26" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-26" data-code-lines="9" data-code-annotation="2">Definisce un descrittore non sovrascrivente come attributo di classe.</span>
-</dd>
-<dt data-target-cell="annotated-cell-26" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-26" data-code-lines="12" data-code-annotation="3">Trova <code>descrittore</code> nella classe, chiama <code>DescrittoreNonSovrascrivente.__get__</code> e restituisce <code>"valore descrittore"</code>.</span>
-</dd>
-</dl>
-<ul>
-<li>Se il membro è un descrittore sovrascrivente (ovvero, un descrittore che implementa i metodi <code>__get__</code> e <code>__set__</code>), viene chiamato il metodo <code>__get__</code> del descrittore, che restituisce il valore dell’attributo. Esempio:</li>
-</ul>
-<div class="sourceCode" id="annotated-cell-27"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-27-1"><a href="#annotated-cell-27-1"></a><span class="kw">class</span> DescrittoreSovrascrivente:</span>
+<div class="sourceCode" id="annotated-cell-27"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-27-1"><a href="#annotated-cell-27-1"></a><span class="kw">class</span> DescrittoreNonSovrascrivente:</span>
 <span id="annotated-cell-27-2"><a href="#annotated-cell-27-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, valore):</span>
 <span id="annotated-cell-27-3"><a href="#annotated-cell-27-3"></a>    <span class="va">self</span>.valore <span class="op">=</span> valore</span>
 <span id="annotated-cell-27-4"><a href="#annotated-cell-27-4"></a>  </span>
 <span id="annotated-cell-27-5"><a href="#annotated-cell-27-5"></a>  <span class="kw">def</span> <span class="fu">__get__</span>(<span class="va">self</span>, istanza, proprietario):</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-27-6" class="code-annotation-target"><a href="#annotated-cell-27-6"></a>    <span class="cf">return</span> <span class="va">self</span>.valore</span>
-<span id="annotated-cell-27-7"><a href="#annotated-cell-27-7"></a>  </span>
-<span id="annotated-cell-27-8"><a href="#annotated-cell-27-8"></a>  <span class="kw">def</span> <span class="fu">__set__</span>(<span class="va">self</span>, istanza, valore):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-27-9" class="code-annotation-target"><a href="#annotated-cell-27-9"></a>    <span class="va">self</span>.valore <span class="op">=</span> valore</span>
+<span id="annotated-cell-27-7"><a href="#annotated-cell-27-7"></a></span>
+<span id="annotated-cell-27-8"><a href="#annotated-cell-27-8"></a><span class="kw">class</span> MiaClasse:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-27-9" class="code-annotation-target"><a href="#annotated-cell-27-9"></a>  descrittore <span class="op">=</span> DescrittoreNonSovrascrivente(<span class="st">"valore descrittore"</span>)</span>
 <span id="annotated-cell-27-10"><a href="#annotated-cell-27-10"></a></span>
-<span id="annotated-cell-27-11"><a href="#annotated-cell-27-11"></a><span class="kw">class</span> MiaClasse:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-27-12" class="code-annotation-target"><a href="#annotated-cell-27-12"></a>  descrittore <span class="op">=</span> DescrittoreSovrascrivente(<span class="st">"valore iniziale"</span>)</span>
-<span id="annotated-cell-27-13"><a href="#annotated-cell-27-13"></a></span>
-<span id="annotated-cell-27-14"><a href="#annotated-cell-27-14"></a>istanza <span class="op">=</span> MiaClasse()</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-27-15" class="code-annotation-target"><a href="#annotated-cell-27-15"></a><span class="bu">print</span>(istanza.descrittore)</span>
-<span id="annotated-cell-27-16"><a href="#annotated-cell-27-16"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-27-17" class="code-annotation-target"><a href="#annotated-cell-27-17"></a>istanza.descrittore <span class="op">=</span> <span class="st">"nuovo valore"</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-27-18" class="code-annotation-target"><a href="#annotated-cell-27-18"></a><span class="bu">print</span>(istanza.descrittore)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-27-11"><a href="#annotated-cell-27-11"></a>istanza <span class="op">=</span> MiaClasse()</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-27-12" class="code-annotation-target"><a href="#annotated-cell-27-12"></a><span class="bu">print</span>(istanza.descrittore)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-27" data-target-annotation="1">1</dt>
 <dd>
@@ -1771,229 +1848,264 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-27" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-27" data-code-lines="9" data-code-annotation="2">Il metodo <code>__set__</code> permette di modificare il valore del descrittore.</span>
+<span data-code-cell="annotated-cell-27" data-code-lines="9" data-code-annotation="2">Definisce un descrittore non sovrascrivente come attributo di classe.</span>
 </dd>
 <dt data-target-cell="annotated-cell-27" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-27" data-code-lines="12" data-code-annotation="3">Definisce un descrittore sovrascrivente come attributo di classe.</span>
+<span data-code-cell="annotated-cell-27" data-code-lines="12" data-code-annotation="3">Trova <code>descrittore</code> nella classe, chiama <code>DescrittoreNonSovrascrivente.__get__</code> e restituisce <code>"valore descrittore"</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-27" data-target-annotation="4">4</dt>
+</dl>
+<ul>
+<li>Se il membro è un descrittore sovrascrivente (ovvero, un descrittore che implementa i metodi <code>__get__</code> e <code>__set__</code>), viene chiamato il metodo <code>__get__</code> del descrittore, che restituisce il valore dell’attributo. Esempio:</li>
+</ul>
+<div class="sourceCode" id="annotated-cell-28"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-28-1"><a href="#annotated-cell-28-1"></a><span class="kw">class</span> DescrittoreSovrascrivente:</span>
+<span id="annotated-cell-28-2"><a href="#annotated-cell-28-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, valore):</span>
+<span id="annotated-cell-28-3"><a href="#annotated-cell-28-3"></a>    <span class="va">self</span>.valore <span class="op">=</span> valore</span>
+<span id="annotated-cell-28-4"><a href="#annotated-cell-28-4"></a>  </span>
+<span id="annotated-cell-28-5"><a href="#annotated-cell-28-5"></a>  <span class="kw">def</span> <span class="fu">__get__</span>(<span class="va">self</span>, istanza, proprietario):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-28-6" class="code-annotation-target"><a href="#annotated-cell-28-6"></a>    <span class="cf">return</span> <span class="va">self</span>.valore</span>
+<span id="annotated-cell-28-7"><a href="#annotated-cell-28-7"></a>  </span>
+<span id="annotated-cell-28-8"><a href="#annotated-cell-28-8"></a>  <span class="kw">def</span> <span class="fu">__set__</span>(<span class="va">self</span>, istanza, valore):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-28-9" class="code-annotation-target"><a href="#annotated-cell-28-9"></a>    <span class="va">self</span>.valore <span class="op">=</span> valore</span>
+<span id="annotated-cell-28-10"><a href="#annotated-cell-28-10"></a></span>
+<span id="annotated-cell-28-11"><a href="#annotated-cell-28-11"></a><span class="kw">class</span> MiaClasse:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-28-12" class="code-annotation-target"><a href="#annotated-cell-28-12"></a>  descrittore <span class="op">=</span> DescrittoreSovrascrivente(<span class="st">"valore iniziale"</span>)</span>
+<span id="annotated-cell-28-13"><a href="#annotated-cell-28-13"></a></span>
+<span id="annotated-cell-28-14"><a href="#annotated-cell-28-14"></a>istanza <span class="op">=</span> MiaClasse()</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-28-15" class="code-annotation-target"><a href="#annotated-cell-28-15"></a><span class="bu">print</span>(istanza.descrittore)</span>
+<span id="annotated-cell-28-16"><a href="#annotated-cell-28-16"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-28-17" class="code-annotation-target"><a href="#annotated-cell-28-17"></a>istanza.descrittore <span class="op">=</span> <span class="st">"nuovo valore"</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-28-18" class="code-annotation-target"><a href="#annotated-cell-28-18"></a><span class="bu">print</span>(istanza.descrittore)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-28" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-27" data-code-lines="15" data-code-annotation="4">Trova <code>descrittore</code> nella classe, chiama <code>DescrittoreSovrascrivente.__get__</code> e restituisce <code>"valore iniziale"</code>.</span>
+<span data-code-cell="annotated-cell-28" data-code-lines="6" data-code-annotation="1">Il metodo <code>__get__</code> restituisce il valore del descrittore.</span>
 </dd>
-<dt data-target-cell="annotated-cell-27" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-28" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-27" data-code-lines="17" data-code-annotation="5">Chiama <code>DescrittoreSovrascrivente.__set__</code> per modificare il valore.</span>
+<span data-code-cell="annotated-cell-28" data-code-lines="9" data-code-annotation="2">Il metodo <code>__set__</code> permette di modificare il valore del descrittore.</span>
 </dd>
-<dt data-target-cell="annotated-cell-27" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-28" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-27" data-code-lines="18" data-code-annotation="6">Trova <code>descrittore</code> nella classe, chiama <code>DescrittoreSovrascrivente.__get__</code> e restituisce <code>"nuovo valore"</code>.</span>
+<span data-code-cell="annotated-cell-28" data-code-lines="12" data-code-annotation="3">Definisce un descrittore sovrascrivente come attributo di classe.</span>
+</dd>
+<dt data-target-cell="annotated-cell-28" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-28" data-code-lines="15" data-code-annotation="4">Trova <code>descrittore</code> nella classe, chiama <code>DescrittoreSovrascrivente.__get__</code> e restituisce <code>"valore iniziale"</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-28" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-28" data-code-lines="17" data-code-annotation="5">Chiama <code>DescrittoreSovrascrivente.__set__</code> per modificare il valore.</span>
+</dd>
+<dt data-target-cell="annotated-cell-28" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-28" data-code-lines="18" data-code-annotation="6">Trova <code>descrittore</code> nella classe, chiama <code>DescrittoreSovrascrivente.__get__</code> e restituisce <code>"nuovo valore"</code>.</span>
 </dd>
 </dl>
 <ul>
 <li>Se il membro non è un descrittore, viene restituito il valore associato al membro. Esempio:</li>
 </ul>
-<div class="sourceCode" id="annotated-cell-28"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-28-1"><a href="#annotated-cell-28-1"></a><span class="kw">class</span> ClasseBase:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-28-2" class="code-annotation-target"><a href="#annotated-cell-28-2"></a>  attributo_base <span class="op">=</span> <span class="st">"valore base"</span></span>
-<span id="annotated-cell-28-3"><a href="#annotated-cell-28-3"></a></span>
-<span id="annotated-cell-28-4"><a href="#annotated-cell-28-4"></a><span class="kw">class</span> MiaClasse(ClasseBase):</span>
-<span id="annotated-cell-28-5"><a href="#annotated-cell-28-5"></a>  <span class="cf">pass</span></span>
-<span id="annotated-cell-28-6"><a href="#annotated-cell-28-6"></a></span>
-<span id="annotated-cell-28-7"><a href="#annotated-cell-28-7"></a>istanza <span class="op">=</span> MiaClasse()</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-28-8" class="code-annotation-target"><a href="#annotated-cell-28-8"></a><span class="bu">print</span>(istanza.attributo_base)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-29"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-29-1"><a href="#annotated-cell-29-1"></a><span class="kw">class</span> ClasseBase:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-29-2" class="code-annotation-target"><a href="#annotated-cell-29-2"></a>  attributo_base <span class="op">=</span> <span class="st">"valore base"</span></span>
+<span id="annotated-cell-29-3"><a href="#annotated-cell-29-3"></a></span>
+<span id="annotated-cell-29-4"><a href="#annotated-cell-29-4"></a><span class="kw">class</span> MiaClasse(ClasseBase):</span>
+<span id="annotated-cell-29-5"><a href="#annotated-cell-29-5"></a>  <span class="cf">pass</span></span>
+<span id="annotated-cell-29-6"><a href="#annotated-cell-29-6"></a></span>
+<span id="annotated-cell-29-7"><a href="#annotated-cell-29-7"></a>istanza <span class="op">=</span> MiaClasse()</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-29-8" class="code-annotation-target"><a href="#annotated-cell-29-8"></a><span class="bu">print</span>(istanza.attributo_base)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-28" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-29" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-28" data-code-lines="2" data-code-annotation="1">Definisce un attributo di classe non descrittore.</span>
+<span data-code-cell="annotated-cell-29" data-code-lines="2" data-code-annotation="1">Definisce un attributo di classe non descrittore.</span>
 </dd>
-<dt data-target-cell="annotated-cell-28" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-29" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-28" data-code-lines="8" data-code-annotation="2">Trova <code>attributo_base</code> nella classe base e restituisce <code>"valore base"</code>.</span>
+<span data-code-cell="annotated-cell-29" data-code-lines="8" data-code-annotation="2">Trova <code>attributo_base</code> nella classe base e restituisce <code>"valore base"</code>.</span>
 </dd>
 </dl>
 </section>
 <section id="usi-comuni" class="level3" data-number="15.10.2">
 <h3 data-number="15.10.2" class="anchored" data-anchor-id="usi-comuni"><span class="header-section-number">15.10.2</span> Usi comuni</h3>
 <p>Un uso comune dei descrittori è la validazione degli attributi. Ad esempio, possiamo creare un descrittore per assicurare che un attributo sia sempre un numero positivo.</p>
-<div class="sourceCode" id="annotated-cell-29"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-29-1" class="code-annotation-target"><a href="#annotated-cell-29-1"></a><span class="kw">class</span> PositiveNumber:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-29-2" class="code-annotation-target"><a href="#annotated-cell-29-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-29-3" class="code-annotation-target"><a href="#annotated-cell-29-3"></a>    <span class="va">self</span>.value <span class="op">=</span> <span class="va">None</span></span>
-<span id="annotated-cell-29-4"><a href="#annotated-cell-29-4"></a>      </span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-29-5" class="code-annotation-target"><a href="#annotated-cell-29-5"></a>  <span class="kw">def</span> <span class="fu">__get__</span>(<span class="va">self</span>, instance, owner):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-29-6" class="code-annotation-target"><a href="#annotated-cell-29-6"></a>    <span class="cf">return</span> <span class="va">self</span>.value</span>
-<span id="annotated-cell-29-7"><a href="#annotated-cell-29-7"></a>  </span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-29-8" class="code-annotation-target"><a href="#annotated-cell-29-8"></a>  <span class="kw">def</span> <span class="fu">__set__</span>(<span class="va">self</span>, instance, value):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-29-9" class="code-annotation-target"><a href="#annotated-cell-29-9"></a>    <span class="cf">if</span> value <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-29-10" class="code-annotation-target"><a href="#annotated-cell-29-10"></a>      <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Il valore deve essere positivo"</span>)</span>
-<span id="annotated-cell-29-11"><a href="#annotated-cell-29-11"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-29-12" class="code-annotation-target"><a href="#annotated-cell-29-12"></a>    <span class="va">self</span>.value <span class="op">=</span> value</span>
-<span id="annotated-cell-29-13"><a href="#annotated-cell-29-13"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-29-14" class="code-annotation-target"><a href="#annotated-cell-29-14"></a><span class="kw">class</span> Prodotto:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="11" onclick="event.preventDefault();">11</a><span id="annotated-cell-29-15" class="code-annotation-target"><a href="#annotated-cell-29-15"></a>  prezzo <span class="op">=</span> PositiveNumber()</span>
-<span id="annotated-cell-29-16"><a href="#annotated-cell-29-16"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="12" onclick="event.preventDefault();">12</a><span id="annotated-cell-29-17" class="code-annotation-target"><a href="#annotated-cell-29-17"></a>p <span class="op">=</span> Prodotto()</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="13" onclick="event.preventDefault();">13</a><span id="annotated-cell-29-18" class="code-annotation-target"><a href="#annotated-cell-29-18"></a>p.prezzo <span class="op">=</span> <span class="dv">10</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="14" onclick="event.preventDefault();">14</a><span id="annotated-cell-29-19" class="code-annotation-target"><a href="#annotated-cell-29-19"></a><span class="bu">print</span>(p.prezzo)</span>
-<span id="annotated-cell-29-20"><a href="#annotated-cell-29-20"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="15" onclick="event.preventDefault();">15</a><span id="annotated-cell-29-21" class="code-annotation-target"><a href="#annotated-cell-29-21"></a>p.prezzo <span class="op">=</span> <span class="op">-</span><span class="dv">5</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-29" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="1" data-code-annotation="1">Definisce un descrittore <code>PositiveNumber</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-29" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="2" data-code-annotation="2">Inizializzazione del descrittore.</span>
-</dd>
-<dt data-target-cell="annotated-cell-29" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="3" data-code-annotation="3">Memorizzazione del valore.</span>
-</dd>
-<dt data-target-cell="annotated-cell-29" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="5" data-code-annotation="4">Metodo <code>__get__</code> del descrittore per ottenere il valore.</span>
-</dd>
-<dt data-target-cell="annotated-cell-29" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="6" data-code-annotation="5">Restituisce il valore memorizzato.</span>
-</dd>
-<dt data-target-cell="annotated-cell-29" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="8" data-code-annotation="6">Metodo <code>__set__</code> del descrittore per impostare il valore.</span>
-</dd>
-<dt data-target-cell="annotated-cell-29" data-target-annotation="7">7</dt>
-<dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="9" data-code-annotation="7">Controlla se il valore è negativo.</span>
-</dd>
-<dt data-target-cell="annotated-cell-29" data-target-annotation="8">8</dt>
-<dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="10" data-code-annotation="8">Solleva un’eccezione se il valore è negativo.</span>
-</dd>
-<dt data-target-cell="annotated-cell-29" data-target-annotation="9">9</dt>
-<dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="12" data-code-annotation="9">Imposta il valore se è positivo.</span>
-</dd>
-<dt data-target-cell="annotated-cell-29" data-target-annotation="10">10</dt>
-<dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="14" data-code-annotation="10">Definisce una classe <code>Prodotto</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-29" data-target-annotation="11">11</dt>
-<dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="15" data-code-annotation="11">L’attributo <code>prezzo</code> della classe <code>Prodotto</code> è un descrittore di tipo <code>PositiveNumber</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-29" data-target-annotation="12">12</dt>
-<dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="17" data-code-annotation="12">Creazione di un’istanza della classe <code>Prodotto</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-29" data-target-annotation="13">13</dt>
-<dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="18" data-code-annotation="13">Imposta il valore dell’attributo <code>prezzo</code> dell’istanza <code>p</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-29" data-target-annotation="14">14</dt>
-<dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="19" data-code-annotation="14">Stampa il valore dell’attributo <code>prezzo</code> dell’istanza <code>p</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-29" data-target-annotation="15">15</dt>
-<dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="21" data-code-annotation="15">Tentativo di impostazione di un valore negativo per l’attributo <code>prezzo</code> (solleva un’eccezione).</span>
-</dd>
-</dl>
-<p>Un altro uso comune dei descrittori è la memorizzazione nella cache dei risultati di calcoli costosi.</p>
-<div class="sourceCode" id="annotated-cell-30"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-30-1" class="code-annotation-target"><a href="#annotated-cell-30-1"></a><span class="kw">class</span> CachedProperty:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-30-2" class="code-annotation-target"><a href="#annotated-cell-30-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, func):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-30-3" class="code-annotation-target"><a href="#annotated-cell-30-3"></a>    <span class="va">self</span>.func <span class="op">=</span> func</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-30-4" class="code-annotation-target"><a href="#annotated-cell-30-4"></a>    <span class="va">self</span>.value <span class="op">=</span> <span class="va">None</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-30-5" class="code-annotation-target"><a href="#annotated-cell-30-5"></a>    <span class="va">self</span>.is_cached <span class="op">=</span> <span class="va">False</span></span>
-<span id="annotated-cell-30-6"><a href="#annotated-cell-30-6"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-30-7" class="code-annotation-target"><a href="#annotated-cell-30-7"></a>  <span class="kw">def</span> <span class="fu">__get__</span>(<span class="va">self</span>, instance, owner):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-30-8" class="code-annotation-target"><a href="#annotated-cell-30-8"></a>    <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.is_cached:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-30-9" class="code-annotation-target"><a href="#annotated-cell-30-9"></a>      <span class="va">self</span>.value <span class="op">=</span> <span class="va">self</span>.func(instance)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-30-10" class="code-annotation-target"><a href="#annotated-cell-30-10"></a>      <span class="va">self</span>.is_cached <span class="op">=</span> <span class="va">True</span></span>
+<div class="sourceCode" id="annotated-cell-30"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-30-1" class="code-annotation-target"><a href="#annotated-cell-30-1"></a><span class="kw">class</span> PositiveNumber:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-30-2" class="code-annotation-target"><a href="#annotated-cell-30-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-30-3" class="code-annotation-target"><a href="#annotated-cell-30-3"></a>    <span class="va">self</span>.value <span class="op">=</span> <span class="va">None</span></span>
+<span id="annotated-cell-30-4"><a href="#annotated-cell-30-4"></a>      </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-30-5" class="code-annotation-target"><a href="#annotated-cell-30-5"></a>  <span class="kw">def</span> <span class="fu">__get__</span>(<span class="va">self</span>, instance, owner):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-30-6" class="code-annotation-target"><a href="#annotated-cell-30-6"></a>    <span class="cf">return</span> <span class="va">self</span>.value</span>
+<span id="annotated-cell-30-7"><a href="#annotated-cell-30-7"></a>  </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-30-8" class="code-annotation-target"><a href="#annotated-cell-30-8"></a>  <span class="kw">def</span> <span class="fu">__set__</span>(<span class="va">self</span>, instance, value):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-30-9" class="code-annotation-target"><a href="#annotated-cell-30-9"></a>    <span class="cf">if</span> value <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-30-10" class="code-annotation-target"><a href="#annotated-cell-30-10"></a>      <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Il valore deve essere positivo"</span>)</span>
 <span id="annotated-cell-30-11"><a href="#annotated-cell-30-11"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-30-12" class="code-annotation-target"><a href="#annotated-cell-30-12"></a>    <span class="cf">return</span> <span class="va">self</span>.value</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-30-12" class="code-annotation-target"><a href="#annotated-cell-30-12"></a>    <span class="va">self</span>.value <span class="op">=</span> value</span>
 <span id="annotated-cell-30-13"><a href="#annotated-cell-30-13"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="11" onclick="event.preventDefault();">11</a><span id="annotated-cell-30-14" class="code-annotation-target"><a href="#annotated-cell-30-14"></a><span class="kw">class</span> DatiComplessi:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="12" onclick="event.preventDefault();">12</a><span id="annotated-cell-30-15" class="code-annotation-target"><a href="#annotated-cell-30-15"></a>  <span class="at">@CachedProperty</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="13" onclick="event.preventDefault();">13</a><span id="annotated-cell-30-16" class="code-annotation-target"><a href="#annotated-cell-30-16"></a>  <span class="kw">def</span> calcolo_costoso(<span class="va">self</span>):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="14" onclick="event.preventDefault();">14</a><span id="annotated-cell-30-17" class="code-annotation-target"><a href="#annotated-cell-30-17"></a>    <span class="bu">print</span>(<span class="st">"Calcolo in corso..."</span>)</span>
-<span id="annotated-cell-30-18"><a href="#annotated-cell-30-18"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="15" onclick="event.preventDefault();">15</a><span id="annotated-cell-30-19" class="code-annotation-target"><a href="#annotated-cell-30-19"></a>    <span class="cf">return</span> <span class="dv">42</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-30-14" class="code-annotation-target"><a href="#annotated-cell-30-14"></a><span class="kw">class</span> Prodotto:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="11" onclick="event.preventDefault();">11</a><span id="annotated-cell-30-15" class="code-annotation-target"><a href="#annotated-cell-30-15"></a>  prezzo <span class="op">=</span> PositiveNumber()</span>
+<span id="annotated-cell-30-16"><a href="#annotated-cell-30-16"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="12" onclick="event.preventDefault();">12</a><span id="annotated-cell-30-17" class="code-annotation-target"><a href="#annotated-cell-30-17"></a>p <span class="op">=</span> Prodotto()</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="13" onclick="event.preventDefault();">13</a><span id="annotated-cell-30-18" class="code-annotation-target"><a href="#annotated-cell-30-18"></a>p.prezzo <span class="op">=</span> <span class="dv">10</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="14" onclick="event.preventDefault();">14</a><span id="annotated-cell-30-19" class="code-annotation-target"><a href="#annotated-cell-30-19"></a><span class="bu">print</span>(p.prezzo)</span>
 <span id="annotated-cell-30-20"><a href="#annotated-cell-30-20"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="16" onclick="event.preventDefault();">16</a><span id="annotated-cell-30-21" class="code-annotation-target"><a href="#annotated-cell-30-21"></a>d <span class="op">=</span> DatiComplessi()</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="17" onclick="event.preventDefault();">17</a><span id="annotated-cell-30-22" class="code-annotation-target"><a href="#annotated-cell-30-22"></a><span class="bu">print</span>(d.calcolo_costoso)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="18" onclick="event.preventDefault();">18</a><span id="annotated-cell-30-23" class="code-annotation-target"><a href="#annotated-cell-30-23"></a><span class="bu">print</span>(d.calcolo_costoso)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="15" onclick="event.preventDefault();">15</a><span id="annotated-cell-30-21" class="code-annotation-target"><a href="#annotated-cell-30-21"></a>p.prezzo <span class="op">=</span> <span class="op">-</span><span class="dv">5</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-30" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="1" data-code-annotation="1">Definisce un descrittore <code>CachedProperty</code>.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="1" data-code-annotation="1">Definisce un descrittore <code>PositiveNumber</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="2" data-code-annotation="2">Inizializzazione del descrittore con una funzione.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="2" data-code-annotation="2">Inizializzazione del descrittore.</span>
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="3" data-code-annotation="3">Memorizza la funzione.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="3" data-code-annotation="3">Memorizzazione del valore.</span>
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="4" data-code-annotation="4">Memorizza il valore.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="5" data-code-annotation="4">Metodo <code>__get__</code> del descrittore per ottenere il valore.</span>
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="5" data-code-annotation="5">Flag per indicare se il valore è memorizzato nella cache.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="6" data-code-annotation="5">Restituisce il valore memorizzato.</span>
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="7" data-code-annotation="6">Metodo <code>__get__</code> del descrittore per ottenere il valore.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="8" data-code-annotation="6">Metodo <code>__set__</code> del descrittore per impostare il valore.</span>
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="8" data-code-annotation="7">Controlla se il valore è memorizzato nella cache.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="9" data-code-annotation="7">Controlla se il valore è negativo.</span>
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="9" data-code-annotation="8">Calcola il valore e lo memorizza nella cache se non è presente.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="10" data-code-annotation="8">Solleva un’eccezione se il valore è negativo.</span>
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="9">9</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="10" data-code-annotation="9">Imposta il flag di cache.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="12" data-code-annotation="9">Imposta il valore se è positivo.</span>
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="10">10</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="12" data-code-annotation="10">Restituisce il valore memorizzato nella cache.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="14" data-code-annotation="10">Definisce una classe <code>Prodotto</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="11">11</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="14" data-code-annotation="11">Definisce una classe <code>DatiComplessi</code>.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="15" data-code-annotation="11">L’attributo <code>prezzo</code> della classe <code>Prodotto</code> è un descrittore di tipo <code>PositiveNumber</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="12">12</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="15" data-code-annotation="12">Utilizza <code>CachedProperty</code> per decorare un metodo.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="17" data-code-annotation="12">Creazione di un’istanza della classe <code>Prodotto</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="13">13</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="16" data-code-annotation="13">Definisce un metodo <code>calcolo_costoso</code>.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="18" data-code-annotation="13">Imposta il valore dell’attributo <code>prezzo</code> dell’istanza <code>p</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="14">14</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="17" data-code-annotation="14">Stampa un messaggio durante il calcolo.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="19" data-code-annotation="14">Stampa il valore dell’attributo <code>prezzo</code> dell’istanza <code>p</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="15">15</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="19" data-code-annotation="15">Restituisce un valore.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="21" data-code-annotation="15">Tentativo di impostazione di un valore negativo per l’attributo <code>prezzo</code> (solleva un’eccezione).</span>
 </dd>
-<dt data-target-cell="annotated-cell-30" data-target-annotation="16">16</dt>
+</dl>
+<p>Un altro uso comune dei descrittori è la memorizzazione nella cache dei risultati di calcoli costosi.</p>
+<div class="sourceCode" id="annotated-cell-31"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-31-1" class="code-annotation-target"><a href="#annotated-cell-31-1"></a><span class="kw">class</span> CachedProperty:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-31-2" class="code-annotation-target"><a href="#annotated-cell-31-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, func):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-31-3" class="code-annotation-target"><a href="#annotated-cell-31-3"></a>    <span class="va">self</span>.func <span class="op">=</span> func</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-31-4" class="code-annotation-target"><a href="#annotated-cell-31-4"></a>    <span class="va">self</span>.value <span class="op">=</span> <span class="va">None</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-31-5" class="code-annotation-target"><a href="#annotated-cell-31-5"></a>    <span class="va">self</span>.is_cached <span class="op">=</span> <span class="va">False</span></span>
+<span id="annotated-cell-31-6"><a href="#annotated-cell-31-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-31-7" class="code-annotation-target"><a href="#annotated-cell-31-7"></a>  <span class="kw">def</span> <span class="fu">__get__</span>(<span class="va">self</span>, instance, owner):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-31-8" class="code-annotation-target"><a href="#annotated-cell-31-8"></a>    <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.is_cached:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-31-9" class="code-annotation-target"><a href="#annotated-cell-31-9"></a>      <span class="va">self</span>.value <span class="op">=</span> <span class="va">self</span>.func(instance)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-31-10" class="code-annotation-target"><a href="#annotated-cell-31-10"></a>      <span class="va">self</span>.is_cached <span class="op">=</span> <span class="va">True</span></span>
+<span id="annotated-cell-31-11"><a href="#annotated-cell-31-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-31-12" class="code-annotation-target"><a href="#annotated-cell-31-12"></a>    <span class="cf">return</span> <span class="va">self</span>.value</span>
+<span id="annotated-cell-31-13"><a href="#annotated-cell-31-13"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="11" onclick="event.preventDefault();">11</a><span id="annotated-cell-31-14" class="code-annotation-target"><a href="#annotated-cell-31-14"></a><span class="kw">class</span> DatiComplessi:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="12" onclick="event.preventDefault();">12</a><span id="annotated-cell-31-15" class="code-annotation-target"><a href="#annotated-cell-31-15"></a>  <span class="at">@CachedProperty</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="13" onclick="event.preventDefault();">13</a><span id="annotated-cell-31-16" class="code-annotation-target"><a href="#annotated-cell-31-16"></a>  <span class="kw">def</span> calcolo_costoso(<span class="va">self</span>):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="14" onclick="event.preventDefault();">14</a><span id="annotated-cell-31-17" class="code-annotation-target"><a href="#annotated-cell-31-17"></a>    <span class="bu">print</span>(<span class="st">"Calcolo in corso..."</span>)</span>
+<span id="annotated-cell-31-18"><a href="#annotated-cell-31-18"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="15" onclick="event.preventDefault();">15</a><span id="annotated-cell-31-19" class="code-annotation-target"><a href="#annotated-cell-31-19"></a>    <span class="cf">return</span> <span class="dv">42</span></span>
+<span id="annotated-cell-31-20"><a href="#annotated-cell-31-20"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="16" onclick="event.preventDefault();">16</a><span id="annotated-cell-31-21" class="code-annotation-target"><a href="#annotated-cell-31-21"></a>d <span class="op">=</span> DatiComplessi()</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="17" onclick="event.preventDefault();">17</a><span id="annotated-cell-31-22" class="code-annotation-target"><a href="#annotated-cell-31-22"></a><span class="bu">print</span>(d.calcolo_costoso)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="18" onclick="event.preventDefault();">18</a><span id="annotated-cell-31-23" class="code-annotation-target"><a href="#annotated-cell-31-23"></a><span class="bu">print</span>(d.calcolo_costoso)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-31" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="21" data-code-annotation="16">Creazione di un’istanza della classe <code>DatiComplessi</code>.</span>
+<span data-code-cell="annotated-cell-31" data-code-lines="1" data-code-annotation="1">Definisce un descrittore <code>CachedProperty</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-30" data-target-annotation="17">17</dt>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="22" data-code-annotation="17">Chiama <code>calcolo_costoso</code> e stampa il risultato (calcola e memorizza nella cache).</span>
+<span data-code-cell="annotated-cell-31" data-code-lines="2" data-code-annotation="2">Inizializzazione del descrittore con una funzione.</span>
 </dd>
-<dt data-target-cell="annotated-cell-30" data-target-annotation="18">18</dt>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="23" data-code-annotation="18">Chiama <code>calcolo_costoso</code> e stampa il risultato (usa il valore memorizzato nella cache).</span>
+<span data-code-cell="annotated-cell-31" data-code-lines="3" data-code-annotation="3">Memorizza la funzione.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="4" data-code-annotation="4">Memorizza il valore.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="5" data-code-annotation="5">Flag per indicare se il valore è memorizzato nella cache.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="7" data-code-annotation="6">Metodo <code>__get__</code> del descrittore per ottenere il valore.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="8" data-code-annotation="7">Controlla se il valore è memorizzato nella cache.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="9" data-code-annotation="8">Calcola il valore e lo memorizza nella cache se non è presente.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="10" data-code-annotation="9">Imposta il flag di cache.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="10">10</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="12" data-code-annotation="10">Restituisce il valore memorizzato nella cache.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="11">11</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="14" data-code-annotation="11">Definisce una classe <code>DatiComplessi</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="12">12</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="15" data-code-annotation="12">Utilizza <code>CachedProperty</code> per decorare un metodo.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="13">13</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="16" data-code-annotation="13">Definisce un metodo <code>calcolo_costoso</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="14">14</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="17" data-code-annotation="14">Stampa un messaggio durante il calcolo.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="15">15</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="19" data-code-annotation="15">Restituisce un valore.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="16">16</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="21" data-code-annotation="16">Creazione di un’istanza della classe <code>DatiComplessi</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="17">17</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="22" data-code-annotation="17">Chiama <code>calcolo_costoso</code> e stampa il risultato (calcola e memorizza nella cache).</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="18">18</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="23" data-code-annotation="18">Chiama <code>calcolo_costoso</code> e stampa il risultato (usa il valore memorizzato nella cache).</span>
 </dd>
 </dl>
 </section>
@@ -2002,119 +2114,119 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="15.11" class="anchored" data-anchor-id="decoratori"><span class="header-section-number">15.11</span> Decoratori</h2>
 <p>I decoratori in Python sono funzioni che modificano il comportamento di altre funzioni o metodi. Sono utili per estendere la funzionalità di funzioni o metodi senza modificarne il codice.</p>
 <p>Esempio di decoratore:</p>
-<div class="sourceCode" id="annotated-cell-31"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-31-1" class="code-annotation-target"><a href="#annotated-cell-31-1"></a><span class="kw">def</span> mio_decoratore(f):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-31-2" class="code-annotation-target"><a href="#annotated-cell-31-2"></a>  <span class="kw">def</span> wrapper():</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-31-3" class="code-annotation-target"><a href="#annotated-cell-31-3"></a>    <span class="bu">print</span>(<span class="st">"Qualcosa prima della funzione"</span>)</span>
-<span id="annotated-cell-31-4"><a href="#annotated-cell-31-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-31-5" class="code-annotation-target"><a href="#annotated-cell-31-5"></a>    f()</span>
-<span id="annotated-cell-31-6"><a href="#annotated-cell-31-6"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-31-7" class="code-annotation-target"><a href="#annotated-cell-31-7"></a>    <span class="bu">print</span>(<span class="st">"Qualcosa dopo la funzione"</span>)</span>
-<span id="annotated-cell-31-8"><a href="#annotated-cell-31-8"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-31-9" class="code-annotation-target"><a href="#annotated-cell-31-9"></a>  <span class="cf">return</span> wrapper</span>
-<span id="annotated-cell-31-10"><a href="#annotated-cell-31-10"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-31-11" class="code-annotation-target"><a href="#annotated-cell-31-11"></a><span class="at">@mio_decoratore</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-31-12" class="code-annotation-target"><a href="#annotated-cell-31-12"></a><span class="kw">def</span> di_ciao():</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-31-13" class="code-annotation-target"><a href="#annotated-cell-31-13"></a>  <span class="bu">print</span>(<span class="st">"Ciao!"</span>)</span>
-<span id="annotated-cell-31-14"><a href="#annotated-cell-31-14"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-31-15" class="code-annotation-target"><a href="#annotated-cell-31-15"></a>di_ciao()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-32"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-32-1" class="code-annotation-target"><a href="#annotated-cell-32-1"></a><span class="kw">def</span> mio_decoratore(f):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-32-2" class="code-annotation-target"><a href="#annotated-cell-32-2"></a>  <span class="kw">def</span> wrapper():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-32-3" class="code-annotation-target"><a href="#annotated-cell-32-3"></a>    <span class="bu">print</span>(<span class="st">"Qualcosa prima della funzione"</span>)</span>
+<span id="annotated-cell-32-4"><a href="#annotated-cell-32-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-32-5" class="code-annotation-target"><a href="#annotated-cell-32-5"></a>    f()</span>
+<span id="annotated-cell-32-6"><a href="#annotated-cell-32-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-32-7" class="code-annotation-target"><a href="#annotated-cell-32-7"></a>    <span class="bu">print</span>(<span class="st">"Qualcosa dopo la funzione"</span>)</span>
+<span id="annotated-cell-32-8"><a href="#annotated-cell-32-8"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-32-9" class="code-annotation-target"><a href="#annotated-cell-32-9"></a>  <span class="cf">return</span> wrapper</span>
+<span id="annotated-cell-32-10"><a href="#annotated-cell-32-10"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-32-11" class="code-annotation-target"><a href="#annotated-cell-32-11"></a><span class="at">@mio_decoratore</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-32-12" class="code-annotation-target"><a href="#annotated-cell-32-12"></a><span class="kw">def</span> di_ciao():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-32-13" class="code-annotation-target"><a href="#annotated-cell-32-13"></a>  <span class="bu">print</span>(<span class="st">"Ciao!"</span>)</span>
+<span id="annotated-cell-32-14"><a href="#annotated-cell-32-14"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-32-15" class="code-annotation-target"><a href="#annotated-cell-32-15"></a>di_ciao()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-31" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="1" data-code-annotation="1">Definizione del decoratore <code>mio_decoratore</code>.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="1" data-code-annotation="1">Definizione del decoratore <code>mio_decoratore</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-31" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="2" data-code-annotation="2">Definizione della funzione <code>wrapper</code> interna.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="2" data-code-annotation="2">Definizione della funzione <code>wrapper</code> interna.</span>
 </dd>
-<dt data-target-cell="annotated-cell-31" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="3" data-code-annotation="3">Stampa di un messaggio prima della chiamata della funzione decorata.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="3" data-code-annotation="3">Stampa di un messaggio prima della chiamata della funzione decorata.</span>
 </dd>
-<dt data-target-cell="annotated-cell-31" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="5" data-code-annotation="4">Chiamata della funzione decorata.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="5" data-code-annotation="4">Chiamata della funzione decorata.</span>
 </dd>
-<dt data-target-cell="annotated-cell-31" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="7" data-code-annotation="5">Stampa di un messaggio dopo la chiamata della funzione decorata.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="7" data-code-annotation="5">Stampa di un messaggio dopo la chiamata della funzione decorata.</span>
 </dd>
-<dt data-target-cell="annotated-cell-31" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="9" data-code-annotation="6">Restituzione della funzione <code>wrapper</code>.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="9" data-code-annotation="6">Restituzione della funzione <code>wrapper</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-31" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="11" data-code-annotation="7">Applicazione del decoratore <code>mio_decoratore</code> alla funzione <code>di_ciao</code>.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="11" data-code-annotation="7">Applicazione del decoratore <code>mio_decoratore</code> alla funzione <code>di_ciao</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-31" data-target-annotation="8">8</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="12" data-code-annotation="8">Definizione della funzione <code>di_ciao</code>.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="12" data-code-annotation="8">Definizione della funzione <code>di_ciao</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-31" data-target-annotation="9">9</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="9">9</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="13" data-code-annotation="9">Stampa del messaggio <code>Ciao!</code>.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="13" data-code-annotation="9">Stampa del messaggio <code>Ciao!</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-31" data-target-annotation="10">10</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="10">10</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="15" data-code-annotation="10">Chiamata della funzione <code>di_ciao</code> decorata. Output:</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="15" data-code-annotation="10">Chiamata della funzione <code>di_ciao</code> decorata. Output:</span>
 </dd>
 </dl>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>Qualcosa prima della funzione</span>
 <span id="cb1-2"><a href="#cb1-2"></a>Ciao<span class="op">!</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>Qualcosa dopo la funzione</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>L’analogo del codice precedente senza l’uso della sintassi di decorazione <code>@</code>, esplicita ciò che avviene dietro le quinte:</p>
-<div class="sourceCode" id="annotated-cell-33"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-33-1" class="code-annotation-target"><a href="#annotated-cell-33-1"></a><span class="kw">def</span> mio_decoratore(f):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-33-2" class="code-annotation-target"><a href="#annotated-cell-33-2"></a>  <span class="kw">def</span> wrapper():</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-33-3" class="code-annotation-target"><a href="#annotated-cell-33-3"></a>    <span class="bu">print</span>(<span class="st">"Qualcosa prima della funzione"</span>)</span>
-<span id="annotated-cell-33-4"><a href="#annotated-cell-33-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-33-5" class="code-annotation-target"><a href="#annotated-cell-33-5"></a>    f()</span>
-<span id="annotated-cell-33-6"><a href="#annotated-cell-33-6"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-33-7" class="code-annotation-target"><a href="#annotated-cell-33-7"></a>    <span class="bu">print</span>(<span class="st">"Qualcosa dopo la funzione"</span>)</span>
-<span id="annotated-cell-33-8"><a href="#annotated-cell-33-8"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-33-9" class="code-annotation-target"><a href="#annotated-cell-33-9"></a>  <span class="cf">return</span> wrapper</span>
-<span id="annotated-cell-33-10"><a href="#annotated-cell-33-10"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-33-11" class="code-annotation-target"><a href="#annotated-cell-33-11"></a><span class="kw">def</span> di_ciao():</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-33-12" class="code-annotation-target"><a href="#annotated-cell-33-12"></a>  <span class="bu">print</span>(<span class="st">"Ciao!"</span>)</span>
-<span id="annotated-cell-33-13"><a href="#annotated-cell-33-13"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-33-14" class="code-annotation-target"><a href="#annotated-cell-33-14"></a>di_ciao <span class="op">=</span> mio_decoratore(di_ciao)</span>
-<span id="annotated-cell-33-15"><a href="#annotated-cell-33-15"></a></span>
-<span id="annotated-cell-33-16"><a href="#annotated-cell-33-16"></a>di_ciao()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-34"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-34-1" class="code-annotation-target"><a href="#annotated-cell-34-1"></a><span class="kw">def</span> mio_decoratore(f):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-34-2" class="code-annotation-target"><a href="#annotated-cell-34-2"></a>  <span class="kw">def</span> wrapper():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-34-3" class="code-annotation-target"><a href="#annotated-cell-34-3"></a>    <span class="bu">print</span>(<span class="st">"Qualcosa prima della funzione"</span>)</span>
+<span id="annotated-cell-34-4"><a href="#annotated-cell-34-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-34-5" class="code-annotation-target"><a href="#annotated-cell-34-5"></a>    f()</span>
+<span id="annotated-cell-34-6"><a href="#annotated-cell-34-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-34-7" class="code-annotation-target"><a href="#annotated-cell-34-7"></a>    <span class="bu">print</span>(<span class="st">"Qualcosa dopo la funzione"</span>)</span>
+<span id="annotated-cell-34-8"><a href="#annotated-cell-34-8"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-34-9" class="code-annotation-target"><a href="#annotated-cell-34-9"></a>  <span class="cf">return</span> wrapper</span>
+<span id="annotated-cell-34-10"><a href="#annotated-cell-34-10"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-34-11" class="code-annotation-target"><a href="#annotated-cell-34-11"></a><span class="kw">def</span> di_ciao():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-34-12" class="code-annotation-target"><a href="#annotated-cell-34-12"></a>  <span class="bu">print</span>(<span class="st">"Ciao!"</span>)</span>
+<span id="annotated-cell-34-13"><a href="#annotated-cell-34-13"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-34-14" class="code-annotation-target"><a href="#annotated-cell-34-14"></a>di_ciao <span class="op">=</span> mio_decoratore(di_ciao)</span>
+<span id="annotated-cell-34-15"><a href="#annotated-cell-34-15"></a></span>
+<span id="annotated-cell-34-16"><a href="#annotated-cell-34-16"></a>di_ciao()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-33" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="1" data-code-annotation="1">Definizione del decoratore <code>mio_decoratore</code>.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="1" data-code-annotation="1">Definizione del decoratore <code>mio_decoratore</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-33" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="2" data-code-annotation="2">Definizione della funzione <code>wrapper</code> interna.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="2" data-code-annotation="2">Definizione della funzione <code>wrapper</code> interna.</span>
 </dd>
-<dt data-target-cell="annotated-cell-33" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="3" data-code-annotation="3">Stampa di un messaggio prima della chiamata della funzione decorata.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="3" data-code-annotation="3">Stampa di un messaggio prima della chiamata della funzione decorata.</span>
 </dd>
-<dt data-target-cell="annotated-cell-33" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="5" data-code-annotation="4">Chiamata della funzione decorata.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="5" data-code-annotation="4">Chiamata della funzione decorata.</span>
 </dd>
-<dt data-target-cell="annotated-cell-33" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="7" data-code-annotation="5">Stampa di un messaggio dopo la chiamata della funzione decorata.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="7" data-code-annotation="5">Stampa di un messaggio dopo la chiamata della funzione decorata.</span>
 </dd>
-<dt data-target-cell="annotated-cell-33" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="9" data-code-annotation="6">Restituzione della funzione <code>wrapper</code>.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="9" data-code-annotation="6">Restituzione della funzione <code>wrapper</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-33" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="11" data-code-annotation="7">Definizione della funzione <code>di_ciao</code>.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="11" data-code-annotation="7">Definizione della funzione <code>di_ciao</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-33" data-target-annotation="8">8</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="12" data-code-annotation="8">Stampa del messaggio <code>Ciao!</code>.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="12" data-code-annotation="8">Stampa del messaggio <code>Ciao!</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-33" data-target-annotation="9">9</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="9">9</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="14" data-code-annotation="9">Applicazione</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="14" data-code-annotation="9">Applicazione</span>
 </dd>
 </dl>
 <p>del decoratore <code>mio_decoratore</code> alla funzione <code>di_ciao</code> assegnando <code>di_ciao</code> alla funzione <code>wrapper</code> restituita. 10. Chiamata della funzione <code>di_ciao</code> decorata. Output: <code>python   Qualcosa prima della funzione   Ciao!   Qualcosa dopo la funzione</code></p>

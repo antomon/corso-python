@@ -684,34 +684,116 @@ print(c)  # <7>
 
 ## Metodi di classe e metodi statici
 
-Python fornisce due tipi di metodi a livello di classe: metodi statici e metodi di classe. I metodi statici sono definiti utilizzando il decoratore `@staticmethod` e non ricevono automaticamente il riferimento all'istanza o alla classe come primo argomento. I metodi di classe sono definiti utilizzando il decoratore `@classmethod` e ricevono il riferimento alla classe come primo argomento, convenzionalmente chiamato `cls`.
+In Python, i metodi possono essere definiti a livello di classe in due modi principali: come metodi statici e come metodi di classe. Entrambi offrono funzionalità diverse rispetto ai metodi di istanza.
 
-Esempio di metodo statico e metodo di classe:
+### Metodi statici
+
+I metodi statici sono definiti utilizzando il decoratore `@staticmethod`. Questi metodi non ricevono automaticamente né il riferimento all'istanza (`self`) né alla classe (`cls`) come primo argomento. Sono simili alle funzioni normali, ma sono chiamati come membri della classe. Sono utili quando non è necessario accedere né alle variabili di istanza né alle variabili di classe all'interno del metodo.
+
+Esempio di metodo statico:
 
 ```python
-class C10:  # <1>
+class Utilita:  # <1>
   @staticmethod  # <2>
-  def metodo_statico():  # <3>
-    print("Metodo statico")  # <4>
+  def somma(a, b):  # <3>
+    return a + b  # <4>
+
+# Chiamata al metodo statico senza creare un'istanza
+print(Utilita.somma(10, 5))  # <5>
+```
+1. Definizione della classe `Utilita`.
+2. Decoratore `@staticmethod` per definire un metodo statico.
+3. Definizione del metodo statico `somma`.
+4. Il metodo `somma` prende due argomenti e restituisce la loro somma.
+5. Chiamata al metodo statico `somma` senza creare un'istanza della classe.
+
+### Metodi di classe
+
+I metodi di classe sono definiti utilizzando il decoratore `@classmethod`. Questi metodi ricevono automaticamente un riferimento alla classe (`cls`) come primo argomento. Sono utili quando si ha bisogno di accedere o modificare lo stato della classe piuttosto che quello dell'istanza.
+
+Esempio di metodo di classe:
+
+```python
+class Contatore:  # <1>
+  contatore_comune = 0  # <2>
+
+  def __init__(self):  # <3>
+    Contatore.contatore_comune += 1  # <4>
 
   @classmethod  # <5>
-  def metodo_di_classe(cls):  # <6>
-    print(f"Metodo di classe per {cls.__name__}")  # <7>
+  def ottieni_contatore(cls):  # <6>
+    return cls.contatore_comune  # <7>
 
-C10.metodo_statico()  # <8>
+# Creazione di istanze
+c1 = Contatore()  # <8>
+c2 = Contatore()  # <9>
 
-C10.metodo_di_classe()  # <9>
+# Chiamata al metodo di classe
+print(Contatore.ottieni_contatore())  # <10>
 ```
-1. Definizione della classe `C10`.
-2. Decoratore `@staticmethod` per definire un metodo statico.
-3. Definizione del metodo statico `metodo_statico`.
-4. Stampa del messaggio `Metodo statico`.
+1. Definizione della classe `Contatore`.
+2. Attributo di classe `contatore_comune`.
+3. Metodo speciale `__init__` per l'inizializzazione.
+4. Incrementa l'attributo di classe `contatore_comune` ogni volta che viene creata una nuova istanza.
 5. Decoratore `@classmethod` per definire un metodo di classe.
-6. Definizione del metodo di classe `metodo_di_classe`.
-7. Stampa del messaggio con il nome della classe.
-8. Chiamata del metodo statico `metodo_statico`.
-9. Chiamata del metodo di classe `metodo_di_classe`.
+6. Definizione del metodo di classe `ottieni_contatore`.
+7. Il metodo `ottieni_contatore` restituisce il valore dell'attributo di classe `contatore_comune`.
+8. Creazione di un'istanza della classe `Contatore`.
+9. Creazione di un'altra istanza della classe `Contatore`.
+10. Chiamata al metodo di classe `ottieni_contatore` senza creare un'istanza della classe.
 
+### Differenza tra metodi statici e metodi di classe
+
+- Metodi statici:
+
+  - Non ricevono né l'istanza (`self`) né la classe (`cls`) come primo argomento.
+  - Sono simili alle funzioni normali, ma possono essere chiamati attraverso il nome della classe.
+  - Utili per operazioni che non dipendono dallo stato della classe o dell'istanza.
+
+- Metodi di classe:
+
+  - Ricevono il riferimento alla classe (`cls`) come primo argomento.
+  - Possono accedere e modificare lo stato della classe.
+  - Utili per operazioni che riguardano lo stato globale della classe.
+
+### Casi d'uso
+
+- Utilizzare un metodo statico per una funzione di utilità che non necessita di accedere o modificare lo stato della classe o dell'istanza.
+
+  ```python
+  class Matematica:
+    @staticmethod
+    def moltiplica(a, b):
+      return a * b
+
+    @staticmethod
+    def dividi(a, b):
+      return a / b
+
+  print(Matematica.moltiplica(3, 4))  # <1>
+  ```
+1. Output: `12`.
+
+- Utilizzare un metodo di classe per mantenere o ottenere lo stato della classe, come contare il numero di istanze create.
+
+  ```python
+  class Giocatore:
+    numero_giocatori = 0
+
+    def __init__(self, nome):
+      self.nome = nome
+      Giocatore.numero_giocatori += 1
+
+    @classmethod
+    def ottieni_numero_giocatori(cls):
+      return cls.numero_giocatori
+
+  g1 = Giocatore("Mario")
+  g2 = Giocatore("Luigi")
+
+  print(Giocatore.ottieni_numero_giocatori())  # <1>
+  ```
+  1. Output: `2`.
 
 ## Descrittori
 
