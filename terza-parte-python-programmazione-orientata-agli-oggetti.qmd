@@ -521,213 +521,6 @@ print(C6.__doc__)  # <5>
 4. Corpo del metodo vuoto.
 5. Stampa della docstring della classe `C6`.
 
-## Descrittori
-
-Un descrittore è un oggetto la cui classe fornisce uno o più metodi speciali chiamati `__get__`, `__set__` o `__delete__`. I descrittori che sono attributi di classe controllano la semantica di accesso e impostazione degli attributi sulle istanze di quella classe.
-
-Esempio di un descrittore:
-
-```python
-class Const:  # <1>
-  def __init__(self, value):  # <2>
-    self.__dict__['value'] = value  # <3>
-
-  def __set__(self, *_):  # <4>
-    pass  # <5>
-
-  def __get__(self, *_):  # <6>
-    return self.__dict__['value']  # <7>
-
-  def __delete__(self, *_):  # <8>
-    pass  # <9>
-
-class X:  # <10>
-  c = Const(23)  # <11>
-
-x = X()  # <12>
-print(x.c)  # <13>
-
-x.c = 42  # <14>
-print(x.c)  # <15>
-
-del x.c  # <16>
-print(x.c)  # <17>
-```
-1. Definizione della classe `Const`.
-2. Inizializzazione del descrittore con un valore.
-3. Memorizzazione del valore nel dizionario dell'istanza.
-4. Metodo `__set__` del descrittore.
-5. Ignora qualsiasi tentativo di impostazione del valore.
-6. Metodo `__get__` del descrittore.
-7. Restituisce il valore memorizzato nel dizionario dell'istanza.
-8. Metodo `__delete__` del descrittore.
-9. Ignora qualsiasi tentativo di eliminazione del valore.
-10. Definizione della classe `X`.
-11. L'attributo `c` della classe `X` è un descrittore di tipo `Const`.
-12. Creazione di un'istanza della classe `X`.
-13. Stampa del valore dell'attributo `c` dell'istanza `x`.
-14. Tentativo di impostazione del valore dell'attributo `c` dell'istanza `x` (ignorato).
-15. Stampa del valore dell'attributo `c` dell'istanza `x`.
-16. Tentativo di eliminazione dell'attributo `c` dell'istanza `x` (ignorato).
-17. Stampa del valore dell'attributo `c` dell'istanza `x`.
-
-### Regole di risoluzione dei membri
-
-Nel caso di accesso ad un membro di una classe sia un descrittore, le regole viste in precedenza si qualificano come di seguito:
-
- - Se il membro è un descrittore non sovrascrivente (ovvero, un descrittore che implementa solo il metodo `__get__`), viene restituito il risultato del metodo `__get__` del descrittore. Esempio: 
-  
-  ```python
-  class DescrittoreNonSovrascrivente:
-    def __init__(self, valore):
-      self.valore = valore
-    
-    def __get__(self, istanza, proprietario):
-      return self.valore  # <1>
-
-  class MiaClasse:
-    descrittore = DescrittoreNonSovrascrivente("valore descrittore")  # <2>
-
-  istanza = MiaClasse()
-  print(istanza.descrittore)  # <3>
-  ```
-  1. Il metodo `__get__` restituisce il valore del descrittore.
-  2. Definisce un descrittore non sovrascrivente come attributo di classe.
-  3. Trova `descrittore` nella classe, chiama `DescrittoreNonSovrascrivente.__get__` e restituisce `"valore descrittore"`.
-
- - Se il membro è un descrittore sovrascrivente (ovvero, un descrittore che implementa i metodi `__get__` e `__set__`), viene chiamato il metodo `__get__` del descrittore, che restituisce il valore dell'attributo. Esempio:
-
-  ```python
-  class DescrittoreSovrascrivente:
-    def __init__(self, valore):
-      self.valore = valore
-    
-    def __get__(self, istanza, proprietario):
-      return self.valore  # <1>
-    
-    def __set__(self, istanza, valore):
-      self.valore = valore  # <2>
-
-  class MiaClasse:
-    descrittore = DescrittoreSovrascrivente("valore iniziale")  # <3>
-
-  istanza = MiaClasse()
-  print(istanza.descrittore)  # <4>
-
-  istanza.descrittore = "nuovo valore"  # <5>
-  print(istanza.descrittore)  # <6>
-  ```
-  1. Il metodo `__get__` restituisce il valore del descrittore.
-  2. Il metodo `__set__` permette di modificare il valore del descrittore.
-  3. Definisce un descrittore sovrascrivente come attributo di classe.
-  4. Trova `descrittore` nella classe, chiama `DescrittoreSovrascrivente.__get__` e restituisce `"valore iniziale"`.
-  5. Chiama `DescrittoreSovrascrivente.__set__` per modificare il valore.
-  6. Trova `descrittore` nella classe, chiama `DescrittoreSovrascrivente.__get__` e restituisce `"nuovo valore"`.
-
- - Se il membro non è un descrittore, viene restituito il valore associato al membro. Esempio:
-
-  ```python
-  class ClasseBase:
-    attributo_base = "valore base"  # <1>
-  
-  class MiaClasse(ClasseBase):
-    pass
-  
-  istanza = MiaClasse()
-  print(istanza.attributo_base)  # <2>
-  ```
-  1. Definisce un attributo di classe non descrittore.
-  2. Trova `attributo_base` nella classe base e restituisce `"valore base"`.
-
-### Usi comuni
-
-Un uso comune dei descrittori è la validazione degli attributi. Ad esempio, possiamo creare un descrittore per assicurare che un attributo sia sempre un numero positivo.
-
-```python
-class PositiveNumber:  # <1>
-  def __init__(self):  # <2>
-    self.value = None  # <3>
-      
-  def __get__(self, instance, owner):  # <4>
-    return self.value  # <5>
-  
-  def __set__(self, instance, value):  # <6>
-    if value < 0:  # <7>
-      raise ValueError("Il valore deve essere positivo")  # <8>
-
-    self.value = value  # <9>
-
-class Prodotto:  # <10>
-  prezzo = PositiveNumber()  # <11>
-
-p = Prodotto()  # <12>
-p.prezzo = 10  # <13>
-print(p.prezzo)  # <14>
-
-p.prezzo = -5  # <15>
-```
-1. Definisce un descrittore `PositiveNumber`.
-2. Inizializzazione del descrittore.
-3. Memorizzazione del valore.
-4. Metodo `__get__` del descrittore per ottenere il valore.
-5. Restituisce il valore memorizzato.
-6. Metodo `__set__` del descrittore per impostare il valore.
-7. Controlla se il valore è negativo.
-8. Solleva un'eccezione se il valore è negativo.
-9. Imposta il valore se è positivo.
-10. Definisce una classe `Prodotto`.
-11. L'attributo `prezzo` della classe `Prodotto` è un descrittore di tipo `PositiveNumber`.
-12. Creazione di un'istanza della classe `Prodotto`.
-13. Imposta il valore dell'attributo `prezzo` dell'istanza `p`.
-14. Stampa il valore dell'attributo `prezzo` dell'istanza `p`.
-15. Tentativo di impostazione di un valore negativo per l'attributo `prezzo` (solleva un'eccezione).
-
-Un altro uso comune dei descrittori è la memorizzazione nella cache dei risultati di calcoli costosi.
-
-```python
-class CachedProperty:  # <1>
-  def __init__(self, func):  # <2>
-    self.func = func  # <3>
-    self.value = None  # <4>
-    self.is_cached = False  # <5>
-
-  def __get__(self, instance, owner):  # <6>
-    if not self.is_cached:  # <7>
-      self.value = self.func(instance)  # <8>
-      self.is_cached = True  # <9>
-
-    return self.value  # <10>
-
-class DatiComplessi:  # <11>
-  @CachedProperty  # <12>
-  def calcolo_costoso(self):  # <13>
-    print("Calcolo in corso...")  # <14>
-
-    return 42  # <15>
-
-d = DatiComplessi()  # <16>
-print(d.calcolo_costoso)  # <17>
-print(d.calcolo_costoso)  # <18>
-```
-1. Definisce un descrittore `CachedProperty`.
-2. Inizializzazione del descrittore con una funzione.
-3. Memorizza la funzione.
-4. Memorizza il valore.
-5. Flag per indicare se il valore è memorizzato nella cache.
-6. Metodo `__get__` del descrittore per ottenere il valore.
-7. Controlla se il valore è memorizzato nella cache.
-8. Calcola il valore e lo memorizza nella cache se non è presente.
-9. Imposta il flag di cache.
-10. Restituisce il valore memorizzato nella cache.
-11. Definisce una classe `DatiComplessi`.
-12. Utilizza `CachedProperty` per decorare un metodo.
-13. Definisce un metodo `calcolo_costoso`.
-14. Stampa un messaggio durante il calcolo.
-15. Restituisce un valore.
-16. Creazione di un'istanza della classe `DatiComplessi`.
-17. Chiama `calcolo_costoso` e stampa il risultato (calcola e memorizza nella cache).
-18. Chiama `calcolo_costoso` e stampa il risultato (usa il valore memorizzato nella cache).
-
 ## Istanze
 
 Per creare un'istanza di una classe, chiamiamo l'oggetto classe come se fosse una funzione. Ogni chiamata restituisce una nuova istanza il cui tipo è quella classe:
@@ -918,6 +711,214 @@ C10.metodo_di_classe()  # <9>
 7. Stampa del messaggio con il nome della classe.
 8. Chiamata del metodo statico `metodo_statico`.
 9. Chiamata del metodo di classe `metodo_di_classe`.
+
+
+## Descrittori
+
+Un descrittore è un oggetto la cui classe fornisce uno o più metodi speciali chiamati `__get__`, `__set__` o `__delete__`. I descrittori che sono attributi di classe controllano la semantica di accesso e impostazione degli attributi sulle istanze di quella classe.
+
+Esempio di un descrittore:
+
+```python
+class Const:  # <1>
+  def __init__(self, value):  # <2>
+    self.__dict__['value'] = value  # <3>
+
+  def __set__(self, *_):  # <4>
+    pass  # <5>
+
+  def __get__(self, *_):  # <6>
+    return self.__dict__['value']  # <7>
+
+  def __delete__(self, *_):  # <8>
+    pass  # <9>
+
+class X:  # <10>
+  c = Const(23)  # <11>
+
+x = X()  # <12>
+print(x.c)  # <13>
+
+x.c = 42  # <14>
+print(x.c)  # <15>
+
+del x.c  # <16>
+print(x.c)  # <17>
+```
+1. Definizione della classe `Const`.
+2. Inizializzazione del descrittore con un valore.
+3. Memorizzazione del valore nel dizionario dell'istanza.
+4. Metodo `__set__` del descrittore.
+5. Ignora qualsiasi tentativo di impostazione del valore.
+6. Metodo `__get__` del descrittore.
+7. Restituisce il valore memorizzato nel dizionario dell'istanza.
+8. Metodo `__delete__` del descrittore.
+9. Ignora qualsiasi tentativo di eliminazione del valore.
+10. Definizione della classe `X`.
+11. L'attributo `c` della classe `X` è un descrittore di tipo `Const`.
+12. Creazione di un'istanza della classe `X`.
+13. Stampa del valore dell'attributo `c` dell'istanza `x`.
+14. Tentativo di impostazione del valore dell'attributo `c` dell'istanza `x` (ignorato).
+15. Stampa del valore dell'attributo `c` dell'istanza `x`.
+16. Tentativo di eliminazione dell'attributo `c` dell'istanza `x` (ignorato).
+17. Stampa del valore dell'attributo `c` dell'istanza `x`.
+
+### Accesso
+
+Nel caso di accesso ad un membro di una classe sia un descrittore, le regole viste in precedenza si qualificano come di seguito:
+
+ - Se il membro è un descrittore non sovrascrivente (ovvero, un descrittore che implementa solo il metodo `__get__`), viene restituito il risultato del metodo `__get__` del descrittore. Esempio: 
+  
+  ```python
+  class DescrittoreNonSovrascrivente:
+    def __init__(self, valore):
+      self.valore = valore
+    
+    def __get__(self, istanza, proprietario):
+      return self.valore  # <1>
+
+  class MiaClasse:
+    descrittore = DescrittoreNonSovrascrivente("valore descrittore")  # <2>
+
+  istanza = MiaClasse()
+  print(istanza.descrittore)  # <3>
+  ```
+  1. Il metodo `__get__` restituisce il valore del descrittore.
+  2. Definisce un descrittore non sovrascrivente come attributo di classe.
+  3. Trova `descrittore` nella classe, chiama `DescrittoreNonSovrascrivente.__get__` e restituisce `"valore descrittore"`.
+
+ - Se il membro è un descrittore sovrascrivente (ovvero, un descrittore che implementa i metodi `__get__` e `__set__`), viene chiamato il metodo `__get__` del descrittore, che restituisce il valore dell'attributo. Esempio:
+
+  ```python
+  class DescrittoreSovrascrivente:
+    def __init__(self, valore):
+      self.valore = valore
+    
+    def __get__(self, istanza, proprietario):
+      return self.valore  # <1>
+    
+    def __set__(self, istanza, valore):
+      self.valore = valore  # <2>
+
+  class MiaClasse:
+    descrittore = DescrittoreSovrascrivente("valore iniziale")  # <3>
+
+  istanza = MiaClasse()
+  print(istanza.descrittore)  # <4>
+
+  istanza.descrittore = "nuovo valore"  # <5>
+  print(istanza.descrittore)  # <6>
+  ```
+  1. Il metodo `__get__` restituisce il valore del descrittore.
+  2. Il metodo `__set__` permette di modificare il valore del descrittore.
+  3. Definisce un descrittore sovrascrivente come attributo di classe.
+  4. Trova `descrittore` nella classe, chiama `DescrittoreSovrascrivente.__get__` e restituisce `"valore iniziale"`.
+  5. Chiama `DescrittoreSovrascrivente.__set__` per modificare il valore.
+  6. Trova `descrittore` nella classe, chiama `DescrittoreSovrascrivente.__get__` e restituisce `"nuovo valore"`.
+
+ - Se il membro non è un descrittore, viene restituito il valore associato al membro. Esempio:
+
+  ```python
+  class ClasseBase:
+    attributo_base = "valore base"  # <1>
+  
+  class MiaClasse(ClasseBase):
+    pass
+  
+  istanza = MiaClasse()
+  print(istanza.attributo_base)  # <2>
+  ```
+  1. Definisce un attributo di classe non descrittore.
+  2. Trova `attributo_base` nella classe base e restituisce `"valore base"`.
+
+### Usi comuni
+
+Un uso comune dei descrittori è la validazione degli attributi. Ad esempio, possiamo creare un descrittore per assicurare che un attributo sia sempre un numero positivo.
+
+```python
+class PositiveNumber:  # <1>
+  def __init__(self):  # <2>
+    self.value = None  # <3>
+      
+  def __get__(self, instance, owner):  # <4>
+    return self.value  # <5>
+  
+  def __set__(self, instance, value):  # <6>
+    if value < 0:  # <7>
+      raise ValueError("Il valore deve essere positivo")  # <8>
+
+    self.value = value  # <9>
+
+class Prodotto:  # <10>
+  prezzo = PositiveNumber()  # <11>
+
+p = Prodotto()  # <12>
+p.prezzo = 10  # <13>
+print(p.prezzo)  # <14>
+
+p.prezzo = -5  # <15>
+```
+1. Definisce un descrittore `PositiveNumber`.
+2. Inizializzazione del descrittore.
+3. Memorizzazione del valore.
+4. Metodo `__get__` del descrittore per ottenere il valore.
+5. Restituisce il valore memorizzato.
+6. Metodo `__set__` del descrittore per impostare il valore.
+7. Controlla se il valore è negativo.
+8. Solleva un'eccezione se il valore è negativo.
+9. Imposta il valore se è positivo.
+10. Definisce una classe `Prodotto`.
+11. L'attributo `prezzo` della classe `Prodotto` è un descrittore di tipo `PositiveNumber`.
+12. Creazione di un'istanza della classe `Prodotto`.
+13. Imposta il valore dell'attributo `prezzo` dell'istanza `p`.
+14. Stampa il valore dell'attributo `prezzo` dell'istanza `p`.
+15. Tentativo di impostazione di un valore negativo per l'attributo `prezzo` (solleva un'eccezione).
+
+Un altro uso comune dei descrittori è la memorizzazione nella cache dei risultati di calcoli costosi.
+
+```python
+class CachedProperty:  # <1>
+  def __init__(self, func):  # <2>
+    self.func = func  # <3>
+    self.value = None  # <4>
+    self.is_cached = False  # <5>
+
+  def __get__(self, instance, owner):  # <6>
+    if not self.is_cached:  # <7>
+      self.value = self.func(instance)  # <8>
+      self.is_cached = True  # <9>
+
+    return self.value  # <10>
+
+class DatiComplessi:  # <11>
+  @CachedProperty  # <12>
+  def calcolo_costoso(self):  # <13>
+    print("Calcolo in corso...")  # <14>
+
+    return 42  # <15>
+
+d = DatiComplessi()  # <16>
+print(d.calcolo_costoso)  # <17>
+print(d.calcolo_costoso)  # <18>
+```
+1. Definisce un descrittore `CachedProperty`.
+2. Inizializzazione del descrittore con una funzione.
+3. Memorizza la funzione.
+4. Memorizza il valore.
+5. Flag per indicare se il valore è memorizzato nella cache.
+6. Metodo `__get__` del descrittore per ottenere il valore.
+7. Controlla se il valore è memorizzato nella cache.
+8. Calcola il valore e lo memorizza nella cache se non è presente.
+9. Imposta il flag di cache.
+10. Restituisce il valore memorizzato nella cache.
+11. Definisce una classe `DatiComplessi`.
+12. Utilizza `CachedProperty` per decorare un metodo.
+13. Definisce un metodo `calcolo_costoso`.
+14. Stampa un messaggio durante il calcolo.
+15. Restituisce un valore.
+16. Creazione di un'istanza della classe `DatiComplessi`.
+17. Chiama `calcolo_costoso` e stampa il risultato (calcola e memorizza nella cache).
+18. Chiama `calcolo_costoso` e stampa il risultato (usa il valore memorizzato nella cache).
 
 ## Decoratori
 
