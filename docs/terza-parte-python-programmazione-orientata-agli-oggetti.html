@@ -358,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">quarta-parte.qmd</span></span>
+ <span class="menu-text">Quarta parte: Python avanzato</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -462,12 +462,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="listruzione-class" class="level3" data-number="15.1.2">
 <h3 data-number="15.1.2" class="anchored" data-anchor-id="listruzione-class"><span class="header-section-number">15.1.2</span> L’istruzione <code>class</code></h3>
 <p>L’istruzione <code>class</code> è il modo più usuale per creare un oggetto classe. <code>class</code> è un’istruzione composta a singola clausola con la seguente sintassi:</p>
-<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy"><code class="sourceCode python"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1"></a><span class="kw">class</span> NomeClasse(classi<span class="op">-</span>base, <span class="op">*</span>, <span class="op">**</span>kw):</span>
-<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2"></a>  statement(s)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><p><code>NomeClasse</code> è un identificatore: una variabile che la dichiarazione <code>class</code>, quando completata, associa (o riassocia) all’oggetto classe appena creato. Le convenzioni di denominazione Python consigliano di utilizzare il maiuscolo per i nomi delle classi, come <code>Item</code>, <code>PrivilegedUser</code>, <code>MultiUseFacility</code>, ecc.</p></li>
-<li><p><code>classi-base</code> è una serie di espressioni delimitate da virgole i cui valori sono oggetti classe. Vari linguaggi di programmazione utilizzano nomi diversi per questi oggetti classe: possiamo chiamarli basi, superclasse o genitori della classe. Possiamo dire che la classe creata eredita da, deriva da, estende o sottoclasse le sue classi base; in questo capitolo, generalmente usiamo il termine estendere. Questa classe è una sottoclasse diretta o discendente delle sue classi base. <code>**kw</code> può includere un argomento denominato <code>metaclass</code> per stabilire la metaclasse della classe.</p></li>
-</ul>
+<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1"></a><span class="kw">class</span> NomeClasse(classi<span class="op">-</span>base, <span class="op">*</span>, <span class="op">**</span>kw):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2"></a>  statement(s)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1"><code>NomeClasse</code> è un identificatore: una variabile che la dichiarazione <code>class</code>, quando completata, associa (o riassocia) all’oggetto classe appena creato. Le convenzioni di denominazione Python consigliano di utilizzare il maiuscolo per i nomi delle classi, come <code>Item</code>, <code>PrivilegedUser</code>, <code>MultiUseFacility</code>, ecc.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2"><code>classi-base</code> è una serie di espressioni delimitate da virgole i cui valori sono oggetti classe. Vari linguaggi di programmazione utilizzano nomi diversi per questi oggetti classe: possiamo chiamarli basi, superclasse o genitori della classe. Possiamo dire che la classe creata eredita da, deriva da, estende o sottoclasse le sue classi base; in questo capitolo, generalmente usiamo il termine estendere. Questa classe è una sottoclasse diretta o discendente delle sue classi base. <code>**kw</code> può includere un argomento denominato <code>metaclass</code> per stabilire la metaclasse della classe.</span>
+</dd>
+</dl>
 <p>Sintatticamente, includere le classi base è facoltativo: per indicare che stiamo creando una classe senza basi, basta omettere <code>classi-base</code> (e, facoltativamente, omettere anche le parentesi attorno ad esso, posizionando i due punti subito dopo il nome della classe). Ogni classe eredita da <code>object</code>, sia che specifichiamo basi esplicite o meno.</p>
 <p>La relazione di sottoclasse tra classi è transitiva: se <code>C1</code> estende <code>C2</code>, e <code>C2</code> estende <code>C3</code>, allora <code>C1</code> estende <code>C3</code>. La funzione incorporata <code>issubclass(C1, C2)</code> accetta due oggetti classe: restituisce <code>True</code> quando <code>C1</code> estende <code>C2</code>, e altrimenti restituisce <code>False</code>. Qualsiasi classe è una sottoclasse di se stessa; quindi, <code>issubclass(C, C)</code> restituisce <code>True</code> per qualsiasi classe <code>C</code>.</p>
 <p>La sequenza non vuota di istruzioni indentate che segue la definizione della classe è il corpo della classe. Un corpo di classe viene eseguito immediatamente come parte dell’esecuzione della definizione della classe. Fino a quando il corpo non termina l’esecuzione, il nuovo oggetto classe non esiste ancora e l’identificatore <code>NomeClasse</code> non è ancora associato (o riassociato). Nota che la definizione di classe non crea immediatamente nessuna istanza della nuova classe, ma piuttosto determina l’insieme di attributi condivisi da tutte le istanze quando in seguito creiamo istanze chiamando la classe.</p>
@@ -1196,9 +1202,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 <dt data-target-cell="annotated-cell-20" data-target-annotation="10">10</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-lines="15" data-code-annotation="10">Chiamata della funzione <code>di_ciao</code> decorata.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="15" data-code-annotation="10">Chiamata della funzione <code>di_ciao</code> decorata. Output:</span>
 </dd>
 </dl>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>Qualcosa prima della funzione</span>
+<span id="cb1-2"><a href="#cb1-2"></a>Ciao<span class="op">!</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>Qualcosa dopo la funzione</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>L’analogo del codice precedente senza l’uso della sintassi di decorazione <code>@</code>, esplicita ciò che avviene dietro le quinte:</p>
+<div class="sourceCode" id="annotated-cell-22"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-22-1" class="code-annotation-target"><a href="#annotated-cell-22-1"></a><span class="kw">def</span> mio_decoratore(f):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-22-2" class="code-annotation-target"><a href="#annotated-cell-22-2"></a>  <span class="kw">def</span> wrapper():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-22-3" class="code-annotation-target"><a href="#annotated-cell-22-3"></a>    <span class="bu">print</span>(<span class="st">"Qualcosa prima della funzione"</span>)</span>
+<span id="annotated-cell-22-4"><a href="#annotated-cell-22-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-22-5" class="code-annotation-target"><a href="#annotated-cell-22-5"></a>    f()</span>
+<span id="annotated-cell-22-6"><a href="#annotated-cell-22-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-22-7" class="code-annotation-target"><a href="#annotated-cell-22-7"></a>    <span class="bu">print</span>(<span class="st">"Qualcosa dopo la funzione"</span>)</span>
+<span id="annotated-cell-22-8"><a href="#annotated-cell-22-8"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-22-9" class="code-annotation-target"><a href="#annotated-cell-22-9"></a>  <span class="cf">return</span> wrapper</span>
+<span id="annotated-cell-22-10"><a href="#annotated-cell-22-10"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-22-11" class="code-annotation-target"><a href="#annotated-cell-22-11"></a><span class="kw">def</span> di_ciao():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-22-12" class="code-annotation-target"><a href="#annotated-cell-22-12"></a>  <span class="bu">print</span>(<span class="st">"Ciao!"</span>)</span>
+<span id="annotated-cell-22-13"><a href="#annotated-cell-22-13"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-22-14" class="code-annotation-target"><a href="#annotated-cell-22-14"></a>di_ciao <span class="op">=</span> mio_decoratore(di_ciao)</span>
+<span id="annotated-cell-22-15"><a href="#annotated-cell-22-15"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-22-16" class="code-annotation-target"><a href="#annotated-cell-22-16"></a>di_ciao()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-22" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="1" data-code-annotation="1">Definizione del decoratore <code>mio_decoratore</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="2" data-code-annotation="2">Definizione della funzione <code>wrapper</code> interna.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="3" data-code-annotation="3">Stampa di un messaggio prima della chiamata della funzione decorata.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="5" data-code-annotation="4">Chiamata della funzione decorata.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="7" data-code-annotation="5">Stampa di un messaggio dopo la chiamata della funzione decorata.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="9" data-code-annotation="6">Restituzione della funzione <code>wrapper</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="11" data-code-annotation="7">Definizione della funzione <code>di_ciao</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="12" data-code-annotation="8">Stampa del messaggio <code>Ciao!</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="14" data-code-annotation="9">Applicazione del decoratore <code>mio_decoratore</code> alla funzione <code>di_ciao</code> assegnando <code>di_ciao</code> alla funzione <code>wrapper</code> restituita.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="10">10</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="16" data-code-annotation="10">Chiamata della funzione <code>di_ciao</code> decorata. Output:</span>
+</dd>
+</dl>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>Qualcosa prima della funzione</span>
+<span id="cb2-2"><a href="#cb2-2"></a>Ciao<span class="op">!</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>Qualcosa dopo la funzione</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Nel primo esempio, la sintassi <code>@mio_decoratore</code> applica il decoratore alla funzione <code>di_ciao</code> direttamente sopra la definizione della funzione. Nel secondo esempio, il decoratore <code>mio_decoratore</code> viene applicato esplicitamente assegnando <code>di_ciao</code> alla funzione <code>wrapper</code> restituita dal decoratore. Entrambi gli approcci producono lo stesso risultato, ma il secondo esempio mostra chiaramente come tutte le volte che chiano la funzione devo modificare la sintassi mentre usando il decoratore nella definizione della funzione, ho una sola variazione che non impatta i codici che utilizzano la <code>di_ciao()</code>.</p>
 
 
 </section>

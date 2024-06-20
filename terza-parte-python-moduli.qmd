@@ -6,3 +6,130 @@ tbl-cap-location: margin
 
 # Moduli
 
+Un tipico programma Python è composto da diversi file sorgente. Ogni file sorgente è un modulo, che raggruppa codice e dati per il riutilizzo. I moduli sono normalmente indipendenti l'uno dall'altro, in modo che altri programmi possano riutilizzare i moduli specifici di cui hanno bisogno. A volte, per gestire la complessità, gli sviluppatori raggruppano insieme moduli correlati in un pacchetto, una struttura gerarchica ad albero di moduli e sottopacchetti correlati.
+
+Un modulo stabilisce esplicitamente le dipendenze dagli altri moduli utilizzando le istruzioni `import` o `from`. In Python, le variabili globali non sono globali per tutti i moduli, ma piuttosto sono attributi di un singolo oggetto modulo. Pertanto, i moduli Python comunicano sempre in modi espliciti e mantenibili, chiarendo i collegamenti tra di essi.
+
+Python supporta anche moduli di estensione, scritti in altri linguaggi come C, C++, Java, C# o Rust. Per il codice Python che importa un modulo, non importa se il modulo è puro Python o un'estensione. Puoi sempre iniziare scrivendo un modulo in Python. Se in seguito hai bisogno di più velocità, puoi rifattorizzare e riscrivere alcune parti del tuo modulo in linguaggi a basso livello, senza cambiare il codice client che utilizza il modulo.
+
+Questo capitolo discute la creazione e il caricamento dei moduli. Copre anche il raggruppamento di moduli in pacchetti, l'uso di `setuptools` per installare pacchetti e come preparare i pacchetti per la distribuzione. Chiudiamo il capitolo con una discussione su come gestire al meglio i tuoi ambienti Python.
+
+## Oggetti Modulo
+
+I moduli in Python sono gestiti come altri oggetti. Pertanto, puoi passare un modulo come argomento in una chiamata a una funzione. Allo stesso modo, una funzione può restituire un modulo come risultato di una chiamata. Un modulo, proprio come qualsiasi altro oggetto, può essere referenziato da una variabile, un elemento in un contenitore o un attributo di un oggetto. I moduli possono essere chiavi o valori in un dizionario e possono essere membri di un insieme. Ad esempio, il dizionario `sys.modules` contiene oggetti modulo come valori. Il fatto che i moduli possano essere trattati come altri valori in Python è spesso espresso dicendo che i moduli sono oggetti di prima classe.
+
+## L'istruzione `import`
+
+Il codice Python per un modulo chiamato `aname` vive solitamente in un file chiamato `aname.py`. Puoi usare qualsiasi file sorgente Python come modulo eseguendo un'istruzione `import` in un altro file sorgente Python. `import` ha la seguente sintassi:
+
+```python
+import modname [as varname][,...]
+```
+
+Dopo la parola chiave `import` vengono uno o più specificatori di modulo separati da virgole. Nel caso più semplice e comune, un specificatore di modulo è solo `modname`, un identificatore che Python vincola all'oggetto modulo quando l'istruzione `import` termina. In questo caso, Python cerca il modulo con lo stesso nome per soddisfare la richiesta di importazione. Ad esempio, questa istruzione:
+
+```python
+import mymodule  # <1>
+```
+1. Cerca il modulo chiamato `mymodule` e vincola la variabile chiamata `mymodule` nell'ambito corrente all'oggetto modulo.
+
+## Il corpo del modulo
+
+Il corpo di un modulo è la sequenza di istruzioni nel file sorgente del modulo. Non c'è una sintassi speciale richiesta per indicare che un file sorgente è un modulo; puoi usare qualsiasi file sorgente Python valido come modulo. Il corpo di un modulo viene eseguito immediatamente la prima volta che un programma importa il modulo. Quando il corpo inizia a essere eseguito, l'oggetto modulo è già stato creato, con una voce in `sys.modules` già vincolata all'oggetto modulo. Il namespace (spazio dei nomi) globale del modulo viene gradualmente popolato man mano che il corpo del modulo viene eseguito.
+
+## Attributi degli oggetti modulo
+
+Un'istruzione `import` crea un nuovo spazio di nomi contenente tutti gli attributi del modulo. Per accedere a un attributo in questo spazio di nomi, utilizza il nome o l'alias del modulo come prefisso:
+
+```python
+import mymodule  # <1>
+a = mymodule.f()  # <2>
+```
+1. Importa il modulo `mymodule`.
+2. Accede all'attributo `f()` del modulo `mymodule`.
+
+Normalmente, sono le istruzioni nel corpo del modulo a vincolare gli attributi di un oggetto modulo. Quando un'istruzione nel corpo del modulo vincola una variabile globale, ciò che viene vincolato è un attributo dell'oggetto modulo.
+
+## La funzione `__getattr__`
+
+Una funzione `__getattr__` definita a livello di modulo può creare dinamicamente nuovi attributi del modulo. Un possibile motivo per farlo sarebbe definire attributi che richiedono molto tempo per essere creati; definirli in una funzione `__getattr__` a livello di modulo rinvia la creazione degli attributi fino a quando non vengono effettivamente referenziati, se mai lo saranno.
+
+Ecco un esempio di codice che potrebbe essere aggiunto a `mymodule.py` per rinviare la creazione di un elenco contenente i primi milioni di numeri primi:
+
+```python
+def __getattr__(name):  # <1>
+  if name == 'first_million_primes':  # <2>
+    def generate_n_primes(n):  # <3>
+      # ... codice per generare 'n' numeri primi ...
+      pass
+
+    import sys  # <4>
+
+    this_module = sys.modules[__name__]  # <5>
+
+    this_module.first_million_primes = generate_n_primes(1_000_000)  # <6>
+
+    return this_module.first_million_primes  # <7>
+      
+  raise AttributeError(f'module {__name__!r} has no attribute {name!r}')  # <8>
+```
+1. Definisce la funzione `__getattr__` a livello di modulo.
+2. Controlla se l'attributo richiesto è `first_million_primes`.
+3. Definisce una funzione interna per generare 'n' numeri primi.
+4. Importa il modulo `sys`.
+5. Ottiene il modulo corrente da `sys.modules`.
+6. Crea l'attributo `first_million_primes` nel modulo corrente.
+7. Restituisce l'attributo `first_million_primes`.
+8. Solleva un'eccezione `AttributeError` se l'attributo non è trovato.
+
+## La dichiarazione `from`
+
+L'istruzione `from` di Python consente di importare attributi specifici da un modulo nello spazio dei nomi corrente. `from` ha due varianti di sintassi:
+
+```python
+from modname import attrname [as varname][,...]
+from modname import *
+```
+
+Un'istruzione `from` specifica un nome di modulo, seguito da uno o più specificatori di attributo separati da virgole. Nel caso più semplice e comune, uno specificatore di attributo è solo un identificatore `attrname`, che è una variabile che Python vincola all'attributo con lo stesso nome nel modulo chiamato `modname`. Ad esempio:
+
+```python
+from mymodule import f  # <1>
+```
+1. Importa l'attributo `f` dal modulo `mymodule`.
+
+Quando `as varname` è parte di uno specificatore di attributo, Python ottiene il valore dell'attributo `attrname` dal modulo e lo vincola alla variabile `varname`. Ad esempio:
+
+```python
+from mymodule import f as foo  # <1>
+```
+1. Importa l'attributo `f` dal modulo `mymodule` e lo vincola alla variabile `foo`.
+
+## Gestione dei fallimenti di importazione
+
+Se stai importando un modulo che non fa parte di Python standard e desideri gestire i fallimenti di importazione, puoi farlo catturando l'eccezione `ImportError`. Ad esempio, se il tuo codice utilizza il modulo di terze parti `rich` per formattare l'output in modo opzionale, ma ricade su un output normale se quel modulo non è stato installato, importeresti il modulo utilizzando:
+
+```python
+try:
+  import rich  # <1>
+  
+except ImportError:  # <2>
+  rich = None  # <3>
+```
+1. Prova a importare il modulo `rich`.
+2. Cattura l'eccezione `ImportError` se il modulo non è trovato.
+3. Imposta `rich` su `None` se il modulo non è disponibile.
+
+Poi, nella parte di output del tuo programma, scriveresti:
+
+```python
+if rich is not None:  # <1>
+    # ... output utilizzando le funzionalità del modulo rich ...
+
+else:  # <2>
+    # ... output utilizzando le normali istruzioni print() ...
+```
+1. Controlla se il modulo `rich` è disponibile.
+2. Esegue l'output normale se `rich` non è disponibile.
+
+Con questi esempi, hai una panoramica dettagliata su come creare, importare e gestire moduli in Python, inclusi la gestione degli attributi dinamici e la gestione dei fallimenti di importazione.

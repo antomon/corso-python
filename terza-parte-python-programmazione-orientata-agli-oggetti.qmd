@@ -42,10 +42,8 @@ L'istruzione `class` è il modo più usuale per creare un oggetto classe. `class
 class NomeClasse(classi-base, *, **kw):  # <1>
   statement(s)  # <2>
 ```
-
-- `NomeClasse` è un identificatore: una variabile che la dichiarazione `class`, quando completata, associa (o riassocia) all'oggetto classe appena creato. Le convenzioni di denominazione Python consigliano di utilizzare il maiuscolo per i nomi delle classi, come `Item`, `PrivilegedUser`, `MultiUseFacility`, ecc.
-
-- `classi-base` è una serie di espressioni delimitate da virgole i cui valori sono oggetti classe. Vari linguaggi di programmazione utilizzano nomi diversi per questi oggetti classe: possiamo chiamarli basi, superclasse o genitori della classe. Possiamo dire che la classe creata eredita da, deriva da, estende o sottoclasse le sue classi base; in questo capitolo, generalmente usiamo il termine estendere. Questa classe è una sottoclasse diretta o discendente delle sue classi base. `**kw` può includere un argomento denominato `metaclass` per stabilire la metaclasse della classe.
+1. `NomeClasse` è un identificatore: una variabile che la dichiarazione `class`, quando completata, associa (o riassocia) all'oggetto classe appena creato. Le convenzioni di denominazione Python consigliano di utilizzare il maiuscolo per i nomi delle classi, come `Item`, `PrivilegedUser`, `MultiUseFacility`, ecc.
+2. `classi-base` è una serie di espressioni delimitate da virgole i cui valori sono oggetti classe. Vari linguaggi di programmazione utilizzano nomi diversi per questi oggetti classe: possiamo chiamarli basi, superclasse o genitori della classe. Possiamo dire che la classe creata eredita da, deriva da, estende o sottoclasse le sue classi base; in questo capitolo, generalmente usiamo il termine estendere. Questa classe è una sottoclasse diretta o discendente delle sue classi base. `**kw` può includere un argomento denominato `metaclass` per stabilire la metaclasse della classe.
 
 Sintatticamente, includere le classi base è facoltativo: per indicare che stiamo creando una classe senza basi, basta omettere `classi-base` (e, facoltativamente, omettere anche le parentesi attorno ad esso, posizionando i due punti subito dopo il nome della classe). Ogni classe eredita da `object`, sia che specifichiamo basi esplicite o meno.
 
@@ -500,5 +498,48 @@ di_ciao()  # <10>
 7. Applicazione del decoratore `mio_decoratore` alla funzione `di_ciao`.
 8. Definizione della funzione `di_ciao`.
 9. Stampa del messaggio `Ciao!`.
-10. Chiamata della funzione `di_ciao` decorata.
+10. Chiamata della funzione `di_ciao` decorata. Output:
+  ```python
+  Qualcosa prima della funzione
+  Ciao!
+  Qualcosa dopo la funzione
+  ```
+
+L'analogo del codice precedente senza l'uso della sintassi di decorazione `@`, esplicita ciò che avviene dietro le quinte:
+
+```python
+def mio_decoratore(f):  # <1>
+  def wrapper():  # <2>
+    print("Qualcosa prima della funzione")  # <3>
+
+    f()  # <4>
+
+    print("Qualcosa dopo la funzione")  # <5>
+
+  return wrapper  # <6>
+
+def di_ciao():  # <7>
+  print("Ciao!")  # <8>
+
+di_ciao = mio_decoratore(di_ciao)  # <9>
+
+di_ciao()  # <10>
+```
+1. Definizione del decoratore `mio_decoratore`.
+2. Definizione della funzione `wrapper` interna.
+3. Stampa di un messaggio prima della chiamata della funzione decorata.
+4. Chiamata della funzione decorata.
+5. Stampa di un messaggio dopo la chiamata della funzione decorata.
+6. Restituzione della funzione `wrapper`.
+7. Definizione della funzione `di_ciao`.
+8. Stampa del messaggio `Ciao!`.
+9. Applicazione del decoratore `mio_decoratore` alla funzione `di_ciao` assegnando `di_ciao` alla funzione `wrapper` restituita.
+10. Chiamata della funzione `di_ciao` decorata. Output:
+  ```python
+  Qualcosa prima della funzione
+  Ciao!
+  Qualcosa dopo la funzione
+  ```
+
+Nel primo esempio, la sintassi `@mio_decoratore` applica il decoratore alla funzione `di_ciao` direttamente sopra la definizione della funzione. Nel secondo esempio, il decoratore `mio_decoratore` viene applicato esplicitamente assegnando `di_ciao` alla funzione `wrapper` restituita dal decoratore. Entrambi gli approcci producono lo stesso risultato, ma il secondo esempio mostra chiaramente come tutte le volte che chiano la funzione devo modificare la sintassi mentre usando il decoratore nella definizione della funzione, ho una sola variazione che non impatta i codici che utilizzano la `di_ciao()`.
 

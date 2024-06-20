@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -81,8 +115,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="Da neofita di Python a campione - 16&nbsp; Moduli">
+<meta property="og:description" content="">
 <meta property="og:site_name" content="Da neofita di Python a campione">
 <meta name="twitter:title" content="Da neofita di Python a campione - 16&nbsp; Moduli">
+<meta name="twitter:description" content="">
 <meta name="twitter:creator" content="@antomon">
 <meta name="twitter:site" content="@antomon">
 <meta name="twitter:card" content="summary">
@@ -322,7 +358,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">quarta-parte.qmd</span></span>
+ <span class="menu-text">Quarta parte: Python avanzato</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -350,8 +386,20 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#oggetti-modulo" id="toc-oggetti-modulo" class="nav-link active" data-scroll-target="#oggetti-modulo"><span class="header-section-number">16.1</span> Oggetti Modulo</a></li>
+  <li><a href="#listruzione-import" id="toc-listruzione-import" class="nav-link" data-scroll-target="#listruzione-import"><span class="header-section-number">16.2</span> L’istruzione <code>import</code></a></li>
+  <li><a href="#il-corpo-del-modulo" id="toc-il-corpo-del-modulo" class="nav-link" data-scroll-target="#il-corpo-del-modulo"><span class="header-section-number">16.3</span> Il corpo del modulo</a></li>
+  <li><a href="#attributi-degli-oggetti-modulo" id="toc-attributi-degli-oggetti-modulo" class="nav-link" data-scroll-target="#attributi-degli-oggetti-modulo"><span class="header-section-number">16.4</span> Attributi degli oggetti modulo</a></li>
+  <li><a href="#la-funzione-__getattr__" id="toc-la-funzione-__getattr__" class="nav-link" data-scroll-target="#la-funzione-__getattr__"><span class="header-section-number">16.5</span> La funzione <code>__getattr__</code></a></li>
+  <li><a href="#la-dichiarazione-from" id="toc-la-dichiarazione-from" class="nav-link" data-scroll-target="#la-dichiarazione-from"><span class="header-section-number">16.6</span> La dichiarazione <code>from</code></a></li>
+  <li><a href="#gestione-dei-fallimenti-di-importazione" id="toc-gestione-dei-fallimenti-di-importazione" class="nav-link" data-scroll-target="#gestione-dei-fallimenti-di-importazione"><span class="header-section-number">16.7</span> Gestione dei fallimenti di importazione</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/terza-parte-python-moduli.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -375,8 +423,166 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Un tipico programma Python è composto da diversi file sorgente. Ogni file sorgente è un modulo, che raggruppa codice e dati per il riutilizzo. I moduli sono normalmente indipendenti l’uno dall’altro, in modo che altri programmi possano riutilizzare i moduli specifici di cui hanno bisogno. A volte, per gestire la complessità, gli sviluppatori raggruppano insieme moduli correlati in un pacchetto, una struttura gerarchica ad albero di moduli e sottopacchetti correlati.</p>
+<p>Un modulo stabilisce esplicitamente le dipendenze dagli altri moduli utilizzando le istruzioni <code>import</code> o <code>from</code>. In Python, le variabili globali non sono globali per tutti i moduli, ma piuttosto sono attributi di un singolo oggetto modulo. Pertanto, i moduli Python comunicano sempre in modi espliciti e mantenibili, chiarendo i collegamenti tra di essi.</p>
+<p>Python supporta anche moduli di estensione, scritti in altri linguaggi come C, C++, Java, C# o Rust. Per il codice Python che importa un modulo, non importa se il modulo è puro Python o un’estensione. Puoi sempre iniziare scrivendo un modulo in Python. Se in seguito hai bisogno di più velocità, puoi rifattorizzare e riscrivere alcune parti del tuo modulo in linguaggi a basso livello, senza cambiare il codice client che utilizza il modulo.</p>
+<p>Questo capitolo discute la creazione e il caricamento dei moduli. Copre anche il raggruppamento di moduli in pacchetti, l’uso di <code>setuptools</code> per installare pacchetti e come preparare i pacchetti per la distribuzione. Chiudiamo il capitolo con una discussione su come gestire al meglio i tuoi ambienti Python.</p>
+<section id="oggetti-modulo" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="oggetti-modulo"><span class="header-section-number">16.1</span> Oggetti Modulo</h2>
+<p>I moduli in Python sono gestiti come altri oggetti. Pertanto, puoi passare un modulo come argomento in una chiamata a una funzione. Allo stesso modo, una funzione può restituire un modulo come risultato di una chiamata. Un modulo, proprio come qualsiasi altro oggetto, può essere referenziato da una variabile, un elemento in un contenitore o un attributo di un oggetto. I moduli possono essere chiavi o valori in un dizionario e possono essere membri di un insieme. Ad esempio, il dizionario <code>sys.modules</code> contiene oggetti modulo come valori. Il fatto che i moduli possano essere trattati come altri valori in Python è spesso espresso dicendo che i moduli sono oggetti di prima classe.</p>
+</section>
+<section id="listruzione-import" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="listruzione-import"><span class="header-section-number">16.2</span> L’istruzione <code>import</code></h2>
+<p>Il codice Python per un modulo chiamato <code>aname</code> vive solitamente in un file chiamato <code>aname.py</code>. Puoi usare qualsiasi file sorgente Python come modulo eseguendo un’istruzione <code>import</code> in un altro file sorgente Python. <code>import</code> ha la seguente sintassi:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> modname [<span class="im">as</span> varname][,...]</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Dopo la parola chiave <code>import</code> vengono uno o più specificatori di modulo separati da virgole. Nel caso più semplice e comune, un specificatore di modulo è solo <code>modname</code>, un identificatore che Python vincola all’oggetto modulo quando l’istruzione <code>import</code> termina. In questo caso, Python cerca il modulo con lo stesso nome per soddisfare la richiesta di importazione. Ad esempio, questa istruzione:</p>
+<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1"></a><span class="im">import</span> mymodule</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Cerca il modulo chiamato <code>mymodule</code> e vincola la variabile chiamata <code>mymodule</code> nell’ambito corrente all’oggetto modulo.</span>
+</dd>
+</dl>
+</section>
+<section id="il-corpo-del-modulo" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="il-corpo-del-modulo"><span class="header-section-number">16.3</span> Il corpo del modulo</h2>
+<p>Il corpo di un modulo è la sequenza di istruzioni nel file sorgente del modulo. Non c’è una sintassi speciale richiesta per indicare che un file sorgente è un modulo; puoi usare qualsiasi file sorgente Python valido come modulo. Il corpo di un modulo viene eseguito immediatamente la prima volta che un programma importa il modulo. Quando il corpo inizia a essere eseguito, l’oggetto modulo è già stato creato, con una voce in <code>sys.modules</code> già vincolata all’oggetto modulo. Il namespace (spazio dei nomi) globale del modulo viene gradualmente popolato man mano che il corpo del modulo viene eseguito.</p>
+</section>
+<section id="attributi-degli-oggetti-modulo" class="level2" data-number="16.4">
+<h2 data-number="16.4" class="anchored" data-anchor-id="attributi-degli-oggetti-modulo"><span class="header-section-number">16.4</span> Attributi degli oggetti modulo</h2>
+<p>Un’istruzione <code>import</code> crea un nuovo spazio di nomi contenente tutti gli attributi del modulo. Per accedere a un attributo in questo spazio di nomi, utilizza il nome o l’alias del modulo come prefisso:</p>
+<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a><span class="im">import</span> mymodule</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2"></a>a <span class="op">=</span> mymodule.f()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Importa il modulo <code>mymodule</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="2">Accede all’attributo <code>f()</code> del modulo <code>mymodule</code>.</span>
+</dd>
+</dl>
+<p>Normalmente, sono le istruzioni nel corpo del modulo a vincolare gli attributi di un oggetto modulo. Quando un’istruzione nel corpo del modulo vincola una variabile globale, ciò che viene vincolato è un attributo dell’oggetto modulo.</p>
+</section>
+<section id="la-funzione-__getattr__" class="level2" data-number="16.5">
+<h2 data-number="16.5" class="anchored" data-anchor-id="la-funzione-__getattr__"><span class="header-section-number">16.5</span> La funzione <code>__getattr__</code></h2>
+<p>Una funzione <code>__getattr__</code> definita a livello di modulo può creare dinamicamente nuovi attributi del modulo. Un possibile motivo per farlo sarebbe definire attributi che richiedono molto tempo per essere creati; definirli in una funzione <code>__getattr__</code> a livello di modulo rinvia la creazione degli attributi fino a quando non vengono effettivamente referenziati, se mai lo saranno.</p>
+<p>Ecco un esempio di codice che potrebbe essere aggiunto a <code>mymodule.py</code> per rinviare la creazione di un elenco contenente i primi milioni di numeri primi:</p>
+<div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1"></a><span class="kw">def</span> <span class="fu">__getattr__</span>(name):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2"></a>  <span class="cf">if</span> name <span class="op">==</span> <span class="st">'first_million_primes'</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3"></a>    <span class="kw">def</span> generate_n_primes(n):</span>
+<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4"></a>      <span class="co"># ... codice per generare 'n' numeri primi ...</span></span>
+<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5"></a>      <span class="cf">pass</span></span>
+<span id="annotated-cell-4-6"><a href="#annotated-cell-4-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-4-7" class="code-annotation-target"><a href="#annotated-cell-4-7"></a>    <span class="im">import</span> sys</span>
+<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-4-9" class="code-annotation-target"><a href="#annotated-cell-4-9"></a>    this_module <span class="op">=</span> sys.modules[<span class="va">__name__</span>]</span>
+<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-4-11" class="code-annotation-target"><a href="#annotated-cell-4-11"></a>    this_module.first_million_primes <span class="op">=</span> generate_n_primes(<span class="dv">1_000_000</span>)</span>
+<span id="annotated-cell-4-12"><a href="#annotated-cell-4-12"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-4-13" class="code-annotation-target"><a href="#annotated-cell-4-13"></a>    <span class="cf">return</span> this_module.first_million_primes</span>
+<span id="annotated-cell-4-14"><a href="#annotated-cell-4-14"></a>      </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-4-15" class="code-annotation-target"><a href="#annotated-cell-4-15"></a>  <span class="cf">raise</span> <span class="pp">AttributeError</span>(<span class="ss">f'module </span><span class="sc">{</span><span class="va">__name__</span><span class="sc">!r}</span><span class="ss"> has no attribute </span><span class="sc">{</span>name<span class="sc">!r}</span><span class="ss">'</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="1" data-code-annotation="1">Definisce la funzione <code>__getattr__</code> a livello di modulo.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="2">Controlla se l’attributo richiesto è <code>first_million_primes</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="3">Definisce una funzione interna per generare ‘n’ numeri primi.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="7" data-code-annotation="4">Importa il modulo <code>sys</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="9" data-code-annotation="5">Ottiene il modulo corrente da <code>sys.modules</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="11" data-code-annotation="6">Crea l’attributo <code>first_million_primes</code> nel modulo corrente.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="13" data-code-annotation="7">Restituisce l’attributo <code>first_million_primes</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="15" data-code-annotation="8">Solleva un’eccezione <code>AttributeError</code> se l’attributo non è trovato.</span>
+</dd>
+</dl>
+</section>
+<section id="la-dichiarazione-from" class="level2" data-number="16.6">
+<h2 data-number="16.6" class="anchored" data-anchor-id="la-dichiarazione-from"><span class="header-section-number">16.6</span> La dichiarazione <code>from</code></h2>
+<p>L’istruzione <code>from</code> di Python consente di importare attributi specifici da un modulo nello spazio dei nomi corrente. <code>from</code> ha due varianti di sintassi:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">from</span> modname <span class="im">import</span> attrname [<span class="im">as</span> varname][,...]</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="im">from</span> modname <span class="im">import</span> <span class="op">*</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Un’istruzione <code>from</code> specifica un nome di modulo, seguito da uno o più specificatori di attributo separati da virgole. Nel caso più semplice e comune, uno specificatore di attributo è solo un identificatore <code>attrname</code>, che è una variabile che Python vincola all’attributo con lo stesso nome nel modulo chiamato <code>modname</code>. Ad esempio:</p>
+<div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1"></a><span class="im">from</span> mymodule <span class="im">import</span> f</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="1" data-code-annotation="1">Importa l’attributo <code>f</code> dal modulo <code>mymodule</code>.</span>
+</dd>
+</dl>
+<p>Quando <code>as varname</code> è parte di uno specificatore di attributo, Python ottiene il valore dell’attributo <code>attrname</code> dal modulo e lo vincola alla variabile <code>varname</code>. Ad esempio:</p>
+<div class="sourceCode" id="annotated-cell-7"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1"></a><span class="im">from</span> mymodule <span class="im">import</span> f <span class="im">as</span> foo</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="1" data-code-annotation="1">Importa l’attributo <code>f</code> dal modulo <code>mymodule</code> e lo vincola alla variabile <code>foo</code>.</span>
+</dd>
+</dl>
+</section>
+<section id="gestione-dei-fallimenti-di-importazione" class="level2" data-number="16.7">
+<h2 data-number="16.7" class="anchored" data-anchor-id="gestione-dei-fallimenti-di-importazione"><span class="header-section-number">16.7</span> Gestione dei fallimenti di importazione</h2>
+<p>Se stai importando un modulo che non fa parte di Python standard e desideri gestire i fallimenti di importazione, puoi farlo catturando l’eccezione <code>ImportError</code>. Ad esempio, se il tuo codice utilizza il modulo di terze parti <code>rich</code> per formattare l’output in modo opzionale, ma ricade su un output normale se quel modulo non è stato installato, importeresti il modulo utilizzando:</p>
+<div class="sourceCode" id="annotated-cell-8"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1"></a><span class="cf">try</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2"></a>  <span class="im">import</span> rich</span>
+<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3"></a>  </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-8-4" class="code-annotation-target"><a href="#annotated-cell-8-4"></a><span class="cf">except</span> <span class="pp">ImportError</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-8-5" class="code-annotation-target"><a href="#annotated-cell-8-5"></a>  rich <span class="op">=</span> <span class="va">None</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="2" data-code-annotation="1">Prova a importare il modulo <code>rich</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="4" data-code-annotation="2">Cattura l’eccezione <code>ImportError</code> se il modulo non è trovato.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="5" data-code-annotation="3">Imposta <code>rich</code> su <code>None</code> se il modulo non è disponibile.</span>
+</dd>
+</dl>
+<p>Poi, nella parte di output del tuo programma, scriveresti:</p>
+<div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1"></a><span class="cf">if</span> rich <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2"></a>    <span class="co"># ... output utilizzando le funzionalità del modulo rich ...</span></span>
+<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-4" class="code-annotation-target"><a href="#annotated-cell-9-4"></a><span class="cf">else</span>:</span>
+<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5"></a>    <span class="co"># ... output utilizzando le normali istruzioni print() ...</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="1" data-code-annotation="1">Controlla se il modulo <code>rich</code> è disponibile.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="4" data-code-annotation="2">Esegue l’output normale se <code>rich</code> non è disponibile.</span>
+</dd>
+</dl>
+<p>Con questi esempi, hai una panoramica dettagliata su come creare, importare e gestire moduli in Python, inclusi la gestione degli attributi dinamici e la gestione dei fallimenti di importazione.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -979,7 +1185,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/terza-parte-python-moduli.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/terza-parte-python-moduli.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
