@@ -833,23 +833,61 @@ print(conta_parole(frase, maiuscolo_minuscolo=True))
 
 ## Problema
 
-Scrivere una funzione che crea un file di testo, scrive alcune righe al suo interno e salva il file.
+Scrivere una funzione che crea un file di testo, scrive diverse righe al suo interno includendo interi, float, stringhe, liste e dizionari, e salva il file.
 
-## Soluzione
+## Soluzione 1
 
 ```python
 def crea_file_di_testo(nome_file):
   with open(nome_file, 'w') as file:  # <1>
-    file.write("Prima riga di testo\n")  # <2>
+    # Scrittura di vari tipi di dati
+    file.write(f"Esempio di intero: {42}\n")  # <2>
 
-    file.write("Seconda riga di testo\n")  # <3>
+    file.write(f"Esempio di float: {3.14}\n")  # <3>
+
+    file.write(f"Esempio di stringa: {'Ciao, mondo!'}\n")  # <4>
+    
+    lista = [1, 2, 3, 4]
+    file.write(f"Esempio di lista: {lista}\n")  # <5>
+    
+    dizionario = {'chiave': 'valore', 'numero': 42}
+    file.write(f"Esempio di dizionario: {dizionario}\n")  # <6>
 
 # Esempio di utilizzo
 crea_file_di_testo("esempio.txt")
 ```
-1. Apre un file in modalità scrittura `w`.
-2. Scrive una riga di testo nel file.
-3. Scrive un'altra riga di testo nel file.
+1. Apre un file in modalità scrittura.
+2. Scrive un esempio di intero nel file.
+3. Scrive un esempio di float nel file.
+4. Scrive un esempio di stringa nel file.
+5. Scrive un esempio di lista nel file.
+6. Scrive un esempio di dizionario nel file.
+
+## Soluzione 2
+
+```python
+def crea_file_di_testo_writelines(nome_file):
+  with open(nome_file, 'w') as file:  # <1>
+    righe = [
+      f"Esempio di intero: {42}\n",  # <2>
+
+      f"Esempio di float: {3.14}\n",  # <3>
+
+      f"Esempio di stringa: {'Ciao, mondo!'}\n",  # <4>
+
+      f"Esempio di lista: {[1, 2, 3, 4]}\n",  # <5>
+
+      f"Esempio di dizionario: {{'chiave': 'valore', 'numero': 42}}\n"  # <6>
+    ]
+
+    file.writelines(righe)  # <7>
+
+# Esempio di utilizzo
+crea_file_di_testo_writelines("esempio_writelines.txt")
+```
+1. Apre un file in modalità scrittura.
+2. Definisce una lista di righe di testo, ognuna rappresentante un diverso tipo di dato.
+3. Scrive tutte le righe nel file utilizzando `writelines`.
 
 :::
 
@@ -861,23 +899,56 @@ crea_file_di_testo("esempio.txt")
 
 Scrivere una funzione che crea un file JSON, scrive alcuni dati al suo interno e salva il file.
 
-## Soluzione
+### Soluzione 1
 
 ```python
 import json  # <1>
 
 def crea_file_json(nome_file, dati):
-    with open(nome_file, 'w') as file:  # <2>
-        json.dump(dati, file, indent=4)  # <3>
+  with open(nome_file, 'w') as file:  # <2>
+    json.dump(dati, file, indent=4)  # <3>
 
 # Esempio di utilizzo
-dati = {"nome": "Mario", "cognome": "Rossi", "eta": 30}
+dati = {
+  "intero": 42,
+  "float": 3.14,
+  "stringa": "Ciao, mondo!",
+  "lista": [1, 2, 3, 4],
+  "dizionario": {"chiave": "valore", "numero": 42}
+}
 
 crea_file_json("esempio.json", dati)
 ```
 1. Importa il modulo `json`.
-2. Apre un file in modalità scrittura (`w`).
-3. Scrive i dati nel file JSON con un'indentazione di 4 spazi.
+2. Apre un file in modalità scrittura.
+3. Scrive i dati nel file JSON con indentazione.
+
+### Soluzione 2
+
+```python
+import json  # <1>
+
+def crea_file_json_formattato(nome_file, dati):
+  json_data = json.dumps(dati, indent=4)  # <2>
+  
+  with open(nome_file, 'w') as file:  # <3>
+    file.write(json_data)  # <4>
+
+# Esempio di utilizzo
+dati = {
+  "intero": 42,
+  "float": 3.14,
+  "stringa": "Ciao, mondo!",
+  "lista": [1, 2, 3, 4],
+  "dizionario": {"chiave": "valore", "numero": 42}
+}
+
+crea_file_json_formattato("esempio_formattato.json", dati)
+```
+1. Importa il modulo `json`.
+2. Converte i dati in una stringa JSON formattata con indentazione.
+3. Apre un file in modalità scrittura.
+4. Scrive la stringa JSON nel file.
 
 :::
 
@@ -887,26 +958,74 @@ crea_file_json("esempio.json", dati)
 
 ## Problema
 
-Scrivere una funzione che legge un file JSON e stampa i dati contenuti al suo interno.
+Scrivere una funzione che legge un file JSON, riconosce i tipi di dato delle chiavi e dei valori e stampa i dati convertiti.
 
 ## Soluzione
 
 ```python
 import json  # <1>
 
+def converti_valore(valore):
+  if isinstance(valore, str):
+    try:
+      valore_convertito = int(valore)  # <2> 
+
+    except ValueError:
+      try:
+        valore_convertito = float(valore)  # <3>
+      except ValueError:
+        valore_convertito = valore  # <4>
+
+  else:
+    valore_convertito = valore
+
+  return valore_convertito
+
 def leggi_file_json(nome_file):
-    with open(nome_file, 'r') as file:  # <2>
-        dati = json.load(file)  # <3>
+  with open(nome_file, 'r') as file:  # <5>
+    dati = json.load(file)  # <6>
+    
+    dati_convertiti = {}
 
-        print(dati)  # <4>
+    for chiave, valore in dati.items():
+      chiave_convertita = converti_valore(chiave)
 
-# Esempio di utilizzo
+      if isinstance(valore, list):
+        valore_convertito = [converti_valore(v) for v in valore]
+
+      else:
+        valore_convertito = converti_valore(valore)
+          
+      dati_convertiti[chiave_convertita] = valore_convertito
+  
+    print(dati_convertiti)  # <7>
+
+def crea_file_json(nome_file):
+  dati = {
+    "nome": "Mario",
+    "cognome": "Rossi",
+    "eta": 30,  
+    "altezza": 1.75,  
+    "hobby": ["lettura", "pittura", "ciclismo"],  
+    "punteggi": [8, 90, 78],  
+    "info": {"stato_civile": "sposato", "figli": 2}  
+  }
+  with open(nome_file, 'w') as file:  # <8>
+    json.dump(dati, file, indent=2)  # <9>
+
+crea_file_json("esempio.json")
+
 leggi_file_json("esempio.json")
 ```
 1. Importa il modulo `json`.
-2. Apre un file in modalità lettura (`r`).
-3. Legge i dati dal file JSON.
-4. Stampa i dati letti dal file.
+2. Prova a convertire in intero.
+3. Prova a convertire a valore in virgola mobile.
+4. Mantiene come stringa.
+5. Apre un file in modalità lettura.
+6. Legge i dati dal file JSON.
+7. Stampa i dati letti dal file, con chiavi e valori convertiti ai rispettivi tipi.
+8. Apre un file in modalità scrittura.
+9. Scrive i dati nel file JSON con un'indentazione di 2 spazi.
 
 :::
 
@@ -926,13 +1045,13 @@ Scrivere una funzione che verifica se una stringa è un indirizzo email valido u
 import re  # <1>
 
 def verifica_email(email):
-    pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'  # <2>
+  pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'  # <2>
 
-    if re.match(pattern, email):  # <3>
-        return True  # <4>
+  if re.match(pattern, email):  # <3>
+    return True  # <4>
 
-    else:
-        return False  # <5>
+  else:
+    return False  # <5>
 
 # Esempio di utilizzo
 email1 = "esempio@test.com"
@@ -963,11 +1082,11 @@ Scrivere una funzione che estrae tutti i numeri di telefono da una stringa utili
 import re  # <1>
 
 def estrai_numeri_telefono(testo):
-    pattern = r'\b\d{3}[-.]?\d{3}[-.]?\d{4}\b'  # <2>
+  pattern = r'\b\d{3}[-.]?\d{3}[-.]?\d{4}\b'  # <2>
 
-    numeri = re.findall(pattern, testo)  # <3>
+  numeri = re.findall(pattern, testo)  # <3>
 
-    return numeri  # <4>
+  return numeri  # <4>
 
 # Esempio di utilizzo
 testo = "Contattaci al 123-456-7890 o 098.765.4321."
@@ -997,15 +1116,15 @@ Scrivere una funzione che crea un database SQLite e una tabella chiamata `utenti
 import sqlite3  # <1>
 
 def crea_database(nome_db):
-    conn = sqlite3.connect(nome_db)  # <2>
+  conn = sqlite3.connect(nome_db)  # <2>
 
-    c = conn.cursor()  # <3>
+  c = conn.cursor()  # <3>
 
-    c.execute('''CREATE TABLE utenti (id INTEGER PRIMARY KEY, nome TEXT, email TEXT)''')  # <4>
+  c.execute('''CREATE TABLE utenti (id INTEGER PRIMARY KEY, nome TEXT, email TEXT)''')  # <4>
 
-    conn.commit()  # <5>
+  conn.commit()  # <5>
 
-    conn.close()  # <6>
+  conn.close()  # <6>
 
 # Esempio di utilizzo
 crea_database("esempio.db")
@@ -1033,15 +1152,15 @@ Scrivere una funzione che inserisce un nuovo utente nella tabella `utenti`.
 import sqlite3  # <1>
 
 def inserisci_utente(nome_db, nome, email):
-    conn = sqlite3.connect(nome_db)  # <2>
+  conn = sqlite3.connect(nome_db)  # <2>
 
-    c = conn.cursor()  # <3>
+  c = conn.cursor()  # <3>
 
-    c.execute('INSERT INTO utenti (nome, email) VALUES (?, ?)', (nome, email))  # <4>
+  c.execute('INSERT INTO utenti (nome, email) VALUES (?, ?)', (nome, email))  # <4>
 
-    conn.commit()  # <5>
+  conn.commit()  # <5>
 
-    conn.close()  # <6>
+  conn.close()  # <6>
 
 # Esempio di utilizzo
 inserisci_utente("esempio.db", "Mario Rossi", "mario.rossi@example.com")
@@ -1069,18 +1188,18 @@ Scrivere una funzione che legge tutti gli utenti dalla tabella `utenti` e li sta
 import sqlite3  # <1>
 
 def leggi_utenti(nome_db):
-    conn = sqlite3.connect(nome_db)  # <2>
+  conn = sqlite3.connect(nome_db)  # <2>
 
-    c = conn.cursor()  # <3>
+  c = conn.cursor()  # <3>
 
-    c.execute('SELECT * FROM utenti')  # <4>
+  c.execute('SELECT * FROM utenti')  # <4>
 
-    utenti = c.fetchall()  # <5>
+  utenti = c.fetchall()  # <5>
 
-    for utente in utenti:  # <6>
-        print(utente)  # <7>
+  for utente in utenti:  # <6>
+    print(utente)  # <7>
 
-    conn.close()  # <8>
+  conn.close()  # <8>
 
 # Esempio di utilizzo
 leggi_utenti("esempio.db")
@@ -1110,15 +1229,15 @@ Scrivere una funzione che aggiorna l'email di un utente nella tabella `utenti`.
 import sqlite3  # <1>
 
 def aggiorna_email(nome_db, id_utente, nuova_email):
-    conn = sqlite3.connect(nome_db)  # <2>
+  conn = sqlite3.connect(nome_db)  # <2>
 
-    c = conn.cursor()  # <3>
+  c = conn.cursor()  # <3>
 
-    c.execute('UPDATE utenti SET email = ? WHERE id = ?', (nuova_email, id_utente))  # <4>
+  c.execute('UPDATE utenti SET email = ? WHERE id = ?', (nuova_email, id_utente))  # <4>
 
-    conn.commit()  # <5>
+  conn.commit()  # <5>
 
-    conn.close()  # <6>
+  conn.close()  # <6>
 
 # Esempio di utilizzo
 aggiorna_email("esempio.db", 1, "nuovo.email@example.com")
@@ -1146,15 +1265,15 @@ Scrivere una funzione che elimina un utente dalla tabella `utenti`.
 import sqlite3  # <1>
 
 def elimina_utente(nome_db, id_utente):
-    conn = sqlite3.connect(nome_db)  # <2>
+  conn = sqlite3.connect(nome_db)  # <2>
 
-    c = conn.cursor()  # <3>
+  c = conn.cursor()  # <3>
 
-    c.execute('DELETE FROM utenti WHERE id = ?', (id_utente,))  # <4>
+  c.execute('DELETE FROM utenti WHERE id = ?', (id_utente,))  # <4>
 
-    conn.commit()  # <5>
-    
-    conn.close()  # <6>
+  conn.commit()  # <5>
+
+  conn.close()  # <6>
 
 # Esempio di utilizzo
 elimina_utente("esempio.db", 1)

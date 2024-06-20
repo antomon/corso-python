@@ -1,29 +1,53 @@
-class MiaClasse:  # <1>
-  def __init__(self, valore):  # <2>
-    self.__valore = valore  # <3>
+import json  # <1>
 
-  def visualizza_valore(self):  # <4>
-    return self.__valore  # <5>
+def converti_valore(valore):
+  if isinstance(valore, str):
+    try:
+      valore_convertito = int(valore)  # <2> 
 
-  def __metodo_privato(self):  # <6>
-    return "Questo è un metodo privato"  # <7>
+    except ValueError:
+      try:
+        valore_convertito = float(valore)  # <3>
+      except ValueError:
+        valore_convertito = valore  # <4>
 
-istanza = MiaClasse(10)  # <8>
+  else:
+    valore_convertito = valore
 
-print(istanza.visualizza_valore())  # <9>
+  return valore_convertito
 
-try:
-  print(istanza.__valore)  # <10> 
+def leggi_file_json(nome_file):
+  with open(nome_file, 'r') as file:  # <5>
+    dati = json.load(file)  # <6>
+    
+    dati_convertiti = {}
 
-except Exception as e:
-  print(e)
+    for chiave, valore in dati.items():
+      chiave_convertita = converti_valore(chiave)
 
-print(istanza._MiaClasse__valore)  # <11>
+      if isinstance(valore, list):
+        valore_convertito = [converti_valore(v) for v in valore]
 
-try:
-  print(istanza.__metodo_privato())  # <12> 
+      else:
+        valore_convertito = converti_valore(valore)
+          
+      dati_convertiti[chiave_convertita] = valore_convertito
+  
+    print(dati_convertiti)  # <7>
 
-except Exception as e:
-  print(e)
+def crea_file_json(nome_file):
+  dati = {
+    "nome": "Mario",
+    "cognome": "Rossi",
+    "eta": 30,  
+    "altezza": 1.75,  
+    "hobby": ["lettura", "pittura", "ciclismo"],  
+    "punteggi": [8, 90, 78],  
+    "info": {"stato_civile": "sposato", "figli": 2}  
+  }
+  with open(nome_file, 'w') as file:  # <8>
+    json.dump(dati, file, indent=4)  # <9>
 
-print(istanza._MiaClasse__metodo_privato())  # <13>
+crea_file_json("esempio.json")
+
+leggi_file_json("esempio.json")
