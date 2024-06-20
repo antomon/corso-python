@@ -411,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#creazione-di-file-di-testo" id="toc-creazione-di-file-di-testo" class="nav-link" data-scroll-target="#creazione-di-file-di-testo"><span class="header-section-number">13.8.1</span> Creazione di file di testo</a></li>
   <li><a href="#creazione-di-file-json" id="toc-creazione-di-file-json" class="nav-link" data-scroll-target="#creazione-di-file-json"><span class="header-section-number">13.8.2</span> Creazione di file JSON</a></li>
-  <li><a href="#lettura-di-file-json" id="toc-lettura-di-file-json" class="nav-link" data-scroll-target="#lettura-di-file-json"><span class="header-section-number">13.8.5</span> Lettura di file JSON</a></li>
+  <li><a href="#lettura-di-file-json" id="toc-lettura-di-file-json" class="nav-link" data-scroll-target="#lettura-di-file-json"><span class="header-section-number">13.8.3</span> Lettura di file JSON</a></li>
   </ul></li>
   <li><a href="#espressioni-regolari" id="toc-espressioni-regolari" class="nav-link" data-scroll-target="#espressioni-regolari"><span class="header-section-number">13.9</span> ➃ Espressioni regolari</a>
   <ul class="collapse">
@@ -1298,12 +1298,12 @@ Suggerimento
 <section id="creazione-di-file-json" class="level3" data-number="13.8.2">
 <h3 data-number="13.8.2" class="anchored" data-anchor-id="creazione-di-file-json"><span class="header-section-number">13.8.2</span> Creazione di file JSON</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true">Problema</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false">Soluzione 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-3" role="tab" aria-controls="tabset-12-3" aria-selected="false">Soluzione 2</a></li></ul>
 <div class="tab-content">
 <div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
 <p>Scrivere una funzione che crea un file JSON, scrive alcuni dati al suo interno e salva il file.</p>
-<section id="soluzione-1-8" class="level3" data-number="13.8.3">
-<h3 data-number="13.8.3" class="anchored" data-anchor-id="soluzione-1-8"><span class="header-section-number">13.8.3</span> Soluzione 1</h3>
+</div>
+<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
 <div class="sourceCode" id="annotated-cell-31"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-31-1" class="code-annotation-target"><a href="#annotated-cell-31-1"></a><span class="im">import</span> json</span>
 <span id="annotated-cell-31-2"><a href="#annotated-cell-31-2"></a></span>
 <span id="annotated-cell-31-3"><a href="#annotated-cell-31-3"></a><span class="kw">def</span> crea_file_json(nome_file, dati):</span>
@@ -1334,9 +1334,8 @@ Suggerimento
 <span data-code-cell="annotated-cell-31" data-code-lines="5" data-code-annotation="3">Scrive i dati nel file JSON con indentazione.</span>
 </dd>
 </dl>
-</section>
-<section id="soluzione-2-8" class="level3" data-number="13.8.4">
-<h3 data-number="13.8.4" class="anchored" data-anchor-id="soluzione-2-8"><span class="header-section-number">13.8.4</span> Soluzione 2</h3>
+</div>
+<div id="tabset-12-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-3-tab">
 <div class="sourceCode" id="annotated-cell-32"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-32-1" class="code-annotation-target"><a href="#annotated-cell-32-1"></a><span class="im">import</span> json</span>
 <span id="annotated-cell-32-2"><a href="#annotated-cell-32-2"></a></span>
 <span id="annotated-cell-32-3"><a href="#annotated-cell-32-3"></a><span class="kw">def</span> crea_file_json_formattato(nome_file, dati):</span>
@@ -1373,13 +1372,12 @@ Suggerimento
 <span data-code-cell="annotated-cell-32" data-code-lines="7" data-code-annotation="4">Scrive la stringa JSON nel file.</span>
 </dd>
 </dl>
-</section>
 </div>
 </div>
 </div>
 </section>
-<section id="lettura-di-file-json" class="level3" data-number="13.8.5">
-<h3 data-number="13.8.5" class="anchored" data-anchor-id="lettura-di-file-json"><span class="header-section-number">13.8.5</span> Lettura di file JSON</h3>
+<section id="lettura-di-file-json" class="level3" data-number="13.8.3">
+<h3 data-number="13.8.3" class="anchored" data-anchor-id="lettura-di-file-json"><span class="header-section-number">13.8.3</span> Lettura di file JSON</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-13-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-1" role="tab" aria-controls="tabset-13-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-2" role="tab" aria-controls="tabset-13-2" aria-selected="false">Soluzione</a></li></ul>
 <div class="tab-content">
