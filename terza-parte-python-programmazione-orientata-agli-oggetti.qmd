@@ -22,18 +22,17 @@ L'istruzione `class` è il modo più usuale per definire un oggetto classe. `cla
 class NomeClasse(classi-base, *, **kw):  # <1>
   istruzione(i)  # <2>
 ```
-1. Testata della definizione di classe:
-  - `NomeClasse` è un identificatore, cioè una variabile che la definizione `class`, quando completata, associa (o riassocia) all'oggetto classe appena creato. Le convenzioni di denominazione Python consigliano di utilizzare la convenzione del cammello per i nomi delle classi, come `Elemento`, `UtentePrivilegiato`, `StrutturaMultiUso`, ecc.
-  - `classi-base` è una serie di espressioni delimitate da virgole i cui valori sono oggetti classe. Vari linguaggi di programmazione utilizzano nomi diversi per questi oggetti classe: possiamo chiamarli basi, superclasse o genitori della classe. Possiamo dire che la classe creata eredita da, deriva da, estende o sottoclasse le sue classi base; in questo capitolo, generalmente usiamo il termine estendere. Questa classe è una sottoclasse diretta o discendente delle sue classi base. `**kw` può includere un argomento denominato `metaclass` per stabilire la metaclasse della classe.
-  - La definizione di una classe crea un oggetto classe, proprio come la definizione di una funzione crea un oggetto funzione. L'oggetto classe ha tipo `type`, da non confondere con la funzione predefinita `type()`. Quando si chiama una classe come se fosse una funzione, avviene l'istanziazione, che crea un nuovo oggetto istanza della classe con un tipo corrispondente alla classe stessa.
+1. Testata della definizione di classe: `NomeClasse` è un identificatore, cioè una variabile che la definizione `class`, quando completata, associa (o riassocia) all'oggetto classe appena creato. Le convenzioni di denominazione Python consigliano di utilizzare la convenzione del cammello per i nomi delle classi, come `Elemento`, `UtentePrivilegiato`, `StrutturaMultiUso`, ecc. `classi-base` è una serie di espressioni delimitate da virgole i cui valori sono oggetti classe. Vari linguaggi di programmazione utilizzano nomi diversi per questi oggetti classe: possiamo chiamarli basi, superclasse o genitori della classe. Possiamo dire che la classe creata eredita da, deriva da, estende o sottoclasse le sue classi base; in questo capitolo, generalmente usiamo il termine estendere. Questa classe è una sottoclasse diretta o discendente delle sue classi base. `**kw` può includere un argomento denominato `metaclass` per stabilire la metaclasse della classe.
 2. Corpo della definizione della classe composto di istruzioni di definizione di membri della classe. Queste possono includere la definizione di attributi, metodi e altre classi.
+
+La definizione di una classe crea un oggetto classe, proprio come la definizione di una funzione crea un oggetto funzione. L'oggetto classe ha tipo `type`, da non confondere con la funzione predefinita `type()`. Quando si chiama una classe come se fosse una funzione, avviene l'istanziazione, che crea un nuovo oggetto istanza della classe con un tipo corrispondente alla classe stessa.
 
 Esempio di definizione di una classe:
 
 ```python
 class MiaClasse:  # <1>
-    def __init__(self, valore):  # <2>
-        self.valore = valore  # <3>
+  def __init__(self, valore):  # <2>
+    self.valore = valore  # <3>
 
 istanza = MiaClasse(10)  # <4>
 
@@ -49,19 +48,19 @@ print(type(istanza))  # <6>
 
 ### Il parametro `self`
 
-In Python, i metodi delle classi richiedono un parametro speciale `self` come primo parametro. Questo parametro rappresenta l'istanza della classe ed è usato per accedere agli attributi e ai metodi dell'istanza. La differenza fondamentale tra membri della classe e membri delle istanze è che i membri della classe sono condivisi tra tutte le istanze, mentre i membri delle istanze sono specifici per ciascuna istanza.
+In Python, i metodi di istanza delle classi possono includere un parametro speciale `self` come primo parametro. Quando presente, `self` permette di passare al metodo l'istanza della classe, consentendo l'accesso agli attributi e ai metodi dell'istanza. La differenza fondamentale tra membri della classe e membri delle istanze è che i membri della classe sono condivisi tra tutte le istanze, mentre i membri delle istanze sono specifici per ciascuna istanza.
 
 Esempio di membri della classe e membri delle istanze:
 
 ```python
 class MiaClasse:  # <1>
-    attributo_classe = "Valore di classe"  # <2>
+  attributo_classe = "Valore di classe"  # <2>
 
-    def __init__(self, valore):  # <3>
-        self.attributo_istanza = valore  # <4>
+  def __init__(self, valore):  # <3>
+    self.attributo_istanza = valore  # <4>
 
-    def mostra_attributi(self):  # <5>
-        return f"Classe: {MiaClasse.attributo_classe}, Istanza: {self.attributo_istanza}"  # <6>
+  def mostra_attributi(self):  # <5>
+    return f"Classe: {MiaClasse.attributo_classe}, Istanza: {self.attributo_istanza}"  # <6>
 
 # Creazione di due istanze della classe
 istanza1 = MiaClasse("Valore 1")  # <7>
