@@ -840,7 +840,6 @@ Scrivere una funzione che crea un file di testo, scrive diverse righe al suo int
 ```python
 def crea_file_di_testo(nome_file):
   with open(nome_file, 'w') as file:  # <1>
-    # Scrittura di vari tipi di dati
     file.write(f"Esempio di intero: {42}\n")  # <2>
 
     file.write(f"Esempio di float: {3.14}\n")  # <3>
@@ -1026,6 +1025,75 @@ leggi_file_json("esempio.json")
 7. Stampa i dati letti dal file, con chiavi e valori convertiti ai rispettivi tipi.
 8. Apre un file in modalità scrittura.
 9. Scrive i dati nel file JSON con un'indentazione di 2 spazi.
+
+:::
+
+### Creazione e gestione di cartelle e file
+
+::: {.panel-tabset}
+
+## Problema
+
+Scrivere una funzione che crea una cartella e un file al suo interno, crea un'altra cartella e un file al suo interno, e poi esegue operazioni di cancellazione di cartelle e file, nonché spostamento di file tra le cartelle.
+
+## Soluzione
+
+```python
+import os  # <1>
+import shutil  # <2>
+
+def crea_cartelle_e_file():
+  os.makedirs("cartella1", exist_ok=True)  # <3>
+
+  with open(os.path.join("cartella1", "file1.txt"), 'w') as file:  # <4>
+    file.write("Questo è il file 1 nella cartella 1")  # <5>
+
+  os.makedirs("cartella2", exist_ok=True)  # <6>
+
+  with open(os.path.join("cartella2", "file2.txt"), 'w') as file:  # <7>
+    file.write("Questo è il file 2 nella cartella 2")  # <8>
+
+def elimina_file_e_cartelle():
+  os.remove(os.path.join("cartella1", "file1.txt"))  # <9>
+
+  os.rmdir("cartella1")  # <10>
+
+  os.remove(os.path.join("cartella2", "file2.txt"))  # <11>
+
+  os.rmdir("cartella2")  # <12>
+
+def sposta_file():
+  crea_cartelle_e_file()
+
+  shutil.move(os.path.join("cartella2", "file2.txt"), os.path.join("cartella1", "file2.txt"))  # <13>
+
+  if os.path.exists(os.path.join("cartella1", "file2.txt")):
+    print("Spostamento riuscito!")  # <14>
+
+  else:
+    print("Spostamento fallito.")  # <15>
+
+  elimina_file_e_cartelle()
+
+# Esempio di utilizzo
+crea_cartelle_e_file()
+sposta_file()
+```
+1. Importa il modulo `os`.
+2. Importa il modulo `shutil`.
+3. Crea la prima cartella, se non esiste già.
+4. Crea un file all'interno della prima cartella.
+5. Scrive del testo nel file della prima cartella.
+6. Crea la seconda cartella, se non esiste già.
+7. Crea un file all'interno della seconda cartella.
+8. Scrive del testo nel file della seconda cartella.
+9. Cancella il file nella prima cartella.
+10. Cancella la prima cartella.
+11. Cancella il file nella seconda cartella.
+12. Cancella la seconda cartella.
+13. Sposta il file dalla seconda cartella alla prima cartella.
+14. Verifica se lo spostamento è riuscito.
+15. Stampa un messaggio di errore se lo spostamento fallisce.
 
 :::
 

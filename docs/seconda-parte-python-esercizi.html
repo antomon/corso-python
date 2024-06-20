@@ -412,6 +412,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#creazione-di-file-di-testo" id="toc-creazione-di-file-di-testo" class="nav-link" data-scroll-target="#creazione-di-file-di-testo"><span class="header-section-number">13.8.1</span> Creazione di file di testo</a></li>
   <li><a href="#creazione-di-file-json" id="toc-creazione-di-file-json" class="nav-link" data-scroll-target="#creazione-di-file-json"><span class="header-section-number">13.8.2</span> Creazione di file JSON</a></li>
   <li><a href="#lettura-di-file-json" id="toc-lettura-di-file-json" class="nav-link" data-scroll-target="#lettura-di-file-json"><span class="header-section-number">13.8.3</span> Lettura di file JSON</a></li>
+  <li><a href="#creazione-e-gestione-di-cartelle-e-file" id="toc-creazione-e-gestione-di-cartelle-e-file" class="nav-link" data-scroll-target="#creazione-e-gestione-di-cartelle-e-file"><span class="header-section-number">13.8.4</span> Creazione e gestione di cartelle e file</a></li>
   </ul></li>
   <li><a href="#espressioni-regolari" id="toc-espressioni-regolari" class="nav-link" data-scroll-target="#espressioni-regolari"><span class="header-section-number">13.9</span> ➃ Espressioni regolari</a>
   <ul class="collapse">
@@ -1216,21 +1217,20 @@ Suggerimento
 <div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
 <div class="sourceCode" id="annotated-cell-29"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-29-1"><a href="#annotated-cell-29-1"></a><span class="kw">def</span> crea_file_di_testo(nome_file):</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-29-2" class="code-annotation-target"><a href="#annotated-cell-29-2"></a>  <span class="cf">with</span> <span class="bu">open</span>(nome_file, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
-<span id="annotated-cell-29-3"><a href="#annotated-cell-29-3"></a>    <span class="co"># Scrittura di vari tipi di dati</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-29-4" class="code-annotation-target"><a href="#annotated-cell-29-4"></a>    <span class="bu">file</span>.write(<span class="ss">f"Esempio di intero: </span><span class="sc">{</span><span class="dv">42</span><span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
-<span id="annotated-cell-29-5"><a href="#annotated-cell-29-5"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-29-6" class="code-annotation-target"><a href="#annotated-cell-29-6"></a>    <span class="bu">file</span>.write(<span class="ss">f"Esempio di float: </span><span class="sc">{</span><span class="fl">3.14</span><span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
-<span id="annotated-cell-29-7"><a href="#annotated-cell-29-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-29-8" class="code-annotation-target"><a href="#annotated-cell-29-8"></a>    <span class="bu">file</span>.write(<span class="ss">f"Esempio di stringa: </span><span class="sc">{</span><span class="st">'Ciao, mondo!'</span><span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
-<span id="annotated-cell-29-9"><a href="#annotated-cell-29-9"></a>    </span>
-<span id="annotated-cell-29-10"><a href="#annotated-cell-29-10"></a>    lista <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-29-11" class="code-annotation-target"><a href="#annotated-cell-29-11"></a>    <span class="bu">file</span>.write(<span class="ss">f"Esempio di lista: </span><span class="sc">{</span>lista<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
-<span id="annotated-cell-29-12"><a href="#annotated-cell-29-12"></a>    </span>
-<span id="annotated-cell-29-13"><a href="#annotated-cell-29-13"></a>    dizionario <span class="op">=</span> {<span class="st">'chiave'</span>: <span class="st">'valore'</span>, <span class="st">'numero'</span>: <span class="dv">42</span>}</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-29-14" class="code-annotation-target"><a href="#annotated-cell-29-14"></a>    <span class="bu">file</span>.write(<span class="ss">f"Esempio di dizionario: </span><span class="sc">{</span>dizionario<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
-<span id="annotated-cell-29-15"><a href="#annotated-cell-29-15"></a></span>
-<span id="annotated-cell-29-16"><a href="#annotated-cell-29-16"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="annotated-cell-29-17"><a href="#annotated-cell-29-17"></a>crea_file_di_testo(<span class="st">"esempio.txt"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-29-3" class="code-annotation-target"><a href="#annotated-cell-29-3"></a>    <span class="bu">file</span>.write(<span class="ss">f"Esempio di intero: </span><span class="sc">{</span><span class="dv">42</span><span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="annotated-cell-29-4"><a href="#annotated-cell-29-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-29-5" class="code-annotation-target"><a href="#annotated-cell-29-5"></a>    <span class="bu">file</span>.write(<span class="ss">f"Esempio di float: </span><span class="sc">{</span><span class="fl">3.14</span><span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="annotated-cell-29-6"><a href="#annotated-cell-29-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-29-7" class="code-annotation-target"><a href="#annotated-cell-29-7"></a>    <span class="bu">file</span>.write(<span class="ss">f"Esempio di stringa: </span><span class="sc">{</span><span class="st">'Ciao, mondo!'</span><span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="annotated-cell-29-8"><a href="#annotated-cell-29-8"></a>    </span>
+<span id="annotated-cell-29-9"><a href="#annotated-cell-29-9"></a>    lista <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-29-10" class="code-annotation-target"><a href="#annotated-cell-29-10"></a>    <span class="bu">file</span>.write(<span class="ss">f"Esempio di lista: </span><span class="sc">{</span>lista<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="annotated-cell-29-11"><a href="#annotated-cell-29-11"></a>    </span>
+<span id="annotated-cell-29-12"><a href="#annotated-cell-29-12"></a>    dizionario <span class="op">=</span> {<span class="st">'chiave'</span>: <span class="st">'valore'</span>, <span class="st">'numero'</span>: <span class="dv">42</span>}</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-29-13" class="code-annotation-target"><a href="#annotated-cell-29-13"></a>    <span class="bu">file</span>.write(<span class="ss">f"Esempio di dizionario: </span><span class="sc">{</span>dizionario<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="annotated-cell-29-14"><a href="#annotated-cell-29-14"></a></span>
+<span id="annotated-cell-29-15"><a href="#annotated-cell-29-15"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="annotated-cell-29-16"><a href="#annotated-cell-29-16"></a>crea_file_di_testo(<span class="st">"esempio.txt"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-29" data-target-annotation="1">1</dt>
 <dd>
@@ -1238,23 +1238,23 @@ Suggerimento
 </dd>
 <dt data-target-cell="annotated-cell-29" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="4" data-code-annotation="2">Scrive un esempio di intero nel file.</span>
+<span data-code-cell="annotated-cell-29" data-code-lines="3" data-code-annotation="2">Scrive un esempio di intero nel file.</span>
 </dd>
 <dt data-target-cell="annotated-cell-29" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="6" data-code-annotation="3">Scrive un esempio di float nel file.</span>
+<span data-code-cell="annotated-cell-29" data-code-lines="5" data-code-annotation="3">Scrive un esempio di float nel file.</span>
 </dd>
 <dt data-target-cell="annotated-cell-29" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="8" data-code-annotation="4">Scrive un esempio di stringa nel file.</span>
+<span data-code-cell="annotated-cell-29" data-code-lines="7" data-code-annotation="4">Scrive un esempio di stringa nel file.</span>
 </dd>
 <dt data-target-cell="annotated-cell-29" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="11" data-code-annotation="5">Scrive un esempio di lista nel file.</span>
+<span data-code-cell="annotated-cell-29" data-code-lines="10" data-code-annotation="5">Scrive un esempio di lista nel file.</span>
 </dd>
 <dt data-target-cell="annotated-cell-29" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="14" data-code-annotation="6">Scrive un esempio di dizionario nel file.</span>
+<span data-code-cell="annotated-cell-29" data-code-lines="13" data-code-annotation="6">Scrive un esempio di dizionario nel file.</span>
 </dd>
 </dl>
 </div>
@@ -1480,55 +1480,169 @@ Suggerimento
 </div>
 </div>
 </section>
+<section id="creazione-e-gestione-di-cartelle-e-file" class="level3" data-number="13.8.4">
+<h3 data-number="13.8.4" class="anchored" data-anchor-id="creazione-e-gestione-di-cartelle-e-file"><span class="header-section-number">13.8.4</span> Creazione e gestione di cartelle e file</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-14-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-1" role="tab" aria-controls="tabset-14-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-2" role="tab" aria-controls="tabset-14-2" aria-selected="false">Soluzione</a></li></ul>
+<div class="tab-content">
+<div id="tabset-14-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-14-1-tab">
+<p>Scrivere una funzione che crea una cartella e un file al suo interno, crea un’altra cartella e un file al suo interno, e poi esegue operazioni di cancellazione di cartelle e file, nonché spostamento di file tra le cartelle.</p>
+</div>
+<div id="tabset-14-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-2-tab">
+<div class="sourceCode" id="annotated-cell-34"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-34-1" class="code-annotation-target"><a href="#annotated-cell-34-1"></a><span class="im">import</span> os</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-34-2" class="code-annotation-target"><a href="#annotated-cell-34-2"></a><span class="im">import</span> shutil</span>
+<span id="annotated-cell-34-3"><a href="#annotated-cell-34-3"></a></span>
+<span id="annotated-cell-34-4"><a href="#annotated-cell-34-4"></a><span class="kw">def</span> crea_cartelle_e_file():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-34-5" class="code-annotation-target"><a href="#annotated-cell-34-5"></a>  os.makedirs(<span class="st">"cartella1"</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="annotated-cell-34-6"><a href="#annotated-cell-34-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-34-7" class="code-annotation-target"><a href="#annotated-cell-34-7"></a>  <span class="cf">with</span> <span class="bu">open</span>(os.path.join(<span class="st">"cartella1"</span>, <span class="st">"file1.txt"</span>), <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-34-8" class="code-annotation-target"><a href="#annotated-cell-34-8"></a>    <span class="bu">file</span>.write(<span class="st">"Questo è il file 1 nella cartella 1"</span>)</span>
+<span id="annotated-cell-34-9"><a href="#annotated-cell-34-9"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-34-10" class="code-annotation-target"><a href="#annotated-cell-34-10"></a>  os.makedirs(<span class="st">"cartella2"</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="annotated-cell-34-11"><a href="#annotated-cell-34-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-34-12" class="code-annotation-target"><a href="#annotated-cell-34-12"></a>  <span class="cf">with</span> <span class="bu">open</span>(os.path.join(<span class="st">"cartella2"</span>, <span class="st">"file2.txt"</span>), <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-34-13" class="code-annotation-target"><a href="#annotated-cell-34-13"></a>    <span class="bu">file</span>.write(<span class="st">"Questo è il file 2 nella cartella 2"</span>)</span>
+<span id="annotated-cell-34-14"><a href="#annotated-cell-34-14"></a></span>
+<span id="annotated-cell-34-15"><a href="#annotated-cell-34-15"></a><span class="kw">def</span> elimina_file_e_cartelle():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-34-16" class="code-annotation-target"><a href="#annotated-cell-34-16"></a>  os.remove(os.path.join(<span class="st">"cartella1"</span>, <span class="st">"file1.txt"</span>))</span>
+<span id="annotated-cell-34-17"><a href="#annotated-cell-34-17"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-34-18" class="code-annotation-target"><a href="#annotated-cell-34-18"></a>  os.rmdir(<span class="st">"cartella1"</span>)</span>
+<span id="annotated-cell-34-19"><a href="#annotated-cell-34-19"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="11" onclick="event.preventDefault();">11</a><span id="annotated-cell-34-20" class="code-annotation-target"><a href="#annotated-cell-34-20"></a>  os.remove(os.path.join(<span class="st">"cartella2"</span>, <span class="st">"file2.txt"</span>))</span>
+<span id="annotated-cell-34-21"><a href="#annotated-cell-34-21"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="12" onclick="event.preventDefault();">12</a><span id="annotated-cell-34-22" class="code-annotation-target"><a href="#annotated-cell-34-22"></a>  os.rmdir(<span class="st">"cartella2"</span>)</span>
+<span id="annotated-cell-34-23"><a href="#annotated-cell-34-23"></a></span>
+<span id="annotated-cell-34-24"><a href="#annotated-cell-34-24"></a><span class="kw">def</span> sposta_file():</span>
+<span id="annotated-cell-34-25"><a href="#annotated-cell-34-25"></a>  crea_cartelle_e_file()</span>
+<span id="annotated-cell-34-26"><a href="#annotated-cell-34-26"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="13" onclick="event.preventDefault();">13</a><span id="annotated-cell-34-27" class="code-annotation-target"><a href="#annotated-cell-34-27"></a>  shutil.move(os.path.join(<span class="st">"cartella2"</span>, <span class="st">"file2.txt"</span>), os.path.join(<span class="st">"cartella1"</span>, <span class="st">"file2.txt"</span>))</span>
+<span id="annotated-cell-34-28"><a href="#annotated-cell-34-28"></a></span>
+<span id="annotated-cell-34-29"><a href="#annotated-cell-34-29"></a>  <span class="cf">if</span> os.path.exists(os.path.join(<span class="st">"cartella1"</span>, <span class="st">"file2.txt"</span>)):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="14" onclick="event.preventDefault();">14</a><span id="annotated-cell-34-30" class="code-annotation-target"><a href="#annotated-cell-34-30"></a>    <span class="bu">print</span>(<span class="st">"Spostamento riuscito!"</span>)</span>
+<span id="annotated-cell-34-31"><a href="#annotated-cell-34-31"></a></span>
+<span id="annotated-cell-34-32"><a href="#annotated-cell-34-32"></a>  <span class="cf">else</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="15" onclick="event.preventDefault();">15</a><span id="annotated-cell-34-33" class="code-annotation-target"><a href="#annotated-cell-34-33"></a>    <span class="bu">print</span>(<span class="st">"Spostamento fallito."</span>)</span>
+<span id="annotated-cell-34-34"><a href="#annotated-cell-34-34"></a></span>
+<span id="annotated-cell-34-35"><a href="#annotated-cell-34-35"></a>  elimina_file_e_cartelle()</span>
+<span id="annotated-cell-34-36"><a href="#annotated-cell-34-36"></a></span>
+<span id="annotated-cell-34-37"><a href="#annotated-cell-34-37"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="annotated-cell-34-38"><a href="#annotated-cell-34-38"></a>crea_cartelle_e_file()</span>
+<span id="annotated-cell-34-39"><a href="#annotated-cell-34-39"></a>sposta_file()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-34" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="1" data-code-annotation="1">Importa il modulo <code>os</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="2" data-code-annotation="2">Importa il modulo <code>shutil</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="5" data-code-annotation="3">Crea la prima cartella, se non esiste già.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="7" data-code-annotation="4">Crea un file all’interno della prima cartella.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="8" data-code-annotation="5">Scrive del testo nel file della prima cartella.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="10" data-code-annotation="6">Crea la seconda cartella, se non esiste già.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="12" data-code-annotation="7">Crea un file all’interno della seconda cartella.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="13" data-code-annotation="8">Scrive del testo nel file della seconda cartella.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="16" data-code-annotation="9">Cancella il file nella prima cartella.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="10">10</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="18" data-code-annotation="10">Cancella la prima cartella.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="11">11</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="20" data-code-annotation="11">Cancella il file nella seconda cartella.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="12">12</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="22" data-code-annotation="12">Cancella la seconda cartella.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="13">13</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="27" data-code-annotation="13">Sposta il file dalla seconda cartella alla prima cartella.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="14">14</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="30" data-code-annotation="14">Verifica se lo spostamento è riuscito.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="15">15</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="33" data-code-annotation="15">Stampa un messaggio di errore se lo spostamento fallisce.</span>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="espressioni-regolari" class="level2" data-number="13.9">
 <h2 data-number="13.9" class="anchored" data-anchor-id="espressioni-regolari"><span class="header-section-number">13.9</span> ➃ Espressioni regolari</h2>
 <section id="verifica-di-indirizzi-email" class="level3" data-number="13.9.1">
 <h3 data-number="13.9.1" class="anchored" data-anchor-id="verifica-di-indirizzi-email"><span class="header-section-number">13.9.1</span> Verifica di indirizzi email</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-14-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-1" role="tab" aria-controls="tabset-14-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-2" role="tab" aria-controls="tabset-14-2" aria-selected="false">Soluzione</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-15-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-1" role="tab" aria-controls="tabset-15-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-15-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-2" role="tab" aria-controls="tabset-15-2" aria-selected="false">Soluzione</a></li></ul>
 <div class="tab-content">
-<div id="tabset-14-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-14-1-tab">
+<div id="tabset-15-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-15-1-tab">
 <p>Scrivere una funzione che verifica se una stringa è un indirizzo email valido utilizzando le espressioni regolari.</p>
 </div>
-<div id="tabset-14-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-2-tab">
-<div class="sourceCode" id="annotated-cell-34"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-34-1" class="code-annotation-target"><a href="#annotated-cell-34-1"></a><span class="im">import</span> re</span>
-<span id="annotated-cell-34-2"><a href="#annotated-cell-34-2"></a></span>
-<span id="annotated-cell-34-3"><a href="#annotated-cell-34-3"></a><span class="kw">def</span> verifica_email(email):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-34-4" class="code-annotation-target"><a href="#annotated-cell-34-4"></a>  pattern <span class="op">=</span> <span class="vs">r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'</span></span>
-<span id="annotated-cell-34-5"><a href="#annotated-cell-34-5"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-34-6" class="code-annotation-target"><a href="#annotated-cell-34-6"></a>  <span class="cf">if</span> re.match(pattern, email):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-34-7" class="code-annotation-target"><a href="#annotated-cell-34-7"></a>    <span class="cf">return</span> <span class="va">True</span></span>
-<span id="annotated-cell-34-8"><a href="#annotated-cell-34-8"></a></span>
-<span id="annotated-cell-34-9"><a href="#annotated-cell-34-9"></a>  <span class="cf">else</span>:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-34-10" class="code-annotation-target"><a href="#annotated-cell-34-10"></a>    <span class="cf">return</span> <span class="va">False</span></span>
-<span id="annotated-cell-34-11"><a href="#annotated-cell-34-11"></a></span>
-<span id="annotated-cell-34-12"><a href="#annotated-cell-34-12"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="annotated-cell-34-13"><a href="#annotated-cell-34-13"></a>email1 <span class="op">=</span> <span class="st">"esempio@test.com"</span></span>
-<span id="annotated-cell-34-14"><a href="#annotated-cell-34-14"></a>email2 <span class="op">=</span> <span class="st">"invalid-email"</span></span>
-<span id="annotated-cell-34-15"><a href="#annotated-cell-34-15"></a></span>
-<span id="annotated-cell-34-16"><a href="#annotated-cell-34-16"></a><span class="bu">print</span>(verifica_email(email1))  <span class="co"># Output: True</span></span>
-<span id="annotated-cell-34-17"><a href="#annotated-cell-34-17"></a><span class="bu">print</span>(verifica_email(email2))  <span class="co"># Output: False</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-15-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-15-2-tab">
+<div class="sourceCode" id="annotated-cell-35"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-35-1" class="code-annotation-target"><a href="#annotated-cell-35-1"></a><span class="im">import</span> re</span>
+<span id="annotated-cell-35-2"><a href="#annotated-cell-35-2"></a></span>
+<span id="annotated-cell-35-3"><a href="#annotated-cell-35-3"></a><span class="kw">def</span> verifica_email(email):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-35-4" class="code-annotation-target"><a href="#annotated-cell-35-4"></a>  pattern <span class="op">=</span> <span class="vs">r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'</span></span>
+<span id="annotated-cell-35-5"><a href="#annotated-cell-35-5"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-35-6" class="code-annotation-target"><a href="#annotated-cell-35-6"></a>  <span class="cf">if</span> re.match(pattern, email):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-35-7" class="code-annotation-target"><a href="#annotated-cell-35-7"></a>    <span class="cf">return</span> <span class="va">True</span></span>
+<span id="annotated-cell-35-8"><a href="#annotated-cell-35-8"></a></span>
+<span id="annotated-cell-35-9"><a href="#annotated-cell-35-9"></a>  <span class="cf">else</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-35-10" class="code-annotation-target"><a href="#annotated-cell-35-10"></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="annotated-cell-35-11"><a href="#annotated-cell-35-11"></a></span>
+<span id="annotated-cell-35-12"><a href="#annotated-cell-35-12"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="annotated-cell-35-13"><a href="#annotated-cell-35-13"></a>email1 <span class="op">=</span> <span class="st">"esempio@test.com"</span></span>
+<span id="annotated-cell-35-14"><a href="#annotated-cell-35-14"></a>email2 <span class="op">=</span> <span class="st">"invalid-email"</span></span>
+<span id="annotated-cell-35-15"><a href="#annotated-cell-35-15"></a></span>
+<span id="annotated-cell-35-16"><a href="#annotated-cell-35-16"></a><span class="bu">print</span>(verifica_email(email1))  <span class="co"># Output: True</span></span>
+<span id="annotated-cell-35-17"><a href="#annotated-cell-35-17"></a><span class="bu">print</span>(verifica_email(email2))  <span class="co"># Output: False</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-34" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-35" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="1" data-code-annotation="1">Importa il modulo <code>re</code>.</span>
+<span data-code-cell="annotated-cell-35" data-code-lines="1" data-code-annotation="1">Importa il modulo <code>re</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-34" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-35" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="4" data-code-annotation="2">Definisce il pattern per un indirizzo email.</span>
+<span data-code-cell="annotated-cell-35" data-code-lines="4" data-code-annotation="2">Definisce il pattern per un indirizzo email.</span>
 </dd>
-<dt data-target-cell="annotated-cell-34" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-35" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="6" data-code-annotation="3">Verifica se la stringa <code>email</code> corrisponde al pattern.</span>
+<span data-code-cell="annotated-cell-35" data-code-lines="6" data-code-annotation="3">Verifica se la stringa <code>email</code> corrisponde al pattern.</span>
 </dd>
-<dt data-target-cell="annotated-cell-34" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-35" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="7" data-code-annotation="4">Restituisce <code>True</code> se l’indirizzo email è valido.</span>
+<span data-code-cell="annotated-cell-35" data-code-lines="7" data-code-annotation="4">Restituisce <code>True</code> se l’indirizzo email è valido.</span>
 </dd>
-<dt data-target-cell="annotated-cell-34" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-35" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="10" data-code-annotation="5">Restituisce <code>False</code> se l’indirizzo email non è valido.</span>
+<span data-code-cell="annotated-cell-35" data-code-lines="10" data-code-annotation="5">Restituisce <code>False</code> se l’indirizzo email non è valido.</span>
 </dd>
 </dl>
 </div>
@@ -1538,41 +1652,41 @@ Suggerimento
 <section id="estrazione-di-numeri-di-telefono" class="level3" data-number="13.9.2">
 <h3 data-number="13.9.2" class="anchored" data-anchor-id="estrazione-di-numeri-di-telefono"><span class="header-section-number">13.9.2</span> Estrazione di numeri di telefono</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-15-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-1" role="tab" aria-controls="tabset-15-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-15-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-2" role="tab" aria-controls="tabset-15-2" aria-selected="false">Soluzione</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-16-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-1" role="tab" aria-controls="tabset-16-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-16-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-2" role="tab" aria-controls="tabset-16-2" aria-selected="false">Soluzione</a></li></ul>
 <div class="tab-content">
-<div id="tabset-15-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-15-1-tab">
+<div id="tabset-16-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-16-1-tab">
 <p>Scrivere una funzione che estrae tutti i numeri di telefono da una stringa utilizzando le espressioni regolari.</p>
 </div>
-<div id="tabset-15-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-15-2-tab">
-<div class="sourceCode" id="annotated-cell-35"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-35-1" class="code-annotation-target"><a href="#annotated-cell-35-1"></a><span class="im">import</span> re</span>
-<span id="annotated-cell-35-2"><a href="#annotated-cell-35-2"></a></span>
-<span id="annotated-cell-35-3"><a href="#annotated-cell-35-3"></a><span class="kw">def</span> estrai_numeri_telefono(testo):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-35-4" class="code-annotation-target"><a href="#annotated-cell-35-4"></a>  pattern <span class="op">=</span> <span class="vs">r'\b\d</span><span class="sc">{3}</span><span class="vs">[-.]?\d</span><span class="sc">{3}</span><span class="vs">[-.]?\d</span><span class="sc">{4}</span><span class="vs">\b'</span></span>
-<span id="annotated-cell-35-5"><a href="#annotated-cell-35-5"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-35-6" class="code-annotation-target"><a href="#annotated-cell-35-6"></a>  numeri <span class="op">=</span> re.findall(pattern, testo)</span>
-<span id="annotated-cell-35-7"><a href="#annotated-cell-35-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-35-8" class="code-annotation-target"><a href="#annotated-cell-35-8"></a>  <span class="cf">return</span> numeri</span>
-<span id="annotated-cell-35-9"><a href="#annotated-cell-35-9"></a></span>
-<span id="annotated-cell-35-10"><a href="#annotated-cell-35-10"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="annotated-cell-35-11"><a href="#annotated-cell-35-11"></a>testo <span class="op">=</span> <span class="st">"Contattaci al 123-456-7890 o 098.765.4321."</span></span>
-<span id="annotated-cell-35-12"><a href="#annotated-cell-35-12"></a></span>
-<span id="annotated-cell-35-13"><a href="#annotated-cell-35-13"></a><span class="bu">print</span>(estrai_numeri_telefono(testo))  <span class="co"># Output: ['123-456-7890', '098.765.4321']</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-16-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-16-2-tab">
+<div class="sourceCode" id="annotated-cell-36"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-36-1" class="code-annotation-target"><a href="#annotated-cell-36-1"></a><span class="im">import</span> re</span>
+<span id="annotated-cell-36-2"><a href="#annotated-cell-36-2"></a></span>
+<span id="annotated-cell-36-3"><a href="#annotated-cell-36-3"></a><span class="kw">def</span> estrai_numeri_telefono(testo):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-36-4" class="code-annotation-target"><a href="#annotated-cell-36-4"></a>  pattern <span class="op">=</span> <span class="vs">r'\b\d</span><span class="sc">{3}</span><span class="vs">[-.]?\d</span><span class="sc">{3}</span><span class="vs">[-.]?\d</span><span class="sc">{4}</span><span class="vs">\b'</span></span>
+<span id="annotated-cell-36-5"><a href="#annotated-cell-36-5"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-36-6" class="code-annotation-target"><a href="#annotated-cell-36-6"></a>  numeri <span class="op">=</span> re.findall(pattern, testo)</span>
+<span id="annotated-cell-36-7"><a href="#annotated-cell-36-7"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-36-8" class="code-annotation-target"><a href="#annotated-cell-36-8"></a>  <span class="cf">return</span> numeri</span>
+<span id="annotated-cell-36-9"><a href="#annotated-cell-36-9"></a></span>
+<span id="annotated-cell-36-10"><a href="#annotated-cell-36-10"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="annotated-cell-36-11"><a href="#annotated-cell-36-11"></a>testo <span class="op">=</span> <span class="st">"Contattaci al 123-456-7890 o 098.765.4321."</span></span>
+<span id="annotated-cell-36-12"><a href="#annotated-cell-36-12"></a></span>
+<span id="annotated-cell-36-13"><a href="#annotated-cell-36-13"></a><span class="bu">print</span>(estrai_numeri_telefono(testo))  <span class="co"># Output: ['123-456-7890', '098.765.4321']</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-35" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-36" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-35" data-code-lines="1" data-code-annotation="1">Importa il modulo <code>re</code>.</span>
+<span data-code-cell="annotated-cell-36" data-code-lines="1" data-code-annotation="1">Importa il modulo <code>re</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-35" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-36" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-35" data-code-lines="4" data-code-annotation="2">Definisce il pattern per un numero di telefono.</span>
+<span data-code-cell="annotated-cell-36" data-code-lines="4" data-code-annotation="2">Definisce il pattern per un numero di telefono.</span>
 </dd>
-<dt data-target-cell="annotated-cell-35" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-36" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-35" data-code-lines="6" data-code-annotation="3">Trova tutti i numeri di telefono nel testo.</span>
+<span data-code-cell="annotated-cell-36" data-code-lines="6" data-code-annotation="3">Trova tutti i numeri di telefono nel testo.</span>
 </dd>
-<dt data-target-cell="annotated-cell-35" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-36" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-35" data-code-lines="8" data-code-annotation="4">Restituisce la lista dei numeri di telefono trovati.</span>
+<span data-code-cell="annotated-cell-36" data-code-lines="8" data-code-annotation="4">Restituisce la lista dei numeri di telefono trovati.</span>
 </dd>
 </dl>
 </div>
@@ -1585,81 +1699,27 @@ Suggerimento
 <section id="creazione-di-un-database-e-una-tabella" class="level3" data-number="13.10.1">
 <h3 data-number="13.10.1" class="anchored" data-anchor-id="creazione-di-un-database-e-una-tabella"><span class="header-section-number">13.10.1</span> Creazione di un database e una tabella</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-16-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-1" role="tab" aria-controls="tabset-16-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-16-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-2" role="tab" aria-controls="tabset-16-2" aria-selected="false">Soluzione</a></li></ul>
-<div class="tab-content">
-<div id="tabset-16-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-16-1-tab">
-<p>Scrivere una funzione che crea un database SQLite e una tabella chiamata <code>utenti</code> con tre colonne: <code>id</code>, <code>nome</code> e <code>email</code>.</p>
-</div>
-<div id="tabset-16-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-16-2-tab">
-<div class="sourceCode" id="annotated-cell-36"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-36-1" class="code-annotation-target"><a href="#annotated-cell-36-1"></a><span class="im">import</span> sqlite3</span>
-<span id="annotated-cell-36-2"><a href="#annotated-cell-36-2"></a></span>
-<span id="annotated-cell-36-3"><a href="#annotated-cell-36-3"></a><span class="kw">def</span> crea_database(nome_db):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-36-4" class="code-annotation-target"><a href="#annotated-cell-36-4"></a>  conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(nome_db)</span>
-<span id="annotated-cell-36-5"><a href="#annotated-cell-36-5"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-36-6" class="code-annotation-target"><a href="#annotated-cell-36-6"></a>  c <span class="op">=</span> conn.cursor()</span>
-<span id="annotated-cell-36-7"><a href="#annotated-cell-36-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-36-8" class="code-annotation-target"><a href="#annotated-cell-36-8"></a>  c.execute(<span class="st">'''CREATE TABLE utenti (id INTEGER PRIMARY KEY, nome TEXT, email TEXT)'''</span>)</span>
-<span id="annotated-cell-36-9"><a href="#annotated-cell-36-9"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-36-10" class="code-annotation-target"><a href="#annotated-cell-36-10"></a>  conn.commit()</span>
-<span id="annotated-cell-36-11"><a href="#annotated-cell-36-11"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-36-12" class="code-annotation-target"><a href="#annotated-cell-36-12"></a>  conn.close()</span>
-<span id="annotated-cell-36-13"><a href="#annotated-cell-36-13"></a></span>
-<span id="annotated-cell-36-14"><a href="#annotated-cell-36-14"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="annotated-cell-36-15"><a href="#annotated-cell-36-15"></a>crea_database(<span class="st">"esempio.db"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-36" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-36" data-code-lines="1" data-code-annotation="1">Importa il modulo <code>sqlite3</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-36" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-36" data-code-lines="4" data-code-annotation="2">Connette al database (crea il database se non esiste).</span>
-</dd>
-<dt data-target-cell="annotated-cell-36" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-36" data-code-lines="6" data-code-annotation="3">Crea un cursore per eseguire comandi SQL.</span>
-</dd>
-<dt data-target-cell="annotated-cell-36" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-36" data-code-lines="8" data-code-annotation="4">Esegue il comando SQL per creare la tabella <code>utenti</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-36" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-36" data-code-lines="10" data-code-annotation="5">Salva le modifiche.</span>
-</dd>
-<dt data-target-cell="annotated-cell-36" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-36" data-code-lines="12" data-code-annotation="6">Chiude la connessione al database.</span>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-</section>
-<section id="inserimento-di-dati-nella-tabella" class="level3" data-number="13.10.2">
-<h3 data-number="13.10.2" class="anchored" data-anchor-id="inserimento-di-dati-nella-tabella"><span class="header-section-number">13.10.2</span> Inserimento di dati nella tabella</h3>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-17-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-1" role="tab" aria-controls="tabset-17-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-17-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-2" role="tab" aria-controls="tabset-17-2" aria-selected="false">Soluzione</a></li></ul>
 <div class="tab-content">
 <div id="tabset-17-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-17-1-tab">
-<p>Scrivere una funzione che inserisce un nuovo utente nella tabella <code>utenti</code>.</p>
+<p>Scrivere una funzione che crea un database SQLite e una tabella chiamata <code>utenti</code> con tre colonne: <code>id</code>, <code>nome</code> e <code>email</code>.</p>
 </div>
 <div id="tabset-17-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-17-2-tab">
 <div class="sourceCode" id="annotated-cell-37"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-37-1" class="code-annotation-target"><a href="#annotated-cell-37-1"></a><span class="im">import</span> sqlite3</span>
 <span id="annotated-cell-37-2"><a href="#annotated-cell-37-2"></a></span>
-<span id="annotated-cell-37-3"><a href="#annotated-cell-37-3"></a><span class="kw">def</span> inserisci_utente(nome_db, nome, email):</span>
+<span id="annotated-cell-37-3"><a href="#annotated-cell-37-3"></a><span class="kw">def</span> crea_database(nome_db):</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-37-4" class="code-annotation-target"><a href="#annotated-cell-37-4"></a>  conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(nome_db)</span>
 <span id="annotated-cell-37-5"><a href="#annotated-cell-37-5"></a></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-37-6" class="code-annotation-target"><a href="#annotated-cell-37-6"></a>  c <span class="op">=</span> conn.cursor()</span>
 <span id="annotated-cell-37-7"><a href="#annotated-cell-37-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-37-8" class="code-annotation-target"><a href="#annotated-cell-37-8"></a>  c.execute(<span class="st">'INSERT INTO utenti (nome, email) VALUES (?, ?)'</span>, (nome, email))</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-37-8" class="code-annotation-target"><a href="#annotated-cell-37-8"></a>  c.execute(<span class="st">'''CREATE TABLE utenti (id INTEGER PRIMARY KEY, nome TEXT, email TEXT)'''</span>)</span>
 <span id="annotated-cell-37-9"><a href="#annotated-cell-37-9"></a></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-37-10" class="code-annotation-target"><a href="#annotated-cell-37-10"></a>  conn.commit()</span>
 <span id="annotated-cell-37-11"><a href="#annotated-cell-37-11"></a></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-37-12" class="code-annotation-target"><a href="#annotated-cell-37-12"></a>  conn.close()</span>
 <span id="annotated-cell-37-13"><a href="#annotated-cell-37-13"></a></span>
 <span id="annotated-cell-37-14"><a href="#annotated-cell-37-14"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="annotated-cell-37-15"><a href="#annotated-cell-37-15"></a>inserisci_utente(<span class="st">"esempio.db"</span>, <span class="st">"Mario Rossi"</span>, <span class="st">"mario.rossi@example.com"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-37-15"><a href="#annotated-cell-37-15"></a>crea_database(<span class="st">"esempio.db"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-37" data-target-annotation="1">1</dt>
 <dd>
@@ -1667,7 +1727,7 @@ Suggerimento
 </dd>
 <dt data-target-cell="annotated-cell-37" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-37" data-code-lines="4" data-code-annotation="2">Connette al database.</span>
+<span data-code-cell="annotated-cell-37" data-code-lines="4" data-code-annotation="2">Connette al database (crea il database se non esiste).</span>
 </dd>
 <dt data-target-cell="annotated-cell-37" data-target-annotation="3">3</dt>
 <dd>
@@ -1675,7 +1735,7 @@ Suggerimento
 </dd>
 <dt data-target-cell="annotated-cell-37" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-37" data-code-lines="8" data-code-annotation="4">Esegue il comando SQL per inserire un nuovo utente.</span>
+<span data-code-cell="annotated-cell-37" data-code-lines="8" data-code-annotation="4">Esegue il comando SQL per creare la tabella <code>utenti</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-37" data-target-annotation="5">5</dt>
 <dd>
@@ -1690,33 +1750,30 @@ Suggerimento
 </div>
 </div>
 </section>
-<section id="lettura-di-dati-dalla-tabella" class="level3" data-number="13.10.3">
-<h3 data-number="13.10.3" class="anchored" data-anchor-id="lettura-di-dati-dalla-tabella"><span class="header-section-number">13.10.3</span> Lettura di dati dalla tabella</h3>
+<section id="inserimento-di-dati-nella-tabella" class="level3" data-number="13.10.2">
+<h3 data-number="13.10.2" class="anchored" data-anchor-id="inserimento-di-dati-nella-tabella"><span class="header-section-number">13.10.2</span> Inserimento di dati nella tabella</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-18-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-18-1" role="tab" aria-controls="tabset-18-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-18-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-18-2" role="tab" aria-controls="tabset-18-2" aria-selected="false">Soluzione</a></li></ul>
 <div class="tab-content">
 <div id="tabset-18-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-18-1-tab">
-<p>Scrivere una funzione che legge tutti gli utenti dalla tabella <code>utenti</code> e li stampa.</p>
+<p>Scrivere una funzione che inserisce un nuovo utente nella tabella <code>utenti</code>.</p>
 </div>
 <div id="tabset-18-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-18-2-tab">
 <div class="sourceCode" id="annotated-cell-38"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-38-1" class="code-annotation-target"><a href="#annotated-cell-38-1"></a><span class="im">import</span> sqlite3</span>
 <span id="annotated-cell-38-2"><a href="#annotated-cell-38-2"></a></span>
-<span id="annotated-cell-38-3"><a href="#annotated-cell-38-3"></a><span class="kw">def</span> leggi_utenti(nome_db):</span>
+<span id="annotated-cell-38-3"><a href="#annotated-cell-38-3"></a><span class="kw">def</span> inserisci_utente(nome_db, nome, email):</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-38-4" class="code-annotation-target"><a href="#annotated-cell-38-4"></a>  conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(nome_db)</span>
 <span id="annotated-cell-38-5"><a href="#annotated-cell-38-5"></a></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-38-6" class="code-annotation-target"><a href="#annotated-cell-38-6"></a>  c <span class="op">=</span> conn.cursor()</span>
 <span id="annotated-cell-38-7"><a href="#annotated-cell-38-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-38-8" class="code-annotation-target"><a href="#annotated-cell-38-8"></a>  c.execute(<span class="st">'SELECT * FROM utenti'</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-38-8" class="code-annotation-target"><a href="#annotated-cell-38-8"></a>  c.execute(<span class="st">'INSERT INTO utenti (nome, email) VALUES (?, ?)'</span>, (nome, email))</span>
 <span id="annotated-cell-38-9"><a href="#annotated-cell-38-9"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-38-10" class="code-annotation-target"><a href="#annotated-cell-38-10"></a>  utenti <span class="op">=</span> c.fetchall()</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-38-10" class="code-annotation-target"><a href="#annotated-cell-38-10"></a>  conn.commit()</span>
 <span id="annotated-cell-38-11"><a href="#annotated-cell-38-11"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-38-12" class="code-annotation-target"><a href="#annotated-cell-38-12"></a>  <span class="cf">for</span> utente <span class="kw">in</span> utenti:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-38-13" class="code-annotation-target"><a href="#annotated-cell-38-13"></a>    <span class="bu">print</span>(utente)</span>
-<span id="annotated-cell-38-14"><a href="#annotated-cell-38-14"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-38-15" class="code-annotation-target"><a href="#annotated-cell-38-15"></a>  conn.close()</span>
-<span id="annotated-cell-38-16"><a href="#annotated-cell-38-16"></a></span>
-<span id="annotated-cell-38-17"><a href="#annotated-cell-38-17"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="annotated-cell-38-18"><a href="#annotated-cell-38-18"></a>leggi_utenti(<span class="st">"esempio.db"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-38-12" class="code-annotation-target"><a href="#annotated-cell-38-12"></a>  conn.close()</span>
+<span id="annotated-cell-38-13"><a href="#annotated-cell-38-13"></a></span>
+<span id="annotated-cell-38-14"><a href="#annotated-cell-38-14"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="annotated-cell-38-15"><a href="#annotated-cell-38-15"></a>inserisci_utente(<span class="st">"esempio.db"</span>, <span class="st">"Mario Rossi"</span>, <span class="st">"mario.rossi@example.com"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-38" data-target-annotation="1">1</dt>
 <dd>
@@ -1732,53 +1789,48 @@ Suggerimento
 </dd>
 <dt data-target-cell="annotated-cell-38" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-38" data-code-lines="8" data-code-annotation="4">Esegue il comando SQL per selezionare tutti gli utenti.</span>
+<span data-code-cell="annotated-cell-38" data-code-lines="8" data-code-annotation="4">Esegue il comando SQL per inserire un nuovo utente.</span>
 </dd>
 <dt data-target-cell="annotated-cell-38" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-38" data-code-lines="10" data-code-annotation="5">Recupera tutti i risultati della query.</span>
+<span data-code-cell="annotated-cell-38" data-code-lines="10" data-code-annotation="5">Salva le modifiche.</span>
 </dd>
 <dt data-target-cell="annotated-cell-38" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-38" data-code-lines="12" data-code-annotation="6">Itera attraverso i risultati.</span>
-</dd>
-<dt data-target-cell="annotated-cell-38" data-target-annotation="7">7</dt>
-<dd>
-<span data-code-cell="annotated-cell-38" data-code-lines="13" data-code-annotation="7">Stampa ogni utente.</span>
-</dd>
-<dt data-target-cell="annotated-cell-38" data-target-annotation="8">8</dt>
-<dd>
-<span data-code-cell="annotated-cell-38" data-code-lines="15" data-code-annotation="8">Chiude la connessione al database.</span>
+<span data-code-cell="annotated-cell-38" data-code-lines="12" data-code-annotation="6">Chiude la connessione al database.</span>
 </dd>
 </dl>
 </div>
 </div>
 </div>
 </section>
-<section id="aggiornamento-di-dati-nella-tabella" class="level3" data-number="13.10.4">
-<h3 data-number="13.10.4" class="anchored" data-anchor-id="aggiornamento-di-dati-nella-tabella"><span class="header-section-number">13.10.4</span> Aggiornamento di dati nella tabella</h3>
+<section id="lettura-di-dati-dalla-tabella" class="level3" data-number="13.10.3">
+<h3 data-number="13.10.3" class="anchored" data-anchor-id="lettura-di-dati-dalla-tabella"><span class="header-section-number">13.10.3</span> Lettura di dati dalla tabella</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-19-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-19-1" role="tab" aria-controls="tabset-19-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-19-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-19-2" role="tab" aria-controls="tabset-19-2" aria-selected="false">Soluzione</a></li></ul>
 <div class="tab-content">
 <div id="tabset-19-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-19-1-tab">
-<p>Scrivere una funzione che aggiorna l’email di un utente nella tabella <code>utenti</code>.</p>
+<p>Scrivere una funzione che legge tutti gli utenti dalla tabella <code>utenti</code> e li stampa.</p>
 </div>
 <div id="tabset-19-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-19-2-tab">
 <div class="sourceCode" id="annotated-cell-39"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-39-1" class="code-annotation-target"><a href="#annotated-cell-39-1"></a><span class="im">import</span> sqlite3</span>
 <span id="annotated-cell-39-2"><a href="#annotated-cell-39-2"></a></span>
-<span id="annotated-cell-39-3"><a href="#annotated-cell-39-3"></a><span class="kw">def</span> aggiorna_email(nome_db, id_utente, nuova_email):</span>
+<span id="annotated-cell-39-3"><a href="#annotated-cell-39-3"></a><span class="kw">def</span> leggi_utenti(nome_db):</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-39-4" class="code-annotation-target"><a href="#annotated-cell-39-4"></a>  conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(nome_db)</span>
 <span id="annotated-cell-39-5"><a href="#annotated-cell-39-5"></a></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-39-6" class="code-annotation-target"><a href="#annotated-cell-39-6"></a>  c <span class="op">=</span> conn.cursor()</span>
 <span id="annotated-cell-39-7"><a href="#annotated-cell-39-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-39-8" class="code-annotation-target"><a href="#annotated-cell-39-8"></a>  c.execute(<span class="st">'UPDATE utenti SET email = ? WHERE id = ?'</span>, (nuova_email, id_utente))</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-39-8" class="code-annotation-target"><a href="#annotated-cell-39-8"></a>  c.execute(<span class="st">'SELECT * FROM utenti'</span>)</span>
 <span id="annotated-cell-39-9"><a href="#annotated-cell-39-9"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-39-10" class="code-annotation-target"><a href="#annotated-cell-39-10"></a>  conn.commit()</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-39-10" class="code-annotation-target"><a href="#annotated-cell-39-10"></a>  utenti <span class="op">=</span> c.fetchall()</span>
 <span id="annotated-cell-39-11"><a href="#annotated-cell-39-11"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-39-12" class="code-annotation-target"><a href="#annotated-cell-39-12"></a>  conn.close()</span>
-<span id="annotated-cell-39-13"><a href="#annotated-cell-39-13"></a></span>
-<span id="annotated-cell-39-14"><a href="#annotated-cell-39-14"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="annotated-cell-39-15"><a href="#annotated-cell-39-15"></a>aggiorna_email(<span class="st">"esempio.db"</span>, <span class="dv">1</span>, <span class="st">"nuovo.email@example.com"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-39-12" class="code-annotation-target"><a href="#annotated-cell-39-12"></a>  <span class="cf">for</span> utente <span class="kw">in</span> utenti:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-39-13" class="code-annotation-target"><a href="#annotated-cell-39-13"></a>    <span class="bu">print</span>(utente)</span>
+<span id="annotated-cell-39-14"><a href="#annotated-cell-39-14"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-39-15" class="code-annotation-target"><a href="#annotated-cell-39-15"></a>  conn.close()</span>
+<span id="annotated-cell-39-16"><a href="#annotated-cell-39-16"></a></span>
+<span id="annotated-cell-39-17"><a href="#annotated-cell-39-17"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="annotated-cell-39-18"><a href="#annotated-cell-39-18"></a>leggi_utenti(<span class="st">"esempio.db"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-39" data-target-annotation="1">1</dt>
 <dd>
@@ -1794,45 +1846,53 @@ Suggerimento
 </dd>
 <dt data-target-cell="annotated-cell-39" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-39" data-code-lines="8" data-code-annotation="4">Esegue il comando SQL per aggiornare l’email dell’utente con l’ID specificato.</span>
+<span data-code-cell="annotated-cell-39" data-code-lines="8" data-code-annotation="4">Esegue il comando SQL per selezionare tutti gli utenti.</span>
 </dd>
 <dt data-target-cell="annotated-cell-39" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-39" data-code-lines="10" data-code-annotation="5">Salva le modifiche.</span>
+<span data-code-cell="annotated-cell-39" data-code-lines="10" data-code-annotation="5">Recupera tutti i risultati della query.</span>
 </dd>
 <dt data-target-cell="annotated-cell-39" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-39" data-code-lines="12" data-code-annotation="6">Chiude la connessione al database.</span>
+<span data-code-cell="annotated-cell-39" data-code-lines="12" data-code-annotation="6">Itera attraverso i risultati.</span>
+</dd>
+<dt data-target-cell="annotated-cell-39" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-39" data-code-lines="13" data-code-annotation="7">Stampa ogni utente.</span>
+</dd>
+<dt data-target-cell="annotated-cell-39" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-39" data-code-lines="15" data-code-annotation="8">Chiude la connessione al database.</span>
 </dd>
 </dl>
 </div>
 </div>
 </div>
 </section>
-<section id="eliminazione-di-dati-dalla-tabella" class="level3" data-number="13.10.5">
-<h3 data-number="13.10.5" class="anchored" data-anchor-id="eliminazione-di-dati-dalla-tabella"><span class="header-section-number">13.10.5</span> Eliminazione di dati dalla tabella</h3>
+<section id="aggiornamento-di-dati-nella-tabella" class="level3" data-number="13.10.4">
+<h3 data-number="13.10.4" class="anchored" data-anchor-id="aggiornamento-di-dati-nella-tabella"><span class="header-section-number">13.10.4</span> Aggiornamento di dati nella tabella</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-20-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-20-1" role="tab" aria-controls="tabset-20-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-20-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-20-2" role="tab" aria-controls="tabset-20-2" aria-selected="false">Soluzione</a></li></ul>
 <div class="tab-content">
 <div id="tabset-20-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-20-1-tab">
-<p>Scrivere una funzione che elimina un utente dalla tabella <code>utenti</code>.</p>
+<p>Scrivere una funzione che aggiorna l’email di un utente nella tabella <code>utenti</code>.</p>
 </div>
 <div id="tabset-20-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-20-2-tab">
 <div class="sourceCode" id="annotated-cell-40"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-40-1" class="code-annotation-target"><a href="#annotated-cell-40-1"></a><span class="im">import</span> sqlite3</span>
 <span id="annotated-cell-40-2"><a href="#annotated-cell-40-2"></a></span>
-<span id="annotated-cell-40-3"><a href="#annotated-cell-40-3"></a><span class="kw">def</span> elimina_utente(nome_db, id_utente):</span>
+<span id="annotated-cell-40-3"><a href="#annotated-cell-40-3"></a><span class="kw">def</span> aggiorna_email(nome_db, id_utente, nuova_email):</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-40-4" class="code-annotation-target"><a href="#annotated-cell-40-4"></a>  conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(nome_db)</span>
 <span id="annotated-cell-40-5"><a href="#annotated-cell-40-5"></a></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-40-6" class="code-annotation-target"><a href="#annotated-cell-40-6"></a>  c <span class="op">=</span> conn.cursor()</span>
 <span id="annotated-cell-40-7"><a href="#annotated-cell-40-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-40-8" class="code-annotation-target"><a href="#annotated-cell-40-8"></a>  c.execute(<span class="st">'DELETE FROM utenti WHERE id = ?'</span>, (id_utente,))</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-40-8" class="code-annotation-target"><a href="#annotated-cell-40-8"></a>  c.execute(<span class="st">'UPDATE utenti SET email = ? WHERE id = ?'</span>, (nuova_email, id_utente))</span>
 <span id="annotated-cell-40-9"><a href="#annotated-cell-40-9"></a></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-40-10" class="code-annotation-target"><a href="#annotated-cell-40-10"></a>  conn.commit()</span>
 <span id="annotated-cell-40-11"><a href="#annotated-cell-40-11"></a></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-40-12" class="code-annotation-target"><a href="#annotated-cell-40-12"></a>  conn.close()</span>
 <span id="annotated-cell-40-13"><a href="#annotated-cell-40-13"></a></span>
 <span id="annotated-cell-40-14"><a href="#annotated-cell-40-14"></a><span class="co"># Esempio di utilizzo</span></span>
-<span id="annotated-cell-40-15"><a href="#annotated-cell-40-15"></a>elimina_utente(<span class="st">"esempio.db"</span>, <span class="dv">1</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-40-15"><a href="#annotated-cell-40-15"></a>aggiorna_email(<span class="st">"esempio.db"</span>, <span class="dv">1</span>, <span class="st">"nuovo.email@example.com"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-40" data-target-annotation="1">1</dt>
 <dd>
@@ -1848,7 +1908,7 @@ Suggerimento
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-40" data-code-lines="8" data-code-annotation="4">Esegue il comando SQL per eliminare l’utente con l’ID specificato.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="8" data-code-annotation="4">Esegue il comando SQL per aggiornare l’email dell’utente con l’ID specificato.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="5">5</dt>
 <dd>
@@ -1857,6 +1917,60 @@ Suggerimento
 <dt data-target-cell="annotated-cell-40" data-target-annotation="6">6</dt>
 <dd>
 <span data-code-cell="annotated-cell-40" data-code-lines="12" data-code-annotation="6">Chiude la connessione al database.</span>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</section>
+<section id="eliminazione-di-dati-dalla-tabella" class="level3" data-number="13.10.5">
+<h3 data-number="13.10.5" class="anchored" data-anchor-id="eliminazione-di-dati-dalla-tabella"><span class="header-section-number">13.10.5</span> Eliminazione di dati dalla tabella</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-21-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-21-1" role="tab" aria-controls="tabset-21-1" aria-selected="true">Problema</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-21-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-21-2" role="tab" aria-controls="tabset-21-2" aria-selected="false">Soluzione</a></li></ul>
+<div class="tab-content">
+<div id="tabset-21-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-21-1-tab">
+<p>Scrivere una funzione che elimina un utente dalla tabella <code>utenti</code>.</p>
+</div>
+<div id="tabset-21-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-21-2-tab">
+<div class="sourceCode" id="annotated-cell-41"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-41" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-41-1" class="code-annotation-target"><a href="#annotated-cell-41-1"></a><span class="im">import</span> sqlite3</span>
+<span id="annotated-cell-41-2"><a href="#annotated-cell-41-2"></a></span>
+<span id="annotated-cell-41-3"><a href="#annotated-cell-41-3"></a><span class="kw">def</span> elimina_utente(nome_db, id_utente):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-41" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-41-4" class="code-annotation-target"><a href="#annotated-cell-41-4"></a>  conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(nome_db)</span>
+<span id="annotated-cell-41-5"><a href="#annotated-cell-41-5"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-41" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-41-6" class="code-annotation-target"><a href="#annotated-cell-41-6"></a>  c <span class="op">=</span> conn.cursor()</span>
+<span id="annotated-cell-41-7"><a href="#annotated-cell-41-7"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-41" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-41-8" class="code-annotation-target"><a href="#annotated-cell-41-8"></a>  c.execute(<span class="st">'DELETE FROM utenti WHERE id = ?'</span>, (id_utente,))</span>
+<span id="annotated-cell-41-9"><a href="#annotated-cell-41-9"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-41" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-41-10" class="code-annotation-target"><a href="#annotated-cell-41-10"></a>  conn.commit()</span>
+<span id="annotated-cell-41-11"><a href="#annotated-cell-41-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-41" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-41-12" class="code-annotation-target"><a href="#annotated-cell-41-12"></a>  conn.close()</span>
+<span id="annotated-cell-41-13"><a href="#annotated-cell-41-13"></a></span>
+<span id="annotated-cell-41-14"><a href="#annotated-cell-41-14"></a><span class="co"># Esempio di utilizzo</span></span>
+<span id="annotated-cell-41-15"><a href="#annotated-cell-41-15"></a>elimina_utente(<span class="st">"esempio.db"</span>, <span class="dv">1</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-41" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-41" data-code-lines="1" data-code-annotation="1">Importa il modulo <code>sqlite3</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-41" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-41" data-code-lines="4" data-code-annotation="2">Connette al database.</span>
+</dd>
+<dt data-target-cell="annotated-cell-41" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-41" data-code-lines="6" data-code-annotation="3">Crea un cursore per eseguire comandi SQL.</span>
+</dd>
+<dt data-target-cell="annotated-cell-41" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-41" data-code-lines="8" data-code-annotation="4">Esegue il comando SQL per eliminare l’utente con l’ID specificato.</span>
+</dd>
+<dt data-target-cell="annotated-cell-41" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-41" data-code-lines="10" data-code-annotation="5">Salva le modifiche.</span>
+</dd>
+<dt data-target-cell="annotated-cell-41" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-41" data-code-lines="12" data-code-annotation="6">Chiude la connessione al database.</span>
 </dd>
 </dl>
 </div>
