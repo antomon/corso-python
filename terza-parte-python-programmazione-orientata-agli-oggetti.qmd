@@ -10,179 +10,258 @@ Python è un linguaggio di programmazione orientato agli oggetti. A differenza d
 
 Il paradigma orientato agli oggetti aiuta a raggruppare stato (dati) e comportamento (codice) in comode unità di funzionalità. Inoltre, offre alcuni meccanismi specializzati utili, come l'ereditarietà e i metodi speciali. L'approccio procedurale più semplice, basato su moduli e funzioni, può essere più adatto quando non è necessario sfruttare i vantaggi della programmazione orientata agli oggetti. Con Python, possiamo combinare e mescolare paradigmi.
 
+Certo, ho incorporato i cambiamenti necessari per migliorare la chiarezza e introdurre la differenza tra membri della classe e membri delle istanze, con esempi di codice appropriati.
+
+---
+
 ## Classi e istanze
 
 Una classe è un tipo definibile dall'utente, che possiamo istanziare per costruire istanze, ovvero oggetti di quel tipo. Python supporta questo attraverso le sue classi e oggetti istanza.
 
-### Classi
+### L'istruzione `class`
+
+L'istruzione `class` è il modo più usuale per definire un oggetto classe. `class` è un'istruzione composta a singola clausola con la seguente sintassi:
+
+```python
+class NomeClasse(classi-base, *, **kw):  # <1>
+  istruzione(i)  # <2>
+```
+1. Testata della definizione di classe:
+  - `NomeClasse` è un identificatore, cioè una variabile che la definizione `class`, quando completata, associa (o riassocia) all'oggetto classe appena creato. Le convenzioni di denominazione Python consigliano di utilizzare la convenzione del cammello per i nomi delle classi, come `Elemento`, `UtentePrivilegiato`, `StrutturaMultiUso`, ecc.
+  - `classi-base` è una serie di espressioni delimitate da virgole i cui valori sono oggetti classe. Vari linguaggi di programmazione utilizzano nomi diversi per questi oggetti classe: possiamo chiamarli basi, superclasse o genitori della classe. Possiamo dire che la classe creata eredita da, deriva da, estende o sottoclasse le sue classi base; in questo capitolo, generalmente usiamo il termine estendere. Questa classe è una sottoclasse diretta o discendente delle sue classi base. `**kw` può includere un argomento denominato `metaclass` per stabilire la metaclasse della classe.
+  - La definizione di una classe crea un oggetto classe, proprio come la definizione di una funzione crea un oggetto funzione. L'oggetto classe ha tipo `type`, da non confondere con la funzione predefinita `type()`. Quando si chiama una classe come se fosse una funzione, avviene l'istanziazione, che crea un nuovo oggetto istanza della classe con un tipo corrispondente alla classe stessa.
+2. Corpo della definizione della classe composto di istruzioni di definizione di membri della classe. Queste possono includere la definizione di attributi, metodi e altre classi.
+
+Esempio di definizione di una classe:
+
+```python
+class MiaClasse:  # <1>
+    def __init__(self, valore):  # <2>
+        self.valore = valore  # <3>
+
+istanza = MiaClasse(10)  # <4>
+
+print(type(MiaClasse))  # <5>
+print(type(istanza))  # <6>
+```
+1. Definisce una classe `MiaClasse`.
+2. Definisce il metodo speciale `__init__` per l'inizializzazione.
+3. Associa un valore all'attributo `valore` dell'istanza.
+4. Crea un'istanza della classe `MiaClasse` con valore 10.
+5. Stampa il tipo di `MiaClasse`, che sarà `<class 'type'>`.
+6. Stampa il tipo di `istanza`, che sarà `<class '__main__.MiaClasse'>`.
+
+### Il parametro `self`
+
+In Python, i metodi delle classi richiedono un parametro speciale `self` come primo parametro. Questo parametro rappresenta l'istanza della classe ed è usato per accedere agli attributi e ai metodi dell'istanza. La differenza fondamentale tra membri della classe e membri delle istanze è che i membri della classe sono condivisi tra tutte le istanze, mentre i membri delle istanze sono specifici per ciascuna istanza.
+
+Esempio di membri della classe e membri delle istanze:
+
+```python
+class MiaClasse:  # <1>
+    attributo_classe = "Valore di classe"  # <2>
+
+    def __init__(self, valore):  # <3>
+        self.attributo_istanza = valore  # <4>
+
+    def mostra_attributi(self):  # <5>
+        return f"Classe: {MiaClasse.attributo_classe}, Istanza: {self.attributo_istanza}"  # <6>
+
+# Creazione di due istanze della classe
+istanza1 = MiaClasse("Valore 1")  # <7>
+istanza2 = MiaClasse("Valore 2")  # <8>
+
+# Accesso agli attributi della classe e delle istanze
+print(MiaClasse.attributo_classe)  # <9>
+print(istanza1.attributo_classe)  # <10>
+print(istanza1.attributo_istanza)  # <11>
+print(istanza2.attributo_istanza)  # <12>
+
+# Chiamata ai metodi delle istanze
+print(istanza1.mostra_attributi())  # <13>
+print(istanza2.mostra_attributi())  # <14>
+```
+1. Definisce una classe `MiaClasse`.
+2. Definisce un attributo di classe `attributo_classe` con valore `Valore di classe`.
+3. Definisce il metodo speciale `__init__` per l'inizializzazione.
+4. Associa un valore all'attributo `attributo_istanza` dell'istanza.
+5. Definisce un metodo `mostra_attributi` per mostrare gli attributi.
+6. Il metodo `mostra_attributi` restituisce una stringa con gli attributi di classe e di istanza.
+7. Crea un'istanza della classe `MiaClasse` con valore `Valore 1`.
+8. Crea un'istanza della classe `MiaClasse` con valore `Valore 2`.
+9. Stampa il valore dell'attributo di classe `attributo_classe`.
+10. Stampa il valore dell'attributo di classe `attributo_classe` dall'istanza `istanza1`.
+11. Stampa il valore dell'attributo di istanza `attributo_istanza` per `istanza1`.
+12. Stampa il valore dell'attributo di istanza `attributo_istanza` per `istanza2`.
+13. Chiama il metodo `mostra_attributi` sull'istanza `istanza1`.
+14. Chiama il metodo `mostra_attributi` sull'istanza `istanza2`.
+
+### Oggetti
 
 Una classe è un oggetto Python con le seguenti caratteristiche:
 
 - La definizione di una classe crea un oggetto classe, proprio come la definizione di una funzione crea un oggetto funzione. L'oggetto classe ha tipo `type`, da non confondere con la funzione predefinita `type()`. Quando si chiama una classe come se fosse una funzione, avviene l'istanziazione, che crea un nuovo oggetto istanza della classe con un tipo corrispondente alla classe stessa.
 
-  ```python
-  class MyClass:  # <1>
-    def __init__(self, value):  # <2>
-      self.value = value  # <3>
+  Esempio:
 
-  instance = MyClass(10)  # <4>
-  print(type(MyClass))  # <5>
-  print(type(instance))  # <6>
+  ```python
+  class MiaClasse:  # <1>
+    def __init__(self, valore):  # <2>
+      self.valore = valore  # <3>
+
+  istanza = MiaClasse(10)  # <4>
+
+  print(type(MiaClasse))  # <5>
+  print(type(istanza))  # <6>
   ```
-  1. Definisce una classe `MyClass`.
+  1. Definisce una classe `MiaClasse`.
   2. Definisce il metodo speciale `__init__` per l'inizializzazione.
-  3. Associa un valore all'attributo `value` dell'istanza.
-  4. Crea un'istanza della classe `MyClass` con valore 10.
-  5. Stampa il tipo di `MyClass`, che sarà `<class 'type'>`.
-  6. Stampa il tipo di `instance`, che sarà `<class '__main__.MyClass'>`.
+  3. Associa un valore all'attributo `valore` dell'istanza.
+  4. Crea un'istanza della classe `MiaClasse` con valore 10.
+  5. Stampa il tipo di `MiaClasse`, che sarà `<class 'type'>`.
+  6. Stampa il tipo di `istanza`, che sarà `<class '__main__.MiaClasse'>`.
 
-- Una classe ha attributi con nomi arbitrari che possiamo associare e referenziare.
+- Una classe ha membri con nomi arbitrari che possiamo associare e referenziare:
 
   ```python
-  class MyClass:  # <1>
-    attribute = "example"  # <2>
+  class MiaClasse:  # <1>
+    primo_attributo = "esempio"  # <2>
 
-  print(MyClass.attribute)  # <3>
+  print(MiaClasse.primo_attributo)  # <3>
   ```
-  1. Definisce una classe `MyClass`.
-  2. Associa un attributo di classe `attribute` con valore "example".
-  3. Stampa il valore dell'attributo di classe `attribute`.
+  1. Definisce una classe `MiaClasse`.
+  2. Associa un attributo di classe `primo_attributo` con valore `esempio`.
+  3. Stampa il valore dell'attributo di classe `primo_attributo`.
 
-- I valori degli attributi della classe possono essere metodi (funzioni) o dati ordinari (variabili).
+- I membri della classe possono essere metodi (funzioni) o dati ordinari (variabili):
 
   ```python
-  class MyClass:  # <1>
-    attribute = "example"  # <2>
+  class MiaClasse:  # <1>
+    primo_attributo = "esempio"  # <2>
     
-    def method(self):  # <3>
-      return "Hello, World!"  # <4>
+    def primo_metodo(self):  # <3>
+      return "Ciao, mondo!"  # <4>
 
-  print(MyClass.attribute)  # <5>
-  print(MyClass().method())  # <6>
+  print(MiaClasse.primo_attributo)  # <5>
+
+  mia_istanza = MiaClasse()  # <6>
+
+  print(mia_istanza.primo_metodo())  # <7>
+  print(MiaClasse.primo_metodo(mia_istanza))  # <8>
   ```
-  1. Definisce una classe `MyClass`.
-  2. Associa un attributo di classe `attribute` con valore "example".
-  3. Definisce un metodo di classe `method`.
-  4. Il metodo `method` restituisce una stringa "Hello, World!".
-  5. Stampa il valore dell'attributo di classe `attribute`.
-  6. Stampa il risultato del metodo `method` chiamato su un'istanza della classe.
+  1. Definisce una classe `MiaClasse`.
+  2. Definisce un attributo di classe `primo_attributo` con valore `esempio`.
+  3. Definisce un metodo `primo_metodo` con un parametro `self`.
+  4. Il metodo `primo_metodo` restituisce una stringa `Ciao, mondo!`.
+  5. Stampa il valore dell'attributo di classe `primo_attributo`.
+  6. Crea un'istanza della classe `MiaClasse` e la associa a `mia_istanza`.
+  7. Chiama il metodo `primo_metodo` sull'istanza `mia_istanza`. Python passa automaticamente `mia_istanza` come argomento per `self`.
+  8. Chiama il metodo `primo_metodo` direttamente sulla classe `MiaClasse`, passando esplicitamente `mia_istanza` come argomento per `self`.
 
-- Gli attributi della classe associati a funzioni sono noti anche come metodi della classe.
+- Gli attributi della classe associati a funzioni sono noti anche come metodi della classe:
 
   ```python
-  class MyClass:  # <1>
-    def method(self):  # <2>
-      return "This is a method"  # <3>
+  class MiaClasse:  # <1>
+    def primo_metodo(self):  # <2>
+      return "Questo è un metodo"  # <3>
 
-  instance = MyClass()  # <4>
-  print(instance.method())  # <5>
+  istanza = MiaClasse()  # <4>
+
+  print(istanza.primo_metodo())  # <5>
   ```
-  1. Definisce una classe `MyClass`.
-  2. Definisce un metodo `method`.
-  3. Il metodo `method` restituisce una stringa "This is a method".
-  4. Crea un'istanza della classe `MyClass`.
-  5. Chiama il metodo `method` sull'istanza e stampa il risultato.
+  1. Definisce una classe `MiaClasse`.
+  2. Definisce un metodo `primo_metodo`.
+  3. Il metodo `primo_metodo` restituisce una stringa `Questo è un metodo`.
+  4. Crea un'istanza della classe `MiaClasse`.
+  5. Chiama il metodo `primo_metodo` sull'istanza e stampa il risultato.
 
 - Un metodo può avere uno dei tanti nomi definiti da Python con due trattini bassi all'inizio e alla fine (noti come nomi dunder, abbreviazione di "double-underscore names" - ad esempio, il nome `__init__` è pronunciato "dunder init"). Python chiama implicitamente questi metodi speciali, quando una classe li fornisce, quando si verificano vari tipi di operazioni su quella classe o sulle sue istanze.
 
   ```python
-  class MyClass:  # <1>
-    def __init__(self, value):  # <2>
-      self.value = value  # <3>
+  class MiaClasse:  # <1>
+    def __init__(self, valore):  # <2>
+      self.valore = valore  # <3>
 
     def __str__(self):  # <4>
-      return f"MyClass with value {self.value}"  # <5>
+      return f"MiaClasse con valore {self.valore}"  # <5>
 
-  instance = MyClass(10)  # <6>
-  print(instance)  # <7>
+  istanza = MiaClasse(10)  # <6>
+
+  print(istanza)  # <7>
   ```
-  1. Definisce una classe `MyClass`.
+  1. Definisce una classe `MiaClasse`.
   2. Definisce il metodo speciale `__init__` per l'inizializzazione.
-  3. Associa un valore all'attributo `value` dell'istanza.
+  3. Associa un valore all'attributo `valore` dell'istanza.
   4. Definisce il metodo speciale `__str__` per la rappresentazione stringa.
   5. `__str__` restituisce una stringa rappresentativa dell'istanza.
-  6. Crea un'istanza della classe `MyClass` con valore 10.
+  6. Crea un'istanza della classe `MiaClasse` con valore `10`.
   7. Stampa la rappresentazione stringa dell'istanza, chiamando implicitamente `__str__`.
 
 - Una classe può ereditare da una o più classi, il che significa che delega ad altri oggetti classe la ricerca di alcuni attributi (inclusi metodi regolari e dunder) che non sono nella classe stessa.
 
   ```python
-  class BaseClass:  # <1>
-    def base_method(self):  # <2>
-      return "Base method"  # <3>
+  class ClasseBase:  # <1>
+    def metodo_base(self):  # <2>
+      return "Metodo base"  # <3>
 
-  class DerivedClass(BaseClass):  # <4>
-    def derived_method(self):  # <5>
-      return "Derived method"  # <6>
+  class ClasseDerivata(ClasseBase):  # <4>
+    def metodo_derivato(self):  # <5>
+      return "Metodo derivato"  # <6>
 
-  instance = DerivedClass()  # <7>
+  istanza = ClasseDerivata()  # <7>
 
-  print(instance.base_method())  # <8>
-  print(instance.derived_method())  # <9>
+  print(istanza.metodo_base())  # <8>
+  print(istanza.metodo_derivato())  # <9>
   ```
-  1. Definisce una classe `BaseClass`.
-  2. Definisce un metodo `base_method`.
-  3. `base_method` restituisce una stringa "Base method".
-  4. Definisce una classe `DerivedClass` che eredita da `BaseClass`.
-  5. Definisce un metodo `derived_method`.
-  6. `derived_method` restituisce una stringa "Derived method".
-  7. Crea un'istanza della classe `DerivedClass`.
-  8. Chiama il metodo `base_method` ereditato dall'istanza e stampa il risultato.
-  9. Chiama il metodo `derived_method` dell'istanza e stampa il risultato.
+  1. Definisce una classe `ClasseBase`.
+  2. Definisce un metodo `metodo_base`.
+  3. `metodo_base` restituisce una stringa "Metodo base".
+  4. Definisce una classe `ClasseDerivata` che eredita da `ClasseBase`.
+  5. Definisce un metodo `metodo_derivato`.
+  6. `metodo_derivato` restituisce una stringa "Metodo derivato".
+  7. Crea un'istanza della classe `ClasseDerivata`.
+  8. Chiama il metodo `metodo_base` ereditato dall'istanza e stampa il risultato.
+  9. Chiama il metodo `metodo_derivato` dell'istanza e stampa il risultato.
 
 Un'istanza di una classe è un oggetto Python con attributi con nomi arbitrari che possiamo associare e referenziare. Ogni oggetto istanza delega la ricerca degli attributi alla sua classe per qualsiasi attributo non trovato nell'istanza stessa. La classe, a sua volta, può delegare la ricerca alle classi da cui eredita, se presenti.
 
 ```python
-class MyClass:  # <1>
-  def __init__(self, value):  # <2>
-    self.value = value  # <3>
+class MiaClasse:  # <1>
+  def __init__(self, valore):  # <2>
+    self.valore = valore  # <3>
 
-instance = MyClass(10)  # <4>
-print(instance.value)  # <5>
+istanza = MiaClasse(10)  # <4>
+
+print(istanza.valore)  # <5>
 ```
-1. Definisce una classe `MyClass`.
+1. Definisce una classe `MiaClasse`.
 2. Definisce il metodo speciale `__init__` per l'inizializzazione.
-3. Associa un valore all'attributo `value` dell'istanza.
-4. Crea un'istanza della classe `MyClass` con valore 10.
-5. Stampa il valore dell'attributo `value` dell'istanza.
+3. Associa un valore all'attributo `valore` dell'istanza.
+4. Crea un'istanza della classe `MiaClasse` con valore 10.
+5. Stampa il valore dell'attributo `valore` dell'istanza.
 
 In Python, le classi sono oggetti (valori), gestiti proprio come altri oggetti. Possiamo passare una classe come argomento in una chiamata a una funzione e una funzione può restituire una classe come risultato di una chiamata. Possiamo associare una classe a una variabile, a un elemento in un contenitore o a un attributo di un oggetto. Le classi possono anche essere chiavi in un dizionario. Poiché le classi sono oggetti perfettamente ordinari in Python, spesso diciamo che le classi sono oggetti di prima classe.
 
 ```python
-def create_class():  # <1>
-  class NewClass:  # <2>
+def crea_classe():  # <1>
+  class NuovaClasse:  # <2>
     pass  # <3>
 
-  return NewClass  # <4>
+  return NuovaClasse  # <4>
 
-MyClass = create_class()  # <5>
-instance = MyClass()  # <6>
-print(type(instance))  # <7>
+MiaClasse = crea_classe()  # <5>
+
+istanza = MiaClasse()  # <6>
+
+print(type(istanza))  # <7>
 ```
-1. Definisce una funzione `create_class`.
-2. Definisce una classe `NewClass` all'interno della funzione.
+1. Definisce una funzione `crea_classe`.
+2. Definisce una classe `NuovaClasse` all'interno della funzione.
 3. `pass` indica che il corpo della classe è vuoto.
-4. Restituisce la classe `NewClass`.
-5. Chiama la funzione `create_class` e associa la classe risultante a `MyClass`.
-6. Crea un'istanza della classe `MyClass`.
-7. Stampa il tipo dell'istanza, che sarà `<class '__main__.create_class.<locals>.NewClass'>`.
-
-### L'istruzione `class`
-
-L'istruzione `class` è il modo più usuale per creare un oggetto classe. `class` è un'istruzione composta a singola clausola con la seguente sintassi:
-
-```python
-class NomeClasse(classi-base, *, **kw):  # <1>
-  statement(s)  # <2>
-```
-1. `NomeClasse` è un identificatore: una variabile che la dichiarazione `class`, quando completata, associa (o riassocia) all'oggetto classe appena creato. Le convenzioni di denominazione Python consigliano di utilizzare il maiuscolo per i nomi delle classi, come `Item`, `PrivilegedUser`, `MultiUseFacility`, ecc.
-2. `classi-base` è una serie di espressioni delimitate da virgole i cui valori sono oggetti classe. Vari linguaggi di programmazione utilizzano nomi diversi per questi oggetti classe: possiamo chiamarli basi, superclasse o genitori della classe. Possiamo dire che la classe creata eredita da, deriva da, estende o sottoclasse le sue classi base; in questo capitolo, generalmente usiamo il termine estendere. Questa classe è una sottoclasse diretta o discendente delle sue classi base. `**kw` può includere un argomento denominato `metaclass` per stabilire la metaclasse della classe.
-
-Sintatticamente, includere le classi base è facoltativo: per indicare che stiamo creando una classe senza basi, basta omettere `classi-base` (e, facoltativamente, omettere anche le parentesi attorno ad esso, posizionando i due punti subito dopo il nome della classe). Ogni classe eredita da `object`, sia che specifichiamo basi esplicite o meno.
-
-La relazione di sottoclasse tra classi è transitiva: se `C1` estende `C2`, e `C2` estende `C3`, allora `C1` estende `C3`. La funzione incorporata `issubclass(C1, C2)` accetta due oggetti classe: restituisce `True` quando `C1` estende `C2`, e altrimenti restituisce `False`. Qualsiasi classe è una sottoclasse di se stessa; quindi, `issubclass(C, C)` restituisce `True` per qualsiasi classe `C`. 
-
-La sequenza non vuota di istruzioni indentate che segue la definizione della classe è il corpo della classe. Un corpo di classe viene eseguito immediatamente come parte dell'esecuzione della definizione della classe. Fino a quando il corpo non termina l'esecuzione, il nuovo oggetto classe non esiste ancora e l'identificatore `NomeClasse` non è ancora associato (o riassociato). Nota che la definizione di classe non crea immediatamente nessuna istanza della nuova classe, ma piuttosto determina l'insieme di attributi condivisi da tutte le istanze quando in seguito creiamo istanze chiamando la classe.
+4. Restituisce la classe `NuovaClasse`.
+5. Chiama la funzione `crea_classe` e associa la classe risultante a `MiaClasse`.
+6. Crea un'istanza della classe `MiaClasse`.
+7. Stampa il tipo dell'istanza, che sarà `<class '__main__.crea_classe.<locals>.NuovaClasse'>`.
 
 ## Il corpo della classe
 
@@ -444,10 +523,10 @@ Esempio di riferimento agli attributi:
 
 ```python
 class Base:  # <1>
-    a = 23  # <2>
+  a = 23  # <2>
 
 class Derivata(Base):  # <3>
-    b = 45  # <4>
+  b = 45  # <4>
 
 d = Derivata()  # <5>
 

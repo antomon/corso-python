@@ -1,11 +1,9 @@
-_count = 0  # <1>
+class MiaClasse:  # <1>
+  primo_attributo = "esempio"  # <2>
+  
+  def primo_metodo(self):  # <3>
+    return "Ciao, mondo!"  # <4>
 
-def contatore():  # <2>
+print(MiaClasse.primo_attributo)  # <5>
 
-
-  _count += 1  # <4>
-
-  return _count  # <5>
-
-print(contatore())  # <6>
-print(contatore())  # <7>
+print(MiaClasse.primo_metodo(None))  # <6>
