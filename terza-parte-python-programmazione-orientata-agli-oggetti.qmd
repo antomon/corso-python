@@ -91,7 +91,96 @@ print(istanza2.mostra_attributi())  # <14>
 13. Chiama il metodo `mostra_attributi` sull'istanza `istanza1`.
 14. Chiama il metodo `mostra_attributi` sull'istanza `istanza2`.
 
-### Oggetti
+## Membri
+
+Un riferimento a un membro è un'espressione della forma `x.nome`, dove `x` è qualsiasi espressione e `nome` è un identificatore chiamato nome del membro. Molti oggetti Python hanno membri, ma un riferimento a un membro ha una semantica speciale e ricca quando `x` si riferisce a una classe o a un'istanza. I metodi sono membri, quindi tutto ciò che diciamo sui membri in generale si applica anche a quelli chiamabili (cioè, metodi).
+
+Quando utilizziamo la sintassi `x.nome` per riferirci a un membro di un'istanza `x` di una classe `C`, la ricerca dell'attributo procede in tre passi:
+
+1. Membro nell'istanza: Se `'nome'` è una chiave in `x.__dict__`, `x.nome` restituisce il valore associato a quella chiave. Questo è il caso più semplice e veloce.
+
+2. Membro nella classe o nelle sue basi: Se `'nome'` non è una chiave in `x.__dict__`, la ricerca del membro procede nella classe di `x` (`x.__class__`) e nelle sue basi, seguendo l'ordine di risoluzione dei metodi (_method resolution order_, MRO). 
+
+3. Metodo `__getattr__`: Se l'attributo non è trovato né nell'istanza né nella classe e nelle sue basi, viene chiamato il metodo speciale `__getattr__`, se definito. Questo metodo può fornire un valore di ritorno per l'attributo o sollevare un'eccezione `AttributeError`.
+
+Esempio di riferimento ai membri:
+
+```python
+class Base:  # <1>
+  a = 23  # <2>
+
+class Derivata(Base):  # <3>
+  b = 45  # <4>
+
+d = Derivata()  # <5>
+
+d.c = 67  # <6>
+
+print(d.a)  # <7>
+print(d.b)  # <8>
+print(d.c)  # <9>
+```
+1. Definizione della classe `Base`.
+2. L'attributo `a` della classe `Base` è associato al valore `23`.
+3. Definizione della classe `Derivata` che eredita da `Base`.
+4. L'attributo `b` della classe `Derivata` è associato al valore `45`.
+5. Creazione di un'istanza della classe `Derivata`.
+6. Associazione dell'attributo `c` dell'istanza `d` al valore `67`.
+7. Stampa del valore dell'attributo `a` dell'istanza `d`, trovato nella classe base. Output: `23`.
+8. Stampa del valore dell'attributo `b` dell'istanza `d`, trovato nella classe derivata. Output: `45`.
+9. Stampa del valore dell'attributo `c` dell'istanza `d`, trovato nell'istanza stessa. Output: `67`.
+
+In Python, un attributo o un metodo può essere membro di una classe o di un'istanza. La differenza fondamentale tra membri di classe e membri di istanza è che i membri di classe sono condivisi tra tutte le istanze, mentre i membri di istanza sono specifici per ciascuna istanza.
+
+Esempio:
+
+```python
+class Contatore:  # <1>
+  contatore_comune = 0  # <2>
+
+  def __init__(self, valore_iniziale=0):  # <3>
+    self.valore = valore_iniziale  # <4>
+    Contatore.contatore_comune += 1  # <5>
+
+  def incrementa(self):  # <6>
+    self.valore += 1  # <7>
+
+# Membri di classe
+print(Contatore.contatore_comune)  # <8>
+
+# Creazione di due istanze
+c1 = Contatore()  # <9>
+c2 = Contatore(10)  # <10>
+
+# Membri di istanza
+c1.incrementa()  # <11>
+c2.incrementa()  # <12>
+
+print(c1.valore)  # <13>
+print(c2.valore)  # <14>
+
+# Membro di classe aggiornato
+print(Contatore.contatore_comune)  # <15>
+```
+1. Definisce una classe `Contatore`.
+2. Definisce un attributo di classe `contatore_comune` inizializzato a 0.
+3. Definisce il metodo speciale `__init__` per l'inizializzazione.
+4. Associa un valore iniziale all'attributo `valore` dell'istanza.
+5. Incrementa l'attributo di classe `contatore_comune` ogni volta che viene creata una nuova istanza.
+6. Definisce un metodo `incrementa` per incrementare l'attributo `valore` dell'istanza.
+7. Incrementa l'attributo `valore` dell'istanza.
+8. Stampa il valore dell'attributo di classe `contatore_comune`.
+9. Creazione di un'istanza della classe `Contatore` con valore iniziale di default.
+10. Creazione di un'istanza della classe `Contatore` con valore iniziale 10.
+11. Incrementa il valore dell'attributo `valore` dell'istanza `c1`.
+12. Incrementa il valore dell'attributo `valore` dell'istanza `c2`.
+13. Stampa il valore dell'attributo `valore` dell'istanza `c1`. Output: `1`.
+14. Stampa il valore dell'attributo `valore` dell'istanza `c2`. Output: `11`.
+15. Stampa il valore dell'attributo di classe `contatore_comune`. Output: `2`.
+
+Questo esempio illustra come i membri di classe siano condivisi tra tutte le istanze, mentre i membri di istanza siano specifici per ciascuna istanza.
+
+## Oggetti
 
 Una classe è un oggetto Python con le seguenti caratteristiche:
 
@@ -260,11 +349,11 @@ print(type(istanza))  # <7>
 
 ## Il corpo della classe
 
-Il corpo di una classe è dove normalmente specifichiamo gli attributi della classe; questi attributi possono essere oggetti descrittori (incluse funzioni) o oggetti dati ordinari di qualsiasi tipo. Un attributo di una classe può essere un'altra classe, quindi, ad esempio, possiamo avere una dichiarazione di classe "nidificata" all'interno di un'altra dichiarazione di classe.
+Il corpo di una classe è dove normalmente specifichiamo i membri della classe; questi membri possono essere funzioni o oggetti dati ordinari di qualsiasi tipo. Un membro di una classe può essere un'altra classe, quindi, ad esempio, possiamo avere una dichiarazione di classe _annidata_ all'interno di un'altra definizione di classe.
 
 ### Attributi degli oggetti classe
 
-Di solito specifichiamo un attributo di un oggetto classe associando un valore a un identificatore all'interno del corpo della classe. Per esempio:
+Di solito specifichiamo un membro di un oggetto classe associando un valore a un identificatore all'interno del corpo della classe. Per esempio:
 
 ```python
 class C1:  # <1>
@@ -276,7 +365,7 @@ print(C1.x)  # <3>
 2. L'attributo `x` della classe `C1` è associato al valore `23`.
 3. Stampa del valore dell'attributo x della classe `C1`.
 
-Possiamo anche associare o disassociare attributi della classe al di fuori del corpo della classe. Per esempio:
+Possiamo anche associare o disassociare membri della classe al di fuori del corpo della classe. Per esempio:
 
 ```python
 class C2:  # <1>
@@ -291,9 +380,7 @@ print(C2.x)  # <4>
 3. Associazione dell'attributo x della classe `C2` al valore `23`.
 4. Stampa del valore dell'attributo `x` della classe `C2`.
 
-Il nostro programma è solitamente più leggibile se associamo attributi della classe solo con istruzioni all'interno del corpo della classe. Tuttavia, riassociarli altrove può essere necessario se vogliamo mantenere informazioni di stato a livello di classe, piuttosto che a livello di istanza; Python ci permette di farlo, se lo desideriamo. Non c'è differenza tra un attributo di classe associato nel corpo della classe e uno associato o riassociato al di fuori del corpo associando un attributo.
-
-Come discuteremo a breve, tutte le istanze della classe condividono tutti gli attributi della classe.
+Il nostro programma è solitamente più leggibile se associamo attributi della classe solo con istruzioni all'interno del corpo della classe. Tuttavia, riassociarli altrove può essere necessario se vogliamo mantenere informazioni di stato a livello di classe, piuttosto che a livello di istanza; Python ci permette di farlo, se lo desideriamo. Non c'è differenza tra un attributo di classe associato nel corpo della classe e uno associato o riassociato al di fuori del corpo associando un attributo. Come discuteremo a breve, tutte le istanze della classe condividono tutti gli attributi della classe.
 
 L'istruzione della classe implicitamente imposta alcuni attributi della classe. L'attributo `__name__` è la stringa dell'identificatore NomeClasse utilizzato nella dichiarazione della classe. L'attributo `__bases__` è la tupla di oggetti classe forniti (o impliciti) come classi base nella dichiarazione della classe. Per esempio, utilizzando la classe C1 appena creata:
 
@@ -304,7 +391,7 @@ print(C1.__name__, C1.__bases__)  # <1>
 
 Una classe ha anche un attributo chiamato `__dict__`, che è la mappatura di sola lettura che la classe utilizza per mantenere altri attributi (noto anche, informalmente, come spazio dei nomi della classe).
 
-Nelle istruzioni direttamente nel corpo di una classe, i riferimenti agli attributi della classe devono utilizzare un nome semplice, non un nome completamente qualificato. Per esempio:
+Nelle istruzioni direttamente nel corpo di una classe, i riferimenti ai membri della classe devono utilizzare un nome semplice, non un nome completamente qualificato. Per esempio:
 
 ```python
 class C3:  # <1>
@@ -340,7 +427,7 @@ c.metodo()  # <6>
 
 ### Definizioni di funzioni nel corpo di una classe
 
-La maggior parte dei corpi delle classi include alcune istruzioni `def`, poiché le funzioni (note come metodi in questo contesto) sono importanti attributi per la maggior parte delle istanze delle classi. Un'istruzione `def` in un corpo di classe obbedisce alle regole viste per le funzioni ordinarie. Inoltre, un metodo definito in un corpo di classe ha un parametro obbligatorio come primo parametro, convenzionalmente sempre chiamato `self`, che si riferisce all'istanza su cui chiamiamo il metodo. Il parametro `self` gioca un ruolo speciale nelle chiamate ai metodi.
+La maggior parte dei corpi delle classi include alcune istruzioni `def`, poiché le funzioni (note come metodi in questo contesto) sono importanti membri per la maggior parte delle istanze delle classi. Un'istruzione `def` in un corpo di classe obbedisce alle regole viste per le funzioni ordinarie.
 
 Ecco un esempio di una classe che include una definizione di metodo:
 
@@ -358,13 +445,60 @@ c.ciao()  # <5>
 4. Creazione di un'istanza della classe `C5`.
 5. Chiamata del metodo `ciao()` dell'istanza `c`.
 
-Una classe può definire una varietà di metodi speciali dunder relativi a operazioni specifiche sulle sue istanze. Discuteremo questi metodi in dettaglio nella sezione "Metodi Speciali".
-
 ### Variabili private della classe
 
-Quando un'istruzione in un corpo di classe (o in un metodo nel corpo) utilizza un identificatore che inizia (ma non termina) con due trattini bassi, come `__ident`, Python cambia implicitamente l'identificatore in `_NomeClasse__ident`, dove `NomeClasse` è il nome della classe. Questo cambiamento implicito consente a una classe di utilizzare nomi "privati" per attributi, metodi, variabili globali e altri scopi, riducendo il rischio di duplicare accidentalmente i nomi utilizzati altrove (particolarmente nelle sottoclassi).
+Quando un'istruzione in un corpo di classe (o in un metodo nel corpo) utilizza un identificatore che inizia (ma non termina) con due trattini bassi, come `__ident`, Python cambia implicitamente l'identificatore in `_NomeClasse__ident`, dove `NomeClasse` è il nome della classe. Questo cambiamento implicito consente a una classe di utilizzare nomi _privati_ per attributi, metodi, variabili globali e altri scopi, riducendo il rischio di duplicare accidentalmente i nomi utilizzati altrove (particolarmente nelle sottoclassi).
 
-Per convenzione, gli identificatori che iniziano con un trattino basso sono privati all'ambito che li associa, che tale ambito sia o meno una classe. Il compilatore Python non impone questa convenzione di privacy: è responsabilità dei programmatori rispettarla.
+Per convenzione, gli identificatori che iniziano con un trattino basso sono considerati privati all'ambito che li associa, che tale ambito sia o meno una classe. Il compilatore Python non impone questa convenzione di privacy: è responsabilità dei programmatori rispettarla.
+
+Esempio:
+
+```python
+class MiaClasse:  # <1>
+  def __init__(self, valore):  # <2>
+    self.__valore = valore  # <3>
+
+  def visualizza_valore(self):  # <4>
+    return self.__valore  # <5>
+
+  def __metodo_privato(self):  # <6>
+    return "Questo è un metodo privato"  # <7>
+
+istanza = MiaClasse(10)  # <8>
+
+print(istanza.visualizza_valore())  # <9>
+
+try:
+  print(istanza.__valore)  # <10> 
+
+except Exception as e:
+  print(e)
+
+print(istanza._MiaClasse__valore)  # <11>
+
+try:
+  print(istanza.__metodo_privato())  # <12> 
+
+except Exception as e:
+  print(e)
+
+print(istanza._MiaClasse__metodo_privato())  # <13>
+```
+1. Definisce una classe `MiaClasse`.
+2. Definisce il metodo speciale `__init__` per l'inizializzazione.
+3. Utilizza un attributo con due trattini bassi all'inizio, che verrà trasformato in `_MiaClasse__valore`.
+4. Definisce un metodo `visualizza_valore`.
+5. Il metodo `visualizza_valore` restituisce l'attributo `__valore`.
+6. Definisce un metodo privato `__metodo_privato`.
+7. Il metodo `__metodo_privato` restituisce una stringa.
+8. Crea un'istanza della classe `MiaClasse` con valore 10.
+9. Chiama il metodo `visualizza_valore` sull'istanza e stampa il risultato. Output: `10`.
+10. Il tentativo di accedere direttamente all'attributo `__valore` genera un errore. Output: `'MiaClasse' object has no attribute '__valore'`.
+11. Accede all'attributo `__valore` utilizzando il nome modificato `_MiaClasse__valore`. Output: `10`.
+12. Il tentativo di chiamare direttamente il metodo `__metodo_privato` genera un errore. Output: `'MiaClasse' object has no attribute '__metodo_privato'`.
+13. Chiama il metodo privato `__metodo_privato` utilizzando il nome modificato `_MiaClasse__metodo_privato`. Output: `Questo è un metodo privato`.
+
+In questo esempio, l'attributo `__valore` e il metodo `__metodo_privato` sono "rinominati" da Python per evitare conflitti di nomi, rendendoli più difficili da accedere accidentalmente. Tuttavia, questo non rende gli attributi o i metodi veramente privati, poiché possono ancora essere accessibili utilizzando il nome modificato. Quindi, l'uso del doppio trattino basso è una convenzione per indicare che un attributo o metodo è destinato all'uso interno della classe, non un meccanismo di sicurezza.
 
 ### Stringhe di documentazione della classe
 
@@ -387,7 +521,7 @@ print(C6.__doc__)  # <5>
 4. Corpo del metodo vuoto.
 5. Stampa della docstring della classe `C6`.
 
-### Descrittori
+## Descrittori
 
 Un descrittore è un oggetto la cui classe fornisce uno o più metodi speciali chiamati `__get__`, `__set__` o `__delete__`. I descrittori che sono attributi di classe controllano la semantica di accesso e impostazione degli attributi sulle istanze di quella classe.
 
@@ -429,13 +563,170 @@ print(x.c)  # <17>
 8. Metodo `__delete__` del descrittore.
 9. Ignora qualsiasi tentativo di eliminazione del valore.
 10. Definizione della classe `X`.
-11. L'attributo c della classe `X` è un descrittore di tipo `Const`.
+11. L'attributo `c` della classe `X` è un descrittore di tipo `Const`.
 12. Creazione di un'istanza della classe `X`.
 13. Stampa del valore dell'attributo `c` dell'istanza `x`.
 14. Tentativo di impostazione del valore dell'attributo `c` dell'istanza `x` (ignorato).
 15. Stampa del valore dell'attributo `c` dell'istanza `x`.
 16. Tentativo di eliminazione dell'attributo `c` dell'istanza `x` (ignorato).
 17. Stampa del valore dell'attributo `c` dell'istanza `x`.
+
+### Regole di risoluzione dei membri
+
+Nel caso di accesso ad un membro di una classe sia un descrittore, le regole viste in precedenza si qualificano come di seguito:
+
+ - Se il membro è un descrittore non sovrascrivente (ovvero, un descrittore che implementa solo il metodo `__get__`), viene restituito il risultato del metodo `__get__` del descrittore. Esempio: 
+  
+  ```python
+  class DescrittoreNonSovrascrivente:
+    def __init__(self, valore):
+      self.valore = valore
+    
+    def __get__(self, istanza, proprietario):
+      return self.valore  # <1>
+
+  class MiaClasse:
+    descrittore = DescrittoreNonSovrascrivente("valore descrittore")  # <2>
+
+  istanza = MiaClasse()
+  print(istanza.descrittore)  # <3>
+  ```
+  1. Il metodo `__get__` restituisce il valore del descrittore.
+  2. Definisce un descrittore non sovrascrivente come attributo di classe.
+  3. Trova `descrittore` nella classe, chiama `DescrittoreNonSovrascrivente.__get__` e restituisce `"valore descrittore"`.
+
+ - Se il membro è un descrittore sovrascrivente (ovvero, un descrittore che implementa i metodi `__get__` e `__set__`), viene chiamato il metodo `__get__` del descrittore, che restituisce il valore dell'attributo. Esempio:
+
+  ```python
+  class DescrittoreSovrascrivente:
+    def __init__(self, valore):
+      self.valore = valore
+    
+    def __get__(self, istanza, proprietario):
+      return self.valore  # <1>
+    
+    def __set__(self, istanza, valore):
+      self.valore = valore  # <2>
+
+  class MiaClasse:
+    descrittore = DescrittoreSovrascrivente("valore iniziale")  # <3>
+
+  istanza = MiaClasse()
+  print(istanza.descrittore)  # <4>
+
+  istanza.descrittore = "nuovo valore"  # <5>
+  print(istanza.descrittore)  # <6>
+  ```
+  1. Il metodo `__get__` restituisce il valore del descrittore.
+  2. Il metodo `__set__` permette di modificare il valore del descrittore.
+  3. Definisce un descrittore sovrascrivente come attributo di classe.
+  4. Trova `descrittore` nella classe, chiama `DescrittoreSovrascrivente.__get__` e restituisce `"valore iniziale"`.
+  5. Chiama `DescrittoreSovrascrivente.__set__` per modificare il valore.
+  6. Trova `descrittore` nella classe, chiama `DescrittoreSovrascrivente.__get__` e restituisce `"nuovo valore"`.
+
+ - Se il membro non è un descrittore, viene restituito il valore associato al membro. Esempio:
+
+  ```python
+  class ClasseBase:
+    attributo_base = "valore base"  # <1>
+  
+  class MiaClasse(ClasseBase):
+    pass
+  
+  istanza = MiaClasse()
+  print(istanza.attributo_base)  # <2>
+  ```
+  1. Definisce un attributo di classe non descrittore.
+  2. Trova `attributo_base` nella classe base e restituisce `"valore base"`.
+
+### Usi comuni
+
+Un uso comune dei descrittori è la validazione degli attributi. Ad esempio, possiamo creare un descrittore per assicurare che un attributo sia sempre un numero positivo.
+
+```python
+class PositiveNumber:  # <1>
+  def __init__(self):  # <2>
+    self.value = None  # <3>
+      
+  def __get__(self, instance, owner):  # <4>
+    return self.value  # <5>
+  
+  def __set__(self, instance, value):  # <6>
+    if value < 0:  # <7>
+      raise ValueError("Il valore deve essere positivo")  # <8>
+
+    self.value = value  # <9>
+
+class Prodotto:  # <10>
+  prezzo = PositiveNumber()  # <11>
+
+p = Prodotto()  # <12>
+p.prezzo = 10  # <13>
+print(p.prezzo)  # <14>
+
+p.prezzo = -5  # <15>
+```
+1. Definisce un descrittore `PositiveNumber`.
+2. Inizializzazione del descrittore.
+3. Memorizzazione del valore.
+4. Metodo `__get__` del descrittore per ottenere il valore.
+5. Restituisce il valore memorizzato.
+6. Metodo `__set__` del descrittore per impostare il valore.
+7. Controlla se il valore è negativo.
+8. Solleva un'eccezione se il valore è negativo.
+9. Imposta il valore se è positivo.
+10. Definisce una classe `Prodotto`.
+11. L'attributo `prezzo` della classe `Prodotto` è un descrittore di tipo `PositiveNumber`.
+12. Creazione di un'istanza della classe `Prodotto`.
+13. Imposta il valore dell'attributo `prezzo` dell'istanza `p`.
+14. Stampa il valore dell'attributo `prezzo` dell'istanza `p`.
+15. Tentativo di impostazione di un valore negativo per l'attributo `prezzo` (solleva un'eccezione).
+
+Un altro uso comune dei descrittori è la memorizzazione nella cache dei risultati di calcoli costosi.
+
+```python
+class CachedProperty:  # <1>
+  def __init__(self, func):  # <2>
+    self.func = func  # <3>
+    self.value = None  # <4>
+    self.is_cached = False  # <5>
+
+  def __get__(self, instance, owner):  # <6>
+    if not self.is_cached:  # <7>
+      self.value = self.func(instance)  # <8>
+      self.is_cached = True  # <9>
+
+    return self.value  # <10>
+
+class DatiComplessi:  # <11>
+  @CachedProperty  # <12>
+  def calcolo_costoso(self):  # <13>
+    print("Calcolo in corso...")  # <14>
+
+    return 42  # <15>
+
+d = DatiComplessi()  # <16>
+print(d.calcolo_costoso)  # <17>
+print(d.calcolo_costoso)  # <18>
+```
+1. Definisce un descrittore `CachedProperty`.
+2. Inizializzazione del descrittore con una funzione.
+3. Memorizza la funzione.
+4. Memorizza il valore.
+5. Flag per indicare se il valore è memorizzato nella cache.
+6. Metodo `__get__` del descrittore per ottenere il valore.
+7. Controlla se il valore è memorizzato nella cache.
+8. Calcola il valore e lo memorizza nella cache se non è presente.
+9. Imposta il flag di cache.
+10. Restituisce il valore memorizzato nella cache.
+11. Definisce una classe `DatiComplessi`.
+12. Utilizza `CachedProperty` per decorare un metodo.
+13. Definisce un metodo `calcolo_costoso`.
+14. Stampa un messaggio durante il calcolo.
+15. Restituisce un valore.
+16. Creazione di un'istanza della classe `DatiComplessi`.
+17. Chiama `calcolo_costoso` e stampa il risultato (calcola e memorizza nella cache).
+18. Chiama `calcolo_costoso` e stampa il risultato (usa il valore memorizzato nella cache).
 
 ## Istanze
 
@@ -466,9 +757,9 @@ un_altra_istanza = C6(42)  # <4>
 
 Il metodo `__init__` di solito contiene istruzioni che associano attributi di istanza. Un metodo `__init__` non deve restituire un valore diverso da `None`; se lo fa, Python solleva un'eccezione `TypeError`.
 
-### Attributi degli oggetti istanza
+### Membri degli oggetti istanza
 
-Una volta creata un'istanza, possiamo accedere ai suoi attributi (dati e metodi) utilizzando l'operatore punto `.`.
+Una volta creata un'istanza, possiamo accedere ai suoi membri (dati e metodi) utilizzando l'operatore punto `.`.
 
 ```python
 un_istanza.ciao()  # <1>
@@ -496,53 +787,6 @@ print(z.x)  # <5>
 4. Associazione dell'attributo `x` dell'istanza `z` al valore `23`.
 5. Stampa del valore dell'attributo `x` dell'istanza `z`.
 
-## Riferimenti agli attributi
-
-Un riferimento a un attributo è un'espressione della forma `x.nome`, dove `x` è qualsiasi espressione e `nome` è un identificatore chiamato nome dell'attributo. Molti oggetti Python hanno attributi, ma un riferimento a un attributo ha una semantica speciale e ricca quando `x` si riferisce a una classe o a un'istanza. I metodi sono attributi, quindi tutto ciò che diciamo sugli attributi in generale si applica anche agli attributi chiamabili (cioè, metodi).
-
-Quando utilizziamo la sintassi `x.nome` per riferirci a un attributo di un'istanza `x` di una classe `C`, la ricerca dell'attributo procede in tre passi:
-
-1. Attributo nell'istanza: Se `'nome'` è una chiave in `x.__dict__`, `x.nome` restituisce il valore associato a quella chiave. Questo è il caso più semplice e veloce.
-
-2. Attributo nella classe o nelle sue basi: Se `'nome'` non è una chiave in `x.__dict__`, la ricerca dell'attributo procede nella classe di `x` (`x.__class__`) e nelle sue basi, seguendo l'ordine di risoluzione dei metodi (Method Resolution Order, MRO). Durante questa ricerca:
-
-   - Se l'attributo è un descrittore non sovrascrivente (ovvero, un descrittore che implementa solo il metodo `__get__`), viene restituito il valore del descrittore stesso.
-
-   - Se l'attributo è un descrittore sovrascrivente (ovvero, un descrittore che implementa i metodi `__get__` e `__set__`), viene chiamato il metodo `__get__` del descrittore, che restituisce il valore dell'attributo.
-
-   - Se l'attributo non è un descrittore, viene restituito il valore associato all'attributo.
-
-3. Metodo `__getattr__`: Se l'attributo non è trovato né nell'istanza né nella classe e nelle sue basi, viene chiamato il metodo speciale `__getattr__`, se definito. Questo metodo può fornire un valore di ritorno per l'attributo o sollevare un'eccezione `AttributeError`.
-
-Esempio di riferimento agli attributi:
-
-```python
-class Base:  # <1>
-  a = 23  # <2>
-
-class Derivata(Base):  # <3>
-  b = 45  # <4>
-
-d = Derivata()  # <5>
-
-d.c = 67  # <6>
-
-print(d.a)  # <7>
-print(d.b)  # <8>
-print(d.c)  # <9>
-```
-1. Definizione della classe `Base`.
-2. L'attributo `a` della classe `Base` è associato al valore `23`.
-3. Definizione della classe `Derivata` che eredita da `Base`.
-4. L'attributo `b` della classe `Derivata` è associato al valore `45`.
-5. Creazione di un'istanza della classe `Derivata`.
-6. Associazione dell'attributo `c` dell'istanza `d` al valore `67`.
-7. Stampa del valore dell'attributo `a` dell'istanza `d`, trovato nella classe base. Output: `23`.
-8. Stampa del valore dell'attributo `b` dell'istanza `d`, trovato nella classe derivata. Output: `45`.
-9. Stampa del valore dell'attributo `c` dell'istanza `d`, trovato nell'istanza stessa. Output: `67`.
-
-Questo esempio illustra come la ricerca di un attributo procede dall'istanza alla classe e, infine, alle basi della classe.
-
 ## Metodi vincolati e non vincolati
 
 Il metodo `__get__` di un oggetto funzione può restituire l'oggetto funzione stesso o un oggetto metodo vincolato che avvolge la funzione; un metodo vincolato è associato all'istanza specifica da cui è ottenuto. Un metodo vincolato è un'istanza di un metodo che è legato a un oggetto particolare, il che significa che può essere chiamato senza dover passare l'oggetto come parametro. Al contrario, un metodo non vincolato non è legato a un'istanza e deve essere esplicitamente passato un oggetto come parametro.
@@ -564,7 +808,9 @@ metodo_vincolato()  # <6>
 ```
 1. Definizione della classe `C8`.
 2. Definizione di un metodo della classe `C8` chiamato `saluta`.
-3. Il metodo `saluta` stampa il messaggio `"Ciao!"`.
+3. Il metodo `saluta` stampa il
+
+ messaggio `"Ciao!"`.
 4. Creazione di un'istanza della classe `C8` e assegnazione a `x`.
 5. Ottenimento di un metodo vincolato dall'istanza `x` e assegnazione a `metodo_vincolato`. Questo passo associa il metodo `saluta` all'istanza `x`, creando un metodo vincolato.
 6. Chiamata del metodo vincolato. Questa chiamata è equivalente a `x.saluta()` e stampa `"Ciao!"`.
@@ -740,7 +986,9 @@ di_ciao()  # <10>
 6. Restituzione della funzione `wrapper`.
 7. Definizione della funzione `di_ciao`.
 8. Stampa del messaggio `Ciao!`.
-9. Applicazione del decoratore `mio_decoratore` alla funzione `di_ciao` assegnando `di_ciao` alla funzione `wrapper` restituita.
+9. Applicazione
+
+ del decoratore `mio_decoratore` alla funzione `di_ciao` assegnando `di_ciao` alla funzione `wrapper` restituita.
 10. Chiamata della funzione `di_ciao` decorata. Output:
   ```python
   Qualcosa prima della funzione
@@ -748,5 +996,5 @@ di_ciao()  # <10>
   Qualcosa dopo la funzione
   ```
 
-Nel primo esempio, la sintassi `@mio_decoratore` applica il decoratore alla funzione `di_ciao` direttamente sopra la definizione della funzione. Nel secondo esempio, il decoratore `mio_decoratore` viene applicato esplicitamente assegnando `di_ciao` alla funzione `wrapper` restituita dal decoratore. Entrambi gli approcci producono lo stesso risultato, ma il secondo esempio mostra chiaramente come tutte le volte che chiano la funzione devo modificare la sintassi mentre usando il decoratore nella definizione della funzione, ho una sola variazione che non impatta i codici che utilizzano la `di_ciao()`.
+Nel primo esempio, la sintassi `@mio_decoratore` applica il decoratore alla funzione `di_ciao` direttamente sopra la definizione della funzione. Nel secondo esempio, il decoratore `mio_decoratore` viene applicato esplicitamente assegnando `di_ciao` alla funzione `wrapper` restituita dal decoratore. Entrambi gli approcci producono lo stesso risultato, ma il secondo esempio mostra chiaramente come tutte le volte che chiamo la funzione devo modificare la sintassi mentre usando il decoratore nella definizione della funzione, ho una sola variazione che non impatta i codici che utilizzano la `di_ciao()`.
 
