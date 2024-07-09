@@ -18,7 +18,7 @@
   </macro>
 
   <macro name="title">
-    <text variable="title" font-style="italic" text-case="capitalize-first"/>
+    <text variable="title" font-style="italic" text-case="uppercase"/>
   </macro>
 
   <macro name="type">
@@ -85,7 +85,7 @@
   </citation>
 
   <bibliography>
-    <layout hanging-indent="true" delimiter=". " suffix="." vertical-align="top">
+    <layout hanging-indent="true" delimiter=". " suffix=".&#x2028;" vertical-align="top">
       <text macro="author"/>
       <text macro="year" prefix=" (" suffix=")"/>
       <text macro="title" prefix=". "/>
@@ -95,9 +95,7 @@
       <text macro="language" prefix=". "/>
       <text macro="url" prefix=". "/>
       <text macro="note" prefix=". "/>
-      <group prefix=" " suffix=" ">
-        <text value=" "/>
-      </group>
     </layout>
   </bibliography>
 </style>
+
