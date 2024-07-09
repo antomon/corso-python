@@ -1105,7 +1105,7 @@ Attenzione
 </dd>
 </dl></li>
 </ul></li>
-<li><p><code>__*__</code>: Questi nomi, informalmente noti come nomi <em>dunder</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, sono definiti dall’interprete e dalla sua implementazione (inclusa la libreria standard). Altri potrebbero essere definiti nelle versioni future di Python. Qualsiasi uso di nomi <code>__*__</code>, in qualsiasi contesto, che non segua l’uso esplicitamente documentato, è soggetto a discontinuazione senza preavviso. Esempio:</p>
+<li><p><code>__*__</code>: Questi nomi, informalmente noti come nomi <em>dunder</em><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, sono definiti dall’interprete e dalla sua implementazione (inclusa la libreria standard). Altri potrebbero essere definiti nelle versioni future di Python. Qualsiasi uso di nomi <code>__*__</code>, in qualsiasi contesto, che non segua l’uso esplicitamente documentato, è soggetto a discontinuazione senza preavviso. Esempio:</p>
 <div class="sourceCode" id="annotated-cell-24"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-24-1"><a href="#annotated-cell-24-1"></a><span class="kw">class</span> MyClass:</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-24-2" class="code-annotation-target"><a href="#annotated-cell-24-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, value):</span>
 <span id="annotated-cell-24-3"><a href="#annotated-cell-24-3"></a>    <span class="va">self</span>.__value <span class="op">=</span> value</span>
@@ -1157,7 +1157,7 @@ Attenzione
 </dd>
 </dl></li>
 </ul>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;I nomi con doppio underscore (<code>__</code>) sono chiamati <em>dunder</em> come abbreviazione di <em>double underscore</em>.</p></div></div></section>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;I nomi con doppio underscore (<code>__</code>) sono chiamati <em>dunder</em> come abbreviazione di <em>double underscore</em>.</p></div></div></section>
 <section id="operatori" class="level3" data-number="9.5.4">
 <h3 data-number="9.5.4" class="anchored" data-anchor-id="operatori"><span class="header-section-number">9.5.4</span> Operatori</h3>
 <p>Gli operatori sono rappresentati da simboli non alfanumerici e, quando applicati a uno o più identificatori, letterali o espressioni (definiti genericamente operandi), producono un valore di risultato. Attenzione a non confondere la definizione di operatore come token, considerata qui, con quella di operatore come funzionalità algoritmica, poiché alcune parole chiave sono operatori algoritmici e anche le funzioni possono agire come operatori.</p>
@@ -1509,8 +1509,8 @@ Attenzione
 </tr>
 </tbody>
 </table>
-<p>Una sequenza di tre punti, comunemente indicata come ellissi anche al difuori dei linguaggi di programmazione,<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> è trattata come un token a sé e corrisponde ad un oggetto predefinito chiamato <a href="https://docs.python.org/3/reference/datamodel.html#ellipsis">Ellipsis</a>, con applicazioni in diversi contesti:</p>
-<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;L’ellissi è usata, ad esempio, in C per dichiarare funzioni che accettano un numero variaible di parametri e i Javascript come operatore per espandere gli array o le proprietà di un oggetto.</p></div></div><div class="sourceCode" id="annotated-cell-13"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1"></a><span class="bu">print</span>(<span class="bu">type</span>(...))</span>
+<p>Una sequenza di tre punti, comunemente indicata come ellissi anche al difuori dei linguaggi di programmazione,<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> è trattata come un token a sé e corrisponde ad un oggetto predefinito chiamato <a href="https://docs.python.org/3/reference/datamodel.html#ellipsis">Ellipsis</a>, con applicazioni in diversi contesti:</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;L’ellissi è usata, ad esempio, in C per dichiarare funzioni che accettano un numero variaible di parametri e i Javascript come operatore per espandere gli array o le proprietà di un oggetto.</p></div></div><div class="sourceCode" id="annotated-cell-13"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1"></a><span class="bu">print</span>(<span class="bu">type</span>(...))</span>
 <span id="annotated-cell-13-2"><a href="#annotated-cell-13-2"></a></span>
 <span id="annotated-cell-13-3"><a href="#annotated-cell-13-3"></a><span class="kw">def</span> funzione_da_completare():</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-13-4" class="code-annotation-target"><a href="#annotated-cell-13-4"></a>  ...</span>
@@ -1625,8 +1625,8 @@ Attenzione
 <span id="cb5-2"><a href="#cb5-2"></a><span class="st">molto "importante"."""</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a></span>
 <span id="cb5-4"><a href="#cb5-4"></a><span class="bu">print</span>(stringa_multilinea)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Tutte le stringhe sono codificate in Unicode, con il prefisso <code>b</code> la stringa è di tipo byte ed è limitata ai 128 caratteri dell’ASCII. Se si prepone <code>r</code>, che sta per <em>raw</em> cioè grezzo, allora la codifica è sempre Unicode ma i caratteri di escape<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> non sono intepretati.</p>
-<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;In Python, il carattere di escape <code>\</code> è utilizzato nelle stringhe per inserire caratteri speciali che non possono essere facilmente digitati sulla tastiera o che hanno significati speciali.</p></div></div><p>Alcuni esempi comuni includono:</p>
+<p>Tutte le stringhe sono codificate in Unicode, con il prefisso <code>b</code> la stringa è di tipo byte ed è limitata ai 128 caratteri dell’ASCII. Se si prepone <code>r</code>, che sta per <em>raw</em> cioè grezzo, allora la codifica è sempre Unicode ma i caratteri di escape<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> non sono intepretati.</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;In Python, il carattere di escape <code>\</code> è utilizzato nelle stringhe per inserire caratteri speciali che non possono essere facilmente digitati sulla tastiera o che hanno significati speciali.</p></div></div><p>Alcuni esempi comuni includono:</p>
 <ul>
 <li><code>\n</code> per una nuova linea (linefeed).</li>
 <li><code>\t</code> per una tabulazione.</li>
