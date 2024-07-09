@@ -46,7 +46,7 @@ def crea_file_json(nome_file):
     "info": {"stato_civile": "sposato", "figli": 2}  
   }
   with open(nome_file, 'w') as file:  # <8>
-    json.dump(dati, file, indent=4)  # <9>
+    json.dump(dati, file, indent=2)  # <9>
 
 crea_file_json("esempio.json")
 

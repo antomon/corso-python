@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.54">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; Il modello dati dei linguaggi di programmazione – Da neofita di Python a campione</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./prima-parte-altri-concetti-semantici.html" rel="next">
+<link href="./prima-parte-variabili-funzioni.html" rel="prev">
+<link href="./red-python-logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.0/full/pyodide.js"></script>
+
+
+<meta property="og:title" content="5&nbsp; Il modello dati dei linguaggi di programmazione – Da neofita di Python a campione">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="Da neofita di Python a campione">
+<meta name="twitter:title" content="5&nbsp; Il modello dati dei linguaggi di programmazione – Da neofita di Python a campione">
+<meta name="twitter:description" content="">
+<meta name="twitter:creator" content="@antomon">
+<meta name="twitter:site" content="@antomon">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Da neofita di Python a campione</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> <i class="bi bi-house-fill" role="img">
+</i> 
+<span class="menu-text">Prefazione</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://4m4.it/"> 
+<span class="menu-text">4M4</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/antomon/corso-python" title="Eseguire il codice" class="quarto-navigation-tool px-1" aria-label="Eseguire il codice"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./Da-neofita-di-Python-a-campione.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./Da-neofita-di-Python-a-campione.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Attiva/disattiva la modalità oscura"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-modello-dati.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Il modello dati dei linguaggi di programmazione</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefazione</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./prima-parte.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prima parte: I fondamenti della programmazione</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prima-parte-linguaggi-programmazione.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">I linguaggi di programmazione, i programmi e i programmatori</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prima-parte-paradigmi-programmazione.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">I paradigmi di programmazione</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prima-parte-sintassi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">La sintassi dei linguaggi di programmazione</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prima-parte-variabili-funzioni.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Le variabili e le funzioni</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prima-parte-modello-dati.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Il modello dati dei linguaggi di programmazione</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prima-parte-altri-concetti-semantici.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Altri concetti semantici dei linguaggi di programmazione</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./seconda-parte.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Seconda parte: Le basi di Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-python-introduzione.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduzione a Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-python-installazione.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-python-sintassi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">La sintassi</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-python-modello-dati.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Il modello dati</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-python-istruzioni.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Istruzioni</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-python-funzioni.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Funzioni</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-python-esercizi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Esercizi</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./seconda-parte-python-esercitazione-uno.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Esercitazione 1: analisi di un dataset di vendite</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./terza-parte.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Terza parte: Python orientato agli oggetti</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./terza-parte-python-programmazione-orientata-agli-oggetti.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Programmazione orientata agli oggetti</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./terza-parte-python-moduli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Moduli</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./terza-parte-python-esercitazione-uno.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Esercitazione 1: web app con Flask</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Quarta parte: Python avanzato</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Quinta parte: strumenti</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendici</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Attiva/disattiva sezione">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendice-riferimenti.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Riferimenti</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice</h2>
+   
+  <ul>
+  <li><a href="#linguaggi-procedurali" id="toc-linguaggi-procedurali" class="nav-link active" data-scroll-target="#linguaggi-procedurali"><span class="header-section-number">5.1</span> Linguaggi procedurali</a></li>
+  <li><a href="#linguaggi-orientati-agli-oggetti" id="toc-linguaggi-orientati-agli-oggetti" class="nav-link" data-scroll-target="#linguaggi-orientati-agli-oggetti"><span class="header-section-number">5.2</span> Linguaggi orientati agli oggetti</a>
+  <ul class="collapse">
+  <li><a href="#oggetti" id="toc-oggetti" class="nav-link" data-scroll-target="#oggetti"><span class="header-section-number">5.2.1</span> Oggetti</a></li>
+  <li><a href="#classi" id="toc-classi" class="nav-link" data-scroll-target="#classi"><span class="header-section-number">5.2.2</span> Classi</a></li>
+  <li><a href="#prototipi" id="toc-prototipi" class="nav-link" data-scroll-target="#prototipi"><span class="header-section-number">5.2.3</span> Prototipi</a></li>
+  <li><a href="#esempi-di-gerarchie-di-classi-e-prototipi" id="toc-esempi-di-gerarchie-di-classi-e-prototipi" class="nav-link" data-scroll-target="#esempi-di-gerarchie-di-classi-e-prototipi"><span class="header-section-number">5.2.4</span> Esempi di gerarchie di classi e prototipi</a></li>
+  <li><a href="#ereditarietà" id="toc-ereditarietà" class="nav-link" data-scroll-target="#ereditarietà"><span class="header-section-number">5.2.5</span> Ereditarietà</a></li>
+  <li><a href="#interfacce-e-classi-astratte" id="toc-interfacce-e-classi-astratte" class="nav-link" data-scroll-target="#interfacce-e-classi-astratte"><span class="header-section-number">5.2.6</span> Interfacce e classi astratte</a></li>
+  <li><a href="#polimorfismo" id="toc-polimorfismo" class="nav-link" data-scroll-target="#polimorfismo"><span class="header-section-number">5.2.7</span> Polimorfismo</a></li>
+  <li><a href="#altri-concetti" id="toc-altri-concetti" class="nav-link" data-scroll-target="#altri-concetti"><span class="header-section-number">5.2.8</span> Altri concetti</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-modello-dati.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-modello-dati.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Il modello dati dei linguaggi di programmazione</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Il modello dati dei linguaggi di programmazione</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Un <strong>modello dati</strong> è una rappresentazione formale dei tipi di dati del linguaggio e delle operazioni che possono essere eseguite su di essi. Esso definisce le strutture fondamentali attraverso le quali i dati vengono organizzati, memorizzati, manipolati e interagiscono all’interno del programma.</p>
+<p>Le componenti il modello dati sono:</p>
+<ol type="1">
+<li><p>Tipi di dati:</p>
+<ul>
+<li><p>Tipi primitivi: Questi sono i tipi di dati fondamentali che il linguaggio supporta nativamente, come numeri interi, numeri in virgola mobile, caratteri e booleani.</p></li>
+<li><p>Tipi compositi: Questi sono tipi di dati costruiti combinando tipi primitivi. Esempi comuni includono array, liste, tuple, set e dizionari.</p></li>
+<li><p>Tipi di dati definiti dall’utente: Questi sono tipi di dati che possono essere definiti dagli utenti del linguaggio, come le <code>struct</code> in C oppure le classi in Python o C++, che permettono di creare tipi di dati personalizzati.</p></li>
+</ul></li>
+<li><p>Operazioni:</p>
+<ul>
+<li><p>Operazioni aritmetiche: Operazioni che possono essere eseguite sui tipi di dati, come addizione, sottrazione, moltiplicazione e divisione per i numeri.</p></li>
+<li><p>Operazioni logiche: Operazioni che coinvolgono valori booleani, come AND, OR e NOT.</p></li>
+<li><p>Operazioni di sequenza: Operazioni che si possono eseguire su sequenze di dati, come l’indicizzazione, la <em>slicing</em> e l’iterazione.</p></li>
+<li><p>Altre operazioni ad hoc per il tipo di dato.</p></li>
+</ul></li>
+<li><p>Regole di comportamento:</p>
+<ul>
+<li><p>Mutabilità: Determina se un oggetto può essere modificato dopo la sua creazione. Oggetti mutabili, come liste e dizionari in Python, possono essere cambiati. Oggetti immutabili, come tuple e stringhe, non possono essere modificati dopo la loro creazione.</p></li>
+<li><p>Copia e clonazione: Regole che determinano come i dati vengono copiati. Per esempio, in Python, la copia di una lista crea una nuova lista con gli stessi elementi, mentre la copia di un intero crea solo un riferimento allo stesso valore.</p></li>
+</ul></li>
+</ol>
+<section id="linguaggi-procedurali" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="linguaggi-procedurali"><span class="header-section-number">5.1</span> Linguaggi procedurali</h2>
+<p>Nei linguaggi di programmazione procedurali, il modello dati è incentrato su tipi di dati semplici e compositi che supportano lo stile di programmazione orientato alle funzioni e procedure. Alcune caratteristiche tipiche includono:</p>
+<ul>
+<li><p>Tipi primitivi: Numeri interi, numeri a virgola mobile, caratteri e booleani.</p></li>
+<li><p>Strutture composite: Array, strutture (<code>struct</code>) e unioni (<code>union</code>). Gli array permettono di gestire collezioni di elementi dello stesso tipo, mentre le strutture permettono di combinare vari tipi di dati sotto un unico nome. Le unioni consentono di memorizzare diversi tipi di dati nello stesso spazio di memoria, ma solo uno di essi può essere attivo alla volta.</p></li>
+<li><p>Operazioni basate su funzioni: Le operazioni sui dati vengono eseguite attraverso funzioni che manipolano i valori passati come argomenti.</p></li>
+</ul>
+<p>Esempio in C:</p>
+<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2"></a><span class="pp">#include </span><span class="im">&lt;string.h&gt;</span></span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3"></a></span>
+<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4"></a><span class="pp">#define MAX_DATI </span><span class="dv">100</span></span>
+<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-6" class="code-annotation-target"><a href="#annotated-cell-1-6"></a><span class="kw">union</span> Valore <span class="op">{</span></span>
+<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7"></a>  <span class="dt">int</span> intero<span class="op">;</span></span>
+<span id="annotated-cell-1-8"><a href="#annotated-cell-1-8"></a>  <span class="dt">float</span> decimale<span class="op">;</span></span>
+<span id="annotated-cell-1-9"><a href="#annotated-cell-1-9"></a>  <span class="dt">char</span> carattere<span class="op">;</span></span>
+<span id="annotated-cell-1-10"><a href="#annotated-cell-1-10"></a><span class="op">};</span></span>
+<span id="annotated-cell-1-11"><a href="#annotated-cell-1-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-12" class="code-annotation-target"><a href="#annotated-cell-1-12"></a><span class="kw">struct</span> Dato <span class="op">{</span></span>
+<span id="annotated-cell-1-13"><a href="#annotated-cell-1-13"></a>  <span class="dt">char</span> tipo<span class="op">;</span>  </span>
+<span id="annotated-cell-1-14"><a href="#annotated-cell-1-14"></a>  <span class="co">// 'i' per int, 'f' per float, 'c' per char</span></span>
+<span id="annotated-cell-1-15"><a href="#annotated-cell-1-15"></a>  <span class="kw">union</span> Valore valore<span class="op">;</span></span>
+<span id="annotated-cell-1-16"><a href="#annotated-cell-1-16"></a><span class="op">};</span></span>
+<span id="annotated-cell-1-17"><a href="#annotated-cell-1-17"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-18" class="code-annotation-target"><a href="#annotated-cell-1-18"></a><span class="dt">void</span> stampa_dato<span class="op">(</span><span class="kw">struct</span> Dato d<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-1-19"><a href="#annotated-cell-1-19"></a>  <span class="cf">switch</span> <span class="op">(</span>d<span class="op">.</span>tipo<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-1-20"><a href="#annotated-cell-1-20"></a>    <span class="cf">case</span> <span class="ch">'i'</span><span class="op">:</span></span>
+<span id="annotated-cell-1-21"><a href="#annotated-cell-1-21"></a>      printf<span class="op">(</span><span class="st">"Intero: </span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> d<span class="op">.</span>valore<span class="op">.</span>intero<span class="op">);</span></span>
+<span id="annotated-cell-1-22"><a href="#annotated-cell-1-22"></a>      <span class="cf">break</span><span class="op">;</span></span>
+<span id="annotated-cell-1-23"><a href="#annotated-cell-1-23"></a></span>
+<span id="annotated-cell-1-24"><a href="#annotated-cell-1-24"></a>    <span class="cf">case</span> <span class="ch">'f'</span><span class="op">:</span></span>
+<span id="annotated-cell-1-25"><a href="#annotated-cell-1-25"></a>      printf<span class="op">(</span><span class="st">"Float: </span><span class="sc">%f\n</span><span class="st">"</span><span class="op">,</span> d<span class="op">.</span>valore<span class="op">.</span>decimale<span class="op">);</span></span>
+<span id="annotated-cell-1-26"><a href="#annotated-cell-1-26"></a>      <span class="cf">break</span><span class="op">;</span></span>
+<span id="annotated-cell-1-27"><a href="#annotated-cell-1-27"></a></span>
+<span id="annotated-cell-1-28"><a href="#annotated-cell-1-28"></a>    <span class="cf">case</span> <span class="ch">'c'</span><span class="op">:</span></span>
+<span id="annotated-cell-1-29"><a href="#annotated-cell-1-29"></a>      printf<span class="op">(</span><span class="st">"Carattere: </span><span class="sc">%c\n</span><span class="st">"</span><span class="op">,</span> d<span class="op">.</span>valore<span class="op">.</span>carattere<span class="op">);</span></span>
+<span id="annotated-cell-1-30"><a href="#annotated-cell-1-30"></a>      <span class="cf">break</span><span class="op">;</span></span>
+<span id="annotated-cell-1-31"><a href="#annotated-cell-1-31"></a></span>
+<span id="annotated-cell-1-32"><a href="#annotated-cell-1-32"></a>    <span class="cf">default</span><span class="op">:</span></span>
+<span id="annotated-cell-1-33"><a href="#annotated-cell-1-33"></a>      printf<span class="op">(</span><span class="st">"Tipo sconosciuto</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="annotated-cell-1-34"><a href="#annotated-cell-1-34"></a>      <span class="cf">break</span><span class="op">;</span></span>
+<span id="annotated-cell-1-35"><a href="#annotated-cell-1-35"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-1-36"><a href="#annotated-cell-1-36"></a><span class="op">}</span></span>
+<span id="annotated-cell-1-37"><a href="#annotated-cell-1-37"></a></span>
+<span id="annotated-cell-1-38"><a href="#annotated-cell-1-38"></a><span class="dt">int</span> confronta_dato<span class="op">(</span><span class="kw">struct</span> Dato d1<span class="op">,</span> <span class="kw">struct</span> Dato d2<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-1-39"><a href="#annotated-cell-1-39"></a>  <span class="cf">if</span> <span class="op">(</span>d1<span class="op">.</span>tipo <span class="op">!=</span> d2<span class="op">.</span>tipo<span class="op">)</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="annotated-cell-1-40"><a href="#annotated-cell-1-40"></a></span>
+<span id="annotated-cell-1-41"><a href="#annotated-cell-1-41"></a>  <span class="cf">switch</span> <span class="op">(</span>d1<span class="op">.</span>tipo<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-1-42"><a href="#annotated-cell-1-42"></a>    <span class="cf">case</span> <span class="ch">'i'</span><span class="op">:</span> <span class="cf">return</span> d1<span class="op">.</span>valore<span class="op">.</span>intero <span class="op">==</span> d2<span class="op">.</span>valore<span class="op">.</span>intero<span class="op">;</span></span>
+<span id="annotated-cell-1-43"><a href="#annotated-cell-1-43"></a></span>
+<span id="annotated-cell-1-44"><a href="#annotated-cell-1-44"></a>    <span class="cf">case</span> <span class="ch">'f'</span><span class="op">:</span> <span class="cf">return</span> d1<span class="op">.</span>valore<span class="op">.</span>decimale <span class="op">==</span> d2<span class="op">.</span>valore<span class="op">.</span>decimale<span class="op">;</span></span>
+<span id="annotated-cell-1-45"><a href="#annotated-cell-1-45"></a></span>
+<span id="annotated-cell-1-46"><a href="#annotated-cell-1-46"></a>    <span class="cf">case</span> <span class="ch">'c'</span><span class="op">:</span> <span class="cf">return</span> d1<span class="op">.</span>valore<span class="op">.</span>carattere <span class="op">==</span> d2<span class="op">.</span>valore<span class="op">.</span>carattere<span class="op">;</span></span>
+<span id="annotated-cell-1-47"><a href="#annotated-cell-1-47"></a></span>
+<span id="annotated-cell-1-48"><a href="#annotated-cell-1-48"></a>    <span class="cf">default</span><span class="op">:</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="annotated-cell-1-49"><a href="#annotated-cell-1-49"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-1-50"><a href="#annotated-cell-1-50"></a><span class="op">}</span></span>
+<span id="annotated-cell-1-51"><a href="#annotated-cell-1-51"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-1-52" class="code-annotation-target"><a href="#annotated-cell-1-52"></a><span class="dt">void</span> inserisci_dato<span class="op">(</span><span class="kw">struct</span> Dato dati<span class="op">[],</span> <span class="dt">int</span> <span class="op">*</span>count<span class="op">,</span> <span class="kw">struct</span> Dato nuovo_dato<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-1-53"><a href="#annotated-cell-1-53"></a>  <span class="cf">if</span> <span class="op">(*</span>count <span class="op">&lt;</span> MAX_DATI<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-1-54"><a href="#annotated-cell-1-54"></a>    dati<span class="op">[*</span>count<span class="op">]</span> <span class="op">=</span> nuovo_dato<span class="op">;</span></span>
+<span id="annotated-cell-1-55"><a href="#annotated-cell-1-55"></a></span>
+<span id="annotated-cell-1-56"><a href="#annotated-cell-1-56"></a>    <span class="op">(*</span>count<span class="op">)++;</span></span>
+<span id="annotated-cell-1-57"><a href="#annotated-cell-1-57"></a></span>
+<span id="annotated-cell-1-58"><a href="#annotated-cell-1-58"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="annotated-cell-1-59"><a href="#annotated-cell-1-59"></a>    printf<span class="op">(</span><span class="st">"Array pieno, impossibile inserire nuovo dato.</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="annotated-cell-1-60"><a href="#annotated-cell-1-60"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-1-61"><a href="#annotated-cell-1-61"></a><span class="op">}</span></span>
+<span id="annotated-cell-1-62"><a href="#annotated-cell-1-62"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-1-63" class="code-annotation-target"><a href="#annotated-cell-1-63"></a><span class="dt">void</span> cancella_dato<span class="op">(</span><span class="kw">struct</span> Dato dati<span class="op">[],</span> <span class="dt">int</span> <span class="op">*</span>count<span class="op">,</span> <span class="kw">struct</span> Dato dato_da_cancellare<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-1-64"><a href="#annotated-cell-1-64"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="op">*</span>count<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="annotated-cell-1-65"><a href="#annotated-cell-1-65"></a>    <span class="cf">if</span> <span class="op">(</span>confronta_dato<span class="op">(</span>dati<span class="op">[</span>i<span class="op">],</span> dato_da_cancellare<span class="op">))</span> <span class="op">{</span></span>
+<span id="annotated-cell-1-66"><a href="#annotated-cell-1-66"></a>      <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> i<span class="op">;</span> j <span class="op">&lt;</span> <span class="op">*</span>count <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
+<span id="annotated-cell-1-67"><a href="#annotated-cell-1-67"></a>        dati<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> dati<span class="op">[</span>j <span class="op">+</span> <span class="dv">1</span><span class="op">];</span></span>
+<span id="annotated-cell-1-68"><a href="#annotated-cell-1-68"></a>      <span class="op">}</span></span>
+<span id="annotated-cell-1-69"><a href="#annotated-cell-1-69"></a></span>
+<span id="annotated-cell-1-70"><a href="#annotated-cell-1-70"></a>      <span class="op">(*</span>count<span class="op">)--;</span></span>
+<span id="annotated-cell-1-71"><a href="#annotated-cell-1-71"></a></span>
+<span id="annotated-cell-1-72"><a href="#annotated-cell-1-72"></a>      i<span class="op">--;</span> </span>
+<span id="annotated-cell-1-73"><a href="#annotated-cell-1-73"></a>    <span class="op">}</span></span>
+<span id="annotated-cell-1-74"><a href="#annotated-cell-1-74"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-1-75"><a href="#annotated-cell-1-75"></a><span class="op">}</span></span>
+<span id="annotated-cell-1-76"><a href="#annotated-cell-1-76"></a></span>
+<span id="annotated-cell-1-77"><a href="#annotated-cell-1-77"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-1-78" class="code-annotation-target"><a href="#annotated-cell-1-78"></a>  <span class="kw">struct</span> Dato dati<span class="op">[</span>MAX_DATI<span class="op">];</span></span>
+<span id="annotated-cell-1-79"><a href="#annotated-cell-1-79"></a>  <span class="dt">int</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="annotated-cell-1-80"><a href="#annotated-cell-1-80"></a></span>
+<span id="annotated-cell-1-81"><a href="#annotated-cell-1-81"></a>  <span class="kw">struct</span> Dato dato1 <span class="op">=</span> <span class="op">{</span><span class="ch">'i'</span><span class="op">,</span> <span class="op">.</span>valore<span class="op">.</span>intero <span class="op">=</span> <span class="dv">42</span><span class="op">};</span></span>
+<span id="annotated-cell-1-82"><a href="#annotated-cell-1-82"></a>  <span class="kw">struct</span> Dato dato2 <span class="op">=</span> <span class="op">{</span><span class="ch">'f'</span><span class="op">,</span> <span class="op">.</span>valore<span class="op">.</span>decimale <span class="op">=</span> <span class="fl">3.14</span><span class="op">};</span></span>
+<span id="annotated-cell-1-83"><a href="#annotated-cell-1-83"></a>  <span class="kw">struct</span> Dato dato3 <span class="op">=</span> <span class="op">{</span><span class="ch">'c'</span><span class="op">,</span> <span class="op">.</span>valore<span class="op">.</span>carattere <span class="op">=</span> <span class="ch">'A'</span><span class="op">};</span></span>
+<span id="annotated-cell-1-84"><a href="#annotated-cell-1-84"></a>  </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-1-85" class="code-annotation-target"><a href="#annotated-cell-1-85"></a>  inserisci_dato<span class="op">(</span>dati<span class="op">,</span> <span class="op">&amp;</span>count<span class="op">,</span> dato1<span class="op">);</span></span>
+<span id="annotated-cell-1-86"><a href="#annotated-cell-1-86"></a>  inserisci_dato<span class="op">(</span>dati<span class="op">,</span> <span class="op">&amp;</span>count<span class="op">,</span> dato2<span class="op">);</span></span>
+<span id="annotated-cell-1-87"><a href="#annotated-cell-1-87"></a>  inserisci_dato<span class="op">(</span>dati<span class="op">,</span> <span class="op">&amp;</span>count<span class="op">,</span> dato3<span class="op">);</span></span>
+<span id="annotated-cell-1-88"><a href="#annotated-cell-1-88"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-1-89" class="code-annotation-target"><a href="#annotated-cell-1-89"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> count<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="annotated-cell-1-90"><a href="#annotated-cell-1-90"></a>    stampa_dato<span class="op">(</span>dati<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="annotated-cell-1-91"><a href="#annotated-cell-1-91"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-1-92"><a href="#annotated-cell-1-92"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-1-93" class="code-annotation-target"><a href="#annotated-cell-1-93"></a>  cancella_dato<span class="op">(</span>dati<span class="op">,</span> <span class="op">&amp;</span>count<span class="op">,</span> dato1<span class="op">);</span></span>
+<span id="annotated-cell-1-94"><a href="#annotated-cell-1-94"></a></span>
+<span id="annotated-cell-1-95"><a href="#annotated-cell-1-95"></a>  printf<span class="op">(</span><span class="st">"Dopo cancellazione:</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="annotated-cell-1-96"><a href="#annotated-cell-1-96"></a></span>
+<span id="annotated-cell-1-97"><a href="#annotated-cell-1-97"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> count<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="annotated-cell-1-98"><a href="#annotated-cell-1-98"></a>    stampa_dato<span class="op">(</span>dati<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="annotated-cell-1-99"><a href="#annotated-cell-1-99"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-1-100"><a href="#annotated-cell-1-100"></a></span>
+<span id="annotated-cell-1-101"><a href="#annotated-cell-1-101"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="annotated-cell-1-102"><a href="#annotated-cell-1-102"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="6" data-code-annotation="1">Definizione di una <code>union</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="12" data-code-annotation="2">Definizione di una <code>struct</code> che include la <code>union</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="18" data-code-annotation="3">Funzione per stampare i valori in base al tipo.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="52" data-code-annotation="4">Funzione per inserire un nuovo dato alla fine dell’array.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="63" data-code-annotation="5">Funzione per cancellare tutte le occorrenze di un dato dall’array.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="78" data-code-annotation="6">Definizione di un array di <code>struct</code> Dato.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="85" data-code-annotation="7">Inserimento di dati nell’array.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="89" data-code-annotation="8">Stampa dei dati nell’array.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="93" data-code-annotation="9">Cancellazione di un dato specifico e ristampa dell’array.</span>
+</dd>
+</dl>
+<p>L’esempio mostra come nel modello dati del linguaggio C possono essere definiti dei tipi compositi (<code>Dato</code>, <code>Valore</code>) e delle operazioni su quelli (<code>stampa_dato</code>, <code>confronta_dato</code>, <code>inserisci_dato</code>, <code>cancella_dato</code>). Il codice, pur realizzante una semplice libreria, appare <em>slegato</em>, cioè con funzioni che si applicano a tipi di dati specifici solo dall’interpretazione degli identificatori della funzione stessa e dei suoi parametri, cioè senza un legame esplicito e non ambiguo, tra tipo e funzione.</p>
+</section>
+<section id="linguaggi-orientati-agli-oggetti" class="level2 page-columns page-full" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="linguaggi-orientati-agli-oggetti"><span class="header-section-number">5.2</span> Linguaggi orientati agli oggetti</h2>
+<p>La programmazione orientata agli oggetti è un paradigma che utilizza <strong>oggetti</strong> per rappresentare concetti ed entità del mondo reale o astratto. Questo approccio si basa su un processo mentale fondamentale per risolvere problemi complessi: la decomposizione. Un problema complesso è più facilmente risolvibile se diviso in parti più piccole, ciascuna delle quali possiede uno stato e la possibilità di interagire con le altre parti. Questa divisione può essere effettuata per gradi, come se si osservasse sempre più da vicino il problema, effettivamente continunandone la specificazione, fino a raggiungere un livello sufficientemente di dettaglio da poter essere realizzato come istruzioni, codificate in costrutti permessi dalla sintassi del linguaggio, dell’oggetto.</p>
+<section id="oggetti" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="oggetti"><span class="header-section-number">5.2.1</span> Oggetti</h3>
+<p>Lo stato di un oggetto è definito dai suoi attributi, i cui valori possono essere altri oggetti già disponibili, sia definiti dall’utente che dal linguaggio. L’interazione tra diversi oggetti avviene attraverso i metodi, che sono funzioni associate agli oggetti che possono modificare lo stato dell’oggetto o invocare metodi su altri oggetti.</p>
+<p>I membri di un oggetto (attributi e metodi) possono avere diverse limitazioni di accesso, definite dal concetto di visibilità:</p>
+<ul>
+<li><p>Pubblica: Gli attributi e i metodi pubblici sono accessibili da qualsiasi parte del programma. Questa visibilità permette a qualsiasi altro oggetto o funzione di interagire con questi membri.</p></li>
+<li><p>Privata: Gli attributi e i metodi privati sono accessibili solo da altri membri dell’oggetto e rispondono alla esigenza di separare il codice di interfaccia da quello utile al funzionamento interno.</p></li>
+<li><p>Protetta: Gli attributi e i metodi protetti sono accessibili da tutti i membri del medesimo oggetto ma, a differenza dei privati, anche da quelli degli oggetti derivati. Questo fornisce un livello intermedio di accesso, utile per la gestione dell’ereditarietà.</p></li>
+</ul>
+<p>L’<strong>incapsulamento</strong> è il principio su cui si basa la gestione della visibilità e guida la separazione del codice realizzante le specificità di un oggetto, da come è fruito dagli altri oggetti. Questo protegge l’integrità del suo stato e ne facilita la manutenzione del codice stesso, permettendo modifiche di implementazione, senza impatti sul codice esterno fintantoché non si cambiano i membri pubblici. Inoltre, se ben sfruttata nella progettazione, rende il codice più comprensibile e riduce la superficie d’attacco.</p>
+</section>
+<section id="classi" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="classi"><span class="header-section-number">5.2.2</span> Classi</h3>
+<p>Un oggetto può essere generato da una struttura statica che ne definisce tutte le caratteristiche, la <strong>classe</strong>, oppure può essere creato a partire da un altro oggetto esistente, noto come <strong>prototipo</strong>.</p>
+<p>Nella programmazione ad oggetti basata su classi, ogni oggetto è un’istanza <em>vivente</em> di una classe predefinita, che ne rappresenta il progetto o l’archetipo. La classe definisce i membri e la visibilità, quindi, in definitiva tutte le proprietà comuni agli oggetti dello stesso tipo o matrice. Gli oggetti vengono creati chiamando un metodo speciale della classe, noto come costruttore e, all’atto della loro vita, un secondo metodo, il distruttore, che si occupa di effettuare le azioni di terminazione.</p>
+<p>La classe può inoltre definire metodi e attributi particolari, che possono essere ereditati da altre classi, cioè possono essere utilizzati da quest’ultime al pari dei propri membri. In tal modo, il linguaggio permette la costruzioni di gerarchie di classi che modellano relazioni di specializzazione, dalla più generale alla più particolare.</p>
+<p>Ciò, oltre ad essere uno strumento di progettazione utile di per sé, facilita il riuso del codice per mezzo dell’estensione, al posto della modifica, di funzionalità. La classe che eredita da un’altra classe si definisce <em>derivata</em> dalla classe che, a sua volta, è detta <em>base</em>.</p>
+</section>
+<section id="prototipi" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="prototipi"><span class="header-section-number">5.2.3</span> Prototipi</h3>
+<p>Alternativamente, alcuni linguaggi usano il concetto di prototipo, in cui gli oggetti sono le entità principali e non esiste una matrice separata come la classe. In questo paradigma, ogni oggetto può servire da prototipo per altri e ciò significa che, invece di creare nuove istanze di una classe, si creano nuovi oggetti clonando o estendendo quelli esistenti. È possibile aggiungere o modificare proprietà e metodi di un oggetto prototipo e, in tal caso, queste modifiche si propagheranno in tutti gli oggetti che derivano da esso.</p>
+<p>Il paradigma basato su prototipi offre maggiore flessibilità e dinamismo rispetto a quello basato su classi, poiché la struttura degli oggetti può essere modificata in modo dinamico. D’altronde, questo approccio può anche introdurre complessità e rendere più difficile la gestione delle gerarchie di oggetti e la comprensione del codice, poiché non esistono strutture fisse come le classi.</p>
+</section>
+<section id="esempi-di-gerarchie-di-classi-e-prototipi" class="level3 page-columns page-full" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="esempi-di-gerarchie-di-classi-e-prototipi"><span class="header-section-number">5.2.4</span> Esempi di gerarchie di classi e prototipi</h3>
+<p>Vediamo le differenze tra classi e prototipi, riprendendo l’esempio in Java nella versione semplificata (senza astrazione):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">class</span> Animale <span class="op">{</span> </span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="bu">String</span> nome<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="fu">Animale</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">nome</span> <span class="op">=</span> nome<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="op">}</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"L'animale fa un verso"</span><span class="op">);</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="op">}</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="op">}</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="kw">class</span> Cane <span class="kw">extends</span> Animale <span class="op">{</span> </span>
+<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-15"><a href="#cb1-15"></a>    <span class="fu">Cane</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>        <span class="kw">super</span><span class="op">(</span>nome<span class="op">);</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>    <span class="op">}</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a>    <span class="at">@Override</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>    <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Il cane abbaia"</span><span class="op">);</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>    <span class="op">}</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="op">}</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>        Animale mioCane <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cane</span><span class="op">(</span><span class="st">"Fido"</span><span class="op">);</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a></span>
+<span id="cb1-29"><a href="#cb1-29"></a>        mioCane<span class="op">.</span><span class="fu">faiVerso</span><span class="op">();</span> </span>
+<span id="cb1-30"><a href="#cb1-30"></a>    <span class="op">}</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Implementiamo il medesimo programma in Javascript<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, linguaggio che usa il concetto di prototipo:</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;In JavaScript, le classi come sintassi sono state introdotte in ECMAScript 6 (ES6), per semplificare la creazione di oggetti e la gestione dell’ereditarietà prototipale. Tuttavia, è importante capire che sotto il cofano, JavaScript non utilizza classi nel senso tradizionale come in linguaggi come Java o C++ e non esiste un meccanismo nativo per creare classi astratte, anche se è possibile simulare il comportamento delle classi astratte utilizzando varie tecniche. Una comune è quella di lanciare un’eccezione se un metodo funzionalmente astratto non viene sovrascritto nella classe derivata.</p></div></div><div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource javascript code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode javascript"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a><span class="kw">let</span> Animale <span class="op">=</span> {</span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2"></a>    <span class="dt">nome</span><span class="op">:</span> <span class="st">"Generic"</span><span class="op">,</span></span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3"></a></span>
+<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4"></a>    <span class="dt">init</span><span class="op">:</span> <span class="kw">function</span>(nome) {</span>
+<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">nome</span> <span class="op">=</span> nome<span class="op">;</span></span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6"></a>    }<span class="op">,</span></span>
+<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7"></a></span>
+<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8"></a>    <span class="dt">faiVerso</span><span class="op">:</span> <span class="kw">function</span>() {</span>
+<span id="annotated-cell-3-9"><a href="#annotated-cell-3-9"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"L'animale fa un verso"</span>)<span class="op">;</span></span>
+<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10"></a>    }</span>
+<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11"></a>}<span class="op">;</span></span>
+<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-13" class="code-annotation-target"><a href="#annotated-cell-3-13"></a><span class="kw">let</span> Cane <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">create</span>(Animale)<span class="op">;</span></span>
+<span id="annotated-cell-3-14"><a href="#annotated-cell-3-14"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-3-15" class="code-annotation-target"><a href="#annotated-cell-3-15"></a>Cane<span class="op">.</span><span class="at">faiVerso</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Il cane abbaia"</span>)<span class="op">;</span></span>
+<span id="annotated-cell-3-17"><a href="#annotated-cell-3-17"></a>}<span class="op">;</span></span>
+<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-3-19" class="code-annotation-target"><a href="#annotated-cell-3-19"></a><span class="kw">let</span> mioCane <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">create</span>(Cane)<span class="op">;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-3-20" class="code-annotation-target"><a href="#annotated-cell-3-20"></a>mioCane<span class="op">.</span><span class="fu">init</span>(<span class="st">"Fido"</span>)<span class="op">;</span></span>
+<span id="annotated-cell-3-21"><a href="#annotated-cell-3-21"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-3-22" class="code-annotation-target"><a href="#annotated-cell-3-22"></a>mioCane<span class="op">.</span><span class="fu">faiVerso</span>()<span class="op">;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Definizione dell’oggetto prototipo <code>Animale</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="13" data-code-annotation="2">Creazione di un nuovo oggetto basato sul prototipo <code>Animale</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="15" data-code-annotation="3">Viene creato un nuovo oggetto <code>Cane</code> basato sul prototipo <code>Animale</code>, usando <code>Object.create(Animale)</code>. Questo permette a <code>Cane</code> di ereditare proprietà e metodi da <code>Animale</code>. Il metodo <code>faiVerso</code> viene sovrascritto nell’oggetto <code>Cane</code> per specificare il comportamento da cane.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="19" data-code-annotation="4">Un nuovo oggetto <code>mioCane</code> viene creato basandosi sul prototipo <code>Cane</code> usando <code>Object.create(Cane)</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="20" data-code-annotation="5">Il metodo <code>init</code> viene chiamato per inizializzare il nome dell’oggetto <code>mioCane</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="22" data-code-annotation="6">Quando viene chiamato <code>mioCane.faiVerso()</code>, il metodo sovrascritto nell’oggetto <code>Cane</code> viene eseguito, mostrando <code>Il cane abbaia</code>.</span>
+</dd>
+</dl>
+</section>
+<section id="ereditarietà" class="level3" data-number="5.2.5">
+<h3 data-number="5.2.5" class="anchored" data-anchor-id="ereditarietà"><span class="header-section-number">5.2.5</span> Ereditarietà</h3>
+<p>Come abbiamo visto, l’ereditarietà è un meccanismo che permette a una classe di ereditare membri da un’altra classe. Essa si può presentare singola o <strong>multipla</strong>, ove la prima consente a una classe derivata di estendere solo una classe base. Questo è il modello di ereditarietà più comune e supportato da molti linguaggi di programmazione orientati agli oggetti, come Java e C#.</p>
+<p>L’ereditarietà multipla è tale da permettere a una classe di ricevere attributi e metodi contemporaneamente da più classi base. Questo meccanismo risponde all’esigenza di specializzare più concetti allo stesso tempo. Va sottolineato che è uno strumento potente prono, però, ad abusi, perché può introdurre complessità nella gestione delle gerarchie di classi e causare conflitti quando lo stesso metodo è ereditato da più classi, situazione nota come <em>problema del diamante</em>. Pertanto, alcuni linguaggi ne limitano l’applicazione, come Java che consente solo l’ereditarietà multipla di interfacce, ma non di classi. Altri, come Go, non supportano l’ereditarietà per scelta di progettazione. Go enfatizza la composizione rispetto all’ereditarietà per promuovere uno stile di programmazione più essenziale e flessibile. La composizione consente di costruire comportamenti complessi aggregando oggetti più semplici, evitando le complicazioni delle gerarchie di classi multilivello. Il C++, invece, supporta completamente l’ereditarietà multipla.</p>
+</section>
+<section id="interfacce-e-classi-astratte" class="level3" data-number="5.2.6">
+<h3 data-number="5.2.6" class="anchored" data-anchor-id="interfacce-e-classi-astratte"><span class="header-section-number">5.2.6</span> Interfacce e classi astratte</h3>
+<p>Le <strong>interfacce</strong> e le <strong>classi astratte</strong> sono due concetti fondamentali nella programmazione orientata agli oggetti, che consentono di definire contratti che le classi concrete devono rispettare.</p>
+<p>Un’interfaccia è un contratto che specifica un insieme di metodi che una classe deve implementare, senza fornire l’implementazione effettiva di questi metodi. Sono utilizzate per definire comportamenti comuni che possono essere condivisi da classi diverse, indipendentemente dalla loro posizione nella gerarchia delle classi. Le classi che implementano un’interfaccia devono fornire una definizione concreta per tutti i metodi dichiarati nell’interfaccia. In Java, ad esempio, le interfacce sono definite con la parola chiave <code>interface</code>.</p>
+<p>Una classe astratta è una classe che non può essere istanziata direttamente. Può contenere sia metodi astratti (senza codice al loro interno, che devono essere implementati dalle classi derivate) sia metodi concreti (con codice allinterno, che possono essere utilizzati dalle classi derivate). Le classi astratte sono utilizzate per fornire una base comune con alcune implementazioni di default e lasciare ad altre classi il compito di completare l’implementazione. In Java, le classi astratte sono definite con la parola chiave <code>abstract</code>.</p>
+<p>Esempio di interfaccia, classa astratta e ereditarietà multipla in Java:</p>
+<div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1"></a><span class="kw">interface</span> Domesticazione <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2"></a>  <span class="dt">void</span> <span class="fu">assegnaAddomesticato</span><span class="op">(</span><span class="dt">boolean</span> addomesticato<span class="op">);</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3"></a>  <span class="dt">boolean</span> <span class="fu">ottieniAddomesticato</span><span class="op">();</span></span>
+<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4"></a><span class="op">}</span></span>
+<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-4-6" class="code-annotation-target"><a href="#annotated-cell-4-6"></a><span class="kw">abstract</span> <span class="kw">class</span> Animale <span class="op">{</span></span>
+<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7"></a>  <span class="bu">String</span> nome<span class="op">;</span></span>
+<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8"></a></span>
+<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9"></a>  <span class="fu">Animale</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">nome</span> <span class="op">=</span> nome<span class="op">;</span></span>
+<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-4-12"><a href="#annotated-cell-4-12"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-4-13" class="code-annotation-target"><a href="#annotated-cell-4-13"></a>  <span class="kw">abstract</span> <span class="bu">String</span> <span class="fu">faiVerso</span><span class="op">();</span></span>
+<span id="annotated-cell-4-14"><a href="#annotated-cell-4-14"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-4-15" class="code-annotation-target"><a href="#annotated-cell-4-15"></a>  <span class="bu">String</span> <span class="fu">descrizione</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="annotated-cell-4-16"><a href="#annotated-cell-4-16"></a>    <span class="cf">return</span> <span class="st">"L'animale si chiama "</span> <span class="op">+</span> nome<span class="op">;</span></span>
+<span id="annotated-cell-4-17"><a href="#annotated-cell-4-17"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-4-18"><a href="#annotated-cell-4-18"></a><span class="op">}</span></span>
+<span id="annotated-cell-4-19"><a href="#annotated-cell-4-19"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-4-20" class="code-annotation-target"><a href="#annotated-cell-4-20"></a><span class="kw">class</span> Cane <span class="kw">extends</span> Animale <span class="kw">implements</span> Domesticazione <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-4-21" class="code-annotation-target"><a href="#annotated-cell-4-21"></a>  <span class="kw">private</span> <span class="dt">boolean</span> addomesticato<span class="op">;</span></span>
+<span id="annotated-cell-4-22"><a href="#annotated-cell-4-22"></a></span>
+<span id="annotated-cell-4-23"><a href="#annotated-cell-4-23"></a>  <span class="fu">Cane</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-4-24"><a href="#annotated-cell-4-24"></a>    <span class="kw">super</span><span class="op">(</span>nome<span class="op">);</span></span>
+<span id="annotated-cell-4-25"><a href="#annotated-cell-4-25"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-4-26"><a href="#annotated-cell-4-26"></a></span>
+<span id="annotated-cell-4-27"><a href="#annotated-cell-4-27"></a>  <span class="at">@Override</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-4-28" class="code-annotation-target"><a href="#annotated-cell-4-28"></a>  <span class="bu">String</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="annotated-cell-4-29"><a href="#annotated-cell-4-29"></a>    <span class="cf">return</span> <span class="st">"Il cane abbaia"</span><span class="op">;</span></span>
+<span id="annotated-cell-4-30"><a href="#annotated-cell-4-30"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-4-31"><a href="#annotated-cell-4-31"></a></span>
+<span id="annotated-cell-4-32"><a href="#annotated-cell-4-32"></a>  <span class="at">@Override</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-4-33" class="code-annotation-target"><a href="#annotated-cell-4-33"></a>  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">assegnaAddomesticato</span><span class="op">(</span><span class="dt">boolean</span> addomesticato<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-4-34"><a href="#annotated-cell-4-34"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">addomesticato</span> <span class="op">=</span> addomesticato<span class="op">;</span> </span>
+<span id="annotated-cell-4-35"><a href="#annotated-cell-4-35"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-4-36"><a href="#annotated-cell-4-36"></a></span>
+<span id="annotated-cell-4-37"><a href="#annotated-cell-4-37"></a>  <span class="at">@Override</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="11" onclick="event.preventDefault();">11</a><span id="annotated-cell-4-38" class="code-annotation-target"><a href="#annotated-cell-4-38"></a>  <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">ottieniAddomesticato</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="annotated-cell-4-39"><a href="#annotated-cell-4-39"></a>    <span class="cf">return</span> addomesticato<span class="op">;</span> </span>
+<span id="annotated-cell-4-40"><a href="#annotated-cell-4-40"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-4-41"><a href="#annotated-cell-4-41"></a><span class="op">}</span></span>
+<span id="annotated-cell-4-42"><a href="#annotated-cell-4-42"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="12" onclick="event.preventDefault();">12</a><span id="annotated-cell-4-43" class="code-annotation-target"><a href="#annotated-cell-4-43"></a><span class="kw">class</span> Coccodrillo <span class="kw">extends</span> Animale <span class="op">{</span></span>
+<span id="annotated-cell-4-44"><a href="#annotated-cell-4-44"></a></span>
+<span id="annotated-cell-4-45"><a href="#annotated-cell-4-45"></a>  <span class="fu">Coccodrillo</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-4-46"><a href="#annotated-cell-4-46"></a>    <span class="kw">super</span><span class="op">(</span>nome<span class="op">);</span></span>
+<span id="annotated-cell-4-47"><a href="#annotated-cell-4-47"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-4-48"><a href="#annotated-cell-4-48"></a></span>
+<span id="annotated-cell-4-49"><a href="#annotated-cell-4-49"></a>  <span class="at">@Override</span></span>
+<span id="annotated-cell-4-50"><a href="#annotated-cell-4-50"></a>  <span class="bu">String</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="annotated-cell-4-51"><a href="#annotated-cell-4-51"></a>    <span class="cf">return</span> <span class="st">""</span><span class="op">;</span>  </span>
+<span id="annotated-cell-4-52"><a href="#annotated-cell-4-52"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-4-53"><a href="#annotated-cell-4-53"></a><span class="op">}</span></span>
+<span id="annotated-cell-4-54"><a href="#annotated-cell-4-54"></a></span>
+<span id="annotated-cell-4-55"><a href="#annotated-cell-4-55"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
+<span id="annotated-cell-4-56"><a href="#annotated-cell-4-56"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="13" onclick="event.preventDefault();">13</a><span id="annotated-cell-4-57" class="code-annotation-target"><a href="#annotated-cell-4-57"></a>    Cane mioCane <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cane</span><span class="op">(</span><span class="st">"Fido"</span><span class="op">);</span></span>
+<span id="annotated-cell-4-58"><a href="#annotated-cell-4-58"></a></span>
+<span id="annotated-cell-4-59"><a href="#annotated-cell-4-59"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>mioCane<span class="op">.</span><span class="fu">descrizione</span><span class="op">());</span> </span>
+<span id="annotated-cell-4-60"><a href="#annotated-cell-4-60"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>mioCane<span class="op">.</span><span class="fu">faiVerso</span><span class="op">());</span>    </span>
+<span id="annotated-cell-4-61"><a href="#annotated-cell-4-61"></a></span>
+<span id="annotated-cell-4-62"><a href="#annotated-cell-4-62"></a>    mioCane<span class="op">.</span><span class="fu">assegnaAddomesticato</span><span class="op">(</span><span class="kw">true</span><span class="op">);</span> </span>
+<span id="annotated-cell-4-63"><a href="#annotated-cell-4-63"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Cane addomesticato: "</span> <span class="op">+</span> </span>
+<span id="annotated-cell-4-64"><a href="#annotated-cell-4-64"></a>                       mioCane<span class="op">.</span><span class="fu">ottieniAddomesticato</span><span class="op">());</span></span>
+<span id="annotated-cell-4-65"><a href="#annotated-cell-4-65"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="14" onclick="event.preventDefault();">14</a><span id="annotated-cell-4-66" class="code-annotation-target"><a href="#annotated-cell-4-66"></a>    Coccodrillo mioCoccodrillo <span class="op">=</span> <span class="kw">new</span> <span class="fu">Coccodrillo</span><span class="op">(</span><span class="st">"Crocky"</span><span class="op">);</span></span>
+<span id="annotated-cell-4-67"><a href="#annotated-cell-4-67"></a></span>
+<span id="annotated-cell-4-68"><a href="#annotated-cell-4-68"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>mioCoccodrillo<span class="op">.</span><span class="fu">descrizione</span><span class="op">());</span> </span>
+<span id="annotated-cell-4-69"><a href="#annotated-cell-4-69"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>mioCoccodrillo<span class="op">.</span><span class="fu">faiVerso</span><span class="op">());</span>   </span>
+<span id="annotated-cell-4-70"><a href="#annotated-cell-4-70"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-4-71"><a href="#annotated-cell-4-71"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="1" data-code-annotation="1">Interfaccia che definisce una proprietà che gli animali possono possedere, la domesticazione. Da notare che la domesticazione è una proprietà <em>complementare</em> alle altre caratterizzanti l’animale, addirittura non aprioristica.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="2">Metodo per impostare lo stato di addomesticamento dell’animale.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="3">Metodo per verificare se è addomesticato.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="6" data-code-annotation="4">Classe astratta che ha l’implementazione di una caratteristica condivisa dalle classi derivate, <code>descrizione()</code>, e un metodo astratto per una seconda, <code>faiVerso()</code>, che, deve essere sempre presente negli oggetti di tipo base animale, ma non ne è comume l’implementazione.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="13" data-code-annotation="5">Metodo astratto.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="15" data-code-annotation="6">Metodo concreto.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="20" data-code-annotation="7">Il cane è un animale che può essere addomesticato, quindi la classe <code>Cane</code> deriva <code>Animale</code> (cioè deve implementare necessariamente <code>faiVerso()</code>) e implementa <code>Domesticazione</code> (cioè deve implementare <code>assegnaAddomesticato()</code> e <code>ottieniAddomesticato()</code>). <code>descrizione()</code> viene ereditato colla implementazione di <code>Animale</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="21" data-code-annotation="8">Variabile utile a registrare se il cane è stato addomesticato.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="28" data-code-annotation="9"><code>Cane</code> implementa <code>faiVerso()</code> di <code>Animale</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="10">10</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="33" data-code-annotation="10"><code>Cane</code> implementa <code>assegnaAddomesticato()</code> di <code>Domesticazione</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="11">11</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="38" data-code-annotation="11"><code>Cane</code> implementa <code>ottieniAddomesticato()</code> di <code>Domesticazione</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="12">12</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="43" data-code-annotation="12">Il coccodrillo non è addomesticabile, quindi, <code>Coccodrillo</code> non implementa l’interfaccia <code>Domesticazione</code>, ma è comunque un animale quindi deriva <code>Animale</code> e ne implementa l’unico metodo astratto <code>faiVerso()</code>. Non essendo addomesticabile, non ha neanche l’attributo <code>addomesticato</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="13">13</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="57" data-code-annotation="13">Creazione dell’oggetto <code>Cane</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="14">14</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="66" data-code-annotation="14">Creazione dell’oggetto <code>Coccodrillo</code>.</span>
+</dd>
+</dl>
+<p>Le interfacce e le classi astratte sono strumenti potenti per promuovere la riusabilità del codice e l’estensibilità dei sistemi software, poiché permettono di definire contratti chiari e di implementare diverse versioni di una funzionalità senza modificare il codice preesistente.</p>
+</section>
+<section id="polimorfismo" class="level3" data-number="5.2.7">
+<h3 data-number="5.2.7" class="anchored" data-anchor-id="polimorfismo"><span class="header-section-number">5.2.7</span> Polimorfismo</h3>
+<p>Il <strong>polimorfismo</strong> è un concetto chiave della programmazione orientata agli oggetti che permette a oggetti di classi diverse di essere trattati come oggetti di una classe comune. È uno strumento complementare all’ereditarietà, nelle mani del programmatore, utile a modellare comportamenti comuni per oggetti di tipi diversi, permettendo al codice di interagire con questi oggetti senza conoscere esattamente il loro tipo specifico. In termini pratici, il polimorfismo permette di chiamare metodi su oggetti di tipi diversi e ottenere comportamenti specifici a seconda del tipo di oggetto su cui viene chiamato il medesimo metodo.</p>
+<p>Il concetto di polimorfismo è strettamente legato all’idea di contratto tra oggetti. Questo contratto è definito dalle interfacce o dalle classi base e specifica quali metodi devono essere implementati dalle classi derivate. Quando un oggetto di una classe derivata è trattato come un oggetto della classe base o di un’interfaccia, si garantisce che esso rispetti il contratto definito dalla classe base o dall’interfaccia.</p>
+<p>Esistono due tipi principali di polimorfismo:</p>
+<ul>
+<li>Polimorfismo statico: Conosciuto soprattutto come <strong>overloading</strong>, si verifica quando più metodi nella stessa classe hanno lo stesso nome ma firme diverse (diverso numero o tipo di parametri). Il compilatore decide quale metodo chiamare in base alla firma del metodo.</li>
+</ul>
+<p>Esempio in Java che supporta l’overloading:</p>
+<div class="sourceCode" id="annotated-cell-5"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1"></a><span class="kw">class</span> Esempio <span class="op">{</span></span>
+<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2"></a>  <span class="dt">void</span> <span class="fu">stampa</span><span class="op">(</span><span class="dt">int</span> a<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Intero: "</span> <span class="op">+</span> a<span class="op">);</span></span>
+<span id="annotated-cell-5-4"><a href="#annotated-cell-5-4"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-5-5"><a href="#annotated-cell-5-5"></a></span>
+<span id="annotated-cell-5-6"><a href="#annotated-cell-5-6"></a>  <span class="dt">void</span> <span class="fu">stampa</span><span class="op">(</span><span class="bu">String</span> a<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-5-7"><a href="#annotated-cell-5-7"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Stringa: "</span> <span class="op">+</span> a<span class="op">);</span></span>
+<span id="annotated-cell-5-8"><a href="#annotated-cell-5-8"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-5-9"><a href="#annotated-cell-5-9"></a><span class="op">}</span></span>
+<span id="annotated-cell-5-10"><a href="#annotated-cell-5-10"></a></span>
+<span id="annotated-cell-5-11"><a href="#annotated-cell-5-11"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
+<span id="annotated-cell-5-12"><a href="#annotated-cell-5-12"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-5-13"><a href="#annotated-cell-5-13"></a>    Esempio es <span class="op">=</span> <span class="kw">new</span> <span class="fu">Esempio</span><span class="op">();</span></span>
+<span id="annotated-cell-5-14"><a href="#annotated-cell-5-14"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-5-15" class="code-annotation-target"><a href="#annotated-cell-5-15"></a>    es<span class="op">.</span><span class="fu">stampa</span><span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-5-16" class="code-annotation-target"><a href="#annotated-cell-5-16"></a>    es<span class="op">.</span><span class="fu">stampa</span><span class="op">(</span><span class="st">"ciao"</span><span class="op">);</span></span>
+<span id="annotated-cell-5-17"><a href="#annotated-cell-5-17"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-5-18"><a href="#annotated-cell-5-18"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="15" data-code-annotation="1">Chiama il metodo <code>stampa(int a)</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="16" data-code-annotation="2">Chiama il metodo <code>stampa(String a)</code>.</span>
+</dd>
+</dl>
+<ul>
+<li>Polimorfismo dinamico: Noto come <strong>overriding</strong>, si verifica quando una classe derivata fornisce una specifica implementazione di un metodo già definito nella sua classe base. L’implementazione da chiamare è determinata a runtime, cioè a tempo di esecuzione e non compilazione, in base al tipo dell’oggetto.</li>
+</ul>
+<p>Esempio in Java riprendendo l’esempio con gli animali:</p>
+<div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1"></a><span class="kw">class</span> Animale <span class="op">{</span></span>
+<span id="annotated-cell-6-2"><a href="#annotated-cell-6-2"></a>  <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="annotated-cell-6-3"><a href="#annotated-cell-6-3"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"L'animale fa un verso"</span><span class="op">);</span></span>
+<span id="annotated-cell-6-4"><a href="#annotated-cell-6-4"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-6-5"><a href="#annotated-cell-6-5"></a><span class="op">}</span></span>
+<span id="annotated-cell-6-6"><a href="#annotated-cell-6-6"></a></span>
+<span id="annotated-cell-6-7"><a href="#annotated-cell-6-7"></a><span class="kw">class</span> Cane <span class="kw">extends</span> Animale <span class="op">{</span></span>
+<span id="annotated-cell-6-8"><a href="#annotated-cell-6-8"></a>  <span class="at">@Override</span></span>
+<span id="annotated-cell-6-9"><a href="#annotated-cell-6-9"></a>  <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="annotated-cell-6-10"><a href="#annotated-cell-6-10"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Il cane abbaia"</span><span class="op">);</span></span>
+<span id="annotated-cell-6-11"><a href="#annotated-cell-6-11"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-6-12"><a href="#annotated-cell-6-12"></a><span class="op">}</span></span>
+<span id="annotated-cell-6-13"><a href="#annotated-cell-6-13"></a></span>
+<span id="annotated-cell-6-14"><a href="#annotated-cell-6-14"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
+<span id="annotated-cell-6-15"><a href="#annotated-cell-6-15"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-6-16" class="code-annotation-target"><a href="#annotated-cell-6-16"></a>    Animale mioAnimale <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cane</span><span class="op">();</span></span>
+<span id="annotated-cell-6-17"><a href="#annotated-cell-6-17"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-6-18" class="code-annotation-target"><a href="#annotated-cell-6-18"></a>    mioAnimale<span class="op">.</span><span class="fu">faiVerso</span><span class="op">();</span></span>
+<span id="annotated-cell-6-19"><a href="#annotated-cell-6-19"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-6-20"><a href="#annotated-cell-6-20"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="16" data-code-annotation="1">L’oggetto <code>mioAnimale</code> è dichiarato come tipo <code>Animale</code> ma istanziato come <code>Cane</code>. Questo è un esempio di polimorfismo.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="18" data-code-annotation="2">Il metodo <code>faiVerso()</code> viene chiamato sull’oggetto <code>mioAnimale</code>, ma viene eseguita la versione del metodo <code>faiVerso()</code> definita nella classe <code>Cane</code>, grazie al polimorfismo.</span>
+</dd>
+</dl>
+<p>Il polimorfismo è strettamente legato all’ereditarietà, poiché l’ereditarietà è spesso il meccanismo che permette al polimorfismo di funzionare. Quando una classe derivata estende una classe base e sovrascrive i suoi metodi, permette agli oggetti della classe derivata di essere trattati come oggetti della classe base ma di comportarsi in modo specifico alla classe derivata.</p>
+<p>I linguaggi di programmazione hanno delle differenze in relazione al supporto del polimorfismo:</p>
+<ul>
+<li><p>Java: Supporta sia l’overloading che l’overriding.</p></li>
+<li><p>C++: Supporta sia l’overloading che l’overriding. Fornisce meccanismi per specificare il tipo di legame (statico o dinamico) usando parole chiave come <code>virtual</code>.</p></li>
+<li><p>Python: Supporta l’overriding, ma non l’overloading nello stesso senso di Java o C++. Python permette la definizione di metodi con argomenti predefiniti o argomenti variabili per ottenere un effetto simile all’overloading.</p></li>
+</ul>
+<p>Esempio in Java da confrontare con quello seguente in Python:</p>
+<div class="sourceCode" id="annotated-cell-7"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a><span class="kw">class</span> Animale <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2"></a>  <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"L'animale fa un verso"</span><span class="op">);</span> </span>
+<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5"></a><span class="op">}</span></span>
+<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6"></a></span>
+<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7"></a><span class="kw">class</span> Cane <span class="kw">extends</span> Animale <span class="op">{</span></span>
+<span id="annotated-cell-7-8"><a href="#annotated-cell-7-8"></a>  <span class="at">@Override</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-9" class="code-annotation-target"><a href="#annotated-cell-7-9"></a>  <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="annotated-cell-7-10"><a href="#annotated-cell-7-10"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Il cane abbaia"</span><span class="op">);</span> </span>
+<span id="annotated-cell-7-11"><a href="#annotated-cell-7-11"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-7-12"><a href="#annotated-cell-7-12"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-7-13" class="code-annotation-target"><a href="#annotated-cell-7-13"></a>  <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">(</span><span class="bu">String</span> suono<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-7-14"><a href="#annotated-cell-7-14"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Il cane fa: "</span> <span class="op">+</span> suono<span class="op">);</span> </span>
+<span id="annotated-cell-7-15"><a href="#annotated-cell-7-15"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-7-16"><a href="#annotated-cell-7-16"></a><span class="op">}</span></span>
+<span id="annotated-cell-7-17"><a href="#annotated-cell-7-17"></a></span>
+<span id="annotated-cell-7-18"><a href="#annotated-cell-7-18"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
+<span id="annotated-cell-7-19"><a href="#annotated-cell-7-19"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-7-20" class="code-annotation-target"><a href="#annotated-cell-7-20"></a>    Animale mioAnimale <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cane</span><span class="op">();</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-7-21" class="code-annotation-target"><a href="#annotated-cell-7-21"></a>    mioAnimale<span class="op">.</span><span class="fu">faiVerso</span><span class="op">();</span></span>
+<span id="annotated-cell-7-22"><a href="#annotated-cell-7-22"></a></span>
+<span id="annotated-cell-7-23"><a href="#annotated-cell-7-23"></a>    Cane mioCane <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cane</span><span class="op">();</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-7-24" class="code-annotation-target"><a href="#annotated-cell-7-24"></a>    mioCane<span class="op">.</span><span class="fu">faiVerso</span><span class="op">(</span><span class="st">"bau"</span><span class="op">);</span></span>
+<span id="annotated-cell-7-25"><a href="#annotated-cell-7-25"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-7-26"><a href="#annotated-cell-7-26"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="2" data-code-annotation="1">Metodo <code>faiVerso()</code> definito nella classe base <code>Animale</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="9" data-code-annotation="2">Overriding del metodo <code>faiVerso()</code> nella classe derivata <code>Cane</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="13" data-code-annotation="3">Overloading del metodo <code>faiVerso()</code> nella classe derivata <code>Cane</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="20" data-code-annotation="4">Dichiarazione di un oggetto di tipo <code>Animale</code>, ma istanziato come <code>Cane</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="21" data-code-annotation="5">Chiamata al metodo <code>faiVerso()</code>, che esegue la versione del metodo nella classe <code>Cane</code> grazie al polimorfismo.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="24" data-code-annotation="6">Chiamata al metodo <code>faiVerso(String suono)</code>, che dimostra l’overloading del metodo nella classe <code>Cane</code>.</span>
+</dd>
+</dl>
+<p>E in Python diventa:</p>
+<div class="sourceCode" id="annotated-cell-8"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1"></a><span class="kw">class</span> Animale:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2"></a>  <span class="kw">def</span> fai_verso(<span class="va">self</span>):</span>
+<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3"></a>    <span class="bu">print</span>(<span class="st">"L'animale fa un verso"</span>)  </span>
+<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4"></a></span>
+<span id="annotated-cell-8-5"><a href="#annotated-cell-8-5"></a><span class="kw">class</span> Cane(Animale):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-8-6" class="code-annotation-target"><a href="#annotated-cell-8-6"></a>  <span class="kw">def</span> fai_verso(<span class="va">self</span>):</span>
+<span id="annotated-cell-8-7"><a href="#annotated-cell-8-7"></a>    <span class="bu">print</span>(<span class="st">"Il cane abbaia"</span>)  </span>
+<span id="annotated-cell-8-8"><a href="#annotated-cell-8-8"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-8-9" class="code-annotation-target"><a href="#annotated-cell-8-9"></a>  <span class="kw">def</span> fai_verso_con_suono(<span class="va">self</span>, suono):</span>
+<span id="annotated-cell-8-10"><a href="#annotated-cell-8-10"></a>    <span class="bu">print</span>(<span class="ss">f"Il cane fa: </span><span class="sc">{</span>suono<span class="sc">}</span><span class="ss">"</span>)  </span>
+<span id="annotated-cell-8-11"><a href="#annotated-cell-8-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-8-12" class="code-annotation-target"><a href="#annotated-cell-8-12"></a>mio_animale <span class="op">=</span> Cane()</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-8-13" class="code-annotation-target"><a href="#annotated-cell-8-13"></a>mio_animale.fai_verso()</span>
+<span id="annotated-cell-8-14"><a href="#annotated-cell-8-14"></a></span>
+<span id="annotated-cell-8-15"><a href="#annotated-cell-8-15"></a>mio_cane <span class="op">=</span> Cane()</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-8-16" class="code-annotation-target"><a href="#annotated-cell-8-16"></a>mio_cane.fai_verso_con_suono(<span class="st">"bau"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="2" data-code-annotation="1">Metodo <code>fai_verso()</code> definito nella classe base <code>Animale</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="6" data-code-annotation="2">Overriding del metodo <code>fai_verso()</code> nella classe derivata <code>Cane</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="9" data-code-annotation="3">Definizione di un metodo aggiuntivo <code>fai_verso_con_suono</code> nella classe derivata <code>Cane</code> (Python non supporta l’overloading nello stesso senso di Java).</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="12" data-code-annotation="4">Dichiarazione e istanziazione di un oggetto <code>mio_animale</code> come <code>Cane</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="13" data-code-annotation="5">Chiamata al metodo <code>fai_verso()</code>, che esegue la versione del metodo nella classe <code>Cane</code> grazie al polimorfismo.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="16" data-code-annotation="6">Chiamata al metodo <code>fai_verso_con_suono(suono)</code>, che dimostra una forma di polimorfismo simile all’overloading in Python.</span>
+</dd>
+</dl>
+<p>L’overriding è possibile grazie al <strong>dynamic dispatch</strong>, un meccanismo che consente di selezionare a runtime il metodo corretto da invocare in base al tipo effettivo dell’oggetto. Lo <strong>static disptach</strong>, al contrario, avviene al tempo di compilazione.</p>
+<p>Ma il dispatch, cioè l’individuazione del metodo da eseguire, può essere singolo (<strong>single dispatch</strong>), così come presente nella maggior parte dei linguaggi orientati agli oggetti come Java e C++, e dove la scelta del metodo dipende solo dal tipo dell’oggetto sul quale il metodo stesso viene chiamato. Questo tipo di dispatch è sufficiente per supportare il polimorfismo detto di <em>sottotipo</em>, dove le classi derivate possono sovrascrivere i metodi della classe base e il metodo corretto viene selezionato a runtime in base al tipo effettivo dell’oggetto.</p>
+<p>Il <strong>multiple dispatch</strong>, invece, estende ulteriormente le capacità del polimorfismo permettendo la selezione del metodo da invocare basandosi sui tipi runtime di più di un argomento. Questo è particolarmente utile in scenari dove il comportamento dipende da combinazioni di tipi di oggetti, e non solo dal tipo dell’oggetto su cui il metodo è chiamato. Linguaggi come Julia e CLOS (Common Lisp Object System)supportano nativamente il multiple dispatch, mentre linguaggi come Java e C++ non lo supportano direttamente ma possono emularlo attraverso pattern come il <em>visitor</em>.</p>
+</section>
+<section id="altri-concetti" class="level3" data-number="5.2.8">
+<h3 data-number="5.2.8" class="anchored" data-anchor-id="altri-concetti"><span class="header-section-number">5.2.8</span> Altri concetti</h3>
+<p>Dopo aver compreso i concetti fondamentali della programmazione orientata agli oggetti (OOP), come oggetti, classi, prototipi, ereditarietà e polimorfismo, è importante esplorare altri aspetti avanzati che contribuiscono alla potenza e alla flessibilità di questo paradigma.</p>
+<section id="mixin-e-trait" class="level4" data-number="5.2.8.1">
+<h4 data-number="5.2.8.1" class="anchored" data-anchor-id="mixin-e-trait"><span class="header-section-number">5.2.8.1</span> Mixin e trait</h4>
+<p>I <strong>mixin</strong> e i <strong>trait</strong> sono concetti che permettono di aggiungere funzionalità a una classe senza utilizzare l’ereditarietà classica.</p>
+<p>I mixin sono classi che offrono metodi che possono essere utilizzati da altre classi senza essere una classe base di queste ultime. Permettono di combinare comportamenti comuni tra diverse classi.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">class</span> MixinA:</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="kw">def</span> metodo_a(<span class="va">self</span>):</span>
+<span id="cb2-3"><a href="#cb2-3"></a>        <span class="bu">print</span>(<span class="st">"Metodo A"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">class</span> MixinB:</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="kw">def</span> metodo_b(<span class="va">self</span>):</span>
+<span id="cb2-7"><a href="#cb2-7"></a>        <span class="bu">print</span>(<span class="st">"Metodo B"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="kw">class</span> ClasseConMixin(MixinA, MixinB):</span>
+<span id="cb2-10"><a href="#cb2-10"></a>    <span class="cf">pass</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a>obj <span class="op">=</span> ClasseConMixin()</span>
+<span id="cb2-13"><a href="#cb2-13"></a>obj.metodo_a()</span>
+<span id="cb2-14"><a href="#cb2-14"></a>obj.metodo_b()</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I trait sono simili ai mixin e permettono di definire metodi che possono essere riutilizzati in diverse classi. Sono supportati nativamente in linguaggi come Scala e Rust.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource scala number-lines code-with-copy"><code class="sourceCode scala"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">trait</span> TraitA <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="kw">def</span> <span class="fu">metodoA</span><span class="op">():</span> <span class="bu">Unit</span> <span class="op">=</span> <span class="fu">println</span><span class="op">(</span><span class="st">"Metodo A"</span><span class="op">)</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="op">}</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">trait</span> TraitB <span class="op">{</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>    <span class="kw">def</span> <span class="fu">metodoB</span><span class="op">():</span> <span class="bu">Unit</span> <span class="op">=</span> <span class="fu">println</span><span class="op">(</span><span class="st">"Metodo B"</span><span class="op">)</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="op">}</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="kw">class</span> ClasseConTrait <span class="kw">extends</span> TraitA <span class="kw">with</span> TraitB</span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="kw">val</span> obj <span class="op">=</span> <span class="kw">new</span> <span class="fu">ClasseConTrait</span><span class="op">()</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>obj<span class="op">.</span><span class="fu">metodoA</span><span class="op">()</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>obj<span class="op">.</span><span class="fu">metodoB</span><span class="op">()</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="duck-typing" class="level4" data-number="5.2.8.2">
+<h4 data-number="5.2.8.2" class="anchored" data-anchor-id="duck-typing"><span class="header-section-number">5.2.8.2</span> Duck Typing</h4>
+<p>Il <strong>duck typing</strong> è un concetto che si applica principalmente nei linguaggi dinamici, dove l’importanza è data al comportamento degli oggetti piuttosto che alla loro appartenenza a una specifica classe. Se un oggetto implementa i metodi richiesti da una certa operazione, allora può essere utilizzato per quella operazione, indipendentemente dal suo tipo.</p>
+<p>Esempio:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">class</span> Anatra:</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="kw">def</span> quack(<span class="va">self</span>):</span>
+<span id="cb4-3"><a href="#cb4-3"></a>        <span class="bu">print</span>(<span class="st">"Quack!"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="kw">class</span> Persona:</span>
+<span id="cb4-6"><a href="#cb4-6"></a>    <span class="kw">def</span> quack(<span class="va">self</span>):</span>
+<span id="cb4-7"><a href="#cb4-7"></a>        <span class="bu">print</span>(<span class="st">"Sono una persona che imita un'anatra"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="kw">def</span> fai_quack(oggetto):</span>
+<span id="cb4-10"><a href="#cb4-10"></a>    oggetto.quack()</span>
+<span id="cb4-11"><a href="#cb4-11"></a></span>
+<span id="cb4-12"><a href="#cb4-12"></a>anatra <span class="op">=</span> Anatra()</span>
+<span id="cb4-13"><a href="#cb4-13"></a>persona <span class="op">=</span> Persona()</span>
+<span id="cb4-14"><a href="#cb4-14"></a></span>
+<span id="cb4-15"><a href="#cb4-15"></a>fai_quack(anatra)</span>
+<span id="cb4-16"><a href="#cb4-16"></a>fai_quack(persona)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+</section>
+</section>
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiato!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiato!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./prima-parte-variabili-funzioni.html" class="pagination-link" aria-label="Le variabili e le funzioni">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Le variabili e le funzioni</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./prima-parte-altri-concetti-semantici.html" class="pagination-link" aria-label="Altri concetti semantici dei linguaggi di programmazione">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Altri concetti semantici dei linguaggi di programmazione</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./antonio.html">
+<p>Antonio Montano</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./come-collaborare.html">
+<p>Come collaborare</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://4m4.it">
+<p>4m4</p>
+</a>
+  </li>  
+</ul>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-modello-dati.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
