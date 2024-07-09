@@ -18,19 +18,19 @@
   </macro>
 
   <macro name="title">
-    <text variable="title" font-style="italic" text-case="uppercase"/>
+    <text variable="title" font-style="italic" font-weight="bold"/>
   </macro>
 
   <macro name="type">
     <choose>
       <if type="book">
-        <text value="Libro" prefix="(" suffix=")" text-case="capitalize-first"/>
+        <text value="Libro" prefix="(" suffix=")"/>
       </if>
       <if type="report">
-        <text value="Report Tecnico" prefix="(" suffix=")" text-case="capitalize-first"/>
+        <text value="Report Tecnico" prefix="(" suffix=")"/>
       </if>
       <else>
-        <text value="Altro" prefix="(" suffix=")" text-case="capitalize-first"/>
+        <text value="Altro" prefix="(" suffix=")"/>
       </else>
     </choose>
   </macro>
@@ -85,17 +85,19 @@
   </citation>
 
   <bibliography>
-    <layout hanging-indent="true" delimiter=". " suffix=".&#x2028;" vertical-align="top">
+    <layout hanging-indent="true" delimiter=". " suffix="." vertical-align="top">
       <text macro="author"/>
       <text macro="year" prefix=" (" suffix=")"/>
-      <text macro="title" prefix=". "/>
+      <text macro="title" prefix=". " font-weight="bold"/>
       <text macro="type" prefix=". "/>
       <text macro="publisher" prefix=". "/>
       <text macro="isbn" prefix=". "/>
       <text macro="language" prefix=". "/>
       <text macro="url" prefix=". "/>
       <text macro="note" prefix=". "/>
+      <group prefix=" " suffix=" ">
+        <text value=" "/>
+      </group>
     </layout>
   </bibliography>
 </style>
-
