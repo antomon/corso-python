@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0">
   <info>
-    <title>Comprehensive Bibliography Style</title>
-    <id>https://www.zotero.org/styles/comprehensive-bibliography-style</id>
-    <link href="https://www.zotero.org/styles/comprehensive-bibliography-style" rel="self"/>
+    <title>Detailed Bibliography Style</title>
+    <id>https://www.zotero.org/styles/detailed-bibliography-style</id>
+    <link href="https://www.zotero.org/styles/detailed-bibliography-style" rel="self"/>
     <author>
       <name>Your Name</name>
     </author>
@@ -33,53 +33,52 @@
   </macro>
 
   <macro name="isbn">
-    <group delimiter=". ">
-      <text term="ISBN"/>
+    <group prefix="ISBN: " delimiter=". ">
       <text variable="ISBN"/>
     </group>
   </macro>
 
   <macro name="language">
-    <group delimiter=". ">
-      <text term="Language"/>
+    <group prefix="Language: " delimiter=". ">
       <text variable="language"/>
     </group>
   </macro>
 
   <macro name="url">
-    <group delimiter=". ">
-      <text term="URL"/>
+    <group prefix="URL: " delimiter=". ">
       <text variable="URL"/>
     </group>
   </macro>
 
   <macro name="note">
-    <text variable="note"/>
+    <group prefix="Note: " delimiter=". ">
+      <text variable="note"/>
+    </group>
   </macro>
 
   <citation>
     <layout delimiter=". " suffix=".">
       <text macro="author"/>
-      <text macro="year"/>
+      <text macro="year" prefix=" (" suffix=")"/>
       <text macro="title"/>
-      <text macro="publisher"/>
-      <text macro="isbn"/>
-      <text macro="language"/>
-      <text macro="url"/>
-      <text macro="note"/>
+      <text macro="publisher" prefix=". "/>
+      <text macro="isbn" prefix=". "/>
+      <text macro="language" prefix=". "/>
+      <text macro="url" prefix=". "/>
+      <text macro="note" prefix=". "/>
     </layout>
   </citation>
 
   <bibliography>
     <layout hanging-indent="true" delimiter=". " suffix=".">
       <text macro="author"/>
-      <text macro="year"/>
-      <text macro="title"/>
-      <text macro="publisher"/>
-      <text macro="isbn"/>
-      <text macro="language"/>
-      <text macro="url"/>
-      <text macro="note"/>
+      <text macro="year" prefix=" (" suffix=")"/>
+      <text macro="title" prefix=". "/>
+      <text macro="publisher" prefix=". "/>
+      <text macro="isbn" prefix=". "/>
+      <text macro="language" prefix=". "/>
+      <text macro="url" prefix=". "/>
+      <text macro="note" prefix=". "/>
     </layout>
   </bibliography>
 </style>
