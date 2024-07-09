@@ -13,12 +13,26 @@
 
   <macro name="author">
     <names variable="author">
-      <name and="text" initialize-with=". " delimiter=", "/>
+      <name and="text" initialize-with=". " delimiter=", " text-case="uppercase"/>
     </names>
   </macro>
 
   <macro name="title">
-    <text variable="title" font-style="italic"/>
+    <text variable="title" font-style="italic" text-case="title"/>
+  </macro>
+
+  <macro name="type">
+    <choose>
+      <if type="book">
+        <text value="Libro" prefix="(" suffix=")" text-case="capitalize-first"/>
+      </if>
+      <if type="report">
+        <text value="Report Tecnico" prefix="(" suffix=")" text-case="capitalize-first"/>
+      </if>
+      <else>
+        <text value="Altro" prefix="(" suffix=")" text-case="capitalize-first"/>
+      </else>
+    </choose>
   </macro>
 
   <macro name="publisher">
@@ -61,6 +75,7 @@
       <text macro="author"/>
       <text macro="year" prefix=" (" suffix=")"/>
       <text macro="title"/>
+      <text macro="type" prefix=". "/>
       <text macro="publisher" prefix=". "/>
       <text macro="isbn" prefix=". "/>
       <text macro="language" prefix=". "/>
@@ -74,11 +89,13 @@
       <text macro="author"/>
       <text macro="year" prefix=" (" suffix=")"/>
       <text macro="title" prefix=". "/>
+      <text macro="type" prefix=". "/>
       <text macro="publisher" prefix=". "/>
       <text macro="isbn" prefix=". "/>
       <text macro="language" prefix=". "/>
       <text macro="url" prefix=". "/>
       <text macro="note" prefix=". "/>
+      <text value=" " suffix=" "/>
     </layout>
   </bibliography>
 </style>
