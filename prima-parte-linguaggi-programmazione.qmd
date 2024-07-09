@@ -9,11 +9,11 @@ Partiamo da alcuni concetti basilari che ci permettono di contestualizzare più 
 
 ## Definizioni
 
-La **programmazione** è il processo di progettazione e scrittura di **istruzioni**, nella forma statica, ad esempio un file di testo, identificate come **codice sorgente**, che un computer può ricevere per eseguire compiti predefiniti. Queste istruzioni sono codificate in un **linguaggio di programmazione**, che traduce le idee e gli algoritmi del programmatore, in un formato comprensibile ed eseguibile dal computer.
+La **programmazione** è il processo di ideazione e scrittura di **istruzioni**, nella forma statica, ad esempio un file di testo, identificate come **codice sorgente**, che un computer può ricevere per eseguire compiti predefiniti. Queste istruzioni sono codificate in un **linguaggio di programmazione**, che traduce gli algoritmi e le finalità del programmatore, in un formato comprensibile ed eseguibile dal computer.
 
-Un **programma** informatico è una sequenza di istruzioni scritte per eseguire una specifica operazione o un insieme di operazioni su un computer. Queste istruzioni sono codificate in un linguaggio che il computer può comprendere e utilizzare per eseguire attività come calcoli, manipolazione di dati, controllo di dispositivi e interazione con l'utente. Pensate a un programma come a una ricetta di cucina. La ricetta elenca gli ingredienti necessari (dati) e fornisce istruzioni passo-passo (algoritmo) per preparare un piatto. Allo stesso modo, un programma informatico specifica i dati da usare e le istruzioni da seguire per ottenere un risultato desiderato.
+Un **programma** informatico è una sequenza di istruzioni scritte per eseguire una specifica operazione o un insieme di operazioni su un computer. Queste istruzioni sono codificate ino dei linguaggi che il computer specifico può comprendere e utilizzare per eseguire attività come calcoli, manipolazione di dati, controllo di dispositivi e interazione con l'utente. Pensate a un programma come a una ricetta di cucina. La ricetta elenca gli ingredienti necessari (dati) e fornisce istruzioni passo-passo (algoritmo) per preparare un piatto. Allo stesso modo, un programma informatico specifica i dati da usare e le istruzioni da seguire per ottenere un risultato desiderato.
 
-Un linguaggio di programmazione è un linguaggio formale che fornisce un insieme di regole e sintassi per scrivere programmi informatici. Questi linguaggi permettono ai programmatori di comunicare con i computer e di creare software. Alcuni esempi di linguaggi di programmazione includono Python, Java, C++, SQL, Rust, Haskell, Prolog, C, Assembly, Fortran, JavaScript e altre centinaia (o forse migliaia). 
+Un linguaggio di programmazione è un linguaggio formale che fornisce un insieme di regole e sintassi per scrivere programmi informatici. Questi linguaggi permettono ai programmatori di comunicare con i computer e di creare software da distribuire al difuori di quello usato per la creazione. Alcuni esempi di linguaggi di programmazione includono Python, Java, C++, SQL, Rust, Haskell, Prolog, C, Assembly, Fortran, JavaScript e altre centinaia (o forse migliaia) (_List of programming languages_, Wikipedia [@wikipedia_languages_eng]). 
 
 ## Linguaggi naturali e di programmazione
 
@@ -29,7 +29,11 @@ I linguaggi di programmazione hanno dei punti in comune e delle differenze coi l
 
 ## Algoritmi
 
-Un **algoritmo** è "un insieme di regole che definiscono con precisione una sequenza di operazioni" (Harold Stone, _Introduction to Computer Organization and Data Structures_, 1971 [@10.5555/578826]). Tale definizione, per quanto generica, coglie i due aspetti fondanti, cioè regole, intese come prescrizioni sintattiche o semantiche, che si traducono in operazioni richieste ad un agente, umano o informatico.
+Un **algoritmo** è 
+
+> Un insieme di regole che definiscono con precisione una sequenza di operazioni" (Harold Stone, _Introduction to Computer Organization and Data Structures_, 1971 [@10.5555/578826]). 
+ 
+Tale definizione, per quanto generica, coglie i due aspetti fondanti, cioè regole, intese come prescrizioni sintattiche o semantiche, che si traducono in operazioni richieste ad un agente, umano o informatico.
 
 In altre parole, un algoritmo è una sequenza ben definita di passi o operazioni ben codificata, che, a partire da un input, produce un output in un tempo finito e, quindi, presenta la seguente serie di caratteristiche:
 
@@ -43,7 +47,65 @@ In altre parole, un algoritmo è una sequenza ben definita di passi o operazioni
 
 - Effettività: Ogni operazione dell'algoritmo deve essere fattibile ed eseguibile in un tempo finito.
 
-Gli algoritmi sono tradotti in codice sorgente attraverso un linguaggio di programmazione per creare programmi. In altre parole, un programma è la realizzazione pratica e funzionante degli algoritmi ideati dal programmatore.
+### Rappresentazione
+
+Un algoritmo è un concetto astratto, esistente come idea nella mente di chi lo crea. Quando si vuole condividere un algoritmo con qualcun altro, è cruciale scegliere una rappresentazione che lo comunichi in modo completo e accurato. Alcune rappresentazioni di algoritmi sono comprensibili solo dagli esseri umani, come quelle che utilizzano il linguaggio naturale o i diagrammi. Al contrario, un programma è una rappresentazione di un algoritmo destinata ad essere leggibile da una macchina, generalmente un computer. L'esecuzione di un programma da parte di un computer è detta processo.
+
+Rappresentare un algoritmo richiede, pertanto, l'uso di un insieme di simboli e di regole di combinazione dei medesimi. I simboli fondamentali utilizzati per rappresentare gli algoritmi sono chiamati primitivi. Questi primitivi rappresentano le operazioni base, le unità minime di lavoro che un algoritmo può eseguire. Devono essere combinati seguendo una specifica sintassi, che è l'insieme delle regole che definiscono come questi simboli possono essere correttamente organizzati per formare istruzioni.
+
+Quando i primitivi sono assemblati secondo la sintassi corretta, il risultato è una rappresentazione significativa dell'algoritmo, ovvero la sua semantica. Le istruzioni create combinando questi primitivi costituiscono il codice sorgente di un programma, che può essere eseguito da un computer per realizzare l'algoritmo desiderato. 
+
+La sintassi di un linguaggio di programmazione determina come appare un programma, mentre la semantica determina cosa significa il programma e come esegue l'algoritmo.
+
+### Generazione
+
+La generazione degli algoritmi è un'arte in sé, non esistendo una ricetta garantita per trovarne almeno uno corretto. Tuttavia, alcune strategie generali possono aumentare le probabilità di successo. La capacità di ideare algoritmi efficaci richiede creatività, pensiero analitico e una profonda comprensione del problema da risolvere.
+
+Alcune strategie:
+
+- Approccio top-down: Un approccio comune alla scoperta degli algoritmi è scomporre un problema complesso in sottoproblemi più piccoli e gestibili. Questo metodo, noto come approccio top-down, prevede di iniziare con una visione globale del problema e poi dividere il problema in parti sempre più piccole fino a raggiungere sottoproblemi che possono essere risolti direttamente. Ogni sottoproblema è affrontato individualmente e le soluzioni sono poi combinate per risolvere il problema originale. Questo approccio è particolarmente utile quando si affrontano problemi complessi che possono essere suddivisi in componenti indipendenti.
+
+- Approccio bottom-up: Un altro metodo è l'approccio bottom-up, che prevede di partire da casi specifici o esempi concreti e di cercare di generalizzare la soluzione. Questo approccio consiste nell'identificare soluzioni per piccoli problemi specifici e poi combinare queste soluzioni per affrontare problemi più grandi. È un metodo efficace quando le soluzioni a problemi semplici possono essere adattate e combinate per risolvere problemi più complessi. L'approccio bottom-up è spesso utilizzato in combinazione con l'approccio top-down per fornire una comprensione completa del problema e della sua soluzione.
+
+- Induzione: L'induzione è una tecnica matematica che può essere molto utile nella determinazione di algoritmi. Consiste nel risolvere il problema per un caso base semplice e poi dimostrare che se il problema può essere risolto per un caso generico, allora può essere risolto anche per il caso successivo. Questa tecnica è particolarmente utile per i problemi ricorsivi, dove la soluzione a un problema dipende dalla soluzione di istanze più semplici dello stesso problema.
+
+Contraddizione: La contraddizione è un'altra tecnica matematica che può essere utilizzata nella definizone di algoritmi. Consiste nel dimostrare che l'assunzione opposta porta a una contraddizione, e quindi l'assunzione iniziale deve essere vera. Questa tecnica è utile per provare che certi problemi non possono essere risolti o che certe proprietà devono essere vere per un algoritmo efficace.
+
+### Metodologia di Polya
+
+George Polya, nel suo libro _How to Solve It_ [@polya1945], propone una metodologia strutturata per la risoluzione dei problemi che può essere applicata alla scoperta degli algoritmi. Polya suggerisce quattro fasi principali:
+
+1. Comprendere il problema: Prima di tutto, è fondamentale avere una chiara comprensione del problema. Ciò include identificare esattamente cosa è richiesto, quali sono i dati di input e quale deve essere l'output. Una comprensione chiara aiuta a focalizzare l'attenzione sui punti cruciali del problema.
+
+2. Formulare piani: Una volta compreso il problema, il passo successivo è ideare uno o più piani per risolverlo. Questo può includere la suddivisione del problema in sottoproblemi, l'uso di analogie con problemi già risolti, o l'applicazione di tecniche matematiche come l'induzione. È utile pensare a diverse strategie e considerare quale possa essere la più efficace.
+
+3. Eseguire i piani: Dopo aver formulato un piano, bisogna metterlo in pratica. Questo implica scrivere il codice, testare le soluzioni e verificare che l'algoritmo funzioni correttamente per i casi di test previsti. Durante questa fase, è possibile che si scoprano nuovi sottoproblemi o che si debba modificare il piano originale.
+
+4. Valutare l'efficacia: Infine, è importante valutare l'efficacia della soluzione. Questo include verificare che l'algoritmo funzioni correttamente per tutti i casi di input, che sia efficiente in termini di tempo e risorse, e che sia possibile migliorarlo ulteriormente. La valutazione permette di rifinire l'algoritmo e di identificare eventuali punti deboli o aree di miglioramento.
+
+Queste fasi aiutano a strutturare il processo di definizione di algoritmi in modo sistematico e metodico, aumentando le probabilità di trovare soluzioni efficaci ai problemi. La scrittura degli algoritmi, quindi, non è solo una questione di creatività, ma anche di applicazione rigorosa di tecniche e metodologie strutturate.
+
+### Esempi
+
+Alcuni esempi di rappresentazione degli algoritmi includono:
+
+- Linguaggio naturale: Rappresentazioni verbali utilizzabili dagli esseri umani.
+
+- Diagrammi: Rappresentazioni visive come i flowchart.
+
+- Pseudocodice: Notazione semi-formale usata principalmente per la comprensione umana.
+
+- Codice sorgente: Rappresentazioni formali in un linguaggio di programmazione specifico.
+
+Lo pseudocodice cristallizza concetti condivisi dalla maggior parte dei linguaggi di programmazione, come valori ed espressioni, memorizzazione e nomina, sequenziazione, condizioni e diramazioni, e cicli.
+
+
+
+### Importanza
+
+Gli algoritmi sono fondamentali per l'informatica perché rappresentano le soluzioni astratte ai problemi che affrontiamo nel mondo digitale. La scoperta e l'ottimizzazione degli algoritmi sono alla base dell'innovazione tecnologica e del progresso scientifico. Essi permettono di gestire processi complessi, di analizzare grandi quantità di dati, e di sviluppare nuove tecnologie e applicazioni.
+
+In conclusione, gli algoritmi costituiscono il cuore della scienza informatica, essendo alla base della risoluzione di problemi attraverso la programmazione. La scoperta e la rappresentazione degli algoritmi sono attività cruciali che richiedono una combinazione di creatività, rigore e abilità analitiche.
 
 ## Dal codice sorgente all'esecuzione
 
@@ -107,34 +169,3 @@ Per creare il software, quindi, è necessario percorrere una sequenza di fasi be
 
 La complessità del processo induce la necessità di avere dei team con qualità indiivduali diverse e il programmatore, oltre alle competenze specifiche, deve saper interpretare i vari artifatti di disegno e saperli tramutare in algoritmi e codice sorgente.
 
-## L'Impatto dell'intelligenza artificiale generativa sulla programmazione
-
-Con l'avvento dell'**intelligenza artificiale generativa** (IA generativa), la programmazione ha subito una trasformazione significativa. Prima dell'IA generativa, i programmatori dovevano tutti scrivere manualmente ogni riga di codice, seguendo rigorosamente la sintassi e le regole del linguaggio di programmazione scelto. Questo processo richiedeva una conoscenza approfondita degli algoritmi, delle strutture dati e delle migliori pratiche di programmazione.
-
-Inoltre, i programmatori dovevano creare ogni funzione, classe e modulo a mano, assicurandosi che ogni dettaglio fosse corretto, identificavano e correggevano gli errori nel codice con un processo lungo e laborioso, che comportava anche la scrittura di casi di test e l'esecuzione di sessioni di esecuzione di tali casi. Infine, dovebano scrivere documentazione dettagliata per spiegare il funzionamento del codice e facilitare la manutenzione futura.
-
-### Attività del programmatore con l'IA Generativa
-
-L'IA generativa ha introdotto nuovi strumenti e metodologie che stanno cambiando il modo in cui i programmatori lavorano:
-
-1. Generazione automatica del codice: Gli strumenti di IA generativa possono creare porzioni di codice basate su descrizioni ad alto livello fornite dai programmatori. Questo permette di velocizzare notevolmente lo sviluppo iniziale e ridurre gli errori di sintassi.
-
-2. Assistenza nel debugging: L'IA può identificare potenziali bug e suggerire correzioni, rendendo il processo di debugging più efficiente e meno dispendioso in termini di tempo.
-
-3. Ottimizzazione automatica: Gli algoritmi di IA possono analizzare il codice e suggerire o applicare automaticamente ottimizzazioni per migliorare le prestazioni.
-
-4. Generazione di casi di test: L'IA può creare casi di test per verificare la correttezza del codice, coprendo una gamma più ampia di scenari di quanto un programmatore potrebbe fare manualmente.
-
-5. Documentazione automatica: L'IA può generare documentazione leggendo e interpretando il codice, riducendo il carico di lavoro manuale e garantendo una documentazione coerente e aggiornata.
-
-### L'Importanza di imparare a programmare nell'era dell'IA generativa
-
-Nonostante l'avvento dell'IA generativa, imparare a programmare rimane fondamentale per diverse ragioni. La programmazione non è solo una competenza tecnica, ma anche un modo di pensare e risolvere problemi. Comprendere i fondamenti della programmazione è essenziale per utilizzare efficacemente gli strumenti di IA generativa. Senza una solida base, è difficile sfruttare appieno queste tecnologie. Inoltre, la programmazione insegna a scomporre problemi complessi in parti più gestibili e a trovare soluzioni logiche e sequenziali, una competenza preziosa in molti campi.
-
-Anche con l'IA generativa, esisteranno sempre situazioni in cui sarà necessario personalizzare o ottimizzare il codice per esigenze specifiche. La conoscenza della programmazione permette di fare queste modifiche con sicurezza. Inoltre, quando qualcosa va storto, è indispensabile sapere come leggere e comprendere il codice per identificare e risolvere i problemi. L'IA può assistere, ma la comprensione umana rimane cruciale per interventi mirati.
-
-Imparare a programmare consente di sperimentare nuove idee e prototipare rapidamente soluzioni innovative. La creatività è potenziata dalla capacità di tradurre idee in codice funzionante. Sapere programmare aiuta anche a comprendere i limiti e le potenzialità degli strumenti di IA generativa, permettendo di usarli in modo più strategico ed efficace.
-
-La tecnologia evolve rapidamente, e con una conoscenza della programmazione si è meglio preparati ad adattarsi alle nuove tecnologie e metodologie che emergeranno in futuro. Inoltre, la programmazione è una competenza trasversale applicabile in numerosi settori, dalla biologia computazionale alla finanza, dall'ingegneria all'arte digitale. Avere questa competenza amplia notevolmente le opportunità di carriera.
-
-Infine, la programmazione è una porta d'accesso a ruoli più avanzati e specializzati nel campo della tecnologia, come l'ingegneria del software, la scienza dei dati e la ricerca sull'IA. Conoscere i principi della programmazione aiuta a comprendere meglio come funzionano gli algoritmi di IA, permettendo di contribuire attivamente allo sviluppo di nuove tecnologie.
