@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; I linguaggi di programmazione, i programmi e i programmatori – Da neofita di Python a campione</title>
+<title>8&nbsp; Scaricare e installare Python – Da neofita di Python a campione</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -50,8 +84,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./prima-parte-paradigmi-programmazione.html" rel="next">
-<link href="./prima-parte.html" rel="prev">
+<link href="./seconda-parte-python-sintassi.html" rel="next">
+<link href="./seconda-parte-python-introduzione.html" rel="prev">
 <link href="./red-python-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -100,10 +134,10 @@ div.csl-indent {
 <script src="https://cdn.jsdelivr.net/pyodide/v0.26.0/full/pyodide.js"></script>
 
 
-<meta property="og:title" content="1&nbsp; I linguaggi di programmazione, i programmi e i programmatori – Da neofita di Python a campione">
+<meta property="og:title" content="8&nbsp; Scaricare e installare Python – Da neofita di Python a campione">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="Da neofita di Python a campione">
-<meta name="twitter:title" content="1&nbsp; I linguaggi di programmazione, i programmi e i programmatori – Da neofita di Python a campione">
+<meta name="twitter:title" content="8&nbsp; Scaricare e installare Python – Da neofita di Python a campione">
 <meta name="twitter:description" content="">
 <meta name="twitter:creator" content="@antomon">
 <meta name="twitter:site" content="@antomon">
@@ -189,7 +223,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-linguaggi-programmazione.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">I linguaggi di programmazione, i programmi e i programmatori</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./seconda-parte.html">Seconda parte: Le basi di Python</a></li><li class="breadcrumb-item"><a href="./seconda-parte-python-installazione.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -218,7 +252,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prima-parte-linguaggi-programmazione.html" class="sidebar-item-text sidebar-link active">
+  <a href="./prima-parte-linguaggi-programmazione.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">I linguaggi di programmazione, i programmi e i programmatori</span></span></a>
   </div>
 </li>
@@ -271,7 +305,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./seconda-parte-python-installazione.html" class="sidebar-item-text sidebar-link">
+  <a href="./seconda-parte-python-installazione.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></span></a>
   </div>
 </li>
@@ -377,25 +411,25 @@ div.csl-indent {
     <h2 id="toc-title">Indice</h2>
    
   <ul>
-  <li><a href="#definizioni" id="toc-definizioni" class="nav-link active" data-scroll-target="#definizioni"><span class="header-section-number">1.1</span> Definizioni</a></li>
-  <li><a href="#linguaggi-naturali-e-di-programmazione" id="toc-linguaggi-naturali-e-di-programmazione" class="nav-link" data-scroll-target="#linguaggi-naturali-e-di-programmazione"><span class="header-section-number">1.2</span> Linguaggi naturali e di programmazione</a></li>
-  <li><a href="#algoritmi" id="toc-algoritmi" class="nav-link" data-scroll-target="#algoritmi"><span class="header-section-number">1.3</span> Algoritmi</a></li>
-  <li><a href="#dal-codice-sorgente-allesecuzione" id="toc-dal-codice-sorgente-allesecuzione" class="nav-link" data-scroll-target="#dal-codice-sorgente-allesecuzione"><span class="header-section-number">1.4</span> Dal codice sorgente all’esecuzione</a></li>
-  <li><a href="#ciclo-di-vita-del-software" id="toc-ciclo-di-vita-del-software" class="nav-link" data-scroll-target="#ciclo-di-vita-del-software"><span class="header-section-number">1.5</span> Ciclo di vita del software</a></li>
-  <li><a href="#limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione" id="toc-limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione" class="nav-link" data-scroll-target="#limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione"><span class="header-section-number">1.6</span> L’Impatto dell’intelligenza artificiale generativa sulla programmazione</a>
+  <li><a href="#scaricamento" id="toc-scaricamento" class="nav-link active" data-scroll-target="#scaricamento"><span class="header-section-number">8.1</span> Scaricamento</a></li>
+  <li><a href="#installazione" id="toc-installazione" class="nav-link" data-scroll-target="#installazione"><span class="header-section-number">8.2</span> Installazione</a></li>
+  <li><a href="#esecuzione-del-primo-programma-hello-world" id="toc-esecuzione-del-primo-programma-hello-world" class="nav-link" data-scroll-target="#esecuzione-del-primo-programma-hello-world"><span class="header-section-number">8.3</span> Esecuzione del primo programma: “Hello, World!”</a>
   <ul class="collapse">
-  <li><a href="#attività-del-programmatore-con-lia-generativa" id="toc-attività-del-programmatore-con-lia-generativa" class="nav-link" data-scroll-target="#attività-del-programmatore-con-lia-generativa"><span class="header-section-number">1.6.1</span> Attività del programmatore con l’IA Generativa</a></li>
-  <li><a href="#limportanza-di-imparare-a-programmare-nellera-dellia-generativa" id="toc-limportanza-di-imparare-a-programmare-nellera-dellia-generativa" class="nav-link" data-scroll-target="#limportanza-di-imparare-a-programmare-nellera-dellia-generativa"><span class="header-section-number">1.6.2</span> L’Importanza di imparare a programmare nell’era dell’IA generativa</a></li>
+  <li><a href="#repl" id="toc-repl" class="nav-link" data-scroll-target="#repl"><span class="header-section-number">8.3.1</span> REPL</a></li>
+  <li><a href="#interprete" id="toc-interprete" class="nav-link" data-scroll-target="#interprete"><span class="header-section-number">8.3.2</span> Interprete</a></li>
+  <li><a href="#ide" id="toc-ide" class="nav-link" data-scroll-target="#ide"><span class="header-section-number">8.3.3</span> IDE</a></li>
+  <li><a href="#esecuzione-nel-browser" id="toc-esecuzione-nel-browser" class="nav-link" data-scroll-target="#esecuzione-nel-browser"><span class="header-section-number">8.3.4</span> Esecuzione nel browser</a></li>
+  <li><a href="#jupyter-notebook" id="toc-jupyter-notebook" class="nav-link" data-scroll-target="#jupyter-notebook"><span class="header-section-number">8.3.5</span> Jupyter Notebook</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-linguaggi-programmazione.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/seconda-parte-python-installazione.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-linguaggi-programmazione.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">I linguaggi di programmazione, i programmi e i programmatori</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./seconda-parte.html">Seconda parte: Le basi di Python</a></li><li class="breadcrumb-item"><a href="./seconda-parte-python-installazione.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">I linguaggi di programmazione, i programmi e i programmatori</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></h1>
 </div>
 
 
@@ -412,108 +446,331 @@ div.csl-indent {
 </header>
 
 
-<p>Partiamo da alcuni concetti basilari che ci permettono di contestualizzare più facilmente quelli che introdurremo via via nel corso.</p>
-<section id="definizioni" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="definizioni"><span class="header-section-number">1.1</span> Definizioni</h2>
-<p>La <strong>programmazione</strong> è il processo di progettazione e scrittura di <strong>istruzioni</strong>, nella forma statica, ad esempio un file di testo, identificate come <strong>codice sorgente</strong>, che un computer può ricevere per eseguire compiti predefiniti. Queste istruzioni sono codificate in un <strong>linguaggio di programmazione</strong>, che traduce le idee e gli algoritmi del programmatore, in un formato comprensibile ed eseguibile dal computer.</p>
-<p>Un <strong>programma</strong> informatico è una sequenza di istruzioni scritte per eseguire una specifica operazione o un insieme di operazioni su un computer. Queste istruzioni sono codificate in un linguaggio che il computer può comprendere e utilizzare per eseguire attività come calcoli, manipolazione di dati, controllo di dispositivi e interazione con l’utente. Pensate a un programma come a una ricetta di cucina. La ricetta elenca gli ingredienti necessari (dati) e fornisce istruzioni passo-passo (algoritmo) per preparare un piatto. Allo stesso modo, un programma informatico specifica i dati da usare e le istruzioni da seguire per ottenere un risultato desiderato.</p>
-<p>Un linguaggio di programmazione è un linguaggio formale che fornisce un insieme di regole e sintassi per scrivere programmi informatici. Questi linguaggi permettono ai programmatori di comunicare con i computer e di creare software. Alcuni esempi di linguaggi di programmazione includono Python, Java, C++, SQL, Rust, Haskell, Prolog, C, Assembly, Fortran, JavaScript e altre centinaia (o forse migliaia).</p>
-</section>
-<section id="linguaggi-naturali-e-di-programmazione" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="linguaggi-naturali-e-di-programmazione"><span class="header-section-number">1.2</span> Linguaggi naturali e di programmazione</h2>
-<p>I linguaggi di programmazione hanno dei punti in comune e delle differenze coi linguaggi naturali (come l’italiano o l’inglese). Quest’ultime sono principalmente:</p>
+<section id="scaricamento" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="scaricamento"><span class="header-section-number">8.1</span> Scaricamento</h2>
 <ol type="1">
-<li><p>Precisione e rigidità: I linguaggi di programmazione sono estremamente precisi e rigidi. Ogni istruzione deve essere scritta in un modo specifico affinché il computer possa comprenderla ed eseguirla correttamente. Anche un piccolo errore di sintassi può impedire il funzionamento di un programma.</p></li>
-<li><p>Ambiguità: I linguaggi naturali sono spesso ambigui e aperti a interpretazioni. Le stesse parole possono avere significati diversi a seconda del contesto. I linguaggi di programmazione, invece, sono progettati per essere privi di ambiguità; ogni istruzione ha un significato preciso e univoco.</p></li>
-<li><p>Vocabolario limitato: I linguaggi naturali hanno un vocabolario vastissimo e in continua espansione. I linguaggi di programmazione, al contrario, hanno un vocabolario limitato costituito da parole chiave e comandi definiti dal linguaggio stesso.</p></li>
-<li><p>Forma di mediazione: I linguaggi naturali sono direttamente utilizzati per comunicare, quelli di programmazione non sono comprensibili immediatamente dai computer, ma devono essere tradotti in una forma opportuna per mezzo di programmi ad hoc.</p></li>
-</ol>
-</section>
-<section id="algoritmi" class="level2 page-columns page-full" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="algoritmi"><span class="header-section-number">1.3</span> Algoritmi</h2>
-<p>Un <strong>algoritmo</strong> è “un insieme di regole che definiscono con precisione una sequenza di operazioni” (Harold Stone, <em>Introduction to Computer Organization and Data Structures</em>, 1971 <span class="citation" data-cites="10.5555/578826">(<a href="#ref-10.5555/578826" role="doc-biblioref">Stone 1971</a>)</span>). Tale definizione, per quanto generica, coglie i due aspetti fondanti, cioè regole, intese come prescrizioni sintattiche o semantiche, che si traducono in operazioni richieste ad un agente, umano o informatico.</p>
-<div class="no-row-height column-margin column-container"><div id="ref-10.5555/578826" class="csl-entry" role="listitem">
-Stone, Harold S. 1971. <em>Introduction to Computer Organization and Data Structures</em>. USA: <a href="https://dl.acm.org/doi/10.5555/578826" class="uri">https://dl.acm.org/doi/10.5555/578826</a>; McGraw-Hill, Inc.
-</div></div><p>In altre parole, un algoritmo è una sequenza ben definita di passi o operazioni ben codificata, che, a partire da un input, produce un output in un tempo finito e, quindi, presenta la seguente serie di caratteristiche:</p>
+<li><p>Visita il sito ufficiale di Python: Vai su <a href="https://www.python.org/">python.org</a>.</p></li>
+<li><p>Naviga alla pagina di download: Clicca su <em>Downloads</em> nel menu principale.</p></li>
+<li><p>Scarica il pacchetto di installazione:</p>
 <ul>
-<li><p>Finitudine: L’algoritmo deve terminare dopo un numero finito di passi.</p></li>
-<li><p>Determinismo: Ogni passo dell’algoritmo deve essere definito in modo preciso e non ambiguo.</p></li>
-<li><p>Input: L’algoritmo riceve zero o più dati in ingresso.</p></li>
-<li><p>Output: L’algoritmo produce uno o più risultati.</p></li>
-<li><p>Effettività: Ogni operazione dell’algoritmo deve essere fattibile ed eseguibile in un tempo finito.</p></li>
-</ul>
-<p>Gli algoritmi sono tradotti in codice sorgente attraverso un linguaggio di programmazione per creare programmi. In altre parole, un programma è la realizzazione pratica e funzionante degli algoritmi ideati dal programmatore.</p>
-</section>
-<section id="dal-codice-sorgente-allesecuzione" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="dal-codice-sorgente-allesecuzione"><span class="header-section-number">1.4</span> Dal codice sorgente all’esecuzione</h2>
-<p>Per comprendere come un programma scritto in un linguaggio di programmazione passi dal file di testo contenente il codice sorgente all’esecuzione delle istruzioni da parte della CPU, è fondamentale capire che questo processo richiede un programma che interpreti il codice sorgente. Tale programma può essere un <strong>compilatore</strong> o un <strong>interprete</strong>, le due macrocategorie che definiscono come il codice sorgente viene tradotto ed eseguito.</p>
-<p>Un <strong>compilatore</strong> è un programma che traduce l’intero codice sorgente di un programma scritto in un linguaggio di alto livello (come C o C++) in codice macchina, che è il linguaggio comprensibile direttamente dalla CPU. Questa traduzione avviene una sola volta, generando un file eseguibile che può essere eseguito direttamente dalla CPU.</p>
-<p>Un <strong>interprete</strong>, invece, è un programma che esegue il codice sorgente direttamente, istruzione per istruzione, senza produrre un file eseguibile separato. L’interprete legge una riga di codice, la traduce in codice macchina e la esegue immediatamente. Questo processo viene ripetuto per ogni riga del codice sorgente.</p>
-<p>È importante notare che alcuni linguaggi di programmazione possono essere sia compilati che interpretati, a seconda dell’implementazione disponibile. Ad esempio, Java utilizza sia la compilazione (per generare bytecode) che l’interpretazione, e la Java Virtual Machine (JVM) spesso utilizza anche la compilazione just-in-time (JIT) per tradurre il bytecode in codice macchina nativo durante l’esecuzione.</p>
-<p>Detto ciò i passaggi macro perché un programma sia eseguito e possa produrre gli effetti pronosticati, sono:</p>
-<ol type="1">
-<li><p>Il programmatore scrive il codice sorgente utilizzando un editor di testo o un ambiente di sviluppo integrato (integrated development environment, IDE). Questo codice contiene le istruzioni del programma, scritte secondo la sintassi del linguaggio di programmazione scelto.</p></li>
-<li><p>L’interpreto o il compilatore vengono eseguiti con input il programma e un componente, l’analizzatore lessicale, legge il codice sorgente e lo divide in lessemi, che sono sequenze di caratteri che corrispondono agli elementi <em>atomici</em> del linguaggio. Ogni lessema viene identificato come un token specifico, come una parola chiave, un operatore o un identificatore.</p></li>
-<li><p>A seguire un secondo compoenente, il parser, riceve la sequenza di token dall’analizzatore lessicale e costruisce un albero di sintassi, che rappresenta la struttura grammaticale del programma. Il parser verifica che il codice rispetti le regole sintattiche del linguaggio.</p></li>
-<li><p>Un altro componente effettua la verifica che il programma abbia un senso logico. Ad esempio, controlla che le variabili siano dichiarate prima di essere utilizzate e che i tipi di dati siano compatibili con le operazioni eseguite su di essi.</p></li>
-<li><p>Il compilatore, a questo punto, genera una rappresentazione intermedia del programma, che è più vicina al linguaggio macchina ma ancora indipendente dall’architettura specifica del computer. Ciò è tipico dei linguaggi compilati, anche se alcuni interpreti possono generare un bytecode intermedio.</p></li>
-<li><p>Il compilatore ottimizza codice intermedio al fine di migliorare le prestazioni del programma, riducendo il numero di istruzioni o migliorando l’efficienza delle operazioni.</p></li>
-<li><p>Il codice intermedio ottimizzato viene tradotto in codice macchina, che è specifico per l’architettura del computer su cui il programma verrà eseguito.</p></li>
-<li><p>Linking: Il codice macchina viene combinato con altre librerie e moduli necessari per formare un eseguibile completo.</p></li>
-<li><p>Esecuzione: L’eseguibile viene caricato nella memoria del computer e il processore esegue le istruzioni, portando a termine le operazioni definite nel programma.</p></li>
-</ol>
-<p>Nel caso di un interprete, i passaggi di generazione del codice intermedio e macchina possono essere sostituiti da una valutazione diretta delle istruzioni del programma, eseguendole una per una. In pratica, l’interprete traduce ogni singola istruzione del codice sorgente in un formato conprensibile dalla CPU e passa questa istruzione alla CPU stessa per l’esecuzione. Questo processo continua fino a quando tutte le istruzioni del programma non sono state eseguite.</p>
-</section>
-<section id="ciclo-di-vita-del-software" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="ciclo-di-vita-del-software"><span class="header-section-number">1.5</span> Ciclo di vita del software</h2>
-<p>Un <strong>software</strong> è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia concetttuale, dal più generale all’elemento più granulare, è: software, programmi, istruzioni.</p>
-<p>Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi.</p>
-<p>Per creare il software, quindi, è necessario percorrere una sequenza di fasi ben definita che, concisamente, è:</p>
-<ul>
-<li><p>La progettazione di un’applicazione inizia con la fase di <strong>analisi dei requisiti</strong>, in cui si identificano cosa deve fare il software, chi sono gli utenti e quali sono i requisiti funzionali e non funzionali che deve soddisfare.</p></li>
-<li><p>Segue il <strong>disegno funzionale</strong> che dettaglia come ogni componente del sistema possa rispondere alle funzionalità richieste. In questa fase si descrivono le operazioni specifiche che ogni componente deve eseguire, utilizzando diagrammi di processo per rappresentare il flusso di attività al fine di rispondere ai requisiti.</p></li>
-<li><p>Il <strong>disegno architetturale</strong> riguarda l’organizzazione ad alto livello del sistema software. In questa fase si definiscono i componenti principali del sistema e come essi interagiscono tra di loro per supportare le attività di processo. Questo include la suddivisione del sistema in moduli o componenti, la definizione delle interfacce tra di essi e l’uso di tecniche di modellazione per rappresentare l’architettura del sistema.</p></li>
-<li><p>Una volta che l’architettura è stata progettata, si passa alla fase di <strong>implementazione</strong>, in cui i programmatori scrivono il codice sorgente nei linguaggi di programmazione scelti.</p></li>
-<li><p>Dopo l’implementazione, è essenziale verificare che il software funzioni correttamente:</p>
-<ul>
-<li><p><strong>Testing</strong>: Scrivere ed eseguire test per verificare che il software soddisfi i requisiti specificati. I test sono di diversi generi in funzione dell’oggetto di verifica, come test unitari, per segmenti di codice, test di integrazione, per componenti, e test di sistema nella sua interezza.</p></li>
-<li><p><strong>Debugging</strong>: Identificare e correggere gli errori (bug) nel codice. Questo può includere l’uso di strumenti di debugging per tracciare l’esecuzione del programma e trovare i punti in cui si verificano gli errori.</p></li>
+<li><p>Per Windows: Cerca Python 3.12.x e fai partire il download (assicurati di scaricare la versione più recente).</p></li>
+<li><p>Per macOS: Come per Windows.</p></li>
+<li><p>Per Linux: Python è spesso preinstallato. Se non lo è, usa il gestore di pacchetti della tua distribuzione (ad esempio <code>apt</code> per Ubuntu: <code>sudo apt-get install python3</code>).</p></li>
 </ul></li>
-<li><p>Una volta che il software è stato testato e ritenuto pronto, si passa alla fasi di messa a disposizione delle funzionalità agli utenti (in inglese, <em>deployment</em>):</p>
-<ul>
-<li><p><strong>Distribuzione</strong>: Rilasciare il software agli utenti finali, che può includere l’installazione su server, la distribuzione di applicazioni desktop o il rilascio di app mobile.</p></li>
-<li><p><strong>Manutenzione</strong>: Continuare a supportare il software dopo il rilascio. Questo include la correzione di bug scoperti dopo il rilascio, l’aggiornamento del software per miglioramenti e nuove funzionalità, e l’adattamento a nuovi requisiti o ambienti.</p></li>
-</ul></li>
-</ul>
-<p>La complessità del processo induce la necessità di avere dei team con qualità indiivduali diverse e il programmatore, oltre alle competenze specifiche, deve saper interpretare i vari artifatti di disegno e saperli tramutare in algoritmi e codice sorgente.</p>
-</section>
-<section id="limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="limpatto-dellintelligenza-artificiale-generativa-sulla-programmazione"><span class="header-section-number">1.6</span> L’Impatto dell’intelligenza artificiale generativa sulla programmazione</h2>
-<p>Con l’avvento dell’<strong>intelligenza artificiale generativa</strong> (IA generativa), la programmazione ha subito una trasformazione significativa. Prima dell’IA generativa, i programmatori dovevano tutti scrivere manualmente ogni riga di codice, seguendo rigorosamente la sintassi e le regole del linguaggio di programmazione scelto. Questo processo richiedeva una conoscenza approfondita degli algoritmi, delle strutture dati e delle migliori pratiche di programmazione.</p>
-<p>Inoltre, i programmatori dovevano creare ogni funzione, classe e modulo a mano, assicurandosi che ogni dettaglio fosse corretto, identificavano e correggevano gli errori nel codice con un processo lungo e laborioso, che comportava anche la scrittura di casi di test e l’esecuzione di sessioni di esecuzione di tali casi. Infine, dovebano scrivere documentazione dettagliata per spiegare il funzionamento del codice e facilitare la manutenzione futura.</p>
-<section id="attività-del-programmatore-con-lia-generativa" class="level3" data-number="1.6.1">
-<h3 data-number="1.6.1" class="anchored" data-anchor-id="attività-del-programmatore-con-lia-generativa"><span class="header-section-number">1.6.1</span> Attività del programmatore con l’IA Generativa</h3>
-<p>L’IA generativa ha introdotto nuovi strumenti e metodologie che stanno cambiando il modo in cui i programmatori lavorano:</p>
-<ol type="1">
-<li><p>Generazione automatica del codice: Gli strumenti di IA generativa possono creare porzioni di codice basate su descrizioni ad alto livello fornite dai programmatori. Questo permette di velocizzare notevolmente lo sviluppo iniziale e ridurre gli errori di sintassi.</p></li>
-<li><p>Assistenza nel debugging: L’IA può identificare potenziali bug e suggerire correzioni, rendendo il processo di debugging più efficiente e meno dispendioso in termini di tempo.</p></li>
-<li><p>Ottimizzazione automatica: Gli algoritmi di IA possono analizzare il codice e suggerire o applicare automaticamente ottimizzazioni per migliorare le prestazioni.</p></li>
-<li><p>Generazione di casi di test: L’IA può creare casi di test per verificare la correttezza del codice, coprendo una gamma più ampia di scenari di quanto un programmatore potrebbe fare manualmente.</p></li>
-<li><p>Documentazione automatica: L’IA può generare documentazione leggendo e interpretando il codice, riducendo il carico di lavoro manuale e garantendo una documentazione coerente e aggiornata.</p></li>
 </ol>
 </section>
-<section id="limportanza-di-imparare-a-programmare-nellera-dellia-generativa" class="level3" data-number="1.6.2">
-<h3 data-number="1.6.2" class="anchored" data-anchor-id="limportanza-di-imparare-a-programmare-nellera-dellia-generativa"><span class="header-section-number">1.6.2</span> L’Importanza di imparare a programmare nell’era dell’IA generativa</h3>
-<p>Nonostante l’avvento dell’IA generativa, imparare a programmare rimane fondamentale per diverse ragioni. La programmazione non è solo una competenza tecnica, ma anche un modo di pensare e risolvere problemi. Comprendere i fondamenti della programmazione è essenziale per utilizzare efficacemente gli strumenti di IA generativa. Senza una solida base, è difficile sfruttare appieno queste tecnologie. Inoltre, la programmazione insegna a scomporre problemi complessi in parti più gestibili e a trovare soluzioni logiche e sequenziali, una competenza preziosa in molti campi.</p>
-<p>Anche con l’IA generativa, esisteranno sempre situazioni in cui sarà necessario personalizzare o ottimizzare il codice per esigenze specifiche. La conoscenza della programmazione permette di fare queste modifiche con sicurezza. Inoltre, quando qualcosa va storto, è indispensabile sapere come leggere e comprendere il codice per identificare e risolvere i problemi. L’IA può assistere, ma la comprensione umana rimane cruciale per interventi mirati.</p>
-<p>Imparare a programmare consente di sperimentare nuove idee e prototipare rapidamente soluzioni innovative. La creatività è potenziata dalla capacità di tradurre idee in codice funzionante. Sapere programmare aiuta anche a comprendere i limiti e le potenzialità degli strumenti di IA generativa, permettendo di usarli in modo più strategico ed efficace.</p>
-<p>La tecnologia evolve rapidamente, e con una conoscenza della programmazione si è meglio preparati ad adattarsi alle nuove tecnologie e metodologie che emergeranno in futuro. Inoltre, la programmazione è una competenza trasversale applicabile in numerosi settori, dalla biologia computazionale alla finanza, dall’ingegneria all’arte digitale. Avere questa competenza amplia notevolmente le opportunità di carriera.</p>
-<p>Infine, la programmazione è una porta d’accesso a ruoli più avanzati e specializzati nel campo della tecnologia, come l’ingegneria del software, la scienza dei dati e la ricerca sull’IA. Conoscere i principi della programmazione aiuta a comprendere meglio come funzionano gli algoritmi di IA, permettendo di contribuire attivamente allo sviluppo di nuove tecnologie.</p>
+<section id="installazione" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="installazione"><span class="header-section-number">8.2</span> Installazione</h2>
+<ol type="1">
+<li><p>Esegui il file di installazione:</p>
+<ul>
+<li><p>Su Windows: Esegui il file <code>.exe</code> scaricato. Assicurati di selezionare l’opzione <code>Add Python to PATH</code> durante l’installazione.</p></li>
+<li><p>Su macOS: Apri il file <code>.pkg</code> scaricato e segui le istruzioni.</p></li>
+<li><p>Su Linux: Usa il gestore di pacchetti per installare Python.</p></li>
+</ul></li>
+<li><p>Verifica l’installazione:</p>
+<ul>
+<li><p>Apri il terminale (Command Prompt su Windows, Terminal su macOS e Linux).</p></li>
+<li><p>Digita <code>python --version</code> o <code>python3 --version</code> e premi Invio. Dovresti vedere la versione di Python installata.</p></li>
+</ul></li>
+</ol>
+</section>
+<section id="esecuzione-del-primo-programma-hello-world" class="level2 page-columns page-full" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="esecuzione-del-primo-programma-hello-world"><span class="header-section-number">8.3</span> Esecuzione del primo programma: “Hello, World!”</h2>
+<p>È consuetudine eseguire come primo programma la visualizzazione della stringa “Hello, World!”<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Possiamo farlo in diversi modi e ciò è una delle caratteristiche più apprezzate di Python.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;La tradizione del programma “Hello, World!” ha una lunga storia che risale ai primi giorni della programmazione. Questo semplice programma è generalmente il primo esempio utilizzato per introdurre i nuovi programmatori alla sintassi e alla struttura di un linguaggio di programmazione. Il programma “Hello, World!” è diventato famoso grazie a Brian Kernighan, che lo ha incluso nel suo libro <span class="citation" data-cites="kernighan1988c">(<a href="appendice-riferimenti.html#ref-kernighan1988c" role="doc-biblioref">Kernighan e Ritchie 1988</a>)</span> pubblicato nel 1978. Tuttavia, il suo utilizzo risale a un testo precedente di Kernighan, <span class="citation" data-cites="kernighan1973b">(<a href="appendice-riferimenti.html#ref-kernighan1973b" role="doc-biblioref">Kernighan 1973</a>)</span>, pubblicato nel 1973, dove veniva utilizzato un esempio simile.</p><div id="ref-kernighan1988c" class="csl-entry" role="listitem">
+Kernighan, Brian W., e Dennis M. Ritchie. 1988. <em>The C Programming Language</em>. 2nd ed. Englewood Cliffs, NJ: Prentice Hall.
+</div><div id="ref-kernighan1973b" class="csl-entry" role="listitem">
+Kernighan, Brian W. 1973. <span>«A Tutorial Introduction to the Programming Language B»</span>. Murray Hill, NJ: Bell Laboratories.
+</div></div></div><section id="repl" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="repl"><span class="header-section-number">8.3.1</span> REPL</h3>
+<p>Il primo modo prevede l’utilizzo del REPL di Python. Il REPL (read-eval-print loop) è un ambiente interattivo di esecuzione di comandi Python generato dall’interprete, secondo il ciclo:</p>
+<ol type="1">
+<li><p>Read: Legge un input dell’utente.</p></li>
+<li><p>Eval: Valuta l’input.</p></li>
+<li><p>Print: Visualizza il risultato dell’esecuzione.</p></li>
+<li><p>Loop: Ripete il ciclo.</p></li>
+</ol>
+<p>Eseguiamo il nostro primo “Hello, World!”:</p>
+<ol type="1">
+<li><p>Apri il terminale ed esegui l’interprete Python digitando <code>python</code> o <code>python3</code> e premi il tasto di invio della tastiera.</p></li>
+<li><p>Scrivi ed esegui il programma:</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Premi il tasto di invio per vedere il risultato immediatamente.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Attenzione
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il REPL e l’interprete Python sono strettamente collegati, ma non sono esattamente la stessa cosa. Quando avvii l’interprete Python senza specificare un file di script da eseguire (digitando semplicemente <code>python</code> o <code>python3</code> nel terminale), entri in modalità REPL. Nel REPL, l’interprete Python legge l’input direttamente dall’utente, lo esegue, stampa il risultato e poi attende il prossimo input. In sintesi, l’interprete può eseguire programmi Python completi salvati in file, il REPL è progettato per un’esecuzione interattiva e immediata di singole istruzioni.</p>
+</div>
+</div>
+</section>
+<section id="interprete" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="interprete"><span class="header-section-number">8.3.2</span> Interprete</h3>
+<p>Un altro modo per eseguire il nostro programma “Hello, World!” è utilizzare l’interprete Python per eseguire un file di codice sorgente. Questo metodo è utile per scrivere programmi più complessi e per mantenere il codice per usi futuri.</p>
+<p>Ecco come fare sui diversi sistemi operativi.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">macOS</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Linux</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<ol type="1">
+<li><p>Crea un file di testo:</p>
+<ol type="i">
+<li>Apri il tuo editor di testo preferito, come Notepad.</li>
+<li>Scrivi il seguente codice nel file:</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="i">
+<li>Salva il file con il nome <code>hello.txt</code>.</li>
+</ol></li>
+<li><p>Rinomina il file (facoltativo): se desideri mantenere il file senza estensione <code>.txt</code>, puoi rinominarlo in <code>hello</code> direttamente dall’Esplora file.</p></li>
+<li><p>Esegui il file Python:</p>
+<ol type="i">
+<li>Apri il prompt dei comandi.</li>
+<li>Naviga fino alla directory in cui hai salvato il file. Ad esempio, se il file si trova nella cartella <code>Documenti</code>, puoi digitare:</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">cd</span> %HOMEPATH%<span class="dt">\D</span>ocumenti</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="i">
+<li>Esegui l’interprete Python passando come argomento il file che hai creato:</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource dosbat number-lines code-with-copy"><code class="sourceCode dosbat"><span id="cb4-1"><a href="#cb4-1"></a>python hello.txt</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="i">
+<li>oppure, se il tuo sistema utilizza <code>python3</code>:</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource dosbat number-lines code-with-copy"><code class="sourceCode dosbat"><span id="cb5-1"><a href="#cb5-1"></a>python3 hello.txt</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Visualizza il risultato:</p></li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource dosbat number-lines code-with-copy"><code class="sourceCode dosbat"><span id="cb6-1"><a href="#cb6-1"></a>Hello, World!</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<ol type="1">
+<li><p>Crea un file di testo:</p>
+<ol type="i">
+<li>Apri il tuo editor di testo preferito, come TextEdit.</li>
+<li>Scrivi il seguente codice nel file:</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="i">
+<li>Salva il file con il nome <code>hello.txt</code>.</li>
+</ol></li>
+<li><p>Rinomina il file (facoltativo): se desideri mantenere il file senza estensione <code>.txt</code>, puoi rinominarlo in <code>hello</code> direttamente dal Finder.</p></li>
+<li><p>Esegui il file Python:</p>
+<ol type="i">
+<li>Apri il terminale del sistema operativo.</li>
+<li>Naviga fino alla directory in cui hai salvato il file. Ad esempio, se il file si trova nella cartella <code>Documenti</code>, puoi digitare:</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="bu">cd</span> ~/Documents</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="i">
+<li>Esegui l’interprete Python passando come argomento il file che hai creato:</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">python3</span> hello.txt</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Visualizza il risultato:</p></li>
+</ol>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="ex">Hello,</span> World!</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<ol type="1">
+<li><p>Crea un file di testo:</p>
+<ol type="i">
+<li>Apri il tuo editor di testo preferito, come Gedit o Nano.</li>
+<li>Scrivi il seguente codice nel file:</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="i">
+<li>Salva il file con il nome <code>hello.txt</code>.</li>
+</ol></li>
+<li><p>Rinomina il file (facoltativo): se desideri mantenere il file senza estensione <code>.txt</code>, puoi rinominarlo in <code>hello</code> utilizzando il comando <code>mv</code> nel terminale:</p></li>
+</ol>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">mv</span> hello.txt hello</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li><p>Esegui il file Python:</p>
+<ol type="i">
+<li>Apri il terminale del sistema operativo.</li>
+<li>Naviga fino alla directory in cui hai salvato il file. Ad esempio, se il file si trova nella cartella <code>Documenti</code>, puoi digitare:</li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="bu">cd</span> ~/Documenti</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="i">
+<li>Esegui l’interprete Python passando come argomento il file che hai creato:</li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="ex">python3</span> hello.txt</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Visualizza il risultato:</p></li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="ex">Hello,</span> World!</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>Con queste istruzioni, dovresti essere in grado di eseguire il programma “Hello, World!” utilizzando un file Python su Windows, macOS e Linux.</p>
+</section>
+<section id="ide" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="ide"><span class="header-section-number">8.3.3</span> IDE</h3>
+<p>Utilizzo di un IDE (integrated development environment) installato sul computer. Ecco alcuni dei più comuni e gratuiti.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">IDLE</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">PyCharm</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Visual Studio Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>È incluso con l’installazione di Python.</p>
+<ol type="1">
+<li><p>Avvia IDLE.</p></li>
+<li><p>Crea un nuovo file (<code>File -&gt; New File</code>).</p></li>
+<li><p>Scrivi il programma:</p></li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li><p>Salva il file (<code>File -&gt; Salva</code>).</p></li>
+<li><p>Esegui il programma (<code>Run -&gt; Run Module</code>).</p></li>
+</ol>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>Proprietario ma con una versione liberamente fruibile.</p>
+<ol type="1">
+<li><p>Scarica e installa PyCharm da <a href="https://www.jetbrains.com/pycharm/download/">jetbrains.com/pycharm/download</a>.</p></li>
+<li><p>Crea un nuovo progetto associando l’interprete Python.</p></li>
+<li><p>Crea un nuovo file Python (<code>File -&gt; New -&gt; Python File</code>).</p></li>
+<li><p>Scrivi il programma:</p></li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="5" type="1">
+<li>Esegui il programma (<code>Run -&gt; Run...</code>).</li>
+</ol>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<p>Proprietario ma liberamente fruibile.</p>
+<ol type="1">
+<li><p>Scarica e installa VS Code da <a href="https://code.visualstudio.com/">code.visualstudio.com</a>.</p></li>
+<li><p>Installa l’estensione Python.</p></li>
+<li><p>Apri o crea una nuova cartella di progetto.</p></li>
+<li><p>Crea un nuovo file Python (<code>File -&gt; Nuovo file</code>).</p></li>
+<li><p>Scrivi il programma:</p></li>
+</ol>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="6" type="1">
+<li><p>Salva il file con estensione <code>.py</code>, ad esempio <code>hello_world.py</code>.</p></li>
+<li><p>Esegui il programma utilizzando il terminale integrato (<code>Visualizza -&gt; Terminale</code>) e digitando <code>python hello_world.py</code>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="esecuzione-nel-browser" class="level3" data-number="8.3.4">
+<h3 data-number="8.3.4" class="anchored" data-anchor-id="esecuzione-nel-browser"><span class="header-section-number">8.3.4</span> Esecuzione nel browser</h3>
+<p>Puoi eseguire Python direttamente nel browser, senza installare nulla. Anche qui abbiamo diverse alternative, sia eseguendo il codice localmente, che utilizzando piattaforme online.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Repl.it</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Google Colab</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">PyScript</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<ol type="1">
+<li><p>Visita <a href="https://repl.it/">repl.it</a>.</p></li>
+<li><p>Crea un nuovo progetto selezionando Python.</p></li>
+<li><p>Scrivi il programma:</p></li>
+</ol>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li>Clicca su “Run” per eseguire il programma.</li>
+</ol>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<ol type="1">
+<li><p>Visita <a href="https://colab.research.google.com/">colab.research.google.com</a>.</p></li>
+<li><p>Crea un nuovo notebook.</p></li>
+<li><p>In una cella di codice, scrivi:</p></li>
+</ol>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li>Premi il pulsante di esecuzione accanto alla cella.</li>
+</ol>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<ol type="1">
+<li><p>Visita il sito ufficiale di <a href="https://pyscript.net/">PyScript</a> per ulteriori informazioni su come iniziare.</p></li>
+<li><p>Crea un file HTML con il seguente contenuto:</p></li>
+</ol>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb21-1"><a href="#cb21-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">"en"</span><span class="dt">&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">"UTF-8"</span><span class="dt">&gt;</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Hello, World with PyScript<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a>    <span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">"stylesheet"</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://pyscript.net/latest/pyscript.css"</span><span class="dt">&gt;</span></span>
+<span id="cb21-7"><a href="#cb21-7"></a>    <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> defer src</span><span class="op">=</span><span class="st">"https://pyscript.net/latest/pyscript.js"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a>    <span class="dt">&lt;</span><span class="kw">py-script</span><span class="dt">&gt;</span></span>
+<span id="cb21-11"><a href="#cb21-11"></a>        print("Hello, World!")</span>
+<span id="cb21-12"><a href="#cb21-12"></a>    <span class="dt">&lt;/</span><span class="kw">py-script</span><span class="dt">&gt;</span></span>
+<span id="cb21-13"><a href="#cb21-13"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb21-14"><a href="#cb21-14"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li><p>Salva il file con estensione <code>.html</code> (ad esempio, <code>hello.html</code>).</p></li>
+<li><p>Apri il file salvato in un browser web. Vedrai l’output <code>Hello, World!</code> direttamente nella pagina.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="jupyter-notebook" class="level3" data-number="8.3.5">
+<h3 data-number="8.3.5" class="anchored" data-anchor-id="jupyter-notebook"><span class="header-section-number">8.3.5</span> Jupyter Notebook</h3>
+<p>Jupyter Notebook è un ambiente di sviluppo interattivo per la programmazione che permette di creare e condividere documenti contenenti codice eseguibile, visualizzazioni, testo formattato e altro ancora. Originariamente sviluppato come parte del progetto IPython, Jupyter supporta non solo Python, ma anche numerosi altri linguaggi di programmazione attraverso i cosiddetti kernel tra cui R, Julia e Scala.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Uso locale</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">JupyterHub</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Binder</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<ol type="1">
+<li>Assicurati di avere Python e Jupyter installati sul tuo computer. Se non li hai, puoi installarli utilizzando Anaconda o pip:</li>
+</ol>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="ex">pip</span> install notebook</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Avvia Jupyter Notebook dal terminale:</li>
+</ol>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="ex">jupyter</span> notebook</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li><p>Crea un nuovo notebook Python.</p></li>
+<li><p>In una cella di codice, scrivi:</p></li>
+</ol>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="5" type="1">
+<li>Premi <code>Shift + Enter</code> per eseguire la cella.</li>
+</ol>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<ol type="1">
+<li><p>Visita l’istanza di JupyterHub della tua istituzione o azienda (<a href="https://jupyter.org/hub">maggiori informazioni</a>).</p></li>
+<li><p>Accedi con le tue credenziali.</p></li>
+<li><p>Crea un nuovo notebook Python.</p></li>
+<li><p>In una cella di codice, scrivi:</p></li>
+</ol>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="5" type="1">
+<li>Premi <code>Shift + Enter</code> per eseguire la cella.</li>
+</ol>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<ol type="1">
+<li><p>Visita <a href="https://mybinder.org/">mybinder.org</a>.</p></li>
+<li><p>Inserisci l’URL del repository GitHub che contiene il tuo notebook o il tuo progetto Python.</p></li>
+<li><p>Clicca su “Launch”.</p></li>
+<li><p>Una volta avviato l’ambiente, crea un nuovo notebook o apri uno esistente.</p></li>
+<li><p>In una cella di codice, scrivi:</p></li>
+</ol>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="6" type="1">
+<li>Premi <code>Shift + Enter</code> per eseguire la cella.</li>
+</ol>
+<p>Binder è un servizio simile a Colab, anche se quest’ultimo offre strumenti generalmente più avanzati in termini di risorse computazionali e collaborazione. Binder di contro è basato su GitHub e ciò può essere utile in alcuni contesti.</p>
+</div>
+</div>
+</div>
 
 
 
 </section>
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1082,13 +1339,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./prima-parte.html" class="pagination-link" aria-label="Prima parte: I fondamenti della programmazione">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prima parte: I fondamenti della programmazione</span>
+      <a href="./seconda-parte-python-introduzione.html" class="pagination-link" aria-label="Introduzione a Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduzione a Python</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./prima-parte-paradigmi-programmazione.html" class="pagination-link" aria-label="I paradigmi di programmazione">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">I paradigmi di programmazione</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./seconda-parte-python-sintassi.html" class="pagination-link" aria-label="La sintassi">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">La sintassi</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1116,7 +1373,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-linguaggi-programmazione.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/seconda-parte-python-installazione.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
