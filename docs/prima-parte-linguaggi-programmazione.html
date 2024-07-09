@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -384,8 +418,6 @@ div.csl-indent {
   <li><a href="#rappresentazione" id="toc-rappresentazione" class="nav-link" data-scroll-target="#rappresentazione"><span class="header-section-number">1.3.1</span> Rappresentazione</a></li>
   <li><a href="#generazione" id="toc-generazione" class="nav-link" data-scroll-target="#generazione"><span class="header-section-number">1.3.2</span> Generazione</a></li>
   <li><a href="#metodologia-di-polya" id="toc-metodologia-di-polya" class="nav-link" data-scroll-target="#metodologia-di-polya"><span class="header-section-number">1.3.3</span> Metodologia di Polya</a></li>
-  <li><a href="#esempi" id="toc-esempi" class="nav-link" data-scroll-target="#esempi"><span class="header-section-number">1.3.4</span> Esempi</a></li>
-  <li><a href="#importanza" id="toc-importanza" class="nav-link" data-scroll-target="#importanza"><span class="header-section-number">1.3.5</span> Importanza</a></li>
   </ul></li>
   <li><a href="#dal-codice-sorgente-allesecuzione" id="toc-dal-codice-sorgente-allesecuzione" class="nav-link" data-scroll-target="#dal-codice-sorgente-allesecuzione"><span class="header-section-number">1.4</span> Dal codice sorgente all’esecuzione</a></li>
   <li><a href="#ciclo-di-vita-del-software" id="toc-ciclo-di-vita-del-software" class="nav-link" data-scroll-target="#ciclo-di-vita-del-software"><span class="header-section-number">1.5</span> Ciclo di vita del software</a></li>
@@ -437,8 +469,8 @@ Wikipedia. 2024. <span>«List of programming languages»</span>. <a href="https:
 <h2 data-number="1.3" class="anchored" data-anchor-id="algoritmi"><span class="header-section-number">1.3</span> Algoritmi</h2>
 <p>Un <strong>algoritmo</strong> è</p>
 <div class="page-columns page-full"><blockquote class="blockquote">
-<p>Un insieme di regole che definiscono con precisione una sequenza di operazioni” (Harold Stone, <em>Introduction to Computer Organization and Data Structures</em>, 1971 <span class="citation" data-cites="10.5555/578826">(<a href="appendice-riferimenti.html#ref-10.5555/578826" role="doc-biblioref">Stone 1971</a>)</span>).</p>
-</blockquote><div class="no-row-height column-margin column-container"><div id="ref-10.5555/578826" class="csl-entry" role="listitem">
+<p>Un insieme di regole che definiscono con precisione una sequenza di operazioni” (Harold Stone, <em>Introduction to Computer Organization and Data Structures</em>, 1971 <span class="citation" data-cites="stone71">(<a href="appendice-riferimenti.html#ref-stone71" role="doc-biblioref">Stone 1971</a>)</span>).</p>
+</blockquote><div class="no-row-height column-margin column-container"><div id="ref-stone71" class="csl-entry" role="listitem">
 Stone, Harold S. 1971. <em>Introduction to Computer Organization and Data Structures</em>. USA: <a href="https://dl.acm.org/doi/10.5555/578826" class="uri">https://dl.acm.org/doi/10.5555/578826</a>; McGraw-Hill, Inc.
 </div></div></div>
 <p>Tale definizione, per quanto generica, coglie i due aspetti fondanti, cioè regole, intese come prescrizioni sintattiche o semantiche, che si traducono in operazioni richieste ad un agente, umano o informatico.</p>
@@ -454,8 +486,53 @@ Stone, Harold S. 1971. <em>Introduction to Computer Organization and Data Struct
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="rappresentazione"><span class="header-section-number">1.3.1</span> Rappresentazione</h3>
 <p>Un algoritmo è un concetto astratto, esistente come idea nella mente di chi lo crea. Quando si vuole condividere un algoritmo con qualcun altro, è cruciale scegliere una rappresentazione che lo comunichi in modo completo e accurato. Alcune rappresentazioni di algoritmi sono comprensibili solo dagli esseri umani, come quelle che utilizzano il linguaggio naturale o i diagrammi. Al contrario, un programma è una rappresentazione di un algoritmo destinata ad essere leggibile da una macchina, generalmente un computer. L’esecuzione di un programma da parte di un computer è detta processo.</p>
 <p>Rappresentare un algoritmo richiede, pertanto, l’uso di un insieme di simboli e di regole di combinazione dei medesimi. I simboli fondamentali utilizzati per rappresentare gli algoritmi sono chiamati primitivi. Questi primitivi rappresentano le operazioni base, le unità minime di lavoro che un algoritmo può eseguire. Devono essere combinati seguendo una specifica sintassi, che è l’insieme delle regole che definiscono come questi simboli possono essere correttamente organizzati per formare istruzioni.</p>
-<p>Quando i primitivi sono assemblati secondo la sintassi corretta, il risultato è una rappresentazione significativa dell’algoritmo, ovvero la sua semantica. Le istruzioni create combinando questi primitivi costituiscono il codice sorgente di un programma, che può essere eseguito da un computer per realizzare l’algoritmo desiderato.</p>
+<p>Quando i simboli primitivi sono assemblati secondo la sintassi corretta, il risultato è una rappresentazione significativa dell’algoritmo, ovvero la sua semantica. Le istruzioni create combinando questi primitivi costituiscono il codice sorgente di un programma, che può essere eseguito da un computer per realizzare l’algoritmo desiderato.</p>
 <p>La sintassi di un linguaggio di programmazione determina come appare un programma, mentre la semantica determina cosa significa il programma e come esegue l’algoritmo.</p>
+<p>Alcuni esempi di rappresentazione degli algoritmi includono:</p>
+<ul>
+<li><p>Linguaggio naturale: Rappresentazioni verbali utilizzabili dagli esseri umani.</p></li>
+<li><p>Diagrammi: Rappresentazioni visive come i flowchart.</p></li>
+<li><p>Pseudocodice: Notazione semi-formale usata principalmente per la comprensione umana.</p></li>
+<li><p>Codice sorgente: Rappresentazioni formali in un linguaggio di programmazione specifico.</p></li>
+</ul>
+<p>Un esempio di algoritmo è dato dall’ordinamento di una lista di numeri interi. Le rappresentazioni di quello che ex-post è il Bubble Sort, sono:</p>
+<ul>
+<li><p>Linguaggio naturale: Gli elementi adiacenti vengono scambiati se sono nell’ordine sbagliato e ciò prosegue fino a quando tutto l’elenco risulti ordinato.</p></li>
+<li><p>Diagramma di flusso:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource mermaid number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>flowchart TD</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    Start --&gt; Controlla(Sono presenti elementi da confrontare?)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>    Controlla -- No --&gt; End(Fine)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>    Controlla -- Sì --&gt; Confronta(Confronta elementi adiacenti)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    Confronta --&gt; Scambia(Gli elementi sono nell'ordine sbagliato?)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    Scambia -- Sì --&gt; ScambiaElementi(Scambia gli elementi)</span>
+<span id="cb1-7"><a href="#cb1-7"></a>    Scambia -- No --&gt; ProssimoElemento(Passa al prossimo elemento)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>    ScambiaElementi --&gt; ProssimoElemento</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    ProssimoElemento --&gt; Controlla</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Pseudocodice:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource plaintext number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>procedure BubbleSort(A: lista di elementi ordinabili)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  n := lunghezza(A)</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  repeat</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    scambiato := falso</span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a>    for i := 1 to n-1 inclusive do</span>
+<span id="cb2-8"><a href="#cb2-8"></a>      if A[i-1] &gt; A[i] then</span>
+<span id="cb2-9"><a href="#cb2-9"></a>        scambia(A[i-1], A[i])</span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a>        scambiato := vero</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a>      end if</span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a>    end for</span>
+<span id="cb2-16"><a href="#cb2-16"></a></span>
+<span id="cb2-17"><a href="#cb2-17"></a>    n := n - 1</span>
+<span id="cb2-18"><a href="#cb2-18"></a></span>
+<span id="cb2-19"><a href="#cb2-19"></a>  until not scambiato</span>
+<span id="cb2-20"><a href="#cb2-20"></a></span>
+<span id="cb2-21"><a href="#cb2-21"></a>end procedure</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p>Nel seguito sarà data anche una rappresentazione in codice sorgente Python.</p>
+<p>In questo esempio, abbiamo rappresentato l’algoritmo Bubble Sort in vari modi per dimostrare come un singolo algoritmo possa essere descritto e compreso attraverso differenti forme di rappresentazione.</p>
 </section>
 <section id="generazione" class="level3" data-number="1.3.2">
 <h3 data-number="1.3.2" class="anchored" data-anchor-id="generazione"><span class="header-section-number">1.3.2</span> Generazione</h3>
@@ -465,15 +542,18 @@ Stone, Harold S. 1971. <em>Introduction to Computer Organization and Data Struct
 <li><p>Approccio top-down: Un approccio comune alla scoperta degli algoritmi è scomporre un problema complesso in sottoproblemi più piccoli e gestibili. Questo metodo, noto come approccio top-down, prevede di iniziare con una visione globale del problema e poi dividere il problema in parti sempre più piccole fino a raggiungere sottoproblemi che possono essere risolti direttamente. Ogni sottoproblema è affrontato individualmente e le soluzioni sono poi combinate per risolvere il problema originale. Questo approccio è particolarmente utile quando si affrontano problemi complessi che possono essere suddivisi in componenti indipendenti.</p></li>
 <li><p>Approccio bottom-up: Un altro metodo è l’approccio bottom-up, che prevede di partire da casi specifici o esempi concreti e di cercare di generalizzare la soluzione. Questo approccio consiste nell’identificare soluzioni per piccoli problemi specifici e poi combinare queste soluzioni per affrontare problemi più grandi. È un metodo efficace quando le soluzioni a problemi semplici possono essere adattate e combinate per risolvere problemi più complessi. L’approccio bottom-up è spesso utilizzato in combinazione con l’approccio top-down per fornire una comprensione completa del problema e della sua soluzione.</p></li>
 <li><p>Induzione: L’induzione è una tecnica matematica che può essere molto utile nella determinazione di algoritmi. Consiste nel risolvere il problema per un caso base semplice e poi dimostrare che se il problema può essere risolto per un caso generico, allora può essere risolto anche per il caso successivo. Questa tecnica è particolarmente utile per i problemi ricorsivi, dove la soluzione a un problema dipende dalla soluzione di istanze più semplici dello stesso problema.</p></li>
+<li><p>Contraddizione: La contraddizione è un’altra tecnica matematica che può essere utilizzata nella definizone di algoritmi. Consiste nel dimostrare che l’assunzione opposta porta a una contraddizione, e quindi l’assunzione iniziale deve essere vera. Questa tecnica è utile per provare che certi problemi non possono essere risolti o che certe proprietà devono essere vere per un algoritmo efficace.</p></li>
 </ul>
-<p>Contraddizione: La contraddizione è un’altra tecnica matematica che può essere utilizzata nella definizone di algoritmi. Consiste nel dimostrare che l’assunzione opposta porta a una contraddizione, e quindi l’assunzione iniziale deve essere vera. Questa tecnica è utile per provare che certi problemi non possono essere risolti o che certe proprietà devono essere vere per un algoritmo efficace.</p>
 </section>
 <section id="metodologia-di-polya" class="level3 page-columns page-full" data-number="1.3.3">
 <h3 data-number="1.3.3" class="anchored" data-anchor-id="metodologia-di-polya"><span class="header-section-number">1.3.3</span> Metodologia di Polya</h3>
-<p>George Polya, nel suo libro <em>How to Solve It</em> <span class="citation" data-cites="polya1945">(<a href="appendice-riferimenti.html#ref-polya1945" role="doc-biblioref">Polya 1945</a>)</span>, propone una metodologia strutturata per la risoluzione dei problemi che può essere applicata alla scoperta degli algoritmi. Polya suggerisce quattro fasi principali:</p>
+<p>George Polya, nel suo libro <em>How to Solve It</em> <span class="citation" data-cites="polya1945">(<a href="appendice-riferimenti.html#ref-polya1945" role="doc-biblioref">Polya 1945</a>)</span>, propone una metodologia strutturata per la risoluzione dei problemi che può essere applicata alla scoperta degli algoritmi.</p>
 <div class="no-row-height column-margin column-container"><div id="ref-polya1945" class="csl-entry" role="listitem">
 Polya, George. 1945. <em>How to Solve It</em>. Princeton University Press.
-</div></div><ol type="1">
+</div></div><section id="le-fasi" class="level4" data-number="1.3.3.1">
+<h4 data-number="1.3.3.1" class="anchored" data-anchor-id="le-fasi"><span class="header-section-number">1.3.3.1</span> Le fasi</h4>
+<p>Polya suggerisce quattro fasi principali:</p>
+<ol type="1">
 <li><p>Comprendere il problema: Prima di tutto, è fondamentale avere una chiara comprensione del problema. Ciò include identificare esattamente cosa è richiesto, quali sono i dati di input e quale deve essere l’output. Una comprensione chiara aiuta a focalizzare l’attenzione sui punti cruciali del problema.</p></li>
 <li><p>Formulare piani: Una volta compreso il problema, il passo successivo è ideare uno o più piani per risolverlo. Questo può includere la suddivisione del problema in sottoproblemi, l’uso di analogie con problemi già risolti, o l’applicazione di tecniche matematiche come l’induzione. È utile pensare a diverse strategie e considerare quale possa essere la più efficace.</p></li>
 <li><p>Eseguire i piani: Dopo aver formulato un piano, bisogna metterlo in pratica. Questo implica scrivere il codice, testare le soluzioni e verificare che l’algoritmo funzioni correttamente per i casi di test previsti. Durante questa fase, è possibile che si scoprano nuovi sottoproblemi o che si debba modificare il piano originale.</p></li>
@@ -481,21 +561,112 @@ Polya, George. 1945. <em>How to Solve It</em>. Princeton University Press.
 </ol>
 <p>Queste fasi aiutano a strutturare il processo di definizione di algoritmi in modo sistematico e metodico, aumentando le probabilità di trovare soluzioni efficaci ai problemi. La scrittura degli algoritmi, quindi, non è solo una questione di creatività, ma anche di applicazione rigorosa di tecniche e metodologie strutturate.</p>
 </section>
-<section id="esempi" class="level3" data-number="1.3.4">
-<h3 data-number="1.3.4" class="anchored" data-anchor-id="esempi"><span class="header-section-number">1.3.4</span> Esempi</h3>
-<p>Alcuni esempi di rappresentazione degli algoritmi includono:</p>
+<section id="esempio-di-applicazione" class="level4" data-number="1.3.3.2">
+<h4 data-number="1.3.3.2" class="anchored" data-anchor-id="esempio-di-applicazione"><span class="header-section-number">1.3.3.2</span> Esempio di applicazione</h4>
+<p>Applichiamo la metodologia di Polya per definire un algoritmo, rappresentato con codice sorgente, che ordini una lista di numeri interi in ordine crescente.</p>
+<ol type="1">
+<li><p>Comprendere il problema: Ordinare una lista di numeri interi in ordine crescente; ad esempio <code>[64, 34, 25, 12, 22, 11, 90]</code> deve diventare <code>[11, 12, 22, 25, 34, 64, 90]</code>.</p></li>
+<li><p>Formulare piani:</p></li>
+</ol>
 <ul>
-<li><p>Linguaggio naturale: Rappresentazioni verbali utilizzabili dagli esseri umani.</p></li>
-<li><p>Diagrammi: Rappresentazioni visive come i flowchart.</p></li>
-<li><p>Pseudocodice: Notazione semi-formale usata principalmente per la comprensione umana.</p></li>
-<li><p>Codice sorgente: Rappresentazioni formali in un linguaggio di programmazione specifico.</p></li>
+<li><p>Piano 1: Confrontare ogni elemento con ogni altro elemento e scambiarli se sono nell’ordine sbagliato. Tuttavia, questo potrebbe non essere efficiente.</p></li>
+<li><p>Piano 2: Confrontare elementi adiacenti e scambiarli se sono nell’ordine sbagliato, ripetendo questo processo fino a quando la lista è ordinata. Questo ci porta all’idea dell’algoritmo Bubble Sort.</p></li>
 </ul>
-<p>Lo pseudocodice cristallizza concetti condivisi dalla maggior parte dei linguaggi di programmazione, come valori ed espressioni, memorizzazione e nomina, sequenziazione, condizioni e diramazioni, e cicli.</p>
+<ol start="3" type="1">
+<li>Eseguire i piani: Immplementiamo l’algoritmo in codice sorgente Python, eventualmente preceduto da uno pseudocodice come quello presentato sopra:</li>
+</ol>
+<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1"></a><span class="kw">def</span> bubble_sort(lista):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2"></a>  n <span class="op">=</span> <span class="bu">len</span>(lista)</span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5"></a>    scambiato <span class="op">=</span> <span class="va">False</span></span>
+<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6"></a>    </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-1-7" class="code-annotation-target"><a href="#annotated-cell-1-7"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span>):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-1-8" class="code-annotation-target"><a href="#annotated-cell-1-8"></a>      <span class="cf">if</span> lista[j] <span class="op">&gt;</span> lista[j <span class="op">+</span> <span class="dv">1</span>]:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-1-9" class="code-annotation-target"><a href="#annotated-cell-1-9"></a>        lista[j], lista[j <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> lista[j <span class="op">+</span> <span class="dv">1</span>], lista[j]</span>
+<span id="annotated-cell-1-10"><a href="#annotated-cell-1-10"></a>        </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-1-11" class="code-annotation-target"><a href="#annotated-cell-1-11"></a>        scambiato <span class="op">=</span> <span class="va">True</span></span>
+<span id="annotated-cell-1-12"><a href="#annotated-cell-1-12"></a>          </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-1-13" class="code-annotation-target"><a href="#annotated-cell-1-13"></a>    <span class="cf">if</span> <span class="kw">not</span> scambiato:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-1-14" class="code-annotation-target"><a href="#annotated-cell-1-14"></a>      <span class="cf">break</span></span>
+<span id="annotated-cell-1-15"><a href="#annotated-cell-1-15"></a></span>
+<span id="annotated-cell-1-16"><a href="#annotated-cell-1-16"></a><span class="co"># Esempio di utilizzo</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="11" onclick="event.preventDefault();">11</a><span id="annotated-cell-1-17" class="code-annotation-target"><a href="#annotated-cell-1-17"></a>lista <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">90</span>]</span>
+<span id="annotated-cell-1-18"><a href="#annotated-cell-1-18"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="12" onclick="event.preventDefault();">12</a><span id="annotated-cell-1-19" class="code-annotation-target"><a href="#annotated-cell-1-19"></a><span class="bu">print</span>(<span class="st">"La lista da ordinare è: "</span>, lista)</span>
+<span id="annotated-cell-1-20"><a href="#annotated-cell-1-20"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="13" onclick="event.preventDefault();">13</a><span id="annotated-cell-1-21" class="code-annotation-target"><a href="#annotated-cell-1-21"></a>bubble_sort(lista)</span>
+<span id="annotated-cell-1-22"><a href="#annotated-cell-1-22"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="14" onclick="event.preventDefault();">14</a><span id="annotated-cell-1-23" class="code-annotation-target"><a href="#annotated-cell-1-23"></a><span class="bu">print</span>(<span class="st">"La lista ordinata è: "</span>, lista)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">Definizione della funzione <code>bubble_sort</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2">Calcolo della lunghezza della lista.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="4" data-code-annotation="3">Ciclo esterno che ripete il processo di ordinamento.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="5" data-code-annotation="4">Inizializzazione della variabile <code>scambiato</code> a <code>False</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="7" data-code-annotation="5">Ciclo interno che percorre la lista fino alla fine non ordinata.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="8" data-code-annotation="6">Confronto tra elementi adiacenti.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="9" data-code-annotation="7">Scambio degli elementi se sono nell’ordine sbagliato.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="11" data-code-annotation="8">Impostazione della variabile <code>scambiato</code> a <code>True</code> se avviene uno scambio.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="13" data-code-annotation="9">Verifica se sono stati effettuati scambi.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="10">10</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="14" data-code-annotation="10">Interruzione del ciclo se non ci sono stati scambi, la lista è ordinata.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="11">11</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="17" data-code-annotation="11">Esempio di lista da ordinare.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="12">12</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="19" data-code-annotation="12">Stampa della lista da ordinare.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="13">13</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="21" data-code-annotation="13">Chiamata della funzione <code>bubble_sort</code> sulla lista.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="14">14</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="23" data-code-annotation="14">Stampa della lista ordinata.</span>
+</dd>
+</dl>
+<p>Da notare che abbiamo applicato l’algoritmo all’input così come dato nella definizione del problema, ma, in generale, più coppie input/output dovrebbero essere fornite per coprire anche casi particolari.</p>
+<ol type="1">
+<li>Valutare l’efficacia:</li>
+</ol>
+<ul>
+<li><p>L’algoritmo Bubble Sort funziona correttamente per l’elenco di esempio fornito.</p></li>
+<li><p>L’algoritmo ha una complessità temporale di O(n^2), che può essere migliorata utilizzando algoritmi di ordinamento più efficienti come il Quick Sort o il Merge Sort.</p></li>
+<li><p>L’algoritmo è semplice da implementare e comprendere, ma non è adatto per grandi dataset a causa della sua inefficienza.</p></li>
+</ul>
+<p>In questo esempio, abbiamo applicato le fasi della metodologia di Polya per determinare l’algoritmo Bubble Sort per l’ordinamento di una lista di numeri interi. Questo dimostra come una struttura metodica possa aiutare a definire e implementare algoritmi efficaci in un programma in uno specifico linguaggio di programmazione.</p>
 </section>
-<section id="importanza" class="level3" data-number="1.3.5">
-<h3 data-number="1.3.5" class="anchored" data-anchor-id="importanza"><span class="header-section-number">1.3.5</span> Importanza</h3>
-<p>Gli algoritmi sono fondamentali per l’informatica perché rappresentano le soluzioni astratte ai problemi che affrontiamo nel mondo digitale. La scoperta e l’ottimizzazione degli algoritmi sono alla base dell’innovazione tecnologica e del progresso scientifico. Essi permettono di gestire processi complessi, di analizzare grandi quantità di dati, e di sviluppare nuove tecnologie e applicazioni.</p>
-<p>In conclusione, gli algoritmi costituiscono il cuore della scienza informatica, essendo alla base della risoluzione di problemi attraverso la programmazione. La scoperta e la rappresentazione degli algoritmi sono attività cruciali che richiedono una combinazione di creatività, rigore e abilità analitiche.</p>
 </section>
 </section>
 <section id="dal-codice-sorgente-allesecuzione" class="level2" data-number="1.4">
@@ -520,26 +691,27 @@ Polya, George. 1945. <em>How to Solve It</em>. Princeton University Press.
 </section>
 <section id="ciclo-di-vita-del-software" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="ciclo-di-vita-del-software"><span class="header-section-number">1.5</span> Ciclo di vita del software</h2>
-<p>Un <strong>software</strong> è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia concetttuale, dal più generale all’elemento più granulare, è: software, programmi, istruzioni.</p>
-<p>Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi.</p>
-<p>Per creare il software, quindi, è necessario percorrere una sequenza di fasi ben definita che, concisamente, è:</p>
+<p>Un <strong>software</strong> è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia concettuale, dal più generale all’elemento più granulare, è: software, programmi, moduli, istruzioni.</p>
+<p>Un <strong>modulo</strong> è una componente autonoma di un programma che contiene una parte specifica della logica o delle funzionalità del sistema. I moduli facilitano la gestione della complessità, permettono il riutilizzo del codice e migliorano la manutenibilità del software.</p>
+<p>Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi e nei relativi moduli.</p>
+<p>Per creare il software, quindi, è necessario percorrere una sequenza di fasi ben definita che, concisamente, è data da:</p>
 <ul>
 <li><p>La progettazione di un’applicazione inizia con la fase di <strong>analisi dei requisiti</strong>, in cui si identificano cosa deve fare il software, chi sono gli utenti e quali sono i requisiti funzionali e non funzionali che deve soddisfare.</p></li>
 <li><p>Segue il <strong>disegno funzionale</strong> che dettaglia come ogni componente del sistema possa rispondere alle funzionalità richieste. In questa fase si descrivono le operazioni specifiche che ogni componente deve eseguire, utilizzando diagrammi di processo per rappresentare il flusso di attività al fine di rispondere ai requisiti.</p></li>
 <li><p>Il <strong>disegno architetturale</strong> riguarda l’organizzazione ad alto livello del sistema software. In questa fase si definiscono i componenti principali del sistema e come essi interagiscono tra di loro per supportare le attività di processo. Questo include la suddivisione del sistema in moduli o componenti, la definizione delle interfacce tra di essi e l’uso di tecniche di modellazione per rappresentare l’architettura del sistema.</p></li>
-<li><p>Una volta che l’architettura è stata progettata, si passa alla fase di <strong>implementazione</strong>, in cui i programmatori scrivono il codice sorgente nei linguaggi di programmazione scelti.</p></li>
+<li><p>Una volta che l’architettura è stata progettata, si passa alla fase di <strong>implementazione</strong>, in cui i programmatori scrivono il codice sorgente nei linguaggi di programmazione scelti. I programmatori lavorano sui vari moduli, integrandoli secondo l’architettura definita per costruire i programmi completi.</p></li>
 <li><p>Dopo l’implementazione, è essenziale verificare che il software funzioni correttamente:</p>
 <ul>
-<li><p><strong>Testing</strong>: Scrivere ed eseguire test per verificare che il software soddisfi i requisiti specificati. I test sono di diversi generi in funzione dell’oggetto di verifica, come test unitari, per segmenti di codice, test di integrazione, per componenti, e test di sistema nella sua interezza.</p></li>
+<li><p><strong>Testing</strong>: Scrivere ed eseguire test per verificare che il software soddisfi i requisiti specificati. I test sono di diversi generi in funzione dell’oggetto di verifica, come test unitari per segmenti di codice (spesso a livello di moduli), test di integrazione per componenti, e test di sistema nella sua interezza.</p></li>
 <li><p><strong>Debugging</strong>: Identificare e correggere gli errori (bug) nel codice. Questo può includere l’uso di strumenti di debugging per tracciare l’esecuzione del programma e trovare i punti in cui si verificano gli errori.</p></li>
 </ul></li>
-<li><p>Una volta che il software è stato testato e ritenuto pronto, si passa alla fasi di messa a disposizione delle funzionalità agli utenti (in inglese, <em>deployment</em>):</p>
+<li><p>Una volta che il software è stato testato e ritenuto pronto, si passa alla fase di messa a disposizione delle funzionalità agli utenti (in inglese, <em>deployment</em>):</p>
 <ul>
 <li><p><strong>Distribuzione</strong>: Rilasciare il software agli utenti finali, che può includere l’installazione su server, la distribuzione di applicazioni desktop o il rilascio di app mobile.</p></li>
 <li><p><strong>Manutenzione</strong>: Continuare a supportare il software dopo il rilascio. Questo include la correzione di bug scoperti dopo il rilascio, l’aggiornamento del software per miglioramenti e nuove funzionalità, e l’adattamento a nuovi requisiti o ambienti.</p></li>
 </ul></li>
 </ul>
-<p>La complessità del processo induce la necessità di avere dei team con qualità indiivduali diverse e il programmatore, oltre alle competenze specifiche, deve saper interpretare i vari artifatti di disegno e saperli tramutare in algoritmi e codice sorgente.</p>
+<p>La complessità del processo induce la necessità di avere dei team con qualità individuali diverse e il programmatore, oltre alle competenze specifiche, deve saper interpretare i vari artefatti di disegno e saperli tramutare in algoritmi e codice sorgente. La modularità del software facilita questa trasformazione, permettendo ai programmatori di focalizzarsi su singole parti del sistema alla volta e garantendo al contempo che le varie componenti si integrino correttamente in un sistema funzionante e coerente.</p>
 
 
 

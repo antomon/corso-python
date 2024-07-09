@@ -31,7 +31,7 @@ I linguaggi di programmazione hanno dei punti in comune e delle differenze coi l
 
 Un **algoritmo** è 
 
-> Un insieme di regole che definiscono con precisione una sequenza di operazioni" (Harold Stone, _Introduction to Computer Organization and Data Structures_, 1971 [@10.5555/578826]). 
+> Un insieme di regole che definiscono con precisione una sequenza di operazioni" (Harold Stone, _Introduction to Computer Organization and Data Structures_, 1971 [@stone71]). 
  
 Tale definizione, per quanto generica, coglie i due aspetti fondanti, cioè regole, intese come prescrizioni sintattiche o semantiche, che si traducono in operazioni richieste ad un agente, umano o informatico.
 
@@ -53,9 +53,67 @@ Un algoritmo è un concetto astratto, esistente come idea nella mente di chi lo 
 
 Rappresentare un algoritmo richiede, pertanto, l'uso di un insieme di simboli e di regole di combinazione dei medesimi. I simboli fondamentali utilizzati per rappresentare gli algoritmi sono chiamati primitivi. Questi primitivi rappresentano le operazioni base, le unità minime di lavoro che un algoritmo può eseguire. Devono essere combinati seguendo una specifica sintassi, che è l'insieme delle regole che definiscono come questi simboli possono essere correttamente organizzati per formare istruzioni.
 
-Quando i primitivi sono assemblati secondo la sintassi corretta, il risultato è una rappresentazione significativa dell'algoritmo, ovvero la sua semantica. Le istruzioni create combinando questi primitivi costituiscono il codice sorgente di un programma, che può essere eseguito da un computer per realizzare l'algoritmo desiderato. 
+Quando i simboli primitivi sono assemblati secondo la sintassi corretta, il risultato è una rappresentazione significativa dell'algoritmo, ovvero la sua semantica. Le istruzioni create combinando questi primitivi costituiscono il codice sorgente di un programma, che può essere eseguito da un computer per realizzare l'algoritmo desiderato. 
 
 La sintassi di un linguaggio di programmazione determina come appare un programma, mentre la semantica determina cosa significa il programma e come esegue l'algoritmo.
+
+Alcuni esempi di rappresentazione degli algoritmi includono:
+
+- Linguaggio naturale: Rappresentazioni verbali utilizzabili dagli esseri umani.
+
+- Diagrammi: Rappresentazioni visive come i flowchart.
+
+- Pseudocodice: Notazione semi-formale usata principalmente per la comprensione umana.
+
+- Codice sorgente: Rappresentazioni formali in un linguaggio di programmazione specifico.
+
+Un esempio di algoritmo è dato dall'ordinamento di una lista di numeri interi. Le rappresentazioni di quello che ex-post è il Bubble Sort, sono:
+
+- Linguaggio naturale: Gli elementi adiacenti vengono scambiati se sono nell'ordine sbagliato e ciò prosegue fino a quando tutto l'elenco risulti ordinato.
+
+- Diagramma di flusso:
+
+  ```mermaid
+  flowchart TD
+      Start --> Controlla(Sono presenti elementi da confrontare?)
+      Controlla -- No --> End(Fine)
+      Controlla -- Sì --> Confronta(Confronta elementi adiacenti)
+      Confronta --> Scambia(Gli elementi sono nell'ordine sbagliato?)
+      Scambia -- Sì --> ScambiaElementi(Scambia gli elementi)
+      Scambia -- No --> ProssimoElemento(Passa al prossimo elemento)
+      ScambiaElementi --> ProssimoElemento
+      ProssimoElemento --> Controlla
+  ```
+
+- Pseudocodice:
+
+  ```plaintext
+  procedure BubbleSort(A: lista di elementi ordinabili)
+    n := lunghezza(A)
+
+    repeat
+      scambiato := falso
+
+      for i := 1 to n-1 inclusive do
+        if A[i-1] > A[i] then
+          scambia(A[i-1], A[i])
+
+          scambiato := vero
+
+        end if
+
+      end for
+
+      n := n - 1
+
+    until not scambiato
+
+  end procedure
+  ```
+
+Nel seguito sarà data anche una rappresentazione in codice sorgente Python.
+
+In questo esempio, abbiamo rappresentato l'algoritmo Bubble Sort in vari modi per dimostrare come un singolo algoritmo possa essere descritto e compreso attraverso differenti forme di rappresentazione.
 
 ### Generazione
 
@@ -69,11 +127,15 @@ Alcune strategie:
 
 - Induzione: L'induzione è una tecnica matematica che può essere molto utile nella determinazione di algoritmi. Consiste nel risolvere il problema per un caso base semplice e poi dimostrare che se il problema può essere risolto per un caso generico, allora può essere risolto anche per il caso successivo. Questa tecnica è particolarmente utile per i problemi ricorsivi, dove la soluzione a un problema dipende dalla soluzione di istanze più semplici dello stesso problema.
 
-Contraddizione: La contraddizione è un'altra tecnica matematica che può essere utilizzata nella definizone di algoritmi. Consiste nel dimostrare che l'assunzione opposta porta a una contraddizione, e quindi l'assunzione iniziale deve essere vera. Questa tecnica è utile per provare che certi problemi non possono essere risolti o che certe proprietà devono essere vere per un algoritmo efficace.
+- Contraddizione: La contraddizione è un'altra tecnica matematica che può essere utilizzata nella definizone di algoritmi. Consiste nel dimostrare che l'assunzione opposta porta a una contraddizione, e quindi l'assunzione iniziale deve essere vera. Questa tecnica è utile per provare che certi problemi non possono essere risolti o che certe proprietà devono essere vere per un algoritmo efficace.
 
 ### Metodologia di Polya
 
-George Polya, nel suo libro _How to Solve It_ [@polya1945], propone una metodologia strutturata per la risoluzione dei problemi che può essere applicata alla scoperta degli algoritmi. Polya suggerisce quattro fasi principali:
+George Polya, nel suo libro _How to Solve It_ [@polya1945], propone una metodologia strutturata per la risoluzione dei problemi che può essere applicata alla scoperta degli algoritmi. 
+
+#### Le fasi
+
+Polya suggerisce quattro fasi principali:
 
 1. Comprendere il problema: Prima di tutto, è fondamentale avere una chiara comprensione del problema. Ciò include identificare esattamente cosa è richiesto, quali sono i dati di input e quale deve essere l'output. Una comprensione chiara aiuta a focalizzare l'attenzione sui punti cruciali del problema.
 
@@ -85,27 +147,71 @@ George Polya, nel suo libro _How to Solve It_ [@polya1945], propone una metodolo
 
 Queste fasi aiutano a strutturare il processo di definizione di algoritmi in modo sistematico e metodico, aumentando le probabilità di trovare soluzioni efficaci ai problemi. La scrittura degli algoritmi, quindi, non è solo una questione di creatività, ma anche di applicazione rigorosa di tecniche e metodologie strutturate.
 
-### Esempi
+#### Esempio di applicazione
 
-Alcuni esempi di rappresentazione degli algoritmi includono:
+Applichiamo la metodologia di Polya per definire un algoritmo, rappresentato con codice sorgente, che ordini una lista di numeri interi in ordine crescente.
 
-- Linguaggio naturale: Rappresentazioni verbali utilizzabili dagli esseri umani.
+1. Comprendere il problema: Ordinare una lista di numeri interi in ordine crescente; ad esempio `[64, 34, 25, 12, 22, 11, 90]` deve diventare `[11, 12, 22, 25, 34, 64, 90]`.
 
-- Diagrammi: Rappresentazioni visive come i flowchart.
+2. Formulare piani:
 
-- Pseudocodice: Notazione semi-formale usata principalmente per la comprensione umana.
+  - Piano 1: Confrontare ogni elemento con ogni altro elemento e scambiarli se sono nell'ordine sbagliato. Tuttavia, questo potrebbe non essere efficiente.
 
-- Codice sorgente: Rappresentazioni formali in un linguaggio di programmazione specifico.
+  - Piano 2: Confrontare elementi adiacenti e scambiarli se sono nell'ordine sbagliato, ripetendo questo processo fino a quando la lista è ordinata. Questo ci porta all'idea dell'algoritmo Bubble Sort.
 
-Lo pseudocodice cristallizza concetti condivisi dalla maggior parte dei linguaggi di programmazione, come valori ed espressioni, memorizzazione e nomina, sequenziazione, condizioni e diramazioni, e cicli.
+3. Eseguire i piani: Immplementiamo l'algoritmo in codice sorgente Python, eventualmente preceduto da uno pseudocodice come quello presentato sopra:
 
+  ```python
+  def bubble_sort(lista):  # <1>
+    n = len(lista)  # <2>
 
+    for i in range(n):  # <3>
+      scambiato = False  # <4>
+      
+      for j in range(0, n-i-1):  # <5>
+        if lista[j] > lista[j + 1]:  # <6>
+          lista[j], lista[j + 1] = lista[j + 1], lista[j]  # <7>
+          
+          scambiato = True  # <8>
+            
+      if not scambiato:  # <9>
+        break  # <10>
 
-### Importanza
+  # Esempio di utilizzo
+  lista = [64, 34, 25, 12, 22, 11, 90]  # <11>
 
-Gli algoritmi sono fondamentali per l'informatica perché rappresentano le soluzioni astratte ai problemi che affrontiamo nel mondo digitale. La scoperta e l'ottimizzazione degli algoritmi sono alla base dell'innovazione tecnologica e del progresso scientifico. Essi permettono di gestire processi complessi, di analizzare grandi quantità di dati, e di sviluppare nuove tecnologie e applicazioni.
+  print("La lista da ordinare è: ", lista)  # <12>
 
-In conclusione, gli algoritmi costituiscono il cuore della scienza informatica, essendo alla base della risoluzione di problemi attraverso la programmazione. La scoperta e la rappresentazione degli algoritmi sono attività cruciali che richiedono una combinazione di creatività, rigore e abilità analitiche.
+  bubble_sort(lista)  # <13>
+
+  print("La lista ordinata è: ", lista)  # <14>
+  ```
+  1. Definizione della funzione `bubble_sort`.
+  2. Calcolo della lunghezza della lista.
+  3. Ciclo esterno che ripete il processo di ordinamento.
+  4. Inizializzazione della variabile `scambiato` a `False`.
+  5. Ciclo interno che percorre la lista fino alla fine non ordinata.
+  6. Confronto tra elementi adiacenti.
+  7. Scambio degli elementi se sono nell'ordine sbagliato.
+  8. Impostazione della variabile `scambiato` a `True` se avviene uno scambio.
+  9. Verifica se sono stati effettuati scambi.
+  10. Interruzione del ciclo se non ci sono stati scambi, la lista è ordinata.
+  11. Esempio di lista da ordinare.
+  12. Stampa della lista da ordinare.
+  13. Chiamata della funzione `bubble_sort` sulla lista.
+  14. Stampa della lista ordinata.
+
+  Da notare che abbiamo applicato l'algoritmo all'input così come dato nella definizione del problema, ma, in generale, più coppie input/output dovrebbero essere fornite per coprire anche casi particolari.
+
+1. Valutare l'efficacia:
+
+  - L'algoritmo Bubble Sort funziona correttamente per l'elenco di esempio fornito.
+
+  - L'algoritmo ha una complessità temporale di O(n^2), che può essere migliorata utilizzando algoritmi di ordinamento più efficienti come il Quick Sort o il Merge Sort.
+
+  - L'algoritmo è semplice da implementare e comprendere, ma non è adatto per grandi dataset a causa della sua inefficienza.
+
+In questo esempio, abbiamo applicato le fasi della metodologia di Polya per determinare l'algoritmo Bubble Sort per l'ordinamento di una lista di numeri interi. Questo dimostra come una struttura metodica possa aiutare a definire e implementare algoritmi efficaci in un programma in uno specifico linguaggio di programmazione.
 
 ## Dal codice sorgente all'esecuzione
 
@@ -141,11 +247,13 @@ Nel caso di un interprete, i passaggi di generazione del codice intermedio e mac
 
 ## Ciclo di vita del software
 
-Un **software** è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia concetttuale, dal più generale all'elemento più granulare, è: software, programmi, istruzioni. 
+Un **software** è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia concettuale, dal più generale all'elemento più granulare, è: software, programmi, moduli, istruzioni. 
 
-Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi. 
+Un **modulo** è una componente autonoma di un programma che contiene una parte specifica della logica o delle funzionalità del sistema. I moduli facilitano la gestione della complessità, permettono il riutilizzo del codice e migliorano la manutenibilità del software. 
 
-Per creare il software, quindi, è necessario percorrere una sequenza di fasi ben definita che, concisamente, è:
+Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi e nei relativi moduli.
+
+Per creare il software, quindi, è necessario percorrere una sequenza di fasi ben definita che, concisamente, è data da:
 
 - La progettazione di un'applicazione inizia con la fase di **analisi dei requisiti**, in cui si identificano cosa deve fare il software, chi sono gli utenti e quali sono i requisiti funzionali e non funzionali che deve soddisfare.
 
@@ -153,19 +261,19 @@ Per creare il software, quindi, è necessario percorrere una sequenza di fasi be
 
 - Il **disegno architetturale** riguarda l'organizzazione ad alto livello del sistema software. In questa fase si definiscono i componenti principali del sistema e come essi interagiscono tra di loro per supportare le attività di processo. Questo include la suddivisione del sistema in moduli o componenti, la definizione delle interfacce tra di essi e l'uso di tecniche di modellazione per rappresentare l'architettura del sistema.
 
-- Una volta che l'architettura è stata progettata, si passa alla fase di **implementazione**, in cui i programmatori scrivono il codice sorgente nei linguaggi di programmazione scelti.
+- Una volta che l'architettura è stata progettata, si passa alla fase di **implementazione**, in cui i programmatori scrivono il codice sorgente nei linguaggi di programmazione scelti. I programmatori lavorano sui vari moduli, integrandoli secondo l'architettura definita per costruire i programmi completi.
 
 - Dopo l'implementazione, è essenziale verificare che il software funzioni correttamente:
   
-  - **Testing**: Scrivere ed eseguire test per verificare che il software soddisfi i requisiti specificati. I test sono di diversi generi in funzione dell'oggetto di verifica, come test unitari, per segmenti di codice, test di integrazione, per componenti, e test di sistema nella sua interezza.
+  - **Testing**: Scrivere ed eseguire test per verificare che il software soddisfi i requisiti specificati. I test sono di diversi generi in funzione dell'oggetto di verifica, come test unitari per segmenti di codice (spesso a livello di moduli), test di integrazione per componenti, e test di sistema nella sua interezza.
 
   - **Debugging**: Identificare e correggere gli errori (bug) nel codice. Questo può includere l'uso di strumenti di debugging per tracciare l'esecuzione del programma e trovare i punti in cui si verificano gli errori.
 
-- Una volta che il software è stato testato e ritenuto pronto, si passa alla fasi di messa a disposizione delle funzionalità agli utenti (in inglese, _deployment_):
+- Una volta che il software è stato testato e ritenuto pronto, si passa alla fase di messa a disposizione delle funzionalità agli utenti (in inglese, _deployment_):
 
   - **Distribuzione**: Rilasciare il software agli utenti finali, che può includere l'installazione su server, la distribuzione di applicazioni desktop o il rilascio di app mobile.
 
   - **Manutenzione**: Continuare a supportare il software dopo il rilascio. Questo include la correzione di bug scoperti dopo il rilascio, l'aggiornamento del software per miglioramenti e nuove funzionalità, e l'adattamento a nuovi requisiti o ambienti.
 
-La complessità del processo induce la necessità di avere dei team con qualità indiivduali diverse e il programmatore, oltre alle competenze specifiche, deve saper interpretare i vari artifatti di disegno e saperli tramutare in algoritmi e codice sorgente.
+La complessità del processo induce la necessità di avere dei team con qualità individuali diverse e il programmatore, oltre alle competenze specifiche, deve saper interpretare i vari artefatti di disegno e saperli tramutare in algoritmi e codice sorgente. La modularità del software facilita questa trasformazione, permettendo ai programmatori di focalizzarsi su singole parti del sistema alla volta e garantendo al contempo che le varie componenti si integrino correttamente in un sistema funzionante e coerente.
 
