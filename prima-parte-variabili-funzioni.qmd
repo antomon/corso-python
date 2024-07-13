@@ -3,23 +3,23 @@ reference-location: margin
 citation-location: margin
 ---
 
-# Le variabili e le funzioni
+# La variabile e la funzione
 
 La **semantica** di un linguaggio di programmazione definisce il significato delle istruzioni sintatticamente corrette. In altre parole, la semantica specifica cosa fa un programma quando viene eseguito, descrivendo l'effetto delle istruzioni sullo stato del sistema. Gli elementi semantici sono numerosi, possono essere anche complessi e non tutti presenti in uno specifico linguaggio. 
 
 Tra i primi elementi semantici, richiamati già molte volte, troviamo le variabili e le funzioni. 
 
-## Variabili
+## La variabile
 
 Le **variabili** sono uno dei concetti fondamentali nella programmazione, essenziali per la manipolazione e la gestione dei dati. Una variabile è un nome simbolico associato a una locazione di memoria che può contenere uno o più valori di un certo tipo di dato. Questo concetto permette agli sviluppatori di astrarre dalla memoria fisica e concentrarsi sulla logica del programma. 
 
 La gestione delle variabili varia tra i diversi linguaggi di programmazione, quindi esploreremo le variabili con particolare attenzione a Python, Java, C e C++.
 
-### Dichiarazione e inizializzazione
+### La dichiarazione e la inizializzazione
 
-La dichiarazione di una variabile è il processo mediante il quale si introduce una variabile nel programma, specificandone il nome e, in molti casi, il tipo di dato che essa può contenere. Questo processo informa il compilatore o l'interprete che una certa variabile esiste e può essere utilizzata nel codice. Abbiamo visto che esiste una istruzione specifica in alcuni linguaggi, mentre in altri è implicita nella assegnazione. 
+La **dichiarazione** di una variabile è il processo mediante il quale si introduce una variabile nel programma, specificandone il nome e, in molti casi, il tipo di dato che essa può contenere. Questo processo informa il compilatore o l'interprete che una certa variabile esiste e può essere utilizzata nel codice. Abbiamo visto che esiste una istruzione specifica in alcuni linguaggi, mentre in altri è implicita nella assegnazione. 
 
-L'inizializzazione di una variabile è il processo di assegnazione di un valore iniziale alla variabile. Questo può avvenire contestualmente alla dichiarazione o in un'istruzione separata successiva, quella di assegnamento.
+L'**inizializzazione** di una variabile è il processo di assegnazione di un valore iniziale alla variabile. Questo può avvenire contestualmente alla dichiarazione o in un'istruzione separata successiva, quella di assegnamento.
 
 Esempi:
 
@@ -27,53 +27,64 @@ Esempi:
 
   ```python
   x = 10  # <1>
+
   x = "Hello"  # <2>
   ```
   1. Dichiarazione e inizializzazione.
   2. Cambia il tipo di `x` dinamicamente a stringa.
 
-- Java: In Java, le variabili devono essere dichiarate con un tipo di dato esplicito. La dichiarazione può avvenire contestualmente all'inizializzazione o separatamente.
+- In Java, le variabili devono essere dichiarate con un tipo di dato esplicito. La dichiarazione può avvenire contestualmente all'inizializzazione o separatamente:
 
   ```java
   int x;  // <1>
+
   x = 10; // <2>
+
   int y = 20; // <3>
   ```
  1. Dichiarazione.
  2. Inizializzazione.
  3. Dichiarazione e inizializzazione.
 
-- C: In C, la dichiarazione delle variabili richiede la specifica del tipo di dato. La dichiarazione e l'inizializzazione possono essere separate o combinate.
+- In C, la dichiarazione delle variabili richiede la specifica del tipo di dato. La dichiarazione e l'inizializzazione possono essere separate o combinate:
 
   ```c
   int x;  /* <1> */
+
   x = 10; /* <2> */
+
   int y = 20; /* <3> */
   ```
  1. Dichiarazione.
  2. Inizializzazione.
  3. Dichiarazione e inizializzazione.
 
-- C++: Simile al C, ma con funzionalità aggiuntive come l'inizializzazione a lista.
+- Il C++ è simile al C, ma con funzionalità aggiuntive come l'inizializzazione a lista:
 
   ```cpp
   int x;  // <1>
+
   x = 10; // <2>
+
   int y = 20; // <3>
+
   int z{30};  // <4>
+
   int arr[5] = {1, 2, 3, 4, 5}; // <5>
   ```
   1. Dichiarazione.
   2. Inizializzazione.
   3. Dichiarazione e inizializzazione.
-  4. Dichiarazione e inizializzazione a lista di `z` con l'intero 30.
+  4. Dichiarazione e inizializzazione a lista di `z` con l'intero `30`.
   5. Dichiarazione e inizializzazione a lista di un array con 5 valori predefiniti.
 
-### Ambito delle variabili
+### L'ambito
 
-L'ambito di una variabile rappresenta la porzione del codice in cui l'identificatore della variabile è definito e, quindi, può essere utilizzato. Gli approcci dei diversi linguaggi sono diversi, infatti Java, C e C++ hanno una gestione dell'ambito delle variabili per cui quelle dichiarate all'interno di un blocco sono limitate a quel blocco e non sono visibili al di fuori di esso. In Python, invece, le variabili definite all'interno di un blocco di un'istruzione composta (come un ciclo for o una condizione if) rimangono accessibili anche al di fuori del blocco, purché siano ancora nel medesimo ambito di funzione o modulo e, soprattutto quel blocco sia stato eseguito.
+L'**ambito** di una variabile rappresenta la porzione del codice in cui l'identificatore della variabile è definito e, quindi, può essere utilizzato. 
 
-- Globale: Le variabili globali sono dichiarate al di fuori di qualsiasi blocco e sono accessibili ovunque nel programma.
+Gli approcci dei diversi linguaggi sono diversi, infatti Java, C e C++ hanno una gestione dell'ambito delle variabili per cui quelle dichiarate all'interno di un blocco sono limitate a quel blocco e non sono visibili al di fuori di esso. In Python, invece, le variabili definite all'interno di un blocco di un'istruzione composta (come un ciclo `for` o una condizione `if`) rimangono accessibili anche al di fuori del blocco, purché siano ancora nel medesimo ambito di funzione o modulo e, soprattutto, quel blocco sia stato eseguito.
+
+- Le variabili con ambito **globale** sono dichiarate al di fuori di qualsiasi blocco e sono accessibili ovunque nel programma:
 
   ```c
   int globalVar = 10; /* <1> */ 
@@ -86,7 +97,7 @@ L'ambito di una variabile rappresenta la porzione del codice in cui l'identifica
   2. Inizio del blocco.
   3. Accesso alla variabile globale.
 
-- Locale: Le variabili locali sono dichiarate all'interno di un blocco, come una funzione o un loop, e sono accessibili solo all'interno di quel blocco. 
+- Le variabili con ambito **locale** sono dichiarate all'interno di un blocco, come una funzione o un loop, e sono accessibili solo all'interno di quel blocco: 
 
   ```java
   public class Main {
@@ -121,9 +132,9 @@ L'ambito di una variabile rappresenta la porzione del codice in cui l'identifica
   1. Variabile locale al ciclo.
   2. `loopVar` è ancora accessibile qui.
 
-### Visibilità delle variabili
+### La visibilità
 
-La visibilità si riferisce alla possibilità che in una regione di codice una certa variabile possa essere _vista_ e utilizzata. Anche se correlata all'ambito, la visibilità può essere influenzata da altri fattori come la modularità e gli spazi di nomi (_namespace_).
+La **visibilità** si riferisce alla possibilità che in una regione di codice una certa variabile possa essere _vista_ e utilizzata. Anche se correlata all'ambito, la visibilità può essere influenzata da altri fattori come la modularità e gli spazi di nomi (_namespace_).
 
 - Consideriamo un esempio in C++ per illustrare la differenza tra ambito e visibilità:
 
@@ -153,7 +164,7 @@ La visibilità si riferisce alla possibilità che in una regione di codice una c
   3. Visibilità `globaleVar` all'interno della funzione.
   4. Visibilità `localVar` all'interno della funzione.
   5. Visibilità `globalVar` all'interno di `main`.
-  6. Errore: `localVar` non è visibile qui (ambito locale alla funzione function). 
+  6. Errore: `localVar` non è visibile qui (ambito locale alla funzione `function`). 
 
 - In Python, le variabili definite all'interno di una funzione sono locali a quella funzione, ma le variabili definite all'interno di un blocco (come un ciclo `for` o un `if`) sono visibili all'interno della funzione o del modulo in cui si trovano:
 
@@ -184,13 +195,15 @@ La visibilità si riferisce alla possibilità che in una regione di codice una c
   7. Errore: non visibile al di fuori della funzione.
   8. Errore: non visibile al di fuori della funzione.
 
-### Durata di vita degli oggetti referenziati
+### La durata di vita degli oggetti
 
-La durata di vita descrive per quanto tempo un oggetto rimane in memoria durante l'esecuzione del programma. Questo è distinto dalla variabile (o puntatore) che fa riferimento all'oggetto. 
+La **durata di vita** descrive per quanto tempo un oggetto rimane in memoria durante l'esecuzione del programma. Questo è distinto dalla variabile (o puntatore) che fa riferimento all'oggetto. 
 
 In alcuni linguaggi di programmazione è presente il **garbage collector**, cioè un processo avviato dal compilatore o interprete che si occupa di rendere nuovamente disponibili le aree di memoria precedentemente occupate da oggetti non più referenziati da variabili. Questo accade quando l'esecuzione del programma raggiunge regioni di codice dove quelle variabili non sono più visibili. In questo modo, la visibilità è legata alla durata di vita degli oggetti, rendendo la gestione della memoria non più una preoccupazione del programmatore.
 
-- Variabile automatica: L'oggetto esiste solo durante l'esecuzione del blocco di codice in cui è stata dichiarata la variabile a cui è associato.
+Distinguiamo tra **variabile automatica**, **variabile statica** e **variabile dinamica**:
+
+- Variabile automatica: L'oggetto esiste solo durante l'esecuzione del blocco di codice in cui è stata dichiarata la variabile a cui è associato. Esempio in C:
 
   ```c
   void function() {
@@ -202,7 +215,7 @@ In alcuni linguaggi di programmazione è presente il **garbage collector**, cio�
   1. Dichiarazione di `autoVar` e creazione in memoria di un oggetto corrispondente all'intero 10.
   2. Prima di questa istruzione l'oggetto 10 non è più presente in memoria.
 
-- Variabile statica: La variabile esiste per tutta la durata del programma, ma è accessibile solo all'interno del blocco in cui è dichiarata.
+- Variabile statica: La variabile esiste per tutta la durata del programma, ma è accessibile solo all'interno del blocco in cui è dichiarata. Esempio in C:
 
   ```c
   void function() {
@@ -211,7 +224,7 @@ In alcuni linguaggi di programmazione è presente il **garbage collector**, cio�
   ```
   1. Variabile statica ottenuta con una parola chiave ad hoc in fase di dichiarazione.
 
-- Variabile dinamica: Le variabili dinamiche sono utilizzate per riservare memoria che persiste oltre la durata del blocco di codice in cui sono state create. L'oggetto è creato in memoria e deve essere cancellato esplicitamente dall'utente, utilizzando funzioni di gestione della memoria come `delete`. La variabile che punta all'oggetto è separata dall'oggetto stesso, quindi se la variabile non è più visibile, l'oggetto continuerà a rimanere in memoria e non sarà più eliminabile, causando una perdita di memoria (_memory leak_).
+- Variabile dinamica: Le variabili dinamiche sono utilizzate per riservare memoria che persiste oltre la durata del blocco di codice in cui sono state create. L'oggetto è creato in memoria e deve essere cancellato esplicitamente dall'utente, utilizzando funzioni di gestione della memoria come `delete`. La variabile che punta all'oggetto è separata dall'oggetto stesso, quindi se la variabile non è più visibile, l'oggetto continuerà a rimanere in memoria e non sarà più eliminabile, causando una perdita di memoria (_memory leak_). Esempio in C++:
 
   ```cpp
   #include <iostream>
@@ -237,17 +250,30 @@ In alcuni linguaggi di programmazione è presente il **garbage collector**, cio�
   3. Chiamata alla funzione `function()`. Dopo l'uscita dalla funzione, `dynamicVar` non è più accessibile, causando una perdita di memoria poiché non è stata deallocata.
   4. Allocazione dinamica di un intero. 
   5. Stampa del valore puntato da `safeDynamicVar`.
-  6. Deallocazione dinamica dell'intero. Corretto uso di allocazione e deallocazione dinamica.
+  6. Deallocazione dinamica dell'intero e ciò mostra il corretto uso di allocazione e deallocazione dinamica.
 
-- In Python, la gestione della memoria è automatica grazie al garbage collector. Quando non ci sono più riferimenti di variabili a un oggetto, il garbage collector lo rimuove dalla memoria.
+In Python, la gestione della memoria è automatica grazie al garbage collector. Quando non ci sono più riferimenti di variabili a un oggetto, il garbage collector lo rimuove dalla memoria.
 
-## Funzioni
+## La funzione
 
-Le funzioni sono blocchi di codice riutilizzabili che eseguono una serie di istruzioni. Questi costrutti sono fondamentali per la strutturazione e la modularizzazione del codice, consentendo di definire operazioni che possono essere invocate più volte durante l'esecuzione di un programma. La distinzione tra funzioni e metodi è che le funzioni sono indipendenti, mentre i metodi sono associati a oggetti o classi.
+La **funzione** è un blocco di codice riutilizzabile che contiene una sequenza di istruzioni. Questi costrutti sono fondamentali per la strutturazione e la modularizzazione del codice, consentendo di definire operazioni che possono essere invocate più volte durante l'esecuzione di un programma. La distinzione tra funzioni e metodi è che le funzioni sono indipendenti, mentre i metodi sono associati a oggetti o classi.
 
-### Parametri e argomenti
+### Dichiarazione
 
-I **parametri** e gli **argomenti** sono strumenti fondamentali per passare informazioni alle funzioni e influenzarne il comportamento.
+La **dichiarazione** di una funzione è il processo mediante il quale si definisce una nuova funzione nel programma, specificandone il nome, i parametri (se presenti) e il blocco di codice che essa eseguirà. Questo processo informa il compilatore o l'interprete che una certa funzione esiste e può essere utilizzata nel codice. Durante la dichiarazione, non viene eseguito alcun codice; viene semplicemente definita la funzione in modo che possa essere invocata successivamente nel programma.
+
+Esempio in Python:
+
+```python
+def somma(a, b):  # <1>
+  return a + b  # <2>
+```
+1. Definizione della funzione `somma` con due parametri `a` e `b`.
+2. La funzione `somma` ritorna la somma dei parametri `a` e `b`.
+
+### Il parametro e l'argomento
+
+Il **parametro** e l'**argomento** sono strumenti fondamentali per passare dati alle funzioni e influenzarne il comportamento.
 
 - Parametri o parametri formali: I parametri sono definiti nella dichiarazione della funzione e rappresentano i nomi delle variabili che la funzione utilizzerà per accedere ai dati passati.
 
@@ -256,18 +282,18 @@ I **parametri** e gli **argomenti** sono strumenti fondamentali per passare info
 Esempio in Python:
 
 ```python
-def add(a, b):  # <1>
+def somma(a, b):  # <1>
   return a + b
 
-result = add(3, 4)  # <2>
+result = somma(3, 4)  # <2>
 
 print(result)  # <3>
 ```
-1. `a` e `b` sono parametri della funzione `add`.
-2. `3` e `4` sono argomenti passati alla funzione `add`.
-3. Il risultato della funzione `add` viene stampato.
+1. `a` e `b` sono parametri della funzione `somma`.
+2. `3` e `4` sono argomenti passati alla funzione `somma`.
+3. Il risultato della funzione `somma` viene stampato.
 
-### Valore di ritorno
+### Il valore di ritorno
 
 Il valore di ritorno è il risultato prodotto da una funzione, che può essere utilizzato nell'istruzione chiamante. Una funzione può restituire un valore utilizzando la parola chiave `return`.
 
@@ -275,131 +301,21 @@ Esempio in Java:
 
 ```java
 public class Main {
-  public static int add(int a, int b) {  // <1>
+  public static int somma(int a, int b) {  // <1>
     return a + b;  // <2>
   }
 
   public static void main(String[] args) {
-    int result = add(3, 4);  // <3>
+    int result = somma(3, 4);  // <3>
 
     System.out.println(result);  // <4>
   }
 }
 ```
-1. Dichiarazione della funzione `add` che accetta due parametri interi.
-2. La funzione `add` ritorna la somma di `a` e `b`.
-3. Chiamata della funzione `add` con argomenti `3` e `4`.
-4. Il risultato della funzione `add` viene stampato.
-
-### Ricorsione
-
-La **ricorsione** è la capacità di una funzione di chiamare se stessa, utile per risolvere problemi che possono essere suddivisi in sottoproblemi simili. Ogni chiamata ricorsiva deve avvicinarsi a una condizione di terminazione per evitare loop infiniti.
-
-Esempio in C++ (calcolo del fattoriale):
-
-```cpp
-#include <iostream>
-
-int factorial(int n) {  // <1>
-  if (n <= 1) return 1;  // <2>
-
-  return n * factorial(n - 1);  // <3>
-}
-
-int main() {
-  int result = factorial(5);  // <4>
-
-  std::cout << result << std::endl;  // <5>
-  
-  return 0;
-}
-```
-1. Dichiarazione della funzione `factorial`.
-2. Condizione di terminazione: se `n` è minore o uguale a 1, ritorna 1.
-3. Chiamata ricorsiva: `factorial` chiama se stessa con `n - 1`.
-4. Chiamata della funzione `factorial` con argomento `5`.
-5. Il risultato della funzione `factorial` viene stampato.
-
-### Funzioni di prima classe
-
-Le **funzioni di prima classe** sono funzioni che possono essere trattate come qualsiasi altra variabile. Possono essere assegnate a variabili, passate come argomenti e ritornate da altre funzioni.
-
-- Esempio in Python:
-
-  ```python
-  def greet(name):
-    return f"Hello, {name}!"
-
-  say_hello = greet  # <1>
-
-  print(say_hello("World"))  # <2>
-  ```
-  1. La funzione `greet` viene assegnata alla variabile `say_hello`.
-  2. `say_hello` viene chiamata con l'argomento `"World"`.
-
-- Esempio in C++:
-
-  ```cpp
-  #include <iostream>
-  #include <functional>
-
-  void greet(const std::string& name) {
-    std::cout << "Hello, " << name << "!" << std::endl;
-  }
-
-  int main() {
-    std::function<void(const std::string&)> say_hello = greet;  // <1>
-
-    say_hello("World");  // <2>
-
-    return 0;
-  ```
-1. La funzione `greet` viene assegnata alla variabile `say_hello` utilizzando `std::function`.
-2. `say_hello` viene chiamata con l'argomento `"World"`.
-
-### Funzioni di ordine superiore
-
-Le **funzioni di ordine superiore** sono funzioni che accettano altre funzioni come argomenti e/o ritornano funzioni come risultati. Sono fondamentali per la programmazione funzionale.
-
-- Esempio in Python:
-
-  ```python
-  def add(a):
-    def inner(b):
-      return a + b
-
-    return inner  # <1>
-
-  add_five = add(5)  # <2>
-
-  print(add_five(3))  # <3>
-  ```
-  1. La funzione `add` ritorna una nuova funzione `inner` che somma `a` al suo argomento `b`.
-  2. `add(5)` ritorna una nuova funzione che somma 5 al suo argomento.
-  3. La funzione risultante viene chiamata con l'argomento `3`, restituendo `8`.
-
-- Esempio in C++:
-
-  ```cpp
-  #include <iostream>
-  #include <functional>
-
-  std::function<int(int)> add(int a) {  // <1>
-    return [a](int b) { return a + b; };  // <2>
-  }
-
-  int main() {
-    auto add_five = add(5);  // <3>
-
-    std::cout << add_five(3) << std::endl;  // <4>
-
-    return 0;
-  }
-  ```
-1. Dichiarazione della funzione `add` che ritorna un `std::function<int(int)>`.
-2. `add` ritorna una funzione lambda che somma `a` al suo argomento `b`.
-3. `add(5)` ritorna una nuova funzione che somma `5` al suo argomento.
-4. La funzione risultante viene chiamata con l'argomento `3`, restituendo `8`.
+1. Dichiarazione della funzione `somma` che accetta due parametri interi.
+2. La funzione `somma` ritorna la somma di `a` e `b`.
+3. Chiamata della funzione `somma` con argomenti `3` e `4`.
+4. Il risultato della funzione `somma` viene stampato.
 
 ### Ambito e visibilità
 
@@ -416,17 +332,17 @@ Per le funzioni distinguiamo sempre i seguenti:
   ```cpp
   #include <iostream>
 
-  void globalFunction() {  // <1>
+  void funzioneGlobale() {  // <1>
     std::cout << "Funzione globale" << std::endl;
   }
 
   int main() {
-    globalFunction();  // <2>
+    funzioneGlobale();  // <2>
     
     return 0;
   ```
-  1. Dichiarazione della funzione `globalFunction` a livello globale.
-  2. Chiamata della funzione `globalFunction` all'interno di `main`.
+  1. Dichiarazione della funzione `funzioneGlobale` a livello globale.
+  2. Chiamata della funzione `funzioneGlobale` all'interno di `main`.
 
   Il comportamento è identico in Java e C. In Python, le funzioni definite a livello globale hanno ambito globale.
 
@@ -435,19 +351,19 @@ Per le funzioni distinguiamo sempre i seguenti:
   Esempio in Python:
 
   ```python
-  def outerFunction():
-    def localFunction():  # <1>
+  def funzione_esterna():
+    def funzione_locale():  # <1>
       print("Funzione locale")
 
-    localFunction()  # <2>
+    funzione_locale()  # <2>
 
-  outerFunction()
+  funzione_esterna()
 
-  localFunction()  # <3>
+  funzione_locale()  # <3>
   ```
-  1. Dichiarazione della funzione `localFunction` all'interno di `outerFunction`.
-  2. Chiamata della funzione `localFunction` all'interno di `outerFunction`.
-  3. Chiamata a `localFunction` al di fuori di `outerFunction`, che genera un errore poiché `localFunction` non è visibile a questo livello.
+  1. Dichiarazione della funzione `funzione_locale` all'interno di `funzione_esterna`.
+  2. Chiamata della funzione `funzione_locale` all'interno di `funzione_esterna`.
+  3. Chiamata a `funzione_locale` al di fuori di `funzione_esterna`, che genera un errore poiché `funzione_locale` non è visibile a questo livello.
 
   In Java e C++, le funzioni dichiarate all'interno di un blocco (come metodi all'interno di una classe) sono accessibili solo all'interno di quel blocco, simile a Python. 
 
@@ -459,23 +375,23 @@ La visibilità si riferisce a dove nel codice l'identificatore di una funzione p
 
 - Visibilità Globale: Le funzioni con ambito globale sono visibili ovunque nel programma come per le variabili. 
 
-- Visibilità Locale: Le funzioni con ambito locale sono visibili solo all'interno del blocco in cui sono dichiarate. Questo è utile per creare funzioni di supporto (_helper_) o interne che non devono essere accessibili dall'esterno.
+- Visibilità Locale: Le funzioni con ambito locale sono visibili solo all'interno del blocco in cui sono dichiarate. Questo è utile per creare funzioni di supporto (inglese: _helper_) o interne che non devono essere accessibili dall'esterno.
 
   Esempio in Python:
 
   ```python
-  def outerFunction():
-    def helperFunction():  # <1>
-      print("Funzione helper")
+  def funzione_esterna():
+    def funzione_supporto():  # <1>
+      print("Funzione di supporto")
 
-    helperFunction()  # <2>
+    funzione_supporto()  # <2>
 
     print("Funzione esterna")
 
-  outerFunction()
+  funzione_esterna()
   ```
-  1. Dichiarazione della funzione `helperFunction` all'interno di `outerFunction`.
-  2. Chiamata della funzione `helperFunction` all'interno di `outerFunction`.
+  1. Dichiarazione della funzione `funzione_supporto` all'interno di `funzione_esterna`.
+  2. Chiamata della funzione `funzione_supporto` all'interno di `funzione_esterna`.
 
 #### Differenze tra funzioni con variabili e oggetti
 
@@ -485,196 +401,740 @@ Sebbene l'ambito e la visibilità delle funzioni condividano concetti simili con
   
 - Allocazione dinamica: In C++, le variabili e gli oggetti possono essere allocati dinamicamente usando `new` e deallocati usando `delete`. Le funzioni non richiedono un'allocazione esplicita di memoria; la loro dichiarazione è sufficiente per renderle utilizzabili nell'ambito definito.
 
-## Spazi di nomi, moduli e file
+### La ricorsione
 
-In molti linguaggi di programmazione, la gestione dell'ambito e della visibilità delle variabili e delle funzioni può essere ulteriormente organizzata utilizzando spazio di nomi (_namespace_), moduli, header e file separati. Questa organizzazione aiuta a evitare conflitti di nome e a mantenere il codice più modulare e manutenibile.
+La **ricorsione** è la capacità di una funzione di chiamare se stessa, utile per risolvere problemi che possono essere suddivisi in sottoproblemi simili. Ogni chiamata ricorsiva deve avvicinarsi a una condizione di terminazione per evitare loop infiniti.
 
-### Python
+Esempio in C++ (calcolo del fattoriale):
 
-In Python, i moduli sono file che contengono definizioni di variabili, funzioni e classi. I moduli possono essere importati in altri moduli o script per riutilizzare il codice. Quando un modulo viene importato, gli identificatori definiti in quel modulo (come variabili, funzioni e classi) diventano accessibili attraverso il nome del modulo. Sebbene i moduli siano spesso implementati come file separati, è possibile definirli anche all'interno di un file di codice sorgente principale.
+```cpp
+#include <iostream>
 
-Esempio di modulo (`mymodule.py`):
+int fattoriale(int n) {  // <1>
+  if (n <= 1) return 1;  // <2>
 
-```python
-# mymodule.py
-my_var = 10  # <1>
+  return n * fattoriale(n - 1);  // <3>
+}
 
-def my_function():
-    print("Funzione del modulo")  # <2>
-```
-1. Variabile globale nel modulo.
-2. Funzione nel modulo.
+int main() {
+  int result = fattoriale(5);  // <4>
 
-Importazione di un modulo in un altro file sorgente (`main.py`):
-
-```python
-# main.py
-import mymodule  # <1>
-
-print(mymodule.my_var)  # <2>
-mymodule.my_function()  # <3>
-```
-1. Importazione del modulo `mymodule`.
-2. Accesso alla variabile `my_var` dal modulo `mymodule`.
-3. Chiamata della funzione `my_function` dal modulo `mymodule`.
-
-### Java
-
-In Java, i pacchetti (_package_) sono utilizzati per organizzare le classi in namespace separati. Ogni classe deve dichiarare il pacchetto di appartenenza.
-
-Esempio di classe in un pacchetto (`mypackage/MyClass.java`):
-
-```java
-// mypackage/MyClass.java
-package mypackage;  // <1>
-
-public class MyClass {
-    public static int myVar = 10;  // <2>
-
-    public static void myMethod() {
-        System.out.println("Metodo del pacchetto");  // <3>
-    }
+  std::cout << result << std::endl;  // <5>
+  
+  return 0;
 }
 ```
-1. Dichiarazione del pacchetto `mypackage`.
-2. Variabile globale di classe.
-3. Metodo della classe.
+1. Dichiarazione della funzione `fattoriale`.
+2. Condizione di terminazione: se `n` è minore o uguale a 1, ritorna 1.
+3. Chiamata ricorsiva: `fattoriale` chiama se stessa con `n - 1`.
+4. Chiamata della funzione `fattoriale` con argomento `5`.
+5. Il risultato della funzione `fattoriale` viene stampato.
 
-Importazione di una classe da un pacchetto in un'altra classe (`Main.java`):
+## La funzione in prima classe
+
+Il concetto di **funzione in prima classe** (inglese: _first-class function_) è un principio fondamentale in molti linguaggi di programmazione, particolarmente rilevante nel paradigma di programmazione funzionale. In breve, un linguaggio di programmazione che supporta le funzioni come cittadini di prima classe. Ciò significa che le funzioni possono essere manipolate e utilizzate come qualsiasi altro tipo di dato. Le operazioni che definiscono questa caratteristica includono:
+
+- Assegnazione a variabili: Le funzioni possono essere assegnate a variabili.
+
+- Passaggio come argomenti: Le funzioni possono essere passate come argomenti ad altre funzioni.
+
+- Restituzione come risultati: Le funzioni possono essere restituite da altre funzioni.
+
+- Memorizzazione in strutture dati: Le funzioni possono essere memorizzate in strutture dati come liste, dizionari, ecc.
+
+Nel paradigma di programmazione funzionale, le funzioni in prima classe sono essenziali perché permettono di trattare le funzioni pure come valori di prima classe. Le funzioni pure sono funzioni il cui output è determinato solo dai loro input e non hanno effetti collaterali. L'abilità di passare, restituire e comporre funzioni in prima classe è fondamentale per il paradigma funzionale, poiché consente di creare funzioni di ordine superiore e di mantenere l'immutabilità. Le funzioni in prima classe permettono di:
+
+- Creare funzioni di ordine superiore: Funzioni che accettano altre funzioni come argomenti o che restituiscono funzioni, promuovendo un'astrazione più elevata e la riutilizzabilità del codice.
+
+- Comporre funzioni: Combinare semplici funzioni pure per costruire funzioni più complesse, facilitando la costruzione di software modulare e mantenibile.
+
+- Favorire l'immutabilità: Favorire la scrittura di codice che non modifica lo stato, riducendo i bug e rendendo il codice più prevedibile.
+
+### Implementazione in linguaggi di programmazione
+
+Python tratta le funzioni come oggetti in prima classe. Ecco come:
+
+```python
+# Assegnazione a variabili
+def saluto(nome):  # <1>
+  return f"Ciao, {nome}!"
+
+messaggio = saluto  # <2>
+print(messaggio("Mondo"))  # <3>
+
+# Passaggio come argomenti
+def chiamata_di_ritorno(f):  # <4>
+  return f("Mondo")
+
+print(chiamata_di_ritorno(saluto))  # <5>
+
+# Restituzione come risultati
+def crea_saluto():  # <6>
+  def saluto(nome):  # <7>
+    return f"Ciao, {nome}!"
+
+  return saluto  # <8>
+
+saluta = crea_saluto()  # <9>
+print(saluta("Mondo"))  # <10>
+```
+1. Definizione della funzione `saluto` che accetta un parametro `nome`.
+2. Assegnazione della funzione `saluto` alla variabile `messaggio`.
+3. Chiamata della funzione `messaggio` con l'argomento `"Mondo"`, che stampa "Ciao, Mondo!".
+4. Definizione della funzione `chiamata_di_ritorno` che accetta una funzione come parametro `f`.
+5. Chiamata della funzione `chiamata_di_ritorno` con la funzione `saluto` come argomento, che stampa "Ciao, Mondo!".
+6. Definizione della funzione `crea_saluto` che restituisce una funzione.
+7. Definizione della funzione `saluto` interna a `crea_saluto`.
+8. Restituzione della funzione `saluto` da `crea_saluto`.
+9. Assegnazione della funzione restituita da `crea_saluto` alla variabile `saluta`.
+10. Chiamata della funzione `saluta` con l'argomento `"Mondo"`, che stampa "Ciao, Mondo!".
+
+Anche JavaScript supporta le funzioni in prima classe:
+
+```javascript
+// Assegnazione a variabili
+function saluto(nome) {  // <1>
+    return `Ciao, ${nome}!`;
+}
+
+let messaggio = saluto;  // <2>
+console.log(messaggio("Mondo"));  // <3>
+
+// Passaggio come argomenti
+function chiamataDiRitorno(f) {  // <4>
+    return f("Mondo");
+}
+
+console.log(chiamataDiRitorno(saluto));  // <5>
+
+// Restituzione come risultati
+function creaSaluto() {  // <6>
+  function saluto(nome) {  // <7>
+    return `Ciao, ${nome}!`;
+  }
+  
+  return saluto;  // <8>
+}
+
+let saluta = creaSaluto();  // <9>
+console.log(saluta("Mondo"));  // <10>
+```
+1. Definizione della funzione `saluto` che accetta un parametro `nome`.
+2. Assegnazione della funzione `saluto` alla variabile `messaggio`.
+3. Chiamata della funzione `messaggio` con l'argomento `"Mondo"`, che stampa "Ciao, Mondo!".
+4. Definizione della funzione `chiamataDiRitorno` che accetta una funzione come parametro `f`.
+5. Chiamata della funzione `chiamataDiRitorno` con la funzione `saluto` come argomento, che stampa "Ciao, Mondo!".
+6. Definizione della funzione `creaSaluto` che restituisce una funzione.
+7. Definizione della funzione `saluto` interna a `creaSaluto`.
+8. Restituzione della funzione `saluto` da `creaSaluto`.
+9. Assegnazione della funzione restituita da `creaSaluto` alla variabile `saluta`.
+10. Chiamata della funzione `saluta` con l'argomento `"Mondo"`, che stampa "Ciao, Mondo!".
+
+Haskell è un linguaggio puramente funzionale che supporta naturalmente le funzioni in prima classe:
+
+```haskell
+-- Assegnazione a variabili
+saluto :: String -> String  -- <1>
+saluto nome = "Ciao, " ++ nome ++ "!"
+
+messaggio = saluto  -- <2>
+main = putStrLn (messaggio "Mondo")  -- <3>
+
+-- Passaggio come argomenti
+chiamataDiRitorno :: (String -> String) -> String  -- <4>
+chiamataDiRitorno f = f "Mondo"
+
+main = putStrLn (chiamataDiRitorno saluto)  -- <5>
+
+-- Restituzione come risultati
+creaSaluto :: String -> String  -- <6>
+creaSaluto = saluto
+
+main = putStrLn (creaSaluto "Mondo")  -- <7>
+```
+1. Definizione della funzione `saluto` che accetta una stringa `nome` e restituisce una stringa.
+2. Assegnazione della funzione `saluto` alla variabile `messaggio`.
+3. Chiamata della funzione `messaggio` con l'argomento `"Mondo"`, che stampa "Ciao, Mondo!".
+4. Definizione della funzione `chiamataDiRitorno` che accetta una funzione come parametro `f`.
+5. Chiamata della funzione `chiamataDiRitorno` con la funzione `saluto` come argomento, che stampa "Ciao, Mondo!".
+6. Definizione della funzione `creaSaluto` che restituisce la funzione `saluto`.
+7. Chiamata della funzione `creaSaluto` con l'argomento `"Mondo"`, che stampa "Ciao, Mondo!".
+
+C++ non era originariamente un linguaggio con supporto della programmazione funzionale, ma, a partire dal C++11, ha introdotto diverse funzionalità che permettono di trattare le funzioni come valori di prima classe. Queste caratteristiche sono implementate tramite puntatori a funzione, oggetti funzione (`std::function`) e espressioni lambda. [^1-prima-parte-variabili-funzioni]
+
+[^1-prima-parte-variabili-funzioni]: Per ulteriori informazioni, si può consultare [la documentazione ufficiale di C++11](https://en.cppreference.com/w/cpp/utility/functional/function).
+
+Esempio:
+
+```cpp
+#include <iostream>
+#include <functional>
+
+void saluto(const std::string& nome) {  // <1>
+    std::cout << "Ciao, " << nome << "!" << std::endl;
+}
+
+int main() {
+    std::function<void(const std::string&)> messaggio = saluto;  // <2>
+    messaggio("Mondo");  // <3>
+
+    // Passaggio come argomenti
+    auto chiamataDiRitorno = [](std::function<void(const std::string&)> f, const std::string& nome) {  // <4>
+        f(nome);
+    };
+
+    chiamataDiRitorno(saluto, "Mondo");  // <5>
+    return 0;
+}
+```
+1. Definizione della funzione `saluto` che accetta un parametro `nome`.
+2. Assegnazione della funzione `saluto` all'oggetto funzione `messaggio` utilizzando `std::function`.
+3. Chiamata della funzione `messaggio` con l'argomento `"Mondo"`, che stampa "Ciao, Mondo!".
+4. Definizione di una lambda expression `chiamataDiRitorno` che accetta una funzione `f` e un valore `nome`.
+5. Chiamata della lambda `chiamataDiRitorno` con la funzione `saluto` e l'argomento `"Mondo"`, che stampa "Ciao, Mondo!".
+
+### La funzione di ordine superiore
+
+La **funzione di ordine superiore** è una diretta conseguenza del supporto per le funzioni in prima classe. Tale funzione accetta altre funzioni come argomenti e/o ritornano funzioni come risultati. Nel paradigma della programmazione funzionale, le funzioni di ordine superiore facilitano l'implementazione di tecniche come la composizione di funzioni, l'applicazione parziale e l'uso di callback.
+
+Esempio in Python:
+
+```python
+def somma(a):
+  def inner(b):
+    return a + b
+
+  return inner  # <1>
+
+add_five = somma(5)  # <2>
+
+print(add_five(3))  # <3>
+```
+1. La funzione `somma` ritorna una nuova funzione `inner` che somma `a` al suo argomento `b`.
+2. `somma(5)` ritorna una nuova funzione che somma `5` al suo argomento.
+3. La funzione risultante viene chiamata con l'argomento `3`, restituendo `8`.
+
+Esempio in C++:
+
+```cpp
+#include <iostream>
+#include <functional>
+
+std::function<int(int)> somma(int a) {  // <1>
+  return [a](int b) { return a + b; };  // <2>
+}
+
+int main() {
+  auto add_five = somma(5);  // <3>
+
+  std::cout << add_five(3) << std::endl;  // <4>
+
+  return 0;
+}
+```
+1. Dichiarazione della funzione `somma` che ritorna un `std::function<int(int)>`.
+2. `somma` ritorna una funzione lambda che somma `a` al suo argomento `b`.
+3. `somma(5)` ritorna una nuova funzione che somma `5` al suo argomento.
+4. La funzione risultante viene chiamata con l'argomento `3`, restituendo `8`.
+
+### L'applicazione parziale
+
+L'**applicazione parziale** (inglese: _partial application_) è una tecnica della programmazione funzionale che permette di fissare un certo numero di parametri di una funzione, producendo una nuova funzione con un numero inferiore dei medesimi. Ciò è particolarmente utile quando si desidera creare varianti di una funzione con alcuni parametri predefiniti, aumentando così la flessibilità e la riutilizzabilità del codice.
+
+In pratica, l'applicazione parziale consente di preimpostare alcuni argomenti di una funzione, riducendo il numero di argomenti che devono essere forniti successivamente. 
+
+Python supporta l'applicazione parziale tramite il modulo `functools` che include la funzione `partial`:
+
+```python
+from functools import partial
+
+def f(a, b, c): # <1>
+  return a + b + c
+
+g = partial(f, 1)  # <2>
+
+print(g(2, 3))  # <3> 
+```
+1. Funzione che accetta tre argomenti.
+2. Utilizzo di `partial` per fissare il primo argomento di `f` a `1`.
+3. Chiamata della funzione `g` con i restanti due argomenti. Output: `6`.
+
+In C++, l'applicazione parziale può essere realizzata utilizzando le espressioni lambda o la funzione `std::bind` dalla libreria standard:
+
+```cpp
+#include <iostream>
+#include <functional>
+
+int somma(int a, int b, int c) {
+  return a + b + c;
+}
+
+int main() {
+  auto fissaPrimoArgomento = std::bind(somma, 1, std::placeholders::_1, std::placeholders::_2);  // <1>
+
+  std::cout << fissaPrimoArgomento(2, 3) << std::endl;  // <2>
+
+  return 0;
+}
+```
+1. Utilizzo di `std::bind` per fissare il primo argomento di `somma` a 1.
+2. Chiamata della funzione `fissaPrimoArgomento` con i restanti due argomenti. Output: `6`.
+
+L'applicazione parziale è importante perché:
+
+- Aumenta la modularità: Permette di creare versioni specifiche di funzioni generiche.
+
+- Riduce la ridondanza: Evita la necessità di riscrivere funzioni simili con parametri diversi.
+
+- Facilita la composizione: Supporta la creazione di funzioni più complesse a partire da funzioni più semplici.
+
+L'applicazione parziale è una tecnica potente che, insieme alle funzioni di ordine superiore, contribuisce alla flessibilità e alla manutenibilità del codice nel paradigma della programmazione funzionale.
+
+### Il decoratore
+
+Il **decoratore** è una potente funzionalità in Python che permette di modificare il comportamento di funzioni o metodi esistenti senza cambiarne il codice sorgente. Esso sfrutta i concetti di funzioni in prima classe e funzioni di ordine superiore per aggiungere nuove funzionalità in modo modulare e riutilizzabile. È necessaria una sintassi ad hoc per applicare i decoratori al nostro codice ma il processo risulta semplice e il prodotto molto leggibile.
+
+Un decoratore è essenzialmente una funzione che accetta un'altra funzione come argomento e restituisce una nuova funzione. Questa nuova funzione può estendere o modificare il comportamento della funzione originale.
+
+Questo consente di estendere le funzionalità di una funzione in modo modulare e senza alterare il suo codice originale, utile sia per creare librerie di _modifiche_ a funzioni proprie, sia per aggiornare il codice mantenendo la compatibilità con le versioni precedenti.
+
+Esempio generico:
+
+```python
+def mio_decoratore(f):  # <1>
+  def involucro(*args, **kwargs):  # <2>
+    print("Qualcosa prima della funzione")  # <3>
+
+    risultato = f(*args, **kwargs)  # <4>
+
+    print("Qualcosa dopo la funzione")  # <5>
+
+    return risultato  # <6>
+
+  return involucro  # <7>
+
+@mio_decoratore  # <8>
+def di_ciao():  # <9>
+  print("Ciao!")  # <10>
+
+di_ciao()  # <11>
+```
+1. Definizione della funzione `mio_decoratore`, che accetta una funzione `f` come argomento.
+2. Definizione della funzione `involucro` interna, che accetta argomenti variabili `*args` e `**kwargs`.
+3. Stampa di un messaggio prima della chiamata della funzione decorata.
+4. Chiamata della funzione originale `f` con gli argomenti originali.
+5. Stampa di un messaggio dopo la chiamata della funzione decorata.
+6. Restituzione del risultato della funzione `f`.
+7. Restituzione della funzione `involucro` come nuova funzione decorata.
+8. Applicazione del decoratore `mio_decoratore` alla funzione `di_ciao`.
+9. Definizione della funzione `di_ciao`.
+10. Stampa del messaggio `Ciao!`.
+11. Chiamata della funzione `di_ciao` decorata.
+
+#### Applicazioni
+
+I decoratori sono molto utili per creare librerie che estendono le funzionalità delle funzioni esistenti senza modificarne il codice sorgente. Ad esempio, si potrebbe creare un decoratore per registrare il tempo di esecuzione di una funzione:
+
+```python
+import time
+
+def calcolo_tempo_esecuzione(f):  # <1>
+  def involucro(*args, **kwargs):  # <2>
+    start_time = time.time()  # <3>
+
+    result = f(*args, **kwargs)  # <4>
+
+    end_time = time.time()  # <5>
+
+    print(f"Tempo di esecuzione: {end_time - start_time} secondi")  # <6>
+
+    return result  # <7>
+
+  return involucro  # <8>
+
+@calcolo_tempo_esecuzione  # <9>
+def esempio_funzione():  # <10>
+  time.sleep(2)  # <11>
+
+  print("Funzione eseguita")
+
+esempio_funzione()  # <12>
+```
+1. Definizione del decoratore `calcolo_tempo_esecuzione`.
+2. Definizione della funzione `involucro` interna.
+3. Registrazione del tempo di inizio.
+4. Chiamata della funzione originale `f`.
+5. Registrazione del tempo di fine.
+6. Stampa del tempo di esecuzione.
+7. Restituzione del risultato della funzione `f`.
+8. Restituzione della funzione `involucro` come nuova funzione decorata.
+9. Applicazione del decoratore `calcolo_tempo_esecuzione` alla funzione `esempio_funzione`.
+10. Definizione della funzione `esempio_funzione`.
+11. Simulazione di un ritardo di 2 secondi.
+12. Chiamata della funzione `esempio_funzione` decorata.
+
+Il seguente esempio mostra come utilizzare un decoratore per mantenere la compatibilità all'indietro di una funzione di cui è stato modificato l'elenco dei parametri. La nuova versione della funzione accetta un parametro aggiuntivo, ma il vecchio codice può continuare a chiamare la funzione senza passare questo parametro aggiuntivo.
+
+Esempio:
+
+```python
+def compatibilita_indietro(f):  # <1>
+  def involucro(*args, **kwargs):  # <2>
+    try:
+      return f(*args, **kwargs)  # <3>
+
+    except TypeError as e:  # <4>
+      if "positional argument" in str(e):  # <5>
+        return f(args[0])  # <6>
+
+      raise e  # <7>
+
+  return involucro  # <8>
+
+@compatibilita_indietro  # <9>
+def esempio_funzione(nome, messaggio="Ciao!"):  # <10>
+  print(f"{messaggio} {nome}")
+
+esempio_funzione("Mondo", messaggio="Salve")  # <11> 
+
+esempio_funzione("Mondo")  # <12> 
+```
+1. Definizione del decoratore `compatibilita_indietro`.
+2. Definizione della funzione `involucro` interna.
+3. Tentativo di chiamare la funzione originale `f` con tutti gli argomenti.
+4. Gestione del TypeError che potrebbe verificarsi se gli argomenti non sono corretti.
+5. Verifica se l'errore è dovuto a un numero errato di argomenti posizionali.
+6. Chiamata della funzione originale `f` con solo il primo argomento (compatibilità all'indietro).
+7. Se l'errore è diverso, viene rilanciato.
+8. Restituzione della funzione `involucro` come nuova funzione decorata.
+9. Applicazione del decoratore `compatibilita_indietro` alla funzione `esempio_funzione`.
+10. Definizione della funzione modificata `esempio_funzione` con un parametro aggiuntivo `messaggio`.
+11. Chiamata della nuova funzione nel nuovo modo, con entrambi i parametri. Output: `Salve Mondo`.
+12. Chiamata della nuova funzione nel vecchio modo, con un solo parametro. Output: `Ciao! Mondo`.
+
+Questo approccio garantisce che il nuovo codice possa utilizzare la nuova funzionalità, mentre il vecchio codice continua a funzionare senza modifiche.
+
+#### Supporto in Typescript
+
+TypeScript supporta, allo stato in modo sperimentale, i decoratori per classi, metodi, accessori, proprietà e parametri. Di seguito è riportato un esempio di decoratore per una classe:
+
+```typescript
+function logCostruzione(target: Function) {  // <1>
+  console.log(`Costruzione di ${target.name}`);  // <2>
+}
+
+@logCostruzione  // <3>
+class Persona {  // <4>
+  constructor(public nome: string) {  // <5>
+    console.log(`Ciao, ${nome}!`);  // <6>
+  }
+}
+
+const p = new Persona('Alice');  // <7>
+```
+1. Definizione del decoratore `logCostruzione`.
+2. Il decoratore stampa un messaggio con il nome della classe.
+3. Applicazione del decoratore `logCostruzione` alla classe `Persona`.
+4. Definizione della classe `Persona`.
+5. Costruttore della classe `Persona` che accetta un parametro `nome`.
+6. Il costruttore stampa un messaggio di saluto.
+7. Creazione di un'istanza della classe `Persona`.
+
+### La funzione di richiamo
+
+La **funzione di richiamo** (inglese: _callback function_ o semplicemente _callback_) è un tipo di funzione che viene passata come argomento ad altra funzione e viene eseguita dopo che l'operazione principale sia terminata. Le funzioni di richiamo sono utilizzate in molti linguaggi di programmazione, inclusi Python, JavaScript, C++, e altri e sono particolarmente comuni nella programmazione asincrona, come la gestione di eventi e la programmazione basata su temporizzatori.
+
+Ambiti di applicazione:
+
+- Programmazione asincrona: Utilizzate per gestire operazioni che richiedono tempo, come richieste di rete, lettura/scrittura su file, e interazioni con database.
+
+- Gestione degli eventi: Utilizzate in interfacce grafiche e applicazioni web per rispondere a eventi come click di pulsanti, input da tastiera, e movimenti del mouse.
+  
+- Manipolazione di dati: Utilizzate per eseguire operazioni su dati in strutture come array o liste, ad esempio in Python con funzioni come `map`, `filter` e `reduce`[^2-prima-parte-variabili-funzioni].
+
+[^2-prima-parte-variabili-funzioni]: Le funzioni `map`, `filter` e `reduce` sono strumenti fondamentali nella programmazione funzionale, utilizzati per operare su collezioni di dati in modo dichiarativo e conciso.
+
+  - `map`: La funzione `map` applica una funzione a ogni elemento di una collezione (come una lista o un array) e restituisce una nuova collezione contenente i risultati. È utile per trasformare o manipolare i dati di una collezione senza utilizzare esplicitamente cicli.
+
+  - `filter`: La funzione `filter` prende una funzione di predicato (una funzione che restituisce un valore booleano) e una collezione. Restituisce una nuova collezione contenente solo gli elementi che soddisfano il predicato. È utile per selezionare o filtrare elementi specifici da una collezione in base a una condizione.
+
+  - `reduce`: La funzione `reduce` applica una funzione di aggregazione (una funzione che combina due elementi in uno) a una collezione, riducendola a un singolo valore. È utile per calcolare valori cumulativi, come la somma, il prodotto o altre operazioni di aggregazione su una collezione di dati.
+
+  Per approndire si può fare riferimento a [@wikipedia_map], [@wikipedia_filter], [@wikipedia_reduce], [@abelson1996].
+
+Esempio generico in Python:
+
+```python
+def chiamata_di_ritorno(f):  # <1>
+    print("Prima della callback")  # <2>
+
+    f()  # <3>
+
+    print("Dopo la callback")  # <4>
+
+def saluto():  # <5>
+    print("Ciao!")  # <6>
+
+chiamata_di_ritorno(saluto)  # <7>
+```
+1. Definizione della funzione `chiamata_di_ritorno` che accetta una funzione di richiamo `f`.
+2. Stampa di un messaggio prima dell'esecuzione della funzione `f`.
+3. Chiamata della funzione `f`.
+4. Stampa di un messaggio dopo la callback.
+5. Definizione della funzione `saluto`.
+6. Stampa del messaggio `Ciao!`.
+7. Passaggio della funzione `saluto` come funzione di richiamo a `chiamata_di_ritorno`.
+
+Esempio pratico in Python]:
+
+```python
+numeri = [1, 2, 3, 4, 5]
+
+quadrati = map(lambda x: x ** 2, numeri)  # <1>
+print(list(quadrati))  # <2>
+
+numeri = [1, 2, 3, 4, 5]
+
+pari = filter(lambda x: x % 2 == 0, numeri)  # <3>
+print(list(pari))  # <4>
+
+from functools import reduce
+
+numeri = [1, 2, 3, 4, 5]
+
+somma = reduce(lambda x, y: x + y, numeri)  # <5>
+print(somma)  # <6>
+```
+1. Uso di `map` con una funzione lambda per calcolare i quadrati dei numeri.
+2. Conversione dell'oggetto `map` in una lista e stampa del risultato `[1, 4, 9, 16, 25]`.
+3. Uso di `filter` con una funzione lambda per selezionare i numeri pari.
+4. Conversione dell'oggetto `filter` in una lista e stampa del risultato `[2, 4]`.
+5. Uso di `reduce` con una funzione lambda per sommare tutti i numeri.
+6. Stampa del risultato `15`.
+
+### La lambda
+
+Le **lambda** sono funzioni anonime che possono essere definite in una singola riga di codice. Sono utili per operazioni semplici e brevi. Le lambda sono supportate da molti linguaggi di programmazione, come Python, JavaScript, Java, C#, e altri, e forniscono un modo conciso per definire funzioni temporanee o usa e getta[^3-prima-parte-variabili-funzioni].
+
+[^3-prima-parte-variabili-funzioni] Le espressioni lambda sono ispirate al calcolo lambda, una notazione matematica introdotta da Alonzo Church negli anni '30. Il calcolo lambda è un sistema formale per esprimere computazioni basate sulla definizione e applicazione di funzioni anonime. Questo concetto è alla base delle lambda in molti linguaggi di programmazione moderni, facilitando l'adozione del paradigma della programmazione funzionale. Vedi anche [@wikipedia_lambda_calculus] e [@church1936].
+
+Una sintassi ad hoc per le lambda è necessaria per mantenere il codice leggibile e per permettere l'uso di funzioni anonime in modo rapido e senza definizioni formali che potrebbero rendere il codice più verboso e meno chiaro.
+
+#### Python
+
+Python utilizza la parola chiave `lambda` per definire funzioni anonime. La sintassi è:
+
+```python
+lambda parametri: espressione
+```
+
+Esempio:
+
+```python
+somma = lambda a, b: a + b  # <1>
+
+print(somma(3, 4))  # <2>
+```
+1. La funzione lambda `lambda a, b: a + b` somma due numeri. Qui, `somma` è l'identificatore della lambda.
+2. Chiamata della funzione lambda con argomenti `3` e `4`, stampa `7`.
+
+#### JavaScript
+
+JavaScript utilizza le funzioni freccia (inglese: _arrow functions_) per definire funzioni anonime. La sintassi è:
+
+```javascript
+(parametri) => espressione
+```
+
+Esempio:
+
+```javascript
+const somma = (a, b) => a + b;  // <1>
+
+console.log(somma(3, 4));  // <2>
+```
+1. Definizione di una funzione lambda che somma due numeri.
+2. Chiamata della funzione lambda con argomenti `3` e `4`, stampa `7`.
+
+#### Java
+
+Java utilizza le espressioni lambda, introdotte con Java 8. La sintassi è:
 
 ```java
-// Main.java
-import mypackage.MyClass;  // <1>
+(parametri) -> espressione
+```
+
+Esempio:
+
+```java
+import java.util.function.*;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println(MyClass.myVar);  // <2>
-        MyClass.myMethod();  // <3>
-    }
+  public static void main(String[] args) {
+    BiFunction<Integer, Integer, Integer> somma = (a, b) -> a + b;  // <1>
+
+    System.out.println(somma.apply(3, 4));  // <2>
+  }
 }
 ```
-1. Importazione della classe `MyClass` dal pacchetto `mypackage`.
-2. Accesso alla variabile `myVar` dalla classe `MyClass`.
-3. Chiamata del metodo `myMethod` dalla classe `MyClass`.
+1. Qui definiamo una lambda che somma due numeri. Utilizziamo l'interfaccia funzionale `BiFunction` per rappresentare una funzione che accetta due argomenti di tipo `Integer` e restituisce un risultato di tipo `Integer`. L'assegnazione `(a, b) -> a + b` definisce la funzione lambda.
+2. Utilizziamo il metodo `apply` della `BiFunction` per chiamare la funzione lambda con gli argomenti `3` e `4`, e stampiamo il risultato, che è `7`.
 
-### C
+### Chiusure
 
-In C, i file di intestazione (_header file_) sono utilizzati per dichiarare funzioni e variabili che possono essere utilizzate in più file sorgente, a mo' di libreria.
+Le **chiusure** (inglese: _closure_) sono funzioni che ricordano l'ambiente nel quale sono state create. Questo significa che possono accedere alle variabili definite nell'ambiente esterno anche dopo che tale ambiente sia stato chiuso.
 
-Esempio di file di intestazione (`mymodule.h`):
+Esempio in Python:
 
-```c
-// mymodule.h
-#ifndef MYMODULE_H 
-#define MYMODULE_H
+```python
+def make_adder(x):  # <1>
+  def somma(y):  # <2>
+    return x + y  # <3>
 
-extern int myVar;  /* <1> */
+  return somma  # <4>
 
-void myFunction();  /* <2> */
-
-#endif
+add_five = make_adder(5)  # <5>
+print(add_five(3))  # <6>
 ```
-1. Dichiarazione della variabile globale `myVar`.
-2. Dichiarazione della funzione `myFunction`.
+1. Definizione della funzione `make_adder` che accetta un parametro `x`.
+2. Definizione della funzione `somma` che accetta un parametro `y`.
+3. La funzione `somma` somma `x` e `y`.
+4. `make_adder` restituisce la funzione `somma`.
+5. `add_five` è una chiusura che ricorda il valore di `x` come `5`.
+6. `add_five(3)` restituisce `8`.
 
-Esempio di file sorgente (`mymodule.c`):
+Esempio in JavaScript:
 
-```c
-#include "mymodule.h"
-
-int myVar = 10;  /* <1> */
-
-void myFunction() {
-    printf("Funzione del modulo\n");  /* <2> */
-}
-```
-1. Definizione della variabile globale `myVar`.
-2. Definizione della funzione `myFunction`.
-
-Utilizzo del file di intestazione in un altro file sorgente (`main.c`):
-
-```c
-#include <stdio.h>
-#include "mymodule.h"  /* <1> */
-
-int main() {
-    printf("%d\n", myVar);  /* <2> */
-
-    myFunction();  /* <3> */
-
-    return 0;
-}
-```
-1. Inclusione del file di intestazione `mymodule.h`.
-2. Accesso alla variabile `myVar` dichiarata in `mymodule.h`.
-3. Chiamata della funzione `myFunction` dichiarata in `mymodule.h`.
-
-### C++
-
-In C++, la parola chiave `namespace` è utilizzata per organizzare le classi, le funzioni e le variabili in spazi di nomi separati, simili ai pacchetti in Java.
-
-Esempio di dichiarazione di uno spazio di nomi (`mymodule.h`):
-
-```cpp
-#ifndef MYMODULE_H 
-#define MYMODULE_H
-
-namespace mynamespace {  // <1>
-    extern int myVar;  // <2>
-
-    void myFunction();  // <3>
+```javascript
+function makeAdder(x) {  // <1>
+  return function(y) {  // <2>
+    return x + y;  // <3>
+  };
 }
 
-#endif
+const addFive = makeAdder(5);  // <4>
+console.log(addFive(3));  // <5>
 ```
-1. Dichiarazione dello spazio di nomi `mynamespace`.
-2. Dichiarazione della variabile globale `myVar` all'interno dello spazio di nomi.
-3. Dichiarazione della funzione `myFunction` all'interno dello spazio di nomi.
+1. Definizione della funzione `makeAdder` che accetta un parametro `x`.
+2. Restituzione di una funzione che accetta un parametro `y`.
+3. La funzione interna somma `x` e `y`.
+4. `addFive` è una chiusura che ricorda il valore di `x` come `5`.
+5. `addFive(3)` restituisce `8`.
 
-Esempio di definizione dello spazio di nomi (`mymodule.cpp`):
+Le chiusure sono utili in diversi contesti, tra cui:
 
-```cpp
-#include "mymodule.h"
-#include <iostream>
+- Memorizzazione di stato: Le chiusure possono essere utilizzate per mantenere uno stato tra chiamate successive a una funzione. Esempio in Python:
 
-namespace mynamespace {
-    int myVar = 10;  // <1>
+  ```python
+  def make_counter():  # <1>
+    count = 0  # <2>
 
-    void myFunction() {
-        std::cout << "Funzione del namespace" << std::endl;  // <2>
-    }
-}
-```
-1. Definizione della variabile globale `myVar` all'interno dello spazio di nomi.
-2. Definizione della funzione `myFunction` all'interno dello spazio di nomi.
+    def counter():  # <3>
+      nonlocal count  # <4>
 
-Utilizzo dello spazio di nomi in un altro file sorgente (`main.cpp`):
+      count += 1  # <5>
 
-```cpp
-#include "mymodule.h"
-#include <iostream>
+      return count  # <6>
 
-int main() {
-    std::cout << mynamespace::myVar << std::endl;  // <1>
-    mynamespace::myFunction();  // <2>
-    return 0;
-}
-```
-1. Accesso alla variabile `myVar` all'interno dello spazio di nomi `mynamespace`.
-2. Chiamata della funzione `myFunction` all'interno dello spazio di nomi `mynamespace`.
+    return counter  # <7>
 
-### Impatti
+  counter = make_counter()  # <8>
+  print(counter())  # <9>
+  print(counter())  # <10>
+  ```
+  1. Definizione della funzione `make_counter`.
+  2. Inizializzazione della variabile `count` a `0`.
+  3. Definizione della funzione `counter`.
+  4. Dichiarazione della variabile `count` come `nonlocal` per modificarla all'interno di `counter`.
+  5. Incremento della variabile `count`.
+  6. Restituzione del valore di `count`.
+  7. Restituzione della funzione `counter`.
+  8. Creazione della chiusura `counter`.
+  9. Prima chiamata di `counter()`, restituisce `1`.
+  10. Seconda chiamata di `counter()`, restituisce `2`.
 
-L'uso di spazio di nomi, moduli e file di intestazione influisce sull'ambito e sulla visibilità delle variabili e delle funzioni. In generale, questi meccanismi consentono una maggiore modularità e organizzazione del codice, facilitando la gestione di grandi progetti.
+- Funzioni factory: Permettono la creazione di funzioni personalizzate configurate con parametri specifici. Esempio in Python:
 
-- Ambito: L'ambito delle variabili e delle funzioni può essere limitato a uno spazio di nomi o a un modulo, riducendo il rischio di conflitti di nome.
+  ```python
+  def multiply_by(factor):  # <1>
+    def multiply(number):  # <2>
+      return number * factor  # <3>
 
-- Visibilità: Le variabili e le funzioni dichiarate in namespace o moduli possono essere visibili solo all'interno di quel namespace o modulo, a meno che non vengano esplicitamente esportate.
+    return multiply  # <4>
 
-- Durata di vita degli oggetti: La durata di vita degli oggetti non è direttamente influenzata dallo spazio di nomi o moduli, ma l'organizzazione del codice può rendere più chiaro quando e dove gli oggetti vengono creati e distrutti.
+  double = multiply_by(2)  # <5>
+  print(double(5))  # <6>
+  ```
+  1. Definizione della funzione `multiply_by` che accetta un parametro `factor`.
+  2. Definizione della funzione `multiply` che accetta un parametro `number`.
+  3. La funzione `multiply` moltiplica `number` per `factor`.
+  4. `multiply_by` restituisce la funzione `multiply`.
+  5. `double` è una chiusura che ricorda il valore di `factor` come `2`.
+  6. `double(5)` restituisce `10`.
 
+- Funzioni di richiamo e gestione degli eventi: In programmazione asincrona, le chiusure sono spesso utilizzate per definire funzioni di richiamo che ricordano il contesto in cui sono state create. Esempio in Python:
 
+  ```python
+  def on_event(message):  # <1>
+    def handle_event():  # <2>
+      print(f"Event: {message}")  # <3>
 
+    return handle_event  # <4>
 
+  event_handler = on_event("Hello World")  # <5>
+  event_handler()  # <6>
+  ```
+  1. Definizione della funzione `on_event` che accetta un parametro `message`.
+  2. Definizione della funzione `handle_event`.
+  3. La funzione `handle_event` stampa `message`.
+  4. `on_event` restituisce la funzione `handle_event`.
+  5. `event_handler` è una chiusura che ricorda il valore di `message` come `Hello World`.
+  6. Chiamata della funzione `event_handler`, stampa `Event: Hello World`.
 
+- Programmazione funzionale: Le chiusure sono un costrutto fondamentale per molte tecniche della programmazione funzionale, come l'applicazione parziale e la trasformazione di una funzione con parametri multipli in una sequenza di funzioni aventi un unico parametro (inglese: _currying_)[^3-prima-parte-variabili-funzioni]. Esempio in Python: 
+
+  ```python
+  def curry_somma(a):  # <1>
+    def somma(b):  # <2>
+      return a + b  # <3>
+
+    return somma  # <4>
+
+  aggiungi_tre = curry_somma(3)  # <5>
+  print(aggiungi_tre(4))  # <6>
+  ```
+  1. Definizione della funzione `curry_somma` che accetta un parametro `a`.
+  2. Definizione della funzione `somma` che accetta un parametro `b`.
+  3. La funzione `somma` somma `a` e `b`.
+  4. `curry_somma` restituisce la funzione `somma`.
+  5. `aggiungi_tre` è una chiusura che ricorda il valore di `a` come `3`.
+  6. `aggiungi_tre(4)` restituisce `7`.
+
+  Esempio in Haskell:
+
+  ```haskell
+  currySomma :: Int -> Int -> Int  -- <1>
+
+  currySomma a = \b -> a + b  -- <2>
+
+  main :: IO ()
+
+  main = do
+    let aggiungiTre = currySomma 3  -- <3>
+
+    print (aggiungiTre 4)  -- <4>
+  ```
+  1. Definizione della funzione `currySomma` che accetta due parametri interi.
+  2. La funzione `currySomma` è curried, accetta il parametro `a` e restituisce una funzione che accetta il parametro `b` e somma `a` e `b`.
+  3. `aggiungiTre` è una chiusura che ricorda il valore di `a` come `3`.
+  4. `aggiungiTre 4` restituisce `7` e stampa il risultato.
+
+[^3-prima-parte-variabili-funzioni]: Il currying è una tecnica di trasformazione delle funzioni che prende il nome dal logico matematico Haskell Curry, sebbene il concetto sia stato inizialmente sviluppato da Moses Schönfinkel. In contesto matematico, questo principio può essere fatto risalire ai lavori di Gottlob Frege del 1893. Il currying consiste nel trasformare una funzione con più argomenti in una sequenza di funzioni ciascuna delle quali accetta un singolo argomento. Formalmente, data una funzione $f$ di due variabili $f(x, y)$, il currying la trasforma in una funzione $g$ tale che:
+  $$ g(x)(y) = f(x, y) $$
+
+  Più in generale, una funzione $f: (A \times B \times \dots \times N) \rightarrow R$ può essere trasformata in una funzione curried $f': A \rightarrow (B \rightarrow \dots \rightarrow (N \rightarrow R))$.
+
+  Il currying è particolarmente utile nella programmazione funzionale, poiché permette di creare funzioni parzialmente applicate e di comporre funzioni più facilmente. Questo facilita il riutilizzo del codice e la composizione di funzioni, migliorando la modularità e la leggibilità del codice. Il linguaggio di programmazione Haskell, che supporta nativamente il currying, è stato chiamato così in onore prprio di Haskell Curry, riconoscendo il suo contributo alla logica combinatoria e alla teoria delle funzioni.
+
+  Per approfondire: [@wikipedia_currying], [@haskell_currying], [@abelson1996], [@curry1950].
 

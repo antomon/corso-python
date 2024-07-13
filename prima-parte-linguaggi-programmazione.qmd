@@ -164,9 +164,9 @@ Applichiamo la metodologia di Polya per definire un algoritmo, rappresentato con
 
 2. Formulare piani:
 
-  - Piano 1: Confrontare ogni elemento con ogni altro elemento e scambiarli se sono nell'ordine sbagliato. Tuttavia, questo potrebbe non essere efficiente.
+   - Piano 1: Confrontare ogni elemento con ogni altro elemento e scambiarli se sono nell'ordine sbagliato. Tuttavia, questo potrebbe non essere efficiente.
 
-  - Piano 2: Confrontare elementi adiacenti e scambiarli se sono nell'ordine sbagliato, ripetendo questo processo fino a quando la lista è ordinata. Questo ci porta all'idea dell'algoritmo Bubble Sort.
+   - Piano 2: Confrontare elementi adiacenti e scambiarli se sono nell'ordine sbagliato, ripetendo questo processo fino a quando la lista è ordinata. Questo ci porta all'idea dell'algoritmo Bubble Sort.
 
 3. Eseguire i piani: Immplementiamo l'algoritmo in codice sorgente Python, eventualmente preceduto da uno pseudocodice come quello presentato sopra:
 
@@ -212,31 +212,31 @@ Applichiamo la metodologia di Polya per definire un algoritmo, rappresentato con
 
   Da notare che abbiamo applicato l'algoritmo all'input così come dato nella definizione del problema, ma, in generale, più coppie input/output dovrebbero essere fornite per coprire anche casi particolari.
 
-1. Valutare l'efficacia:
+4. Valutare l'efficacia:
 
-  - L'algoritmo Bubble Sort funziona correttamente per l'elenco di esempio fornito.
+   - L'algoritmo Bubble Sort funziona correttamente per l'elenco di esempio fornito.
 
-  - L'algoritmo ha una complessità temporale di O(n^2), che può essere migliorata utilizzando algoritmi di ordinamento più efficienti come il Quick Sort o il Merge Sort.
+   - L'algoritmo ha una complessità temporale di O(n^2), che può essere migliorata utilizzando algoritmi di ordinamento più efficienti come il Quick Sort o il Merge Sort.
 
-  - L'algoritmo è semplice da implementare e comprendere, ma non è adatto per grandi dataset a causa della sua inefficienza.
+   - L'algoritmo è semplice da implementare e comprendere, ma non è adatto per grandi dataset a causa della sua inefficienza.
 
 In questo esempio, abbiamo applicato le fasi della metodologia di Polya per determinare l'algoritmo Bubble Sort per l'ordinamento di una lista di numeri interi. Questo dimostra come una struttura metodica possa aiutare a definire e implementare algoritmi efficaci in un programma in uno specifico linguaggio di programmazione.
 
 ## Dal codice sorgente all'esecuzione
 
-Per comprendere come un programma scritto in un linguaggio di programmazione passi dal file di testo contenente il codice sorgente all'esecuzione delle istruzioni da parte della CPU, è fondamentale capire che questo processo richiede un programma che interpreti il codice sorgente. Tale programma può essere un **compilatore** o un **interprete**, le due macrocategorie che definiscono come il codice sorgente viene tradotto ed eseguito.
+Per comprendere come un programma scritto in un linguaggio di programmazione passi dal file di testo contenente il codice sorgente all'esecuzione delle istruzioni da parte del computer, è fondamentale capire che questo processo richiede un programma che interpreti quel codice sorgente. Tale programma può essere un **compilatore** o un **interprete**, le due macrocategorie che definiscono come il codice sorgente viene tradotto ed eseguito.
 
 Un **compilatore** è un programma che traduce l'intero codice sorgente di un programma scritto in un linguaggio di alto livello (come C o C++) in codice macchina, che è il linguaggio comprensibile direttamente dalla CPU. Questa traduzione avviene una sola volta, generando un file eseguibile che può essere eseguito direttamente dalla CPU.
 
 Un **interprete**, invece, è un programma che esegue il codice sorgente direttamente, istruzione per istruzione, senza produrre un file eseguibile separato. L'interprete legge una riga di codice, la traduce in codice macchina e la esegue immediatamente. Questo processo viene ripetuto per ogni riga del codice sorgente.
 
-È importante notare che alcuni linguaggi di programmazione possono essere sia compilati che interpretati, a seconda dell'implementazione disponibile. Ad esempio, Java utilizza sia la compilazione (per generare bytecode) che l'interpretazione, e la Java Virtual Machine (JVM) spesso utilizza anche la compilazione just-in-time (JIT) per tradurre il bytecode in codice macchina nativo durante l'esecuzione.
+È importante notare che alcuni linguaggi di programmazione possono essere sia compilati che interpretati, a seconda dell'implementazione disponibile. Ad esempio, Java utilizza sia la compilazione (per generare bytecode) che l'interpretazione, e la Java Virtual Machine (JVM) spesso utilizza anche la compilazione just-in-time (JIT) per tradurre il bytecode in codice macchina nativo durante l'esecuzione. 
 
 Detto ciò i passaggi macro perché un programma sia eseguito e possa produrre gli effetti pronosticati, sono:
 
 1. Il programmatore scrive il codice sorgente utilizzando un editor di testo o un ambiente di sviluppo integrato (integrated development environment, IDE). Questo codice contiene le istruzioni del programma, scritte secondo la sintassi del linguaggio di programmazione scelto.
 
-2. L'interpreto o il compilatore vengono eseguiti con input il programma e un componente, l'analizzatore lessicale, legge il codice sorgente e lo divide in lessemi, che sono sequenze di caratteri che corrispondono agli elementi _atomici_ del linguaggio. Ogni lessema viene identificato come un token specifico, come una parola chiave, un operatore o un identificatore.
+2. L'interprete o il compilatore vengono eseguiti con input il programma e un componente, l'analizzatore lessicale, legge il codice sorgente e lo divide in lessemi, che sono sequenze di caratteri che corrispondono agli elementi _atomici_ del linguaggio. Ogni lessema viene identificato come un token specifico, come una parola chiave, un operatore o un identificatore.
 
 3. A seguire un secondo compoenente, il parser, riceve la sequenza di token dall'analizzatore lessicale e costruisce un albero di sintassi, che rappresenta la struttura grammaticale del programma. Il parser verifica che il codice rispetti le regole sintattiche del linguaggio.
 

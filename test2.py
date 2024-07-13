@@ -1,15 +1,20 @@
-from typing import TypeAlias
+def compatibilita_indietro(f):  # <1>
+  def involucro(*args, **kwargs):  # <2>
+    try:
+      return f(*args, **kwargs)  # <3>
 
-type Point = tuple[float, float] # <1>
+    except TypeError as e:  # <4>
+      if "positional argument" in str(e):  # <5>
+        return f(args[0])  # <6>
 
-def distanza(p1: Point, p2: Point) -> float: # <2>
-  return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
+      raise e  # <7>
 
-punto1: Point = (1.0, 2.0) # <3>
-punto2: Point = (4.0, 6.0)
+  return involucro  # <8>
 
-print(distanza(punto1, punto2)) # <4>
+@compatibilita_indietro  # <9>
+def nuova_funzione(nome, messaggio="Ciao!"):  # <10>
+  print(f"{messaggio} {nome}")
 
-print(type(punto1)) # <5>
+nuova_funzione("Mondo", messaggio="Salve")  # <11> 
 
-punto2: Point = "Coppia di coordinate"
+nuova_funzione("Mondo")  # <12> 

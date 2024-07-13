@@ -5,11 +5,13 @@ citation-location: margin
 
 # I paradigmi di programmazione
 
-I linguaggi di programmazione possono essere classificati in diversi tipologie in base al loro scopo e alla loro struttura. 
+I linguaggi di programmazione possono essere classificati in diversi modi in base a scopo, struttura o altre caratterstiche di progettazione. 
 
 Una delle classificazioni più importanti è quella del **paradigma di programmazione**, che definisce il modello e gli stili di risoluzione dei problemi che un linguaggio supporta per mezzo della codificazione degli algoritmi. 
 
-Tuttavia, è importante notare che molti linguaggi moderni sfruttano efficacemente più di un paradigma di programmazione, rendendo difficile assegnare un linguaggio a una sola categoria. Come ha affermato Bjarne Stroustrup, il creatore di C++: 
+Tuttavia, è importante notare che molti linguaggi moderni sfruttano efficacemente più di un paradigma di programmazione, rendendo difficile assegnare un linguaggio a una sola categoria. 
+
+Come ha affermato Bjarne Stroustrup, il creatore del C++: 
 
 > Le funzionalità dei linguaggi esistono per fornire supporto agli stili di programmazione. Per favore, non considerate una singola funzionalità di linguaggio come una soluzione, ma come un mattoncino da un insieme variegato che può essere combinato per esprimere soluzioni.
 >  
@@ -41,7 +43,7 @@ Comprendere i paradigmi di programmazione è fondamentale per diversi motivi:
 
 - Ottimizzazione del codice: Alcuni paradigmi sono più efficienti in determinate situazioni. Ad esempio, la programmazione concorrente è essenziale per lo sviluppo di software che richiede alta prestazione e scalabilità, come nei sistemi distribuiti. Comprendere come implementare la concorrenza in vari paradigmi permette di scrivere codice più efficiente.
 
-## Paradigma imperativo
+## Il paradigma imperativo
 
 La **programmazione imperativa**, a differenza della programmazione dichiarativa, è un paradigma di programmazione che descrive l'esecuzione di un programma come una serie di istruzioni che cambiano il suo stato. In modo simile al modo imperativo delle lingue naturali, che esprime comandi per compiere azioni, i programmi imperativi sono una sequenza di comandi che il computer deve eseguire in sequenza. Un caso particolare di programmazione imperativa è quella procedurale.
 
@@ -113,7 +115,7 @@ Le sezioni del codice:
 
 L'assembly è usato nello sviluppo di:
 
-- Sistemi operativi, ad esempio il kernel, che ha il controllo del sistema e i driver, cioè i programmi utili alla comunicazione coll'hardware.
+- Sistemi operativi, ad esempio della componente di kernel, che ha il controllo del sistema e i driver, cioè i programmi utili alla comunicazione coll'hardware.
 
 - Applicazioni _embedded_: Microcontrollori di dispositivi medici, sistemi di controllo di veicoli, dispositivi IoT, ecc., cioè)dove è necessaria un'ottimizzazione estrema delle risorse computazionali.
 
@@ -159,7 +161,7 @@ Python:
 
 - Produttività: I programmatori possono concentrarsi sulla complessità intrinseca del problema, senza preoccuparsi di molti dettagli implementativi del processo di esecuzione.
 
-## Paradigma procedurale
+## Il paradigma procedurale
 
 La **programmazione procedurale** è un paradigma di programmazione, derivato da quella imperativa, che organizza il codice in unità chiamate procedure o funzioni. Ogni procedura o funzione è un blocco di codice che può essere richiamato da altre parti del programma, promuovendo la riutilizzabilità e la modularità del codice.
 
@@ -341,15 +343,15 @@ print(f"Il risultato della somma dell'array è: {risultato_array}")
 
 Anche qui Python appare più semplice e immediato, sicuramente vincente sul piano della comprensione del codice e della immediatezza di utilizzo. In realtà, Python e C hanno sia una forte complementarietà sulle applicazioni, sia una dipendenza perché molte librerie e l'interprete stesso di Python sono in C.
 
-## Paradigma di orientamento agli oggetti
+## Il paradigma di orientamento agli oggetti
 
-La **programmazione orientata agli oggetti** (in inglese _object-oriented programming_, OOP) è un paradigma di programmazione che organizza il software in termini di _oggetti_, ciascuno dei quali rappresenta un'istanza di una matrice detta _classe_. Una classe definisce un tipo di dato che include attributi (dati) e metodi (funzionalità). Gli oggetti interagiscono tra loro attraverso messaggi, permettendo una struttura modulare e intuitiva.
+La **programmazione orientata agli oggetti** (in inglese _object-oriented programming_, OOP) è un paradigma di programmazione che organizza il software in termini di **oggetti**, ciascuno dei quali rappresenta un'istanza _viva_ di una matrice astratta detta **classe**. Una classe definisce un tipo di dato che include attributi (dati) e metodi (funzionalità). Gli oggetti interagiscono tra loro attraverso messaggi, permettendo una struttura modulare e intuitiva.
 
-L'OOP è emersa negli anni '60 e '70 con il linguaggio Simula, il primo linguaggio di programmazione a supportare questo paradigma. Tuttavia, è stato con Smalltalk, sviluppato negli anni '70 da Alan Kay e altri presso Xerox PARC, che l'OOP ha guadagnato popolarità. Il paradigma è stato ulteriormente consolidato con il linguaggio C++ negli anni '80 e con Java negli anni '90, rendendolo uno dei più utilizzati per lo sviluppo software moderno. Oggi numerosi sono i linguaggi a oggetti, ad esempio Python, C#, Ruby, Java, Swift, Javascript, ecc. ed altri lo supportano come PHP (dalla versione 5) e financo il Fortran nella versione 2003. 
+L'OOP è emersa negli anni '60 e '70 con il linguaggio Simula, il primo linguaggio di programmazione a supportare questo paradigma. Tuttavia, è stato con Smalltalk, sviluppato negli anni '70 da Alan Kay e altri presso lo Xerox PARC, che l'OOP ha guadagnato popolarità. Il paradigma è stato ulteriormente consolidato con il linguaggio C++ negli anni '80 e con Java negli anni '90, rendendolo uno dei più utilizzati per lo sviluppo software moderno. Oggi numerosi sono i linguaggi primariamente ad oggetti, ad esempio Python, C#, Ruby, Java, Swift, Javascript, ecc. ed altri lo supportano come PHP (dalla versione 5) e financo il Fortran nella versione 2003. 
 
 Rispetto ai paradigmi precedenti, l'OOP introduce diversi concetti chiave che ineriscono al disegno architetturale di software:
 
-- **Classe** e **oggetto**: La classe è un modello o schema per creare oggetti. Contiene definizioni di attributi e metodi. L'oggetto è un'istanza di una classe e rappresenta un'entità concreta nel programma con stato e comportamento mutevoli.
+- **Classe** e **oggetto**: La classe è un modello o schema per creare oggetti. Contiene definizioni di stato (attributi) e di modalità di manipolazione del proprio stato o di quello di altri oggetti (metodi). L'oggetto è un'istanza di una classe e rappresenta un'entità concreta nel programma con stato e comportamento mutevoli.
 
 - **Incapsulamento**: Nasconde i dettagli interni di un oggetto e mostra solo le interfacce necessarie agli altri oggetti. Migliora la modularità e protegge l'integrità dei dati.
 
@@ -363,13 +365,13 @@ Rispetto ai paradigmi precedenti, l'OOP introduce diversi concetti chiave che in
 
 I vantaggi principali dell'OOP sono:
 
-- **Modularità**: Le classi e gli oggetti favoriscono la suddivisione del codice in moduli indipendenti, in una forma più granulare rispetto al paradigma procedurale. Non solo le istruzioni sono raggruppate per soddisfare una specifica operazione, ma possono essere viste come più operazioni su uno stato associato. La modularità è rafforzata dalle relazioni _has-a_ e _is-a_, che aiutano a organizzare il codice in componenti logicamente separati e interconnessi.
+- Modularità: Le classi e gli oggetti favoriscono la suddivisione del codice in moduli indipendenti, in una forma più granulare rispetto al paradigma procedurale. Non solo le istruzioni sono raggruppate per soddisfare una specifica operazione, ma possono essere viste come più operazioni su uno stato associato. La modularità è rafforzata dalle relazioni _has-a_ e _is-a_, che aiutano a organizzare il codice in componenti logicamente separati e interconnessi.
 
-- **Riutilizzabilità**: L'uso di classi e l'ereditarietà (relazione _is-a_) consentono di riutilizzare il codice in nuovi progetti senza riscriverlo, limitando gli effetti collaterali sul codice con cui interagiscono. Le classi base possono essere estese per creare nuove classi con funzionalità aggiuntive, mantenendo al contempo la compatibilità con il codice esistente.
+- Riutilizzabilità: L'uso di classi e l'ereditarietà (relazione _is-a_) consentono di riutilizzare il codice in nuovi progetti senza riscriverlo, limitando gli effetti collaterali sul codice con cui interagiscono. Le classi base possono essere estese per creare nuove classi con funzionalità aggiuntive, mantenendo al contempo la compatibilità con il codice esistente.
 
-- **Facilità di manutenzione**: L'incapsulamento e l'astrazione riducono la complessità perché permettono una migliore assegnazione logica dei principi usati nella progettazione dell'applicazione alle singole classi. Ciò facilita la manutenzione del codice, poiché nella modifica si possono individuare rapidamente le istruzioni impattate. La relazione _has-a_ contribuisce ulteriormente alla manutenzione isolando le responsabilità all'interno delle classi.
+- Facilità di manutenzione: L'incapsulamento e l'astrazione riducono la complessità perché permettono una migliore assegnazione logica dei principi usati nella progettazione dell'applicazione alle singole classi. Ciò facilita la manutenzione del codice, poiché nella modifica si possono individuare rapidamente le istruzioni impattate. La relazione _has-a_ contribuisce ulteriormente alla manutenzione isolando le responsabilità all'interno delle classi.
 
-- **Estendibilità**: Le classi possono essere estese (relazione _is-a_) per aggiungere nuove funzionalità senza modificare il codice già preesistente, riducendo così gli impatti per il codice che ne dipende. Questo approccio facilita l'integrazione di nuove caratteristiche e miglioramenti, mantenendo la stabilità del sistema.
+- Estendibilità: Le classi possono essere estese (relazione _is-a_) per aggiungere nuove funzionalità senza modificare il codice già preesistente, riducendo così gli impatti per il codice che ne dipende. Questo approccio facilita l'integrazione di nuove caratteristiche e miglioramenti, mantenendo la stabilità del sistema.
 
 Anche se sussistono dei caveat:
 
@@ -425,7 +427,9 @@ public class Main {
 
 In realtà, se gli oggetti devono rappresentare animali reali vorrà dire che non deve essere possibile crearne dalla matrice `Animale`. Vediamo, quindi, come implementare il medesimo esempio con una classe _astratta_, cioè una classe che non può essere usata per generare direttamente oggetti, sempre in Java. 
 
-Nel caso pratico, ogni animale ha il suo verso, quindi dobbiamo costringere il programmatore che vuole implementare classi corrispondenti ad animali reali, ad aggiungere tassativamente il metodo `faiVerso()` per comunicarne la caratteristica distintiva. Una modalità è marchiare `Animale` e il suo metodo da caratterizzare (`faiVerso()`), con costrutti ad hoc perché siano, rispettivamente, identificata come classe astratta (per mezzo della parola riservata `abstract`) e metodo da implementare. Al contempo, `Cane` non subisce specifiche modifiche sintattiche, ma deve rispettare il vincolo (implementare `faiVerso()`) perché, ereditando le caratteristiche di `Animale`, possa essere una classe concreta, cioè da cui si possono creare oggetti. Il codice risultate è:
+Nel caso pratico, ogni animale ha il suo verso, quindi dobbiamo costringere il programmatore che vuole implementare classi corrispondenti ad animali reali, ad aggiungere tassativamente il metodo `faiVerso()` per comunicarne la caratteristica distintiva. Una modalità è marchiare `Animale` e il suo metodo da caratterizzare (`faiVerso()`), con costrutti ad hoc perché siano, rispettivamente, identificata come classe astratta (per mezzo della parola riservata `abstract`) e metodo da implementare. Al contempo, `Cane` non subisce specifiche modifiche sintattiche, ma deve rispettare il vincolo (implementare `faiVerso()`) perché, ereditando le caratteristiche di `Animale`, possa essere una classe concreta, cioè da cui si possono creare oggetti. 
+
+Il codice risultate è:
 
 ```java
 abstract class Animale { // <1>
@@ -493,7 +497,7 @@ public class Main {
 
 ### Template 
 
-I **template**, o generics, non sono specifici dell'OOP, anche se sono spesso associati a essa. I template permettono di scrivere funzioni, classi, e altri costrutti di codice in modo generico, cioè indipendente dal tipo dei dati che manipolano. Questo concetto è particolarmente utile per creare librerie e moduli riutilizzabili e flessibili. 
+I **template**, o generics, non sono specifici dell'OOP, anche se sono spesso associati a esso. I template permettono di scrivere funzioni, classi, e altri costrutti di codice in modo generico, cioè indipendente dal tipo dei dati che manipolano. Questo concetto è particolarmente utile per creare librerie e moduli riutilizzabili e flessibili. 
 
 Ad esempio, definiamo la classe `Box` nel modo seguente:
 
@@ -627,7 +631,7 @@ Commento riga per riga:
 3. All'interno del blocco `progn`, viene eseguita l'istruzione `(print "x is greater than 10")`.
 4. Infine, viene eseguita l'istruzione `(setf x 0)` all'interno del blocco `progn`.
 
-## Paradigma dichiarativo
+## Il paradigma dichiarativo
 
 La **programmazione dichiarativa** è un paradigma di programmazione che si focalizza sul _cosa_ deve essere calcolato piuttosto che sul _come_ calcolarlo. In altre parole, i programmi dichiarativi descrivono il risultato desiderato senza specificare esplicitamente i passaggi per ottenerlo. Questo è in netto contrasto con la programmazione imperativa, dove si fornisce una sequenza dettagliata di istruzioni per modificare lo stato del programma.
 
@@ -635,11 +639,11 @@ La programmazione dichiarativa ha radici nella logica e nella matematica, ed è 
 
 I concetti principali associati alla programazione dichiarativa sono:
 
-- Descrizione del risultato: I programmi dichiarativi descrivono le proprietà del risultato desiderato senza specificare l'algoritmo per ottenerlo. Esempio: In SQL, per ottenere tutti i record di una tabella con un certo valore, si scrive una query che descrive la condizione, non un algoritmo che scorre i record uno per uno.
+- **Descrizione del risultato**: I programmi dichiarativi descrivono le proprietà del risultato desiderato senza specificare l'algoritmo per ottenerlo. Esempio: In SQL, per ottenere tutti i record di una tabella con un certo valore, si scrive una query che descrive la condizione, non un algoritmo che scorre i record uno per uno.
 
-- Assenza di stato esplicito: La programmazione dichiarativa evita l'uso esplicito di variabili di stato e di aggiornamenti di stato. Ciò riduce i rischi di effetti collaterali e rende il codice più facile da comprendere e verificare.
+- **Assenza di stato esplicito**: La programmazione dichiarativa evita l'uso esplicito di variabili di stato e di aggiornamenti di stato. Ciò riduce i rischi di effetti collaterali e rende il codice più facile da comprendere e verificare.
 
-- Idempotenza: Le espressioni dichiarative sono spesso idempotenti, cioè possono essere eseguite più volte senza cambiare il risultato. Questo è particolarmente utile per la concorrenza e la parallelizzazione.
+- **Idempotenza**: Le espressioni dichiarative sono spesso idempotenti, cioè possono essere eseguite più volte senza cambiare il risultato. Questo è particolarmente utile per la concorrenza e la parallelizzazione.
 
 Il vantaggio principale è relativo alla sua chiarezza perché ci si concentra sul risultato desiderato piuttosto che sui dettagli di implementazione.
 
@@ -677,14 +681,14 @@ Questi linguaggi rappresentano diversi ambiti di applicazione, dai database alla
 
 SQL è uno degli esempi più diffusi di linguaggio di programmazione dichiarativo. Le query SQL descrivono i risultati desiderati piuttosto che le procedure operative.
 
-Una stored procedure in PL/SQL (Procedural Language/SQL) combina SQL con elementi di linguaggi di programmazione procedurali come blocchi di codice, condizioni e cicli. PL/SQL è quindi un linguaggio procedurale, poiché consente di specificare "come" ottenere i risultati attraverso un flusso di controllo esplicito, rendendolo non puramente dichiarativo. PL/SQL è utilizzato principalmente con il database Oracle.
+Una _stored procedure_ in PL/SQL (Procedural Language/SQL) combina SQL con elementi di linguaggi di programmazione procedurali come blocchi di codice, condizioni e cicli. PL/SQL è quindi un linguaggio procedurale, poiché consente di specificare _come_ ottenere i risultati attraverso un flusso di controllo esplicito, rendendolo non puramente dichiarativo. PL/SQL è utilizzato principalmente con il database Oracle.
 
 Un'alternativa a PL/SQL è T-SQL (Transact-SQL), utilizzato con Microsoft SQL Server e Sybase ASE. Anche T-SQL estende SQL con funzionalità procedurali simili, consentendo la scrittura di istruzioni condizionali, cicli e la gestione delle transazioni. Come PL/SQL, T-SQL è un linguaggio procedurale e non puramente dichiarativo.
 
 Esistono anche estensioni ad oggetti come il PL/pgSQL (Procedural Language/PostgreSQL) per il database PostgreSQL.
 :::
 
-### Esempi
+### Esempio in SQL
 
 Esempio di una query SQL che estrae tutti i nomi degli utenti con età maggiore di 30: 
 
@@ -698,6 +702,8 @@ WHERE età > 30; -- <3>
 1. Seleziona la colonna `nome`.
 2. Dalla tabella `utenti`.
 3. Per le righe dove la colonna `età` è maggiore di 30.
+
+### Esempio in Prolog
 
 In Prolog, si definiscono fatti e regole che descrivono relazioni logiche. Il motore di inferenza di Prolog utilizza queste definizioni per risolvere query, senza richiedere un algoritmo dettagliato. Di seguito, sono definiti due fatti (le prime due righe) e due regole (la terza e la quarta) e quindi si effettua una query che dà come risultato `true`:
 
@@ -718,7 +724,7 @@ Commento riga per riga:
 5. Riga vuota.
 6. Questa è una query che chiede se `padre` è un antenato di `figlio`.
 
-## Paradigma funzionale
+## Il paradigma funzionale
 
 La **programmazione funzionale** è un paradigma di programmazione che tratta il calcolo come la valutazione di funzioni matematiche ed evita lo stato mutabile e i dati modificabili. I programmi funzionali sono costruiti applicando e componendo funzioni. Questo paradigma è stato ispirato dal calcolo lambda, una formalizzazione matematica del concetto di funzione. La programmazione funzionale è un paradigma alternativo alla programmazione imperativa, che descrive la computazione come una sequenza di istruzioni che modificano lo stato del programma.
 
@@ -728,17 +734,17 @@ La programmazione funzionale è una forma di programmazione dichiarativa che si 
 
 Concetti fondamentali:
 
-- Immutabilità: I dati sono immutabili, il che significa che una volta creati non possono essere modificati. Questo riduce il rischio di effetti collaterali e rende il codice più prevedibile.
+- **Immutabilità**: I dati sono immutabili, il che significa che una volta creati non possono essere modificati. Questo riduce il rischio di effetti collaterali e rende il codice più prevedibile.
 
-- Funzioni di prima classe e di ordine superiore: Le funzioni possono essere passate come argomenti a altre funzioni, ritornate da funzioni, e assegnate a variabili. Le funzioni di ordine superiore accettano altre funzioni come argomenti o restituiscono funzioni.
+- **Funzioni di prima classe** e **funzioni di ordine superiore**: Le funzioni possono essere passate come argomenti a altre funzioni, ritornate da funzioni, e assegnate a variabili. Le funzioni di ordine superiore accettano altre funzioni come argomenti o restituiscono funzioni.
 
-- Purezza: Le funzioni pure sono funzioni che, dato lo stesso input, restituiscono sempre lo stesso output e non causano effetti collaterali. Questo rende il comportamento del programma più facile da comprendere e prevedere.
+- **Purezza**: Le funzioni pure sono funzioni che, dato lo stesso input, restituiscono sempre lo stesso output e non causano effetti collaterali. Questo rende il comportamento del programma più facile da comprendere e prevedere.
 
-- Trasparenza referenziale: Un'espressione è trasparentemente referenziale se può essere sostituita dal suo valore senza cambiare il comportamento del programma. Questo facilita l'ottimizzazione e il reasonig sul codice.
+- **Trasparenza referenziale**: Un'espressione è trasparentemente referenziale se può essere sostituita dal suo valore senza cambiare il comportamento del programma. Questo facilita l'ottimizzazione e il reasonig sul codice.
 
-- Ricorsione: È spesso utilizzata al posto di loop iterativi per eseguire ripetizioni, poiché si adatta meglio alla natura immutabile dei dati e alla definizione di funzioni.
+- **Ricorsione**: È spesso utilizzata al posto di loop iterativi per eseguire ripetizioni, poiché si adatta meglio alla natura immutabile dei dati e alla definizione di funzioni.
 
-- Composizione di funzioni: Consente di costruire funzioni complesse combinando funzioni più semplici. Questo favorisce la modularità e la riusabilità del codice.
+- **Composizione di funzioni**: Consente di costruire funzioni complesse combinando funzioni più semplici. Questo favorisce la modularità e la riusabilità del codice.
 
 Il paradigma funzionale ha diversi vantaggi:
 

@@ -233,7 +233,7 @@ public class Main {
 }
 ```
 
-Implementiamo il medesimo programma in Javascript[^2-prima-parte-sintassi-semantica], linguaggio che usa il concetto di prototipo: 
+Implementiamo il medesimo programma in Javascript[^1-prima-parte-modello-dati], linguaggio che usa il concetto di prototipo: 
 
 ```javascript
 let Animale = { // <1>
@@ -266,7 +266,7 @@ mioCane.faiVerso(); // <6>
 5. Il metodo `init` viene chiamato per inizializzare il nome dell'oggetto `mioCane`.
 6. Quando viene chiamato `mioCane.faiVerso()`, il metodo sovrascritto nell'oggetto `Cane` viene eseguito, mostrando `Il cane abbaia`.
 
-[^2-prima-parte-sintassi-semantica]: In JavaScript, le classi come sintassi sono state introdotte in ECMAScript 6 (ES6), per semplificare la creazione di oggetti e la gestione dell'ereditarietà prototipale. Tuttavia, è importante capire che sotto il cofano, JavaScript non utilizza classi nel senso tradizionale come in linguaggi come Java o C++ e non esiste un meccanismo nativo per creare classi astratte, anche se è possibile simulare il comportamento delle classi astratte utilizzando varie tecniche. Una comune è quella di lanciare un'eccezione se un metodo funzionalmente astratto non viene sovrascritto nella classe derivata.
+[^1-prima-parte-modello-dati]: In JavaScript, le classi come sintassi sono state introdotte in ECMAScript 6 (ES6), per semplificare la creazione di oggetti e la gestione dell'ereditarietà prototipale. Tuttavia, è importante capire che sotto il cofano, JavaScript non utilizza classi nel senso tradizionale come in linguaggi come Java o C++ e non esiste un meccanismo nativo per creare classi astratte, anche se è possibile simulare il comportamento delle classi astratte utilizzando varie tecniche. Una comune è quella di lanciare un'eccezione se un metodo funzionalmente astratto non viene sovrascritto nella classe derivata.
 
 ### Ereditarietà
 

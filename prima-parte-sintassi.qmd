@@ -11,7 +11,7 @@ Partiamo dalla **sintassi** di un linguaggio di programmazione che possiamo cons
 
 Per esempio, la sintassi determina quali parole chiave, operatori, separatori e altri elementi sono ammessi e in quale ordine devono apparire. Una sintassi corretta è fondamentale per garantire che il programma sia privo di errori formali e possa essere eseguito senza problemi.
 
-L'importanza della comprensione della sintassi è simile alla buona conoscenza per un linguaggio naturale:
+L'importanza della comprensione della sintassi è simile alla buona conoscenza della grammatica per un linguaggio naturale:
 
 1. Leggibilità del codice: Una corretta comprensione della sintassi permette di scrivere codice più chiaro e comprensibile agli altri programmatori. Una buona formattazione e organizzazione del codice facilita la manutenzione e la collaborazione su progetti di programmazione.
 
@@ -23,7 +23,7 @@ L'importanza della comprensione della sintassi è simile alla buona conoscenza p
 
 5. Possibilità di esplorazione creativa: Capire la sintassi di un linguaggio offre la flessibilità necessaria per sperimentare e innovare, consentendo ai programmatori di creare soluzioni originali e creative ai problemi.
 
-## Token
+## I token
 
 Gli elementi atomici della sintassi sono i **token**. Essi compongono tutte le istruzioni e possono essere sia prodotti dal programmatore che generati dall'analisi del testo da parte dell'interprete o compilatore. La comprensione di quali token siano validi, ci permette sia di scrivere istruzioni corrette, sia di sfruttare appieno i costrutti del linguaggio:
 
@@ -73,7 +73,7 @@ if x == 10:
   - Il pattern per un letterale numerico è una sequenza di cifre.
   - Il pattern per il delimitatore `:` è la stringa esatta ":".
 
-## Analizzatore lessicale e parser
+## L'analizzatore lessicale e il parser
 
 L'**analizzatore lessicale** (o _lexer_) è un componente del compilatore o interprete che prende in input il codice sorgente del programma e lo divide in lessemi. Esso confronta ciascun lessema con i pattern definiti per il linguaggio di programmazione e genera una sequenza di token. Questi token sono poi passati al parser.
 
@@ -83,7 +83,7 @@ Il **parser** è un altro componente del compilatore o interprete che prende in 
 
 [^1-prima-parte-sintassi]: La BNF (Backus-Naur form o Backus normal form) è una metasintassi, ovvero un formalismo attraverso cui è possibile descrivere la sintassi di linguaggi formali (il prefisso meta ha proprio a che vedere con la natura circolare di questa definizione). Si tratta di uno strumento molto usato per descrivere in modo preciso e non ambiguo la sintassi dei linguaggi di programmazione, dei protocolli di rete e così via, benché non manchino in letteratura esempi di sue applicazioni a contesti anche non informatici e addirittura non tecnologici. Un esempio è la grammatica di [Python](https://docs.python.org/3/reference/grammar.html).
 
-## Espressioni
+## Le espressioni
 
 Un'espressione è una combinazione di lessemi che viene valutata per produrre un risultato. Le espressioni sono fondamentali nei linguaggi di programmazione perché permettono di eseguire calcoli, prendere decisioni e manipolare dati.
 
@@ -103,7 +103,7 @@ Ecco alcune tipologie di espressioni (notazioni in Python, ma non molto dissimil
 
 Le espressioni si possono comporre in espressioni più complesse come accade per quelle matematiche pur che siano rispettate le regole di compatibilità tra operatori, identificatori e letterali; esempio `(x < y) and sin(theta)`. 
 
-## Istruzioni semplici
+## Le istruzioni semplici
 
 Le **istruzioni semplici** sono operazioni atomiche secondo il linguaggio e sono costituite da tutti i tipi di lessemi per compiere operazioni di base. I linguaggi di programmazione presentano delle istruzioni _condivise_ nel senso di fondamentali che hanno solo minime differenze ed altre più particolari, perché dipendenti da specificità dalla progettazione del linguaggio. Ciò potrebbe essere anche solo questione di sintassi più che rappresentanti nuovi concetti. 
 
@@ -184,7 +184,7 @@ Di seguito un elenco di istruzioni semplici, alcune standard cioè presenti in t
   - In C: `return x;`.
   - In C++: `return x;`.
 
-- Generazione di eccezioni: Utilizzata per generare e inviare un'eccezione, cioè una interruzione della sequenza ordinaria delle istruzione per segnalare una anomalia. Esempi:
+- Generazione di eccezioni: Utilizzata per generare e inviare un'eccezione, cioè una interruzione della sequenza ordinaria delle istruzione per segnalare una anomalia occorsa durante l'esecuzione. Esempi:
 
   - In Python: `raise ValueError("Invalid input")`.
   - In Java: `throw new IllegalArgumentException("Invalid input");`.
@@ -214,7 +214,7 @@ Di seguito un elenco di istruzioni semplici, alcune standard cioè presenti in t
 
 [^2-prima-parte-sintassi]: Spiegheremo il concetto di tipo a breve, per ora si può pensare ad esso come l'insieme dei possibili valori e operazioni che si possono effettuare su di essi.
 
-## Istruzioni composte e blocchi di codice
+## Le istruzioni composte e i blocchi di codice
 
 Le **istruzioni composte** sono costituite da più istruzioni semplici e possono includere strutture di controllo del flusso, come condizioni (`if`), cicli (`for`, `while`) ed eccezioni (`try`, `catch`). Queste istruzioni sono utilizzate per organizzare il flusso di esecuzione del programma e possono contenere altre istruzioni semplici o composte al loro interno.
 
@@ -529,7 +529,7 @@ Cicli (`while`): I cicli `while` ripetono l'esecuzione di un blocco di codice fi
     }
     ```
 
-## Organizzazione delle istruzioni in un programma
+## L'organizzazione delle istruzioni in un programma
 
 Il programma è solitamente salvato in un file di testo in righe. Queste righe possono essere classificate in righe fisiche e righe logiche.
 
