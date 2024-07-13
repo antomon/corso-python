@@ -795,7 +795,7 @@ Le chiusure sono utili in diversi contesti, tra cui:
   1. Definizione della funzione `crea_contatore`.
   2. Inizializzazione della variabile `conto` a `0`.
   3. Definizione della funzione `contatore`.
-  4. Dichiarazione della variabile `conto` come `nonlocal` per modificarla all'interno di `contatore`.
+  4. Dichiarazione della variabile `conto` come `nonlocal` perché siua modificabile all'interno di `contatore`.
   5. Incremento della variabile `conto`.
   6. Restituzione del valore di `conto`.
   7. Restituzione della funzione `contatore`.
@@ -806,20 +806,20 @@ Le chiusure sono utili in diversi contesti, tra cui:
 - Funzioni factory: Permettono la creazione di funzioni personalizzate configurate con parametri specifici. Esempio in Python:
 
   ```python
-  def multiply_by(factor):  # <1>
-    def multiply(number):  # <2>
-      return number * factor  # <3>
+  def moltiplica_per(fattore):  # <1>
+    def moltiplica(numero):  # <2>
+      return numero * fattore  # <3>
 
-    return multiply  # <4>
+    return moltiplica  # <4>
 
-  double = multiply_by(2)  # <5>
+  double = moltiplica_per(2)  # <5>
   print(double(5))  # <6>
   ```
-  1. Definizione della funzione `multiply_by` che accetta un parametro `factor`.
-  2. Definizione della funzione `multiply` che accetta un parametro `number`.
-  3. La funzione `multiply` moltiplica `number` per `factor`.
-  4. `multiply_by` restituisce la funzione `multiply`.
-  5. `double` è una chiusura che ricorda il valore di `factor` come `2`.
+  1. Definizione della funzione `moltiplica_per` che accetta un parametro `fattore`.
+  2. Definizione della funzione `moltiplica` che accetta un parametro `numero`.
+  3. La funzione `moltiplica` moltiplica `numero` per `fattore`.
+  4. `moltiplica_per` restituisce la funzione `moltiplica`.
+  5. `double` è una chiusura che ricorda il valore di `fattore` come `2`.
   6. `double(5)` restituisce `10`.
 
 - Funzioni di richiamo e gestione degli eventi: In programmazione asincrona, le chiusure sono spesso utilizzate per definire funzioni di richiamo che ricordano il contesto in cui sono state create. Esempio in Python:
@@ -842,52 +842,92 @@ Le chiusure sono utili in diversi contesti, tra cui:
   6. Chiamata della funzione `event_handler`, stampa `Event: Hello World`.
 
 - Programmazione funzionale: Le chiusure sono un costrutto fondamentale per molte tecniche della programmazione funzionale, come l'applicazione parziale e la trasformazione di una funzione con parametri multipli in una sequenza di funzioni aventi un unico parametro (inglese: _currying_)[^3-prima-parte-variabili-funzioni]. 
-  
-  Esempio in Python: 
+
+  Il currying può essere estremamente utile per creare funzioni generiche che possono essere specializzate in vari contesti. Ad esempio, consideriamo un'applicazione che richiede l'invio di messaggi a diversi destinatari con diverse priorità.
+
+  Esempio in Python:
 
   ```python
-  def curry_somma(a):  # <1>
-    def somma(b):  # <2>
-      return a + b  # <3>
+  def invia_messaggio(tipo_messaggio):  # <1>
+    def messaggio(priorita, destinatario, testo):  # <2>
+      if tipo_messaggio == "Email":  # <3>
+        print(f"Invio email a {destinatario} con priorità {priorita}: {testo}")  # <4>
 
-    return somma  # <4>
+      elif tipo_messaggio == "SMS":  # <5>
+        print(f"Invio SMS a {destinatario} con priorità {priorita}: {testo}")  # <6>
 
-  aggiungi_tre = curry_somma(3)  # <5>
-  print(aggiungi_tre(4))  # <6>
+    return messaggio  # <7>
+
+  invia_email = invia_messaggio("Email")  # <8>
+
+  invia_sms = invia_messaggio("SMS")  # <9>
+
+  invia_email("Alta", "alice@example.com", "Ciao Alice!")  # <10>
+
+  invia_sms("Bassa", "1234567890", "Ciao!")  # <11>
   ```
-  1. Definizione della funzione `curry_somma` che accetta un parametro `a`.
-  2. Definizione della funzione `somma` che accetta un parametro `b`.
-  3. La funzione `somma` somma `a` e `b`.
-  4. `curry_somma` restituisce la funzione `somma`.
-  5. `aggiungi_tre` è una chiusura che ricorda il valore di `a` come `3`.
-  6. `aggiungi_tre(4)` restituisce `7`.
+  1. Definizione della funzione `invia_messaggio` che accetta un parametro `tipo_messaggio`.
+  2. Definizione della funzione `messaggio` che accetta `priorita`, `destinatario`, e `testo`.
+  3. Controllo del tipo di messaggio.
+  4. Stampa specifica per l'invio di un'email.
+  5. Controllo del tipo di messaggio.
+  6. Stampa specifica per l'invio di un SMS.
+  7. `invia_messaggio` restituisce la funzione `messaggio`.
+  8. `invia_email` è una funzione specializzata per inviare email.
+  9. `invia_sms` è una funzione specializzata per inviare SMS.
+  10. Invio di un'email con priorità alta.
+  11. Invio di un SMS con priorità bassa.
 
   Esempio in Haskell:
 
   ```haskell
-  currySomma :: Int -> Int -> Int  -- <1>
+  -- Definizione della funzione curryata per inviare messaggi
+  inviaMessaggio :: String -> String -> String -> String -> IO ()  -- <1>
+  inviaMessaggio tipoMessaggio priorita destinatario testo = 
+    if tipoMessaggio == "Email"  -- <2>
 
-  currySomma a = \b -> a + b  -- <2>
+    then putStrLn ("Invio email a " ++ destinatario ++ " con priorità " ++ priorita ++ ": " ++ testo)  -- <3>
 
-  main :: IO ()
+    else if tipoMessaggio == "SMS"  -- <4>
 
+    then putStrLn ("Invio SMS a " ++ destinatario ++ " con priorità " ++ priorita ++ ": " ++ testo)  -- <5>
+
+    else putStrLn "Tipo di messaggio sconosciuto"  -- <6>
+
+  -- Funzioni specializzate
+  inviaEmail :: String -> String -> String -> IO ()  -- <7>
+
+  inviaEmail = inviaMessaggio "Email"  -- <8>
+
+  inviaSMS :: String -> String -> String -> IO ()  -- <9>
+
+  inviaSMS = inviaMessaggio "SMS"  -- <10>
+
+  main :: IO ()  -- <11>
   main = do
-    let aggiungiTre = currySomma 3  -- <3>
+      inviaEmail "Alta" "alice@example.com" "Ciao Alice!"  -- <12>
 
-    print (aggiungiTre 4)  -- <4>
+      inviaSMS "Bassa" "1234567890" "Ciao!"  -- <13>
   ```
-  1. Definizione della funzione `currySomma` che accetta due parametri interi.
-  2. La funzione `currySomma` è curried, accetta il parametro `a` e restituisce una funzione che accetta il parametro `b` e somma `a` e `b`.
-  3. `aggiungiTre` è una chiusura che ricorda il valore di `a` come `3`.
-  4. `aggiungiTre 4` restituisce `7` e stampa il risultato.
+  1. Definizione della funzione `inviaMessaggio` che accetta quattro parametri: tipo di messaggio, priorità, destinatario e testo.
+  2. Controllo del tipo di messaggio.
+  3. Stampa specifica per l'invio di un'email.
+  4. Controllo del tipo di messaggio.
+  5. Stampa specifica per l'invio di un SMS.
+  6. Gestione di un tipo di messaggio sconosciuto.
+  7. Definizione del tipo della funzione `inviaEmail`.
+  8. `inviaEmail` è una funzione specializzata per inviare email.
+  9. Definizione del tipo della funzione `inviaSMS`.
+  10. `inviaSMS` è una funzione specializzata per inviare SMS.
+  11. Definizione della funzione `main`.
+  12. Invio di un'email con priorità alta.
+  13. Invio di un SMS con priorità bassa.
 
-[^3-prima-parte-variabili-funzioni]: Il currying è una tecnica di trasformazione delle funzioni che prende il nome dal logico matematico Haskell Curry, sebbene il concetto sia stato inizialmente sviluppato da Moses Schönfinkel. In contesto matematico, questo principio può essere fatto risalire ai lavori di Gottlob Frege del 1893. Il currying consiste nel trasformare una funzione con più argomenti in una sequenza di funzioni ciascuna delle quali accetta un singolo argomento. Formalmente, data una funzione $f$ di due variabili $f(x, y)$, il currying la trasforma in una funzione $g$ tale che:
-  
-  $$ g(x)(y) = f(x, y) $$
+[^3-prima-parte-variabili-funzioni]: Il currying è una tecnica di trasformazione delle funzioni che prende il nome dal logico matematico Haskell Curry, sebbene il concetto sia stato inizialmente sviluppato da Moses Schönfinkel. In contesto matematico, questo principio può essere fatto risalire ai lavori di Gottlob Frege del 1893. Il currying consiste nel trasformare una funzione con più argomenti in una sequenza di funzioni ciascuna delle quali accetta un singolo argomento. Formalmente, data una funzione $f$ di due variabili $f(x, y)$, il currying la trasforma in una funzione $g$ tale che: $ g(x)(y) = f(x, y) $.
 
-  Più in generale, una funzione $f: (A \times B \times \dots \times N) \rightarrow R$ può essere trasformata in una funzione curried $f': A \rightarrow (B \rightarrow \dots \rightarrow (N \rightarrow R))$.
+  Più in generale, una funzione $f: (A \times B \times \dots \times N) \rightarrow R$ può essere trasformata in una funzione _curried_ $f': A \rightarrow (B \rightarrow \dots \rightarrow (N \rightarrow R))$.
 
-  Il currying è particolarmente utile nella programmazione funzionale, poiché permette di creare funzioni parzialmente applicate e di comporre funzioni più facilmente. Questo facilita il riutilizzo del codice e la composizione di funzioni, migliorando la modularità e la leggibilità del codice. Il linguaggio di programmazione Haskell, che supporta nativamente il currying, è stato chiamato così in onore prprio di Haskell Curry, riconoscendo il suo contributo alla logica combinatoria e alla teoria delle funzioni.
+  Il linguaggio di programmazione Haskell, che supporta nativamente il currying, è stato chiamato così in onore proprio di Haskell Curry, riconoscendo il suo contributo alla logica combinatoria e alla teoria delle funzioni.
 
   Per approfondire: [@wikipedia_currying], [@haskell_currying], [@abelson1996], [@curry1950].
 

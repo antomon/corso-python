@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; La funzione – Da neofita di Python a campione</title>
+<title>6&nbsp; La funzione – Da neofita di Python a campione</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,8 +84,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./prima-parte-spazi-nomi-moduli-file.html" rel="next">
-<link href="./prima-parte-semantica-variabili.html" rel="prev">
+<link href="./prima-parte-modello-dati.html" rel="next">
+<link href="./prima-parte-variabili-spazi-nomi-moduli-file.html" rel="prev">
 <link href="./red-python-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -244,7 +244,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-funzioni.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La funzione</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-funzioni.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La funzione</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -291,20 +291,20 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prima-parte-semantica-variabili.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">La semantica</span></span></a>
+  <a href="./prima-parte-semantica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">La semantica dei linguaggi di programmazione</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prima-parte-variabili-spazi-nomi-moduli-file.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La variabile</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prima-parte-funzioni.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La funzione</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./prima-parte-spazi-nomi-moduli-file.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Lo spazio di nomi, il modulo e il file</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La funzione</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -450,25 +450,25 @@ window.Quarto = {
     <h2 id="toc-title">Indice</h2>
    
   <ul>
-  <li><a href="#dichiarazione" id="toc-dichiarazione" class="nav-link active" data-scroll-target="#dichiarazione"><span class="header-section-number">5.1</span> Dichiarazione</a></li>
-  <li><a href="#il-parametro-e-largomento" id="toc-il-parametro-e-largomento" class="nav-link" data-scroll-target="#il-parametro-e-largomento"><span class="header-section-number">5.2</span> Il parametro e l’argomento</a></li>
-  <li><a href="#il-valore-di-ritorno" id="toc-il-valore-di-ritorno" class="nav-link" data-scroll-target="#il-valore-di-ritorno"><span class="header-section-number">5.3</span> Il valore di ritorno</a></li>
-  <li><a href="#ambito-e-visibilità" id="toc-ambito-e-visibilità" class="nav-link" data-scroll-target="#ambito-e-visibilità"><span class="header-section-number">5.4</span> Ambito e visibilità</a>
+  <li><a href="#dichiarazione" id="toc-dichiarazione" class="nav-link active" data-scroll-target="#dichiarazione"><span class="header-section-number">6.1</span> Dichiarazione</a></li>
+  <li><a href="#il-parametro-e-largomento" id="toc-il-parametro-e-largomento" class="nav-link" data-scroll-target="#il-parametro-e-largomento"><span class="header-section-number">6.2</span> Il parametro e l’argomento</a></li>
+  <li><a href="#il-valore-di-ritorno" id="toc-il-valore-di-ritorno" class="nav-link" data-scroll-target="#il-valore-di-ritorno"><span class="header-section-number">6.3</span> Il valore di ritorno</a></li>
+  <li><a href="#ambito-e-visibilità" id="toc-ambito-e-visibilità" class="nav-link" data-scroll-target="#ambito-e-visibilità"><span class="header-section-number">6.4</span> Ambito e visibilità</a>
   <ul class="collapse">
-  <li><a href="#ambito" id="toc-ambito" class="nav-link" data-scroll-target="#ambito"><span class="header-section-number">5.4.1</span> Ambito</a></li>
-  <li><a href="#visibilità" id="toc-visibilità" class="nav-link" data-scroll-target="#visibilità"><span class="header-section-number">5.4.2</span> Visibilità</a></li>
-  <li><a href="#differenze-tra-funzioni-con-variabili-e-oggetti" id="toc-differenze-tra-funzioni-con-variabili-e-oggetti" class="nav-link" data-scroll-target="#differenze-tra-funzioni-con-variabili-e-oggetti"><span class="header-section-number">5.4.3</span> Differenze tra funzioni con variabili e oggetti</a></li>
+  <li><a href="#ambito" id="toc-ambito" class="nav-link" data-scroll-target="#ambito"><span class="header-section-number">6.4.1</span> Ambito</a></li>
+  <li><a href="#visibilità" id="toc-visibilità" class="nav-link" data-scroll-target="#visibilità"><span class="header-section-number">6.4.2</span> Visibilità</a></li>
+  <li><a href="#differenze-tra-funzioni-con-variabili-e-oggetti" id="toc-differenze-tra-funzioni-con-variabili-e-oggetti" class="nav-link" data-scroll-target="#differenze-tra-funzioni-con-variabili-e-oggetti"><span class="header-section-number">6.4.3</span> Differenze tra funzioni con variabili e oggetti</a></li>
   </ul></li>
-  <li><a href="#la-ricorsione" id="toc-la-ricorsione" class="nav-link" data-scroll-target="#la-ricorsione"><span class="header-section-number">5.5</span> La ricorsione</a></li>
-  <li><a href="#la-funzione-in-prima-classe" id="toc-la-funzione-in-prima-classe" class="nav-link" data-scroll-target="#la-funzione-in-prima-classe"><span class="header-section-number">5.6</span> La funzione in prima classe</a>
+  <li><a href="#la-ricorsione" id="toc-la-ricorsione" class="nav-link" data-scroll-target="#la-ricorsione"><span class="header-section-number">6.5</span> La ricorsione</a></li>
+  <li><a href="#la-funzione-in-prima-classe" id="toc-la-funzione-in-prima-classe" class="nav-link" data-scroll-target="#la-funzione-in-prima-classe"><span class="header-section-number">6.6</span> La funzione in prima classe</a>
   <ul class="collapse">
-  <li><a href="#implementazione-in-linguaggi-di-programmazione" id="toc-implementazione-in-linguaggi-di-programmazione" class="nav-link" data-scroll-target="#implementazione-in-linguaggi-di-programmazione"><span class="header-section-number">5.6.1</span> Implementazione in linguaggi di programmazione</a></li>
-  <li><a href="#la-funzione-di-ordine-superiore" id="toc-la-funzione-di-ordine-superiore" class="nav-link" data-scroll-target="#la-funzione-di-ordine-superiore"><span class="header-section-number">5.6.2</span> La funzione di ordine superiore</a></li>
-  <li><a href="#lapplicazione-parziale" id="toc-lapplicazione-parziale" class="nav-link" data-scroll-target="#lapplicazione-parziale"><span class="header-section-number">5.6.3</span> L’applicazione parziale</a></li>
-  <li><a href="#il-decoratore" id="toc-il-decoratore" class="nav-link" data-scroll-target="#il-decoratore"><span class="header-section-number">5.6.4</span> Il decoratore</a></li>
-  <li><a href="#la-funzione-di-richiamo" id="toc-la-funzione-di-richiamo" class="nav-link" data-scroll-target="#la-funzione-di-richiamo"><span class="header-section-number">5.6.5</span> La funzione di richiamo</a></li>
-  <li><a href="#la-lambda" id="toc-la-lambda" class="nav-link" data-scroll-target="#la-lambda"><span class="header-section-number">5.6.6</span> La lambda</a></li>
-  <li><a href="#chiusure" id="toc-chiusure" class="nav-link" data-scroll-target="#chiusure"><span class="header-section-number">5.6.7</span> Chiusure</a></li>
+  <li><a href="#implementazione-in-linguaggi-di-programmazione" id="toc-implementazione-in-linguaggi-di-programmazione" class="nav-link" data-scroll-target="#implementazione-in-linguaggi-di-programmazione"><span class="header-section-number">6.6.1</span> Implementazione in linguaggi di programmazione</a></li>
+  <li><a href="#la-funzione-di-ordine-superiore" id="toc-la-funzione-di-ordine-superiore" class="nav-link" data-scroll-target="#la-funzione-di-ordine-superiore"><span class="header-section-number">6.6.2</span> La funzione di ordine superiore</a></li>
+  <li><a href="#lapplicazione-parziale" id="toc-lapplicazione-parziale" class="nav-link" data-scroll-target="#lapplicazione-parziale"><span class="header-section-number">6.6.3</span> L’applicazione parziale</a></li>
+  <li><a href="#il-decoratore" id="toc-il-decoratore" class="nav-link" data-scroll-target="#il-decoratore"><span class="header-section-number">6.6.4</span> Il decoratore</a></li>
+  <li><a href="#la-funzione-di-richiamo" id="toc-la-funzione-di-richiamo" class="nav-link" data-scroll-target="#la-funzione-di-richiamo"><span class="header-section-number">6.6.5</span> La funzione di richiamo</a></li>
+  <li><a href="#la-lambda" id="toc-la-lambda" class="nav-link" data-scroll-target="#la-lambda"><span class="header-section-number">6.6.6</span> La lambda</a></li>
+  <li><a href="#chiusure" id="toc-chiusure" class="nav-link" data-scroll-target="#chiusure"><span class="header-section-number">6.6.7</span> Chiusure</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-funzioni.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/blob/main/prima-parte-funzioni.qmd" class="toc-action"><i class="bi empty"></i>Mostra il codice</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
@@ -476,9 +476,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-funzioni.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La funzione</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-funzioni.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La funzione</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La funzione</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La funzione</span></h1>
 </div>
 
 
@@ -496,8 +496,8 @@ window.Quarto = {
 
 
 <p>La <strong>funzione</strong> è un blocco di codice riutilizzabile che contiene una sequenza di istruzioni. Questi costrutti sono fondamentali per la strutturazione e la modularizzazione del codice, consentendo di definire operazioni che possono essere invocate più volte durante l’esecuzione di un programma. La distinzione tra funzioni e metodi è che le funzioni sono indipendenti, mentre i metodi sono associati a oggetti o classi.</p>
-<section id="dichiarazione" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="dichiarazione"><span class="header-section-number">5.1</span> Dichiarazione</h2>
+<section id="dichiarazione" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="dichiarazione"><span class="header-section-number">6.1</span> Dichiarazione</h2>
 <p>La <strong>dichiarazione</strong> di una funzione è il processo mediante il quale si definisce una nuova funzione nel programma, specificandone il nome, i parametri (se presenti) e il blocco di codice che essa eseguirà. Questo processo informa il compilatore o l’interprete che una certa funzione esiste e può essere utilizzata nel codice. Durante la dichiarazione, non viene eseguito alcun codice; viene semplicemente definita la funzione in modo che possa essere invocata successivamente nel programma.</p>
 <p>Esempio in Python:</p>
 <div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1"></a><span class="kw">def</span> somma(a, b):</span>
@@ -513,8 +513,8 @@ window.Quarto = {
 </dd>
 </dl>
 </section>
-<section id="il-parametro-e-largomento" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="il-parametro-e-largomento"><span class="header-section-number">5.2</span> Il parametro e l’argomento</h2>
+<section id="il-parametro-e-largomento" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="il-parametro-e-largomento"><span class="header-section-number">6.2</span> Il parametro e l’argomento</h2>
 <p>Il <strong>parametro</strong> e l’<strong>argomento</strong> sono strumenti fondamentali per passare dati alle funzioni e influenzarne il comportamento. In particolare:</p>
 <ul>
 <li><p>Parametri o parametri formali: I parametri sono definiti nella dichiarazione della funzione e rappresentano i nomi delle variabili che la funzione utilizzerà per accedere ai dati passati.</p></li>
@@ -542,8 +542,8 @@ window.Quarto = {
 </dd>
 </dl>
 </section>
-<section id="il-valore-di-ritorno" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="il-valore-di-ritorno"><span class="header-section-number">5.3</span> Il valore di ritorno</h2>
+<section id="il-valore-di-ritorno" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="il-valore-di-ritorno"><span class="header-section-number">6.3</span> Il valore di ritorno</h2>
 <p>Il valore di ritorno è il risultato prodotto da una funzione, che può essere utilizzato nell’istruzione chiamante. Una funzione può restituire un valore utilizzando una sintassi particolare come la parola chiave <code>return</code>.</p>
 <p>Esempio in Java:</p>
 <div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
@@ -576,11 +576,11 @@ window.Quarto = {
 </dd>
 </dl>
 </section>
-<section id="ambito-e-visibilità" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="ambito-e-visibilità"><span class="header-section-number">5.4</span> Ambito e visibilità</h2>
+<section id="ambito-e-visibilità" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="ambito-e-visibilità"><span class="header-section-number">6.4</span> Ambito e visibilità</h2>
 <p>L’ambito e la visibilità degli identificatori delle funzioni sono concetti sono simili a quelli delle variabili, ma presentano alcune differenze chiave che è importante comprendere.</p>
-<section id="ambito" class="level3" data-number="5.4.1">
-<h3 data-number="5.4.1" class="anchored" data-anchor-id="ambito"><span class="header-section-number">5.4.1</span> Ambito</h3>
+<section id="ambito" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="ambito"><span class="header-section-number">6.4.1</span> Ambito</h3>
 <p>Per le funzioni distinguiamo sempre i seguenti:</p>
 <ul>
 <li><p>Ambito globale: Una funzione dichiarata a livello globale, cioè al di fuori di qualsiasi altra funzione o blocco di codice, ha un ambito globale. Questo significa che la funzione è visibile e può essere chiamata da qualsiasi punto del programma dopo la sua dichiarazione.</p>
@@ -635,8 +635,8 @@ window.Quarto = {
 <p>In C, le funzioni locali non sono standard, ma è possibile ottenere un comportamento simile usando funzioni statiche o funzioni inline definite all’interno di un file sorgente specifico.</p></li>
 </ul>
 </section>
-<section id="visibilità" class="level3" data-number="5.4.2">
-<h3 data-number="5.4.2" class="anchored" data-anchor-id="visibilità"><span class="header-section-number">5.4.2</span> Visibilità</h3>
+<section id="visibilità" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="visibilità"><span class="header-section-number">6.4.2</span> Visibilità</h3>
 <p>La visibilità si riferisce a dove nel codice l’identificatore di una funzione può essere utilizzato. La visibilità è strettamente legata all’ambito, ma può essere influenzata anche da altre considerazioni come la modularità e le regole di accesso.</p>
 <ul>
 <li><p>Visibilità Globale: Le funzioni con ambito globale sono visibili ovunque nel programma come per le variabili.</p></li>
@@ -663,8 +663,8 @@ window.Quarto = {
 </dl></li>
 </ul>
 </section>
-<section id="differenze-tra-funzioni-con-variabili-e-oggetti" class="level3" data-number="5.4.3">
-<h3 data-number="5.4.3" class="anchored" data-anchor-id="differenze-tra-funzioni-con-variabili-e-oggetti"><span class="header-section-number">5.4.3</span> Differenze tra funzioni con variabili e oggetti</h3>
+<section id="differenze-tra-funzioni-con-variabili-e-oggetti" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="differenze-tra-funzioni-con-variabili-e-oggetti"><span class="header-section-number">6.4.3</span> Differenze tra funzioni con variabili e oggetti</h3>
 <p>Sebbene l’ambito e la visibilità delle funzioni condividano concetti simili con le variabili e gli oggetti, ci sono alcune differenze chiave:</p>
 <ul>
 <li><p>Durata di vita: Le variabili locali (automatiche) hanno una durata di vita limitata al blocco di codice in cui sono dichiarate. Quando il controllo esce dal blocco, la memoria allocata per la variabile viene liberata. Le funzioni, tuttavia, non vengono “distrutte” quando il controllo esce dal loro ambito; semplicemente non sono più visibili e chiamabili. In Python, le variabili definite all’interno di un blocco di un’istruzione composta rimangono accessibili finché sono nello stesso ambito di funzione o modulo, mentre le funzioni definite all’interno di un’altra funzione (nested functions) sono visibili solo all’interno di quella funzione.</p></li>
@@ -672,8 +672,8 @@ window.Quarto = {
 </ul>
 </section>
 </section>
-<section id="la-ricorsione" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="la-ricorsione"><span class="header-section-number">5.5</span> La ricorsione</h2>
+<section id="la-ricorsione" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="la-ricorsione"><span class="header-section-number">6.5</span> La ricorsione</h2>
 <p>La <strong>ricorsione</strong> è la capacità di una funzione di chiamare se stessa, utile per risolvere problemi che possono essere suddivisi in sottoproblemi simili. Ogni chiamata ricorsiva deve avvicinarsi a una condizione di terminazione per evitare loop infiniti.</p>
 <p>Esempio in C++ (calcolo del fattoriale):</p>
 <div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
@@ -714,8 +714,8 @@ window.Quarto = {
 </dd>
 </dl>
 </section>
-<section id="la-funzione-in-prima-classe" class="level2 page-columns page-full" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="la-funzione-in-prima-classe"><span class="header-section-number">5.6</span> La funzione in prima classe</h2>
+<section id="la-funzione-in-prima-classe" class="level2 page-columns page-full" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="la-funzione-in-prima-classe"><span class="header-section-number">6.6</span> La funzione in prima classe</h2>
 <p>Il concetto di <strong>funzione in prima classe</strong> (inglese: <em>first-class function</em>) è un principio fondamentale in molti linguaggi di programmazione, particolarmente rilevante nel paradigma di programmazione funzionale. In breve, un linguaggio di programmazione che supporta le funzioni come cittadini di prima classe. Ciò significa che le funzioni possono essere manipolate e utilizzate come qualsiasi altro tipo di dato. Le operazioni che definiscono questa caratteristica includono:</p>
 <ul>
 <li><p>Assegnazione a variabili: Le funzioni possono essere assegnate a variabili.</p></li>
@@ -729,8 +729,8 @@ window.Quarto = {
 <li><p>Comporre funzioni: Combinare semplici funzioni pure per costruire funzioni più complesse, facilitando la costruzione di software modulare e mantenibile.</p></li>
 <li><p>Favorire l’immutabilità: Favorire la scrittura di codice che non modifica lo stato, riducendo i bug e rendendo il codice più prevedibile.</p></li>
 </ul>
-<section id="implementazione-in-linguaggi-di-programmazione" class="level3 page-columns page-full" data-number="5.6.1">
-<h3 data-number="5.6.1" class="anchored" data-anchor-id="implementazione-in-linguaggi-di-programmazione"><span class="header-section-number">5.6.1</span> Implementazione in linguaggi di programmazione</h3>
+<section id="implementazione-in-linguaggi-di-programmazione" class="level3 page-columns page-full" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="implementazione-in-linguaggi-di-programmazione"><span class="header-section-number">6.6.1</span> Implementazione in linguaggi di programmazione</h3>
 <p>Python tratta le funzioni come oggetti in prima classe. Ecco come:</p>
 <div class="sourceCode" id="annotated-cell-5"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1"></a><span class="co"># Assegnazione a variabili</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2"></a><span class="kw">def</span> saluto(nome):</span>
@@ -958,8 +958,8 @@ window.Quarto = {
 </dd>
 </dl>
 </section>
-<section id="la-funzione-di-ordine-superiore" class="level3" data-number="5.6.2">
-<h3 data-number="5.6.2" class="anchored" data-anchor-id="la-funzione-di-ordine-superiore"><span class="header-section-number">5.6.2</span> La funzione di ordine superiore</h3>
+<section id="la-funzione-di-ordine-superiore" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="la-funzione-di-ordine-superiore"><span class="header-section-number">6.6.2</span> La funzione di ordine superiore</h3>
 <p>La <strong>funzione di ordine superiore</strong> è una diretta conseguenza del supporto per le funzioni in prima classe. Tale funzione accetta altre funzioni come argomenti e/o ritornano funzioni come risultati. Nel paradigma della programmazione funzionale, le funzioni di ordine superiore facilitano l’implementazione di tecniche come la composizione di funzioni, l’applicazione parziale e l’uso di callback.</p>
 <p>Esempio in Python:</p>
 <div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1"></a><span class="kw">def</span> somma(a):</span>
@@ -1019,8 +1019,8 @@ window.Quarto = {
 </dd>
 </dl>
 </section>
-<section id="lapplicazione-parziale" class="level3" data-number="5.6.3">
-<h3 data-number="5.6.3" class="anchored" data-anchor-id="lapplicazione-parziale"><span class="header-section-number">5.6.3</span> L’applicazione parziale</h3>
+<section id="lapplicazione-parziale" class="level3" data-number="6.6.3">
+<h3 data-number="6.6.3" class="anchored" data-anchor-id="lapplicazione-parziale"><span class="header-section-number">6.6.3</span> L’applicazione parziale</h3>
 <p>L’<strong>applicazione parziale</strong> (inglese: <em>partial application</em>) è una tecnica della programmazione funzionale che permette di fissare un certo numero di parametri di una funzione, producendo una nuova funzione con un numero inferiore dei medesimi. Ciò è particolarmente utile quando si desidera creare varianti di una funzione con alcuni parametri predefiniti, aumentando così la flessibilità e la riutilizzabilità del codice.</p>
 <p>In pratica, l’applicazione parziale consente di preimpostare alcuni argomenti di una funzione, riducendo il numero di argomenti che devono essere forniti successivamente.</p>
 <p>Python supporta l’applicazione parziale tramite il modulo <code>functools</code> che include la funzione <code>partial</code>:</p>
@@ -1079,8 +1079,8 @@ window.Quarto = {
 </ul>
 <p>L’applicazione parziale è una tecnica potente che, insieme alle funzioni di ordine superiore, contribuisce alla flessibilità e alla manutenibilità del codice nel paradigma della programmazione funzionale.</p>
 </section>
-<section id="il-decoratore" class="level3" data-number="5.6.4">
-<h3 data-number="5.6.4" class="anchored" data-anchor-id="il-decoratore"><span class="header-section-number">5.6.4</span> Il decoratore</h3>
+<section id="il-decoratore" class="level3" data-number="6.6.4">
+<h3 data-number="6.6.4" class="anchored" data-anchor-id="il-decoratore"><span class="header-section-number">6.6.4</span> Il decoratore</h3>
 <p>Il <strong>decoratore</strong> è una potente funzionalità in Python che permette di modificare il comportamento di funzioni o metodi esistenti senza cambiarne il codice sorgente. Esso sfrutta i concetti di funzioni in prima classe e funzioni di ordine superiore per aggiungere nuove funzionalità in modo modulare e riutilizzabile. È necessaria una sintassi ad hoc per applicare i decoratori al nostro codice ma il processo risulta semplice e il prodotto molto leggibile.</p>
 <p>Un decoratore è essenzialmente una funzione che accetta un’altra funzione come argomento e restituisce una nuova funzione. Questa nuova funzione può estendere o modificare il comportamento della funzione originale.</p>
 <p>Questo consente di estendere le funzionalità di una funzione in modo modulare e senza alterare il suo codice originale, utile sia per creare librerie di <em>modifiche</em> a funzioni proprie, sia per aggiornare il codice mantenendo la compatibilità con le versioni precedenti.</p>
@@ -1148,8 +1148,8 @@ window.Quarto = {
 <span data-code-cell="annotated-cell-13" data-code-lines="17" data-code-annotation="11">Chiamata della funzione <code>di_ciao</code> decorata.</span>
 </dd>
 </dl>
-<section id="applicazioni" class="level4" data-number="5.6.4.1">
-<h4 data-number="5.6.4.1" class="anchored" data-anchor-id="applicazioni"><span class="header-section-number">5.6.4.1</span> Applicazioni</h4>
+<section id="applicazioni" class="level4" data-number="6.6.4.1">
+<h4 data-number="6.6.4.1" class="anchored" data-anchor-id="applicazioni"><span class="header-section-number">6.6.4.1</span> Applicazioni</h4>
 <p>I decoratori sono molto utili per creare librerie che estendono le funzionalità delle funzioni esistenti senza modificarne il codice sorgente. Ad esempio, si potrebbe creare un decoratore per registrare il tempo di esecuzione di una funzione:</p>
 <div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a><span class="im">import</span> time</span>
 <span id="annotated-cell-14-2"><a href="#annotated-cell-14-2"></a></span>
@@ -1298,8 +1298,8 @@ window.Quarto = {
 </dl>
 <p>Questo approccio garantisce che il nuovo codice possa utilizzare la nuova funzionalità, mentre il vecchio codice continua a funzionare senza modifiche.</p>
 </section>
-<section id="supporto-in-typescript" class="level4" data-number="5.6.4.2">
-<h4 data-number="5.6.4.2" class="anchored" data-anchor-id="supporto-in-typescript"><span class="header-section-number">5.6.4.2</span> Supporto in Typescript</h4>
+<section id="supporto-in-typescript" class="level4" data-number="6.6.4.2">
+<h4 data-number="6.6.4.2" class="anchored" data-anchor-id="supporto-in-typescript"><span class="header-section-number">6.6.4.2</span> Supporto in Typescript</h4>
 <p>TypeScript supporta, allo stato in modo sperimentale, i decoratori per classi, metodi, accessori, proprietà e parametri. Di seguito è riportato un esempio di decoratore per una classe:</p>
 <div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode numberSource typescript code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode typescript"><a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-1" class="code-annotation-target"><a href="#annotated-cell-16-1"></a><span class="kw">function</span> <span class="fu">logCostruzione</span>(target<span class="op">:</span> <span class="bu">Function</span>) {</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-16-2" class="code-annotation-target"><a href="#annotated-cell-16-2"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`Costruzione di </span><span class="sc">${</span>target<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
@@ -1345,8 +1345,8 @@ window.Quarto = {
 </dl>
 </section>
 </section>
-<section id="la-funzione-di-richiamo" class="level3 page-columns page-full" data-number="5.6.5">
-<h3 data-number="5.6.5" class="anchored" data-anchor-id="la-funzione-di-richiamo"><span class="header-section-number">5.6.5</span> La funzione di richiamo</h3>
+<section id="la-funzione-di-richiamo" class="level3 page-columns page-full" data-number="6.6.5">
+<h3 data-number="6.6.5" class="anchored" data-anchor-id="la-funzione-di-richiamo"><span class="header-section-number">6.6.5</span> La funzione di richiamo</h3>
 <p>La <strong>funzione di richiamo</strong> (inglese: <em>callback function</em> o semplicemente <em>callback</em>) è un tipo di funzione che viene passata come argomento ad altra funzione e viene eseguita dopo che l’operazione principale sia terminata. Le funzioni di richiamo sono utilizzate in molti linguaggi di programmazione, inclusi Python, JavaScript, C++, e altri e sono particolarmente comuni nella programmazione asincrona, come la gestione di eventi e la programmazione basata su temporizzatori.</p>
 <p>Ambiti di applicazione:</p>
 <ul>
@@ -1452,17 +1452,17 @@ Wikipedia. (2024e). <em>reduce (higher-order function)</em>. <a href="https://en
 </dd>
 </dl>
 </section>
-<section id="la-lambda" class="level3 page-columns page-full" data-number="5.6.6">
-<h3 data-number="5.6.6" class="anchored" data-anchor-id="la-lambda"><span class="header-section-number">5.6.6</span> La lambda</h3>
+<section id="la-lambda" class="level3 page-columns page-full" data-number="6.6.6">
+<h3 data-number="6.6.6" class="anchored" data-anchor-id="la-lambda"><span class="header-section-number">6.6.6</span> La lambda</h3>
 <p>Le <strong>lambda</strong> sono funzioni anonime che possono essere definite in una singola riga di codice. Sono utili per operazioni semplici e brevi. Le lambda sono supportate da molti linguaggi di programmazione, come Python, JavaScript, Java, C#, e altri, e forniscono un modo conciso per definire funzioni temporanee o usa e getta<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
-<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Il currying è una tecnica di trasformazione delle funzioni che prende il nome dal logico matematico Haskell Curry, sebbene il concetto sia stato inizialmente sviluppato da Moses Schönfinkel. In contesto matematico, questo principio può essere fatto risalire ai lavori di Gottlob Frege del 1893. Il currying consiste nel trasformare una funzione con più argomenti in una sequenza di funzioni ciascuna delle quali accetta un singolo argomento. Formalmente, data una funzione <span class="math inline">\(f\)</span> di due variabili <span class="math inline">\(f(x, y)\)</span>, il currying la trasforma in una funzione <span class="math inline">\(g\)</span> tale che:</p></div><div id="fn4"><p><sup>4</sup>&nbsp;Il currying è una tecnica di trasformazione delle funzioni che prende il nome dal logico matematico Haskell Curry, sebbene il concetto sia stato inizialmente sviluppato da Moses Schönfinkel. In contesto matematico, questo principio può essere fatto risalire ai lavori di Gottlob Frege del 1893. Il currying consiste nel trasformare una funzione con più argomenti in una sequenza di funzioni ciascuna delle quali accetta un singolo argomento. Formalmente, data una funzione <span class="math inline">\(f\)</span> di due variabili <span class="math inline">\(f(x, y)\)</span>, il currying la trasforma in una funzione <span class="math inline">\(g\)</span> tale che:</p></div><div id="ref-wikipedia_lambda_calculus" class="csl-entry" role="listitem">
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Il currying è una tecnica di trasformazione delle funzioni che prende il nome dal logico matematico Haskell Curry, sebbene il concetto sia stato inizialmente sviluppato da Moses Schönfinkel. In contesto matematico, questo principio può essere fatto risalire ai lavori di Gottlob Frege del 1893. Il currying consiste nel trasformare una funzione con più argomenti in una sequenza di funzioni ciascuna delle quali accetta un singolo argomento. Formalmente, data una funzione <span class="math inline">\(f\)</span> di due variabili <span class="math inline">\(f(x, y)\)</span>, il currying la trasforma in una funzione <span class="math inline">\(g\)</span> tale che: $ g(x)(y) = f(x, y) $.</p></div><div id="fn4"><p><sup>4</sup>&nbsp;Il currying è una tecnica di trasformazione delle funzioni che prende il nome dal logico matematico Haskell Curry, sebbene il concetto sia stato inizialmente sviluppato da Moses Schönfinkel. In contesto matematico, questo principio può essere fatto risalire ai lavori di Gottlob Frege del 1893. Il currying consiste nel trasformare una funzione con più argomenti in una sequenza di funzioni ciascuna delle quali accetta un singolo argomento. Formalmente, data una funzione <span class="math inline">\(f\)</span> di due variabili <span class="math inline">\(f(x, y)\)</span>, il currying la trasforma in una funzione <span class="math inline">\(g\)</span> tale che: $ g(x)(y) = f(x, y) $.</p></div><div id="ref-wikipedia_lambda_calculus" class="csl-entry" role="listitem">
 Wikipedia. (2024c). <em>Lambda Calculus</em>. <a href="https://en.wikipedia.org/wiki/Lambda_calculus">https://en.wikipedia.org/wiki/Lambda_calculus</a>
 </div><div id="ref-church1936" class="csl-entry" role="listitem">
 Church, A. (1936). An Unsolvable Problem of Elementary Number Theory. <em>American Journal of Mathematics</em>, <em>58</em>(2), 345–363. <a href="https://doi.org/10.2307/2371045">https://doi.org/10.2307/2371045</a>
 </div></div><p><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Le espressioni lambda sono ispirate al calcolo lambda, una notazione matematica introdotta da Alonzo Church negli anni ’30. Il calcolo lambda è un sistema formale per esprimere computazioni basate sulla definizione e applicazione di funzioni anonime. Questo concetto è alla base delle lambda in molti linguaggi di programmazione moderni, facilitando l’adozione del paradigma della programmazione funzionale. Vedi anche <span class="citation" data-cites="wikipedia_lambda_calculus">(<a href="appendice-riferimenti.html#ref-wikipedia_lambda_calculus" role="doc-biblioref">Wikipedia, 2024c</a>)</span> e <span class="citation" data-cites="church1936">(<a href="appendice-riferimenti.html#ref-church1936" role="doc-biblioref">Church, 1936</a>)</span>.</p>
 <p>Una sintassi ad hoc per le lambda è necessaria per mantenere il codice leggibile e per permettere l’uso di funzioni anonime in modo rapido e senza definizioni formali che potrebbero rendere il codice più verboso e meno chiaro.</p>
-<section id="python" class="level4" data-number="5.6.6.1">
-<h4 data-number="5.6.6.1" class="anchored" data-anchor-id="python"><span class="header-section-number">5.6.6.1</span> Python</h4>
+<section id="python" class="level4" data-number="6.6.6.1">
+<h4 data-number="6.6.6.1" class="anchored" data-anchor-id="python"><span class="header-section-number">6.6.6.1</span> Python</h4>
 <p>Python utilizza la parola chiave <code>lambda</code> per definire funzioni anonime. La sintassi è:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">lambda</span> parametri: espressione</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Esempio:</p>
@@ -1480,8 +1480,8 @@ Church, A. (1936). An Unsolvable Problem of Elementary Number Theory. <em>Americ
 </dd>
 </dl>
 </section>
-<section id="javascript" class="level4" data-number="5.6.6.2">
-<h4 data-number="5.6.6.2" class="anchored" data-anchor-id="javascript"><span class="header-section-number">5.6.6.2</span> JavaScript</h4>
+<section id="javascript" class="level4" data-number="6.6.6.2">
+<h4 data-number="6.6.6.2" class="anchored" data-anchor-id="javascript"><span class="header-section-number">6.6.6.2</span> JavaScript</h4>
 <p>JavaScript utilizza le funzioni freccia (inglese: <em>arrow functions</em>) per definire funzioni anonime. La sintassi è:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource javascript number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1"></a>(parametri) <span class="kw">=&gt;</span> espressione</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Esempio:</p>
@@ -1499,8 +1499,8 @@ Church, A. (1936). An Unsolvable Problem of Elementary Number Theory. <em>Americ
 </dd>
 </dl>
 </section>
-<section id="java" class="level4" data-number="5.6.6.3">
-<h4 data-number="5.6.6.3" class="anchored" data-anchor-id="java"><span class="header-section-number">5.6.6.3</span> Java</h4>
+<section id="java" class="level4" data-number="6.6.6.3">
+<h4 data-number="6.6.6.3" class="anchored" data-anchor-id="java"><span class="header-section-number">6.6.6.3</span> Java</h4>
 <p>Java utilizza le espressioni lambda, introdotte con Java 8. La sintassi è:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">(</span>parametri<span class="op">)</span> <span class="op">-&gt;</span> espressione</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Esempio:</p>
@@ -1525,8 +1525,8 @@ Church, A. (1936). An Unsolvable Problem of Elementary Number Theory. <em>Americ
 </dl>
 </section>
 </section>
-<section id="chiusure" class="level3 page-columns page-full" data-number="5.6.7">
-<h3 data-number="5.6.7" class="anchored" data-anchor-id="chiusure"><span class="header-section-number">5.6.7</span> Chiusure</h3>
+<section id="chiusure" class="level3 page-columns page-full" data-number="6.6.7">
+<h3 data-number="6.6.7" class="anchored" data-anchor-id="chiusure"><span class="header-section-number">6.6.7</span> Chiusure</h3>
 <p>Le <strong>chiusure</strong> (inglese: <em>closure</em>) sono funzioni che ricordano l’ambiente nel quale sono state create. Questo significa che possono accedere alle variabili definite nell’ambiente esterno anche dopo che tale ambiente sia stato chiuso.</p>
 <p>Esempio in Python:</p>
 <div class="sourceCode" id="annotated-cell-25"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-25-1" class="code-annotation-target"><a href="#annotated-cell-25-1"></a><span class="kw">def</span> crea_sommatore(x):</span>
@@ -1628,7 +1628,7 @@ Church, A. (1936). An Unsolvable Problem of Elementary Number Theory. <em>Americ
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="5" data-code-annotation="4">Dichiarazione della variabile <code>conto</code> come <code>nonlocal</code> per modificarla all’interno di <code>contatore</code>.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="5" data-code-annotation="4">Dichiarazione della variabile <code>conto</code> come <code>nonlocal</code> perché siua modificabile all’interno di <code>contatore</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-30" data-target-annotation="5">5</dt>
 <dd>
@@ -1656,34 +1656,34 @@ Church, A. (1936). An Unsolvable Problem of Elementary Number Theory. <em>Americ
 </dd>
 </dl></li>
 <li><p>Funzioni factory: Permettono la creazione di funzioni personalizzate configurate con parametri specifici. Esempio in Python:</p>
-<div class="sourceCode" id="annotated-cell-31"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-31-1" class="code-annotation-target"><a href="#annotated-cell-31-1"></a><span class="kw">def</span> multiply_by(factor):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-31-2" class="code-annotation-target"><a href="#annotated-cell-31-2"></a>  <span class="kw">def</span> multiply(number):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-31-3" class="code-annotation-target"><a href="#annotated-cell-31-3"></a>    <span class="cf">return</span> number <span class="op">*</span> factor</span>
+<div class="sourceCode" id="annotated-cell-31"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-31-1" class="code-annotation-target"><a href="#annotated-cell-31-1"></a><span class="kw">def</span> moltiplica_per(fattore):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-31-2" class="code-annotation-target"><a href="#annotated-cell-31-2"></a>  <span class="kw">def</span> moltiplica(numero):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-31-3" class="code-annotation-target"><a href="#annotated-cell-31-3"></a>    <span class="cf">return</span> numero <span class="op">*</span> fattore</span>
 <span id="annotated-cell-31-4"><a href="#annotated-cell-31-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-31-5" class="code-annotation-target"><a href="#annotated-cell-31-5"></a>  <span class="cf">return</span> multiply</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-31-5" class="code-annotation-target"><a href="#annotated-cell-31-5"></a>  <span class="cf">return</span> moltiplica</span>
 <span id="annotated-cell-31-6"><a href="#annotated-cell-31-6"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-31-7" class="code-annotation-target"><a href="#annotated-cell-31-7"></a>double <span class="op">=</span> multiply_by(<span class="dv">2</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-31-7" class="code-annotation-target"><a href="#annotated-cell-31-7"></a>double <span class="op">=</span> moltiplica_per(<span class="dv">2</span>)</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-31-8" class="code-annotation-target"><a href="#annotated-cell-31-8"></a><span class="bu">print</span>(double(<span class="dv">5</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-31" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="1" data-code-annotation="1">Definizione della funzione <code>multiply_by</code> che accetta un parametro <code>factor</code>.</span>
+<span data-code-cell="annotated-cell-31" data-code-lines="1" data-code-annotation="1">Definizione della funzione <code>moltiplica_per</code> che accetta un parametro <code>fattore</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-31" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="2" data-code-annotation="2">Definizione della funzione <code>multiply</code> che accetta un parametro <code>number</code>.</span>
+<span data-code-cell="annotated-cell-31" data-code-lines="2" data-code-annotation="2">Definizione della funzione <code>moltiplica</code> che accetta un parametro <code>numero</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-31" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="3" data-code-annotation="3">La funzione <code>multiply</code> moltiplica <code>number</code> per <code>factor</code>.</span>
+<span data-code-cell="annotated-cell-31" data-code-lines="3" data-code-annotation="3">La funzione <code>moltiplica</code> moltiplica <code>numero</code> per <code>fattore</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-31" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="5" data-code-annotation="4"><code>multiply_by</code> restituisce la funzione <code>multiply</code>.</span>
+<span data-code-cell="annotated-cell-31" data-code-lines="5" data-code-annotation="4"><code>moltiplica_per</code> restituisce la funzione <code>moltiplica</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-31" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-31" data-code-lines="7" data-code-annotation="5"><code>double</code> è una chiusura che ricorda il valore di <code>factor</code> come <code>2</code>.</span>
+<span data-code-cell="annotated-cell-31" data-code-lines="7" data-code-annotation="5"><code>double</code> è una chiusura che ricorda il valore di <code>fattore</code> come <code>2</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-31" data-target-annotation="6">6</dt>
 <dd>
@@ -1726,74 +1726,156 @@ Church, A. (1936). An Unsolvable Problem of Elementary Number Theory. <em>Americ
 </dd>
 </dl></li>
 <li><p>Programmazione funzionale: Le chiusure sono un costrutto fondamentale per molte tecniche della programmazione funzionale, come l’applicazione parziale e la trasformazione di una funzione con parametri multipli in una sequenza di funzioni aventi un unico parametro (inglese: <em>currying</em>)<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
+<p>Il currying può essere estremamente utile per creare funzioni generiche che possono essere specializzate in vari contesti. Ad esempio, consideriamo un’applicazione che richiede l’invio di messaggi a diversi destinatari con diverse priorità.</p>
 <p>Esempio in Python:</p>
-<div class="sourceCode" id="annotated-cell-33"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-33-1" class="code-annotation-target"><a href="#annotated-cell-33-1"></a><span class="kw">def</span> curry_somma(a):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-33-2" class="code-annotation-target"><a href="#annotated-cell-33-2"></a>  <span class="kw">def</span> somma(b):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-33-3" class="code-annotation-target"><a href="#annotated-cell-33-3"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
-<span id="annotated-cell-33-4"><a href="#annotated-cell-33-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-33-5" class="code-annotation-target"><a href="#annotated-cell-33-5"></a>  <span class="cf">return</span> somma</span>
-<span id="annotated-cell-33-6"><a href="#annotated-cell-33-6"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-33-7" class="code-annotation-target"><a href="#annotated-cell-33-7"></a>aggiungi_tre <span class="op">=</span> curry_somma(<span class="dv">3</span>)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-33-8" class="code-annotation-target"><a href="#annotated-cell-33-8"></a><span class="bu">print</span>(aggiungi_tre(<span class="dv">4</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-33"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-33-1" class="code-annotation-target"><a href="#annotated-cell-33-1"></a><span class="kw">def</span> invia_messaggio(tipo_messaggio):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-33-2" class="code-annotation-target"><a href="#annotated-cell-33-2"></a>  <span class="kw">def</span> messaggio(priorita, destinatario, testo):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-33-3" class="code-annotation-target"><a href="#annotated-cell-33-3"></a>    <span class="cf">if</span> tipo_messaggio <span class="op">==</span> <span class="st">"Email"</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-33-4" class="code-annotation-target"><a href="#annotated-cell-33-4"></a>      <span class="bu">print</span>(<span class="ss">f"Invio email a </span><span class="sc">{</span>destinatario<span class="sc">}</span><span class="ss"> con priorità </span><span class="sc">{</span>priorita<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>testo<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="annotated-cell-33-5"><a href="#annotated-cell-33-5"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-33-6" class="code-annotation-target"><a href="#annotated-cell-33-6"></a>    <span class="cf">elif</span> tipo_messaggio <span class="op">==</span> <span class="st">"SMS"</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-33-7" class="code-annotation-target"><a href="#annotated-cell-33-7"></a>      <span class="bu">print</span>(<span class="ss">f"Invio SMS a </span><span class="sc">{</span>destinatario<span class="sc">}</span><span class="ss"> con priorità </span><span class="sc">{</span>priorita<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>testo<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="annotated-cell-33-8"><a href="#annotated-cell-33-8"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-33-9" class="code-annotation-target"><a href="#annotated-cell-33-9"></a>  <span class="cf">return</span> messaggio</span>
+<span id="annotated-cell-33-10"><a href="#annotated-cell-33-10"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-33-11" class="code-annotation-target"><a href="#annotated-cell-33-11"></a>invia_email <span class="op">=</span> invia_messaggio(<span class="st">"Email"</span>)</span>
+<span id="annotated-cell-33-12"><a href="#annotated-cell-33-12"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-33-13" class="code-annotation-target"><a href="#annotated-cell-33-13"></a>invia_sms <span class="op">=</span> invia_messaggio(<span class="st">"SMS"</span>)</span>
+<span id="annotated-cell-33-14"><a href="#annotated-cell-33-14"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-33-15" class="code-annotation-target"><a href="#annotated-cell-33-15"></a>invia_email(<span class="st">"Alta"</span>, <span class="st">"alice@example.com"</span>, <span class="st">"Ciao Alice!"</span>)</span>
+<span id="annotated-cell-33-16"><a href="#annotated-cell-33-16"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="11" onclick="event.preventDefault();">11</a><span id="annotated-cell-33-17" class="code-annotation-target"><a href="#annotated-cell-33-17"></a>invia_sms(<span class="st">"Bassa"</span>, <span class="st">"1234567890"</span>, <span class="st">"Ciao!"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-33" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="1" data-code-annotation="1">Definizione della funzione <code>curry_somma</code> che accetta un parametro <code>a</code>.</span>
+<span data-code-cell="annotated-cell-33" data-code-lines="1" data-code-annotation="1">Definizione della funzione <code>invia_messaggio</code> che accetta un parametro <code>tipo_messaggio</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-33" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="2" data-code-annotation="2">Definizione della funzione <code>somma</code> che accetta un parametro <code>b</code>.</span>
+<span data-code-cell="annotated-cell-33" data-code-lines="2" data-code-annotation="2">Definizione della funzione <code>messaggio</code> che accetta <code>priorita</code>, <code>destinatario</code>, e <code>testo</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-33" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="3" data-code-annotation="3">La funzione <code>somma</code> somma <code>a</code> e <code>b</code>.</span>
+<span data-code-cell="annotated-cell-33" data-code-lines="3" data-code-annotation="3">Controllo del tipo di messaggio.</span>
 </dd>
 <dt data-target-cell="annotated-cell-33" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="5" data-code-annotation="4"><code>curry_somma</code> restituisce la funzione <code>somma</code>.</span>
+<span data-code-cell="annotated-cell-33" data-code-lines="4" data-code-annotation="4">Stampa specifica per l’invio di un’email.</span>
 </dd>
 <dt data-target-cell="annotated-cell-33" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="7" data-code-annotation="5"><code>aggiungi_tre</code> è una chiusura che ricorda il valore di <code>a</code> come <code>3</code>.</span>
+<span data-code-cell="annotated-cell-33" data-code-lines="6" data-code-annotation="5">Controllo del tipo di messaggio.</span>
 </dd>
 <dt data-target-cell="annotated-cell-33" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="8" data-code-annotation="6"><code>aggiungi_tre(4)</code> restituisce <code>7</code>.</span>
+<span data-code-cell="annotated-cell-33" data-code-lines="7" data-code-annotation="6">Stampa specifica per l’invio di un SMS.</span>
+</dd>
+<dt data-target-cell="annotated-cell-33" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-33" data-code-lines="9" data-code-annotation="7"><code>invia_messaggio</code> restituisce la funzione <code>messaggio</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-33" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-33" data-code-lines="11" data-code-annotation="8"><code>invia_email</code> è una funzione specializzata per inviare email.</span>
+</dd>
+<dt data-target-cell="annotated-cell-33" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-33" data-code-lines="13" data-code-annotation="9"><code>invia_sms</code> è una funzione specializzata per inviare SMS.</span>
+</dd>
+<dt data-target-cell="annotated-cell-33" data-target-annotation="10">10</dt>
+<dd>
+<span data-code-cell="annotated-cell-33" data-code-lines="15" data-code-annotation="10">Invio di un’email con priorità alta.</span>
+</dd>
+<dt data-target-cell="annotated-cell-33" data-target-annotation="11">11</dt>
+<dd>
+<span data-code-cell="annotated-cell-33" data-code-lines="17" data-code-annotation="11">Invio di un SMS con priorità bassa.</span>
 </dd>
 </dl>
 <p>Esempio in Haskell:</p>
-<div class="sourceCode" id="annotated-cell-34"><pre class="sourceCode numberSource haskell code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode haskell"><a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-34-1" class="code-annotation-target"><a href="#annotated-cell-34-1"></a><span class="ot">currySomma ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="annotated-cell-34-2"><a href="#annotated-cell-34-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-34-3" class="code-annotation-target"><a href="#annotated-cell-34-3"></a>currySomma a <span class="ot">=</span> \b <span class="ot">-&gt;</span> a <span class="op">+</span> b</span>
-<span id="annotated-cell-34-4"><a href="#annotated-cell-34-4"></a></span>
-<span id="annotated-cell-34-5"><a href="#annotated-cell-34-5"></a><span class="ot">main ::</span> <span class="dt">IO</span> ()</span>
-<span id="annotated-cell-34-6"><a href="#annotated-cell-34-6"></a></span>
-<span id="annotated-cell-34-7"><a href="#annotated-cell-34-7"></a>main <span class="ot">=</span> <span class="kw">do</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-34-8" class="code-annotation-target"><a href="#annotated-cell-34-8"></a>  <span class="kw">let</span> aggiungiTre <span class="ot">=</span> currySomma <span class="dv">3</span></span>
+<div class="sourceCode" id="annotated-cell-34"><pre class="sourceCode numberSource haskell code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode haskell"><span id="annotated-cell-34-1"><a href="#annotated-cell-34-1"></a><span class="co">-- Definizione della funzione curryata per inviare messaggi</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-34-2" class="code-annotation-target"><a href="#annotated-cell-34-2"></a><span class="ot">inviaMessaggio ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span>
+<span id="annotated-cell-34-3"><a href="#annotated-cell-34-3"></a>inviaMessaggio tipoMessaggio priorita destinatario testo <span class="ot">=</span> </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-34-4" class="code-annotation-target"><a href="#annotated-cell-34-4"></a>  <span class="kw">if</span> tipoMessaggio <span class="op">==</span> <span class="st">"Email"</span></span>
+<span id="annotated-cell-34-5"><a href="#annotated-cell-34-5"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-34-6" class="code-annotation-target"><a href="#annotated-cell-34-6"></a>  <span class="kw">then</span> <span class="fu">putStrLn</span> (<span class="st">"Invio email a "</span> <span class="op">++</span> destinatario <span class="op">++</span> <span class="st">" con priorità "</span> <span class="op">++</span> priorita <span class="op">++</span> <span class="st">": "</span> <span class="op">++</span> testo)</span>
+<span id="annotated-cell-34-7"><a href="#annotated-cell-34-7"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-34-8" class="code-annotation-target"><a href="#annotated-cell-34-8"></a>  <span class="kw">else</span> <span class="kw">if</span> tipoMessaggio <span class="op">==</span> <span class="st">"SMS"</span></span>
 <span id="annotated-cell-34-9"><a href="#annotated-cell-34-9"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-34-10" class="code-annotation-target"><a href="#annotated-cell-34-10"></a>  <span class="fu">print</span> (aggiungiTre <span class="dv">4</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-34-10" class="code-annotation-target"><a href="#annotated-cell-34-10"></a>  <span class="kw">then</span> <span class="fu">putStrLn</span> (<span class="st">"Invio SMS a "</span> <span class="op">++</span> destinatario <span class="op">++</span> <span class="st">" con priorità "</span> <span class="op">++</span> priorita <span class="op">++</span> <span class="st">": "</span> <span class="op">++</span> testo)</span>
+<span id="annotated-cell-34-11"><a href="#annotated-cell-34-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-34-12" class="code-annotation-target"><a href="#annotated-cell-34-12"></a>  <span class="kw">else</span> <span class="fu">putStrLn</span> <span class="st">"Tipo di messaggio sconosciuto"</span></span>
+<span id="annotated-cell-34-13"><a href="#annotated-cell-34-13"></a></span>
+<span id="annotated-cell-34-14"><a href="#annotated-cell-34-14"></a><span class="co">-- Funzioni specializzate</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-34-15" class="code-annotation-target"><a href="#annotated-cell-34-15"></a><span class="ot">inviaEmail ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span>
+<span id="annotated-cell-34-16"><a href="#annotated-cell-34-16"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-34-17" class="code-annotation-target"><a href="#annotated-cell-34-17"></a>inviaEmail <span class="ot">=</span> inviaMessaggio <span class="st">"Email"</span></span>
+<span id="annotated-cell-34-18"><a href="#annotated-cell-34-18"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-34-19" class="code-annotation-target"><a href="#annotated-cell-34-19"></a><span class="ot">inviaSMS ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span>
+<span id="annotated-cell-34-20"><a href="#annotated-cell-34-20"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-34-21" class="code-annotation-target"><a href="#annotated-cell-34-21"></a>inviaSMS <span class="ot">=</span> inviaMessaggio <span class="st">"SMS"</span></span>
+<span id="annotated-cell-34-22"><a href="#annotated-cell-34-22"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="11" onclick="event.preventDefault();">11</a><span id="annotated-cell-34-23" class="code-annotation-target"><a href="#annotated-cell-34-23"></a><span class="ot">main ::</span> <span class="dt">IO</span> ()</span>
+<span id="annotated-cell-34-24"><a href="#annotated-cell-34-24"></a>main <span class="ot">=</span> <span class="kw">do</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="12" onclick="event.preventDefault();">12</a><span id="annotated-cell-34-25" class="code-annotation-target"><a href="#annotated-cell-34-25"></a>    inviaEmail <span class="st">"Alta"</span> <span class="st">"alice@example.com"</span> <span class="st">"Ciao Alice!"</span></span>
+<span id="annotated-cell-34-26"><a href="#annotated-cell-34-26"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="13" onclick="event.preventDefault();">13</a><span id="annotated-cell-34-27" class="code-annotation-target"><a href="#annotated-cell-34-27"></a>    inviaSMS <span class="st">"Bassa"</span> <span class="st">"1234567890"</span> <span class="st">"Ciao!"</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-34" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="1" data-code-annotation="1">Definizione della funzione <code>currySomma</code> che accetta due parametri interi.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="2" data-code-annotation="1">Definizione della funzione <code>inviaMessaggio</code> che accetta quattro parametri: tipo di messaggio, priorità, destinatario e testo.</span>
 </dd>
 <dt data-target-cell="annotated-cell-34" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="3" data-code-annotation="2">La funzione <code>currySomma</code> è curried, accetta il parametro <code>a</code> e restituisce una funzione che accetta il parametro <code>b</code> e somma <code>a</code> e <code>b</code>.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="4" data-code-annotation="2">Controllo del tipo di messaggio.</span>
 </dd>
 <dt data-target-cell="annotated-cell-34" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="8" data-code-annotation="3"><code>aggiungiTre</code> è una chiusura che ricorda il valore di <code>a</code> come <code>3</code>.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="6" data-code-annotation="3">Stampa specifica per l’invio di un’email.</span>
 </dd>
 <dt data-target-cell="annotated-cell-34" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-34" data-code-lines="10" data-code-annotation="4"><code>aggiungiTre 4</code> restituisce <code>7</code> e stampa il risultato.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="8" data-code-annotation="4">Controllo del tipo di messaggio.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="10" data-code-annotation="5">Stampa specifica per l’invio di un SMS.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="12" data-code-annotation="6">Gestione di un tipo di messaggio sconosciuto.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="15" data-code-annotation="7">Definizione del tipo della funzione <code>inviaEmail</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="17" data-code-annotation="8"><code>inviaEmail</code> è una funzione specializzata per inviare email.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="19" data-code-annotation="9">Definizione del tipo della funzione <code>inviaSMS</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="10">10</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="21" data-code-annotation="10"><code>inviaSMS</code> è una funzione specializzata per inviare SMS.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="11">11</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="23" data-code-annotation="11">Definizione della funzione <code>main</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="12">12</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="25" data-code-annotation="12">Invio di un’email con priorità alta.</span>
+</dd>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="13">13</dt>
+<dd>
+<span data-code-cell="annotated-cell-34" data-code-lines="27" data-code-annotation="13">Invio di un SMS con priorità bassa.</span>
 </dd>
 </dl></li>
 </ul>
-<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;Il currying è una tecnica di trasformazione delle funzioni che prende il nome dal logico matematico Haskell Curry, sebbene il concetto sia stato inizialmente sviluppato da Moses Schönfinkel. In contesto matematico, questo principio può essere fatto risalire ai lavori di Gottlob Frege del 1893. Il currying consiste nel trasformare una funzione con più argomenti in una sequenza di funzioni ciascuna delle quali accetta un singolo argomento. Formalmente, data una funzione <span class="math inline">\(f\)</span> di due variabili <span class="math inline">\(f(x, y)\)</span>, il currying la trasforma in una funzione <span class="math inline">\(g\)</span> tale che:</p></div></div><p><span class="math display">\[ g(x)(y) = f(x, y) \]</span></p>
-<p>Più in generale, una funzione <span class="math inline">\(f: (A \times B \times \dots \times N) \rightarrow R\)</span> può essere trasformata in una funzione curried <span class="math inline">\(f': A \rightarrow (B \rightarrow \dots \rightarrow (N \rightarrow R))\)</span>.</p>
-<p>Il currying è particolarmente utile nella programmazione funzionale, poiché permette di creare funzioni parzialmente applicate e di comporre funzioni più facilmente. Questo facilita il riutilizzo del codice e la composizione di funzioni, migliorando la modularità e la leggibilità del codice. Il linguaggio di programmazione Haskell, che supporta nativamente il currying, è stato chiamato così in onore prprio di Haskell Curry, riconoscendo il suo contributo alla logica combinatoria e alla teoria delle funzioni.</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;Il currying è una tecnica di trasformazione delle funzioni che prende il nome dal logico matematico Haskell Curry, sebbene il concetto sia stato inizialmente sviluppato da Moses Schönfinkel. In contesto matematico, questo principio può essere fatto risalire ai lavori di Gottlob Frege del 1893. Il currying consiste nel trasformare una funzione con più argomenti in una sequenza di funzioni ciascuna delle quali accetta un singolo argomento. Formalmente, data una funzione <span class="math inline">\(f\)</span> di due variabili <span class="math inline">\(f(x, y)\)</span>, il currying la trasforma in una funzione <span class="math inline">\(g\)</span> tale che: $ g(x)(y) = f(x, y) $.</p></div></div><p>Più in generale, una funzione <span class="math inline">\(f: (A \times B \times \dots \times N) \rightarrow R\)</span> può essere trasformata in una funzione <em>curried</em> <span class="math inline">\(f': A \rightarrow (B \rightarrow \dots \rightarrow (N \rightarrow R))\)</span>.</p>
+<p>Il linguaggio di programmazione Haskell, che supporta nativamente il currying, è stato chiamato così in onore proprio di Haskell Curry, riconoscendo il suo contributo alla logica combinatoria e alla teoria delle funzioni.</p>
 <p>Per approfondire: <span class="citation" data-cites="wikipedia_currying">(<a href="appendice-riferimenti.html#ref-wikipedia_currying" role="doc-biblioref">Wikipedia, 2024a</a>)</span>, <span class="citation" data-cites="haskell_currying">(<a href="appendice-riferimenti.html#ref-haskell_currying" role="doc-biblioref">Wiki, 2024</a>)</span>, <span class="citation" data-cites="abelson1996">(<a href="appendice-riferimenti.html#ref-abelson1996" role="doc-biblioref">Abelson &amp; Sussman, 1996</a>)</span>, <span class="citation" data-cites="curry1950">(<a href="appendice-riferimenti.html#ref-curry1950" role="doc-biblioref">Curry, 1950</a>)</span>.</p>
 
 
@@ -2377,13 +2459,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./prima-parte-semantica-variabili.html" class="pagination-link" aria-label="La semantica">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">La semantica</span></span>
+      <a href="./prima-parte-variabili-spazi-nomi-moduli-file.html" class="pagination-link" aria-label="La variabile">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La variabile</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./prima-parte-spazi-nomi-moduli-file.html" class="pagination-link" aria-label="Lo spazio di nomi, il modulo e il file">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Lo spazio di nomi, il modulo e il file</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./prima-parte-modello-dati.html" class="pagination-link" aria-label="Il modello dati dei linguaggi di programmazione">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Il modello dati dei linguaggi di programmazione</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

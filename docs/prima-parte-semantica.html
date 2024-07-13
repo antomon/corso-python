@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Antonio Montano">
 
-<title>Da neofita di Python a campione</title>
+<title>4&nbsp; La semantica dei linguaggi di programmazione – Da neofita di Python a campione</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./prima-parte.html" rel="next">
+<link href="./prima-parte-variabili-spazi-nomi-moduli-file.html" rel="next">
+<link href="./prima-parte-sintassi.html" rel="prev">
 <link href="./red-python-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -161,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Prefazione</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-semantica.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">La semantica dei linguaggi di programmazione</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -175,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefazione</span></a>
   </div>
 </li>
@@ -208,7 +208,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prima-parte-semantica.html" class="sidebar-item-text sidebar-link">
+  <a href="./prima-parte-semantica.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">La semantica dei linguaggi di programmazione</span></span></a>
   </div>
 </li>
@@ -362,48 +362,22 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Indice</h2>
-   
-  <ul>
-  <li><a href="#prefazione" id="toc-prefazione" class="nav-link active" data-scroll-target="#prefazione">Prefazione</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>Mostra il codice</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-semantica.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">La semantica dei linguaggi di programmazione</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Da neofita di Python a campione</h1>
-<p class="subtitle lead">Corso di Python per tutti</p>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">La semantica dei linguaggi di programmazione</span></h1>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Autore/Autrice</div>
-  <div class="quarto-title-meta-heading">Affiliazione</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Antonio Montano </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            4M4, Italy
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
-    <div>
-    <div class="quarto-title-meta-heading">Data di Pubblicazione</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">24 maggio 2024</p>
-    </div>
-  </div>
+    
   
     
   </div>
@@ -413,21 +387,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><img src="red-python.png" class="img-fluid" alt="Pitone rosso"></p>
-<section id="prefazione" class="level1 unnumbered">
-<h1 class="unnumbered">Prefazione</h1>
-<p>Nel 2024, il panorama tecnologico è stato radicalmente trasformato dai progressi dell’Intelligenza Artificiale (IA) generativa. Gli strumenti di IA sono ora in grado di scrivere codice, creare contenuti e risolvere problemi complessi in modo autonomo. Tuttavia, nonostante questi straordinari progressi, imparare un linguaggio di programmazione rimane una competenza fondamentale e preziosa. La capacità di programmare permette agli individui non solo di comprendere come funzionano gli strumenti tecnologici che utilizzano quotidianamente, ma anche di personalizzare e sviluppare nuove soluzioni su misura per le proprie esigenze specifiche.</p>
-<p>Gli strumenti di IA generativa possono automatizzare molte attività, ma comprendere il codice che generano richiede comunque una conoscenza approfondita della programmazione. Sapere come funziona un programma aiuta a diagnosticare e risolvere problemi in modo più efficace. Le soluzioni create da strumenti di IA possono essere generalizzate, ma imparare a programmare consente agli individui di creare soluzioni su misura per problemi specifici, innovare e andare oltre ciò che è possibile con gli strumenti standard.</p>
-<p>La programmazione sviluppa abilità di pensiero critico e logico, essenziali non solo per la tecnologia ma anche per risolvere problemi in molti altri campi. La programmazione non è solo per sviluppatori di software. In settori come la scienza, l’ingegneria, la finanza, e persino le arti, la capacità di programmare può fornire un vantaggio significativo, migliorando l’efficienza e aprendo nuove possibilità di analisi e creazione. Imparare a programmare stimola la creatività e l’abilità di pensare in modo sistematico, due qualità che sono utili in qualsiasi campo.</p>
-<p>Python è ampiamente riconosciuto come uno dei migliori linguaggi di programmazione per principianti e per esperti provenienti da altri linguaggi, grazie alle sue numerose caratteristiche vantaggiose. Python è un linguaggio di programmazione di alto livello, il che significa che è progettato per essere facile da leggere e scrivere. Le sue sintassi semplici e chiare riducono la complessità della programmazione, permettendo agli studenti di concentrarsi sui concetti fondamentali senza essere ostacolati dai dettagli tecnici.</p>
-<p>Python supporta vari paradigmi di programmazione, tra cui la programmazione procedurale, la programmazione orientata agli oggetti e la programmazione funzionale. Questo rende Python estremamente versatile e permette agli studenti di esplorare e padroneggiare diversi stili di programmazione all’interno dello stesso linguaggio. Inoltre, Python ha una delle comunità di sviluppatori più grandi e attive al mondo. Questa comunità contribuisce continuamente allo sviluppo del linguaggio e delle sue librerie, offre supporto attraverso forum, tutorial, e documentazione, e crea una vasta gamma di risorse didattiche accessibili.</p>
-<p>Python dispone di un ecosistema vasto e in continua crescita di librerie e framework per una vasta gamma di applicazioni, tra cui sviluppo web (Django, Flask), scienza dei dati (pandas, NumPy, SciPy), intelligenza artificiale e machine learning (TensorFlow, Keras, PyTorch), automazione, sviluppo di giochi (Pygame), e molto altro ancora. Questa diversità consente agli studenti di applicare Python a numerosi campi e di sviluppare progetti interessanti e rilevanti.</p>
-<p>Imparare Python non è solo un passo fondamentale per diventare un programmatore competente, ma è anche un modo per comprendere meglio la tecnologia che ci circonda e per essere in grado di contribuire attivamente all’innovazione. Con la sua semplicità, versatilità e supporto comunitario, Python rappresenta una scelta ideale per chiunque desideri iniziare il proprio viaggio nel mondo della programmazione o per chi vuole aggiungere un potente strumento al proprio arsenale tecnologico.</p>
-<p>L’obiettivo di questo corso è di guidarti attraverso le basi di Python, fornendoti una comprensione solida e completa del linguaggio. Spero che troverai questo corso utile e stimolante, e che ti ispiri a esplorare ulteriormente il mondo della programmazione.</p>
-<p>Buon apprendimento!</p>
+<p>La <strong>semantica</strong> di un linguaggio di programmazione definisce il significato delle istruzioni sintatticamente corrette. In altre parole, la semantica specifica cosa fa un programma quando viene eseguito, descrivendo l’effetto delle istruzioni sullo stato del sistema. Gli elementi semantici sono numerosi, possono essere anche complessi e non tutti presenti in uno specifico linguaggio.</p>
+<p>Tra i primi elementi semantici, richiamati già molte volte, troviamo le variabili e le funzioni.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -996,10 +959,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./prima-parte-sintassi.html" class="pagination-link" aria-label="La sintassi dei linguaggi di programmazione">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">La sintassi dei linguaggi di programmazione</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./prima-parte.html" class="pagination-link" aria-label="Prima parte: I fondamenti della programmazione">
-        <span class="nav-page-text">Prima parte: I fondamenti della programmazione</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./prima-parte-variabili-spazi-nomi-moduli-file.html" class="pagination-link" aria-label="La variabile">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La variabile</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1027,7 +993,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>Mostra il codice</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-semantica.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/blob/main/prima-parte-semantica.qmd" class="toc-action"><i class="bi empty"></i>Mostra il codice</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
