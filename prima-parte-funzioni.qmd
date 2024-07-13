@@ -3,262 +3,11 @@ reference-location: margin
 citation-location: margin
 ---
 
-# La variabile e la funzione
-
-La **semantica** di un linguaggio di programmazione definisce il significato delle istruzioni sintatticamente corrette. In altre parole, la semantica specifica cosa fa un programma quando viene eseguito, descrivendo l'effetto delle istruzioni sullo stato del sistema. Gli elementi semantici sono numerosi, possono essere anche complessi e non tutti presenti in uno specifico linguaggio. 
-
-Tra i primi elementi semantici, richiamati già molte volte, troviamo le variabili e le funzioni. 
-
-## La variabile
-
-Le **variabili** sono uno dei concetti fondamentali nella programmazione, essenziali per la manipolazione e la gestione dei dati. Una variabile è un nome simbolico associato a una locazione di memoria che può contenere uno o più valori di un certo tipo di dato. Questo concetto permette agli sviluppatori di astrarre dalla memoria fisica e concentrarsi sulla logica del programma. 
-
-La gestione delle variabili varia tra i diversi linguaggi di programmazione, quindi esploreremo le variabili con particolare attenzione a Python, Java, C e C++.
-
-### La dichiarazione e la inizializzazione
-
-La **dichiarazione** di una variabile è il processo mediante il quale si introduce una variabile nel programma, specificandone il nome e, in molti casi, il tipo di dato che essa può contenere. Questo processo informa il compilatore o l'interprete che una certa variabile esiste e può essere utilizzata nel codice. Abbiamo visto che esiste una istruzione specifica in alcuni linguaggi, mentre in altri è implicita nella assegnazione. 
-
-L'**inizializzazione** di una variabile è il processo di assegnazione di un valore iniziale alla variabile. Questo può avvenire contestualmente alla dichiarazione o in un'istruzione separata successiva, quella di assegnamento.
-
-Esempi:
-
-- In Python, le variabili sono dichiarate automaticamente al momento dell'assegnazione del valore. Non è necessario specificare il tipo di dato, poiché Python è dinamicamente tipizzato, cioè determina durante l'esecuzione il tipo di dato del valore associato alla variabile.
-
-  ```python
-  x = 10  # <1>
-
-  x = "Hello"  # <2>
-  ```
-  1. Dichiarazione e inizializzazione.
-  2. Cambia il tipo di `x` dinamicamente a stringa.
-
-- In Java, le variabili devono essere dichiarate con un tipo di dato esplicito. La dichiarazione può avvenire contestualmente all'inizializzazione o separatamente:
-
-  ```java
-  int x;  // <1>
-
-  x = 10; // <2>
-
-  int y = 20; // <3>
-  ```
- 1. Dichiarazione.
- 2. Inizializzazione.
- 3. Dichiarazione e inizializzazione.
-
-- In C, la dichiarazione delle variabili richiede la specifica del tipo di dato. La dichiarazione e l'inizializzazione possono essere separate o combinate:
-
-  ```c
-  int x;  /* <1> */
-
-  x = 10; /* <2> */
-
-  int y = 20; /* <3> */
-  ```
- 1. Dichiarazione.
- 2. Inizializzazione.
- 3. Dichiarazione e inizializzazione.
-
-- Il C++ è simile al C, ma con funzionalità aggiuntive come l'inizializzazione a lista:
-
-  ```cpp
-  int x;  // <1>
-
-  x = 10; // <2>
-
-  int y = 20; // <3>
-
-  int z{30};  // <4>
-
-  int arr[5] = {1, 2, 3, 4, 5}; // <5>
-  ```
-  1. Dichiarazione.
-  2. Inizializzazione.
-  3. Dichiarazione e inizializzazione.
-  4. Dichiarazione e inizializzazione a lista di `z` con l'intero `30`.
-  5. Dichiarazione e inizializzazione a lista di un array con 5 valori predefiniti.
-
-### L'ambito
-
-L'**ambito** di una variabile rappresenta la porzione del codice in cui l'identificatore della variabile è definito e, quindi, può essere utilizzato. 
-
-Gli approcci dei diversi linguaggi sono diversi, infatti Java, C e C++ hanno una gestione dell'ambito delle variabili per cui quelle dichiarate all'interno di un blocco sono limitate a quel blocco e non sono visibili al di fuori di esso. In Python, invece, le variabili definite all'interno di un blocco di un'istruzione composta (come un ciclo `for` o una condizione `if`) rimangono accessibili anche al di fuori del blocco, purché siano ancora nel medesimo ambito di funzione o modulo e, soprattutto, quel blocco sia stato eseguito.
-
-- Le variabili con ambito **globale** sono dichiarate al di fuori di qualsiasi blocco e sono accessibili ovunque nel programma:
-
-  ```c
-  int globalVar = 10; /* <1> */ 
-
-  void function() { /* <2> */ 
-    printf("%d\n", globalVar); /* <3> */ 
-  }
-  ```
-  1. Variabile globale.
-  2. Inizio del blocco.
-  3. Accesso alla variabile globale.
-
-- Le variabili con ambito **locale** sono dichiarate all'interno di un blocco, come una funzione o un loop, e sono accessibili solo all'interno di quel blocco: 
-
-  ```java
-  public class Main {
-    public static void main(String[] args) {
-      if (true) {
-        int x = 10;  // <1>
-      }
-
-      System.out.println(x);  // <2>
-
-      for (int i = 0; i < 10; i++) {
-        int y = i;  // <3>
-      }
-
-      System.out.println(y); // <4>
-    }
-  }
-  ```
-  1. Variabile locale al blocco `if`.
-  2. Errore: `x` non è visibile qui!
-  3. Variabile locale al blocco `for`.
-  4. Errore: `y` non è visibile qui.
-
-- In Python, una variabile definita all'interno di un blocco di un'istruzione composta, come all'interno di un ciclo `for` o di una condizione `if`, rimane accessibile anche dopo l'esecuzione del blocco:
-
-  ```python
-  for i in range(10):
-    loopVar = i  # 
-
-  print(loopVar)  # 
-  ```
-  1. Variabile locale al ciclo.
-  2. `loopVar` è ancora accessibile qui.
-
-### La visibilità
-
-La **visibilità** si riferisce alla possibilità che in una regione di codice una certa variabile possa essere _vista_ e utilizzata. Anche se correlata all'ambito, la visibilità può essere influenzata da altri fattori come la modularità e gli spazi di nomi (_namespace_).
-
-- Consideriamo un esempio in C++ per illustrare la differenza tra ambito e visibilità:
-
-  ```cpp
-  #include <iostream>
-
-  int globalVar = 10; // <1>
-
-  void function() {
-    int localVar = 5; // <2>
-
-    std::cout << globalVar << std::endl; // <3>
-    std::cout << localVar << std::endl; // <4>
-  }
-
-  int main() {
-    function();
-
-    std::cout << globalVar << std::endl; // <5>
-    std::cout << localVar << std::endl; // <6>
-
-    return 0;
-  }
-  ```
-  1. Variabile globale (ambito globale).
-  2. Variabile locale (ambito locale alla funzione).
-  3. Visibilità `globaleVar` all'interno della funzione.
-  4. Visibilità `localVar` all'interno della funzione.
-  5. Visibilità `globalVar` all'interno di `main`.
-  6. Errore: `localVar` non è visibile qui (ambito locale alla funzione `function`). 
-
-- In Python, le variabili definite all'interno di una funzione sono locali a quella funzione, ma le variabili definite all'interno di un blocco (come un ciclo `for` o un `if`) sono visibili all'interno della funzione o del modulo in cui si trovano:
-
-  ```python
-  globalVar = 10  # <1>
-
-  def function():
-    localVar = 5  # <2>
-
-    if True:
-      blockVar = 20  # <3>
-
-    print(localVar)  # <4>
-    print(blockVar)  # <5>
-
-  function()
-
-  print(globalVar)  # <6>
-  print(localVar)  # <7>
-  print(blockVar)  # <8>
-  ```
-  1. Variabile globale.
-  2. Variabile locale.
-  3. Visibile all'interno della funzione.
-  4. Visibile.
-  5. Visibile.
-  6. Visibile.
-  7. Errore: non visibile al di fuori della funzione.
-  8. Errore: non visibile al di fuori della funzione.
-
-### La durata di vita degli oggetti
-
-La **durata di vita** descrive per quanto tempo un oggetto rimane in memoria durante l'esecuzione del programma. Questo è distinto dalla variabile (o puntatore) che fa riferimento all'oggetto. 
-
-In alcuni linguaggi di programmazione è presente il **garbage collector**, cioè un processo avviato dal compilatore o interprete che si occupa di rendere nuovamente disponibili le aree di memoria precedentemente occupate da oggetti non più referenziati da variabili. Questo accade quando l'esecuzione del programma raggiunge regioni di codice dove quelle variabili non sono più visibili. In questo modo, la visibilità è legata alla durata di vita degli oggetti, rendendo la gestione della memoria non più una preoccupazione del programmatore.
-
-Distinguiamo tra **variabile automatica**, **variabile statica** e **variabile dinamica**:
-
-- Variabile automatica: L'oggetto esiste solo durante l'esecuzione del blocco di codice in cui è stata dichiarata la variabile a cui è associato. Esempio in C:
-
-  ```c
-  void function() {
-    int autoVar = 10; /* <1> */
-  } 
-
-  printf("autoVar cancellata!"); /* <2> */ 
-  ```
-  1. Dichiarazione di `autoVar` e creazione in memoria di un oggetto corrispondente all'intero 10.
-  2. Prima di questa istruzione l'oggetto 10 non è più presente in memoria.
-
-- Variabile statica: La variabile esiste per tutta la durata del programma, ma è accessibile solo all'interno del blocco in cui è dichiarata. Esempio in C:
-
-  ```c
-  void function() {
-    static int staticVar = 10; /* <1> */ 
-  }
-  ```
-  1. Variabile statica ottenuta con una parola chiave ad hoc in fase di dichiarazione.
-
-- Variabile dinamica: Le variabili dinamiche sono utilizzate per riservare memoria che persiste oltre la durata del blocco di codice in cui sono state create. L'oggetto è creato in memoria e deve essere cancellato esplicitamente dall'utente, utilizzando funzioni di gestione della memoria come `delete`. La variabile che punta all'oggetto è separata dall'oggetto stesso, quindi se la variabile non è più visibile, l'oggetto continuerà a rimanere in memoria e non sarà più eliminabile, causando una perdita di memoria (_memory leak_). Esempio in C++:
-
-  ```cpp
-  #include <iostream>
-
-  void function() {
-    int* dynamicVar = new int(10); // <1>
-    std::cout << "dynamicVar: " << *dynamicVar << std::endl; // <2>
-  }
-
-  int main() {
-    function(); // <3>
-
-    int* safeDynamicVar = new int(20); // <4>
-
-    std::cout << "safeDynamicVar: " << *safeDynamicVar << std::endl; // <5>
-    
-    delete safeDynamicVar; // <6>
-
-    return 0;
-  ```
-  1. Allocazione dinamica di un intero all'interno della funzione `function()`.
-  2. Stampa del valore puntato da `dynamicVar`. Prima della chiusura del blocco non viene deallocata `dynamicVar` per dimostrare il problema di perdita di memoria
-  3. Chiamata alla funzione `function()`. Dopo l'uscita dalla funzione, `dynamicVar` non è più accessibile, causando una perdita di memoria poiché non è stata deallocata.
-  4. Allocazione dinamica di un intero. 
-  5. Stampa del valore puntato da `safeDynamicVar`.
-  6. Deallocazione dinamica dell'intero e ciò mostra il corretto uso di allocazione e deallocazione dinamica.
-
-In Python, la gestione della memoria è automatica grazie al garbage collector. Quando non ci sono più riferimenti di variabili a un oggetto, il garbage collector lo rimuove dalla memoria.
-
-## La funzione
+# La funzione
 
 La **funzione** è un blocco di codice riutilizzabile che contiene una sequenza di istruzioni. Questi costrutti sono fondamentali per la strutturazione e la modularizzazione del codice, consentendo di definire operazioni che possono essere invocate più volte durante l'esecuzione di un programma. La distinzione tra funzioni e metodi è che le funzioni sono indipendenti, mentre i metodi sono associati a oggetti o classi.
 
-### Dichiarazione
+## Dichiarazione
 
 La **dichiarazione** di una funzione è il processo mediante il quale si definisce una nuova funzione nel programma, specificandone il nome, i parametri (se presenti) e il blocco di codice che essa eseguirà. Questo processo informa il compilatore o l'interprete che una certa funzione esiste e può essere utilizzata nel codice. Durante la dichiarazione, non viene eseguito alcun codice; viene semplicemente definita la funzione in modo che possa essere invocata successivamente nel programma.
 
@@ -271,9 +20,9 @@ def somma(a, b):  # <1>
 1. Definizione della funzione `somma` con due parametri `a` e `b`.
 2. La funzione `somma` ritorna la somma dei parametri `a` e `b`.
 
-### Il parametro e l'argomento
+## Il parametro e l'argomento
 
-Il **parametro** e l'**argomento** sono strumenti fondamentali per passare dati alle funzioni e influenzarne il comportamento.
+Il **parametro** e l'**argomento** sono strumenti fondamentali per passare dati alle funzioni e influenzarne il comportamento. In particolare:
 
 - Parametri o parametri formali: I parametri sono definiti nella dichiarazione della funzione e rappresentano i nomi delle variabili che la funzione utilizzerà per accedere ai dati passati.
 
@@ -293,9 +42,9 @@ print(result)  # <3>
 2. `3` e `4` sono argomenti passati alla funzione `somma`.
 3. Il risultato della funzione `somma` viene stampato.
 
-### Il valore di ritorno
+## Il valore di ritorno
 
-Il valore di ritorno è il risultato prodotto da una funzione, che può essere utilizzato nell'istruzione chiamante. Una funzione può restituire un valore utilizzando la parola chiave `return`.
+Il valore di ritorno è il risultato prodotto da una funzione, che può essere utilizzato nell'istruzione chiamante. Una funzione può restituire un valore utilizzando una sintassi particolare come la parola chiave `return`.
 
 Esempio in Java:
 
@@ -317,11 +66,11 @@ public class Main {
 3. Chiamata della funzione `somma` con argomenti `3` e `4`.
 4. Il risultato della funzione `somma` viene stampato.
 
-### Ambito e visibilità
+## Ambito e visibilità
 
 L'ambito e la visibilità degli identificatori delle funzioni sono concetti sono simili a quelli delle variabili, ma presentano alcune differenze chiave che è importante comprendere.
 
-#### Ambito
+### Ambito
 
 Per le funzioni distinguiamo sempre i seguenti:
 
@@ -369,7 +118,7 @@ Per le funzioni distinguiamo sempre i seguenti:
 
   In C, le funzioni locali non sono standard, ma è possibile ottenere un comportamento simile usando funzioni statiche o funzioni inline definite all'interno di un file sorgente specifico.
 
-#### Visibilità
+### Visibilità
 
 La visibilità si riferisce a dove nel codice l'identificatore di una funzione può essere utilizzato. La visibilità è strettamente legata all'ambito, ma può essere influenzata anche da altre considerazioni come la modularità e le regole di accesso.
 
@@ -393,7 +142,7 @@ La visibilità si riferisce a dove nel codice l'identificatore di una funzione p
   1. Dichiarazione della funzione `funzione_supporto` all'interno di `funzione_esterna`.
   2. Chiamata della funzione `funzione_supporto` all'interno di `funzione_esterna`.
 
-#### Differenze tra funzioni con variabili e oggetti
+### Differenze tra funzioni con variabili e oggetti
 
 Sebbene l'ambito e la visibilità delle funzioni condividano concetti simili con le variabili e gli oggetti, ci sono alcune differenze chiave:
 
@@ -401,7 +150,7 @@ Sebbene l'ambito e la visibilità delle funzioni condividano concetti simili con
   
 - Allocazione dinamica: In C++, le variabili e gli oggetti possono essere allocati dinamicamente usando `new` e deallocati usando `delete`. Le funzioni non richiedono un'allocazione esplicita di memoria; la loro dichiarazione è sufficiente per renderle utilizzabili nell'ambito definito.
 
-### La ricorsione
+## La ricorsione
 
 La **ricorsione** è la capacità di una funzione di chiamare se stessa, utile per risolvere problemi che possono essere suddivisi in sottoproblemi simili. Ogni chiamata ricorsiva deve avvicinarsi a una condizione di terminazione per evitare loop infiniti.
 
@@ -606,9 +355,9 @@ def somma(a):
 
   return inner  # <1>
 
-add_five = somma(5)  # <2>
+aggiungi_cinque = somma(5)  # <2>
 
-print(add_five(3))  # <3>
+print(aggiungi_cinque(3))  # <3>
 ```
 1. La funzione `somma` ritorna una nuova funzione `inner` che somma `a` al suo argomento `b`.
 2. `somma(5)` ritorna una nuova funzione che somma `5` al suo argomento.
@@ -625,9 +374,9 @@ std::function<int(int)> somma(int a) {  // <1>
 }
 
 int main() {
-  auto add_five = somma(5);  // <3>
+  auto aggiungi_cinque = somma(5);  // <3>
 
-  std::cout << add_five(3) << std::endl;  // <4>
+  std::cout << aggiungi_cinque(3) << std::endl;  // <4>
 
   return 0;
 }
@@ -987,71 +736,72 @@ Le **chiusure** (inglese: _closure_) sono funzioni che ricordano l'ambiente nel 
 Esempio in Python:
 
 ```python
-def make_adder(x):  # <1>
+def crea_sommatore(x):  # <1>
   def somma(y):  # <2>
     return x + y  # <3>
 
   return somma  # <4>
 
-add_five = make_adder(5)  # <5>
-print(add_five(3))  # <6>
+aggiungi_cinque = crea_sommatore(5)  # <5>
+print(aggiungi_cinque(3))  # <6>
 ```
-1. Definizione della funzione `make_adder` che accetta un parametro `x`.
+1. Definizione della funzione `crea_sommatore` che accetta un parametro `x`.
 2. Definizione della funzione `somma` che accetta un parametro `y`.
 3. La funzione `somma` somma `x` e `y`.
-4. `make_adder` restituisce la funzione `somma`.
-5. `add_five` è una chiusura che ricorda il valore di `x` come `5`.
-6. `add_five(3)` restituisce `8`.
+4. `crea_sommatore` restituisce la funzione `somma`.
+5. `aggiungi_cinque` è una chiusura che ricorda il valore di `x` come `5`.
+6. `aggiungi_cinque(3)` restituisce `8`.
 
 Esempio in JavaScript:
 
 ```javascript
-function makeAdder(x) {  // <1>
+function creaSommatore(x) {  // <1>
   return function(y) {  // <2>
     return x + y;  // <3>
   };
 }
 
-const addFive = makeAdder(5);  // <4>
-console.log(addFive(3));  // <5>
+const aggiungiCinque = creaSommatore(5);  // <4>
+console.log(aggiungiCinque(3));  // <5>
 ```
-1. Definizione della funzione `makeAdder` che accetta un parametro `x`.
+1. Definizione della funzione `creaSommatore` che accetta un parametro `x`.
 2. Restituzione di una funzione che accetta un parametro `y`.
 3. La funzione interna somma `x` e `y`.
-4. `addFive` è una chiusura che ricorda il valore di `x` come `5`.
-5. `addFive(3)` restituisce `8`.
+4. `aggiungiCinque` è una chiusura che ricorda il valore di `x` come `5`.
+5. `aggiungiCinque(3)` restituisce `8`.
 
 Le chiusure sono utili in diversi contesti, tra cui:
 
 - Memorizzazione di stato: Le chiusure possono essere utilizzate per mantenere uno stato tra chiamate successive a una funzione. Esempio in Python:
 
   ```python
-  def make_counter():  # <1>
-    count = 0  # <2>
+  def crea_contatore():  # <1>
+    conto = 0  # <2>
 
-    def counter():  # <3>
-      nonlocal count  # <4>
+    def contatore():  # <3>
+      nonlocal conto  # <4>
 
-      count += 1  # <5>
+      conto += 1  # <5>
 
-      return count  # <6>
+      return conto  # <6>
 
-    return counter  # <7>
+    return contatore  # <7>
 
-  counter = make_counter()  # <8>
-  print(counter())  # <9>
-  print(counter())  # <10>
+  contatore = crea_contatore()  # <8>
+
+  print(contatore())  # <9>
+  print(contatore())  # <10>
   ```
-  1. Definizione della funzione `make_counter`.
-  2. Inizializzazione della variabile `count` a `0`.
-  3. Definizione della funzione `counter`.
-  4. Dichiarazione della variabile `count` come `nonlocal` per modificarla all'interno di `counter`.
-  5. Incremento della variabile `count`.
-  6. Restituzione del valore di `count`.
-  7. Restituzione della funzione `counter`.
-  8. Creazione della chiusura `counter`.
-  9. Prima chiamata di `counter()`, restituisce `1`.
-  10. Seconda chiamata di `counter()`, restituisce `2`.
+  1. Definizione della funzione `crea_contatore`.
+  2. Inizializzazione della variabile `conto` a `0`.
+  3. Definizione della funzione `contatore`.
+  4. Dichiarazione della variabile `conto` come `nonlocal` per modificarla all'interno di `contatore`.
+  5. Incremento della variabile `conto`.
+  6. Restituzione del valore di `conto`.
+  7. Restituzione della funzione `contatore`.
+  8. Creazione della chiusura `contatore`.
+  9. Prima chiamata di `contatore()`, restituisce `1`.
+  10. Seconda chiamata di `contatore()`, restituisce `2`.
 
 - Funzioni factory: Permettono la creazione di funzioni personalizzate configurate con parametri specifici. Esempio in Python:
 
@@ -1091,7 +841,9 @@ Le chiusure sono utili in diversi contesti, tra cui:
   5. `event_handler` è una chiusura che ricorda il valore di `message` come `Hello World`.
   6. Chiamata della funzione `event_handler`, stampa `Event: Hello World`.
 
-- Programmazione funzionale: Le chiusure sono un costrutto fondamentale per molte tecniche della programmazione funzionale, come l'applicazione parziale e la trasformazione di una funzione con parametri multipli in una sequenza di funzioni aventi un unico parametro (inglese: _currying_)[^3-prima-parte-variabili-funzioni]. Esempio in Python: 
+- Programmazione funzionale: Le chiusure sono un costrutto fondamentale per molte tecniche della programmazione funzionale, come l'applicazione parziale e la trasformazione di una funzione con parametri multipli in una sequenza di funzioni aventi un unico parametro (inglese: _currying_)[^3-prima-parte-variabili-funzioni]. 
+  
+  Esempio in Python: 
 
   ```python
   def curry_somma(a):  # <1>
@@ -1130,6 +882,7 @@ Le chiusure sono utili in diversi contesti, tra cui:
   4. `aggiungiTre 4` restituisce `7` e stampa il risultato.
 
 [^3-prima-parte-variabili-funzioni]: Il currying è una tecnica di trasformazione delle funzioni che prende il nome dal logico matematico Haskell Curry, sebbene il concetto sia stato inizialmente sviluppato da Moses Schönfinkel. In contesto matematico, questo principio può essere fatto risalire ai lavori di Gottlob Frege del 1893. Il currying consiste nel trasformare una funzione con più argomenti in una sequenza di funzioni ciascuna delle quali accetta un singolo argomento. Formalmente, data una funzione $f$ di due variabili $f(x, y)$, il currying la trasforma in una funzione $g$ tale che:
+  
   $$ g(x)(y) = f(x, y) $$
 
   Più in generale, una funzione $f: (A \times B \times \dots \times N) \rightarrow R$ può essere trasformata in una funzione curried $f': A \rightarrow (B \rightarrow \dots \rightarrow (N \rightarrow R))$.

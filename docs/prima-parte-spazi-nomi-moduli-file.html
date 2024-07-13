@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Lo spazio di nomi, il modulo e il file – Da neofita di Python a campione</title>
+<title>6&nbsp; Lo spazio di nomi, il modulo e il file – Da neofita di Python a campione</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./prima-parte-modello-dati.html" rel="next">
-<link href="./prima-parte-variabili-funzioni.html" rel="prev">
+<link href="./prima-parte-funzioni.html" rel="prev">
 <link href="./red-python-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-spazi-nomi-moduli-file.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lo spazio di nomi, il modulo e il file</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-spazi-nomi-moduli-file.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Lo spazio di nomi, il modulo e il file</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -242,32 +242,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prima-parte-variabili-funzioni.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">La variabile e la funzione</span></span></a>
+  <a href="./prima-parte-semantica-variabili.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">La semantica</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prima-parte-funzioni.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La funzione</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prima-parte-spazi-nomi-moduli-file.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lo spazio di nomi, il modulo e il file</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Lo spazio di nomi, il modulo e il file</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prima-parte-modello-dati.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Il modello dati dei linguaggi di programmazione</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Il modello dati dei linguaggi di programmazione</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prima-parte-altri-concetti-semantici.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Altri concetti semantici dei linguaggi di programmazione</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Altri concetti semantici dei linguaggi di programmazione</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prima-parte-programmazione-ia-generativa.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">L’Impatto dell’intelligenza artificiale generativa sulla programmazione</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">L’Impatto dell’intelligenza artificiale generativa sulla programmazione</span></span></a>
   </div>
 </li>
       </ul>
@@ -284,49 +290,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./seconda-parte-python-introduzione.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduzione a Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduzione a Python</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./seconda-parte-python-installazione.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Scaricare e installare Python</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./seconda-parte-python-sintassi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">La sintassi</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">La sintassi</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./seconda-parte-python-modello-dati.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Il modello dati</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Il modello dati</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./seconda-parte-python-istruzioni.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Istruzioni</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Istruzioni</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./seconda-parte-python-funzioni.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Funzioni</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Funzioni</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./seconda-parte-python-esercizi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Esercizi</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Esercizi</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./seconda-parte-python-esercitazione-uno.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Esercitazione 1: analisi di un dataset di vendite</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Esercitazione 1: analisi di un dataset di vendite</span></span></a>
   </div>
 </li>
       </ul>
@@ -343,19 +349,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./terza-parte-python-programmazione-orientata-agli-oggetti.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Programmazione orientata agli oggetti</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Programmazione orientata agli oggetti</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./terza-parte-python-moduli.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Moduli</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Moduli</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./terza-parte-python-esercitazione-uno.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Esercitazione 1: web app con Flask</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Esercitazione 1: web app con Flask</span></span></a>
   </div>
 </li>
       </ul>
@@ -395,20 +401,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Indice</h2>
    
   <ul>
-  <li><a href="#python" id="toc-python" class="nav-link active" data-scroll-target="#python"><span class="header-section-number">5.0.1</span> Python</a></li>
-  <li><a href="#java" id="toc-java" class="nav-link" data-scroll-target="#java"><span class="header-section-number">5.0.2</span> Java</a></li>
-  <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c"><span class="header-section-number">5.0.3</span> C</a></li>
-  <li><a href="#c-1" id="toc-c-1" class="nav-link" data-scroll-target="#c-1"><span class="header-section-number">5.0.4</span> C++</a></li>
-  <li><a href="#impatti" id="toc-impatti" class="nav-link" data-scroll-target="#impatti"><span class="header-section-number">5.0.5</span> Impatti</a></li>
+  <li><a href="#python" id="toc-python" class="nav-link active" data-scroll-target="#python"><span class="header-section-number">6.0.1</span> Python</a></li>
+  <li><a href="#java" id="toc-java" class="nav-link" data-scroll-target="#java"><span class="header-section-number">6.0.2</span> Java</a></li>
+  <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c"><span class="header-section-number">6.0.3</span> C</a></li>
+  <li><a href="#c-1" id="toc-c-1" class="nav-link" data-scroll-target="#c-1"><span class="header-section-number">6.0.4</span> C++</a></li>
+  <li><a href="#impatti" id="toc-impatti" class="nav-link" data-scroll-target="#impatti"><span class="header-section-number">6.0.5</span> Impatti</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-spazi-nomi-moduli-file.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/blob/main/prima-parte-spazi-nomi-moduli-file.qmd" class="toc-action"><i class="bi empty"></i>Mostra il codice</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-spazi-nomi-moduli-file.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lo spazio di nomi, il modulo e il file</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-spazi-nomi-moduli-file.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Lo spazio di nomi, il modulo e il file</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lo spazio di nomi, il modulo e il file</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Lo spazio di nomi, il modulo e il file</span></h1>
 </div>
 
 
@@ -426,8 +432,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>In molti linguaggi di programmazione, la gestione dell’ambito e della visibilità delle variabili e delle funzioni può essere ulteriormente organizzata utilizzando spazio di nomi (<em>namespace</em>), moduli, header e file separati. Questa organizzazione aiuta a evitare conflitti di nome e a mantenere il codice più modulare e manutenibile.</p>
-<section id="python" class="level3" data-number="5.0.1">
-<h3 data-number="5.0.1" class="anchored" data-anchor-id="python"><span class="header-section-number">5.0.1</span> Python</h3>
+<section id="python" class="level3" data-number="6.0.1">
+<h3 data-number="6.0.1" class="anchored" data-anchor-id="python"><span class="header-section-number">6.0.1</span> Python</h3>
 <p>In Python, i moduli sono file che contengono definizioni di variabili, funzioni e classi. I moduli possono essere importati in altri moduli o script per riutilizzare il codice. Quando un modulo viene importato, gli identificatori definiti in quel modulo (come variabili, funzioni e classi) diventano accessibili attraverso il nome del modulo. Sebbene i moduli siano spesso implementati come file separati, è possibile definirli anche all’interno di un file di codice sorgente principale.</p>
 <p>Esempio di modulo (<code>mymodule.py</code>):</p>
 <div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1"></a><span class="co"># mymodule.py</span></span>
@@ -466,8 +472,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 </section>
-<section id="java" class="level3" data-number="5.0.2">
-<h3 data-number="5.0.2" class="anchored" data-anchor-id="java"><span class="header-section-number">5.0.2</span> Java</h3>
+<section id="java" class="level3" data-number="6.0.2">
+<h3 data-number="6.0.2" class="anchored" data-anchor-id="java"><span class="header-section-number">6.0.2</span> Java</h3>
 <p>In Java, i pacchetti (<em>package</em>) sono utilizzati per organizzare le classi in namespace separati. Ogni classe deve dichiarare il pacchetto di appartenenza.</p>
 <p>Esempio di classe in un pacchetto (<code>mypackage/MyClass.java</code>):</p>
 <div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1"></a><span class="co">// mypackage/MyClass.java</span></span>
@@ -519,8 +525,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 </section>
-<section id="c" class="level3" data-number="5.0.3">
-<h3 data-number="5.0.3" class="anchored" data-anchor-id="c"><span class="header-section-number">5.0.3</span> C</h3>
+<section id="c" class="level3" data-number="6.0.3">
+<h3 data-number="6.0.3" class="anchored" data-anchor-id="c"><span class="header-section-number">6.0.3</span> C</h3>
 <p>In C, i file di intestazione (<em>header file</em>) sono utilizzati per dichiarare funzioni e variabili che possono essere utilizzate in più file sorgente, a mo’ di libreria.</p>
 <p>Esempio di file di intestazione (<code>mymodule.h</code>):</p>
 <div class="sourceCode" id="annotated-cell-5"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1"></a><span class="co">// mymodule.h</span></span>
@@ -586,8 +592,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 </section>
-<section id="c-1" class="level3" data-number="5.0.4">
-<h3 data-number="5.0.4" class="anchored" data-anchor-id="c-1"><span class="header-section-number">5.0.4</span> C++</h3>
+<section id="c-1" class="level3" data-number="6.0.4">
+<h3 data-number="6.0.4" class="anchored" data-anchor-id="c-1"><span class="header-section-number">6.0.4</span> C++</h3>
 <p>In C++, la parola chiave <code>namespace</code> è utilizzata per organizzare le classi, le funzioni e le variabili in spazi di nomi separati, simili ai pacchetti in Java.</p>
 <p>Esempio di dichiarazione di uno spazio di nomi (<code>mymodule.h</code>):</p>
 <div class="sourceCode" id="annotated-cell-8"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1"></a><span class="pp">#ifndef MYMODULE_H </span></span>
@@ -655,8 +661,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 </section>
-<section id="impatti" class="level3" data-number="5.0.5">
-<h3 data-number="5.0.5" class="anchored" data-anchor-id="impatti"><span class="header-section-number">5.0.5</span> Impatti</h3>
+<section id="impatti" class="level3" data-number="6.0.5">
+<h3 data-number="6.0.5" class="anchored" data-anchor-id="impatti"><span class="header-section-number">6.0.5</span> Impatti</h3>
 <p>L’uso di spazio di nomi, moduli e file di intestazione influisce sull’ambito e sulla visibilità delle variabili e delle funzioni. In generale, questi meccanismi consentono una maggiore modularità e organizzazione del codice, facilitando la gestione di grandi progetti.</p>
 <ul>
 <li><p>Ambito: L’ambito delle variabili e delle funzioni può essere limitato a uno spazio di nomi o a un modulo, riducendo il rischio di conflitti di nome.</p></li>
@@ -1234,13 +1240,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./prima-parte-variabili-funzioni.html" class="pagination-link" aria-label="La variabile e la funzione">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">La variabile e la funzione</span></span>
+      <a href="./prima-parte-funzioni.html" class="pagination-link" aria-label="La funzione">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La funzione</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./prima-parte-modello-dati.html" class="pagination-link" aria-label="Il modello dati dei linguaggi di programmazione">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Il modello dati dei linguaggi di programmazione</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Il modello dati dei linguaggi di programmazione</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

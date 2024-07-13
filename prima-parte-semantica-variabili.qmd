@@ -1,0 +1,260 @@
+---
+reference-location: margin
+citation-location: margin
+---
+
+# La semantica
+
+La **semantica** di un linguaggio di programmazione definisce il significato delle istruzioni sintatticamente corrette. In altre parole, la semantica specifica cosa fa un programma quando viene eseguito, descrivendo l'effetto delle istruzioni sullo stato del sistema. Gli elementi semantici sono numerosi, possono essere anche complessi e non tutti presenti in uno specifico linguaggio. 
+
+Tra i primi elementi semantici, richiamati già molte volte, troviamo le variabili e le funzioni. 
+
+
+
+
+## La variabile
+
+Le **variabili** sono uno dei concetti fondamentali nella programmazione, essenziali per la manipolazione e la gestione dei dati. Una variabile è un nome simbolico associato a una locazione di memoria che può contenere uno o più valori di un certo tipo di dato. Questo concetto permette agli sviluppatori di astrarre dalla memoria fisica e concentrarsi sulla logica del programma. 
+
+La gestione delle variabili varia tra i diversi linguaggi di programmazione, quindi esploreremo le variabili con particolare attenzione a Python, Java, C e C++.
+
+### La dichiarazione e la inizializzazione
+
+La **dichiarazione** di una variabile è il processo mediante il quale si introduce una variabile nel programma, specificandone il nome e, in molti casi, il tipo di dato che essa può contenere. Questo processo informa il compilatore o l'interprete che una certa variabile esiste e può essere utilizzata nel codice. Abbiamo visto che esiste una istruzione specifica in alcuni linguaggi, mentre in altri è implicita nella assegnazione. 
+
+L'**inizializzazione** di una variabile è il processo di assegnazione di un valore iniziale alla variabile. Questo può avvenire contestualmente alla dichiarazione o in un'istruzione separata successiva, quella di assegnamento.
+
+Esempi:
+
+- In Python, le variabili sono dichiarate automaticamente al momento dell'assegnazione del valore. Non è necessario specificare il tipo di dato, poiché Python è dinamicamente tipizzato, cioè determina durante l'esecuzione il tipo di dato del valore associato alla variabile.
+
+  ```python
+  x = 10  # <1>
+
+  x = "Hello"  # <2>
+  ```
+  1. Dichiarazione e inizializzazione.
+  2. Cambia il tipo di `x` dinamicamente a stringa.
+
+- In Java, le variabili devono essere dichiarate con un tipo di dato esplicito. La dichiarazione può avvenire contestualmente all'inizializzazione o separatamente:
+
+  ```java
+  int x;  // <1>
+
+  x = 10; // <2>
+
+  int y = 20; // <3>
+  ```
+ 1. Dichiarazione.
+ 2. Inizializzazione.
+ 3. Dichiarazione e inizializzazione.
+
+- In C, la dichiarazione delle variabili richiede la specifica del tipo di dato. La dichiarazione e l'inizializzazione possono essere separate o combinate:
+
+  ```c
+  int x;  /* <1> */
+
+  x = 10; /* <2> */
+
+  int y = 20; /* <3> */
+  ```
+ 1. Dichiarazione.
+ 2. Inizializzazione.
+ 3. Dichiarazione e inizializzazione.
+
+- Il C++ è simile al C, ma con funzionalità aggiuntive come l'inizializzazione a lista:
+
+  ```cpp
+  int x;  // <1>
+
+  x = 10; // <2>
+
+  int y = 20; // <3>
+
+  int z{30};  // <4>
+
+  int arr[5] = {1, 2, 3, 4, 5}; // <5>
+  ```
+  1. Dichiarazione.
+  2. Inizializzazione.
+  3. Dichiarazione e inizializzazione.
+  4. Dichiarazione e inizializzazione a lista di `z` con l'intero `30`.
+  5. Dichiarazione e inizializzazione a lista di un array con 5 valori predefiniti.
+
+### L'ambito
+
+L'**ambito** di una variabile rappresenta la porzione del codice in cui l'identificatore della variabile è definito e, quindi, può essere utilizzato. 
+
+Gli approcci dei diversi linguaggi sono diversi, infatti Java, C e C++ hanno una gestione dell'ambito delle variabili per cui quelle dichiarate all'interno di un blocco sono limitate a quel blocco e non sono visibili al di fuori di esso. In Python, invece, le variabili definite all'interno di un blocco di un'istruzione composta (come un ciclo `for` o una condizione `if`) rimangono accessibili anche al di fuori del blocco, purché siano ancora nel medesimo ambito di funzione o modulo e, soprattutto, quel blocco sia stato eseguito.
+
+- Le variabili con ambito **globale** sono dichiarate al di fuori di qualsiasi blocco e sono accessibili ovunque nel programma:
+
+  ```c
+  int globalVar = 10; /* <1> */ 
+
+  void function() { /* <2> */ 
+    printf("%d\n", globalVar); /* <3> */ 
+  }
+  ```
+  1. Variabile globale.
+  2. Inizio del blocco.
+  3. Accesso alla variabile globale.
+
+- Le variabili con ambito **locale** sono dichiarate all'interno di un blocco, come una funzione o un loop, e sono accessibili solo all'interno di quel blocco: 
+
+  ```java
+  public class Main {
+    public static void main(String[] args) {
+      if (true) {
+        int x = 10;  // <1>
+      }
+
+      System.out.println(x);  // <2>
+
+      for (int i = 0; i < 10; i++) {
+        int y = i;  // <3>
+      }
+
+      System.out.println(y); // <4>
+    }
+  }
+  ```
+  1. Variabile locale al blocco `if`.
+  2. Errore: `x` non è visibile qui!
+  3. Variabile locale al blocco `for`.
+  4. Errore: `y` non è visibile qui.
+
+- In Python, una variabile definita all'interno di un blocco di un'istruzione composta, come all'interno di un ciclo `for` o di una condizione `if`, rimane accessibile anche dopo l'esecuzione del blocco:
+
+  ```python
+  for i in range(10):
+    loopVar = i  # 
+
+  print(loopVar)  # 
+  ```
+  1. Variabile locale al ciclo.
+  2. `loopVar` è ancora accessibile qui.
+
+### La visibilità
+
+La **visibilità** si riferisce alla possibilità che in una regione di codice una certa variabile possa essere _vista_ e utilizzata. Anche se correlata all'ambito, la visibilità può essere influenzata da altri fattori come la modularità e gli spazi di nomi (_namespace_).
+
+- Consideriamo un esempio in C++ per illustrare la differenza tra ambito e visibilità:
+
+  ```cpp
+  #include <iostream>
+
+  int globalVar = 10; // <1>
+
+  void function() {
+    int localVar = 5; // <2>
+
+    std::cout << globalVar << std::endl; // <3>
+    std::cout << localVar << std::endl; // <4>
+  }
+
+  int main() {
+    function();
+
+    std::cout << globalVar << std::endl; // <5>
+    std::cout << localVar << std::endl; // <6>
+
+    return 0;
+  }
+  ```
+  1. Variabile globale (ambito globale).
+  2. Variabile locale (ambito locale alla funzione).
+  3. Visibilità `globaleVar` all'interno della funzione.
+  4. Visibilità `localVar` all'interno della funzione.
+  5. Visibilità `globalVar` all'interno di `main`.
+  6. Errore: `localVar` non è visibile qui (ambito locale alla funzione `function`). 
+
+- In Python, le variabili definite all'interno di una funzione sono locali a quella funzione, ma le variabili definite all'interno di un blocco (come un ciclo `for` o un `if`) sono visibili all'interno della funzione o del modulo in cui si trovano:
+
+  ```python
+  globalVar = 10  # <1>
+
+  def function():
+    localVar = 5  # <2>
+
+    if True:
+      blockVar = 20  # <3>
+
+    print(localVar)  # <4>
+    print(blockVar)  # <5>
+
+  function()
+
+  print(globalVar)  # <6>
+  print(localVar)  # <7>
+  print(blockVar)  # <8>
+  ```
+  1. Variabile globale.
+  2. Variabile locale.
+  3. Visibile all'interno della funzione.
+  4. Visibile.
+  5. Visibile.
+  6. Visibile.
+  7. Errore: non visibile al di fuori della funzione.
+  8. Errore: non visibile al di fuori della funzione.
+
+### La durata di vita degli oggetti
+
+La **durata di vita** descrive per quanto tempo un oggetto rimane in memoria durante l'esecuzione del programma. Questo è distinto dalla variabile (o puntatore) che fa riferimento all'oggetto. 
+
+In alcuni linguaggi di programmazione è presente il **garbage collector**, cioè un processo avviato dal compilatore o interprete che si occupa di rendere nuovamente disponibili le aree di memoria precedentemente occupate da oggetti non più referenziati da variabili. Questo accade quando l'esecuzione del programma raggiunge regioni di codice dove quelle variabili non sono più visibili. In questo modo, la visibilità è legata alla durata di vita degli oggetti, rendendo la gestione della memoria non più una preoccupazione del programmatore.
+
+Distinguiamo tra **variabile automatica**, **variabile statica** e **variabile dinamica**:
+
+- Variabile automatica: L'oggetto esiste solo durante l'esecuzione del blocco di codice in cui è stata dichiarata la variabile a cui è associato. Esempio in C:
+
+  ```c
+  void function() {
+    int autoVar = 10; /* <1> */
+  } 
+
+  printf("autoVar cancellata!"); /* <2> */ 
+  ```
+  1. Dichiarazione di `autoVar` e creazione in memoria di un oggetto corrispondente all'intero 10.
+  2. Prima di questa istruzione l'oggetto 10 non è più presente in memoria.
+
+- Variabile statica: La variabile esiste per tutta la durata del programma, ma è accessibile solo all'interno del blocco in cui è dichiarata. Esempio in C:
+
+  ```c
+  void function() {
+    static int staticVar = 10; /* <1> */ 
+  }
+  ```
+  1. Variabile statica ottenuta con una parola chiave ad hoc in fase di dichiarazione.
+
+- Variabile dinamica: Le variabili dinamiche sono utilizzate per riservare memoria che persiste oltre la durata del blocco di codice in cui sono state create. L'oggetto è creato in memoria e deve essere cancellato esplicitamente dall'utente, utilizzando funzioni di gestione della memoria come `delete`. La variabile che punta all'oggetto è separata dall'oggetto stesso, quindi se la variabile non è più visibile, l'oggetto continuerà a rimanere in memoria e non sarà più eliminabile, causando una perdita di memoria (_memory leak_). Esempio in C++:
+
+  ```cpp
+  #include <iostream>
+
+  void function() {
+    int* dynamicVar = new int(10); // <1>
+
+    std::cout << "dynamicVar: " << *dynamicVar << std::endl; // <2>
+  }
+
+  int main() {
+    function(); // <3>
+
+    int* safeDynamicVar = new int(20); // <4>
+
+    std::cout << "safeDynamicVar: " << *safeDynamicVar << std::endl; // <5>
+    
+    delete safeDynamicVar; // <6>
+
+    return 0;
+  ```
+  1. Allocazione dinamica di un intero all'interno della funzione `function()`.
+  2. Stampa del valore puntato da `dynamicVar`. Prima della chiusura del blocco non viene deallocata `dynamicVar` per dimostrare il problema di perdita di memoria
+  3. Chiamata alla funzione `function()`. Dopo l'uscita dalla funzione, `dynamicVar` non è più accessibile, causando una perdita di memoria poiché non è stata deallocata.
+  4. Allocazione dinamica di un intero. 
+  5. Stampa del valore puntato da `safeDynamicVar`.
+  6. Deallocazione dinamica dell'intero e ciò mostra il corretto uso di allocazione e deallocazione dinamica.
+
+In Python, la gestione della memoria è automatica grazie al garbage collector. Quando non ci sono più riferimenti di variabili a un oggetto, il garbage collector lo rimuove dalla memoria.
+
