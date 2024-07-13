@@ -841,7 +841,7 @@ Le chiusure sono utili in diversi contesti, tra cui:
   5. `event_handler` è una chiusura che ricorda il valore di `message` come `Hello World`.
   6. Chiamata della funzione `event_handler`, stampa `Event: Hello World`.
 
-- Programmazione funzionale: Le chiusure sono un costrutto fondamentale per molte tecniche della programmazione funzionale, come l'applicazione parziale e la trasformazione di una funzione con parametri multipli in una sequenza di funzioni aventi un unico parametro (inglese: _currying_)[^3-prima-parte-variabili-funzioni]. 
+- Programmazione funzionale: Le chiusure sono un costrutto fondamentale per molte tecniche della programmazione funzionale, come l'applicazione parziale e la trasformazione di una funzione con parametri multipli in una sequenza di funzioni aventi un unico parametro (inglese: _currying_).[^4-prima-parte-variabili-funzioni] 
 
   Il currying può essere estremamente utile per creare funzioni generiche che possono essere specializzate in vari contesti. Ad esempio, consideriamo un'applicazione che richiede l'invio di messaggi a diversi destinatari con diverse priorità.
 
@@ -923,11 +923,5 @@ Le chiusure sono utili in diversi contesti, tra cui:
   12. Invio di un'email con priorità alta.
   13. Invio di un SMS con priorità bassa.
 
-[^3-prima-parte-variabili-funzioni]: Il currying è una tecnica di trasformazione delle funzioni che prende il nome dal logico matematico Haskell Curry, sebbene il concetto sia stato inizialmente sviluppato da Moses Schönfinkel. In contesto matematico, questo principio può essere fatto risalire ai lavori di Gottlob Frege del 1893. Il currying consiste nel trasformare una funzione con più argomenti in una sequenza di funzioni ciascuna delle quali accetta un singolo argomento. Formalmente, data una funzione $f$ di due variabili $f(x, y)$, il currying la trasforma in una funzione $g$ tale che: $ g(x)(y) = f(x, y) $.
-
-  Più in generale, una funzione $f: (A \times B \times \dots \times N) \rightarrow R$ può essere trasformata in una funzione _curried_ $f': A \rightarrow (B \rightarrow \dots \rightarrow (N \rightarrow R))$.
-
-  Il linguaggio di programmazione Haskell, che supporta nativamente il currying, è stato chiamato così in onore proprio di Haskell Curry, riconoscendo il suo contributo alla logica combinatoria e alla teoria delle funzioni.
-
-  Per approfondire: [@wikipedia_currying], [@haskell_currying], [@abelson1996], [@curry1950].
+[^4-prima-parte-variabili-funzioni]: Il currying è una tecnica di trasformazione delle funzioni che prende il nome dal logico matematico Haskell Curry, sebbene il concetto sia stato inizialmente sviluppato da Moses Schönfinkel. In contesto matematico, questo principio può essere fatto risalire ai lavori di Gottlob Frege del 1893. Il currying consiste nel trasformare una funzione con più argomenti in una sequenza di funzioni ciascuna delle quali accetta un singolo argomento. Formalmente, data una funzione $f$ di due variabili $f(x, y)$, il currying la trasforma in una funzione $g$ tale che $g(x)(y)=f(x,y)$. Il linguaggio di programmazione Haskell, che supporta nativamente il currying, è stato chiamato così in onore proprio di Haskell Curry, riconoscendo il suo contributo alla logica combinatoria e alla teoria delle funzioni. Per approfondire: [@wikipedia_currying], [@haskell_currying], [@abelson1996], [@curry1950].
 

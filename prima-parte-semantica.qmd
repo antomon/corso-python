@@ -5,8 +5,344 @@ citation-location: margin
 
 # La semantica dei linguaggi di programmazione
 
-La **semantica** di un linguaggio di programmazione definisce il significato delle istruzioni sintatticamente corrette. In altre parole, la semantica specifica cosa fa un programma quando viene eseguito, descrivendo l'effetto delle istruzioni sullo stato del sistema. Gli elementi semantici sono numerosi, possono essere anche complessi e non tutti presenti in uno specifico linguaggio. 
+Dopo aver esaminato la sintassi dei linguaggi di programmazione, ci concentriamo ora sulla **semantica**, l'altra componente fondamentale di un linguaggio di programmazione. Mentre la sintassi si occupa della forma e della struttura del codice, la semantica riguarda il significato delle istruzioni e come queste vengono interpretate ed eseguite dal computer.
 
-Tra i primi elementi semantici, richiamati già molte volte, troviamo le variabili e le funzioni. 
+La semantica di un linguaggio di programmazione definisce come le istruzioni sintatticamente corrette devono essere interpretate e quale effetto producono quando vengono eseguite. È il ponte tra la struttura formale del codice e il suo comportamento effettivo durante l'esecuzione.
 
+L'importanza della comprensione della semantica è simile alla comprensione del significato delle parole e delle frasi in un linguaggio naturale:
+
+1. Correttezza del programma: Una buona comprensione della semantica permette di scrivere programmi che non solo sono sintatticamente corretti, ma che producono anche i risultati desiderati.
+
+2. Debugging efficace: Conoscere la semantica aiuta a identificare e correggere errori logici nel codice, che possono essere più sottili e difficili da individuare rispetto agli errori sintattici.
+
+3. Ottimizzazione del codice: Una comprensione approfondita della semantica consente di scrivere codice più efficiente, sfruttando al meglio le caratteristiche del linguaggio.
+
+4. Portabilità del codice: Conoscere le sfumature semantiche di diversi linguaggi aiuta a scrivere codice che si comporta in modo coerente su piattaforme diverse.
+
+5. Comunicazione tra programmatori: Una chiara comprensione della semantica facilita la collaborazione tra sviluppatori, permettendo di discutere e ragionare sul comportamento del codice in modo preciso.
+
+## Tipi di semantica
+
+Esistono diversi tipi di semantica nel contesto dei linguaggi di programmazione. Ciascun tipo di semantica ha un ruolo specifico e può essere particolarmente rilevante a seconda del linguaggio di programmazione o del paradigma di programmazione adottato.
+
+### Semantica statica
+
+La **semantica statica** riguarda le regole che possono essere verificate durante la compilazione, senza eseguire il programma. Include il controllo dei tipi, la verifica della dichiarazione delle variabili prima del loro uso e altre regole che non dipendono dall'esecuzione del programma.
+
+Esempio in Java:
+
+```java
+int x = 10;
+String y = "Hello";
+
+y = x;  // <1>
+```
+1. Il compilatore segnala un errore su questa riga perché non è possibile assegnare un valore intero a una variabile di tipo stringa.
+
+### Semantica dinamica
+
+La **semantica dinamica** si riferisce al comportamento del programma durante l'esecuzione. Descrive come le istruzioni vengono eseguite e come il programma si evolve nel tempo.
+
+Esempio in Python:
+
+```python
+def divide(a, b):  # <1>
+  return a / b  # <2>
+
+print(divide(10, 2))  # <3>
+print(divide(10, 0))  # <4>
+```
+1. Definizione della funzione `divide` che accetta due parametri `a` e `b`.
+2. La funzione `divide` ritorna il risultato della divisione di `a` per `b`.
+3. `print(divide(10, 2))` stampa `5.0`.
+4. `print(divide(10, 0))` causa un errore a runtime per la divisione per zero.
+
+### Semantica operazionale
+
+La **semantica operazionale** spiega come un programma esegue le sue istruzioni passo dopo passo. Immaginiamo di seguire una ricetta di cucina: la semantica operazionale ci direbbe esattamente cosa fare in ogni passo, come prendere un ingrediente, mescolarlo, cuocerlo, ecc.
+
+In termini di programmazione, la semantica operazionale descrive come ogni istruzione del programma modifica lo stato del computer, come i valori delle variabili o il flusso di esecuzione. Questo tipo di semantica è spesso utilizzato per definire formalmente come dovrebbe comportarsi un linguaggio di programmazione, fornendo una guida precisa su come il codice dovrebbe essere eseguito dal computer.
+
+Esempio in C++:
+
+```cpp
+for (int i = 0; i < 5; i++) {  /* <1> */
+  if (i % 2 == 0) {  /* <2> */
+    continue;  /* <3> */
+  }
+
+  std::cout << i << std::endl;  /* <4> */
+}
+```
+1. Ciclo `for` che itera da `0` a `4`.
+2. Controllo condizionale per verificare se `i` è pari.
+3. `continue` salta le iterazioni pari.
+4. Stampa solo i valori dispari di `i`.
+
+### Semantica denotazionale
+
+La **semantica denotazionale** è un approccio formale per definire il significato di un programma associando ogni costrutto del linguaggio a una denotazione matematica, tipicamente una funzione. Questo metodo consente di ragionare in modo rigoroso e preciso sul comportamento dei programmi.
+
+In altre parole, ogni parte di un programma è mappata a un valore o a una funzione matematica. Questa mappatura permette di comprendere e prevedere il comportamento del programma in termini matematici, indipendentemente dall'implementazione concreta.
+
+Consideriamo un esempio di codice in Python che filtra, ordina e somma elementi di una lista:
+
+```python
+def filtra_pari(lista):  # <1>
+  return [x for x in lista if x % 2 == 0]  # <2>
+
+def ordina(lista):  # <3>
+  return sorted(lista)  # <4>
+
+def somma_primi_tre(lista):  # <5>
+  return sum(lista[:3])  # <6>
+
+lista = [5, 3, 8, 6, 2, 9, 1, 4, 7]  # <7>
+
+lista_pari = filtra_pari(lista)  # <8>
+
+lista_ordinata = ordina(lista_pari)  # <9>
+
+risultato = somma_primi_tre(lista_ordinata)  # <10>
+
+print(risultato)  # <11>
+```
+1. Definizione della funzione `filtra_pari` che accetta una lista.
+2. La funzione `filtra_pari` restituisce una nuova lista contenente solo i numeri pari.
+3. Definizione della funzione `ordina` che accetta una lista.
+4. La funzione `ordina` restituisce la lista ordinata.
+5. Definizione della funzione `somma_primi_tre` che accetta una lista.
+6. La funzione `somma_primi_tre` restituisce la somma dei primi tre elementi della lista.
+7. Definizione della lista `lista` contenente numeri interi.
+8. Applicazione della funzione `filtra_pari` alla lista `lista`, memorizzando il risultato in `lista_pari`.
+9. Applicazione della funzione `ordina` alla lista `lista_pari`, memorizzando il risultato in `lista_ordinata`.
+10. Applicazione della funzione `somma_primi_tre` alla lista `lista_ordinata`, memorizzando il risultato in `risultato`.
+11. Stampa del valore di `risultato`.
+
+La relativa mappatura denotazionale diviene:
+
+- `filtra_pari(lista)` corrisponde a una funzione $F$ che mappa una lista $L$ a una lista contenente solo gli elementi pari di $L$.
+
+- `ordina(lista)` corrisponde a una funzione $S$ che mappa una lista $L$ alla lista ordinata.
+
+- `somma_primi_tre(lista)` corrisponde a una funzione $T$ che mappa una lista $L$ alla somma dei suoi primi tre elementi.
+
+Quindi, il programma può essere rappresentato come la composizione delle funzioni matematiche:
+
+$$
+T(S(F(L)))
+$$
+
+Dove $L$ è la lista iniziale, $F$ è `filtra_pari`, $S$ è `ordina`, e $T$ è `somma_primi_tre`.
+
+La semantica denotazionale è utilizzata per garantire la correttezza dei programmi e per la verifica formale del loro comportamento. È un approccio potente per verificare che un programma rispetti specifiche formali e per dimostrare proprietà dei programmi in modo matematico. Esistono strumenti e linguaggi formali che applicano la semantica denotazionale per verificare programmi, come Coq e Isabelle/HOL, che permettono di definire e dimostrare formalmente proprietà dei programmi.
+
+### Semantica assiomatica
+
+La **semantica assiomatica** è un metodo formale per definire il significato dei programmi in termini di logica matematica, utilizzando precondizioni e postcondizioni. Questo approccio, introdotto da C.A.R. Hoare, è particolarmente utile per la verifica formale dei programmi, poiché consente di dimostrare matematicamente che un programma soddisfa specifiche desiderate.
+
+In termini pratici, la semantica assiomatica utilizza asserzioni logiche per descrivere lo stato del programma prima e dopo l'esecuzione di una specifica istruzione o blocco di codice. Queste asserzioni sono chiamate precondizioni (prima dell'esecuzione) e postcondizioni (dopo l'esecuzione). L'obiettivo è garantire che, se le precondizioni sono soddisfatte prima dell'esecuzione, le postcondizioni saranno soddisfatte dopo l'esecuzione.
+
+Consideriamo un esempio di funzione che calcola la radice quadrata approssimata di un numero intero non negativo in Python:
+
+```python
+def radice_quadrata_approssimata(n):  # <1>
+    """Restituisce la radice quadrata intera approssimata di n."""  # <2>
+    assert n >= 0, "n deve essere non negativo"  # <3>
+    x = n  # <4>
+    y = (x + n // x) // 2  # <5>
+    while y < x:  # <6>
+        x = y  # <7>
+        y = (x + n // x) // 2  # <8>
+    return x  # <9>
+
+print(radice_quadrata_approssimata(10))  # <10>
+```
+1. Definizione della funzione `radice_quadrata_approssimata` che accetta un parametro `n`.
+2. Commento che descrive lo scopo della funzione.
+3. Precondizione: `n` deve essere non negativo.
+4. Inizializzazione della variabile `x` con il valore di `n`.
+5. Calcolo iniziale di `y`.
+6. Ciclo `while` che continua finché `y` è minore di `x`.
+7. Aggiornamento del valore di `x`.
+8. Ricalcolo di `y`.
+9. Restituzione del valore di `x` come risultato.
+10. Test della funzione con l'input `10`.
+
+In termini di semantica assiomatica, possiamo esprimere le precondizioni e le postcondizioni come segue:
+
+- **Precondizione**: $n \geq 0$
+- **Postcondizione**: $x^2 \leq n < (x+1)^2$
+
+Durante l'esecuzione del ciclo `while`, possiamo usare invarianti di ciclo per garantire che la semantica del programma sia corretta. Un invariante di ciclo è una condizione che rimane vera prima e dopo ogni iterazione del ciclo.
+
+In questo esempio, un possibile invariante di ciclo potrebbe essere:
+
+- **Invariante di ciclo**: $x \geq y \geq \sqrt{n}$
+
+Questo invariante ci aiuta a dimostrare che, alla fine del ciclo, `x` sarà la radice quadrata intera approssimata di `n`.
+
+### Strumenti per la verifica formale
+
+Esistono diversi strumenti e linguaggi formali che supportano la semantica assiomatica e la verifica formale dei programmi, come Coq e Isabelle/HOL. Questi strumenti permettono di definire formalmente precondizioni, postcondizioni e invarianti di ciclo, e di dimostrare che un programma soddisfa le specifiche desiderate.
+
+## Elementi semantici fondamentali
+
+### Variabili, tipi di dati e modelli di dati
+
+Le variabili sono elementi fondamentali in qualsiasi linguaggio di programmazione. La semantica delle variabili include:
+
+- Il loro ciclo di vita (quando vengono create e distrutte).
+- Il loro ambito e visibilità, ovvero dove possono essere utilizzate nel programma e da dove sono accessibili.
+- Il loro tipo, che definisce quali valori possono contenere e quali operazioni possono essere eseguite su di esse.
+
+Il **modello dati** di un linguaggio di programmazione descrive come vengono rappresentati e manipolati i dati nel linguaggio. Questo modello include la definizione di tipi di dati primitivi (come numeri interi, stringhe, booleani) e tipi di dati complessi (come liste, array, oggetti).
+
+Esempio in Python:
+
+```python
+x = 5  # <1>
+y = "Hello"  # <2>
+
+def my_function():  # <3>
+    z = 10  # <4>
+    print(x)  # <5>
+
+my_function()
+```
+1. `x` è una variabile globale di tipo intero.
+2. `y` è una variabile globale di tipo stringa.
+3. Definizione della funzione `my_function`.
+4. `z` è una variabile locale alla funzione `my_function`.
+5. `print(x)` stampa il valore di `x`, che è accessibile all'interno della funzione perché è globale.
+
+Esempio in Java:
+
+```java
+public class Main {
+    static int x = 5;  // <1>
+
+    public static void main(String[] args) {
+        int y = 10;  // <2>
+        myFunction();  // <3>
+        System.out.println(x);  // <4>
+    }
+
+    public static void myFunction() {
+        int z = 20;  // <5>
+        System.out.println(z);  // <6>
+    }
+}
+```
+1. `x` è una variabile di classe, visibile a tutti i metodi della classe `Main`.
+2. `y` è una variabile locale al metodo `main`.
+3. Chiamata del metodo `myFunction`.
+4. `System.out.println(x)` stampa il valore di `x`, che è visibile perché è una variabile di classe.
+5. `z` è una variabile locale al metodo `myFunction`.
+6. `System.out.println(z)` stampa il valore di `z`, che è visibile solo all'interno di `myFunction`.
+
+### Espressioni e valutazione
+
+La semantica delle espressioni definisce come queste vengono valutate per produrre un risultato. Ciò include:
+
+- L'ordine di valutazione degli operandi.
+- Il comportamento degli operatori su diversi tipi di dati.
+- La gestione di errori e situazioni eccezionali durante la valutazione.
+
+Esempio in Java:
+
+```java
+int a = 5, b = 2;
+double result = a / b;  // <1>
+boolean check = (a > b) && (b != 0);  // <2>
+```
+1. Il risultato sarà 2.0, non 2.5 a causa della division
+
+e intera.
+2. La seconda condizione viene valutata solo se la prima è vera, grazie alla valutazione "short-circuit".
+
+### Controllo del flusso
+
+La semantica del controllo del flusso definisce come l'esecuzione del programma procede attraverso le istruzioni. Ciò include:
+
+- Il comportamento di istruzioni condizionali come `if`, `else`, `switch`.
+- Il funzionamento dei cicli come `for`, `while`.
+- La gestione delle chiamate a funzione e il passaggio dei parametri.
+
+Esempio in C++:
+
+```cpp
+for (int i = 0; i < 5; i++) {  /* <1> */
+    if (i % 2 == 0) {  /* <2> */
+        continue;  /* <3> */
+    }
+    std::cout << i << std::endl;  /* <4> */
+}
+```
+1. Ciclo `for` che itera da `0` a `4`.
+2. Controllo condizionale per verificare se `i` è pari.
+3. `continue` salta le iterazioni pari.
+4. Stampa solo i valori dispari di `i`.
+
+### Gestione della memoria
+
+La semantica della gestione della memoria definisce come il programma alloca, utilizza e libera la memoria. Ciò include:
+
+- La distinzione tra stack e heap.
+- Le regole per l'allocazione e la deallocazione della memoria.
+- Il comportamento del garbage collector nei linguaggi che lo utilizzano.
+
+Esempio in C:
+
+```c
+int *p = malloc(sizeof(int));  /* <1> */
+*p = 10;  /* <2> */
+free(p);  /* <3> */
+```
+1. `malloc` alloca memoria dinamicamente sull'heap.
+2. Il puntatore `p` viene utilizzato per accedere alla memoria allocata.
+3. `free` libera la memoria allocata, prevenendo potenziali perdite di memoria.
+
+### Sistemi di tipi
+
+Il sistema di tipi di un linguaggio definisce come i tipi di dati vengono gestiti. Ciò include:
+
+- Le regole per la conversione tra tipi (implicita o esplicita).
+- Il comportamento del controllo dei tipi (statico o dinamico).
+- L'implementazione del polimorfismo e dell'ereditarietà nei linguaggi orientati agli oggetti.
+
+Esempio in TypeScript (un superset tipizzato di JavaScript):
+
+```typescript
+let x: number = 5;  // <1>
+let y: any = "hello";  // <2>
+// x = y;  // Errore di tipo: non è possibile assegnare una stringa a un numero
+```
+1. `x` è dichiarato come numero.
+2. `y` è dichiarato come un tipo generico (`any`), che può essere assegnato a qualsiasi tipo.
+3. Il tentativo di assegnare `y` a `x` causa un errore di tipo, poiché `y` contiene una stringa e `x` è un numero.
+
+## Differenze semantiche tra linguaggi
+
+Diversi linguaggi di programmazione possono avere semantiche differenti per costrutti sintatticamente simili. Ecco alcuni esempi:
+
+1. **Valutazione delle espressioni booleane**:
+   - In Python, Java e C++, l'espressione `a && b` (o `a and b` in Python) usa la valutazione "short-circuit": se `a` è falso, `b` non viene valutato.
+   - In alcuni altri linguaggi, entrambe le parti potrebbero essere sempre valutate.
+
+2. **Passaggio dei parametri**:
+   - In C, i parametri sono passati per valore di default.
+   - In Python, gli oggetti sono passati per riferimento.
+   - In C++, è possibile scegliere tra passaggio per valore, per riferimento o per puntatore.
+
+3. **Gestione della memoria**:
+   - In C e C++, la gestione della memoria è principalmente responsabilità del programmatore.
+   - In Java e Python, c'è un garbage collector che si occupa automaticamente di liberare la memoria non più utilizzata.
+
+4. **Tipizzazione**:
+   - Python e JavaScript sono linguaggi a tipizzazione dinamica.
+   - Java e C++ sono linguaggi a tipizzazione statica.
+   - Alcuni linguaggi, come Scala, supportano sia la tipizzazione statica che quella dinamica.
+
+Comprendere queste differenze semantiche è cruciale per scrivere codice corretto ed efficiente in diversi linguaggi di programmazione.
 
