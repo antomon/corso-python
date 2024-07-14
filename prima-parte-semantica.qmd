@@ -133,216 +133,206 @@ $$
 T(S(F(L)))
 $$
 
-Dove $L$ è la lista iniziale, $F$ è `filtra_pari`, $S$ è `ordina`, e $T$ è `somma_primi_tre`.
+dove $L$ è la lista iniziale, $F$ è `filtra_pari`, $S$ è `ordina`, e $T$ è `somma_primi_tre`.
 
-La semantica denotazionale è utilizzata per garantire la correttezza dei programmi e per la verifica formale del loro comportamento. È un approccio potente per verificare che un programma rispetti specifiche formali e per dimostrare proprietà dei programmi in modo matematico. Esistono strumenti e linguaggi formali che applicano la semantica denotazionale per verificare programmi, come Coq e Isabelle/HOL, che permettono di definire e dimostrare formalmente proprietà dei programmi.
+La semantica denotazionale è utilizzata per garantire la correttezza dei programmi e per la verifica formale del loro comportamento. È un approccio potente per verificare che un programma rispetti specifiche formali e per dimostrare proprietà dei programmi in modo matematico. Operativamente, lo sviluppatore definisce le mappature denotazionali per i costrutti del programma, esprimendoli come funzioni matematiche. Strumenti come Coq e Isabelle/HOL aiutano a verificare formalmente queste mappature, dimostrando che il programma soddisfa specifiche precise e comportandosi come atteso in ogni possibile scenario.
 
 ### Semantica assiomatica
 
-La **semantica assiomatica** è un metodo formale per definire il significato dei programmi in termini di logica matematica, utilizzando precondizioni e postcondizioni. Questo approccio, introdotto da C.A.R. Hoare, è particolarmente utile per la verifica formale dei programmi, poiché consente di dimostrare matematicamente che un programma soddisfa specifiche desiderate.
+La **semantica assiomatica** è un approccio formale per definire il significato dei programmi basato su precondizioni e postcondizioni logiche. Questo metodo, sviluppato da Tony Hoare [@hoare1969], utilizza asserzioni logiche per descrivere lo stato del programma prima e dopo l'esecuzione delle istruzioni, permettendo di dimostrare formalmente la correttezza dei programmi.
 
-In termini pratici, la semantica assiomatica utilizza asserzioni logiche per descrivere lo stato del programma prima e dopo l'esecuzione di una specifica istruzione o blocco di codice. Queste asserzioni sono chiamate precondizioni (prima dell'esecuzione) e postcondizioni (dopo l'esecuzione). L'obiettivo è garantire che, se le precondizioni sono soddisfatte prima dell'esecuzione, le postcondizioni saranno soddisfatte dopo l'esecuzione.
+In altre parole, la semantica assiomatica stabilisce regole per verificare che un programma rispetti determinate specifiche formali. Questo è particolarmente utile per garantire che il programma funzioni correttamente in tutte le condizioni previste.
 
-Consideriamo un esempio di funzione che calcola la radice quadrata approssimata di un numero intero non negativo in Python:
+Consideriamo un semplice esempio in Python che calcola la somma di due numeri:
 
 ```python
-def radice_quadrata_approssimata(n):  # <1>
-    """Restituisce la radice quadrata intera approssimata di n."""  # <2>
-    assert n >= 0, "n deve essere non negativo"  # <3>
-    x = n  # <4>
-    y = (x + n // x) // 2  # <5>
-    while y < x:  # <6>
-        x = y  # <7>
-        y = (x + n // x) // 2  # <8>
-    return x  # <9>
+def somma(a, b):  # <1>
+  return a + b  # <2>
 
-print(radice_quadrata_approssimata(10))  # <10>
+print(somma(3, 4))  # <3>
 ```
-1. Definizione della funzione `radice_quadrata_approssimata` che accetta un parametro `n`.
-2. Commento che descrive lo scopo della funzione.
-3. Precondizione: `n` deve essere non negativo.
-4. Inizializzazione della variabile `x` con il valore di `n`.
-5. Calcolo iniziale di `y`.
-6. Ciclo `while` che continua finché `y` è minore di `x`.
-7. Aggiornamento del valore di `x`.
-8. Ricalcolo di `y`.
-9. Restituzione del valore di `x` come risultato.
-10. Test della funzione con l'input `10`.
+1. Definizione della funzione `somma` che accetta due parametri `a` e `b`.
+2. La funzione `somma` restituisce la somma di `a` e `b`.
+3. Chiamata della funzione `somma` con argomenti `3` e `4`, stampa `7`.
 
-In termini di semantica assiomatica, possiamo esprimere le precondizioni e le postcondizioni come segue:
+Per verificare formalmente questo codice in Coq[^1-prima-parte-semantica]: 
 
-- **Precondizione**: $n \geq 0$
-- **Postcondizione**: $x^2 \leq n < (x+1)^2$
+[^1-prima-parte-semantica]: Coq è scaricabile da [Coq Official Website](https://coq.inria.fr/).
 
-Durante l'esecuzione del ciclo `while`, possiamo usare invarianti di ciclo per garantire che la semantica del programma sia corretta. Un invariante di ciclo è una condizione che rimane vera prima e dopo ogni iterazione del ciclo.
+```coq
+(* Importazione della libreria standard di Coq *)
+Require Import Coq.Arith.Arith.
+Require Import Coq.Init.Nat.
 
-In questo esempio, un possibile invariante di ciclo potrebbe essere:
+(* Definizione della funzione somma in Coq *)
+Definition somma (a b : nat) : nat := a + b.
 
-- **Invariante di ciclo**: $x \geq y \geq \sqrt{n}$
+(* Affermazione del teorema che verifica la correttezza della funzione somma *)
+Theorem somma_corretto : forall a b : nat,
+    somma a b = a + b.
+Proof.
+  intros a b.
+  unfold somma.
+  reflexivity.
+Qed.
 
-Questo invariante ci aiuta a dimostrare che, alla fine del ciclo, `x` sarà la radice quadrata intera approssimata di `n`.
+(* Verifica di un caso specifico: somma 3 4 = 7 *)
+Example test_somma : somma 3 4 = 7.
+Proof.
+  simpl.
+  reflexivity.
+Qed.
+```
+In questo codice:
 
-### Strumenti per la verifica formale
+- Abbiamo definito la funzione `somma` in Coq per replicare il comportamento della funzione Python.
 
-Esistono diversi strumenti e linguaggi formali che supportano la semantica assiomatica e la verifica formale dei programmi, come Coq e Isabelle/HOL. Questi strumenti permettono di definire formalmente precondizioni, postcondizioni e invarianti di ciclo, e di dimostrare che un programma soddisfa le specifiche desiderate.
+- Abbiamo affermato e dimostrato formalmente che `somma a b` è uguale a `a + b` per tutti i numeri naturali `a` e `b`.
+
+- Abbiamo verificato un caso specifico (`somma 3 4 = 7`) per dimostrare che il nostro teorema e la nostra funzione sono corretti.
+
+Salviamo il codice in un file `somma.v` e, in un terminale, navighiamo nella sua directory contenente. Quindi, eseguiamo il comando:
+
+```sh
+coqc somma.v
+```
+
+Questo comando compila il file `somma.v` e verifica i teoremi e gli esempi al suo interno. Se tutto è corretto, non verrà restituito alcun errore.
+
+In contesti dove la correttezza del software è critica, come nei sistemi avionici, nei dispositivi medici e nei sistemi finanziari, la verifica formale basata sulla semantica assiomatica è fondamentale. Utilizzando strumenti come Coq, Isabelle/HOL, SPARK e altri prover interattivi, gli ingegneri del software possono formalizzare le specifiche del sistema e dimostrare che il codice implementato le soddisfa.[^2-prima-parte-semantica]
+
+[^2-prima-parte-semantica]: Per approfondire: [@chlipala2022].
 
 ## Elementi semantici fondamentali
 
-### Variabili, tipi di dati e modelli di dati
+Dopo aver esplorato i vari tipi di semantica nei linguaggi di programmazione, è importante comprendere i componenti fondamentali che questi tipi di semantica descrivono e regolano. Gli elementi semantici fondamentali sono i mattoni con cui costruiamo e comprendiamo il comportamento dei programmi. Tra questi, alcuni concetti come variabili, tipi di dati, espressioni, controllo del flusso, gestione della memoria, funzioni e sistemi di tipi sono cruciali per ogni linguaggio di programmazione moderno, altri sono particolari di linguaggi specifici come la concorrenza e il supporto alla programmazione ad aspetti. 
 
-Le variabili sono elementi fondamentali in qualsiasi linguaggio di programmazione. La semantica delle variabili include:
+Vediamo in dettaglio ciascuno di questi elementi:
 
-- Il loro ciclo di vita (quando vengono create e distrutte).
-- Il loro ambito e visibilità, ovvero dove possono essere utilizzate nel programma e da dove sono accessibili.
-- Il loro tipo, che definisce quali valori possono contenere e quali operazioni possono essere eseguite su di esse.
+- Variabili: Una variabile in un linguaggio di programmazione è un nome simbolico associato a una locazione di memoria in cui è memorizzato un dato. Le variabili sono utilizzate all'interno di espressioni e istruzioni, per referenziare e manipolare dati durante l'esecuzione di un programma. Il valore associato alla variabile è memorizzato nella locazione di memoria a cui la variabile fa riferimento e il tipo di dato della variabile determina come quel valore viene interpretato e quali operazioni possono essere eseguite su di esso. 
 
-Il **modello dati** di un linguaggio di programmazione descrive come vengono rappresentati e manipolati i dati nel linguaggio. Questo modello include la definizione di tipi di dati primitivi (come numeri interi, stringhe, booleani) e tipi di dati complessi (come liste, array, oggetti).
+  - Dichiarazione: Introduce una variabile nel programma, specificando il suo nome e, in molti linguaggi, il suo tipo di dato.
 
-Esempio in Python:
+  - Definizione: Oltre a dichiarare la variabile, le assegna anche uno spazio di memoria.
 
-```python
-x = 5  # <1>
-y = "Hello"  # <2>
+  - Inizializzazione: L'assegnazione del primo valore a una variabile.
 
-def my_function():  # <3>
-    z = 10  # <4>
-    print(x)  # <5>
+  - Ambito (inglese: _scope_): Definisce la visibilità e l'accessibilità di una variabile all'interno del codice.
 
-my_function()
-```
-1. `x` è una variabile globale di tipo intero.
-2. `y` è una variabile globale di tipo stringa.
-3. Definizione della funzione `my_function`.
-4. `z` è una variabile locale alla funzione `my_function`.
-5. `print(x)` stampa il valore di `x`, che è accessibile all'interno della funzione perché è globale.
+  - Durata: Il periodo durante il quale una variabile mantiene valido il legame con un dato presente in memoria.
 
-Esempio in Java:
+- Tipi di dati: Il tipo di dato definisce l'insieme di valori che una variabile può assumere e le operazioni che possono essere eseguite su di essa. I tipi di dato sono alla base di molte operazioni semantiche nei linguaggi di programmazione.
 
-```java
-public class Main {
-    static int x = 5;  // <1>
+- Tipi primitivi: Numeri interi, numeri a virgola mobile, caratteri, booleani.
+- Tipi composti: Array, strutture, classi, tuple.
+- Tipi di riferimento: Puntatori, riferimenti.
+- Tipi astratti: Definiti dall'utente per rappresentare concetti complessi.
+- Tipi generici: Permettono di scrivere codice che può lavorare con diversi tipi di dati mantenendo la sicurezza dei tipi.
 
-    public static void main(String[] args) {
-        int y = 10;  // <2>
-        myFunction();  // <3>
-        System.out.println(x);  // <4>
-    }
+### 3. Espressioni e operatori
 
-    public static void myFunction() {
-        int z = 20;  // <5>
-        System.out.println(z);  // <6>
-    }
-}
-```
-1. `x` è una variabile di classe, visibile a tutti i metodi della classe `Main`.
-2. `y` è una variabile locale al metodo `main`.
-3. Chiamata del metodo `myFunction`.
-4. `System.out.println(x)` stampa il valore di `x`, che è visibile perché è una variabile di classe.
-5. `z` è una variabile locale al metodo `myFunction`.
-6. `System.out.println(z)` stampa il valore di `z`, che è visibile solo all'interno di `myFunction`.
+Le espressioni sono combinazioni di valori, variabili e operatori che producono un risultato. Gli operatori sono simboli che rappresentano operazioni sui dati.
 
-### Espressioni e valutazione
+- Operatori aritmetici: +, -, *, /, %
+- Operatori di confronto: ==, !=, <, >, <=, >=
+- Operatori logici: AND, OR, NOT
+- Operatori di assegnazione: =, +=, -=, *=, /=
+- Operatori bit a bit: &, |, ^, ~, <<, >>
+- Precedenza e associatività degli operatori: Determinano l'ordine in cui le operazioni vengono eseguite.
 
-La semantica delle espressioni definisce come queste vengono valutate per produrre un risultato. Ciò include:
+### 4. Controllo del flusso
 
-- L'ordine di valutazione degli operandi.
-- Il comportamento degli operatori su diversi tipi di dati.
-- La gestione di errori e situazioni eccezionali durante la valutazione.
+La semantica del controllo del flusso definisce come l'esecuzione del programma procede attraverso le istruzioni. Include vari costrutti che permettono di dirigere il flusso di esecuzione.
 
-Esempio in Java:
+- Strutture condizionali: if, else, switch, ternary operator
+- Cicli: for, while, do-while, foreach
+- Istruzioni di salto: break, continue, return, goto
+- Gestione delle eccezioni: try, catch, finally, throw
 
-```java
-int a = 5, b = 2;
-double result = a / b;  // <1>
-boolean check = (a > b) && (b != 0);  // <2>
-```
-1. Il risultato sarà 2.0, non 2.5 a causa della division
+### 5. Funzioni e procedure
 
-e intera.
-2. La seconda condizione viene valutata solo se la prima è vera, grazie alla valutazione "short-circuit".
+Le funzioni sono blocchi di codice riutilizzabili che eseguono specifiche operazioni. Le procedure sono simili alle funzioni ma non restituiscono un valore.
 
-### Controllo del flusso
+- Definizione e dichiarazione: Sintassi per creare funzioni
+- Parametri: Formali vs. attuali, passaggio per valore vs. riferimento
+- Valori di ritorno: Tipi di ritorno, multiple return values
+- Ricorsione: Funzioni che chiamano se stesse
+- Overloading: Definizione di più funzioni con lo stesso nome ma parametri diversi
+- Lambda e funzioni anonime: Funzioni senza nome, spesso usate come argomenti
+- Funzioni in prima classe: Le funzioni possono essere trattate come dati, passate come argomenti e restituite come valori.
 
-La semantica del controllo del flusso definisce come l'esecuzione del programma procede attraverso le istruzioni. Ciò include:
+### 6. Gestione della memoria
 
-- Il comportamento di istruzioni condizionali come `if`, `else`, `switch`.
-- Il funzionamento dei cicli come `for`, `while`.
-- La gestione delle chiamate a funzione e il passaggio dei parametri.
+La gestione della memoria definisce come il programma alloca, utilizza e libera la memoria. Questo include il ciclo di vita delle variabili e la gestione della memoria dinamica.
 
-Esempio in C++:
+- Allocazione statica: Memoria allocata al momento della compilazione
+- Allocazione dinamica: Memoria allocata durante l'esecuzione
+- Garbage collection: Meccanismo automatico di liberazione della memoria
+- Gestione manuale della memoria: Allocazione e deallocazione esplicita (es. in C)
+- Memory leaks: Problemi dovuti a memoria non correttamente deallocata
 
-```cpp
-for (int i = 0; i < 5; i++) {  /* <1> */
-    if (i % 2 == 0) {  /* <2> */
-        continue;  /* <3> */
-    }
-    std::cout << i << std::endl;  /* <4> */
-}
-```
-1. Ciclo `for` che itera da `0` a `4`.
-2. Controllo condizionale per verificare se `i` è pari.
-3. `continue` salta le iterazioni pari.
-4. Stampa solo i valori dispari di `i`.
+### 7. Sistemi di tipi
 
-### Gestione della memoria
+Il sistema di tipi di un linguaggio definisce come i tipi vengono assegnati e controllati.
 
-La semantica della gestione della memoria definisce come il programma alloca, utilizza e libera la memoria. Ciò include:
+- Tipizzazione statica vs dinamica: Quando avviene il controllo dei tipi
+- Tipizzazione forte vs debole: Rigidità nel controllo dei tipi
+- Inferenza di tipo: Il compilatore deduce automaticamente il tipo di una variabile (es. TypeScript, Haskell)
+- Polimorfismo: Capacità di un'entità di assumere più forme
+- Coercizione di tipo: Conversione automatica tra tipi diversi
 
-- La distinzione tra stack e heap.
-- Le regole per l'allocazione e la deallocazione della memoria.
-- Il comportamento del garbage collector nei linguaggi che lo utilizzano.
+### 8. Programmazione orientata agli oggetti
 
-Esempio in C:
+Paradigma di programmazione basato sul concetto di "oggetti" che contengono dati e codice.
 
-```c
-int *p = malloc(sizeof(int));  /* <1> */
-*p = 10;  /* <2> */
-free(p);  /* <3> */
-```
-1. `malloc` alloca memoria dinamicamente sull'heap.
-2. Il puntatore `p` viene utilizzato per accedere alla memoria allocata.
-3. `free` libera la memoria allocata, prevenendo potenziali perdite di memoria.
+- Classi e oggetti: Modelli e istanze
+- Incapsulamento: Nascondere i dettagli implementativi
+- Ereditarietà: Meccanismo per creare nuove classi basate su classi esistenti
+- Polimorfismo: Capacità di oggetti di classi diverse di rispondere allo stesso messaggio
+- Interfacce e classi astratte: Definizione di contratti per le classi
 
-### Sistemi di tipi
+### 9. Programmazione asincrona
 
-Il sistema di tipi di un linguaggio definisce come i tipi di dati vengono gestiti. Ciò include:
+Permette l'esecuzione di operazioni non bloccanti, migliorando l'efficienza e la reattività dei programmi.
 
-- Le regole per la conversione tra tipi (implicita o esplicita).
-- Il comportamento del controllo dei tipi (statico o dinamico).
-- L'implementazione del polimorfismo e dell'ereditarietà nei linguaggi orientati agli oggetti.
+- Promise/Future: Rappresentano il risultato di un'operazione asincrona
+- async/await: Sintassi che semplifica la scrittura di codice asincrono
+- Callback: Funzioni chiamate al completamento di un'operazione asincrona
+- Event loop: Meccanismo per gestire operazioni asincrone
 
-Esempio in TypeScript (un superset tipizzato di JavaScript):
+### 10. Modularità e organizzazione del codice
 
-```typescript
-let x: number = 5;  // <1>
-let y: any = "hello";  // <2>
-// x = y;  // Errore di tipo: non è possibile assegnare una stringa a un numero
-```
-1. `x` è dichiarato come numero.
-2. `y` è dichiarato come un tipo generico (`any`), che può essere assegnato a qualsiasi tipo.
-3. Il tentativo di assegnare `y` a `x` causa un errore di tipo, poiché `y` contiene una stringa e `x` è un numero.
+La suddivisione del codice in moduli migliora la manutenibilità, la riusabilità e l'incapsulamento.
 
-## Differenze semantiche tra linguaggi
+- Namespace: Meccanismo per evitare conflitti di nomi
+- Moduli e pacchetti: Organizzazione del codice in unità logiche
+- Import/Export: Meccanismi per condividere codice tra moduli
+- Visibilità e accesso: public, private, protected
 
-Diversi linguaggi di programmazione possono avere semantiche differenti per costrutti sintatticamente simili. Ecco alcuni esempi:
+### 11. Metaprogrammazione
 
-1. **Valutazione delle espressioni booleane**:
-   - In Python, Java e C++, l'espressione `a && b` (o `a and b` in Python) usa la valutazione "short-circuit": se `a` è falso, `b` non viene valutato.
-   - In alcuni altri linguaggi, entrambe le parti potrebbero essere sempre valutate.
+Tecniche per scrivere programmi che manipolano o generano altri programmi.
 
-2. **Passaggio dei parametri**:
-   - In C, i parametri sono passati per valore di default.
-   - In Python, gli oggetti sono passati per riferimento.
-   - In C++, è possibile scegliere tra passaggio per valore, per riferimento o per puntatore.
+- Reflection: Capacità di un programma di esaminare, introspezione e modificare la propria struttura e comportamento
+- Generazione di codice: Creazione automatica di codice sorgente
+- Macro: Istruzioni che vengono espanse in tempo di compilazione
 
-3. **Gestione della memoria**:
-   - In C e C++, la gestione della memoria è principalmente responsabilità del programmatore.
-   - In Java e Python, c'è un garbage collector che si occupa automaticamente di liberare la memoria non più utilizzata.
+### 12. Concorrenza e parallelismo
 
-4. **Tipizzazione**:
-   - Python e JavaScript sono linguaggi a tipizzazione dinamica.
-   - Java e C++ sono linguaggi a tipizzazione statica.
-   - Alcuni linguaggi, come Scala, supportano sia la tipizzazione statica che quella dinamica.
+Meccanismi per eseguire più task simultaneamente o apparentemente simultaneamente.
 
-Comprendere queste differenze semantiche è cruciale per scrivere codice corretto ed efficiente in diversi linguaggi di programmazione.
+- Thread e processi: Unità di esecuzione concorrente
+- Sincronizzazione: Meccanismi per coordinare l'esecuzione di thread (mutex, semafori)
+- Parallellismo: Esecuzione simultanea su hardware multi-core
+
+### 13. Programmazione orientata agli aspetti
+
+Un paradigma di programmazione che permette di separare le preoccupazioni trasversali dal codice principale.
+
+- Aspetti: Moduli che incapsulano comportamenti trasversali
+- Pointcut: Punti nel programma dove viene applicato un aspetto
+- Advice: Codice che viene eseguito quando viene raggiunto un pointcut
+- Weaving: Processo di applicazione degli aspetti al codice principale
+
+Questa panoramica estesa fornisce una base solida per comprendere gli elementi semantici fondamentali dei linguaggi di programmazione moderni. Ogni concetto merita un approfondimento dettagliato, che verrà fornito nei capitoli successivi, offrendo una comprensione più approfondita e pratica di come questi elementi interagiscono per creare sistemi software complessi e potenti.
 

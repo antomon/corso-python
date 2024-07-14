@@ -412,6 +412,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c"><span class="header-section-number">6.0.3</span> C</a></li>
   <li><a href="#c-1" id="toc-c-1" class="nav-link" data-scroll-target="#c-1"><span class="header-section-number">6.0.4</span> C++</a></li>
   <li><a href="#impatti" id="toc-impatti" class="nav-link" data-scroll-target="#impatti"><span class="header-section-number">6.0.5</span> Impatti</a></li>
+  <li><a href="#la-variabile-e-il-tipo-di-dato" id="toc-la-variabile-e-il-tipo-di-dato" class="nav-link" data-scroll-target="#la-variabile-e-il-tipo-di-dato"><span class="header-section-number">6.0.6</span> La variabile e il tipo di dato</a></li>
+  <li><a href="#altri-aspetti-delle-variabili" id="toc-altri-aspetti-delle-variabili" class="nav-link" data-scroll-target="#altri-aspetti-delle-variabili"><span class="header-section-number">6.0.7</span> Altri aspetti delle variabili</a></li>
+  <li><a href="#il-tipo-di-dato-e-linferenza-di-tipo" id="toc-il-tipo-di-dato-e-linferenza-di-tipo" class="nav-link" data-scroll-target="#il-tipo-di-dato-e-linferenza-di-tipo"><span class="header-section-number">6.0.8</span> Il tipo di dato e l’inferenza di tipo</a></li>
+  <li><a href="#il-modello-dati" id="toc-il-modello-dati" class="nav-link" data-scroll-target="#il-modello-dati"><span class="header-section-number">6.0.9</span> Il modello dati</a></li>
+  <li><a href="#esempi-di-tipi-semplici-contenitori-e-classi" id="toc-esempi-di-tipi-semplici-contenitori-e-classi" class="nav-link" data-scroll-target="#esempi-di-tipi-semplici-contenitori-e-classi"><span class="header-section-number">6.0.10</span> Esempi di tipi semplici, contenitori e classi</a></li>
+  <li><a href="#il-modello-dati-1" id="toc-il-modello-dati-1" class="nav-link" data-scroll-target="#il-modello-dati-1"><span class="header-section-number">6.0.11</span> Il modello dati</a></li>
+  <li><a href="#esempi-di-tipi-semplici-contenitori-e-classi-1" id="toc-esempi-di-tipi-semplici-contenitori-e-classi-1" class="nav-link" data-scroll-target="#esempi-di-tipi-semplici-contenitori-e-classi-1"><span class="header-section-number">6.0.12</span> Esempi di tipi semplici, contenitori e classi</a></li>
+  <li><a href="#espressioni-e-valutazione" id="toc-espressioni-e-valutazione" class="nav-link" data-scroll-target="#espressioni-e-valutazione"><span class="header-section-number">6.0.13</span> Espressioni e valutazione</a></li>
+  <li><a href="#controllo-del-flusso" id="toc-controllo-del-flusso" class="nav-link" data-scroll-target="#controllo-del-flusso"><span class="header-section-number">6.0.14</span> Controllo del flusso</a></li>
+  <li><a href="#gestione-della-memoria" id="toc-gestione-della-memoria" class="nav-link" data-scroll-target="#gestione-della-memoria"><span class="header-section-number">6.0.15</span> Gestione della memoria</a></li>
+  <li><a href="#funzioni-e-procedure" id="toc-funzioni-e-procedure" class="nav-link" data-scroll-target="#funzioni-e-procedure"><span class="header-section-number">6.0.16</span> Funzioni e procedure</a></li>
+  <li><a href="#programmazione-asincrona" id="toc-programmazione-asincrona" class="nav-link" data-scroll-target="#programmazione-asincrona"><span class="header-section-number">6.0.17</span> Programmazione asincrona</a></li>
+  <li><a href="#sistemi-di-tipi" id="toc-sistemi-di-tipi" class="nav-link" data-scroll-target="#sistemi-di-tipi"><span class="header-section-number">6.0.18</span> Sistemi di tipi</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-variabili-spazi-nomi-moduli-file.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/blob/main/prima-parte-variabili-spazi-nomi-moduli-file.qmd" class="toc-action"><i class="bi empty"></i>Mostra il codice</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
@@ -447,25 +460,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Esempi:</p>
 <ul>
 <li><p>In Python, le variabili sono dichiarate automaticamente al momento dell’assegnazione del valore. Non è necessario specificare il tipo di dato, poiché Python è dinamicamente tipizzato, cioè determina durante l’esecuzione il tipo di dato del valore associato alla variabile.</p>
-<div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
-<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-11-3" class="code-annotation-target"><a href="#annotated-cell-11-3"></a>x <span class="op">=</span> <span class="st">"Hello"</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-29"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-29-1" class="code-annotation-target"><a href="#annotated-cell-29-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="annotated-cell-29-2"><a href="#annotated-cell-29-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-29-3" class="code-annotation-target"><a href="#annotated-cell-29-3"></a>x <span class="op">=</span> <span class="st">"Hello"</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-29" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1">Dichiarazione e inizializzazione.</span>
+<span data-code-cell="annotated-cell-29" data-code-lines="1" data-code-annotation="1">Dichiarazione e inizializzazione.</span>
 </dd>
-<dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-29" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="3" data-code-annotation="2">Cambia il tipo di <code>x</code> dinamicamente a stringa.</span>
+<span data-code-cell="annotated-cell-29" data-code-lines="3" data-code-annotation="2">Cambia il tipo di <code>x</code> dinamicamente a stringa.</span>
 </dd>
 </dl></li>
 <li><p>In Java, le variabili devono essere dichiarate con un tipo di dato esplicito. La dichiarazione può avvenire contestualmente all’inizializzazione o separatamente:</p>
-<div class="sourceCode" id="annotated-cell-12"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy"><code class="sourceCode java"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1"></a><span class="dt">int</span> x<span class="op">;</span></span>
-<span id="annotated-cell-12-2"><a href="#annotated-cell-12-2"></a></span>
-<span id="annotated-cell-12-3"><a href="#annotated-cell-12-3"></a>x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="annotated-cell-12-4"><a href="#annotated-cell-12-4"></a></span>
-<span id="annotated-cell-12-5"><a href="#annotated-cell-12-5"></a><span class="dt">int</span> y <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="annotated-cell-30"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy"><code class="sourceCode java"><span id="annotated-cell-30-1"><a href="#annotated-cell-30-1"></a><span class="dt">int</span> x<span class="op">;</span></span>
+<span id="annotated-cell-30-2"><a href="#annotated-cell-30-2"></a></span>
+<span id="annotated-cell-30-3"><a href="#annotated-cell-30-3"></a>x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="annotated-cell-30-4"><a href="#annotated-cell-30-4"></a></span>
+<span id="annotated-cell-30-5"><a href="#annotated-cell-30-5"></a><span class="dt">int</span> y <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <ol type="1">
 <li>Dichiarazione.</li>
@@ -474,11 +487,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <ul>
 <li><p>In C, la dichiarazione delle variabili richiede la specifica del tipo di dato. La dichiarazione e l’inizializzazione possono essere separate o combinate:</p>
-<div class="sourceCode" id="annotated-cell-13"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy"><code class="sourceCode c"><span id="annotated-cell-13-1"><a href="#annotated-cell-13-1"></a><span class="dt">int</span> x<span class="op">;</span></span>
-<span id="annotated-cell-13-2"><a href="#annotated-cell-13-2"></a></span>
-<span id="annotated-cell-13-3"><a href="#annotated-cell-13-3"></a>x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="annotated-cell-13-4"><a href="#annotated-cell-13-4"></a></span>
-<span id="annotated-cell-13-5"><a href="#annotated-cell-13-5"></a><span class="dt">int</span> y <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="annotated-cell-31"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy"><code class="sourceCode c"><span id="annotated-cell-31-1"><a href="#annotated-cell-31-1"></a><span class="dt">int</span> x<span class="op">;</span></span>
+<span id="annotated-cell-31-2"><a href="#annotated-cell-31-2"></a></span>
+<span id="annotated-cell-31-3"><a href="#annotated-cell-31-3"></a>x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="annotated-cell-31-4"><a href="#annotated-cell-31-4"></a></span>
+<span id="annotated-cell-31-5"><a href="#annotated-cell-31-5"></a><span class="dt">int</span> y <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <ol type="1">
 <li>Dichiarazione.</li>
@@ -487,35 +500,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <ul>
 <li><p>Il C++ è simile al C, ma con funzionalità aggiuntive come l’inizializzazione a lista:</p>
-<div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-1" class="code-annotation-target"><a href="#annotated-cell-14-1"></a><span class="dt">int</span> x<span class="op">;</span></span>
-<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3"></a>x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="annotated-cell-14-4"><a href="#annotated-cell-14-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-14-5" class="code-annotation-target"><a href="#annotated-cell-14-5"></a><span class="dt">int</span> y <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span>
-<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-14-7" class="code-annotation-target"><a href="#annotated-cell-14-7"></a><span class="dt">int</span> z<span class="op">{</span><span class="dv">30</span><span class="op">};</span></span>
-<span id="annotated-cell-14-8"><a href="#annotated-cell-14-8"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-14-9" class="code-annotation-target"><a href="#annotated-cell-14-9"></a><span class="dt">int</span> arr<span class="op">[</span><span class="dv">5</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">};</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-32"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-32-1" class="code-annotation-target"><a href="#annotated-cell-32-1"></a><span class="dt">int</span> x<span class="op">;</span></span>
+<span id="annotated-cell-32-2"><a href="#annotated-cell-32-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-32-3" class="code-annotation-target"><a href="#annotated-cell-32-3"></a>x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="annotated-cell-32-4"><a href="#annotated-cell-32-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-32-5" class="code-annotation-target"><a href="#annotated-cell-32-5"></a><span class="dt">int</span> y <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span>
+<span id="annotated-cell-32-6"><a href="#annotated-cell-32-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-32-7" class="code-annotation-target"><a href="#annotated-cell-32-7"></a><span class="dt">int</span> z<span class="op">{</span><span class="dv">30</span><span class="op">};</span></span>
+<span id="annotated-cell-32-8"><a href="#annotated-cell-32-8"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-32-9" class="code-annotation-target"><a href="#annotated-cell-32-9"></a><span class="dt">int</span> arr<span class="op">[</span><span class="dv">5</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">};</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="1" data-code-annotation="1">Dichiarazione.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="1" data-code-annotation="1">Dichiarazione.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="3" data-code-annotation="2">Inizializzazione.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="3" data-code-annotation="2">Inizializzazione.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="5" data-code-annotation="3">Dichiarazione e inizializzazione.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="5" data-code-annotation="3">Dichiarazione e inizializzazione.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="7" data-code-annotation="4">Dichiarazione e inizializzazione a lista di <code>z</code> con l’intero <code>30</code>.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="7" data-code-annotation="4">Dichiarazione e inizializzazione a lista di <code>z</code> con l’intero <code>30</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="9" data-code-annotation="5">Dichiarazione e inizializzazione a lista di un array con 5 valori predefiniti.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="9" data-code-annotation="5">Dichiarazione e inizializzazione a lista di un array con 5 valori predefiniti.</span>
 </dd>
 </dl></li>
 </ul>
@@ -526,57 +539,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Gli approcci dei diversi linguaggi sono diversi, infatti Java, C e C++ hanno una gestione dell’ambito delle variabili per cui quelle dichiarate all’interno di un blocco sono limitate a quel blocco e non sono visibili al di fuori di esso. In Python, invece, le variabili definite all’interno di un blocco di un’istruzione composta (come un ciclo <code>for</code> o una condizione <code>if</code>) rimangono accessibili anche al di fuori del blocco, purché siano ancora nel medesimo ambito di funzione o modulo e, soprattutto, quel blocco sia stato eseguito.</p>
 <ul>
 <li><p>Le variabili con ambito <strong>globale</strong> sono dichiarate al di fuori di qualsiasi blocco e sono accessibili ovunque nel programma:</p>
-<div class="sourceCode" id="annotated-cell-15"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1"></a><span class="dt">int</span> globalVar <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="annotated-cell-15-2"><a href="#annotated-cell-15-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-15-3" class="code-annotation-target"><a href="#annotated-cell-15-3"></a><span class="dt">void</span> function<span class="op">()</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-15-4" class="code-annotation-target"><a href="#annotated-cell-15-4"></a>  printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> globalVar<span class="op">);</span></span>
-<span id="annotated-cell-15-5"><a href="#annotated-cell-15-5"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-33"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-33-1" class="code-annotation-target"><a href="#annotated-cell-33-1"></a><span class="dt">int</span> globalVar <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="annotated-cell-33-2"><a href="#annotated-cell-33-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-33-3" class="code-annotation-target"><a href="#annotated-cell-33-3"></a><span class="dt">void</span> function<span class="op">()</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-33-4" class="code-annotation-target"><a href="#annotated-cell-33-4"></a>  printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> globalVar<span class="op">);</span></span>
+<span id="annotated-cell-33-5"><a href="#annotated-cell-33-5"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-33" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="1" data-code-annotation="1">Variabile globale.</span>
+<span data-code-cell="annotated-cell-33" data-code-lines="1" data-code-annotation="1">Variabile globale.</span>
 </dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-33" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="3" data-code-annotation="2">Inizio del blocco.</span>
+<span data-code-cell="annotated-cell-33" data-code-lines="3" data-code-annotation="2">Inizio del blocco.</span>
 </dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-33" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="4" data-code-annotation="3">Accesso alla variabile globale.</span>
+<span data-code-cell="annotated-cell-33" data-code-lines="4" data-code-annotation="3">Accesso alla variabile globale.</span>
 </dd>
 </dl></li>
 <li><p>Le variabili con ambito <strong>locale</strong> sono dichiarate all’interno di un blocco, come una funzione o un loop, e sono accessibili solo all’interno di quel blocco:</p>
-<div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
-<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3"></a>    <span class="cf">if</span> <span class="op">(</span><span class="kw">true</span><span class="op">)</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-4" class="code-annotation-target"><a href="#annotated-cell-16-4"></a>      <span class="dt">int</span> x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="annotated-cell-16-5"><a href="#annotated-cell-16-5"></a>    <span class="op">}</span></span>
-<span id="annotated-cell-16-6"><a href="#annotated-cell-16-6"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-16-7" class="code-annotation-target"><a href="#annotated-cell-16-7"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>x<span class="op">);</span></span>
-<span id="annotated-cell-16-8"><a href="#annotated-cell-16-8"></a></span>
-<span id="annotated-cell-16-9"><a href="#annotated-cell-16-9"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-16-10" class="code-annotation-target"><a href="#annotated-cell-16-10"></a>      <span class="dt">int</span> y <span class="op">=</span> i<span class="op">;</span></span>
-<span id="annotated-cell-16-11"><a href="#annotated-cell-16-11"></a>    <span class="op">}</span></span>
-<span id="annotated-cell-16-12"><a href="#annotated-cell-16-12"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-16-13" class="code-annotation-target"><a href="#annotated-cell-16-13"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>y<span class="op">);</span></span>
-<span id="annotated-cell-16-14"><a href="#annotated-cell-16-14"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-16-15"><a href="#annotated-cell-16-15"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-34"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><span id="annotated-cell-34-1"><a href="#annotated-cell-34-1"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
+<span id="annotated-cell-34-2"><a href="#annotated-cell-34-2"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-34-3"><a href="#annotated-cell-34-3"></a>    <span class="cf">if</span> <span class="op">(</span><span class="kw">true</span><span class="op">)</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-34-4" class="code-annotation-target"><a href="#annotated-cell-34-4"></a>      <span class="dt">int</span> x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="annotated-cell-34-5"><a href="#annotated-cell-34-5"></a>    <span class="op">}</span></span>
+<span id="annotated-cell-34-6"><a href="#annotated-cell-34-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-34-7" class="code-annotation-target"><a href="#annotated-cell-34-7"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>x<span class="op">);</span></span>
+<span id="annotated-cell-34-8"><a href="#annotated-cell-34-8"></a></span>
+<span id="annotated-cell-34-9"><a href="#annotated-cell-34-9"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-34-10" class="code-annotation-target"><a href="#annotated-cell-34-10"></a>      <span class="dt">int</span> y <span class="op">=</span> i<span class="op">;</span></span>
+<span id="annotated-cell-34-11"><a href="#annotated-cell-34-11"></a>    <span class="op">}</span></span>
+<span id="annotated-cell-34-12"><a href="#annotated-cell-34-12"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-34-13" class="code-annotation-target"><a href="#annotated-cell-34-13"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>y<span class="op">);</span></span>
+<span id="annotated-cell-34-14"><a href="#annotated-cell-34-14"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-34-15"><a href="#annotated-cell-34-15"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="4" data-code-annotation="1">Variabile locale al blocco <code>if</code>.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="4" data-code-annotation="1">Variabile locale al blocco <code>if</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="7" data-code-annotation="2">Errore: <code>x</code> non è visibile qui!</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="7" data-code-annotation="2">Errore: <code>x</code> non è visibile qui!</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="10" data-code-annotation="3">Variabile locale al blocco <code>for</code>.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="10" data-code-annotation="3">Variabile locale al blocco <code>for</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="13" data-code-annotation="4">Errore: <code>y</code> non è visibile qui.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="13" data-code-annotation="4">Errore: <code>y</code> non è visibile qui.</span>
 </dd>
 </dl></li>
 <li><p>In Python, una variabile definita all’interno di un blocco di un’istruzione composta, come all’interno di un ciclo <code>for</code> o di una condizione <code>if</code>, rimane accessibile anche dopo l’esecuzione del blocco:</p>
@@ -595,100 +608,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>La <strong>visibilità</strong> si riferisce alla possibilità che in una regione di codice una certa variabile possa essere <em>vista</em> e utilizzata. Anche se correlata all’ambito, la visibilità può essere influenzata da altri fattori come la modularità e gli spazi di nomi (<em>namespace</em>).</p>
 <ul>
 <li><p>Consideriamo un esempio in C++ per illustrare la differenza tra ambito e visibilità:</p>
-<div class="sourceCode" id="annotated-cell-18"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-18-1"><a href="#annotated-cell-18-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="annotated-cell-18-2"><a href="#annotated-cell-18-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-18-3" class="code-annotation-target"><a href="#annotated-cell-18-3"></a><span class="dt">int</span> globalVar <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="annotated-cell-18-4"><a href="#annotated-cell-18-4"></a></span>
-<span id="annotated-cell-18-5"><a href="#annotated-cell-18-5"></a><span class="dt">void</span> function<span class="op">()</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-18-6" class="code-annotation-target"><a href="#annotated-cell-18-6"></a>  <span class="dt">int</span> localVar <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-<span id="annotated-cell-18-7"><a href="#annotated-cell-18-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-18-8" class="code-annotation-target"><a href="#annotated-cell-18-8"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> globalVar <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-18-9" class="code-annotation-target"><a href="#annotated-cell-18-9"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> localVar <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="annotated-cell-18-10"><a href="#annotated-cell-18-10"></a><span class="op">}</span></span>
-<span id="annotated-cell-18-11"><a href="#annotated-cell-18-11"></a></span>
-<span id="annotated-cell-18-12"><a href="#annotated-cell-18-12"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="annotated-cell-18-13"><a href="#annotated-cell-18-13"></a>  function<span class="op">();</span></span>
-<span id="annotated-cell-18-14"><a href="#annotated-cell-18-14"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-18-15" class="code-annotation-target"><a href="#annotated-cell-18-15"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> globalVar <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-18-16" class="code-annotation-target"><a href="#annotated-cell-18-16"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> localVar <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="annotated-cell-18-17"><a href="#annotated-cell-18-17"></a></span>
-<span id="annotated-cell-18-18"><a href="#annotated-cell-18-18"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="annotated-cell-18-19"><a href="#annotated-cell-18-19"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-36"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-36-1"><a href="#annotated-cell-36-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="annotated-cell-36-2"><a href="#annotated-cell-36-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-36-3" class="code-annotation-target"><a href="#annotated-cell-36-3"></a><span class="dt">int</span> globalVar <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="annotated-cell-36-4"><a href="#annotated-cell-36-4"></a></span>
+<span id="annotated-cell-36-5"><a href="#annotated-cell-36-5"></a><span class="dt">void</span> function<span class="op">()</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-36-6" class="code-annotation-target"><a href="#annotated-cell-36-6"></a>  <span class="dt">int</span> localVar <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="annotated-cell-36-7"><a href="#annotated-cell-36-7"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-36-8" class="code-annotation-target"><a href="#annotated-cell-36-8"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> globalVar <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-36-9" class="code-annotation-target"><a href="#annotated-cell-36-9"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> localVar <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="annotated-cell-36-10"><a href="#annotated-cell-36-10"></a><span class="op">}</span></span>
+<span id="annotated-cell-36-11"><a href="#annotated-cell-36-11"></a></span>
+<span id="annotated-cell-36-12"><a href="#annotated-cell-36-12"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="annotated-cell-36-13"><a href="#annotated-cell-36-13"></a>  function<span class="op">();</span></span>
+<span id="annotated-cell-36-14"><a href="#annotated-cell-36-14"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-36-15" class="code-annotation-target"><a href="#annotated-cell-36-15"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> globalVar <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-36" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-36-16" class="code-annotation-target"><a href="#annotated-cell-36-16"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> localVar <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="annotated-cell-36-17"><a href="#annotated-cell-36-17"></a></span>
+<span id="annotated-cell-36-18"><a href="#annotated-cell-36-18"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="annotated-cell-36-19"><a href="#annotated-cell-36-19"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-36" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="3" data-code-annotation="1">Variabile globale (ambito globale).</span>
+<span data-code-cell="annotated-cell-36" data-code-lines="3" data-code-annotation="1">Variabile globale (ambito globale).</span>
 </dd>
-<dt data-target-cell="annotated-cell-18" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-36" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="6" data-code-annotation="2">Variabile locale (ambito locale alla funzione).</span>
+<span data-code-cell="annotated-cell-36" data-code-lines="6" data-code-annotation="2">Variabile locale (ambito locale alla funzione).</span>
 </dd>
-<dt data-target-cell="annotated-cell-18" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-36" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="8" data-code-annotation="3">Visibilità <code>globaleVar</code> all’interno della funzione.</span>
+<span data-code-cell="annotated-cell-36" data-code-lines="8" data-code-annotation="3">Visibilità <code>globaleVar</code> all’interno della funzione.</span>
 </dd>
-<dt data-target-cell="annotated-cell-18" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-36" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="9" data-code-annotation="4">Visibilità <code>localVar</code> all’interno della funzione.</span>
+<span data-code-cell="annotated-cell-36" data-code-lines="9" data-code-annotation="4">Visibilità <code>localVar</code> all’interno della funzione.</span>
 </dd>
-<dt data-target-cell="annotated-cell-18" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-36" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="15" data-code-annotation="5">Visibilità <code>globalVar</code> all’interno di <code>main</code>.</span>
+<span data-code-cell="annotated-cell-36" data-code-lines="15" data-code-annotation="5">Visibilità <code>globalVar</code> all’interno di <code>main</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-18" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-36" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="16" data-code-annotation="6">Errore: <code>localVar</code> non è visibile qui (ambito locale alla funzione <code>function</code>).</span>
+<span data-code-cell="annotated-cell-36" data-code-lines="16" data-code-annotation="6">Errore: <code>localVar</code> non è visibile qui (ambito locale alla funzione <code>function</code>).</span>
 </dd>
 </dl></li>
 <li><p>In Python, le variabili definite all’interno di una funzione sono locali a quella funzione, ma le variabili definite all’interno di un blocco (come un ciclo <code>for</code> o un <code>if</code>) sono visibili all’interno della funzione o del modulo in cui si trovano:</p>
-<div class="sourceCode" id="annotated-cell-19"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-19-1" class="code-annotation-target"><a href="#annotated-cell-19-1"></a>globalVar <span class="op">=</span> <span class="dv">10</span></span>
-<span id="annotated-cell-19-2"><a href="#annotated-cell-19-2"></a></span>
-<span id="annotated-cell-19-3"><a href="#annotated-cell-19-3"></a><span class="kw">def</span> function():</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-19-4" class="code-annotation-target"><a href="#annotated-cell-19-4"></a>  localVar <span class="op">=</span> <span class="dv">5</span></span>
-<span id="annotated-cell-19-5"><a href="#annotated-cell-19-5"></a></span>
-<span id="annotated-cell-19-6"><a href="#annotated-cell-19-6"></a>  <span class="cf">if</span> <span class="va">True</span>:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-19-7" class="code-annotation-target"><a href="#annotated-cell-19-7"></a>    blockVar <span class="op">=</span> <span class="dv">20</span></span>
-<span id="annotated-cell-19-8"><a href="#annotated-cell-19-8"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-19-9" class="code-annotation-target"><a href="#annotated-cell-19-9"></a>  <span class="bu">print</span>(localVar)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-19-10" class="code-annotation-target"><a href="#annotated-cell-19-10"></a>  <span class="bu">print</span>(blockVar)</span>
-<span id="annotated-cell-19-11"><a href="#annotated-cell-19-11"></a></span>
-<span id="annotated-cell-19-12"><a href="#annotated-cell-19-12"></a>function()</span>
-<span id="annotated-cell-19-13"><a href="#annotated-cell-19-13"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-19-14" class="code-annotation-target"><a href="#annotated-cell-19-14"></a><span class="bu">print</span>(globalVar)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-19-15" class="code-annotation-target"><a href="#annotated-cell-19-15"></a><span class="bu">print</span>(localVar)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-19-16" class="code-annotation-target"><a href="#annotated-cell-19-16"></a><span class="bu">print</span>(blockVar)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-37"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-37-1" class="code-annotation-target"><a href="#annotated-cell-37-1"></a>globalVar <span class="op">=</span> <span class="dv">10</span></span>
+<span id="annotated-cell-37-2"><a href="#annotated-cell-37-2"></a></span>
+<span id="annotated-cell-37-3"><a href="#annotated-cell-37-3"></a><span class="kw">def</span> function():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-37-4" class="code-annotation-target"><a href="#annotated-cell-37-4"></a>  localVar <span class="op">=</span> <span class="dv">5</span></span>
+<span id="annotated-cell-37-5"><a href="#annotated-cell-37-5"></a></span>
+<span id="annotated-cell-37-6"><a href="#annotated-cell-37-6"></a>  <span class="cf">if</span> <span class="va">True</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-37-7" class="code-annotation-target"><a href="#annotated-cell-37-7"></a>    blockVar <span class="op">=</span> <span class="dv">20</span></span>
+<span id="annotated-cell-37-8"><a href="#annotated-cell-37-8"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-37-9" class="code-annotation-target"><a href="#annotated-cell-37-9"></a>  <span class="bu">print</span>(localVar)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-37-10" class="code-annotation-target"><a href="#annotated-cell-37-10"></a>  <span class="bu">print</span>(blockVar)</span>
+<span id="annotated-cell-37-11"><a href="#annotated-cell-37-11"></a></span>
+<span id="annotated-cell-37-12"><a href="#annotated-cell-37-12"></a>function()</span>
+<span id="annotated-cell-37-13"><a href="#annotated-cell-37-13"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-37-14" class="code-annotation-target"><a href="#annotated-cell-37-14"></a><span class="bu">print</span>(globalVar)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-37-15" class="code-annotation-target"><a href="#annotated-cell-37-15"></a><span class="bu">print</span>(localVar)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-37-16" class="code-annotation-target"><a href="#annotated-cell-37-16"></a><span class="bu">print</span>(blockVar)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-37" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-lines="1" data-code-annotation="1">Variabile globale.</span>
+<span data-code-cell="annotated-cell-37" data-code-lines="1" data-code-annotation="1">Variabile globale.</span>
 </dd>
-<dt data-target-cell="annotated-cell-19" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-37" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-lines="4" data-code-annotation="2">Variabile locale.</span>
+<span data-code-cell="annotated-cell-37" data-code-lines="4" data-code-annotation="2">Variabile locale.</span>
 </dd>
-<dt data-target-cell="annotated-cell-19" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-37" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-lines="7" data-code-annotation="3">Visibile all’interno della funzione.</span>
+<span data-code-cell="annotated-cell-37" data-code-lines="7" data-code-annotation="3">Visibile all’interno della funzione.</span>
 </dd>
-<dt data-target-cell="annotated-cell-19" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-37" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-lines="9" data-code-annotation="4">Visibile.</span>
+<span data-code-cell="annotated-cell-37" data-code-lines="9" data-code-annotation="4">Visibile.</span>
 </dd>
-<dt data-target-cell="annotated-cell-19" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-37" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-lines="10" data-code-annotation="5">Visibile.</span>
+<span data-code-cell="annotated-cell-37" data-code-lines="10" data-code-annotation="5">Visibile.</span>
 </dd>
-<dt data-target-cell="annotated-cell-19" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-37" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-lines="14" data-code-annotation="6">Visibile.</span>
+<span data-code-cell="annotated-cell-37" data-code-lines="14" data-code-annotation="6">Visibile.</span>
 </dd>
-<dt data-target-cell="annotated-cell-19" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-37" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-lines="15" data-code-annotation="7">Errore: non visibile al di fuori della funzione.</span>
+<span data-code-cell="annotated-cell-37" data-code-lines="15" data-code-annotation="7">Errore: non visibile al di fuori della funzione.</span>
 </dd>
-<dt data-target-cell="annotated-cell-19" data-target-annotation="8">8</dt>
+<dt data-target-cell="annotated-cell-37" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-lines="16" data-code-annotation="8">Errore: non visibile al di fuori della funzione.</span>
+<span data-code-cell="annotated-cell-37" data-code-lines="16" data-code-annotation="8">Errore: non visibile al di fuori della funzione.</span>
 </dd>
 </dl></li>
 </ul>
@@ -700,74 +713,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Distinguiamo tra <strong>variabile automatica</strong>, <strong>variabile statica</strong> e <strong>variabile dinamica</strong>:</p>
 <ul>
 <li><p>Variabile automatica: L’oggetto esiste solo durante l’esecuzione del blocco di codice in cui è stata dichiarata la variabile a cui è associato. Esempio in C:</p>
-<div class="sourceCode" id="annotated-cell-20"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-20-1"><a href="#annotated-cell-20-1"></a><span class="dt">void</span> function<span class="op">()</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-20-2" class="code-annotation-target"><a href="#annotated-cell-20-2"></a>  <span class="dt">int</span> autoVar <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="annotated-cell-20-3"><a href="#annotated-cell-20-3"></a><span class="op">}</span> </span>
-<span id="annotated-cell-20-4"><a href="#annotated-cell-20-4"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-20-5" class="code-annotation-target"><a href="#annotated-cell-20-5"></a>printf<span class="op">(</span><span class="st">"autoVar cancellata!"</span><span class="op">);</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-38"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-38-1"><a href="#annotated-cell-38-1"></a><span class="dt">void</span> function<span class="op">()</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-38-2" class="code-annotation-target"><a href="#annotated-cell-38-2"></a>  <span class="dt">int</span> autoVar <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="annotated-cell-38-3"><a href="#annotated-cell-38-3"></a><span class="op">}</span> </span>
+<span id="annotated-cell-38-4"><a href="#annotated-cell-38-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-38" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-38-5" class="code-annotation-target"><a href="#annotated-cell-38-5"></a>printf<span class="op">(</span><span class="st">"autoVar cancellata!"</span><span class="op">);</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-38" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-lines="2" data-code-annotation="1">Dichiarazione di <code>autoVar</code> e creazione in memoria di un oggetto corrispondente all’intero 10.</span>
+<span data-code-cell="annotated-cell-38" data-code-lines="2" data-code-annotation="1">Dichiarazione di <code>autoVar</code> e creazione in memoria di un oggetto corrispondente all’intero 10.</span>
 </dd>
-<dt data-target-cell="annotated-cell-20" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-38" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-lines="5" data-code-annotation="2">Prima di questa istruzione l’oggetto 10 non è più presente in memoria.</span>
+<span data-code-cell="annotated-cell-38" data-code-lines="5" data-code-annotation="2">Prima di questa istruzione l’oggetto 10 non è più presente in memoria.</span>
 </dd>
 </dl></li>
 <li><p>Variabile statica: La variabile esiste per tutta la durata del programma, ma è accessibile solo all’interno del blocco in cui è dichiarata. Esempio in C:</p>
-<div class="sourceCode" id="annotated-cell-21"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-21-1"><a href="#annotated-cell-21-1"></a><span class="dt">void</span> function<span class="op">()</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-21-2" class="code-annotation-target"><a href="#annotated-cell-21-2"></a>  <span class="dt">static</span> <span class="dt">int</span> staticVar <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="annotated-cell-21-3"><a href="#annotated-cell-21-3"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-39"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-39-1"><a href="#annotated-cell-39-1"></a><span class="dt">void</span> function<span class="op">()</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-39-2" class="code-annotation-target"><a href="#annotated-cell-39-2"></a>  <span class="dt">static</span> <span class="dt">int</span> staticVar <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="annotated-cell-39-3"><a href="#annotated-cell-39-3"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-21" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-39" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-21" data-code-lines="2" data-code-annotation="1">Variabile statica ottenuta con una parola chiave ad hoc in fase di dichiarazione.</span>
+<span data-code-cell="annotated-cell-39" data-code-lines="2" data-code-annotation="1">Variabile statica ottenuta con una parola chiave ad hoc in fase di dichiarazione.</span>
 </dd>
 </dl></li>
 <li><p>Variabile dinamica: Le variabili dinamiche sono utilizzate per riservare memoria che persiste oltre la durata del blocco di codice in cui sono state create. L’oggetto è creato in memoria e deve essere cancellato esplicitamente dall’utente, utilizzando funzioni di gestione della memoria come <code>delete</code>. La variabile che punta all’oggetto è separata dall’oggetto stesso, quindi se la variabile non è più visibile, l’oggetto continuerà a rimanere in memoria e non sarà più eliminabile, causando una perdita di memoria (<em>memory leak</em>). Esempio in C++:</p>
-<div class="sourceCode" id="annotated-cell-22"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-22-1"><a href="#annotated-cell-22-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="annotated-cell-22-2"><a href="#annotated-cell-22-2"></a></span>
-<span id="annotated-cell-22-3"><a href="#annotated-cell-22-3"></a><span class="dt">void</span> function<span class="op">()</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-22-4" class="code-annotation-target"><a href="#annotated-cell-22-4"></a>  <span class="dt">int</span><span class="op">*</span> dynamicVar <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">(</span><span class="dv">10</span><span class="op">);</span></span>
-<span id="annotated-cell-22-5"><a href="#annotated-cell-22-5"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-22-6" class="code-annotation-target"><a href="#annotated-cell-22-6"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"dynamicVar: "</span> <span class="op">&lt;&lt;</span> <span class="op">*</span>dynamicVar <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="annotated-cell-22-7"><a href="#annotated-cell-22-7"></a><span class="op">}</span></span>
-<span id="annotated-cell-22-8"><a href="#annotated-cell-22-8"></a></span>
-<span id="annotated-cell-22-9"><a href="#annotated-cell-22-9"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-22-10" class="code-annotation-target"><a href="#annotated-cell-22-10"></a>  function<span class="op">();</span></span>
-<span id="annotated-cell-22-11"><a href="#annotated-cell-22-11"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-22-12" class="code-annotation-target"><a href="#annotated-cell-22-12"></a>  <span class="dt">int</span><span class="op">*</span> safeDynamicVar <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">(</span><span class="dv">20</span><span class="op">);</span></span>
-<span id="annotated-cell-22-13"><a href="#annotated-cell-22-13"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-22-14" class="code-annotation-target"><a href="#annotated-cell-22-14"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"safeDynamicVar: "</span> <span class="op">&lt;&lt;</span> <span class="op">*</span>safeDynamicVar <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="annotated-cell-22-15"><a href="#annotated-cell-22-15"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-22-16" class="code-annotation-target"><a href="#annotated-cell-22-16"></a>  <span class="kw">delete</span> safeDynamicVar<span class="op">;</span></span>
-<span id="annotated-cell-22-17"><a href="#annotated-cell-22-17"></a></span>
-<span id="annotated-cell-22-18"><a href="#annotated-cell-22-18"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-40"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-40-1"><a href="#annotated-cell-40-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="annotated-cell-40-2"><a href="#annotated-cell-40-2"></a></span>
+<span id="annotated-cell-40-3"><a href="#annotated-cell-40-3"></a><span class="dt">void</span> function<span class="op">()</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-40-4" class="code-annotation-target"><a href="#annotated-cell-40-4"></a>  <span class="dt">int</span><span class="op">*</span> dynamicVar <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">(</span><span class="dv">10</span><span class="op">);</span></span>
+<span id="annotated-cell-40-5"><a href="#annotated-cell-40-5"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-40-6" class="code-annotation-target"><a href="#annotated-cell-40-6"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"dynamicVar: "</span> <span class="op">&lt;&lt;</span> <span class="op">*</span>dynamicVar <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="annotated-cell-40-7"><a href="#annotated-cell-40-7"></a><span class="op">}</span></span>
+<span id="annotated-cell-40-8"><a href="#annotated-cell-40-8"></a></span>
+<span id="annotated-cell-40-9"><a href="#annotated-cell-40-9"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-40-10" class="code-annotation-target"><a href="#annotated-cell-40-10"></a>  function<span class="op">();</span></span>
+<span id="annotated-cell-40-11"><a href="#annotated-cell-40-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-40-12" class="code-annotation-target"><a href="#annotated-cell-40-12"></a>  <span class="dt">int</span><span class="op">*</span> safeDynamicVar <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">(</span><span class="dv">20</span><span class="op">);</span></span>
+<span id="annotated-cell-40-13"><a href="#annotated-cell-40-13"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-40-14" class="code-annotation-target"><a href="#annotated-cell-40-14"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"safeDynamicVar: "</span> <span class="op">&lt;&lt;</span> <span class="op">*</span>safeDynamicVar <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="annotated-cell-40-15"><a href="#annotated-cell-40-15"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-40-16" class="code-annotation-target"><a href="#annotated-cell-40-16"></a>  <span class="kw">delete</span> safeDynamicVar<span class="op">;</span></span>
+<span id="annotated-cell-40-17"><a href="#annotated-cell-40-17"></a></span>
+<span id="annotated-cell-40-18"><a href="#annotated-cell-40-18"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-22" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="4" data-code-annotation="1">Allocazione dinamica di un intero all’interno della funzione <code>function()</code>.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="4" data-code-annotation="1">Allocazione dinamica di un intero all’interno della funzione <code>function()</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="6" data-code-annotation="2">Stampa del valore puntato da <code>dynamicVar</code>. Prima della chiusura del blocco non viene deallocata <code>dynamicVar</code> per dimostrare il problema di perdita di memoria</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="6" data-code-annotation="2">Stampa del valore puntato da <code>dynamicVar</code>. Prima della chiusura del blocco non viene deallocata <code>dynamicVar</code> per dimostrare il problema di perdita di memoria</span>
 </dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="10" data-code-annotation="3">Chiamata alla funzione <code>function()</code>. Dopo l’uscita dalla funzione, <code>dynamicVar</code> non è più accessibile, causando una perdita di memoria poiché non è stata deallocata.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="10" data-code-annotation="3">Chiamata alla funzione <code>function()</code>. Dopo l’uscita dalla funzione, <code>dynamicVar</code> non è più accessibile, causando una perdita di memoria poiché non è stata deallocata.</span>
 </dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="12" data-code-annotation="4">Allocazione dinamica di un intero.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="12" data-code-annotation="4">Allocazione dinamica di un intero.</span>
 </dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="14" data-code-annotation="5">Stampa del valore puntato da <code>safeDynamicVar</code>.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="14" data-code-annotation="5">Stampa del valore puntato da <code>safeDynamicVar</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="16" data-code-annotation="6">Deallocazione dinamica dell’intero e ciò mostra il corretto uso di allocazione e deallocazione dinamica.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="16" data-code-annotation="6">Deallocazione dinamica dell’intero e ciò mostra il corretto uso di allocazione e deallocazione dinamica.</span>
 </dd>
 </dl></li>
 </ul>
@@ -1013,6 +1026,387 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Visibilità: Le variabili e le funzioni dichiarate in namespace o moduli possono essere visibili solo all’interno di quel namespace o modulo, a meno che non vengano esplicitamente esportate.</p></li>
 <li><p>Durata di vita degli oggetti: La durata di vita degli oggetti non è direttamente influenzata dallo spazio di nomi o moduli, ma l’organizzazione del codice può rendere più chiaro quando e dove gli oggetti vengono creati e distrutti.</p></li>
 </ul>
+</section>
+<section id="la-variabile-e-il-tipo-di-dato" class="level3" data-number="6.0.6">
+<h3 data-number="6.0.6" class="anchored" data-anchor-id="la-variabile-e-il-tipo-di-dato"><span class="header-section-number">6.0.6</span> La variabile e il tipo di dato</h3>
+<p>Una <strong>variabile</strong> in un linguaggio di programmazione è un nome simbolico associato a una locazione di memoria. Le variabili sono utilizzate per referenziare e manipolare dati durante l’esecuzione di un programma. Il valore associato alla variabile è memorizzato nella locazione di memoria a cui la variabile fa riferimento, e il tipo di dato della variabile determina come quel valore viene interpretato e quali operazioni possono essere eseguite su di esso.</p>
+<p>Due operazioni importanti con le variabili sono:</p>
+<ul>
+<li><p><strong>Dichiarazione</strong>: Introduce una variabile nel programma, specificando il suo nome e, in molti linguaggi, il suo tipo di dato. La dichiarazione informa il compilatore o l’interprete che una variabile esiste.</p></li>
+<li><p><strong>Definizione</strong>: Oltre a dichiarare la variabile, le assegna anche uno spazio di memoria.</p></li>
+</ul>
+<p>La gestione di queste operazioni varia significativamente tra linguaggi con <strong>tipizzazione statica</strong> e <strong>tipizzazione dinamica</strong>:</p>
+<ul>
+<li><p>Linguaggi con tipizzazione statica (come Java, C++, TypeScript):</p>
+<ul>
+<li><p>Richiedono generalmente una dichiarazione esplicita del tipo di variabile.</p></li>
+<li><p>La verifica del tipo avviene prima dell’esecuzione del programma.</p></li>
+<li><p>La dichiarazione e la definizione possono avvenire separatamente.</p></li>
+</ul>
+<p>Esempio in Java:</p>
+<div class="sourceCode" id="annotated-cell-41"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><a class="code-annotation-anchor" data-target-cell="annotated-cell-41" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-41-1" class="code-annotation-target"><a href="#annotated-cell-41-1"></a><span class="dt">int</span> x<span class="op">;</span></span>
+<span id="annotated-cell-41-2"><a href="#annotated-cell-41-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-41" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-41-3" class="code-annotation-target"><a href="#annotated-cell-41-3"></a>x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-41" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-41" data-code-lines="1" data-code-annotation="1">Dichiarazione di <code>x</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-41" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-41" data-code-lines="3" data-code-annotation="2">Definizione.</span>
+</dd>
+</dl>
+<p>In Java, la verifica del tipo avviene durante la compilazione in bytecode. Anche se Java è eseguito su una macchina virtuale (JVM), il controllo dei tipi è effettuato prima dell’esecuzione.</p>
+<p>Esempio in C++:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">int</span> y<span class="op">;</span>  <span class="co">/* Dichiarazione e definizione (alloca spazio in memoria) */</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>y <span class="op">=</span> <span class="dv">10</span><span class="op">;</span>  <span class="co">/* Assegnazione di un valore */</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In C++, la verifica del tipo avviene completamente durante la compilazione.</p></li>
+</ul>
+<ol type="1">
+<li><p>Linguaggi con tipizzazione dinamica (come Python, JavaScript, Ruby):</p>
+<ul>
+<li>Non richiedono una dichiarazione esplicita del tipo.</li>
+<li>Il tipo viene inferito e verificato durante l’esecuzione del programma.</li>
+<li>La dichiarazione e la definizione avvengono spesso contemporaneamente.</li>
+</ul>
+<p>Esempio in Python:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>z <span class="op">=</span> <span class="dv">15</span>  <span class="op">/*</span> Dichiarazione e definizione simultanee <span class="op">*/</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Esempio in JavaScript:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource javascript number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">let</span> w <span class="op">=</span> <span class="dv">20</span><span class="op">;</span>  <span class="co">/* Dichiarazione e definizione con 'let' */</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">var</span> v<span class="op">;</span>  <span class="co">/* Dichiarazione senza definizione (il valore sarà 'undefined') */</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<p>È importante notare che alcuni linguaggi, come TypeScript, offrono un approccio ibrido:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource typescript number-lines code-with-copy"><code class="sourceCode typescript"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">let</span> a<span class="op">:</span> <span class="dt">number</span><span class="op">;</span>  <span class="co">/* Dichiarazione con tipo esplicito */</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>a <span class="op">=</span> <span class="dv">25</span><span class="op">;</span>  <span class="co">/* Definizione */</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="kw">let</span> b <span class="op">=</span> <span class="dv">30</span><span class="op">;</span>  <span class="co">/* Dichiarazione e definizione con inferenza di tipo */</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>TypeScript effettua il controllo dei tipi durante la compilazione, ma viene poi compilato in JavaScript, che è dinamicamente tipizzato.</p>
+<p>Alcuni linguaggi moderni, come Go o Kotlin, utilizzano l’inferenza di tipo con tipizzazione statica:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource go number-lines code-with-copy"><code class="sourceCode go"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">var</span> c <span class="op">=</span> <span class="dv">35</span>  <span class="co">/* Go inferisce che c è di tipo int */</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource kotlin number-lines code-with-copy"><code class="sourceCode kotlin"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">val</span> <span class="va">d</span> <span class="op">=</span> <span class="dv">40</span>  <span class="co">/* Kotlin inferisce che d è di tipo Int */</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="altri-aspetti-delle-variabili" class="level3" data-number="6.0.7">
+<h3 data-number="6.0.7" class="anchored" data-anchor-id="altri-aspetti-delle-variabili"><span class="header-section-number">6.0.7</span> Altri aspetti delle variabili</h3>
+<p>Il <strong>ciclo di vita</strong> di una variabile si riferisce al periodo durante il quale la variabile esiste in memoria. Questo ciclo è influenzato dall’allocazione dinamica o statica della memoria e dall’ambito della variabile. Il <strong>ciclo di vita del dato</strong> si riferisce a quanto a lungo un dato rimane accessibile e utilizzabile nel programma.</p>
+<p>L’<strong>ambito</strong> (scope) definisce la porzione di codice in cui la variabile può essere utilizzata, mentre la <strong>visibilità</strong> indica da dove la variabile può essere accessibile. Questi aspetti sono influenzati dal modo in cui le variabili vengono dichiarate e definite.</p>
+</section>
+<section id="il-tipo-di-dato-e-linferenza-di-tipo" class="level3" data-number="6.0.8">
+<h3 data-number="6.0.8" class="anchored" data-anchor-id="il-tipo-di-dato-e-linferenza-di-tipo"><span class="header-section-number">6.0.8</span> Il tipo di dato e l’inferenza di tipo</h3>
+<p>Il <strong>tipo di dato</strong> definisce l’insieme di valori che una variabile può assumere e le operazioni che possono essere eseguite su di essa. Nei linguaggi con tipizzazione statica, il tipo di dato deve essere specificato esplicitamente.</p>
+<p>L’<strong>inferenza di tipo</strong> è una caratteristica in cui il compilatore deduce automaticamente il tipo di una variabile dal contesto, come avviene in linguaggi come TypeScript e Python.</p>
+<p>Esempio in TypeScript:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource typescript number-lines code-with-copy"><code class="sourceCode typescript"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">let</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span>  <span class="co">/* Il compilatore inferisce che x è di tipo number */</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="kw">let</span> y <span class="op">=</span> <span class="st">"Hello"</span><span class="op">;</span>  <span class="co">/* Il compilatore inferisce che y è di tipo string */</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="il-modello-dati" class="level3" data-number="6.0.9">
+<h3 data-number="6.0.9" class="anchored" data-anchor-id="il-modello-dati"><span class="header-section-number">6.0.9</span> Il modello dati</h3>
+<p>Il <strong>modello dati</strong> di un linguaggio di programmazione descrive come vengono rappresentati e manipolati i dati. Questo modello include:</p>
+<ul>
+<li><strong>Tipi di dati primitivi</strong>: Numeri interi, stringhe, booleani, ecc.</li>
+<li><strong>Tipi di dati complessi</strong>: Liste, array, oggetti, ecc.</li>
+<li><strong>Tipi generici</strong>: Permettono di scrivere codice che può lavorare con diversi tipi di dati mantenendo la sicurezza dei tipi.</li>
+</ul>
+<p>Esempio di tipi generici in Java:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1"></a><span class="bu">List</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> stringList <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span>  <span class="co">/* Una lista che può contenere solo stringhe */</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="bu">List</span><span class="op">&lt;</span><span class="bu">Integer</span><span class="op">&gt;</span> intList <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span>  <span class="co">/* Una lista che può contenere solo interi */</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="esempi-di-tipi-semplici-contenitori-e-classi" class="level3" data-number="6.0.10">
+<h3 data-number="6.0.10" class="anchored" data-anchor-id="esempi-di-tipi-semplici-contenitori-e-classi"><span class="header-section-number">6.0.10</span> Esempi di tipi semplici, contenitori e classi</h3>
+<p>Esempio in Python:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>x <span class="op">=</span> <span class="dv">5</span>  <span class="op">/*</span> Variabile intera <span class="op">*/</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>y <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]  <span class="op">/*</span> Lista di interi <span class="op">*/</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="kw">class</span> Persona:  <span class="op">/*</span> Definizione di una classe <span class="op">*/</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, nome):</span>
+<span id="cb10-5"><a href="#cb10-5"></a>        <span class="va">self</span>.nome <span class="op">=</span> nome</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a>p <span class="op">=</span> Persona(<span class="st">"Alice"</span>)  <span class="op">/*</span> Istanza della classe Persona <span class="op">*/</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Esempio in Java:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span>  <span class="co">/* Variabile intera */</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="dt">int</span><span class="op">[]</span> y <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">};</span>  <span class="co">/* Array di interi */</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="kw">class</span> Persona <span class="op">{</span>  <span class="co">/* Definizione di una classe */</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>    <span class="bu">String</span> nome<span class="op">;</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>    <span class="fu">Persona</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">nome</span> <span class="op">=</span> nome<span class="op">;</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>    <span class="op">}</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="op">}</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a>Persona p <span class="op">=</span> <span class="kw">new</span> <span class="fu">Persona</span><span class="op">(</span><span class="st">"Alice"</span><span class="op">);</span>  <span class="co">/* Istanza della classe Persona */</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Questi concetti forniscono una panoramica più completa degli elementi semantici fondamentali nei linguaggi di programmazione moderni, coprendo sia aspetti di base che avanzati.</p>
+</section>
+<section id="il-modello-dati-1" class="level3" data-number="6.0.11">
+<h3 data-number="6.0.11" class="anchored" data-anchor-id="il-modello-dati-1"><span class="header-section-number">6.0.11</span> Il modello dati</h3>
+<p>Il <strong>modello dati</strong> di un linguaggio di programmazione descrive come vengono rappresentati e manipolati i dati. Questo modello include:</p>
+<ul>
+<li><strong>Tipi di dati primitivi</strong>: Numeri interi, stringhe, booleani, ecc.</li>
+<li><strong>Tipi di dati complessi</strong>: Liste, array, oggetti, ecc.</li>
+<li><strong>Tipi generici</strong>: Permettono di scrivere codice che può lavorare con diversi tipi di dati mantenendo la sicurezza dei tipi.</li>
+</ul>
+<p>Esempio di tipi generici in Java:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb12-1"><a href="#cb12-1"></a><span class="bu">List</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> stringList <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span>  <span class="co">// Una lista che può contenere solo stringhe</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="bu">List</span><span class="op">&lt;</span><span class="bu">Integer</span><span class="op">&gt;</span> intList <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span>  <span class="co">// Una lista che può contenere solo interi</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li><code>stringList</code> è una lista di stringhe.</li>
+<li><code>intList</code> è una lista di interi.</li>
+</ol>
+</section>
+<section id="esempi-di-tipi-semplici-contenitori-e-classi-1" class="level3" data-number="6.0.12">
+<h3 data-number="6.0.12" class="anchored" data-anchor-id="esempi-di-tipi-semplici-contenitori-e-classi-1"><span class="header-section-number">6.0.12</span> Esempi di tipi semplici, contenitori e classi</h3>
+<p>Esempio in Python:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>x <span class="op">=</span> <span class="dv">5</span>  <span class="co"># Variabile intera</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>y <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]  <span class="co"># Lista di interi</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="kw">class</span> Persona:  <span class="co"># Definizione di una classe</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, nome):</span>
+<span id="cb13-5"><a href="#cb13-5"></a>        <span class="va">self</span>.nome <span class="op">=</span> nome</span>
+<span id="cb13-6"><a href="#cb13-6"></a></span>
+<span id="cb13-7"><a href="#cb13-7"></a>p <span class="op">=</span> Persona(<span class="st">"Alice"</span>)  <span class="co"># Istanza della classe Persona</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li><code>x</code> è una variabile intera.</li>
+<li><code>y</code> è una lista di interi.</li>
+<li><code>Persona</code> è una classe con un attributo <code>nome</code>.</li>
+<li><code>p</code> è un’istanza della classe <code>Persona</code>.</li>
+</ol>
+<p>Esempio in Java:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb14-1"><a href="#cb14-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span>  <span class="co">// Variabile intera</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="dt">int</span><span class="op">[]</span> y <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">};</span>  <span class="co">// Array di interi</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="kw">class</span> Persona <span class="op">{</span>  <span class="co">// Definizione di una classe</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a>    <span class="bu">String</span> nome<span class="op">;</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>    <span class="fu">Persona</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">nome</span> <span class="op">=</span> nome<span class="op">;</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a>    <span class="op">}</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="op">}</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a>Persona p <span class="op">=</span> <span class="kw">new</span> <span class="fu">Persona</span><span class="op">(</span><span class="st">"Alice"</span><span class="op">);</span>  <span class="co">// Istanza della classe Persona</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li><code>x</code> è una variabile intera.</li>
+<li><code>y</code> è un array di interi.</li>
+<li><code>Persona</code> è una classe con un attributo <code>nome</code>.</li>
+<li><code>p</code> è un’istanza della classe <code>Persona</code>.</li>
+</ol>
+<p>Questi concetti forniscono una panoramica più completa degli elementi semantici fondamentali nei linguaggi di programmazione moderni, coprendo sia aspetti di base che avanzati.</p>
+</section>
+<section id="espressioni-e-valutazione" class="level3" data-number="6.0.13">
+<h3 data-number="6.0.13" class="anchored" data-anchor-id="espressioni-e-valutazione"><span class="header-section-number">6.0.13</span> Espressioni e valutazione</h3>
+<p>La <strong>semantica delle espressioni</strong> definisce come queste vengono valutate per produrre un risultato. Ciò include:</p>
+<ul>
+<li><strong>Ordine di valutazione degli operandi</strong>: La sequenza con cui vengono valutati i componenti di un’espressione.</li>
+<li><strong>Comportamento degli operatori</strong>: Come gli operatori agiscono su diversi tipi di dati.</li>
+<li><strong>Gestione degli errori</strong>: Come vengono trattate le situazioni eccezionali durante la valutazione delle espressioni.</li>
+</ul>
+<p>Esempio in JavaScript:</p>
+<div class="sourceCode" id="annotated-cell-21"><pre class="sourceCode numberSource javascript code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode javascript"><span id="annotated-cell-21-1"><a href="#annotated-cell-21-1"></a><span class="kw">let</span> a <span class="op">=</span> <span class="dv">5</span><span class="op">,</span> b <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="annotated-cell-21-2"><a href="#annotated-cell-21-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-21-3" class="code-annotation-target"><a href="#annotated-cell-21-3"></a><span class="kw">let</span> result <span class="op">=</span> a <span class="op">/</span> b<span class="op">;</span></span>
+<span id="annotated-cell-21-4"><a href="#annotated-cell-21-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-21-5" class="code-annotation-target"><a href="#annotated-cell-21-5"></a><span class="kw">let</span> check <span class="op">=</span> (a <span class="op">&gt;</span> b) <span class="op">&amp;&amp;</span> (b <span class="op">!==</span> <span class="dv">0</span>)<span class="op">;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-21" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-21" data-code-lines="3" data-code-annotation="1">Il risultato sarà 2.5, a differenza di linguaggi come Java o C dove sarebbe 2 a causa della divisione intera.</span>
+</dd>
+<dt data-target-cell="annotated-cell-21" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-21" data-code-lines="5" data-code-annotation="2">La seconda condizione viene valutata solo se la prima è vera, grazie alla valutazione “short-circuit”.</span>
+</dd>
+</dl>
+</section>
+<section id="controllo-del-flusso" class="level3" data-number="6.0.14">
+<h3 data-number="6.0.14" class="anchored" data-anchor-id="controllo-del-flusso"><span class="header-section-number">6.0.14</span> Controllo del flusso</h3>
+<p>La <strong>semantica del controllo del flusso</strong> definisce come l’esecuzione del programma procede attraverso le istruzioni. Ciò include:</p>
+<ul>
+<li><strong>Istruzioni condizionali</strong>: Come <code>if</code>, <code>else</code>, <code>switch</code>.</li>
+<li><strong>Cicli</strong>: Come <code>for</code>, <code>while</code>.</li>
+<li><strong>Chiamate a funzione</strong>: E il passaggio dei parametri.</li>
+</ul>
+<p>Esempio in Python:</p>
+<div class="sourceCode" id="annotated-cell-22"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-22-1" class="code-annotation-target"><a href="#annotated-cell-22-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-22-2" class="code-annotation-target"><a href="#annotated-cell-22-2"></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-22-3" class="code-annotation-target"><a href="#annotated-cell-22-3"></a>        <span class="cf">continue</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-22-4" class="code-annotation-target"><a href="#annotated-cell-22-4"></a>    <span class="bu">print</span>(i)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-22" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="1" data-code-annotation="1">Ciclo <code>for</code> che itera da <code>0</code> a <code>4</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="2" data-code-annotation="2">Controllo condizionale per verificare se <code>i</code> è pari.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="3" data-code-annotation="3"><code>continue</code> salta le iterazioni pari.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="4" data-code-annotation="4">Stampa solo i valori dispari di <code>i</code>.</span>
+</dd>
+</dl>
+</section>
+<section id="gestione-della-memoria" class="level3" data-number="6.0.15">
+<h3 data-number="6.0.15" class="anchored" data-anchor-id="gestione-della-memoria"><span class="header-section-number">6.0.15</span> Gestione della memoria</h3>
+<p>La <strong>semantica della gestione della memoria</strong> definisce come il programma alloca, utilizza e libera la memoria. Ciò include:</p>
+<ul>
+<li><strong>Stack e heap</strong>: Distinzione tra memoria automatica (stack) e dinamica (heap).</li>
+<li><strong>Allocazione e deallocazione</strong>: Regole per riservare e liberare memoria.</li>
+<li><strong>Garbage collector</strong>: Comportamento nei linguaggi che lo utilizzano.</li>
+</ul>
+<p>Esempio in C++:</p>
+<div class="sourceCode" id="annotated-cell-23"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><a class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-23-1" class="code-annotation-target"><a href="#annotated-cell-23-1"></a><span class="dt">int</span><span class="op">*</span> p <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-23-2" class="code-annotation-target"><a href="#annotated-cell-23-2"></a><span class="op">*</span>p <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-23-3" class="code-annotation-target"><a href="#annotated-cell-23-3"></a><span class="kw">delete</span> p<span class="op">;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-23" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-23" data-code-lines="1" data-code-annotation="1"><code>new</code> alloca memoria dinamicamente sull’heap.</span>
+</dd>
+<dt data-target-cell="annotated-cell-23" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-23" data-code-lines="2" data-code-annotation="2">Il puntatore <code>p</code> viene utilizzato per accedere alla memoria allocata.</span>
+</dd>
+<dt data-target-cell="annotated-cell-23" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-23" data-code-lines="3" data-code-annotation="3"><code>delete</code> libera la memoria allocata, prevenendo potenziali perdite di memoria.</span>
+</dd>
+</dl>
+</section>
+<section id="funzioni-e-procedure" class="level3" data-number="6.0.16">
+<h3 data-number="6.0.16" class="anchored" data-anchor-id="funzioni-e-procedure"><span class="header-section-number">6.0.16</span> Funzioni e procedure</h3>
+<p>Le <strong>funzioni</strong> sono blocchi di codice riutilizzabili che eseguono specifiche operazioni. La semantica delle funzioni include:</p>
+<ul>
+<li><strong>Definizione e chiamata</strong>: Come vengono definite e chiamate le funzioni.</li>
+<li><strong>Passaggio dei parametri</strong>: Modalità di passaggio dei parametri (per valore, per riferimento, ecc.).</li>
+<li><strong>Restituzione dei valori</strong>: Come vengono restituiti i risultati.</li>
+<li><strong>Ambito delle variabili</strong>: Lo scope delle variabili all’interno delle funzioni.</li>
+</ul>
+<p>Esempio in JavaScript:</p>
+<div class="sourceCode" id="annotated-cell-24"><pre class="sourceCode numberSource javascript code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode javascript"><a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-24-1" class="code-annotation-target"><a href="#annotated-cell-24-1"></a><span class="kw">function</span> <span class="fu">add</span>(a<span class="op">,</span> b) {</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-24-2" class="code-annotation-target"><a href="#annotated-cell-24-2"></a>    <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="annotated-cell-24-3"><a href="#annotated-cell-24-3"></a>}</span>
+<span id="annotated-cell-24-4"><a href="#annotated-cell-24-4"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-24-5" class="code-annotation-target"><a href="#annotated-cell-24-5"></a><span class="kw">let</span> result <span class="op">=</span> <span class="fu">add</span>(<span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>)<span class="op">;</span></span>
+<span id="annotated-cell-24-6"><a href="#annotated-cell-24-6"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(result)<span class="op">;</span>  <span class="co">// Stampa 7</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-24" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-24" data-code-lines="1" data-code-annotation="1">Definizione della funzione <code>add</code> con due parametri.</span>
+</dd>
+<dt data-target-cell="annotated-cell-24" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-24" data-code-lines="2" data-code-annotation="2">La funzione restituisce la somma dei parametri.</span>
+</dd>
+<dt data-target-cell="annotated-cell-24" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-24" data-code-lines="5" data-code-annotation="3">Chiamata della funzione con argomenti 3 e 4.</span>
+</dd>
+</dl>
+<p>Nei linguaggi moderni, troviamo anche concetti avanzati come:</p>
+<ul>
+<li><strong>Funzioni di ordine superiore</strong>: Funzioni che possono accettare altre funzioni come argomenti o restituirle come risultato.</li>
+</ul>
+<p>Esempio in Python:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">def</span> <span class="bu">apply</span>(func, x, y):</span>
+<span id="cb15-2"><a href="#cb15-2"></a>    <span class="cf">return</span> func(x, y)</span>
+<span id="cb15-3"><a href="#cb15-3"></a></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="kw">def</span> multiply(a, b):</span>
+<span id="cb15-5"><a href="#cb15-5"></a>    <span class="cf">return</span> a <span class="op">*</span> b</span>
+<span id="cb15-6"><a href="#cb15-6"></a></span>
+<span id="cb15-7"><a href="#cb15-7"></a>result <span class="op">=</span> <span class="bu">apply</span>(multiply, <span class="dv">3</span>, <span class="dv">4</span>)  <span class="co"># Restituisce 12</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Chiusure</strong>: Funzioni che “catturano” variabili dal loro ambiente circostante.</li>
+</ul>
+<p>Esempio in JavaScript:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource javascript number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">function</span> <span class="fu">createCounter</span>() {</span>
+<span id="cb16-2"><a href="#cb16-2"></a>    <span class="kw">let</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>    <span class="cf">return</span> <span class="kw">function</span>() {</span>
+<span id="cb16-4"><a href="#cb16-4"></a>        <span class="cf">return</span> <span class="op">++</span>count<span class="op">;</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>    }<span class="op">;</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>}</span>
+<span id="cb16-7"><a href="#cb16-7"></a></span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="kw">let</span> counter <span class="op">=</span> <span class="fu">createCounter</span>()<span class="op">;</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">counter</span>())<span class="op">;</span>  <span class="co">// Stampa 1</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">counter</span>())<span class="op">;</span>  <span class="co">// Stampa 2</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="programmazione-asincrona" class="level3" data-number="6.0.17">
+<h3 data-number="6.0.17" class="anchored" data-anchor-id="programmazione-asincrona"><span class="header-section-number">6.0.17</span> Programmazione asincrona</h3>
+<p>La <strong>programmazione asincrona</strong> permette l’esecuzione di operazioni non bloccanti, migliorando l’efficienza e la reattività dei programmi. Concetti chiave includono:</p>
+<ul>
+<li><strong>Promise/Future</strong>: Rappresentano il risultato di un’operazione asincrona.</li>
+<li><strong>async/await</strong>: Sintassi che semplifica la scrittura di codice asincrono.</li>
+<li><strong>Callback</strong>: Funzioni che vengono chiamate al completamento di un’operazione asincrona.</li>
+</ul>
+<p>Esempio in JavaScript:</p>
+<div class="sourceCode" id="annotated-cell-27"><pre class="sourceCode numberSource javascript code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode javascript"><span id="annotated-cell-27-1"><a href="#annotated-cell-27-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">fetchData</span>() {</span>
+<span id="annotated-cell-27-2"><a href="#annotated-cell-27-2"></a>    <span class="cf">try</span> {</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-27-3" class="code-annotation-target"><a href="#annotated-cell-27-3"></a>        <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="st">'https://api.example.com/data'</span>)<span class="op">;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-27-4" class="code-annotation-target"><a href="#annotated-cell-27-4"></a>        <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="annotated-cell-27-5"><a href="#annotated-cell-27-5"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(data)<span class="op">;</span></span>
+<span id="annotated-cell-27-6"><a href="#annotated-cell-27-6"></a>    } <span class="cf">catch</span> (error) {</span>
+<span id="annotated-cell-27-7"><a href="#annotated-cell-27-7"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(<span class="st">'Errore:'</span><span class="op">,</span> error)<span class="op">;</span></span>
+<span id="annotated-cell-27-8"><a href="#annotated-cell-27-8"></a>    }</span>
+<span id="annotated-cell-27-9"><a href="#annotated-cell-27-9"></a>}</span>
+<span id="annotated-cell-27-10"><a href="#annotated-cell-27-10"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-27-11" class="code-annotation-target"><a href="#annotated-cell-27-11"></a><span class="fu">fetchData</span>()<span class="op">;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-27" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-27" data-code-lines="3" data-code-annotation="1"><code>await</code> sospende l’esecuzione della funzione finché la Promise restituita da <code>fetch</code> non si risolve.</span>
+</dd>
+<dt data-target-cell="annotated-cell-27" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-27" data-code-lines="4" data-code-annotation="2">Attende che il corpo della risposta venga convertito in JSON.</span>
+</dd>
+<dt data-target-cell="annotated-cell-27" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-27" data-code-lines="11" data-code-annotation="3">Chiama la funzione asincrona.</span>
+</dd>
+</dl>
+</section>
+<section id="sistemi-di-tipi" class="level3" data-number="6.0.18">
+<h3 data-number="6.0.18" class="anchored" data-anchor-id="sistemi-di-tipi"><span class="header-section-number">6.0.18</span> Sistemi di tipi</h3>
+<p>Il <strong>sistema di tipi</strong> di un linguaggio definisce come i tipi di dati vengono gestiti. Ciò include:</p>
+<ul>
+<li><strong>Conversione tra tipi</strong>: Regole per la conversione implicita o esplicita tra tipi.</li>
+<li><strong>Controllo dei tipi</strong>: Comportamento del controllo dei tipi (statico o dinamico).</li>
+<li><strong>Polimorfismo e ereditarietà</strong>: Implementazione nei linguaggi orientati agli oggetti.</li>
+</ul>
+<p>Esempio in TypeScript:</p>
+<div class="sourceCode" id="annotated-cell-28"><pre class="sourceCode numberSource typescript code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode typescript"><span id="annotated-cell-28-1"><a href="#annotated-cell-28-1"></a><span class="kw">interface</span> Shape {</span>
+<span id="annotated-cell-28-2"><a href="#annotated-cell-28-2"></a>    <span class="fu">area</span>()<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="annotated-cell-28-3"><a href="#annotated-cell-28-3"></a>}</span>
+<span id="annotated-cell-28-4"><a href="#annotated-cell-28-4"></a></span>
+<span id="annotated-cell-28-5"><a href="#annotated-cell-28-5"></a><span class="kw">class</span> Circle <span class="kw">implements</span> Shape {</span>
+<span id="annotated-cell-28-6"><a href="#annotated-cell-28-6"></a>    <span class="kw">constructor</span>(<span class="kw">private</span> radius<span class="op">:</span> <span class="dt">number</span>) {}</span>
+<span id="annotated-cell-28-7"><a href="#annotated-cell-28-7"></a>    </span>
+<span id="annotated-cell-28-8"><a href="#annotated-cell-28-8"></a>    <span class="fu">area</span>()<span class="op">:</span> <span class="dt">number</span> {</span>
+<span id="annotated-cell-28-9"><a href="#annotated-cell-28-9"></a>        <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> <span class="kw">this</span><span class="op">.</span><span class="at">radius</span> <span class="op">**</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="annotated-cell-28-10"><a href="#annotated-cell-28-10"></a>    }</span>
+<span id="annotated-cell-28-11"><a href="#annotated-cell-28-11"></a>}</span>
+<span id="annotated-cell-28-12"><a href="#annotated-cell-28-12"></a></span>
+<span id="annotated-cell-28-13"><a href="#annotated-cell-28-13"></a><span class="kw">class</span> Rectangle <span class="kw">implements</span> Shape {</span>
+<span id="annotated-cell-28-14"><a href="#annotated-cell-28-14"></a>    <span class="kw">constructor</span>(<span class="kw">private</span> width<span class="op">:</span> <span class="dt">number</span><span class="op">,</span> <span class="kw">private</span> height<span class="op">:</span> <span class="dt">number</span>) {}</span>
+<span id="annotated-cell-28-15"><a href="#annotated-cell-28-15"></a>    </span>
+<span id="annotated-cell-28-16"><a href="#annotated-cell-28-16"></a>    <span class="fu">area</span>()<span class="op">:</span> <span class="dt">number</span> {</span>
+<span id="annotated-cell-28-17"><a href="#annotated-cell-28-17"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="at">width</span> <span class="op">*</span> <span class="kw">this</span><span class="op">.</span><span class="at">height</span><span class="op">;</span></span>
+<span id="annotated-cell-28-18"><a href="#annotated-cell-28-18"></a>    }</span>
+<span id="annotated-cell-28-19"><a href="#annotated-cell-28-19"></a>}</span>
+<span id="annotated-cell-28-20"><a href="#annotated-cell-28-20"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-28-21" class="code-annotation-target"><a href="#annotated-cell-28-21"></a><span class="kw">function</span> <span class="fu">printArea</span>(shape<span class="op">:</span> Shape) {</span>
+<span id="annotated-cell-28-22"><a href="#annotated-cell-28-22"></a>   </span>
+<span id="annotated-cell-28-23"><a href="#annotated-cell-28-23"></a></span>
+<span id="annotated-cell-28-24"><a href="#annotated-cell-28-24"></a><span class="vs">```typescript</span></span>
+<span id="annotated-cell-28-25"><a href="#annotated-cell-28-25"></a><span class="vs">    console.log('Area:', shape.area());</span></span>
+<span id="annotated-cell-28-26"><a href="#annotated-cell-28-26"></a><span class="vs">}</span></span>
+<span id="annotated-cell-28-27"><a href="#annotated-cell-28-27"></a></span>
+<span id="annotated-cell-28-28"><a href="#annotated-cell-28-28"></a><span class="vs">let circle = new Circle(5);</span></span>
+<span id="annotated-cell-28-29"><a href="#annotated-cell-28-29"></a><span class="vs">let rectangle = new Rectangle(4, 6);</span></span>
+<span id="annotated-cell-28-30"><a href="#annotated-cell-28-30"></a></span>
+<span id="annotated-cell-28-31"><a href="#annotated-cell-28-31"></a><span class="vs">printArea(circle);  // Stampa: Area: 78.53981633974483</span></span>
+<span id="annotated-cell-28-32"><a href="#annotated-cell-28-32"></a><span class="vs">printArea(rectangle);  // Stampa: Area: 24</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-28" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-28" data-code-lines="21" data-code-annotation="1">La funzione <code>printArea</code> accetta qualsiasi oggetto che implementa l’interfaccia <code>Shape</code>.</span>
+</dd>
+</dl>
+<p>Questi concetti forniscono una panoramica più completa degli elementi semantici fondamentali nei linguaggi di programmazione moderni, coprendo sia aspetti di base che avanzati.</p>
 
 
 </section>

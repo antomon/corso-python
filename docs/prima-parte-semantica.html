@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -145,7 +164,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -437,22 +456,26 @@ window.Quarto = {
   <li><a href="#semantica-operazionale" id="toc-semantica-operazionale" class="nav-link" data-scroll-target="#semantica-operazionale"><span class="header-section-number">4.1.3</span> Semantica operazionale</a></li>
   <li><a href="#semantica-denotazionale" id="toc-semantica-denotazionale" class="nav-link" data-scroll-target="#semantica-denotazionale"><span class="header-section-number">4.1.4</span> Semantica denotazionale</a></li>
   <li><a href="#semantica-assiomatica" id="toc-semantica-assiomatica" class="nav-link" data-scroll-target="#semantica-assiomatica"><span class="header-section-number">4.1.5</span> Semantica assiomatica</a></li>
-  <li><a href="#strumenti-per-la-verifica-formale" id="toc-strumenti-per-la-verifica-formale" class="nav-link" data-scroll-target="#strumenti-per-la-verifica-formale"><span class="header-section-number">4.1.6</span> Strumenti per la verifica formale</a></li>
   </ul></li>
   <li><a href="#elementi-semantici-fondamentali" id="toc-elementi-semantici-fondamentali" class="nav-link" data-scroll-target="#elementi-semantici-fondamentali"><span class="header-section-number">4.2</span> Elementi semantici fondamentali</a>
   <ul class="collapse">
-  <li><a href="#variabili-tipi-di-dati-e-modelli-di-dati" id="toc-variabili-tipi-di-dati-e-modelli-di-dati" class="nav-link" data-scroll-target="#variabili-tipi-di-dati-e-modelli-di-dati"><span class="header-section-number">4.2.1</span> Variabili, tipi di dati e modelli di dati</a></li>
-  <li><a href="#espressioni-e-valutazione" id="toc-espressioni-e-valutazione" class="nav-link" data-scroll-target="#espressioni-e-valutazione"><span class="header-section-number">4.2.2</span> Espressioni e valutazione</a></li>
-  <li><a href="#controllo-del-flusso" id="toc-controllo-del-flusso" class="nav-link" data-scroll-target="#controllo-del-flusso"><span class="header-section-number">4.2.3</span> Controllo del flusso</a></li>
-  <li><a href="#gestione-della-memoria" id="toc-gestione-della-memoria" class="nav-link" data-scroll-target="#gestione-della-memoria"><span class="header-section-number">4.2.4</span> Gestione della memoria</a></li>
-  <li><a href="#sistemi-di-tipi" id="toc-sistemi-di-tipi" class="nav-link" data-scroll-target="#sistemi-di-tipi"><span class="header-section-number">4.2.5</span> Sistemi di tipi</a></li>
+  <li><a href="#espressioni-e-operatori" id="toc-espressioni-e-operatori" class="nav-link" data-scroll-target="#espressioni-e-operatori"><span class="header-section-number">4.2.1</span> 3. Espressioni e operatori</a></li>
+  <li><a href="#controllo-del-flusso" id="toc-controllo-del-flusso" class="nav-link" data-scroll-target="#controllo-del-flusso"><span class="header-section-number">4.2.2</span> 4. Controllo del flusso</a></li>
+  <li><a href="#funzioni-e-procedure" id="toc-funzioni-e-procedure" class="nav-link" data-scroll-target="#funzioni-e-procedure"><span class="header-section-number">4.2.3</span> 5. Funzioni e procedure</a></li>
+  <li><a href="#gestione-della-memoria" id="toc-gestione-della-memoria" class="nav-link" data-scroll-target="#gestione-della-memoria"><span class="header-section-number">4.2.4</span> 6. Gestione della memoria</a></li>
+  <li><a href="#sistemi-di-tipi" id="toc-sistemi-di-tipi" class="nav-link" data-scroll-target="#sistemi-di-tipi"><span class="header-section-number">4.2.5</span> 7. Sistemi di tipi</a></li>
+  <li><a href="#programmazione-orientata-agli-oggetti" id="toc-programmazione-orientata-agli-oggetti" class="nav-link" data-scroll-target="#programmazione-orientata-agli-oggetti"><span class="header-section-number">4.2.6</span> 8. Programmazione orientata agli oggetti</a></li>
+  <li><a href="#programmazione-asincrona" id="toc-programmazione-asincrona" class="nav-link" data-scroll-target="#programmazione-asincrona"><span class="header-section-number">4.2.7</span> 9. Programmazione asincrona</a></li>
+  <li><a href="#modularità-e-organizzazione-del-codice" id="toc-modularità-e-organizzazione-del-codice" class="nav-link" data-scroll-target="#modularità-e-organizzazione-del-codice"><span class="header-section-number">4.2.8</span> 10. Modularità e organizzazione del codice</a></li>
+  <li><a href="#metaprogrammazione" id="toc-metaprogrammazione" class="nav-link" data-scroll-target="#metaprogrammazione"><span class="header-section-number">4.2.9</span> 11. Metaprogrammazione</a></li>
+  <li><a href="#concorrenza-e-parallelismo" id="toc-concorrenza-e-parallelismo" class="nav-link" data-scroll-target="#concorrenza-e-parallelismo"><span class="header-section-number">4.2.10</span> 12. Concorrenza e parallelismo</a></li>
+  <li><a href="#programmazione-orientata-agli-aspetti" id="toc-programmazione-orientata-agli-aspetti" class="nav-link" data-scroll-target="#programmazione-orientata-agli-aspetti"><span class="header-section-number">4.2.11</span> 13. Programmazione orientata agli aspetti</a></li>
   </ul></li>
-  <li><a href="#differenze-semantiche-tra-linguaggi" id="toc-differenze-semantiche-tra-linguaggi" class="nav-link" data-scroll-target="#differenze-semantiche-tra-linguaggi"><span class="header-section-number">4.3</span> Differenze semantiche tra linguaggi</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/antomon/corso-python/edit/main/prima-parte-semantica.qmd" class="toc-action"><i class="bi bi-github"></i>Modifica questa pagina</a></li><li><a href="https://github.com/antomon/corso-python/blob/main/prima-parte-semantica.qmd" class="toc-action"><i class="bi empty"></i>Mostra il codice</a></li><li><a href="https://github.com/antomon/corso-python/issues/new/choose" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prima-parte.html">Prima parte: I fondamenti della programmazione</a></li><li class="breadcrumb-item"><a href="./prima-parte-semantica.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">La semantica dei linguaggi di programmazione</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -483,7 +506,7 @@ window.Quarto = {
 <li><p>Portabilità del codice: Conoscere le sfumature semantiche di diversi linguaggi aiuta a scrivere codice che si comporta in modo coerente su piattaforme diverse.</p></li>
 <li><p>Comunicazione tra programmatori: Una chiara comprensione della semantica facilita la collaborazione tra sviluppatori, permettendo di discutere e ragionare sul comportamento del codice in modo preciso.</p></li>
 </ol>
-<section id="tipi-di-semantica" class="level2" data-number="4.1">
+<section id="tipi-di-semantica" class="level2 page-columns page-full" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="tipi-di-semantica"><span class="header-section-number">4.1</span> Tipi di semantica</h2>
 <p>Esistono diversi tipi di semantica nel contesto dei linguaggi di programmazione. Ciascun tipo di semantica ha un ruolo specifico e può essere particolarmente rilevante a seconda del linguaggio di programmazione o del paradigma di programmazione adottato.</p>
 <section id="semantica-statica" class="level3" data-number="4.1.1">
@@ -627,292 +650,213 @@ window.Quarto = {
 <p><span class="math display">\[
 T(S(F(L)))
 \]</span></p>
-<p>Dove <span class="math inline">\(L\)</span> è la lista iniziale, <span class="math inline">\(F\)</span> è <code>filtra_pari</code>, <span class="math inline">\(S\)</span> è <code>ordina</code>, e <span class="math inline">\(T\)</span> è <code>somma_primi_tre</code>.</p>
-<p>La semantica denotazionale è utilizzata per garantire la correttezza dei programmi e per la verifica formale del loro comportamento. È un approccio potente per verificare che un programma rispetti specifiche formali e per dimostrare proprietà dei programmi in modo matematico. Esistono strumenti e linguaggi formali che applicano la semantica denotazionale per verificare programmi, come Coq e Isabelle/HOL, che permettono di definire e dimostrare formalmente proprietà dei programmi.</p>
+<p>dove <span class="math inline">\(L\)</span> è la lista iniziale, <span class="math inline">\(F\)</span> è <code>filtra_pari</code>, <span class="math inline">\(S\)</span> è <code>ordina</code>, e <span class="math inline">\(T\)</span> è <code>somma_primi_tre</code>.</p>
+<p>La semantica denotazionale è utilizzata per garantire la correttezza dei programmi e per la verifica formale del loro comportamento. È un approccio potente per verificare che un programma rispetti specifiche formali e per dimostrare proprietà dei programmi in modo matematico. Operativamente, lo sviluppatore definisce le mappature denotazionali per i costrutti del programma, esprimendoli come funzioni matematiche. Strumenti come Coq e Isabelle/HOL aiutano a verificare formalmente queste mappature, dimostrando che il programma soddisfa specifiche precise e comportandosi come atteso in ogni possibile scenario.</p>
 </section>
-<section id="semantica-assiomatica" class="level3" data-number="4.1.5">
+<section id="semantica-assiomatica" class="level3 page-columns page-full" data-number="4.1.5">
 <h3 data-number="4.1.5" class="anchored" data-anchor-id="semantica-assiomatica"><span class="header-section-number">4.1.5</span> Semantica assiomatica</h3>
-<p>La <strong>semantica assiomatica</strong> è un metodo formale per definire il significato dei programmi in termini di logica matematica, utilizzando precondizioni e postcondizioni. Questo approccio, introdotto da C.A.R. Hoare, è particolarmente utile per la verifica formale dei programmi, poiché consente di dimostrare matematicamente che un programma soddisfa specifiche desiderate.</p>
-<p>In termini pratici, la semantica assiomatica utilizza asserzioni logiche per descrivere lo stato del programma prima e dopo l’esecuzione di una specifica istruzione o blocco di codice. Queste asserzioni sono chiamate precondizioni (prima dell’esecuzione) e postcondizioni (dopo l’esecuzione). L’obiettivo è garantire che, se le precondizioni sono soddisfatte prima dell’esecuzione, le postcondizioni saranno soddisfatte dopo l’esecuzione.</p>
-<p>Consideriamo un esempio di funzione che calcola la radice quadrata approssimata di un numero intero non negativo in Python:</p>
-<div class="sourceCode" id="annotated-cell-5"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-5-1" class="code-annotation-target"><a href="#annotated-cell-5-1"></a><span class="kw">def</span> radice_quadrata_approssimata(n):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2"></a>    <span class="co">"""Restituisce la radice quadrata intera approssimata di n."""</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3"></a>    <span class="cf">assert</span> n <span class="op">&gt;=</span> <span class="dv">0</span>, <span class="st">"n deve essere non negativo"</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4"></a>    x <span class="op">=</span> n</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-5-5" class="code-annotation-target"><a href="#annotated-cell-5-5"></a>    y <span class="op">=</span> (x <span class="op">+</span> n <span class="op">//</span> x) <span class="op">//</span> <span class="dv">2</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-5-6" class="code-annotation-target"><a href="#annotated-cell-5-6"></a>    <span class="cf">while</span> y <span class="op">&lt;</span> x:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-5-7" class="code-annotation-target"><a href="#annotated-cell-5-7"></a>        x <span class="op">=</span> y</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-5-8" class="code-annotation-target"><a href="#annotated-cell-5-8"></a>        y <span class="op">=</span> (x <span class="op">+</span> n <span class="op">//</span> x) <span class="op">//</span> <span class="dv">2</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-5-9" class="code-annotation-target"><a href="#annotated-cell-5-9"></a>    <span class="cf">return</span> x</span>
-<span id="annotated-cell-5-10"><a href="#annotated-cell-5-10"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-5-11" class="code-annotation-target"><a href="#annotated-cell-5-11"></a><span class="bu">print</span>(radice_quadrata_approssimata(<span class="dv">10</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>La <strong>semantica assiomatica</strong> è un approccio formale per definire il significato dei programmi basato su precondizioni e postcondizioni logiche. Questo metodo, sviluppato da Tony Hoare <span class="citation" data-cites="hoare1969">(<a href="appendice-riferimenti.html#ref-hoare1969" role="doc-biblioref">Hoare 1969</a>)</span>, utilizza asserzioni logiche per descrivere lo stato del programma prima e dopo l’esecuzione delle istruzioni, permettendo di dimostrare formalmente la correttezza dei programmi.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-hoare1969" class="csl-entry" role="listitem">
+HOARE, C. A. R., 1969. An Axiomatic Basis for Computer Programming. <em>Communications of the ACM</em> [en&nbsp;ligne]. 1969. Vol.&nbsp;12, n°&nbsp;10, pp.&nbsp;576–580. DOI&nbsp;<a href="https://doi.org/10.1145/363235.363259">10.1145/363235.363259</a>.
+</div></div><p>In altre parole, la semantica assiomatica stabilisce regole per verificare che un programma rispetti determinate specifiche formali. Questo è particolarmente utile per garantire che il programma funzioni correttamente in tutte le condizioni previste.</p>
+<p>Consideriamo un semplice esempio in Python che calcola la somma di due numeri:</p>
+<div class="sourceCode" id="annotated-cell-5"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-5-1" class="code-annotation-target"><a href="#annotated-cell-5-1"></a><span class="kw">def</span> somma(a, b):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2"></a>  <span class="cf">return</span> a <span class="op">+</span> b</span>
+<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4"></a><span class="bu">print</span>(somma(<span class="dv">3</span>, <span class="dv">4</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="1" data-code-annotation="1">Definizione della funzione <code>radice_quadrata_approssimata</code> che accetta un parametro <code>n</code>.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="1" data-code-annotation="1">Definizione della funzione <code>somma</code> che accetta due parametri <code>a</code> e <code>b</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="2" data-code-annotation="2">Commento che descrive lo scopo della funzione.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="2" data-code-annotation="2">La funzione <code>somma</code> restituisce la somma di <code>a</code> e <code>b</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="3" data-code-annotation="3">Precondizione: <code>n</code> deve essere non negativo.</span>
-</dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="4">Inizializzazione della variabile <code>x</code> con il valore di <code>n</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="5" data-code-annotation="5">Calcolo iniziale di <code>y</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="6" data-code-annotation="6">Ciclo <code>while</code> che continua finché <code>y</code> è minore di <code>x</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="7">7</dt>
-<dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="7" data-code-annotation="7">Aggiornamento del valore di <code>x</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="8">8</dt>
-<dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="8" data-code-annotation="8">Ricalcolo di <code>y</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="9">9</dt>
-<dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="9" data-code-annotation="9">Restituzione del valore di <code>x</code> come risultato.</span>
-</dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="10">10</dt>
-<dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="11" data-code-annotation="10">Test della funzione con l’input <code>10</code>.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="3">Chiamata della funzione <code>somma</code> con argomenti <code>3</code> e <code>4</code>, stampa <code>7</code>.</span>
 </dd>
 </dl>
-<p>In termini di semantica assiomatica, possiamo esprimere le precondizioni e le postcondizioni come segue:</p>
+<p>Per verificare formalmente questo codice in Coq<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Coq è scaricabile da <a href="https://coq.inria.fr/">Coq Official Website</a>.</p></div></div><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource coq number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>(* Importazione della libreria standard di Coq *)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>Require Import Coq.Arith.Arith.</span>
+<span id="cb2-3"><a href="#cb2-3"></a>Require Import Coq.Init.Nat.</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a>(* Definizione della funzione somma in Coq *)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>Definition somma (a b : nat) : nat := a + b.</span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a>(* Affermazione del teorema che verifica la correttezza della funzione somma *)</span>
+<span id="cb2-9"><a href="#cb2-9"></a>Theorem somma_corretto : forall a b : nat,</span>
+<span id="cb2-10"><a href="#cb2-10"></a>    somma a b = a + b.</span>
+<span id="cb2-11"><a href="#cb2-11"></a>Proof.</span>
+<span id="cb2-12"><a href="#cb2-12"></a>  intros a b.</span>
+<span id="cb2-13"><a href="#cb2-13"></a>  unfold somma.</span>
+<span id="cb2-14"><a href="#cb2-14"></a>  reflexivity.</span>
+<span id="cb2-15"><a href="#cb2-15"></a>Qed.</span>
+<span id="cb2-16"><a href="#cb2-16"></a></span>
+<span id="cb2-17"><a href="#cb2-17"></a>(* Verifica di un caso specifico: somma 3 4 = 7 *)</span>
+<span id="cb2-18"><a href="#cb2-18"></a>Example test_somma : somma 3 4 = 7.</span>
+<span id="cb2-19"><a href="#cb2-19"></a>Proof.</span>
+<span id="cb2-20"><a href="#cb2-20"></a>  simpl.</span>
+<span id="cb2-21"><a href="#cb2-21"></a>  reflexivity.</span>
+<span id="cb2-22"><a href="#cb2-22"></a>Qed.</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In questo codice:</p>
 <ul>
-<li><strong>Precondizione</strong>: <span class="math inline">\(n \geq 0\)</span></li>
-<li><strong>Postcondizione</strong>: <span class="math inline">\(x^2 \leq n &lt; (x+1)^2\)</span></li>
+<li><p>Abbiamo definito la funzione <code>somma</code> in Coq per replicare il comportamento della funzione Python.</p></li>
+<li><p>Abbiamo affermato e dimostrato formalmente che <code>somma a b</code> è uguale a <code>a + b</code> per tutti i numeri naturali <code>a</code> e <code>b</code>.</p></li>
+<li><p>Abbiamo verificato un caso specifico (<code>somma 3 4 = 7</code>) per dimostrare che il nostro teorema e la nostra funzione sono corretti.</p></li>
 </ul>
-<p>Durante l’esecuzione del ciclo <code>while</code>, possiamo usare invarianti di ciclo per garantire che la semantica del programma sia corretta. Un invariante di ciclo è una condizione che rimane vera prima e dopo ogni iterazione del ciclo.</p>
-<p>In questo esempio, un possibile invariante di ciclo potrebbe essere:</p>
-<ul>
-<li><strong>Invariante di ciclo</strong>: <span class="math inline">\(x \geq y \geq \sqrt{n}\)</span></li>
-</ul>
-<p>Questo invariante ci aiuta a dimostrare che, alla fine del ciclo, <code>x</code> sarà la radice quadrata intera approssimata di <code>n</code>.</p>
-</section>
-<section id="strumenti-per-la-verifica-formale" class="level3" data-number="4.1.6">
-<h3 data-number="4.1.6" class="anchored" data-anchor-id="strumenti-per-la-verifica-formale"><span class="header-section-number">4.1.6</span> Strumenti per la verifica formale</h3>
-<p>Esistono diversi strumenti e linguaggi formali che supportano la semantica assiomatica e la verifica formale dei programmi, come Coq e Isabelle/HOL. Questi strumenti permettono di definire formalmente precondizioni, postcondizioni e invarianti di ciclo, e di dimostrare che un programma soddisfa le specifiche desiderate.</p>
-</section>
+<p>Salviamo il codice in un file <code>somma.v</code> e, in un terminale, navighiamo nella sua directory contenente. Quindi, eseguiamo il comando:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">coqc</span> somma.v</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Questo comando compila il file <code>somma.v</code> e verifica i teoremi e gli esempi al suo interno. Se tutto è corretto, non verrà restituito alcun errore.</p>
+<p>In contesti dove la correttezza del software è critica, come nei sistemi avionici, nei dispositivi medici e nei sistemi finanziari, la verifica formale basata sulla semantica assiomatica è fondamentale. Utilizzando strumenti come Coq, Isabelle/HOL, SPARK e altri prover interattivi, gli ingegneri del software possono formalizzare le specifiche del sistema e dimostrare che il codice implementato le soddisfa.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Per approfondire: <span class="citation" data-cites="chlipala2022">(<a href="appendice-riferimenti.html#ref-chlipala2022" role="doc-biblioref">Chlipala 2022</a>)</span>.</p><div id="ref-chlipala2022" class="csl-entry" role="listitem">
+CHLIPALA, Adam, 2022. <em>Certified Programming with Dependent Types</em>. MIT Press. ISBN&nbsp;9780262545747. <div class="csl-block">Il libro "Certified Programming with Dependent Types" di Adam Chlipala offre un’introduzione dettagliata al software Coq per la scrittura e la verifica di dimostrazioni matematiche, con un forte focus pratico sull’ingegneria del software. La verifica formale dei programmi è un campo in crescita che trova applicazione sia nella matematica che nell’ingegneria, e questo libro si propone di rendere accessibili le tecniche per costruire, comprendere e mantenere sviluppi in Coq di grandi dimensioni. Una delle caratteristiche distintive del libro è la trattazione approfondita della programmazione con tipi dipendenti, un aspetto centrale del sistema Coq, e la costruzione di tattiche di prova specifiche per il dominio. Questi argomenti, raramente trattati altrove, sono essenziali per la verifica interattiva dei teoremi. Il libro utilizza uno stile unico di prova automatizzata e offre una libreria di tattiche progettate per essere utilizzate con gli esempi del testo, fornendo ai lettori le competenze necessarie per reimplementare queste tattiche in altri contesti.</div><div class="csl-block"><a href="http://adam.chlipala.net/cpdt/html/" class="uri">http://adam.chlipala.net/cpdt/html/</a></div>
+</div></div></div></section>
 </section>
 <section id="elementi-semantici-fondamentali" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="elementi-semantici-fondamentali"><span class="header-section-number">4.2</span> Elementi semantici fondamentali</h2>
-<section id="variabili-tipi-di-dati-e-modelli-di-dati" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="variabili-tipi-di-dati-e-modelli-di-dati"><span class="header-section-number">4.2.1</span> Variabili, tipi di dati e modelli di dati</h3>
-<p>Le variabili sono elementi fondamentali in qualsiasi linguaggio di programmazione. La semantica delle variabili include:</p>
+<p>Dopo aver esplorato i vari tipi di semantica nei linguaggi di programmazione, è importante comprendere i componenti fondamentali che questi tipi di semantica descrivono e regolano. Gli elementi semantici fondamentali sono i mattoni con cui costruiamo e comprendiamo il comportamento dei programmi. Tra questi, alcuni concetti come variabili, tipi di dati, espressioni, controllo del flusso, gestione della memoria, funzioni e sistemi di tipi sono cruciali per ogni linguaggio di programmazione moderno, altri sono particolari di linguaggi specifici come la concorrenza e il supporto alla programmazione ad aspetti.</p>
+<p>Vediamo in dettaglio ciascuno di questi elementi:</p>
 <ul>
-<li>Il loro ciclo di vita (quando vengono create e distrutte).</li>
-<li>Il loro ambito e visibilità, ovvero dove possono essere utilizzate nel programma e da dove sono accessibili.</li>
-<li>Il loro tipo, che definisce quali valori possono contenere e quali operazioni possono essere eseguite su di esse.</li>
+<li><p>Variabili: Una variabile in un linguaggio di programmazione è un nome simbolico associato a una locazione di memoria in cui è memorizzato un dato. Le variabili sono utilizzate all’interno di espressioni e istruzioni, per referenziare e manipolare dati durante l’esecuzione di un programma. Il valore associato alla variabile è memorizzato nella locazione di memoria a cui la variabile fa riferimento e il tipo di dato della variabile determina come quel valore viene interpretato e quali operazioni possono essere eseguite su di esso.</p>
+<ul>
+<li><p>Dichiarazione: Introduce una variabile nel programma, specificando il suo nome e, in molti linguaggi, il suo tipo di dato.</p></li>
+<li><p>Definizione: Oltre a dichiarare la variabile, le assegna anche uno spazio di memoria.</p></li>
+<li><p>Inizializzazione: L’assegnazione del primo valore a una variabile.</p></li>
+<li><p>Ambito (inglese: <em>scope</em>): Definisce la visibilità e l’accessibilità di una variabile all’interno del codice.</p></li>
+<li><p>Durata: Il periodo durante il quale una variabile mantiene valido il legame con un dato presente in memoria.</p></li>
+</ul></li>
+<li><p>Tipi di dati: Il tipo di dato definisce l’insieme di valori che una variabile può assumere e le operazioni che possono essere eseguite su di essa. I tipi di dato sono alla base di molte operazioni semantiche nei linguaggi di programmazione.</p></li>
+<li><p>Tipi primitivi: Numeri interi, numeri a virgola mobile, caratteri, booleani.</p></li>
+<li><p>Tipi composti: Array, strutture, classi, tuple.</p></li>
+<li><p>Tipi di riferimento: Puntatori, riferimenti.</p></li>
+<li><p>Tipi astratti: Definiti dall’utente per rappresentare concetti complessi.</p></li>
+<li><p>Tipi generici: Permettono di scrivere codice che può lavorare con diversi tipi di dati mantenendo la sicurezza dei tipi.</p></li>
 </ul>
-<p>Il <strong>modello dati</strong> di un linguaggio di programmazione descrive come vengono rappresentati e manipolati i dati nel linguaggio. Questo modello include la definizione di tipi di dati primitivi (come numeri interi, stringhe, booleani) e tipi di dati complessi (come liste, array, oggetti).</p>
-<p>Esempio in Python:</p>
-<div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2"></a>y <span class="op">=</span> <span class="st">"Hello"</span></span>
-<span id="annotated-cell-6-3"><a href="#annotated-cell-6-3"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4"></a><span class="kw">def</span> my_function():</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-6-5" class="code-annotation-target"><a href="#annotated-cell-6-5"></a>    z <span class="op">=</span> <span class="dv">10</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-6-6" class="code-annotation-target"><a href="#annotated-cell-6-6"></a>    <span class="bu">print</span>(x)</span>
-<span id="annotated-cell-6-7"><a href="#annotated-cell-6-7"></a></span>
-<span id="annotated-cell-6-8"><a href="#annotated-cell-6-8"></a>my_function()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="1" data-code-annotation="1"><code>x</code> è una variabile globale di tipo intero.</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="2"><code>y</code> è una variabile globale di tipo stringa.</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="3">Definizione della funzione <code>my_function</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="5" data-code-annotation="4"><code>z</code> è una variabile locale alla funzione <code>my_function</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="6" data-code-annotation="5"><code>print(x)</code> stampa il valore di <code>x</code>, che è accessibile all’interno della funzione perché è globale.</span>
-</dd>
-</dl>
-<p>Esempio in Java:</p>
-<div class="sourceCode" id="annotated-cell-7"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2"></a>    <span class="dt">static</span> <span class="dt">int</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3"></a></span>
-<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-5" class="code-annotation-target"><a href="#annotated-cell-7-5"></a>        <span class="dt">int</span> y <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-7-6" class="code-annotation-target"><a href="#annotated-cell-7-6"></a>        <span class="fu">myFunction</span><span class="op">();</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-7-7" class="code-annotation-target"><a href="#annotated-cell-7-7"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>x<span class="op">);</span></span>
-<span id="annotated-cell-7-8"><a href="#annotated-cell-7-8"></a>    <span class="op">}</span></span>
-<span id="annotated-cell-7-9"><a href="#annotated-cell-7-9"></a></span>
-<span id="annotated-cell-7-10"><a href="#annotated-cell-7-10"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">myFunction</span><span class="op">()</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-7-11" class="code-annotation-target"><a href="#annotated-cell-7-11"></a>        <span class="dt">int</span> z <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-7-12" class="code-annotation-target"><a href="#annotated-cell-7-12"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>z<span class="op">);</span></span>
-<span id="annotated-cell-7-13"><a href="#annotated-cell-7-13"></a>    <span class="op">}</span></span>
-<span id="annotated-cell-7-14"><a href="#annotated-cell-7-14"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="2" data-code-annotation="1"><code>x</code> è una variabile di classe, visibile a tutti i metodi della classe <code>Main</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="5" data-code-annotation="2"><code>y</code> è una variabile locale al metodo <code>main</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="6" data-code-annotation="3">Chiamata del metodo <code>myFunction</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="7" data-code-annotation="4"><code>System.out.println(x)</code> stampa il valore di <code>x</code>, che è visibile perché è una variabile di classe.</span>
-</dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="11" data-code-annotation="5"><code>z</code> è una variabile locale al metodo <code>myFunction</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="12" data-code-annotation="6"><code>System.out.println(z)</code> stampa il valore di <code>z</code>, che è visibile solo all’interno di <code>myFunction</code>.</span>
-</dd>
-</dl>
+<section id="espressioni-e-operatori" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="espressioni-e-operatori"><span class="header-section-number">4.2.1</span> 3. Espressioni e operatori</h3>
+<p>Le espressioni sono combinazioni di valori, variabili e operatori che producono un risultato. Gli operatori sono simboli che rappresentano operazioni sui dati.</p>
+<ul>
+<li>Operatori aritmetici: +, -, *, /, %</li>
+<li>Operatori di confronto: ==, !=, &lt;, &gt;, &lt;=, &gt;=</li>
+<li>Operatori logici: AND, OR, NOT</li>
+<li>Operatori di assegnazione: =, +=, -=, *=, /=</li>
+<li>Operatori bit a bit: &amp;, |, ^, ~, &lt;&lt;, &gt;&gt;</li>
+<li>Precedenza e associatività degli operatori: Determinano l’ordine in cui le operazioni vengono eseguite.</li>
+</ul>
 </section>
-<section id="espressioni-e-valutazione" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="espressioni-e-valutazione"><span class="header-section-number">4.2.2</span> Espressioni e valutazione</h3>
-<p>La semantica delle espressioni definisce come queste vengono valutate per produrre un risultato. Ciò include:</p>
+<section id="controllo-del-flusso" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="controllo-del-flusso"><span class="header-section-number">4.2.2</span> 4. Controllo del flusso</h3>
+<p>La semantica del controllo del flusso definisce come l’esecuzione del programma procede attraverso le istruzioni. Include vari costrutti che permettono di dirigere il flusso di esecuzione.</p>
 <ul>
-<li>L’ordine di valutazione degli operandi.</li>
-<li>Il comportamento degli operatori su diversi tipi di dati.</li>
-<li>La gestione di errori e situazioni eccezionali durante la valutazione.</li>
+<li>Strutture condizionali: if, else, switch, ternary operator</li>
+<li>Cicli: for, while, do-while, foreach</li>
+<li>Istruzioni di salto: break, continue, return, goto</li>
+<li>Gestione delle eccezioni: try, catch, finally, throw</li>
 </ul>
-<p>Esempio in Java:</p>
-<div class="sourceCode" id="annotated-cell-8"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1"></a><span class="dt">int</span> a <span class="op">=</span> <span class="dv">5</span><span class="op">,</span> b <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2"></a><span class="dt">double</span> result <span class="op">=</span> a <span class="op">/</span> b<span class="op">;</span></span>
-<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3"></a><span class="dt">boolean</span> check <span class="op">=</span> <span class="op">(</span>a <span class="op">&gt;</span> b<span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">(</span>b <span class="op">!=</span> <span class="dv">0</span><span class="op">);</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="2" data-code-annotation="1">Il risultato sarà 2.0, non 2.5 a causa della division</span>
-</dd>
-</dl>
-<p>e intera. 2. La seconda condizione viene valutata solo se la prima è vera, grazie alla valutazione “short-circuit”.</p>
 </section>
-<section id="controllo-del-flusso" class="level3" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="controllo-del-flusso"><span class="header-section-number">4.2.3</span> Controllo del flusso</h3>
-<p>La semantica del controllo del flusso definisce come l’esecuzione del programma procede attraverso le istruzioni. Ciò include:</p>
+<section id="funzioni-e-procedure" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="funzioni-e-procedure"><span class="header-section-number">4.2.3</span> 5. Funzioni e procedure</h3>
+<p>Le funzioni sono blocchi di codice riutilizzabili che eseguono specifiche operazioni. Le procedure sono simili alle funzioni ma non restituiscono un valore.</p>
 <ul>
-<li>Il comportamento di istruzioni condizionali come <code>if</code>, <code>else</code>, <code>switch</code>.</li>
-<li>Il funzionamento dei cicli come <code>for</code>, <code>while</code>.</li>
-<li>La gestione delle chiamate a funzione e il passaggio dei parametri.</li>
+<li>Definizione e dichiarazione: Sintassi per creare funzioni</li>
+<li>Parametri: Formali vs.&nbsp;attuali, passaggio per valore vs.&nbsp;riferimento</li>
+<li>Valori di ritorno: Tipi di ritorno, multiple return values</li>
+<li>Ricorsione: Funzioni che chiamano se stesse</li>
+<li>Overloading: Definizione di più funzioni con lo stesso nome ma parametri diversi</li>
+<li>Lambda e funzioni anonime: Funzioni senza nome, spesso usate come argomenti</li>
+<li>Funzioni in prima classe: Le funzioni possono essere trattate come dati, passate come argomenti e restituite come valori.</li>
 </ul>
-<p>Esempio in C++:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span>  <span class="co">/* &lt;1&gt; */</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>    <span class="cf">if</span> <span class="op">(</span>i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span>  <span class="co">/* &lt;2&gt; */</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>        <span class="cf">continue</span><span class="op">;</span>  <span class="co">/* &lt;3&gt; */</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>    <span class="op">}</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span>  <span class="co">/* &lt;4&gt; */</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li>Ciclo <code>for</code> che itera da <code>0</code> a <code>4</code>.</li>
-<li>Controllo condizionale per verificare se <code>i</code> è pari.</li>
-<li><code>continue</code> salta le iterazioni pari.</li>
-<li>Stampa solo i valori dispari di <code>i</code>.</li>
-</ol>
 </section>
 <section id="gestione-della-memoria" class="level3" data-number="4.2.4">
-<h3 data-number="4.2.4" class="anchored" data-anchor-id="gestione-della-memoria"><span class="header-section-number">4.2.4</span> Gestione della memoria</h3>
-<p>La semantica della gestione della memoria definisce come il programma alloca, utilizza e libera la memoria. Ciò include:</p>
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="gestione-della-memoria"><span class="header-section-number">4.2.4</span> 6. Gestione della memoria</h3>
+<p>La gestione della memoria definisce come il programma alloca, utilizza e libera la memoria. Questo include il ciclo di vita delle variabili e la gestione della memoria dinamica.</p>
 <ul>
-<li>La distinzione tra stack e heap.</li>
-<li>Le regole per l’allocazione e la deallocazione della memoria.</li>
-<li>Il comportamento del garbage collector nei linguaggi che lo utilizzano.</li>
+<li>Allocazione statica: Memoria allocata al momento della compilazione</li>
+<li>Allocazione dinamica: Memoria allocata durante l’esecuzione</li>
+<li>Garbage collection: Meccanismo automatico di liberazione della memoria</li>
+<li>Gestione manuale della memoria: Allocazione e deallocazione esplicita (es. in C)</li>
+<li>Memory leaks: Problemi dovuti a memoria non correttamente deallocata</li>
 </ul>
-<p>Esempio in C:</p>
-<div class="sourceCode" id="annotated-cell-10"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-10-1" class="code-annotation-target"><a href="#annotated-cell-10-1"></a><span class="dt">int</span> <span class="op">*</span>p <span class="op">=</span> malloc<span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span><span class="dt">int</span><span class="op">));</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-10-2" class="code-annotation-target"><a href="#annotated-cell-10-2"></a><span class="op">*</span>p <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3"></a>free<span class="op">(</span>p<span class="op">);</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="1" data-code-annotation="1"><code>malloc</code> alloca memoria dinamicamente sull’heap.</span>
-</dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="2" data-code-annotation="2">Il puntatore <code>p</code> viene utilizzato per accedere alla memoria allocata.</span>
-</dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="3" data-code-annotation="3"><code>free</code> libera la memoria allocata, prevenendo potenziali perdite di memoria.</span>
-</dd>
-</dl>
 </section>
 <section id="sistemi-di-tipi" class="level3" data-number="4.2.5">
-<h3 data-number="4.2.5" class="anchored" data-anchor-id="sistemi-di-tipi"><span class="header-section-number">4.2.5</span> Sistemi di tipi</h3>
-<p>Il sistema di tipi di un linguaggio definisce come i tipi di dati vengono gestiti. Ciò include:</p>
+<h3 data-number="4.2.5" class="anchored" data-anchor-id="sistemi-di-tipi"><span class="header-section-number">4.2.5</span> 7. Sistemi di tipi</h3>
+<p>Il sistema di tipi di un linguaggio definisce come i tipi vengono assegnati e controllati.</p>
 <ul>
-<li>Le regole per la conversione tra tipi (implicita o esplicita).</li>
-<li>Il comportamento del controllo dei tipi (statico o dinamico).</li>
-<li>L’implementazione del polimorfismo e dell’ereditarietà nei linguaggi orientati agli oggetti.</li>
+<li>Tipizzazione statica vs dinamica: Quando avviene il controllo dei tipi</li>
+<li>Tipizzazione forte vs debole: Rigidità nel controllo dei tipi</li>
+<li>Inferenza di tipo: Il compilatore deduce automaticamente il tipo di una variabile (es. TypeScript, Haskell)</li>
+<li>Polimorfismo: Capacità di un’entità di assumere più forme</li>
+<li>Coercizione di tipo: Conversione automatica tra tipi diversi</li>
 </ul>
-<p>Esempio in TypeScript (un superset tipizzato di JavaScript):</p>
-<div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode numberSource typescript code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode typescript"><a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1"></a><span class="kw">let</span> x<span class="op">:</span> <span class="dt">number</span> <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-11-2" class="code-annotation-target"><a href="#annotated-cell-11-2"></a><span class="kw">let</span> y<span class="op">:</span> <span class="dt">any</span> <span class="op">=</span> <span class="st">"hello"</span><span class="op">;</span></span>
-<span id="annotated-cell-11-3"><a href="#annotated-cell-11-3"></a><span class="co">// x = y;  // Errore di tipo: non è possibile assegnare una stringa a un numero</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1"><code>x</code> è dichiarato come numero.</span>
-</dd>
-<dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="2" data-code-annotation="2"><code>y</code> è dichiarato come un tipo generico (<code>any</code>), che può essere assegnato a qualsiasi tipo.</span>
-</dd>
-</dl>
 </section>
+<section id="programmazione-orientata-agli-oggetti" class="level3" data-number="4.2.6">
+<h3 data-number="4.2.6" class="anchored" data-anchor-id="programmazione-orientata-agli-oggetti"><span class="header-section-number">4.2.6</span> 8. Programmazione orientata agli oggetti</h3>
+<p>Paradigma di programmazione basato sul concetto di “oggetti” che contengono dati e codice.</p>
+<ul>
+<li>Classi e oggetti: Modelli e istanze</li>
+<li>Incapsulamento: Nascondere i dettagli implementativi</li>
+<li>Ereditarietà: Meccanismo per creare nuove classi basate su classi esistenti</li>
+<li>Polimorfismo: Capacità di oggetti di classi diverse di rispondere allo stesso messaggio</li>
+<li>Interfacce e classi astratte: Definizione di contratti per le classi</li>
+</ul>
 </section>
-<section id="differenze-semantiche-tra-linguaggi" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="differenze-semantiche-tra-linguaggi"><span class="header-section-number">4.3</span> Differenze semantiche tra linguaggi</h2>
-<p>Diversi linguaggi di programmazione possono avere semantiche differenti per costrutti sintatticamente simili. Ecco alcuni esempi:</p>
-<ol type="1">
-<li><strong>Valutazione delle espressioni booleane</strong>:
+<section id="programmazione-asincrona" class="level3" data-number="4.2.7">
+<h3 data-number="4.2.7" class="anchored" data-anchor-id="programmazione-asincrona"><span class="header-section-number">4.2.7</span> 9. Programmazione asincrona</h3>
+<p>Permette l’esecuzione di operazioni non bloccanti, migliorando l’efficienza e la reattività dei programmi.</p>
 <ul>
-<li>In Python, Java e C++, l’espressione <code>a &amp;&amp; b</code> (o <code>a and b</code> in Python) usa la valutazione “short-circuit”: se <code>a</code> è falso, <code>b</code> non viene valutato.</li>
-<li>In alcuni altri linguaggi, entrambe le parti potrebbero essere sempre valutate.</li>
-</ul></li>
-<li><strong>Passaggio dei parametri</strong>:
+<li>Promise/Future: Rappresentano il risultato di un’operazione asincrona</li>
+<li>async/await: Sintassi che semplifica la scrittura di codice asincrono</li>
+<li>Callback: Funzioni chiamate al completamento di un’operazione asincrona</li>
+<li>Event loop: Meccanismo per gestire operazioni asincrone</li>
+</ul>
+</section>
+<section id="modularità-e-organizzazione-del-codice" class="level3" data-number="4.2.8">
+<h3 data-number="4.2.8" class="anchored" data-anchor-id="modularità-e-organizzazione-del-codice"><span class="header-section-number">4.2.8</span> 10. Modularità e organizzazione del codice</h3>
+<p>La suddivisione del codice in moduli migliora la manutenibilità, la riusabilità e l’incapsulamento.</p>
 <ul>
-<li>In C, i parametri sono passati per valore di default.</li>
-<li>In Python, gli oggetti sono passati per riferimento.</li>
-<li>In C++, è possibile scegliere tra passaggio per valore, per riferimento o per puntatore.</li>
-</ul></li>
-<li><strong>Gestione della memoria</strong>:
+<li>Namespace: Meccanismo per evitare conflitti di nomi</li>
+<li>Moduli e pacchetti: Organizzazione del codice in unità logiche</li>
+<li>Import/Export: Meccanismi per condividere codice tra moduli</li>
+<li>Visibilità e accesso: public, private, protected</li>
+</ul>
+</section>
+<section id="metaprogrammazione" class="level3" data-number="4.2.9">
+<h3 data-number="4.2.9" class="anchored" data-anchor-id="metaprogrammazione"><span class="header-section-number">4.2.9</span> 11. Metaprogrammazione</h3>
+<p>Tecniche per scrivere programmi che manipolano o generano altri programmi.</p>
 <ul>
-<li>In C e C++, la gestione della memoria è principalmente responsabilità del programmatore.</li>
-<li>In Java e Python, c’è un garbage collector che si occupa automaticamente di liberare la memoria non più utilizzata.</li>
-</ul></li>
-<li><strong>Tipizzazione</strong>:
+<li>Reflection: Capacità di un programma di esaminare, introspezione e modificare la propria struttura e comportamento</li>
+<li>Generazione di codice: Creazione automatica di codice sorgente</li>
+<li>Macro: Istruzioni che vengono espanse in tempo di compilazione</li>
+</ul>
+</section>
+<section id="concorrenza-e-parallelismo" class="level3" data-number="4.2.10">
+<h3 data-number="4.2.10" class="anchored" data-anchor-id="concorrenza-e-parallelismo"><span class="header-section-number">4.2.10</span> 12. Concorrenza e parallelismo</h3>
+<p>Meccanismi per eseguire più task simultaneamente o apparentemente simultaneamente.</p>
 <ul>
-<li>Python e JavaScript sono linguaggi a tipizzazione dinamica.</li>
-<li>Java e C++ sono linguaggi a tipizzazione statica.</li>
-<li>Alcuni linguaggi, come Scala, supportano sia la tipizzazione statica che quella dinamica.</li>
-</ul></li>
-</ol>
-<p>Comprendere queste differenze semantiche è cruciale per scrivere codice corretto ed efficiente in diversi linguaggi di programmazione.</p>
+<li>Thread e processi: Unità di esecuzione concorrente</li>
+<li>Sincronizzazione: Meccanismi per coordinare l’esecuzione di thread (mutex, semafori)</li>
+<li>Parallellismo: Esecuzione simultanea su hardware multi-core</li>
+</ul>
+</section>
+<section id="programmazione-orientata-agli-aspetti" class="level3" data-number="4.2.11">
+<h3 data-number="4.2.11" class="anchored" data-anchor-id="programmazione-orientata-agli-aspetti"><span class="header-section-number">4.2.11</span> 13. Programmazione orientata agli aspetti</h3>
+<p>Un paradigma di programmazione che permette di separare le preoccupazioni trasversali dal codice principale.</p>
+<ul>
+<li>Aspetti: Moduli che incapsulano comportamenti trasversali</li>
+<li>Pointcut: Punti nel programma dove viene applicato un aspetto</li>
+<li>Advice: Codice che viene eseguito quando viene raggiunto un pointcut</li>
+<li>Weaving: Processo di applicazione degli aspetti al codice principale</li>
+</ul>
+<p>Questa panoramica estesa fornisce una base solida per comprendere gli elementi semantici fondamentali dei linguaggi di programmazione moderni. Ogni concetto merita un approfondimento dettagliato, che verrà fornito nei capitoli successivi, offrendo una comprensione più approfondita e pratica di come questi elementi interagiscono per creare sistemi software complessi e potenti.</p>
 
 
+
 </section>
+</section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
