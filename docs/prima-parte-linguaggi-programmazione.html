@@ -519,9 +519,9 @@ ERICKSON, Jeff, 2019. <em>Algorithms</em> [online]. Independent. Disponibile all
 WIKIPEDIA CONTRIB., 2024b. <em>Bubble sort</em> [online]. 2024. Disponibile all'indirizzo&nbsp;: <a href="https://en.wikipedia.org/wiki/Bubble_sort">https://en.wikipedia.org/wiki/Bubble_sort</a><div class="csl-block">Accessed: 2024-07-09</div>
 </div></div><ul>
 <li><p>Linguaggio naturale: Gli elementi adiacenti vengono scambiati se sono nell’ordine sbagliato e ciò prosegue fino a quando tutto l’elenco risulti ordinato.</p></li>
-<li><p>Diagramma di flusso:</p></li>
+<li><p>Diagramma di flusso<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, come da figura seguente:</p></li>
 </ul>
-<div class="cell" data-layout-align="center">
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Un diagramma di flusso è una rappresentazione grafica che mostra la sequenza di passaggi o decisioni necessarie per completare un processo o risolvere un problema, utilizzando simboli standardizzati come rettangoli, ovali e frecce per illustrare l’ordine e le relazioni tra le diverse fasi.</p></div></div><div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -542,7 +542,7 @@ WIKIPEDIA CONTRIB., 2024b. <em>Bubble sort</em> [online]. 2024. Disponibile all'
 </div>
 </div>
 <ul>
-<li><p>Pseudocodice:</p>
+<li><p>Pseudocodice<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> nella forma di una sequenza ordinata di definizioni e comandi:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource plaintext number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>procedure BubbleSort(A: lista di elementi ordinabili)</span>
 <span id="cb1-2"><a href="#cb1-2"></a>  n := lunghezza(A)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -565,8 +565,7 @@ WIKIPEDIA CONTRIB., 2024b. <em>Bubble sort</em> [online]. 2024. Disponibile all'
 <span id="cb1-20"><a href="#cb1-20"></a></span>
 <span id="cb1-21"><a href="#cb1-21"></a>end procedure</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
-<p>Nel seguito sarà data anche una rappresentazione in codice sorgente Python.</p>
-<p>In questo esempio, abbiamo rappresentato l’algoritmo Bubble Sort in vari modi per dimostrare come un singolo algoritmo possa essere descritto e compreso attraverso differenti forme di rappresentazione.</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Lo pseudocodice è una descrizione informale di un algoritmo, scritta in un linguaggio simile a quello naturale, che combina elementi di linguaggi di programmazione per rendere comprensibili i passaggi logici, senza preoccuparsi della sintassi specifica di un linguaggio di programmazione.</p></div></div><p>Nel seguito sarà data anche un’ulteriore rappresentazione in codice sorgente Python. In questo esempio, abbiamo dato più rappresentazioni dell’algoritmo Bubble Sort per illustrare le diverse finalità di comunicazione tese a scopi diversi. Infatti, generalmente, si creano prima delle rappresentazioni <em>informali</em> allo scopo di ideazione e progettazione, per poi procedere con il programma vero e proprio, di cui le altre rappresentazioni potrebbero essere viste a mo’ di documentazione.</p>
 </section>
 <section id="generazione" class="level3" data-number="1.3.2">
 <h3 data-number="1.3.2" class="anchored" data-anchor-id="generazione"><span class="header-section-number">1.3.2</span> Generazione</h3>
@@ -701,13 +700,15 @@ POLYA, George, 1945. <em>How to Solve It</em>. Princeton University Press. ISBN&
 </section>
 </section>
 </section>
-<section id="dal-codice-sorgente-allesecuzione" class="level2" data-number="1.4">
+<section id="dal-codice-sorgente-allesecuzione" class="level2 page-columns page-full" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="dal-codice-sorgente-allesecuzione"><span class="header-section-number">1.4</span> Dal codice sorgente all’esecuzione</h2>
-<p>Per comprendere come un programma scritto in un linguaggio di programmazione passi dal file di testo contenente il codice sorgente all’esecuzione delle istruzioni da parte del computer, è fondamentale capire che questo processo richiede un programma che interpreti quel codice sorgente. Tale programma può essere un <strong>compilatore</strong> o un <strong>interprete</strong>, le due macrocategorie che definiscono come il codice sorgente viene tradotto ed eseguito.</p>
-<p>Un <strong>compilatore</strong> è un programma che traduce l’intero codice sorgente di un programma scritto in un linguaggio di alto livello (come C o C++) in codice macchina, che è il linguaggio comprensibile direttamente dalla CPU. Questa traduzione avviene una sola volta, generando un file eseguibile che può essere eseguito direttamente dalla CPU.</p>
-<p>Un <strong>interprete</strong>, invece, è un programma che esegue il codice sorgente direttamente, istruzione per istruzione, senza produrre un file eseguibile separato. L’interprete legge una riga di codice, la traduce in codice macchina e la esegue immediatamente. Questo processo viene ripetuto per ogni riga del codice sorgente.</p>
-<p>È importante notare che alcuni linguaggi di programmazione possono essere sia compilati che interpretati, a seconda dell’implementazione disponibile. Ad esempio, Java utilizza sia la compilazione (per generare bytecode) che l’interpretazione, e la Java Virtual Machine (JVM) spesso utilizza anche la compilazione just-in-time (JIT) per tradurre il bytecode in codice macchina nativo durante l’esecuzione.</p>
-<p>Detto ciò i passaggi macro perché un programma sia eseguito e possa produrre gli effetti pronosticati, sono:</p>
+<p>Per comprendere come un programma scritto in un linguaggio di programmazione passi dal file di testo contenente il codice sorgente, all’esecuzione delle istruzioni da parte del computer, è fondamentale capire che questo processo richiede l’attivazione di un altro programma, sul medesimo computer o altro, che traduca quel codice sorgente in azioni operabili dal primo computer. Quest’ultimo programma può essere un <strong>compilatore</strong> o un <strong>interprete</strong>, cioè appartenere ad una delle due macrocategorie che definiscono come il codice sorgente viene tradotto ed eseguito:</p>
+<ul>
+<li><p>Un <strong>compilatore</strong> è un programma che traduce l’intero codice sorgente di un programma scritto in un linguaggio di alto livello (come C o C++) in codice macchina, che è il linguaggio comprensibile direttamente dalla CPU. Questa traduzione avviene una sola volta, generando un file eseguibile che può essere eseguito direttamente dalla CPU.</p></li>
+<li><p>Un <strong>interprete</strong>, invece, è un programma che esegue il codice sorgente direttamente, istruzione per istruzione, senza produrre un file eseguibile separato. L’interprete legge una riga di codice, la traduce in codice macchina e la esegue immediatamente. Questo processo viene ripetuto per ogni riga del codice sorgente.</p></li>
+</ul>
+<p>È importante notare che alcuni linguaggi di programmazione possono essere sia compilati che interpretati, a seconda dell’implementazione disponibile. Ad esempio, Java utilizza sia la compilazione (per generare bytecode) che l’interpretazione, e la Java Virtual Machine (JVM) spesso utilizza anche la compilazione just-in-time (JIT) per tradurre il bytecode in codice macchina nativo durante l’esecuzione<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Java utilizza un approccio ibrido che coinvolge sia la compilazione che l’interpretazione. Inizialmente, il codice sorgente Java viene compilato in bytecode da un compilatore Java. Questo bytecode è un codice intermedio indipendente dalla piattaforma che può essere eseguito su qualsiasi sistema dotato di una Java Virtual Machine (JVM). La JVM è un ambiente di esecuzione virtuale che consente l’esecuzione del bytecode Java su qualsiasi dispositivo o sistema operativo, garantendo così la portabilità del codice. Durante l’esecuzione, la JVM interpreta il bytecode e, per ottimizzare le prestazioni, spesso utilizza la compilazione just-in-time (JIT). La compilazione JIT traduce dinamicamente il bytecode in codice macchina nativo specifico per la piattaforma in uso, migliorando così la velocità di esecuzione delle applicazioni Java. Anche altri linguaggi di programmazione adottano un approccio simile. Ad esempio, C# utilizza il Common Intermediate Language (CIL), che viene eseguito sulla Common Language Runtime (CLR), un componente del .NET Framework. Python, invece, utilizza un bytecode che viene interpretato dalla Python Virtual Machine (PVM), con alcune implementazioni che supportano la compilazione JIT, come PyPy. Questi approcci condividono l’obiettivo di rendere il codice portabile e di ottimizzare le prestazioni attraverso tecniche di compilazione e interpretazione.</p></div></div><p>Detto ciò, i passaggi macro perché un programma sia eseguito e possa produrre gli effetti pronosticati, sono:</p>
 <ol type="1">
 <li><p>Il programmatore scrive il codice sorgente utilizzando un editor di testo o un ambiente di sviluppo integrato (integrated development environment, IDE). Questo codice contiene le istruzioni del programma, scritte secondo la sintassi del linguaggio di programmazione scelto.</p></li>
 <li><p>L’interprete o il compilatore vengono eseguiti con input il programma e un componente, l’analizzatore lessicale, legge il codice sorgente e lo divide in lessemi, che sono sequenze di caratteri che corrispondono agli elementi <em>atomici</em> del linguaggio. Ogni lessema viene identificato come un token specifico, come una parola chiave, un operatore o un identificatore.</p></li>
@@ -725,8 +726,7 @@ POLYA, George, 1945. <em>How to Solve It</em>. Princeton University Press. ISBN&
 <h2 data-number="1.5" class="anchored" data-anchor-id="ciclo-di-vita-del-software"><span class="header-section-number">1.5</span> Ciclo di vita del software</h2>
 <p>Un <strong>software</strong> è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia concettuale, dal più generale all’elemento più granulare, è: software, programmi, moduli, istruzioni.</p>
 <p>Un <strong>modulo</strong> è una componente autonoma di un programma che contiene una parte specifica della logica o delle funzionalità del sistema. I moduli facilitano la gestione della complessità, permettono il riutilizzo del codice e migliorano la manutenibilità del software.</p>
-<p>Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi e nei relativi moduli.</p>
-<p>Per creare il software, quindi, è necessario percorrere una sequenza di fasi ben definita che, concisamente, è data da:</p>
+<p>Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi e nei relativi moduli. Per creare il software, quindi, è necessario percorrere una sequenza di fasi ben definita che, concisamente, è data da:</p>
 <ul>
 <li><p>La progettazione di un’applicazione inizia con la fase di <strong>analisi dei requisiti</strong>, in cui si identificano cosa deve fare il software, chi sono gli utenti e quali sono i requisiti funzionali e non funzionali che deve soddisfare.</p></li>
 <li><p>Segue il <strong>disegno funzionale</strong> che dettaglia come ogni componente del sistema possa rispondere alle funzionalità richieste. In questa fase si descrivono le operazioni specifiche che ogni componente deve eseguire, utilizzando diagrammi di processo per rappresentare il flusso di attività al fine di rispondere ai requisiti.</p></li>
@@ -743,12 +743,13 @@ POLYA, George, 1945. <em>How to Solve It</em>. Princeton University Press. ISBN&
 <li><p><strong>Manutenzione</strong>: Continuare a supportare il software dopo il rilascio. Questo include la correzione di bug scoperti dopo il rilascio, l’aggiornamento del software per miglioramenti e nuove funzionalità, e l’adattamento a nuovi requisiti o ambienti.</p></li>
 </ul></li>
 </ul>
-<p>La complessità del processo induce la necessità di avere dei team con qualità individuali diverse e il programmatore, oltre alle competenze specifiche, deve saper interpretare i vari artefatti di disegno e saperli tramutare in algoritmi e codice sorgente.</p>
-<p>La modularità del software facilita questa trasformazione, permettendo ai programmatori di focalizzarsi su singole parti del sistema alla volta e garantendo al contempo che le varie componenti si integrino correttamente in un sistema funzionante e coerente.</p>
+<p>La complessità del processo, riportato in modo molto sintetico, induce la necessità di avere dei team con qualità individuali diverse e il programmatore, oltre alle competenze specifiche, deve saper innestare la propria attività specifica all’interno di un quadro la cui articolazione è non triviale anche per obiettivi di progetto molto limitati. Tra le qualità principali troviamo il saper creare o comprendere i vari artifatti di disegno di algoritmi e riuscire a tramutarli in codice sorgente e programmi.</p>
+<p>La modularità del software facilita questa trasformazione, permettendo a diversi programmatori, o allo stesso ma in tempi successivi, di focalizzarsi su singole parti del programma, garantendo al contempo che le varie componenti si integrino correttamente in un sistema funzionante e coerente.</p>
 
 
 
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

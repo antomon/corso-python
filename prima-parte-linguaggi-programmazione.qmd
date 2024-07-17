@@ -77,7 +77,7 @@ Un esempio di algoritmo è dato dall'ordinamento di una lista di numeri interi. 
 
 - Linguaggio naturale: Gli elementi adiacenti vengono scambiati se sono nell'ordine sbagliato e ciò prosegue fino a quando tutto l'elenco risulti ordinato.
 
-- Diagramma di flusso[^1-prima-parte-linguaggi-programmazione]:
+- Diagramma di flusso[^1-prima-parte-linguaggi-programmazione], come da figura seguente:
 
 ```{mermaid}
 %%| fig-cap: Diagramma di flusso dell'algoritmo di Bubble Sort
@@ -94,9 +94,9 @@ flowchart TD
   ProssimoElemento --> Controlla
 ```
 
-[^1-prima-parte-linguaggi-programmazione]: Un diagramma di flusso è una rappresentazione grafica che mostra la sequenza di passaggi o decisioni necessarie per completare un processo o risolvere un problema, utilizzando simboli standardizzati come rettangoli, ovali e frecce per illustrare l'ordine e le relazioni tra le diverse fasi
+[^1-prima-parte-linguaggi-programmazione]: Un diagramma di flusso è una rappresentazione grafica che mostra la sequenza di passaggi o decisioni necessarie per completare un processo o risolvere un problema, utilizzando simboli standardizzati come rettangoli, ovali e frecce per illustrare l'ordine e le relazioni tra le diverse fasi.
 
-- Pseudocodice:
+- Pseudocodice[^2-prima-parte-linguaggi-programmazione] nella forma di una sequenza ordinata di definizioni e comandi:
 
   ```plaintext
   procedure BubbleSort(A: lista di elementi ordinabili)
@@ -122,9 +122,9 @@ flowchart TD
   end procedure
   ```
 
-Nel seguito sarà data anche una rappresentazione in codice sorgente Python.
+[^2-prima-parte-linguaggi-programmazione]: Lo pseudocodice è una descrizione informale di un algoritmo, scritta in un linguaggio simile a quello naturale, che combina elementi di linguaggi di programmazione per rendere comprensibili i passaggi logici, senza preoccuparsi della sintassi specifica di un linguaggio di programmazione.
 
-In questo esempio, abbiamo rappresentato l'algoritmo Bubble Sort in vari modi per dimostrare come un singolo algoritmo possa essere descritto e compreso attraverso differenti forme di rappresentazione.
+Nel seguito sarà data anche un'ulteriore rappresentazione in codice sorgente Python. In questo esempio, abbiamo dato più rappresentazioni dell'algoritmo Bubble Sort per illustrare le diverse finalità di comunicazione tese a scopi diversi. Infatti, generalmente, si creano prima delle rappresentazioni _informali_ allo scopo di ideazione e progettazione, per poi procedere con il programma vero e proprio, di cui le altre rappresentazioni potrebbero essere viste a mo' di documentazione.
 
 ### Generazione
 
@@ -226,15 +226,17 @@ In questo esempio, abbiamo applicato le fasi della metodologia di Polya per dete
 
 ## Dal codice sorgente all'esecuzione
 
-Per comprendere come un programma scritto in un linguaggio di programmazione passi dal file di testo contenente il codice sorgente all'esecuzione delle istruzioni da parte del computer, è fondamentale capire che questo processo richiede un programma che interpreti quel codice sorgente. Tale programma può essere un **compilatore** o un **interprete**, le due macrocategorie che definiscono come il codice sorgente viene tradotto ed eseguito.
+Per comprendere come un programma scritto in un linguaggio di programmazione passi dal file di testo contenente il codice sorgente, all'esecuzione delle istruzioni da parte del computer, è fondamentale capire che questo processo richiede l'attivazione di un altro programma, sul medesimo computer o altro, che traduca quel codice sorgente in azioni operabili dal primo computer. Quest'ultimo programma può essere un **compilatore** o un **interprete**, cioè appartenere ad una delle due macrocategorie che definiscono come il codice sorgente viene tradotto ed eseguito:
 
-Un **compilatore** è un programma che traduce l'intero codice sorgente di un programma scritto in un linguaggio di alto livello (come C o C++) in codice macchina, che è il linguaggio comprensibile direttamente dalla CPU. Questa traduzione avviene una sola volta, generando un file eseguibile che può essere eseguito direttamente dalla CPU.
+- Un **compilatore** è un programma che traduce l'intero codice sorgente di un programma scritto in un linguaggio di alto livello (come C o C++) in codice macchina, che è il linguaggio comprensibile direttamente dalla CPU. Questa traduzione avviene una sola volta, generando un file eseguibile che può essere eseguito direttamente dalla CPU.
 
-Un **interprete**, invece, è un programma che esegue il codice sorgente direttamente, istruzione per istruzione, senza produrre un file eseguibile separato. L'interprete legge una riga di codice, la traduce in codice macchina e la esegue immediatamente. Questo processo viene ripetuto per ogni riga del codice sorgente.
+- Un **interprete**, invece, è un programma che esegue il codice sorgente direttamente, istruzione per istruzione, senza produrre un file eseguibile separato. L'interprete legge una riga di codice, la traduce in codice macchina e la esegue immediatamente. Questo processo viene ripetuto per ogni riga del codice sorgente.
 
-È importante notare che alcuni linguaggi di programmazione possono essere sia compilati che interpretati, a seconda dell'implementazione disponibile. Ad esempio, Java utilizza sia la compilazione (per generare bytecode) che l'interpretazione, e la Java Virtual Machine (JVM) spesso utilizza anche la compilazione just-in-time (JIT) per tradurre il bytecode in codice macchina nativo durante l'esecuzione. 
+È importante notare che alcuni linguaggi di programmazione possono essere sia compilati che interpretati, a seconda dell'implementazione disponibile. Ad esempio, Java utilizza sia la compilazione (per generare bytecode) che l'interpretazione, e la Java Virtual Machine (JVM) spesso utilizza anche la compilazione just-in-time (JIT) per tradurre il bytecode in codice macchina nativo durante l'esecuzione[^3-prima-parte-linguaggi-programmazione]. 
 
-Detto ciò i passaggi macro perché un programma sia eseguito e possa produrre gli effetti pronosticati, sono:
+[^3-prima-parte-linguaggi-programmazione]: Java utilizza un approccio ibrido che coinvolge sia la compilazione che l'interpretazione. Inizialmente, il codice sorgente Java viene compilato in bytecode da un compilatore Java. Questo bytecode è un codice intermedio indipendente dalla piattaforma che può essere eseguito su qualsiasi sistema dotato di una Java Virtual Machine (JVM). La JVM è un ambiente di esecuzione virtuale che consente l'esecuzione del bytecode Java su qualsiasi dispositivo o sistema operativo, garantendo così la portabilità del codice. Durante l'esecuzione, la JVM interpreta il bytecode e, per ottimizzare le prestazioni, spesso utilizza la compilazione just-in-time (JIT). La compilazione JIT traduce dinamicamente il bytecode in codice macchina nativo specifico per la piattaforma in uso, migliorando così la velocità di esecuzione delle applicazioni Java. Anche altri linguaggi di programmazione adottano un approccio simile. Ad esempio, C# utilizza il Common Intermediate Language (CIL), che viene eseguito sulla Common Language Runtime (CLR), un componente del .NET Framework. Python, invece, utilizza un bytecode che viene interpretato dalla Python Virtual Machine (PVM), con alcune implementazioni che supportano la compilazione JIT, come PyPy. Questi approcci condividono l'obiettivo di rendere il codice portabile e di ottimizzare le prestazioni attraverso tecniche di compilazione e interpretazione.
+
+Detto ciò, i passaggi macro perché un programma sia eseguito e possa produrre gli effetti pronosticati, sono:
 
 1. Il programmatore scrive il codice sorgente utilizzando un editor di testo o un ambiente di sviluppo integrato (integrated development environment, IDE). Questo codice contiene le istruzioni del programma, scritte secondo la sintassi del linguaggio di programmazione scelto.
 
@@ -262,9 +264,7 @@ Un **software** è composto da uno o più programmi e, quando eseguito, realizza
 
 Un **modulo** è una componente autonoma di un programma che contiene una parte specifica della logica o delle funzionalità del sistema. I moduli facilitano la gestione della complessità, permettono il riutilizzo del codice e migliorano la manutenibilità del software. 
 
-Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi e nei relativi moduli.
-
-Per creare il software, quindi, è necessario percorrere una sequenza di fasi ben definita che, concisamente, è data da:
+Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi e nei relativi moduli. Per creare il software, quindi, è necessario percorrere una sequenza di fasi ben definita che, concisamente, è data da:
 
 - La progettazione di un'applicazione inizia con la fase di **analisi dei requisiti**, in cui si identificano cosa deve fare il software, chi sono gli utenti e quali sono i requisiti funzionali e non funzionali che deve soddisfare.
 
@@ -286,7 +286,7 @@ Per creare il software, quindi, è necessario percorrere una sequenza di fasi be
 
   - **Manutenzione**: Continuare a supportare il software dopo il rilascio. Questo include la correzione di bug scoperti dopo il rilascio, l'aggiornamento del software per miglioramenti e nuove funzionalità, e l'adattamento a nuovi requisiti o ambienti.
 
-La complessità del processo induce la necessità di avere dei team con qualità individuali diverse e il programmatore, oltre alle competenze specifiche, deve saper interpretare i vari artefatti di disegno e saperli tramutare in algoritmi e codice sorgente. 
+La complessità del processo, riportato in modo molto sintetico, induce la necessità di avere dei team con qualità individuali diverse e il programmatore, oltre alle competenze specifiche, deve saper innestare la propria attività specifica all'interno di un quadro la cui articolazione è non triviale anche per obiettivi di progetto molto limitati. Tra le qualità principali troviamo il saper creare o comprendere i vari artifatti di disegno di algoritmi e riuscire a tramutarli in codice sorgente e programmi. 
 
-La modularità del software facilita questa trasformazione, permettendo ai programmatori di focalizzarsi su singole parti del sistema alla volta e garantendo al contempo che le varie componenti si integrino correttamente in un sistema funzionante e coerente.
+La modularità del software facilita questa trasformazione, permettendo a diversi programmatori, o allo stesso ma in tempi successivi, di focalizzarsi su singole parti del programma, garantendo al contempo che le varie componenti si integrino correttamente in un sistema funzionante e coerente.
 
