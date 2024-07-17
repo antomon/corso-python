@@ -253,12 +253,52 @@ Un **tipo di dato** definisce un dominio di valori e un insieme di operazioni am
 
 ### Il controllo di flusso
 
-La semantica del **controllo di flusso** definisce come l'esecuzione del programma procede attraverso le istruzioni. Include vari costrutti che permettono di dirigere il flusso di esecuzione.
+La semantica del **controllo di flusso** definisce come l'esecuzione del programma procede attraverso le istruzioni, determinando l'ordine in cui le operazioni vengono eseguite. Questo aspetto fondamentale della semantica dei linguaggi di programmazione include vari costrutti che permettono di dirigere e modificare il flusso di esecuzione in modo deterministico o in risposta a condizioni specifiche. I principali meccanismi di controllo del flusso includono:
 
-- Strutture condizionali: if, else, switch, ternary operator
-- Cicli: for, while, do-while, foreach
-- Istruzioni di salto: break, continue, return, goto
-- Gestione delle eccezioni: try, catch, finally, throw
+1. Strutture condizionali:
+
+   - `if`-`else`: Permette l'esecuzione selettiva di blocchi di codice basata su condizioni booleane.
+
+   - `switch`-`case`: Fornisce un meccanismo per la selezione multipla basata sul valore di un'espressione.
+
+   - Operatore ternario: Offre una forma compatta di decisione condizionale, spesso usata per assegnazioni.
+
+2. Strutture iterative (cicli):
+
+   - `for`: Esegue un blocco di codice per un numero predefinito di iterazioni, spesso utilizzando un contatore.
+   - `while`: Ripete un blocco di codice fintanto che una condizione specificata rimane vera.
+   - `do`-`while`: Simile al while, ma garantisce almeno una esecuzione del blocco di codice.
+   - `foreach` (o `for`-`in`): Itera su elementi di collezioni o strutture dati enumerabili.
+
+3. Istruzioni di salto:
+
+   - Break: Esce immediatamente da un ciclo o da uno switch.
+   - Continue: Salta il resto dell'iterazione corrente e procede con la successiva.
+   - Return: Termina l'esecuzione di una funzione, opzionalmente restituendo un valore.
+   - Goto: Trasferisce direttamente il controllo a un'etichetta specificata (sconsigliato in programmazione strutturata).
+
+4. Gestione delle eccezioni:
+   - Try: Definisce un blocco di codice in cui potrebbero verificarsi eccezioni.
+   - Catch: Specifica come gestire specifici tipi di eccezioni.
+   - Finally: Definisce un blocco di codice che viene eseguito indipendentemente dal verificarsi di eccezioni.
+   - Throw: Solleva manualmente un'eccezione.
+
+5. Chiamate di funzione e ricorsione:
+   - Le chiamate di funzione alterano il flusso trasferendo il controllo alla funzione chiamata.
+   - La ricorsione permette a una funzione di chiamare se stessa, creando un flusso di controllo potenzialmente complesso.
+
+6. Coroutine e generatori:
+   - Permettono l'esecuzione cooperativa, consentendo la sospensione e la ripresa dell'esecuzione in punti specifici.
+
+7. Parallelismo e concorrenza:
+   - Costrutti come fork-join, async-await, e primitive di sincronizzazione influenzano il flusso di esecuzione in contesti multi-thread o distribuiti.
+
+8. Pattern matching (in linguaggi funzionali e alcuni moderni linguaggi OO):
+   - Permette il controllo del flusso basato sulla struttura e il contenuto dei dati.
+
+La semantica del controllo di flusso definisce precisamente come questi costrutti influenzano l'ordine di esecuzione delle istruzioni, come vengono valutate le condizioni, come viene gestito il passaggio dei parametri nelle chiamate di funzione, e come vengono propagate le eccezioni. Inoltre, specifica le regole per la visibilità e la durata delle variabili (scope) in relazione a questi costrutti di controllo.
+
+La comprensione e l'uso appropriato di questi meccanismi sono cruciali per la progettazione di algoritmi efficienti e per la gestione della complessità nei programmi. Inoltre, la scelta e l'implementazione di questi costrutti in un linguaggio di programmazione hanno un impatto significativo sulla sua espressività, leggibilità e manutenibilità.
 
 ### 5. Funzioni e procedure
 

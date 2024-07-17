@@ -498,11 +498,12 @@ div.csl-indent {
 <li>Express independent ideas independently in code.</li>
 <li>Represent relationships among ideas directly in code.</li>
 <li>Combine ideas expressed in code freely – where and only where combinations make sense.</li>
-<li>Express simple ideas simply. These are ideals shared by many people, but languages designed to support them can differ dramatically. A fundamental reason for that is that a language embodies a set of engineering tradeoffs reflecting differing needs, tastes, and histories of various individuals and communities.” (<span class="citation" data-cites="stroustrup2013">Stroustrup (<a href="#ref-stroustrup2013" role="doc-biblioref">2013</a>)</span>, p.10)</li>
+<li>Express simple ideas simply.</li>
+</ul>
+<p>These are ideals shared by many people, but languages designed to support them can differ dramatically. A fundamental reason for that is that a language embodies a set of engineering tradeoffs reflecting differing needs, tastes, and histories of various individuals and communities.” (<span class="citation" data-cites="stroustrup2013">Stroustrup (<a href="#ref-stroustrup2013" role="doc-biblioref">2013</a>)</span>, p.10)</p>
 <div id="ref-stroustrup2013" class="csl-entry" role="listitem">
 STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="https://dl.acm.org/doi/10.5555/2543987" class="uri">https://dl.acm.org/doi/10.5555/2543987</a>; Addison-Wesley Professional. ISBN&nbsp;0321563840. <div class="csl-block">Il libro "The C++ Programming Language" di Bjarne Stroustrup, inventore del C++, nella sua quarta edizione, è una risorsa imprescindibile per padroneggiare il linguaggio C++ fino alla versione C++11. Stroustrup fornisce una guida dettagliata e autorevole su come utilizzare le funzionalità del linguaggio per migliorare le prestazioni, la leggibilità e l’affidabilità del codice.Punti chiave del libro includono:- Copertura approfondita di tutte le caratteristiche del linguaggio C++, dalle fondamenta alle novità del C++11.- Descrizione dettagliata della struttura e dell’interpretazione del linguaggio.- Tecniche avanzate come smart pointers e move semantics.- Utilizzo efficace delle librerie C++.- Uso dei template per codice generico.- Strumenti per la programmazione concorrente.</div>
-</div></ul>
-</div></div><section id="limportanza-dei-paradigmi-di-programmazione" class="level2" data-number="2.1">
+</div></div></div><section id="limportanza-dei-paradigmi-di-programmazione" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="limportanza-dei-paradigmi-di-programmazione"><span class="header-section-number">2.1</span> L’importanza dei paradigmi di programmazione</h2>
 <p>Comprendere i paradigmi di programmazione è fondamentale per diversi motivi:</p>
 <ul>
@@ -513,18 +514,19 @@ STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="h
 <li><p>Ottimizzazione del codice: Alcuni paradigmi sono più efficienti in determinate situazioni. Ad esempio, la programmazione concorrente è essenziale per lo sviluppo di software che richiede alta prestazione e scalabilità, come nei sistemi distribuiti. Comprendere come implementare la concorrenza in vari paradigmi permette di scrivere codice più efficiente.</p></li>
 </ul>
 </section>
-<section id="il-paradigma-imperativo" class="level2" data-number="2.2">
+<section id="il-paradigma-imperativo" class="level2 page-columns page-full" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="il-paradigma-imperativo"><span class="header-section-number">2.2</span> Il paradigma imperativo</h2>
 <p>La <strong>programmazione imperativa</strong>, a differenza della programmazione dichiarativa, è un paradigma di programmazione che descrive l’esecuzione di un programma come una serie di istruzioni che cambiano il suo stato. In modo simile al modo imperativo delle lingue naturali, che esprime comandi per compiere azioni, i programmi imperativi sono una sequenza di comandi che il computer deve eseguire in sequenza. Un caso particolare di programmazione imperativa è quella procedurale.</p>
 <p>I linguaggi di programmazione imperativa si contrappongono ad altri tipi di linguaggi, come quelli funzionali e logici. I linguaggi di programmazione funzionale, come Haskell, non producono sequenze di istruzioni e non hanno uno stato globale come i linguaggi imperativi. I linguaggi di programmazione logica, come Prolog, sono caratterizzati dalla definizione di cosa deve essere calcolato, piuttosto che come deve avvenire il calcolo, a differenza di un linguaggio di programmazione imperativo.</p>
 <p>L’implementazione hardware di quasi tutti i computer è imperativa perché è progettata per eseguire il codice macchina, che è scritto in stile imperativo. Da questa prospettiva a basso livello, lo stato del programma è definito dal contenuto della memoria e dalle istruzioni nel linguaggio macchina nativo del processore. Al contrario, i linguaggi imperativi di alto livello sono caratterizzati da un modello dati e istruzioni che risultano più facilmente usabili come strumenti di espressione di passi algoritmici.</p>
-<section id="esempio-in-assembly" class="level3" data-number="2.2.1">
+<section id="esempio-in-assembly" class="level3 page-columns page-full" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="esempio-in-assembly"><span class="header-section-number">2.2.1</span> Esempio in assembly</h3>
-<p>L’Assembly è una categoria di linguaggi di basso livello, cioè strettamente legati all’hardware del computer, tanto che ogni processore ha il suo <em>dialetto</em>. Un esempio di un semplice programma scritto per l’architettura x86, utilizzando la sintassi dell’assembler NASM (Netwide Assembler), è il seguente. Il codice effettua la somma di due numeri e ne stampa il risultato:</p>
+<p>L’<strong>assembly</strong> è una categoria di linguaggi di basso livello, cioè strettamente legati all’hardware del computer, tanto che ogni processore ha il suo dialetto. I linguaggi assembly forniscono un modo per scrivere istruzioni direttamente eseguibili dalla CPU, permettendo un controllo fine delle operazioni a livello di singolo bit e registri. Il codice assembly è convertito in eseguibile per mezzo di un programma detto <strong>assembler</strong>.</p>
+<p>Un esempio di un semplice programma scritto per l’architettura x86, utilizzando la sintassi dell’assembler NASM (Netwide Assembler), è il seguente. Questo codice esegue la somma di due numeri, converte il risultato in formato ASCII per la visualizzazione e infine stampa il risultato:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource nasm number-lines code-with-copy"><code class="sourceCode nasm"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">section</span> <span class="fu">.data</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>  num1 <span class="dt">db</span> <span class="dv">5</span>           <span class="co">; Definisce il primo numero (byte)</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>  num2 <span class="dt">db</span> <span class="dv">3</span>           <span class="co">; Definisce il secondo numero (byte)</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>  result <span class="dt">db</span> <span class="dv">0</span>         <span class="co">; Variabile per memorizzare il risultato (byte)</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>  num1 <span class="dt">db</span> <span class="dv">5</span>            <span class="co">; Definisce il primo numero (byte)</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>  num2 <span class="dt">db</span> <span class="dv">3</span>            <span class="co">; Definisce il secondo numero (byte)</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  result <span class="dt">db</span> <span class="dv">0</span>          <span class="co">; Variabile per memorizzare il risultato (byte)</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a>  msg <span class="dt">db</span> <span class="st">'Result: '</span><span class="op">,</span> <span class="dv">0</span> <span class="co">; Messaggio di output (stringa terminata con NULL)</span></span>
 <span id="cb1-6"><a href="#cb1-6"></a></span>
 <span id="cb1-7"><a href="#cb1-7"></a><span class="kw">section</span> <span class="fu">.bss</span></span>
@@ -539,7 +541,7 @@ STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="h
 <span id="cb1-16"><a href="#cb1-16"></a>  <span class="kw">add</span> <span class="kw">al</span><span class="op">,</span> <span class="op">[</span>num2<span class="op">]</span>      <span class="co">; Aggiunge il secondo numero a AL</span></span>
 <span id="cb1-17"><a href="#cb1-17"></a>  <span class="kw">mov</span> <span class="op">[</span>result<span class="op">],</span> <span class="kw">al</span>    <span class="co">; Memorizza il risultato in result</span></span>
 <span id="cb1-18"><a href="#cb1-18"></a></span>
-<span id="cb1-19"><a href="#cb1-19"></a>  <span class="co">; Converti il risultato in stringa ASCII</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>  <span class="co">; Converte il risultato in stringa ASCII</span></span>
 <span id="cb1-20"><a href="#cb1-20"></a>  <span class="kw">movzx</span> <span class="kw">eax</span><span class="op">,</span> <span class="dt">byte</span> <span class="op">[</span>result<span class="op">]</span> <span class="co">; Carica il risultato in EAX (registro 32-bit), zero-extend da byte</span></span>
 <span id="cb1-21"><a href="#cb1-21"></a>  <span class="kw">add</span> <span class="kw">eax</span><span class="op">,</span> <span class="st">'0'</span>             <span class="co">; Converti il valore numerico in carattere ASCII (aggiungendo il valore di '0')</span></span>
 <span id="cb1-22"><a href="#cb1-22"></a>  <span class="kw">mov</span> <span class="op">[</span>result_str<span class="op">],</span> <span class="kw">al</span>     <span class="co">; Memorizza il carattere ASCII in result_str</span></span>
@@ -561,22 +563,60 @@ STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="h
 <span id="cb1-38"><a href="#cb1-38"></a>  <span class="co">; Terminazione del programma</span></span>
 <span id="cb1-39"><a href="#cb1-39"></a>  <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; codice di sistema per l'uscita (1)</span></span>
 <span id="cb1-40"><a href="#cb1-40"></a>  <span class="kw">xor</span> <span class="kw">ebx</span><span class="op">,</span> <span class="kw">ebx</span>        <span class="co">; codice di ritorno 0 (pulire ebx impostandolo a 0)</span></span>
-<span id="cb1-41"><a href="#cb1-41"></a>  <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; chiamata di sistema (interruzione 0x80)</span></span>
-<span id="cb1-42"><a href="#cb1-42"></a>  jj <span class="co">; &lt;1&gt;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Le sezioni del codice:</p>
+<span id="cb1-41"><a href="#cb1-41"></a>  <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; chiamata di sistema (interruzione 0x80)</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Commento di ogni istruzione:</p>
 <ul>
-<li><p>La sezione <code>.data</code> definisce i dati statici <code>num1</code>, <code>num2</code>, <code>result</code> e <code>msg</code>.</p></li>
-<li><p>Sezione <code>.bss</code> alloca lo spazio per <code>result_str</code>, che conterrà la stringa del risultato.</p></li>
-<li><p>Sezione <code>.text</code>definisce <code>_start</code> come punto di ingresso del programma e:</p>
+<li><p>Sezione <code>.data</code>:</p>
 <ul>
-<li>Implementa la logica principale del programma.</li>
-<li>Somma i valori di <code>num1</code> e <code>num2</code>.</li>
-<li>Converte il risultato numerico in una stringa ASCII.</li>
-<li>Utilizza chiamate al sistema operativo per scrivere il messaggio e il risultato su stdout.</li>
-<li>Termina il programma.</li>
+<li><code>num1 db 5</code>: Definisce una variabile <code>num1</code> con valore iniziale 5 (un byte).</li>
+<li><code>num2 db 3</code>: Definisce una variabile <code>num2</code> con valore iniziale 3 (un byte).</li>
+<li><code>result db 0</code>: Definisce una variabile <code>result</code> per memorizzare il risultato della somma (un byte).</li>
+<li><code>msg db 'Result</code>: ’, 0: Definisce una stringa di output terminata con un carattere NULL.</li>
+</ul></li>
+<li><p>Sezione <code>.bss</code>:</p>
+<ul>
+<li><code>result_str resb 4</code>: Riserva 4 byte di memoria per <code>result_str</code>, che conterrà la stringa del risultato.</li>
+</ul></li>
+<li><p>Sezione <code>.text</code>:</p>
+<ul>
+<li>global _start: Definisce <code>_start</code> come l’etichetta del punto di ingresso globale del programma.</li>
+</ul></li>
+<li><p>Somma di <code>num1</code> e <code>num2</code>:</p>
+<ul>
+<li><code>mov al, [num1]</code>: Carica il valore di <code>num1</code> pari a <code>00000101</code> nel registro <code>AL</code> (registro a 8 bit).</li>
+<li><code>add al, [num2]</code>: Aggiunge il valore di <code>num2</code> pari a <code>00000011</code> a <code>AL</code> che, quindi, diviene <code>00001000</code>.</li>
+<li><code>mov [result], al</code>: Memorizza il risultato della somma nella variabile <code>result</code>.</li>
+</ul></li>
+<li><p>Conversione del risultato in stringa ASCII perché sia visualizzabile:<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<ul>
+<li><code>movzx eax, byte [result]</code>: Carica il valore di <code>result</code> nel registro <code>EAX</code> (registro a 32 bit) usando l’estensione con zeri[].</li>
+<li><code>add eax, '0'</code>: Converte il valore numerico in un carattere ASCII (aggiungendo il valore di <code>'0'</code>, che è 48 in decimale), quindi, <code>00001000</code> (8 in decimale) + <code>00110000</code> (48 in decimale), risultando in <code>00111000</code> (56 in decimale), che è il codice ASCII per il carattere <code>'8'</code>.</li>
+<li><code>mov [result_str], al</code>: Memorizza il carattere ASCII nel buffer <code>result_str</code>.</li>
+</ul></li>
+<li><p>Stampa del messaggio:</p>
+<ul>
+<li><code>mov eax, 4</code>: Imposta <code>eax</code> al numero della chiamata di sistema<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> per <code>sys_write</code> (4).</li>
+<li><code>mov ebx, 1</code>: Imposta <code>ebx</code> al file descriptor per <code>stdout</code> (1).</li>
+<li><code>mov ecx, msg</code>: Imposta <code>ecx</code> al puntatore al messaggio da stampare.</li>
+<li><code>mov edx, 8</code>: Imposta <code>edx</code> alla lunghezza del messaggio (8 byte).</li>
+<li><code>int 0x80</code>: Effettua una chiamata di sistema (interruzione <code>0x80</code>) per eseguire <code>sys_write</code>.</li>
+</ul></li>
+<li><p>Stampa del risultato:</p>
+<ul>
+<li><code>mov eax, 4</code>: Imposta <code>eax</code> al numero della chiamata di sistema per <code>sys_write</code> (4).</li>
+<li><code>mov ebx, 1</code>: Imposta <code>ebx</code> al file descriptor<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> per <code>stdout</code> (1).</li>
+<li><code>mov ecx, result_str</code>: Imposta <code>ecx</code> al puntatore alla stringa del risultato da stampare.</li>
+<li><code>mov edx, 1</code> Imposta <code>edx</code> alla lunghezza della stringa del risultato (1 byte).</li>
+<li><code>int 0x80</code>: Effettua una chiamata di sistema (interruzione <code>0x80</code>) per eseguire <code>sys_write</code>.</li>
+</ul></li>
+<li><p>Terminazione del programma:</p>
+<ul>
+<li><code>mov eax, 1</code>: Imposta <code>eax</code> al numero della chiamata di sistema per <code>sys_exit</code> (1).</li>
+<li><code>xor ebx, ebx</code>: Imposta <code>ebx</code> a 0 (codice di ritorno 0) utilizzando l’operazione <code>xor</code> bit a bit, perché applicando <code>0 xor 0</code> è <code>0</code> e <code>1 xor 1</code> è <code>1</code>.</li>
+<li><code>int 0x80</code>: Effettua una chiamata di sistema (interruzione <code>0x80</code>) per terminare il programma.</li>
 </ul></li>
 </ul>
-<p>Appare evidente che scrivere programmi complessi, ad esempio una rete neurale profonda o un application server, in Assembly è un compito che si potrebbe definire generalmente improbo, anche se è usato nello sviluppo di:</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;L’estensione con zeri (inglese: <em>zero-extension</em>) è un’operazione in assembly che espande un valore a un numero maggiore di bit, riempiendo i bit aggiuntivi con zeri. Questo è spesso necessario quando si passa da un registro più piccolo a uno più grande per assicurarsi che il valore sia correttamente rappresentato senza modificare il suo significato.</p></div><div id="fn2"><p><sup>2</sup>&nbsp;Una chiamata di sistema (inglese: <em>system call</em> o <em>syscall</em>) è un’interfaccia che permette ai programmi di richiedere servizi dal kernel del sistema operativo. Le chiamata di sistema forniscono un modo controllato e sicuro per i programmi di interagire con le risorse hardware e software del sistema, come file, memoria, dispositivi di input/output, e processi.</p></div><div id="fn3"><p><sup>3</sup>&nbsp;Un file descriptor è un identificatore univoco (tipicamente un numero intero) che un processo utilizza per accedere a un file o a una risorsa di input/output aperta, come un file, una socket di rete o un dispositivo hardware. Nei sistemi operativi Unix e Unix-like, i file descriptor sono utilizzati per gestire tutte le operazioni di input/output in modo uniforme.</p></div></div><p>Appare evidente che scrivere programmi complessi, ad esempio una rete neurale profonda o un application server, in Assembly è un compito che si potrebbe definire generalmente improbo, mentre altri ambiti lo richiedono specificatamente:</p>
 <ul>
 <li><p>Sistemi operativi, ad esempio della componente di kernel, che ha il controllo del sistema e i driver, cioè i programmi utili alla comunicazione coll’hardware.</p></li>
 <li><p>Applicazioni <em>embedded</em>: Microcontrollori di dispositivi medici, sistemi di controllo di veicoli, dispositivi IoT, ecc., cioè)dove è necessaria un’ottimizzazione estrema delle risorse computazionali.</p></li>
@@ -612,7 +652,7 @@ STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="h
 <h3 data-number="2.2.3" class="anchored" data-anchor-id="analisi-comparativa"><span class="header-section-number">2.2.3</span> Analisi comparativa</h3>
 <p>Assembly:</p>
 <ul>
-<li><p>Basso livello di astrazione: Assembly lavora direttamente con i registri della CPU e la memoria, quindi non astrae granché della complessità dell’hardware.</p></li>
+<li><p>Basso livello di astrazione: L’assembly lavora direttamente con i registri della CPU e la memoria, quindi non astrae granché della complessità dell’hardware.</p></li>
 <li><p>Scarsa versatilità: Il linguaggio è progettato per una ben definita architettura e, quindi, ha una scarsa applicabilità ad altre, anche se alcuni dialetti di assembly presentano delle similitudini.</p></li>
 <li><p>Elevata precisione: Il programmatore ha un controllo dettagliato su ogni singola operazione compiuta dal processore, perché c’è una corrispondenza col codice macchina.</p></li>
 <li><p>Complessità: Ogni operazione deve essere definita esplicitamente e in sequenza, il che rende il codice più lungo e difficile da leggere.</p></li>
@@ -852,8 +892,8 @@ STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="h
 </ul>
 <section id="esempio-in-java" class="level3 page-columns page-full" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="esempio-in-java"><span class="header-section-number">2.4.1</span> Esempio in Java</h3>
-<p>In questo esempio, la classe <code>Animale</code> rappresenta una tipo di dato generico con un attributo <code>nome</code> e un metodo <code>faiVerso</code>. La classe <code>Cane</code> specializza <code>Animale</code>, usando l’attributo <code>nome</code> e sovrascrivendo il metodo <code>faiVerso</code>, per fornire un’implementazione coerente colle sue caratteristiche. La classe <code>Main</code> crea un’istanza di <code>Cane</code> e chiama il suo metodo <code>faiVerso</code> (<em>annotato</em> con <code>@Override</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>), dimostrando il polimorfismo e l’ereditarietà:</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;In Java, l’annotazione <code>@Override</code> è opzionale, ma altamente consigliata. Non omettere l’annotazione <code>@Override</code> non causerà un errore di compilazione o di runtime. Tuttavia, l’uso di <code>@Override</code> offre dei vantaggi importanti perché, innanzitutto, il compilatore può verificare che il metodo stia effettivamente sovrascrivendo uno nella classe base e segnalare un errore in caso contrario. Inoltre, l’annotazione migliora la leggibilità del codice perché indica chiaramente al lettore come il metodo è inteso rispetto all’ereditarietà.</p></div></div><div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1"></a><span class="kw">class</span> Animale <span class="op">{</span></span>
+<p>In questo esempio, la classe <code>Animale</code> rappresenta una tipo di dato generico con un attributo <code>nome</code> e un metodo <code>faiVerso</code>. La classe <code>Cane</code> specializza <code>Animale</code>, usando l’attributo <code>nome</code> e sovrascrivendo il metodo <code>faiVerso</code>, per fornire un’implementazione coerente colle sue caratteristiche. La classe <code>Main</code> crea un’istanza di <code>Cane</code> e chiama il suo metodo <code>faiVerso</code> (<em>annotato</em> con <code>@Override</code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>), dimostrando il polimorfismo e l’ereditarietà:</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;In Java, l’annotazione <code>@Override</code> è opzionale, ma altamente consigliata. Non omettere l’annotazione <code>@Override</code> non causerà un errore di compilazione o di runtime. Tuttavia, l’uso di <code>@Override</code> offre dei vantaggi importanti perché, innanzitutto, il compilatore può verificare che il metodo stia effettivamente sovrascrivendo uno nella classe base e segnalare un errore in caso contrario. Inoltre, l’annotazione migliora la leggibilità del codice perché indica chiaramente al lettore come il metodo è inteso rispetto all’ereditarietà.</p></div></div><div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1"></a><span class="kw">class</span> Animale <span class="op">{</span></span>
 <span id="annotated-cell-4-2"><a href="#annotated-cell-4-2"></a>  <span class="bu">String</span> nome<span class="op">;</span></span>
 <span id="annotated-cell-4-3"><a href="#annotated-cell-4-3"></a></span>
 <span id="annotated-cell-4-4"><a href="#annotated-cell-4-4"></a>  <span class="fu">Animale</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>

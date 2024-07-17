@@ -38,6 +38,7 @@ The general ideals for design and programming can be expressed simply:
 - Represent relationships among ideas directly in code.
 - Combine ideas expressed in code freely – where and only where combinations make sense.
 - Express simple ideas simply.
+
 These are ideals shared by many people, but languages designed to support them can differ dramatically. A fundamental reason for that is that a language embodies a set of engineering tradeoffs reflecting differing needs, tastes, and histories of various individuals and communities." (@stroustrup2013, p.10)
 :::
 
@@ -65,7 +66,9 @@ L'implementazione hardware di quasi tutti i computer è imperativa perché è pr
 
 ### Esempio in assembly
 
-L'Assembly è una categoria di linguaggi di basso livello, cioè strettamente legati all'hardware del computer, tanto che ogni processore ha il suo _dialetto_. Un esempio di un semplice programma scritto per l'architettura x86, utilizzando la sintassi dell'assembler NASM (Netwide Assembler), è il seguente. Il codice effettua la somma di due numeri e ne stampa il risultato:
+L'**assembly** è una categoria di linguaggi di basso livello, cioè strettamente legati all'hardware del computer, tanto che ogni processore ha il suo dialetto. I linguaggi assembly forniscono un modo per scrivere istruzioni direttamente eseguibili dalla CPU, permettendo un controllo fine delle operazioni a livello di singolo bit e registri. Il codice assembly è convertito in eseguibile per mezzo di un programma detto **assembler**.
+
+Un esempio di un semplice programma scritto per l'architettura x86, utilizzando la sintassi dell'assembler NASM (Netwide Assembler), è il seguente. Questo codice esegue la somma di due numeri, converte il risultato in formato ASCII per la visualizzazione e infine stampa il risultato:
 
 ```nasm
 section .data
@@ -159,7 +162,7 @@ Commento di ogni istruzione:
 - Terminazione del programma:
 
   - `mov eax, 1`: Imposta `eax` al numero della chiamata di sistema per `sys_exit` (1).
-  - `xor ebx, ebx`: Imposta `ebx` a 0 (codice di ritorno 0) utilizzando l'operazione XOR.
+  - `xor ebx, ebx`: Imposta `ebx` a 0 (codice di ritorno 0) utilizzando l'operazione `xor` bit a bit, perché applicando `0 xor 0` è `0` e `1 xor 1` è `1`.
   - `int 0x80`: Effettua una chiamata di sistema (interruzione `0x80`) per terminare il programma.
 
 [^1-prima-parte-paradigmi-programmazione]: L'estensione con zeri (inglese: _zero-extension_) è un'operazione in assembly che espande un valore a un numero maggiore di bit, riempiendo i bit aggiuntivi con zeri. Questo è spesso necessario quando si passa da un registro più piccolo a uno più grande per assicurarsi che il valore sia correttamente rappresentato senza modificare il suo significato.
@@ -198,7 +201,7 @@ print("Il risultato è: ", result) # <3>
 
 Assembly:
 
-- Basso livello di astrazione: Assembly lavora direttamente con i registri della CPU e la memoria, quindi non astrae granché della complessità dell'hardware.
+- Basso livello di astrazione: L'assembly lavora direttamente con i registri della CPU e la memoria, quindi non astrae granché della complessità dell'hardware.
 
 - Scarsa versatilità: Il linguaggio è progettato per una ben definita architettura e, quindi, ha una scarsa applicabilità ad altre, anche se alcuni dialetti di assembly presentano delle similitudini.
 
