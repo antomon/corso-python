@@ -207,42 +207,53 @@ In contesti dove la correttezza del software è critica, come nei sistemi avioni
 
 Dopo aver esplorato i vari tipi di semantica nei linguaggi di programmazione, è importante comprendere i componenti fondamentali che questi tipi di semantica descrivono e regolano. Gli elementi semantici fondamentali sono i mattoni con cui costruiamo e comprendiamo il comportamento dei programmi. Tra questi, alcuni concetti come variabili, tipi di dati, espressioni, controllo del flusso, gestione della memoria, funzioni e sistemi di tipi sono cruciali per ogni linguaggio di programmazione moderno, altri sono particolari di linguaggi specifici come la concorrenza e il supporto alla programmazione ad aspetti. 
 
-Vediamo in dettaglio ciascuno di questi elementi:
+Di seguito, vediamo sinteticamente ciascuno degli elementi principali.
 
-- Variabili: Una variabile in un linguaggio di programmazione è un nome simbolico associato a una locazione di memoria in cui è memorizzato un dato. Le variabili sono utilizzate all'interno di espressioni e istruzioni, per referenziare e manipolare dati durante l'esecuzione di un programma. Il valore associato alla variabile è memorizzato nella locazione di memoria a cui la variabile fa riferimento e il tipo di dato della variabile determina come quel valore viene interpretato e quali operazioni possono essere eseguite su di esso. 
+### La variabile e il tipo di dato
 
-  - Dichiarazione: Introduce una variabile nel programma, specificando il suo nome e, in molti linguaggi, il suo tipo di dato.
+Una **variabile** in un linguaggio di programmazione è un nome simbolico associato a una locazione di memoria in cui è memorizzato un dato. Le variabili sono utilizzate all'interno di espressioni e istruzioni, per referenziare e manipolare dati durante l'esecuzione di un programma. Il valore associato alla variabile è memorizzato nella locazione di memoria a cui la variabile fa riferimento e il tipo di dato della variabile determina come quel valore viene interpretato e quali operazioni possono essere eseguite su di esso. 
 
-  - Definizione: Oltre a dichiarare la variabile, le assegna anche uno spazio di memoria.
+- Dichiarazione: Introduce una variabile nel programma, specificando il suo nome e, in molti linguaggi, il suo tipo di dato.
 
-  - Inizializzazione: L'assegnazione del primo valore a una variabile.
+- Definizione: Oltre a dichiarare la variabile, le assegna anche uno spazio di memoria.
 
-  - Ambito (inglese: _scope_): Definisce la visibilità e l'accessibilità di una variabile all'interno del codice.
+- Inizializzazione: L'assegnazione del primo valore a una variabile.
 
-  - Durata: Il periodo durante il quale una variabile mantiene valido il legame con un dato presente in memoria.
+- Ambito (inglese: _scope_): Definisce la visibilità e l'accessibilità di una variabile all'interno del codice.
 
-- Tipi di dati: Il tipo di dato definisce l'insieme di valori che una variabile può assumere e le operazioni che possono essere eseguite su di essa. I tipi di dato sono alla base di molte operazioni semantiche nei linguaggi di programmazione.
+- Durata: Il periodo durante il quale una variabile mantiene valido il legame con un dato presente in memoria.
 
-- Tipi primitivi: Numeri interi, numeri a virgola mobile, caratteri, booleani.
-- Tipi composti: Array, strutture, classi, tuple.
-- Tipi di riferimento: Puntatori, riferimenti.
-- Tipi astratti: Definiti dall'utente per rappresentare concetti complessi.
-- Tipi generici: Permettono di scrivere codice che può lavorare con diversi tipi di dati mantenendo la sicurezza dei tipi.
+Un **tipo di dato** definisce un dominio di valori e un insieme di operazioni ammissibili su tali valori. I tipi di dato sono fondamentali per la semantica dei linguaggi di programmazione, influenzando l'analisi statica, la gestione della memoria e l'esecuzione del programma. Si classificano in:
 
-### 3. Espressioni e operatori
+- Tipi primitivi: Rappresentano valori atomici direttamente supportati dal linguaggio, come numeri interi, numeri in virgola mobile, caratteri e booleani.
 
-Le espressioni sono combinazioni di valori, variabili e operatori che producono un risultato. Gli operatori sono simboli che rappresentano operazioni sui dati.
+- Tipi composti: Costruiti a partire da altri tipi, permettono di rappresentare dati strutturati. Includono:
 
-- Operatori aritmetici: +, -, *, /, %
-- Operatori di confronto: ==, !=, <, >, <=, >=
-- Operatori logici: AND, OR, NOT
-- Operatori di assegnazione: =, +=, -=, *=, /=
-- Operatori bit a bit: &, |, ^, ~, <<, >>
-- Precedenza e associatività degli operatori: Determinano l'ordine in cui le operazioni vengono eseguite.
+  - Array: Collezioni indicizzate di elementi dello stesso tipo.
 
-### 4. Controllo del flusso
+  - Strutture (o record): Aggregati di campi eterogenei.
 
-La semantica del controllo del flusso definisce come l'esecuzione del programma procede attraverso le istruzioni. Include vari costrutti che permettono di dirigere il flusso di esecuzione.
+  - Classi: In linguaggi orientati agli oggetti, definiscono sia dati che comportamenti.
+
+  - Tuple: Sequenze ordinate e immutabili di elementi potenzialmente di tipi diversi.
+
+- Tipi di riferimento: Permettono l'accesso indiretto ai dati:
+
+  - Puntatori: Contengono indirizzi di memoria.
+
+  - Riferimenti: Alias per altre variabili o oggetti.
+
+- Tipi astratti di dato (inglese: _abstract data type_, ADT): Definiti dall'utente, incapsulano una rappresentazione interna e forniscono un'interfaccia di operazioni.
+
+- Tipi generici (o parametrici): Consentono la definizione di strutture o algoritmi che operano su tipi non specificati, promuovendo il riuso del codice.
+
+- Tipi unione: Rappresentano valori che possono essere di uno tra diversi tipi specificati.
+
+- Tipi funzione: Descrivono le firme delle funzioni, includendo tipi dei parametri e del valore di ritorno.
+
+### Il controllo di flusso
+
+La semantica del **controllo di flusso** definisce come l'esecuzione del programma procede attraverso le istruzioni. Include vari costrutti che permettono di dirigere il flusso di esecuzione.
 
 - Strutture condizionali: if, else, switch, ternary operator
 - Cicli: for, while, do-while, foreach

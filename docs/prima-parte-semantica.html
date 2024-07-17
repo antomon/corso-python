@@ -459,8 +459,8 @@ window.Quarto = {
   </ul></li>
   <li><a href="#elementi-semantici-fondamentali" id="toc-elementi-semantici-fondamentali" class="nav-link" data-scroll-target="#elementi-semantici-fondamentali"><span class="header-section-number">4.2</span> Elementi semantici fondamentali</a>
   <ul class="collapse">
-  <li><a href="#espressioni-e-operatori" id="toc-espressioni-e-operatori" class="nav-link" data-scroll-target="#espressioni-e-operatori"><span class="header-section-number">4.2.1</span> 3. Espressioni e operatori</a></li>
-  <li><a href="#controllo-del-flusso" id="toc-controllo-del-flusso" class="nav-link" data-scroll-target="#controllo-del-flusso"><span class="header-section-number">4.2.2</span> 4. Controllo del flusso</a></li>
+  <li><a href="#la-variabile-e-il-tipo-di-dato" id="toc-la-variabile-e-il-tipo-di-dato" class="nav-link" data-scroll-target="#la-variabile-e-il-tipo-di-dato"><span class="header-section-number">4.2.1</span> La variabile e il tipo di dato</a></li>
+  <li><a href="#il-controllo-di-flusso" id="toc-il-controllo-di-flusso" class="nav-link" data-scroll-target="#il-controllo-di-flusso"><span class="header-section-number">4.2.2</span> Il controllo di flusso</a></li>
   <li><a href="#funzioni-e-procedure" id="toc-funzioni-e-procedure" class="nav-link" data-scroll-target="#funzioni-e-procedure"><span class="header-section-number">4.2.3</span> 5. Funzioni e procedure</a></li>
   <li><a href="#gestione-della-memoria" id="toc-gestione-della-memoria" class="nav-link" data-scroll-target="#gestione-della-memoria"><span class="header-section-number">4.2.4</span> 6. Gestione della memoria</a></li>
   <li><a href="#sistemi-di-tipi" id="toc-sistemi-di-tipi" class="nav-link" data-scroll-target="#sistemi-di-tipi"><span class="header-section-number">4.2.5</span> 7. Sistemi di tipi</a></li>
@@ -718,38 +718,41 @@ CHLIPALA, Adam, 2022. <em>Certified Programming with Dependent Types</em>. MIT P
 <section id="elementi-semantici-fondamentali" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="elementi-semantici-fondamentali"><span class="header-section-number">4.2</span> Elementi semantici fondamentali</h2>
 <p>Dopo aver esplorato i vari tipi di semantica nei linguaggi di programmazione, è importante comprendere i componenti fondamentali che questi tipi di semantica descrivono e regolano. Gli elementi semantici fondamentali sono i mattoni con cui costruiamo e comprendiamo il comportamento dei programmi. Tra questi, alcuni concetti come variabili, tipi di dati, espressioni, controllo del flusso, gestione della memoria, funzioni e sistemi di tipi sono cruciali per ogni linguaggio di programmazione moderno, altri sono particolari di linguaggi specifici come la concorrenza e il supporto alla programmazione ad aspetti.</p>
-<p>Vediamo in dettaglio ciascuno di questi elementi:</p>
-<ul>
-<li><p>Variabili: Una variabile in un linguaggio di programmazione è un nome simbolico associato a una locazione di memoria in cui è memorizzato un dato. Le variabili sono utilizzate all’interno di espressioni e istruzioni, per referenziare e manipolare dati durante l’esecuzione di un programma. Il valore associato alla variabile è memorizzato nella locazione di memoria a cui la variabile fa riferimento e il tipo di dato della variabile determina come quel valore viene interpretato e quali operazioni possono essere eseguite su di esso.</p>
+<p>Di seguito, vediamo sinteticamente ciascuno degli elementi principali.</p>
+<section id="la-variabile-e-il-tipo-di-dato" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="la-variabile-e-il-tipo-di-dato"><span class="header-section-number">4.2.1</span> La variabile e il tipo di dato</h3>
+<p>Una <strong>variabile</strong> in un linguaggio di programmazione è un nome simbolico associato a una locazione di memoria in cui è memorizzato un dato. Le variabili sono utilizzate all’interno di espressioni e istruzioni, per referenziare e manipolare dati durante l’esecuzione di un programma. Il valore associato alla variabile è memorizzato nella locazione di memoria a cui la variabile fa riferimento e il tipo di dato della variabile determina come quel valore viene interpretato e quali operazioni possono essere eseguite su di esso.</p>
 <ul>
 <li><p>Dichiarazione: Introduce una variabile nel programma, specificando il suo nome e, in molti linguaggi, il suo tipo di dato.</p></li>
 <li><p>Definizione: Oltre a dichiarare la variabile, le assegna anche uno spazio di memoria.</p></li>
 <li><p>Inizializzazione: L’assegnazione del primo valore a una variabile.</p></li>
 <li><p>Ambito (inglese: <em>scope</em>): Definisce la visibilità e l’accessibilità di una variabile all’interno del codice.</p></li>
 <li><p>Durata: Il periodo durante il quale una variabile mantiene valido il legame con un dato presente in memoria.</p></li>
-</ul></li>
-<li><p>Tipi di dati: Il tipo di dato definisce l’insieme di valori che una variabile può assumere e le operazioni che possono essere eseguite su di essa. I tipi di dato sono alla base di molte operazioni semantiche nei linguaggi di programmazione.</p></li>
-<li><p>Tipi primitivi: Numeri interi, numeri a virgola mobile, caratteri, booleani.</p></li>
-<li><p>Tipi composti: Array, strutture, classi, tuple.</p></li>
-<li><p>Tipi di riferimento: Puntatori, riferimenti.</p></li>
-<li><p>Tipi astratti: Definiti dall’utente per rappresentare concetti complessi.</p></li>
-<li><p>Tipi generici: Permettono di scrivere codice che può lavorare con diversi tipi di dati mantenendo la sicurezza dei tipi.</p></li>
 </ul>
-<section id="espressioni-e-operatori" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="espressioni-e-operatori"><span class="header-section-number">4.2.1</span> 3. Espressioni e operatori</h3>
-<p>Le espressioni sono combinazioni di valori, variabili e operatori che producono un risultato. Gli operatori sono simboli che rappresentano operazioni sui dati.</p>
+<p>Un <strong>tipo di dato</strong> definisce un dominio di valori e un insieme di operazioni ammissibili su tali valori. I tipi di dato sono fondamentali per la semantica dei linguaggi di programmazione, influenzando l’analisi statica, la gestione della memoria e l’esecuzione del programma. Si classificano in:</p>
 <ul>
-<li>Operatori aritmetici: +, -, *, /, %</li>
-<li>Operatori di confronto: ==, !=, &lt;, &gt;, &lt;=, &gt;=</li>
-<li>Operatori logici: AND, OR, NOT</li>
-<li>Operatori di assegnazione: =, +=, -=, *=, /=</li>
-<li>Operatori bit a bit: &amp;, |, ^, ~, &lt;&lt;, &gt;&gt;</li>
-<li>Precedenza e associatività degli operatori: Determinano l’ordine in cui le operazioni vengono eseguite.</li>
+<li><p>Tipi primitivi: Rappresentano valori atomici direttamente supportati dal linguaggio, come numeri interi, numeri in virgola mobile, caratteri e booleani.</p></li>
+<li><p>Tipi composti: Costruiti a partire da altri tipi, permettono di rappresentare dati strutturati. Includono:</p>
+<ul>
+<li><p>Array: Collezioni indicizzate di elementi dello stesso tipo.</p></li>
+<li><p>Strutture (o record): Aggregati di campi eterogenei.</p></li>
+<li><p>Classi: In linguaggi orientati agli oggetti, definiscono sia dati che comportamenti.</p></li>
+<li><p>Tuple: Sequenze ordinate e immutabili di elementi potenzialmente di tipi diversi.</p></li>
+</ul></li>
+<li><p>Tipi di riferimento: Permettono l’accesso indiretto ai dati:</p>
+<ul>
+<li><p>Puntatori: Contengono indirizzi di memoria.</p></li>
+<li><p>Riferimenti: Alias per altre variabili o oggetti.</p></li>
+</ul></li>
+<li><p>Tipi astratti di dato (inglese: <em>abstract data type</em>, ADT): Definiti dall’utente, incapsulano una rappresentazione interna e forniscono un’interfaccia di operazioni.</p></li>
+<li><p>Tipi generici (o parametrici): Consentono la definizione di strutture o algoritmi che operano su tipi non specificati, promuovendo il riuso del codice.</p></li>
+<li><p>Tipi unione: Rappresentano valori che possono essere di uno tra diversi tipi specificati.</p></li>
+<li><p>Tipi funzione: Descrivono le firme delle funzioni, includendo tipi dei parametri e del valore di ritorno.</p></li>
 </ul>
 </section>
-<section id="controllo-del-flusso" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="controllo-del-flusso"><span class="header-section-number">4.2.2</span> 4. Controllo del flusso</h3>
-<p>La semantica del controllo del flusso definisce come l’esecuzione del programma procede attraverso le istruzioni. Include vari costrutti che permettono di dirigere il flusso di esecuzione.</p>
+<section id="il-controllo-di-flusso" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="il-controllo-di-flusso"><span class="header-section-number">4.2.2</span> Il controllo di flusso</h3>
+<p>La semantica del <strong>controllo di flusso</strong> definisce come l’esecuzione del programma procede attraverso le istruzioni. Include vari costrutti che permettono di dirigere il flusso di esecuzione.</p>
 <ul>
 <li>Strutture condizionali: if, else, switch, ternary operator</li>
 <li>Cicli: for, while, do-while, foreach</li>
