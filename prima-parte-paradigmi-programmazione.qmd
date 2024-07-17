@@ -69,9 +69,9 @@ L'Assembly è una categoria di linguaggi di basso livello, cioè strettamente le
 
 ```nasm
 section .data
-  num1 db 5           ; Definisce il primo numero (byte)
-  num2 db 3           ; Definisce il secondo numero (byte)
-  result db 0         ; Variabile per memorizzare il risultato (byte)
+  num1 db 5            ; Definisce il primo numero (byte)
+  num2 db 3            ; Definisce il secondo numero (byte)
+  result db 0          ; Variabile per memorizzare il risultato (byte)
   msg db 'Result: ', 0 ; Messaggio di output (stringa terminata con NULL)
 
 section .bss
@@ -86,7 +86,7 @@ _start:
   add al, [num2]      ; Aggiunge il secondo numero a AL
   mov [result], al    ; Memorizza il risultato in result
 
-  ; Converti il risultato in stringa ASCII
+  ; Converte il risultato in stringa ASCII
   movzx eax, byte [result] ; Carica il risultato in EAX (registro 32-bit), zero-extend da byte
   add eax, '0'             ; Converti il valore numerico in carattere ASCII (aggiungendo il valore di '0')
   mov [result_str], al     ; Memorizza il carattere ASCII in result_str
@@ -109,24 +109,66 @@ _start:
   mov eax, 1          ; codice di sistema per l'uscita (1)
   xor ebx, ebx        ; codice di ritorno 0 (pulire ebx impostandolo a 0)
   int 0x80            ; chiamata di sistema (interruzione 0x80)
-  jj ; <1>
 ```
 
-Le sezioni del codice:
+Commento di ogni istruzione:
 
-- La sezione `.data` definisce i dati statici `num1`, `num2`, `result` e `msg`.
+- Sezione `.data`:
 
-- Sezione `.bss` alloca lo spazio per `result_str`, che conterrà la stringa del risultato.
+  - `num1 db 5`: Definisce una variabile `num1` con valore iniziale 5 (un byte).
+  - `num2 db 3`: Definisce una variabile `num2` con valore iniziale 3 (un byte).
+  - `result db 0`: Definisce una variabile `result` per memorizzare il risultato della somma (un byte).
+  - `msg db 'Result`: ', 0: Definisce una stringa di output terminata con un carattere NULL.
 
-- Sezione `.text`definisce `_start` come punto di ingresso del programma e:
+- Sezione `.bss`:
 
-  - Implementa la logica principale del programma.
-  - Somma i valori di `num1` e `num2`.
-  - Converte il risultato numerico in una stringa ASCII.
-  - Utilizza chiamate al sistema operativo per scrivere il messaggio e il risultato su stdout.
-  - Termina il programma.
+  - `result_str resb 4`: Riserva 4 byte di memoria per `result_str`, che conterrà la stringa del risultato.
 
-Appare evidente che scrivere programmi complessi, ad esempio una rete neurale profonda o un application server, in Assembly è un compito che si potrebbe definire generalmente improbo, anche se è usato nello sviluppo di:
+- Sezione `.text`: 
+
+  - global _start: Definisce `_start` come l'etichetta del punto di ingresso globale del programma.
+
+- Somma di `num1` e `num2`:
+
+  - `mov al, [num1]`: Carica il valore di `num1` pari a `00000101` nel registro `AL` (registro a 8 bit).
+  - `add al, [num2]`: Aggiunge il valore di `num2` pari a `00000011` a `AL` che, quindi, diviene `00001000`.
+  - `mov [result], al`: Memorizza il risultato della somma nella variabile `result`.
+
+- Conversione del risultato in stringa ASCII perché sia visualizzabile:[^1-prima-parte-paradigmi-programmazione]
+
+  - `movzx eax, byte [result]`: Carica il valore di `result` nel registro `EAX` (registro a 32 bit) usando l'estensione con zeri[].
+  - `add eax, '0'`: Converte il valore numerico in un carattere ASCII (aggiungendo il valore di `'0'`, che è 48 in decimale), quindi, `00001000` (8 in decimale) + `00110000` (48 in decimale), risultando in `00111000` (56 in decimale), che è il codice ASCII per il carattere `'8'`.
+  - `mov [result_str], al`: Memorizza il carattere ASCII nel buffer `result_str`.
+
+- Stampa del messaggio:
+
+  - `mov eax, 4`: Imposta `eax` al numero della chiamata di sistema[^2-prima-parte-paradigmi-programmazione] per `sys_write` (4).
+  - `mov ebx, 1`: Imposta `ebx` al file descriptor per `stdout` (1).
+  - `mov ecx, msg`: Imposta `ecx` al puntatore al messaggio da stampare.
+  - `mov edx, 8`: Imposta `edx` alla lunghezza del messaggio (8 byte).
+  - `int 0x80`: Effettua una chiamata di sistema (interruzione `0x80`) per eseguire `sys_write`.
+
+- Stampa del risultato:
+
+  - `mov eax, 4`: Imposta `eax` al numero della chiamata di sistema per `sys_write` (4).
+  - `mov ebx, 1`: Imposta `ebx` al file descriptor[^3-prima-parte-paradigmi-programmazione] per `stdout` (1).
+  - `mov ecx, result_str`: Imposta `ecx` al puntatore alla stringa del risultato da stampare.
+  - `mov edx, 1` Imposta `edx` alla lunghezza della stringa del risultato (1 byte).
+  - `int 0x80`: Effettua una chiamata di sistema (interruzione `0x80`) per eseguire `sys_write`.
+
+- Terminazione del programma:
+
+  - `mov eax, 1`: Imposta `eax` al numero della chiamata di sistema per `sys_exit` (1).
+  - `xor ebx, ebx`: Imposta `ebx` a 0 (codice di ritorno 0) utilizzando l'operazione XOR.
+  - `int 0x80`: Effettua una chiamata di sistema (interruzione `0x80`) per terminare il programma.
+
+[^1-prima-parte-paradigmi-programmazione]: L'estensione con zeri (inglese: _zero-extension_) è un'operazione in assembly che espande un valore a un numero maggiore di bit, riempiendo i bit aggiuntivi con zeri. Questo è spesso necessario quando si passa da un registro più piccolo a uno più grande per assicurarsi che il valore sia correttamente rappresentato senza modificare il suo significato.
+
+[^2-prima-parte-paradigmi-programmazione]: Una chiamata di sistema (inglese: _system call_ o _syscall_) è un'interfaccia che permette ai programmi di richiedere servizi dal kernel del sistema operativo. Le chiamata di sistema forniscono un modo controllato e sicuro per i programmi di interagire con le risorse hardware e software del sistema, come file, memoria, dispositivi di input/output, e processi.
+
+[^3-prima-parte-paradigmi-programmazione]: Un file descriptor è un identificatore univoco (tipicamente un numero intero) che un processo utilizza per accedere a un file o a una risorsa di input/output aperta, come un file, una socket di rete o un dispositivo hardware. Nei sistemi operativi Unix e Unix-like, i file descriptor sono utilizzati per gestire tutte le operazioni di input/output in modo uniforme.
+
+Appare evidente che scrivere programmi complessi, ad esempio una rete neurale profonda o un application server, in Assembly è un compito che si potrebbe definire generalmente improbo, mentre altri ambiti lo richiedono specificatamente:
 
 - Sistemi operativi, ad esempio della componente di kernel, che ha il controllo del sistema e i driver, cioè i programmi utili alla comunicazione coll'hardware.
 
@@ -396,7 +438,7 @@ Anche se sussistono dei caveat:
 
 ### Esempio in Java
 
-In questo esempio, la classe `Animale` rappresenta una tipo di dato generico con un attributo `nome` e un metodo `faiVerso`. La classe `Cane` specializza `Animale`, usando l'attributo `nome` e sovrascrivendo il metodo `faiVerso`, per fornire un'implementazione coerente colle sue caratteristiche. La classe `Main` crea un'istanza di `Cane` e chiama il suo metodo `faiVerso` (_annotato_ con `@Override`[^1-prima-parte-paradigmi-programmazione]), dimostrando il polimorfismo e l'ereditarietà:
+In questo esempio, la classe `Animale` rappresenta una tipo di dato generico con un attributo `nome` e un metodo `faiVerso`. La classe `Cane` specializza `Animale`, usando l'attributo `nome` e sovrascrivendo il metodo `faiVerso`, per fornire un'implementazione coerente colle sue caratteristiche. La classe `Main` crea un'istanza di `Cane` e chiama il suo metodo `faiVerso` (_annotato_ con `@Override`[^4-prima-parte-paradigmi-programmazione]), dimostrando il polimorfismo e l'ereditarietà:
 
 ```java
 class Animale { // <1>
@@ -436,7 +478,7 @@ public class Main {
 3. `@Override` indica in esplicito che il `faiVerso()` del `Cane` sovrascrive (non eredita) il `faiVerso()` di `Animale`.
 4. Output: `Il cane abbaia`.
 
-[^1-prima-parte-paradigmi-programmazione]: In Java, l'annotazione `@Override` è opzionale, ma altamente consigliata. Non omettere l'annotazione `@Override` non causerà un errore di compilazione o di runtime. Tuttavia, l'uso di `@Override` offre dei vantaggi importanti perché, innanzitutto, il compilatore può verificare che il metodo stia effettivamente sovrascrivendo uno nella classe base e segnalare un errore in caso contrario. Inoltre, l'annotazione migliora la leggibilità del codice perché indica chiaramente al lettore come il metodo è inteso rispetto all'ereditarietà.
+[^4-prima-parte-paradigmi-programmazione]: In Java, l'annotazione `@Override` è opzionale, ma altamente consigliata. Non omettere l'annotazione `@Override` non causerà un errore di compilazione o di runtime. Tuttavia, l'uso di `@Override` offre dei vantaggi importanti perché, innanzitutto, il compilatore può verificare che il metodo stia effettivamente sovrascrivendo uno nella classe base e segnalare un errore in caso contrario. Inoltre, l'annotazione migliora la leggibilità del codice perché indica chiaramente al lettore come il metodo è inteso rispetto all'ereditarietà.
 
 In realtà, se gli oggetti devono rappresentare animali reali vorrà dire che non deve essere possibile crearne dalla matrice `Animale`. Vediamo, quindi, come implementare il medesimo esempio con una classe _astratta_, cioè una classe che non può essere usata per generare direttamente oggetti, sempre in Java. 
 
