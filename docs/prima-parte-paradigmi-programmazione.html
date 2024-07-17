@@ -477,8 +477,10 @@ div.csl-indent {
 <p>I linguaggi di programmazione possono essere classificati in diversi modi in base a scopo, struttura o altre caratterstiche di progettazione.</p>
 <p>Una delle classificazioni più importanti è quella del <strong>paradigma di programmazione</strong>, che definisce il modello e gli stili di risoluzione dei problemi che un linguaggio supporta per mezzo della codificazione degli algoritmi.</p>
 <p>Tuttavia, è importante notare che molti linguaggi moderni sfruttano efficacemente più di un paradigma di programmazione, rendendo difficile assegnare un linguaggio a una sola categoria.</p>
-<p>Come ha affermato Bjarne Stroustrup, il creatore del C++:<a href="Languages features exist to provide support for programming styles. Please don’t look at an individual language feature as a solution, but as one building brick from a varied set which can be combined to express solutions.">1^prima-parte-paradigmi-programmazione</a></p>
-<blockquote class="blockquote">
+<p>Come ha affermato Bjarne Stroustrup, il creatore del C++ (<span class="citation" data-cites="stroustrup2013">Stroustrup (<a href="#ref-stroustrup2013" role="doc-biblioref">2013</a>)</span>, p.10):</p>
+<div class="no-row-height column-margin column-container"><div id="ref-stroustrup2013" class="csl-entry" role="listitem">
+STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="https://dl.acm.org/doi/10.5555/2543987" class="uri">https://dl.acm.org/doi/10.5555/2543987</a>; Addison-Wesley Professional. ISBN&nbsp;0321563840. <div class="csl-block">C++11 has arrived: thoroughly master it, with the definitive new guide from C++ creator Bjarne Stroustrup, C++ Programming Language, Fourth Edition! The brand-new edition of the world’s most trusted and widely read guide to C++, it has been comprehensively updated for the long-awaited C++11 standard. Extensively rewritten to present the C++11 language, standard library, and key design techniques as an integrated whole, Stroustrup thoroughly addresses changes that make C++11 feel like a whole new language, offering definitive guidance for leveraging its improvements in performance, reliability, and clarity. C++ programmers around the world recognize Bjarne Stoustrup as the go-to expert for the absolutely authoritative and exceptionally useful information they need to write outstanding C++ programs. Now, as C++11 compilers arrive and development organizations migrate to the new standard, they know exactly where to turn once more: Stoustrup’s C++ Programming Language, Fourth Edition.</div>
+</div></div><blockquote class="blockquote">
 <p>Le funzionalità dei linguaggi esistono per fornire supporto agli stili di programmazione. Per favore, non considerate una singola funzionalità di linguaggio come una soluzione, ma come un mattoncino da un insieme variegato che può essere combinato per esprimere soluzioni.</p>
 <p>I principi generali per il design e la programmazione possono essere espressi semplicemente:</p>
 <ul>
@@ -490,10 +492,9 @@ div.csl-indent {
 </ul>
 <p>Questi sono ideali condivisi da molte persone, ma i linguaggi progettati per supportarli possono differire notevolmente. Una ragione fondamentale per questo è che un linguaggio incorpora una serie di compromessi ingegneristici che riflettono le diverse necessità, gusti e storie di vari individui e comunità.</p>
 </blockquote>
-<pre><code>The general ideals for design and programming can be expressed simply:</code></pre>
-<p>• Express ideas directly in code. • Express independent ideas independently in code. • Represent relationships among ideas directly in code. • Combine ideas expressed in code freely – where and only where combinations make sense. • Express simple ideas simply. These are ideals shared by many people, but languages designed to support them can differ dramatically. A fundamental reason for that is that a language embodies a set of engineering tradeoffs reflecting differing needs, tastes, and histories of various individuals and communities.<span class="citation" data-cites="stroustrup2013">(<a href="appendice-riferimenti.html#ref-stroustrup2013" role="doc-biblioref">Stroustrup 2013, p.&nbsp;10</a>)</span></p>
-<div class="no-row-height column-margin column-container"><div id="ref-stroustrup2013" class="csl-entry" role="listitem">
-STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="https://dl.acm.org/doi/10.5555/2543987" class="uri">https://dl.acm.org/doi/10.5555/2543987</a>; Addison-Wesley Professional. ISBN&nbsp;0321563840. <div class="csl-block">C++11 has arrived: thoroughly master it, with the definitive new guide from C++ creator Bjarne Stroustrup, C++ Programming Language, Fourth Edition! The brand-new edition of the world’s most trusted and widely read guide to C++, it has been comprehensively updated for the long-awaited C++11 standard. Extensively rewritten to present the C++11 language, standard library, and key design techniques as an integrated whole, Stroustrup thoroughly addresses changes that make C++11 feel like a whole new language, offering definitive guidance for leveraging its improvements in performance, reliability, and clarity. C++ programmers around the world recognize Bjarne Stoustrup as the go-to expert for the absolutely authoritative and exceptionally useful information they need to write outstanding C++ programs. Now, as C++11 compilers arrive and development organizations migrate to the new standard, they know exactly where to turn once more: Stoustrup’s C++ Programming Language, Fourth Edition.</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Languages features exist to provide support for programming styles. Please don’t look at an individual language feature as a solution, but as one building brick from a varied set which can be combined to express solutions. The general ideals for design and programming can be expressed simply: - Express ideas directly in code. - Express independent ideas independently in code. - Represent relationships among ideas directly in code. - Combine ideas expressed in code freely – where and only where combinations make sense. - Express simple ideas simply. These are ideals shared by many people, but languages designed to support them can differ dramatically. A fundamental reason for that is that a language embodies a set of engineering tradeoffs reflecting differing needs, tastes, and histories of various individuals and communities.</p>
 </div></div><section id="limportanza-dei-paradigmi-di-programmazione" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="limportanza-dei-paradigmi-di-programmazione"><span class="header-section-number">2.1</span> L’importanza dei paradigmi di programmazione</h2>
 <p>Comprendere i paradigmi di programmazione è fondamentale per diversi motivi:</p>
@@ -512,48 +513,48 @@ STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="h
 <p>L’implementazione hardware di quasi tutti i computer è imperativa perché è progettata per eseguire il codice macchina, che è scritto in stile imperativo. Da questa prospettiva a basso livello, lo stato del programma è definito dal contenuto della memoria e dalle istruzioni nel linguaggio macchina nativo del processore. Al contrario, i linguaggi imperativi di alto livello sono caratterizzati da un modello dati e istruzioni che risultano più facilmente usabili come strumenti di espressione di passi algoritmici.</p>
 <section id="esempio-in-assembly" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="esempio-in-assembly"><span class="header-section-number">2.2.1</span> Esempio in assembly</h3>
-<p>Assembly è una categoria di linguaggi di basso livello, cioè strettamente legati all’hardware del computer, tanto che ogni processore ha il suo <em>dialetto</em>. Un esempio di un semplice programma scritto per l’architettura x86, utilizzando la sintassi dell’assembler NASM (Netwide Assembler), è il seguente che effettua la somma di due numeri e stampa il risultato:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource nasm number-lines code-with-copy"><code class="sourceCode nasm"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">section</span> <span class="fu">.data</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>    num1 <span class="dt">db</span> <span class="dv">5</span>           <span class="co">; Definisce il primo numero</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>    num2 <span class="dt">db</span> <span class="dv">3</span>           <span class="co">; Definisce il secondo numero</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>    result <span class="dt">db</span> <span class="dv">0</span>         <span class="co">; Variabile per memorizzare il risultato</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>    msg <span class="dt">db</span> <span class="st">'Result: '</span><span class="op">,</span> <span class="dv">0</span> <span class="co">; Messaggio di output</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="kw">section</span> <span class="fu">.bss</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>    result_str <span class="dt">resb</span> <span class="dv">4</span>   <span class="co">; Buffer per la stringa del risultato</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="kw">section</span> <span class="fu">.text</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>    <span class="kw">global</span> _start</span>
-<span id="cb2-12"><a href="#cb2-12"></a></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="fu">_start:</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a>    <span class="co">; Somma num1 e num2</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a>    <span class="kw">mov</span> <span class="kw">al</span><span class="op">,</span> <span class="op">[</span>num1<span class="op">]</span>      <span class="co">; Carica il primo numero in AL</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a>    <span class="kw">add</span> <span class="kw">al</span><span class="op">,</span> <span class="op">[</span>num2<span class="op">]</span>      <span class="co">; Aggiunge il secondo numero a AL</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a>    <span class="kw">mov</span> <span class="op">[</span>result<span class="op">],</span> <span class="kw">al</span>    <span class="co">; Memorizza il risultato in result</span></span>
-<span id="cb2-18"><a href="#cb2-18"></a></span>
-<span id="cb2-19"><a href="#cb2-19"></a>    <span class="co">; Converti il risultato in stringa ASCII</span></span>
-<span id="cb2-20"><a href="#cb2-20"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="op">[</span>result<span class="op">]</span>   <span class="co">; Carica il risultato in EAX</span></span>
-<span id="cb2-21"><a href="#cb2-21"></a>    <span class="kw">add</span> <span class="kw">eax</span><span class="op">,</span> <span class="st">'0'</span>        <span class="co">; Converti il valore numerico in carattere ASCII</span></span>
-<span id="cb2-22"><a href="#cb2-22"></a>    <span class="kw">mov</span> <span class="op">[</span>result_str<span class="op">],</span> <span class="kw">eax</span> <span class="co">; Memorizza il carattere ASCII in result_str</span></span>
-<span id="cb2-23"><a href="#cb2-23"></a></span>
-<span id="cb2-24"><a href="#cb2-24"></a>    <span class="co">; Stampa il messaggio</span></span>
-<span id="cb2-25"><a href="#cb2-25"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">4</span>          <span class="co">; syscall numero per sys_write</span></span>
-<span id="cb2-26"><a href="#cb2-26"></a>    <span class="kw">mov</span> <span class="kw">ebx</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; file descriptor 1 (stdout)</span></span>
-<span id="cb2-27"><a href="#cb2-27"></a>    <span class="kw">mov</span> <span class="kw">ecx</span><span class="op">,</span> msg        <span class="co">; puntatore al messaggio</span></span>
-<span id="cb2-28"><a href="#cb2-28"></a>    <span class="kw">mov</span> <span class="kw">edx</span><span class="op">,</span> <span class="dv">8</span>          <span class="co">; lunghezza del messaggio</span></span>
-<span id="cb2-29"><a href="#cb2-29"></a>    <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; chiamata di sistema</span></span>
-<span id="cb2-30"><a href="#cb2-30"></a></span>
-<span id="cb2-31"><a href="#cb2-31"></a>    <span class="co">; Stampa il risultato</span></span>
-<span id="cb2-32"><a href="#cb2-32"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">4</span>          <span class="co">; syscall numero per sys_write</span></span>
-<span id="cb2-33"><a href="#cb2-33"></a>    <span class="kw">mov</span> <span class="kw">ebx</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; file descriptor 1 (stdout)</span></span>
-<span id="cb2-34"><a href="#cb2-34"></a>    <span class="kw">mov</span> <span class="kw">ecx</span><span class="op">,</span> result_str <span class="co">; puntatore alla stringa del risultato</span></span>
-<span id="cb2-35"><a href="#cb2-35"></a>    <span class="kw">mov</span> <span class="kw">edx</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; lunghezza della stringa del risultato</span></span>
-<span id="cb2-36"><a href="#cb2-36"></a>    <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; chiamata di sistema</span></span>
-<span id="cb2-37"><a href="#cb2-37"></a></span>
-<span id="cb2-38"><a href="#cb2-38"></a>    <span class="co">; Terminazione del programma</span></span>
-<span id="cb2-39"><a href="#cb2-39"></a>    <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; codice di sistema per l'uscita</span></span>
-<span id="cb2-40"><a href="#cb2-40"></a>    <span class="kw">xor</span> <span class="kw">ebx</span><span class="op">,</span> <span class="kw">ebx</span>        <span class="co">; codice di ritorno 0</span></span>
-<span id="cb2-41"><a href="#cb2-41"></a>    <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; interruzione per chiamare il kernel</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>L’Assembly è una categoria di linguaggi di basso livello, cioè strettamente legati all’hardware del computer, tanto che ogni processore ha il suo <em>dialetto</em>. Un esempio di un semplice programma scritto per l’architettura x86, utilizzando la sintassi dell’assembler NASM (Netwide Assembler), è il seguente. Il codice effettua la somma di due numeri e ne stampa il risultato:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource nasm number-lines code-with-copy"><code class="sourceCode nasm"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">section</span> <span class="fu">.data</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>  num1 <span class="dt">db</span> <span class="dv">5</span>           <span class="co">; Definisce il primo numero</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>  num2 <span class="dt">db</span> <span class="dv">3</span>           <span class="co">; Definisce il secondo numero</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  result <span class="dt">db</span> <span class="dv">0</span>         <span class="co">; Variabile per memorizzare il risultato</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  msg <span class="dt">db</span> <span class="st">'Result: '</span><span class="op">,</span> <span class="dv">0</span> <span class="co">; Messaggio di output</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="kw">section</span> <span class="fu">.bss</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>  result_str <span class="dt">resb</span> <span class="dv">4</span>   <span class="co">; Buffer per la stringa del risultato</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="kw">section</span> <span class="fu">.text</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>  <span class="kw">global</span> _start</span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="fu">_start:</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>  <span class="co">; Somma num1 e num2</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>  <span class="kw">mov</span> <span class="kw">al</span><span class="op">,</span> <span class="op">[</span>num1<span class="op">]</span>      <span class="co">; Carica il primo numero in AL</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>  <span class="kw">add</span> <span class="kw">al</span><span class="op">,</span> <span class="op">[</span>num2<span class="op">]</span>      <span class="co">; Aggiunge il secondo numero a AL</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>  <span class="kw">mov</span> <span class="op">[</span>result<span class="op">],</span> <span class="kw">al</span>    <span class="co">; Memorizza il risultato in result</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a>  <span class="co">; Converti il risultato in stringa ASCII</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>  <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="op">[</span>result<span class="op">]</span>   <span class="co">; Carica il risultato in EAX</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>  <span class="kw">add</span> <span class="kw">eax</span><span class="op">,</span> <span class="st">'0'</span>        <span class="co">; Converti il valore numerico in carattere ASCII</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>  <span class="kw">mov</span> <span class="op">[</span>result_str<span class="op">],</span> <span class="kw">eax</span> <span class="co">; Memorizza il carattere ASCII in result_str</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a></span>
+<span id="cb1-24"><a href="#cb1-24"></a>  <span class="co">; Stampa il messaggio</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>  <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">4</span>          <span class="co">; syscall numero per sys_write</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>  <span class="kw">mov</span> <span class="kw">ebx</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; file descriptor 1 (stdout)</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>  <span class="kw">mov</span> <span class="kw">ecx</span><span class="op">,</span> msg        <span class="co">; puntatore al messaggio</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>  <span class="kw">mov</span> <span class="kw">edx</span><span class="op">,</span> <span class="dv">8</span>          <span class="co">; lunghezza del messaggio</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a>  <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; chiamata di sistema</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a>  <span class="co">; Stampa il risultato</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a>  <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">4</span>          <span class="co">; syscall numero per sys_write</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a>  <span class="kw">mov</span> <span class="kw">ebx</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; file descriptor 1 (stdout)</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a>  <span class="kw">mov</span> <span class="kw">ecx</span><span class="op">,</span> result_str <span class="co">; puntatore alla stringa del risultato</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a>  <span class="kw">mov</span> <span class="kw">edx</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; lunghezza della stringa del risultato</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a>  <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; chiamata di sistema</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a></span>
+<span id="cb1-38"><a href="#cb1-38"></a>  <span class="co">; Terminazione del programma</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a>  <span class="kw">mov</span> <span class="kw">eax</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; codice di sistema per l'uscita</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a>  <span class="kw">xor</span> <span class="kw">ebx</span><span class="op">,</span> <span class="kw">ebx</span>        <span class="co">; codice di ritorno 0</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a>  <span class="kw">int</span> <span class="bn">0x80</span>            <span class="co">; interruzione per chiamare il kernel</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Le sezioni del codice:</p>
 <ul>
 <li><p>La sezione <code>.data</code> definisce i dati statici <code>num1</code>, <code>num2</code>, <code>result</code> e <code>msg</code>.</p></li>
@@ -567,35 +568,35 @@ STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="h
 <li>Termina il programma.</li>
 </ul></li>
 </ul>
-<p>L’assembly è usato nello sviluppo di:</p>
+<p>Appare evidente che scrivere programmi complessi, ad esempio una rete neurale profonda o un application server, in Assembly è un compito che si potrebbe definire generalmente improbo, anche se è usato nello sviluppo di:</p>
 <ul>
 <li><p>Sistemi operativi, ad esempio della componente di kernel, che ha il controllo del sistema e i driver, cioè i programmi utili alla comunicazione coll’hardware.</p></li>
 <li><p>Applicazioni <em>embedded</em>: Microcontrollori di dispositivi medici, sistemi di controllo di veicoli, dispositivi IoT, ecc., cioè)dove è necessaria un’ottimizzazione estrema delle risorse computazionali.</p></li>
-<li><p>Applicazioni HPC (<em>high performance computing</em>): Il focus qui è eseguire calcoli intensivi e complessi in tempi relativamente brevi. Queste applicazioni richiedono un numero di operazioni per unità di tempo elevato e sono ottimizzate per sfruttare al massimo le risorse hardware disponibili, come CPU, GPU e memoria.</p></li>
+<li><p>Applicazioni HPC (di calcolo ad alte prestazioni, inglese: <em>high performance computing</em>): Il focus qui è eseguire calcoli intensivi e complessi in tempi relativamente brevi. Queste applicazioni richiedono un numero di operazioni per unità di tempo elevato e sono ottimizzate per sfruttare al massimo le risorse hardware disponibili, come CPU, GPU e memoria.</p></li>
 </ul>
 </section>
 <section id="esempio-in-python" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="esempio-in-python"><span class="header-section-number">2.2.2</span> Esempio in Python</h3>
-<p>All’altro estremo della immediatezza di comprensione del testo del codice per un essere umano, troviamo Python, un linguaggio di alto livello noto per la leggibilità ed eleganza.</p>
-<p>Ecco il medesimo esempio, visibilmente più conciso e certamente intuibile anche avendo basi limitate di programmazione:</p>
-<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a>num1 <span class="op">=</span> <span class="dv">5</span></span>
-<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2"></a>num2 <span class="op">=</span> <span class="dv">3</span></span>
-<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4"></a>result <span class="op">=</span> num1 <span class="op">+</span> num2</span>
-<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-3-6" class="code-annotation-target"><a href="#annotated-cell-3-6"></a><span class="bu">print</span>(<span class="st">"Il risultato è: "</span>, result)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>All’altro estremo della immediatezza di comprensione del testo del codice per un essere umano, troviamo Python, un linguaggio per tale ragione definito di alto livello, noto per la particolare leggibilità ed eleganza.</p>
+<p>Infatti, ecco il medesimo esempio, visibilmente più conciso e certamente intuibile anche avendo basi limitate di programmazione e una basilare conoscenza dell’inglese:</p>
+<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1"></a>num1 <span class="op">=</span> <span class="dv">5</span></span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2"></a>num2 <span class="op">=</span> <span class="dv">3</span></span>
+<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4"></a>result <span class="op">=</span> num1 <span class="op">+</span> num2</span>
+<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-2-6" class="code-annotation-target"><a href="#annotated-cell-2-6"></a><span class="bu">print</span>(<span class="st">"Il risultato è: "</span>, result)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Definizione delle variabili che identificano gli addendi.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Definizione delle variabili che identificano gli addendi.</span>
 </dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="2">Somma dei due numeri.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="4" data-code-annotation="2">Somma dei due numeri.</span>
 </dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="6" data-code-annotation="3">Stampa del risultato della somma.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="6" data-code-annotation="3">Stampa del risultato della somma.</span>
 </dd>
 </dl>
 </section>
@@ -640,14 +641,14 @@ STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="h
 <p>Nella programmazione procedurale, il codice è suddiviso in unità elementari chiamate <strong>funzioni</strong> e <strong>procedure</strong>. La differenza principale tra le due è la seguente:</p>
 <ul>
 <li><p>Funzione: Una funzione è un blocco di codice che esegue un compito specifico e restituisce un valore. Le funzioni sono utilizzate per calcoli o operazioni che producono un risultato. Ad esempio, una funzione che calcola la somma di due numeri in linguaggio C:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a><span class="dt">int</span> somma<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">int</span> somma<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Procedura: Una procedura è simile a una funzione, ma non restituisce un valore. È utilizzata per eseguire azioni o operazioni che non necessitano di un risultato. Ad esempio, una procedura che stampa un messaggio in Pascal:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource pascal number-lines code-with-copy"><code class="sourceCode pascal"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">procedure</span> stampaMessaggio;</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">begin</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>  writeln(<span class="st">'Ciao, Mondo!'</span>);</span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="kw">end</span>;</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource pascal number-lines code-with-copy"><code class="sourceCode pascal"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">procedure</span> stampaMessaggio;</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">begin</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  writeln(<span class="st">'Ciao, Mondo!'</span>);</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">end</span>;</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="creazione-di-librerie" class="level3" data-number="2.3.2">
@@ -656,160 +657,160 @@ STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="h
 <p>Esempio di una semplice libreria ipotetica di <em>somme</em> in C:</p>
 <ul>
 <li><p>File header (<code>mialibreria.h</code>):</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1"></a><span class="pp">#ifndef MIALIBRERIA_H</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="pp">#define MIALIBRERIA_H</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="dt">int</span> somma_interi<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">);</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="dt">char</span><span class="op">*</span> somma_stringhe<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> a<span class="op">,</span> <span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> b<span class="op">);</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="dt">int</span> somma_array<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">);</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="dt">void</span> stampa_messaggio<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> messaggio<span class="op">,</span> </span>
-<span id="cb5-11"><a href="#cb5-11"></a>                      <span class="dt">void</span><span class="op">*</span> risultato<span class="op">,</span> </span>
-<span id="cb5-12"><a href="#cb5-12"></a>                      <span class="dt">char</span> tipo<span class="op">);</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="pp">#endif</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1"></a><span class="pp">#ifndef MIALIBRERIA_H</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="pp">#define MIALIBRERIA_H</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="dt">int</span> somma_interi<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">);</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="dt">char</span><span class="op">*</span> somma_stringhe<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> a<span class="op">,</span> <span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> b<span class="op">);</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="dt">int</span> somma_array<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">);</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="dt">void</span> stampa_messaggio<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> messaggio<span class="op">,</span> </span>
+<span id="cb4-11"><a href="#cb4-11"></a>                      <span class="dt">void</span><span class="op">*</span> risultato<span class="op">,</span> </span>
+<span id="cb4-12"><a href="#cb4-12"></a>                      <span class="dt">char</span> tipo<span class="op">);</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="pp">#endif</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>File di implementazione (<code>mialibreria.c</code>):</p>
-<div class="sourceCode" id="annotated-cell-20"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-20-1"><a href="#annotated-cell-20-1"></a><span class="pp">#include </span><span class="im">"mialibreria.h"</span></span>
-<span id="annotated-cell-20-2"><a href="#annotated-cell-20-2"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="annotated-cell-20-3"><a href="#annotated-cell-20-3"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
-<span id="annotated-cell-20-4"><a href="#annotated-cell-20-4"></a><span class="pp">#include </span><span class="im">&lt;string.h&gt;</span></span>
-<span id="annotated-cell-20-5"><a href="#annotated-cell-20-5"></a></span>
-<span id="annotated-cell-20-6"><a href="#annotated-cell-20-6"></a><span class="dt">int</span> somma_interi<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
-<span id="annotated-cell-20-7"><a href="#annotated-cell-20-7"></a>  <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
-<span id="annotated-cell-20-8"><a href="#annotated-cell-20-8"></a><span class="op">}</span></span>
-<span id="annotated-cell-20-9"><a href="#annotated-cell-20-9"></a></span>
-<span id="annotated-cell-20-10"><a href="#annotated-cell-20-10"></a><span class="dt">char</span><span class="op">*</span> somma_stringhe<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> a<span class="op">,</span> <span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> b<span class="op">)</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-20-11" class="code-annotation-target"><a href="#annotated-cell-20-11"></a>  <span class="dt">char</span><span class="op">*</span> risultato <span class="op">=</span> malloc<span class="op">(</span>strlen<span class="op">(</span>a<span class="op">)</span> <span class="op">+</span> strlen<span class="op">(</span>b<span class="op">)</span> <span class="op">+</span> <span class="dv">1</span><span class="op">);</span></span>
-<span id="annotated-cell-20-12"><a href="#annotated-cell-20-12"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-20-13" class="code-annotation-target"><a href="#annotated-cell-20-13"></a>  <span class="cf">if</span> <span class="op">(</span>risultato<span class="op">)</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-20-14" class="code-annotation-target"><a href="#annotated-cell-20-14"></a>    strcpy<span class="op">(</span>risultato<span class="op">,</span> a<span class="op">);</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-20-15" class="code-annotation-target"><a href="#annotated-cell-20-15"></a>    strcat<span class="op">(</span>risultato<span class="op">,</span> b<span class="op">);</span></span>
-<span id="annotated-cell-20-16"><a href="#annotated-cell-20-16"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-20-17"><a href="#annotated-cell-20-17"></a></span>
-<span id="annotated-cell-20-18"><a href="#annotated-cell-20-18"></a>  <span class="cf">return</span> risultato<span class="op">;</span></span>
-<span id="annotated-cell-20-19"><a href="#annotated-cell-20-19"></a><span class="op">}</span></span>
-<span id="annotated-cell-20-20"><a href="#annotated-cell-20-20"></a></span>
-<span id="annotated-cell-20-21"><a href="#annotated-cell-20-21"></a><span class="dt">int</span> somma_array_interi<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
-<span id="annotated-cell-20-22"><a href="#annotated-cell-20-22"></a>  <span class="dt">int</span> somma <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="annotated-cell-20-23"><a href="#annotated-cell-20-23"></a></span>
-<span id="annotated-cell-20-24"><a href="#annotated-cell-20-24"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="annotated-cell-20-25"><a href="#annotated-cell-20-25"></a>    somma <span class="op">+=</span> arr<span class="op">[</span>i<span class="op">];</span></span>
-<span id="annotated-cell-20-26"><a href="#annotated-cell-20-26"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-20-27"><a href="#annotated-cell-20-27"></a></span>
-<span id="annotated-cell-20-28"><a href="#annotated-cell-20-28"></a>  <span class="cf">return</span> somma<span class="op">;</span></span>
-<span id="annotated-cell-20-29"><a href="#annotated-cell-20-29"></a><span class="op">}</span></span>
-<span id="annotated-cell-20-30"><a href="#annotated-cell-20-30"></a></span>
-<span id="annotated-cell-20-31"><a href="#annotated-cell-20-31"></a><span class="dt">void</span> stampa_messaggio<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> messaggio<span class="op">,</span> </span>
-<span id="annotated-cell-20-32"><a href="#annotated-cell-20-32"></a>                      <span class="dt">void</span><span class="op">*</span> risultato<span class="op">,</span> </span>
-<span id="annotated-cell-20-33"><a href="#annotated-cell-20-33"></a>                      <span class="dt">char</span> tipo<span class="op">)</span> <span class="op">{</span></span>
-<span id="annotated-cell-20-34"><a href="#annotated-cell-20-34"></a>  printf<span class="op">(</span><span class="st">"</span><span class="sc">%s</span><span class="st">"</span><span class="op">,</span> messaggio<span class="op">);</span></span>
-<span id="annotated-cell-20-35"><a href="#annotated-cell-20-35"></a></span>
-<span id="annotated-cell-20-36"><a href="#annotated-cell-20-36"></a>  <span class="cf">if</span> <span class="op">(</span>tipo <span class="op">==</span> <span class="ch">'i'</span><span class="op">)</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-20-37" class="code-annotation-target"><a href="#annotated-cell-20-37"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> <span class="op">*(</span><span class="dt">int</span><span class="op">*)</span>risultato<span class="op">);</span></span>
-<span id="annotated-cell-20-38"><a href="#annotated-cell-20-38"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>tipo <span class="op">==</span> <span class="ch">'s'</span><span class="op">)</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-20-39" class="code-annotation-target"><a href="#annotated-cell-20-39"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> <span class="op">(</span><span class="dt">char</span><span class="op">*)</span>risultato<span class="op">);</span></span>
-<span id="annotated-cell-20-40"><a href="#annotated-cell-20-40"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-20-41"><a href="#annotated-cell-20-41"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-19"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-19-1"><a href="#annotated-cell-19-1"></a><span class="pp">#include </span><span class="im">"mialibreria.h"</span></span>
+<span id="annotated-cell-19-2"><a href="#annotated-cell-19-2"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="annotated-cell-19-3"><a href="#annotated-cell-19-3"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
+<span id="annotated-cell-19-4"><a href="#annotated-cell-19-4"></a><span class="pp">#include </span><span class="im">&lt;string.h&gt;</span></span>
+<span id="annotated-cell-19-5"><a href="#annotated-cell-19-5"></a></span>
+<span id="annotated-cell-19-6"><a href="#annotated-cell-19-6"></a><span class="dt">int</span> somma_interi<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-19-7"><a href="#annotated-cell-19-7"></a>  <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="annotated-cell-19-8"><a href="#annotated-cell-19-8"></a><span class="op">}</span></span>
+<span id="annotated-cell-19-9"><a href="#annotated-cell-19-9"></a></span>
+<span id="annotated-cell-19-10"><a href="#annotated-cell-19-10"></a><span class="dt">char</span><span class="op">*</span> somma_stringhe<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> a<span class="op">,</span> <span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> b<span class="op">)</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-19-11" class="code-annotation-target"><a href="#annotated-cell-19-11"></a>  <span class="dt">char</span><span class="op">*</span> risultato <span class="op">=</span> malloc<span class="op">(</span>strlen<span class="op">(</span>a<span class="op">)</span> <span class="op">+</span> strlen<span class="op">(</span>b<span class="op">)</span> <span class="op">+</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="annotated-cell-19-12"><a href="#annotated-cell-19-12"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-19-13" class="code-annotation-target"><a href="#annotated-cell-19-13"></a>  <span class="cf">if</span> <span class="op">(</span>risultato<span class="op">)</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-19-14" class="code-annotation-target"><a href="#annotated-cell-19-14"></a>    strcpy<span class="op">(</span>risultato<span class="op">,</span> a<span class="op">);</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-19-15" class="code-annotation-target"><a href="#annotated-cell-19-15"></a>    strcat<span class="op">(</span>risultato<span class="op">,</span> b<span class="op">);</span></span>
+<span id="annotated-cell-19-16"><a href="#annotated-cell-19-16"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-19-17"><a href="#annotated-cell-19-17"></a></span>
+<span id="annotated-cell-19-18"><a href="#annotated-cell-19-18"></a>  <span class="cf">return</span> risultato<span class="op">;</span></span>
+<span id="annotated-cell-19-19"><a href="#annotated-cell-19-19"></a><span class="op">}</span></span>
+<span id="annotated-cell-19-20"><a href="#annotated-cell-19-20"></a></span>
+<span id="annotated-cell-19-21"><a href="#annotated-cell-19-21"></a><span class="dt">int</span> somma_array_interi<span class="op">(</span><span class="dt">int</span> arr<span class="op">[],</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-19-22"><a href="#annotated-cell-19-22"></a>  <span class="dt">int</span> somma <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="annotated-cell-19-23"><a href="#annotated-cell-19-23"></a></span>
+<span id="annotated-cell-19-24"><a href="#annotated-cell-19-24"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="annotated-cell-19-25"><a href="#annotated-cell-19-25"></a>    somma <span class="op">+=</span> arr<span class="op">[</span>i<span class="op">];</span></span>
+<span id="annotated-cell-19-26"><a href="#annotated-cell-19-26"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-19-27"><a href="#annotated-cell-19-27"></a></span>
+<span id="annotated-cell-19-28"><a href="#annotated-cell-19-28"></a>  <span class="cf">return</span> somma<span class="op">;</span></span>
+<span id="annotated-cell-19-29"><a href="#annotated-cell-19-29"></a><span class="op">}</span></span>
+<span id="annotated-cell-19-30"><a href="#annotated-cell-19-30"></a></span>
+<span id="annotated-cell-19-31"><a href="#annotated-cell-19-31"></a><span class="dt">void</span> stampa_messaggio<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span><span class="op">*</span> messaggio<span class="op">,</span> </span>
+<span id="annotated-cell-19-32"><a href="#annotated-cell-19-32"></a>                      <span class="dt">void</span><span class="op">*</span> risultato<span class="op">,</span> </span>
+<span id="annotated-cell-19-33"><a href="#annotated-cell-19-33"></a>                      <span class="dt">char</span> tipo<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-19-34"><a href="#annotated-cell-19-34"></a>  printf<span class="op">(</span><span class="st">"</span><span class="sc">%s</span><span class="st">"</span><span class="op">,</span> messaggio<span class="op">);</span></span>
+<span id="annotated-cell-19-35"><a href="#annotated-cell-19-35"></a></span>
+<span id="annotated-cell-19-36"><a href="#annotated-cell-19-36"></a>  <span class="cf">if</span> <span class="op">(</span>tipo <span class="op">==</span> <span class="ch">'i'</span><span class="op">)</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-19-37" class="code-annotation-target"><a href="#annotated-cell-19-37"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> <span class="op">*(</span><span class="dt">int</span><span class="op">*)</span>risultato<span class="op">);</span></span>
+<span id="annotated-cell-19-38"><a href="#annotated-cell-19-38"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>tipo <span class="op">==</span> <span class="ch">'s'</span><span class="op">)</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-19-39" class="code-annotation-target"><a href="#annotated-cell-19-39"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> <span class="op">(</span><span class="dt">char</span><span class="op">*)</span>risultato<span class="op">);</span></span>
+<span id="annotated-cell-19-40"><a href="#annotated-cell-19-40"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-19-41"><a href="#annotated-cell-19-41"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-lines="11" data-code-annotation="1">Allocazione della memoria per la somma delle due stringhe e +1 per il carattere di terminazione <code>\0</code>.</span>
+<span data-code-cell="annotated-cell-19" data-code-lines="11" data-code-annotation="1">Allocazione della memoria per la somma delle due stringhe e +1 per il carattere di terminazione <code>\0</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-20" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-lines="13" data-code-annotation="2">Controllo se la funzione <code>malloc</code> ha avuto successo nell’allocare la memoria richiesta. Se <code>risultato</code> è <code>NULL</code>, significa che <code>malloc</code> ha fallito e il blocco di codice all’interno dell’<code>if</code> viene saltato, evitando così di tentare di accedere a memoria non valida.</span>
+<span data-code-cell="annotated-cell-19" data-code-lines="13" data-code-annotation="2">Controllo se la funzione <code>malloc</code> ha avuto successo nell’allocare la memoria richiesta. Se <code>risultato</code> è <code>NULL</code>, significa che <code>malloc</code> ha fallito e il blocco di codice all’interno dell’<code>if</code> viene saltato, evitando così di tentare di accedere a memoria non valida.</span>
 </dd>
-<dt data-target-cell="annotated-cell-20" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-lines="14" data-code-annotation="3">Se l’allocazione ha avuto successo, copia la prima stringa nel risultato.</span>
+<span data-code-cell="annotated-cell-19" data-code-lines="14" data-code-annotation="3">Se l’allocazione ha avuto successo, copia la prima stringa nel risultato.</span>
 </dd>
-<dt data-target-cell="annotated-cell-20" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-lines="15" data-code-annotation="4">Concatenazione della seconda stringa nel risultato.</span>
+<span data-code-cell="annotated-cell-19" data-code-lines="15" data-code-annotation="4">Concatenazione della seconda stringa nel risultato.</span>
 </dd>
-<dt data-target-cell="annotated-cell-20" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-lines="37" data-code-annotation="5">Stampa del risultato se il tipo è intero.</span>
+<span data-code-cell="annotated-cell-19" data-code-lines="37" data-code-annotation="5">Stampa del risultato se il tipo è intero.</span>
 </dd>
-<dt data-target-cell="annotated-cell-20" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-lines="39" data-code-annotation="6">Stampa del risultato se il tipo è una stringa.</span>
+<span data-code-cell="annotated-cell-19" data-code-lines="39" data-code-annotation="6">Stampa del risultato se il tipo è una stringa.</span>
 </dd>
 </dl></li>
 <li><p>File principale (<code>main.c</code>):</p>
-<div class="sourceCode" id="annotated-cell-21"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-21-1"><a href="#annotated-cell-21-1"></a><span class="pp">#include </span><span class="im">"mialibreria.h"</span></span>
-<span id="annotated-cell-21-2"><a href="#annotated-cell-21-2"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="annotated-cell-21-3"><a href="#annotated-cell-21-3"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
-<span id="annotated-cell-21-4"><a href="#annotated-cell-21-4"></a></span>
-<span id="annotated-cell-21-5"><a href="#annotated-cell-21-5"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-21-6" class="code-annotation-target"><a href="#annotated-cell-21-6"></a>  <span class="dt">int</span> risultato <span class="op">=</span> somma_interi<span class="op">(</span><span class="dv">5</span><span class="op">,</span> <span class="dv">3</span><span class="op">);</span></span>
-<span id="annotated-cell-21-7"><a href="#annotated-cell-21-7"></a>  stampa_messaggio<span class="op">(</span><span class="st">"Il risultato della somma di interi è: "</span><span class="op">,</span> </span>
-<span id="annotated-cell-21-8"><a href="#annotated-cell-21-8"></a>                   <span class="op">&amp;</span>risultato<span class="op">,</span> <span class="ch">'i'</span><span class="op">);</span></span>
-<span id="annotated-cell-21-9"><a href="#annotated-cell-21-9"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-21-10" class="code-annotation-target"><a href="#annotated-cell-21-10"></a>  <span class="dt">char</span><span class="op">*</span> risultato_stringhe <span class="op">=</span> somma_stringhe<span class="op">(</span><span class="st">"Ciao, "</span><span class="op">,</span> <span class="st">"mondo!"</span><span class="op">);</span></span>
-<span id="annotated-cell-21-11"><a href="#annotated-cell-21-11"></a>  stampa_messaggio<span class="op">(</span><span class="st">"Il risultato della somma di stringhe è: "</span><span class="op">,</span> </span>
-<span id="annotated-cell-21-12"><a href="#annotated-cell-21-12"></a>                   risultato_stringhe<span class="op">,</span> <span class="ch">'s'</span><span class="op">);</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-21-13" class="code-annotation-target"><a href="#annotated-cell-21-13"></a>  free<span class="op">(</span>risultato_stringhe<span class="op">);</span></span>
-<span id="annotated-cell-21-14"><a href="#annotated-cell-21-14"></a></span>
-<span id="annotated-cell-21-15"><a href="#annotated-cell-21-15"></a>  <span class="dt">int</span> array<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">};</span> </span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-21-16" class="code-annotation-target"><a href="#annotated-cell-21-16"></a>  <span class="dt">int</span> risultato_array <span class="op">=</span> somma_array_interi<span class="op">(</span>array<span class="op">,</span> <span class="dv">5</span><span class="op">);</span></span>
-<span id="annotated-cell-21-17"><a href="#annotated-cell-21-17"></a>  stampa_messaggio<span class="op">(</span><span class="st">"Il risultato della somma dell'array di interi è: "</span><span class="op">,</span> </span>
-<span id="annotated-cell-21-18"><a href="#annotated-cell-21-18"></a>                   <span class="op">&amp;</span>risultato_array<span class="op">,</span> <span class="ch">'i'</span><span class="op">);</span></span>
-<span id="annotated-cell-21-19"><a href="#annotated-cell-21-19"></a></span>
-<span id="annotated-cell-21-20"><a href="#annotated-cell-21-20"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="annotated-cell-21-21"><a href="#annotated-cell-21-21"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-20"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-20-1"><a href="#annotated-cell-20-1"></a><span class="pp">#include </span><span class="im">"mialibreria.h"</span></span>
+<span id="annotated-cell-20-2"><a href="#annotated-cell-20-2"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="annotated-cell-20-3"><a href="#annotated-cell-20-3"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
+<span id="annotated-cell-20-4"><a href="#annotated-cell-20-4"></a></span>
+<span id="annotated-cell-20-5"><a href="#annotated-cell-20-5"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-20-6" class="code-annotation-target"><a href="#annotated-cell-20-6"></a>  <span class="dt">int</span> risultato <span class="op">=</span> somma_interi<span class="op">(</span><span class="dv">5</span><span class="op">,</span> <span class="dv">3</span><span class="op">);</span></span>
+<span id="annotated-cell-20-7"><a href="#annotated-cell-20-7"></a>  stampa_messaggio<span class="op">(</span><span class="st">"Il risultato della somma di interi è: "</span><span class="op">,</span> </span>
+<span id="annotated-cell-20-8"><a href="#annotated-cell-20-8"></a>                   <span class="op">&amp;</span>risultato<span class="op">,</span> <span class="ch">'i'</span><span class="op">);</span></span>
+<span id="annotated-cell-20-9"><a href="#annotated-cell-20-9"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-20-10" class="code-annotation-target"><a href="#annotated-cell-20-10"></a>  <span class="dt">char</span><span class="op">*</span> risultato_stringhe <span class="op">=</span> somma_stringhe<span class="op">(</span><span class="st">"Ciao, "</span><span class="op">,</span> <span class="st">"mondo!"</span><span class="op">);</span></span>
+<span id="annotated-cell-20-11"><a href="#annotated-cell-20-11"></a>  stampa_messaggio<span class="op">(</span><span class="st">"Il risultato della somma di stringhe è: "</span><span class="op">,</span> </span>
+<span id="annotated-cell-20-12"><a href="#annotated-cell-20-12"></a>                   risultato_stringhe<span class="op">,</span> <span class="ch">'s'</span><span class="op">);</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-20-13" class="code-annotation-target"><a href="#annotated-cell-20-13"></a>  free<span class="op">(</span>risultato_stringhe<span class="op">);</span></span>
+<span id="annotated-cell-20-14"><a href="#annotated-cell-20-14"></a></span>
+<span id="annotated-cell-20-15"><a href="#annotated-cell-20-15"></a>  <span class="dt">int</span> array<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">};</span> </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-20-16" class="code-annotation-target"><a href="#annotated-cell-20-16"></a>  <span class="dt">int</span> risultato_array <span class="op">=</span> somma_array_interi<span class="op">(</span>array<span class="op">,</span> <span class="dv">5</span><span class="op">);</span></span>
+<span id="annotated-cell-20-17"><a href="#annotated-cell-20-17"></a>  stampa_messaggio<span class="op">(</span><span class="st">"Il risultato della somma dell'array di interi è: "</span><span class="op">,</span> </span>
+<span id="annotated-cell-20-18"><a href="#annotated-cell-20-18"></a>                   <span class="op">&amp;</span>risultato_array<span class="op">,</span> <span class="ch">'i'</span><span class="op">);</span></span>
+<span id="annotated-cell-20-19"><a href="#annotated-cell-20-19"></a></span>
+<span id="annotated-cell-20-20"><a href="#annotated-cell-20-20"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="annotated-cell-20-21"><a href="#annotated-cell-20-21"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-21" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-21" data-code-lines="6" data-code-annotation="1">Chiamata della funzione per la somma di due interi.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="6" data-code-annotation="1">Chiamata della funzione per la somma di due interi.</span>
 </dd>
-<dt data-target-cell="annotated-cell-21" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-20" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-21" data-code-lines="10" data-code-annotation="2">Chiamata della funzione per la somma di due stringhe (implementata come una concatenazione).</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="10" data-code-annotation="2">Chiamata della funzione per la somma di due stringhe (implementata come una concatenazione).</span>
 </dd>
-<dt data-target-cell="annotated-cell-21" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-20" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-21" data-code-lines="13" data-code-annotation="3">Liberazione della memoria allocata per la stringa risultante.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="13" data-code-annotation="3">Liberazione della memoria allocata per la stringa risultante.</span>
 </dd>
-<dt data-target-cell="annotated-cell-21" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-20" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-21" data-code-lines="16" data-code-annotation="4">Chiamata della funzione per la somma di un array di interi.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="16" data-code-annotation="4">Chiamata della funzione per la somma di un array di interi.</span>
 </dd>
 </dl></li>
 </ul>
 <p>E il medesimo, ma in Python:</p>
-<div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1"></a><span class="kw">def</span> somma_interi(a, b):</span>
-<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2"></a>  <span class="cf">return</span> a <span class="op">+</span> b</span>
-<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-4" class="code-annotation-target"><a href="#annotated-cell-4-4"></a><span class="kw">def</span> somma_stringhe(a, b):</span>
-<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5"></a>  <span class="cf">return</span> a <span class="op">+</span> b</span>
-<span id="annotated-cell-4-6"><a href="#annotated-cell-4-6"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-4-7" class="code-annotation-target"><a href="#annotated-cell-4-7"></a><span class="kw">def</span> somma_array(arr):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-4-8" class="code-annotation-target"><a href="#annotated-cell-4-8"></a>  <span class="cf">return</span> <span class="bu">sum</span>(arr)</span>
-<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9"></a></span>
-<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10"></a>risultato_interi <span class="op">=</span> somma_interi(<span class="dv">3</span>, <span class="dv">5</span>)</span>
-<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11"></a><span class="bu">print</span>(<span class="ss">f"Il risultato della somma di interi è: </span><span class="sc">{</span>risultato_interi<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="annotated-cell-4-12"><a href="#annotated-cell-4-12"></a></span>
-<span id="annotated-cell-4-13"><a href="#annotated-cell-4-13"></a>risultato_stringhe <span class="op">=</span> somma_stringhe(<span class="st">"Ciao, "</span>, <span class="st">"mondo!"</span>)</span>
-<span id="annotated-cell-4-14"><a href="#annotated-cell-4-14"></a><span class="bu">print</span>(<span class="ss">f"Il risultato della somma di stringhe è: </span><span class="sc">{</span>risultato_stringhe<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="annotated-cell-4-15"><a href="#annotated-cell-4-15"></a></span>
-<span id="annotated-cell-4-16"><a href="#annotated-cell-4-16"></a>array_interi <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="annotated-cell-4-17"><a href="#annotated-cell-4-17"></a>risultato_array <span class="op">=</span> somma_array(array_interi) </span>
-<span id="annotated-cell-4-18"><a href="#annotated-cell-4-18"></a><span class="bu">print</span>(<span class="ss">f"Il risultato della somma dell'array è: </span><span class="sc">{</span>risultato_array<span class="sc">}</span><span class="ss">"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1"></a><span class="kw">def</span> somma_interi(a, b):</span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2"></a>  <span class="cf">return</span> a <span class="op">+</span> b</span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4"></a><span class="kw">def</span> somma_stringhe(a, b):</span>
+<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5"></a>  <span class="cf">return</span> a <span class="op">+</span> b</span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-7" class="code-annotation-target"><a href="#annotated-cell-3-7"></a><span class="kw">def</span> somma_array(arr):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-3-8" class="code-annotation-target"><a href="#annotated-cell-3-8"></a>  <span class="cf">return</span> <span class="bu">sum</span>(arr)</span>
+<span id="annotated-cell-3-9"><a href="#annotated-cell-3-9"></a></span>
+<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10"></a>risultato_interi <span class="op">=</span> somma_interi(<span class="dv">3</span>, <span class="dv">5</span>)</span>
+<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11"></a><span class="bu">print</span>(<span class="ss">f"Il risultato della somma di interi è: </span><span class="sc">{</span>risultato_interi<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12"></a></span>
+<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13"></a>risultato_stringhe <span class="op">=</span> somma_stringhe(<span class="st">"Ciao, "</span>, <span class="st">"mondo!"</span>)</span>
+<span id="annotated-cell-3-14"><a href="#annotated-cell-3-14"></a><span class="bu">print</span>(<span class="ss">f"Il risultato della somma di stringhe è: </span><span class="sc">{</span>risultato_stringhe<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="annotated-cell-3-15"><a href="#annotated-cell-3-15"></a></span>
+<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16"></a>array_interi <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="annotated-cell-3-17"><a href="#annotated-cell-3-17"></a>risultato_array <span class="op">=</span> somma_array(array_interi) </span>
+<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18"></a><span class="bu">print</span>(<span class="ss">f"Il risultato della somma dell'array è: </span><span class="sc">{</span>risultato_array<span class="sc">}</span><span class="ss">"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="4" data-code-annotation="1">Il codice di <code>somma_interi</code> e <code>somma_stringhe</code> è identico e questo ci suggerisce che una delle due è ridondante.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="1">Il codice di <code>somma_interi</code> e <code>somma_stringhe</code> è identico e questo ci suggerisce che una delle due è ridondante.</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="7" data-code-annotation="2">La funzione ora prende in input solo l’array e non c’è bisogno di inserire anche la sua dimensione.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="7" data-code-annotation="2">La funzione ora prende in input solo l’array e non c’è bisogno di inserire anche la sua dimensione.</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="8" data-code-annotation="3">In Python, per evitare errori quando si usa la funzione <code>sum</code>, l’array (o lista) deve contenere elementi che supportano l’operazione di addizione tra di loro. Tipicamente, si usano numeri (interi o a virgola mobile), ma è possibile anche sommare altri tipi di elementi se l’operazione di addizione è definita per quel tipo di dato.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="8" data-code-annotation="3">In Python, per evitare errori quando si usa la funzione <code>sum</code>, l’array (o lista) deve contenere elementi che supportano l’operazione di addizione tra di loro. Tipicamente, si usano numeri (interi o a virgola mobile), ma è possibile anche sommare altri tipi di elementi se l’operazione di addizione è definita per quel tipo di dato.</span>
 </dd>
 </dl>
 <p>Anche qui Python appare più semplice e immediato, sicuramente vincente sul piano della comprensione del codice e della immediatezza di utilizzo. In realtà, Python e C hanno sia una forte complementarietà sulle applicazioni, sia una dipendenza perché molte librerie e l’interprete stesso di Python sono in C.</p>
@@ -844,149 +845,149 @@ STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="h
 <section id="esempio-in-java" class="level3 page-columns page-full" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="esempio-in-java"><span class="header-section-number">2.4.1</span> Esempio in Java</h3>
 <p>In questo esempio, la classe <code>Animale</code> rappresenta una tipo di dato generico con un attributo <code>nome</code> e un metodo <code>faiVerso</code>. La classe <code>Cane</code> specializza <code>Animale</code>, usando l’attributo <code>nome</code> e sovrascrivendo il metodo <code>faiVerso</code>, per fornire un’implementazione coerente colle sue caratteristiche. La classe <code>Main</code> crea un’istanza di <code>Cane</code> e chiama il suo metodo <code>faiVerso</code> (<em>annotato</em> con <code>@Override</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>), dimostrando il polimorfismo e l’ereditarietà:</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;In Java, l’annotazione <code>@Override</code> è opzionale, ma altamente consigliata. Non omettere l’annotazione <code>@Override</code> non causerà un errore di compilazione o di runtime. Tuttavia, l’uso di <code>@Override</code> offre dei vantaggi importanti perché, innanzitutto, il compilatore può verificare che il metodo stia effettivamente sovrascrivendo uno nella classe base e segnalare un errore in caso contrario. Inoltre, l’annotazione migliora la leggibilità del codice perché indica chiaramente al lettore come il metodo è inteso rispetto all’ereditarietà.</p></div></div><div class="sourceCode" id="annotated-cell-5"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-5-1" class="code-annotation-target"><a href="#annotated-cell-5-1"></a><span class="kw">class</span> Animale <span class="op">{</span></span>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;In Java, l’annotazione <code>@Override</code> è opzionale, ma altamente consigliata. Non omettere l’annotazione <code>@Override</code> non causerà un errore di compilazione o di runtime. Tuttavia, l’uso di <code>@Override</code> offre dei vantaggi importanti perché, innanzitutto, il compilatore può verificare che il metodo stia effettivamente sovrascrivendo uno nella classe base e segnalare un errore in caso contrario. Inoltre, l’annotazione migliora la leggibilità del codice perché indica chiaramente al lettore come il metodo è inteso rispetto all’ereditarietà.</p></div></div><div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1"></a><span class="kw">class</span> Animale <span class="op">{</span></span>
+<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2"></a>  <span class="bu">String</span> nome<span class="op">;</span></span>
+<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3"></a></span>
+<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4"></a>  <span class="fu">Animale</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">nome</span> <span class="op">=</span> nome<span class="op">;</span></span>
+<span id="annotated-cell-4-6"><a href="#annotated-cell-4-6"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7"></a></span>
+<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8"></a>  <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"L'animale fa un verso"</span><span class="op">);</span></span>
+<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11"></a><span class="op">}</span></span>
+<span id="annotated-cell-4-12"><a href="#annotated-cell-4-12"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-4-13" class="code-annotation-target"><a href="#annotated-cell-4-13"></a><span class="kw">class</span> Cane <span class="kw">extends</span> Animale <span class="op">{</span></span>
+<span id="annotated-cell-4-14"><a href="#annotated-cell-4-14"></a></span>
+<span id="annotated-cell-4-15"><a href="#annotated-cell-4-15"></a>  <span class="fu">Cane</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-4-16"><a href="#annotated-cell-4-16"></a>    <span class="kw">super</span><span class="op">(</span>nome<span class="op">);</span></span>
+<span id="annotated-cell-4-17"><a href="#annotated-cell-4-17"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-4-18"><a href="#annotated-cell-4-18"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-4-19" class="code-annotation-target"><a href="#annotated-cell-4-19"></a>  <span class="at">@Override</span></span>
+<span id="annotated-cell-4-20"><a href="#annotated-cell-4-20"></a>  <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="annotated-cell-4-21"><a href="#annotated-cell-4-21"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Il cane abbaia"</span><span class="op">);</span></span>
+<span id="annotated-cell-4-22"><a href="#annotated-cell-4-22"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-4-23"><a href="#annotated-cell-4-23"></a><span class="op">}</span></span>
+<span id="annotated-cell-4-24"><a href="#annotated-cell-4-24"></a></span>
+<span id="annotated-cell-4-25"><a href="#annotated-cell-4-25"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
+<span id="annotated-cell-4-26"><a href="#annotated-cell-4-26"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-4-27"><a href="#annotated-cell-4-27"></a>    Animale mioCane <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cane</span><span class="op">(</span><span class="st">"Fido"</span><span class="op">);</span></span>
+<span id="annotated-cell-4-28"><a href="#annotated-cell-4-28"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-4-29" class="code-annotation-target"><a href="#annotated-cell-4-29"></a>    mioCane<span class="op">.</span><span class="fu">faiVerso</span><span class="op">();</span></span>
+<span id="annotated-cell-4-30"><a href="#annotated-cell-4-30"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-4-31"><a href="#annotated-cell-4-31"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="1" data-code-annotation="1">Definizione della classe <code>Animale</code> che ha il doppio compito di provvedere all’implementazione per una caratteristica comune (<code>nome</code> e <code>descrizione()</code>) e una particolare (<code>faiVerso()</code>).</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="13" data-code-annotation="2">Definizione della classe derivata <code>Cane</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="19" data-code-annotation="3"><code>@Override</code> indica in esplicito che il <code>faiVerso()</code> del <code>Cane</code> sovrascrive (non eredita) il <code>faiVerso()</code> di <code>Animale</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="29" data-code-annotation="4">Output: <code>Il cane abbaia</code>.</span>
+</dd>
+</dl>
+<p>In realtà, se gli oggetti devono rappresentare animali reali vorrà dire che non deve essere possibile crearne dalla matrice <code>Animale</code>. Vediamo, quindi, come implementare il medesimo esempio con una classe <em>astratta</em>, cioè una classe che non può essere usata per generare direttamente oggetti, sempre in Java.</p>
+<p>Nel caso pratico, ogni animale ha il suo verso, quindi dobbiamo costringere il programmatore che vuole implementare classi corrispondenti ad animali reali, ad aggiungere tassativamente il metodo <code>faiVerso()</code> per comunicarne la caratteristica distintiva. Una modalità è marchiare <code>Animale</code> e il suo metodo da caratterizzare (<code>faiVerso()</code>), con costrutti ad hoc perché siano, rispettivamente, identificata come classe astratta (per mezzo della parola riservata <code>abstract</code>) e metodo da implementare. Al contempo, <code>Cane</code> non subisce specifiche modifiche sintattiche, ma deve rispettare il vincolo (implementare <code>faiVerso()</code>) perché, ereditando le caratteristiche di <code>Animale</code>, possa essere una classe concreta, cioè da cui si possono creare oggetti.</p>
+<p>Il codice risultate è:</p>
+<div class="sourceCode" id="annotated-cell-5"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-5-1" class="code-annotation-target"><a href="#annotated-cell-5-1"></a><span class="kw">abstract</span> <span class="kw">class</span> Animale <span class="op">{</span></span>
 <span id="annotated-cell-5-2"><a href="#annotated-cell-5-2"></a>  <span class="bu">String</span> nome<span class="op">;</span></span>
 <span id="annotated-cell-5-3"><a href="#annotated-cell-5-3"></a></span>
 <span id="annotated-cell-5-4"><a href="#annotated-cell-5-4"></a>  <span class="fu">Animale</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
 <span id="annotated-cell-5-5"><a href="#annotated-cell-5-5"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">nome</span> <span class="op">=</span> nome<span class="op">;</span></span>
 <span id="annotated-cell-5-6"><a href="#annotated-cell-5-6"></a>  <span class="op">}</span></span>
 <span id="annotated-cell-5-7"><a href="#annotated-cell-5-7"></a></span>
-<span id="annotated-cell-5-8"><a href="#annotated-cell-5-8"></a>  <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="annotated-cell-5-9"><a href="#annotated-cell-5-9"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"L'animale fa un verso"</span><span class="op">);</span></span>
-<span id="annotated-cell-5-10"><a href="#annotated-cell-5-10"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-5-11"><a href="#annotated-cell-5-11"></a><span class="op">}</span></span>
-<span id="annotated-cell-5-12"><a href="#annotated-cell-5-12"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-5-13" class="code-annotation-target"><a href="#annotated-cell-5-13"></a><span class="kw">class</span> Cane <span class="kw">extends</span> Animale <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-5-8" class="code-annotation-target"><a href="#annotated-cell-5-8"></a>  <span class="kw">abstract</span> <span class="bu">String</span> <span class="fu">faiVerso</span><span class="op">();</span></span>
+<span id="annotated-cell-5-9"><a href="#annotated-cell-5-9"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-5-10" class="code-annotation-target"><a href="#annotated-cell-5-10"></a>  <span class="bu">String</span> <span class="fu">descrizione</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="annotated-cell-5-11"><a href="#annotated-cell-5-11"></a>    <span class="cf">return</span> <span class="st">"L'animale si chiama "</span> <span class="op">+</span> nome<span class="op">;</span></span>
+<span id="annotated-cell-5-12"><a href="#annotated-cell-5-12"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-5-13"><a href="#annotated-cell-5-13"></a><span class="op">}</span></span>
 <span id="annotated-cell-5-14"><a href="#annotated-cell-5-14"></a></span>
-<span id="annotated-cell-5-15"><a href="#annotated-cell-5-15"></a>  <span class="fu">Cane</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
-<span id="annotated-cell-5-16"><a href="#annotated-cell-5-16"></a>    <span class="kw">super</span><span class="op">(</span>nome<span class="op">);</span></span>
-<span id="annotated-cell-5-17"><a href="#annotated-cell-5-17"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-5-18"><a href="#annotated-cell-5-18"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-5-19" class="code-annotation-target"><a href="#annotated-cell-5-19"></a>  <span class="at">@Override</span></span>
-<span id="annotated-cell-5-20"><a href="#annotated-cell-5-20"></a>  <span class="dt">void</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="annotated-cell-5-21"><a href="#annotated-cell-5-21"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Il cane abbaia"</span><span class="op">);</span></span>
-<span id="annotated-cell-5-22"><a href="#annotated-cell-5-22"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-5-23"><a href="#annotated-cell-5-23"></a><span class="op">}</span></span>
-<span id="annotated-cell-5-24"><a href="#annotated-cell-5-24"></a></span>
-<span id="annotated-cell-5-25"><a href="#annotated-cell-5-25"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
-<span id="annotated-cell-5-26"><a href="#annotated-cell-5-26"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="annotated-cell-5-27"><a href="#annotated-cell-5-27"></a>    Animale mioCane <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cane</span><span class="op">(</span><span class="st">"Fido"</span><span class="op">);</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-5-15" class="code-annotation-target"><a href="#annotated-cell-5-15"></a><span class="kw">class</span> Cane <span class="kw">extends</span> Animale <span class="op">{</span></span>
+<span id="annotated-cell-5-16"><a href="#annotated-cell-5-16"></a></span>
+<span id="annotated-cell-5-17"><a href="#annotated-cell-5-17"></a>  <span class="fu">Cane</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-5-18"><a href="#annotated-cell-5-18"></a>    <span class="kw">super</span><span class="op">(</span>nome<span class="op">);</span></span>
+<span id="annotated-cell-5-19"><a href="#annotated-cell-5-19"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-5-20"><a href="#annotated-cell-5-20"></a></span>
+<span id="annotated-cell-5-21"><a href="#annotated-cell-5-21"></a>  <span class="at">@Override</span></span>
+<span id="annotated-cell-5-22"><a href="#annotated-cell-5-22"></a>  <span class="bu">String</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="annotated-cell-5-23"><a href="#annotated-cell-5-23"></a>    <span class="cf">return</span> <span class="st">"Il cane abbaia"</span><span class="op">;</span></span>
+<span id="annotated-cell-5-24"><a href="#annotated-cell-5-24"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-5-25"><a href="#annotated-cell-5-25"></a><span class="op">}</span></span>
+<span id="annotated-cell-5-26"><a href="#annotated-cell-5-26"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-5-27" class="code-annotation-target"><a href="#annotated-cell-5-27"></a><span class="kw">class</span> Coccodrillo <span class="kw">extends</span> Animale <span class="op">{</span></span>
 <span id="annotated-cell-5-28"><a href="#annotated-cell-5-28"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-5-29" class="code-annotation-target"><a href="#annotated-cell-5-29"></a>    mioCane<span class="op">.</span><span class="fu">faiVerso</span><span class="op">();</span></span>
-<span id="annotated-cell-5-30"><a href="#annotated-cell-5-30"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-5-31"><a href="#annotated-cell-5-31"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-5-29"><a href="#annotated-cell-5-29"></a>  <span class="fu">Coccodrillo</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-5-30"><a href="#annotated-cell-5-30"></a>    <span class="kw">super</span><span class="op">(</span>nome<span class="op">);</span></span>
+<span id="annotated-cell-5-31"><a href="#annotated-cell-5-31"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-5-32"><a href="#annotated-cell-5-32"></a></span>
+<span id="annotated-cell-5-33"><a href="#annotated-cell-5-33"></a>  <span class="at">@Override</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-5-34" class="code-annotation-target"><a href="#annotated-cell-5-34"></a>  <span class="bu">String</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="annotated-cell-5-35"><a href="#annotated-cell-5-35"></a>    <span class="cf">return</span> <span class="st">""</span><span class="op">;</span>  </span>
+<span id="annotated-cell-5-36"><a href="#annotated-cell-5-36"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-5-37"><a href="#annotated-cell-5-37"></a><span class="op">}</span></span>
+<span id="annotated-cell-5-38"><a href="#annotated-cell-5-38"></a></span>
+<span id="annotated-cell-5-39"><a href="#annotated-cell-5-39"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
+<span id="annotated-cell-5-40"><a href="#annotated-cell-5-40"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-5-41"><a href="#annotated-cell-5-41"></a>    Animale mioCane <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cane</span><span class="op">(</span><span class="st">"Fido"</span><span class="op">);</span></span>
+<span id="annotated-cell-5-42"><a href="#annotated-cell-5-42"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-5-43" class="code-annotation-target"><a href="#annotated-cell-5-43"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>mioCane<span class="op">.</span><span class="fu">descrizione</span><span class="op">());</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-5-44" class="code-annotation-target"><a href="#annotated-cell-5-44"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>mioCane<span class="op">.</span><span class="fu">faiVerso</span><span class="op">());</span></span>
+<span id="annotated-cell-5-45"><a href="#annotated-cell-5-45"></a></span>
+<span id="annotated-cell-5-46"><a href="#annotated-cell-5-46"></a>    Animale mioCoccodrillo <span class="op">=</span> <span class="kw">new</span> <span class="fu">Coccodrillo</span><span class="op">(</span><span class="st">"Crocky"</span><span class="op">);</span></span>
+<span id="annotated-cell-5-47"><a href="#annotated-cell-5-47"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-5-48" class="code-annotation-target"><a href="#annotated-cell-5-48"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>mioCoccodrillo<span class="op">.</span><span class="fu">descrizione</span><span class="op">());</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-5-49" class="code-annotation-target"><a href="#annotated-cell-5-49"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>mioCoccodrillo<span class="op">.</span><span class="fu">faiVerso</span><span class="op">());</span></span>
+<span id="annotated-cell-5-50"><a href="#annotated-cell-5-50"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-5-51"><a href="#annotated-cell-5-51"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="1" data-code-annotation="1">Definizione della classe <code>Animale</code> che ha il doppio compito di provvedere all’implementazione per una caratteristica comune (<code>nome</code> e <code>descrizione()</code>) e una particolare (<code>faiVerso()</code>).</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="1" data-code-annotation="1">Definizione della classe astratta che ha il doppio compito di fornire una implementazione di default per una caratteristica comune (<code>nome</code>) e un vincolo di implementazione nelle classe derivate per una seconda caratteristica comune non implementabile nello stesso modo per tutte (<code>faiVerso()</code>).</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="13" data-code-annotation="2">Definizione della classe derivata <code>Cane</code>.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="8" data-code-annotation="2">Metodo astratto <code>faiVerso()</code> che le classi corrispondenti ad animali reali dovranno implementare e che dovrà resituire una stringa.</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="19" data-code-annotation="3"><code>@Override</code> indica in esplicito che il <code>faiVerso()</code> del <code>Cane</code> sovrascrive (non eredita) il <code>faiVerso()</code> di <code>Animale</code>.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="10" data-code-annotation="3">Metodo concreto <code>faiVerso()</code> che restituisce una stringa.</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="29" data-code-annotation="4">Output: <code>Il cane abbaia</code>.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="15" data-code-annotation="4">Definizione della classe derivata <code>Cane</code>.</span>
 </dd>
-</dl>
-<p>In realtà, se gli oggetti devono rappresentare animali reali vorrà dire che non deve essere possibile crearne dalla matrice <code>Animale</code>. Vediamo, quindi, come implementare il medesimo esempio con una classe <em>astratta</em>, cioè una classe che non può essere usata per generare direttamente oggetti, sempre in Java.</p>
-<p>Nel caso pratico, ogni animale ha il suo verso, quindi dobbiamo costringere il programmatore che vuole implementare classi corrispondenti ad animali reali, ad aggiungere tassativamente il metodo <code>faiVerso()</code> per comunicarne la caratteristica distintiva. Una modalità è marchiare <code>Animale</code> e il suo metodo da caratterizzare (<code>faiVerso()</code>), con costrutti ad hoc perché siano, rispettivamente, identificata come classe astratta (per mezzo della parola riservata <code>abstract</code>) e metodo da implementare. Al contempo, <code>Cane</code> non subisce specifiche modifiche sintattiche, ma deve rispettare il vincolo (implementare <code>faiVerso()</code>) perché, ereditando le caratteristiche di <code>Animale</code>, possa essere una classe concreta, cioè da cui si possono creare oggetti.</p>
-<p>Il codice risultate è:</p>
-<div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1"></a><span class="kw">abstract</span> <span class="kw">class</span> Animale <span class="op">{</span></span>
-<span id="annotated-cell-6-2"><a href="#annotated-cell-6-2"></a>  <span class="bu">String</span> nome<span class="op">;</span></span>
-<span id="annotated-cell-6-3"><a href="#annotated-cell-6-3"></a></span>
-<span id="annotated-cell-6-4"><a href="#annotated-cell-6-4"></a>  <span class="fu">Animale</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
-<span id="annotated-cell-6-5"><a href="#annotated-cell-6-5"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">nome</span> <span class="op">=</span> nome<span class="op">;</span></span>
-<span id="annotated-cell-6-6"><a href="#annotated-cell-6-6"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-6-7"><a href="#annotated-cell-6-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-6-8" class="code-annotation-target"><a href="#annotated-cell-6-8"></a>  <span class="kw">abstract</span> <span class="bu">String</span> <span class="fu">faiVerso</span><span class="op">();</span></span>
-<span id="annotated-cell-6-9"><a href="#annotated-cell-6-9"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-6-10" class="code-annotation-target"><a href="#annotated-cell-6-10"></a>  <span class="bu">String</span> <span class="fu">descrizione</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="annotated-cell-6-11"><a href="#annotated-cell-6-11"></a>    <span class="cf">return</span> <span class="st">"L'animale si chiama "</span> <span class="op">+</span> nome<span class="op">;</span></span>
-<span id="annotated-cell-6-12"><a href="#annotated-cell-6-12"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-6-13"><a href="#annotated-cell-6-13"></a><span class="op">}</span></span>
-<span id="annotated-cell-6-14"><a href="#annotated-cell-6-14"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-6-15" class="code-annotation-target"><a href="#annotated-cell-6-15"></a><span class="kw">class</span> Cane <span class="kw">extends</span> Animale <span class="op">{</span></span>
-<span id="annotated-cell-6-16"><a href="#annotated-cell-6-16"></a></span>
-<span id="annotated-cell-6-17"><a href="#annotated-cell-6-17"></a>  <span class="fu">Cane</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
-<span id="annotated-cell-6-18"><a href="#annotated-cell-6-18"></a>    <span class="kw">super</span><span class="op">(</span>nome<span class="op">);</span></span>
-<span id="annotated-cell-6-19"><a href="#annotated-cell-6-19"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-6-20"><a href="#annotated-cell-6-20"></a></span>
-<span id="annotated-cell-6-21"><a href="#annotated-cell-6-21"></a>  <span class="at">@Override</span></span>
-<span id="annotated-cell-6-22"><a href="#annotated-cell-6-22"></a>  <span class="bu">String</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="annotated-cell-6-23"><a href="#annotated-cell-6-23"></a>    <span class="cf">return</span> <span class="st">"Il cane abbaia"</span><span class="op">;</span></span>
-<span id="annotated-cell-6-24"><a href="#annotated-cell-6-24"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-6-25"><a href="#annotated-cell-6-25"></a><span class="op">}</span></span>
-<span id="annotated-cell-6-26"><a href="#annotated-cell-6-26"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-6-27" class="code-annotation-target"><a href="#annotated-cell-6-27"></a><span class="kw">class</span> Coccodrillo <span class="kw">extends</span> Animale <span class="op">{</span></span>
-<span id="annotated-cell-6-28"><a href="#annotated-cell-6-28"></a></span>
-<span id="annotated-cell-6-29"><a href="#annotated-cell-6-29"></a>  <span class="fu">Coccodrillo</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
-<span id="annotated-cell-6-30"><a href="#annotated-cell-6-30"></a>    <span class="kw">super</span><span class="op">(</span>nome<span class="op">);</span></span>
-<span id="annotated-cell-6-31"><a href="#annotated-cell-6-31"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-6-32"><a href="#annotated-cell-6-32"></a></span>
-<span id="annotated-cell-6-33"><a href="#annotated-cell-6-33"></a>  <span class="at">@Override</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-6-34" class="code-annotation-target"><a href="#annotated-cell-6-34"></a>  <span class="bu">String</span> <span class="fu">faiVerso</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="annotated-cell-6-35"><a href="#annotated-cell-6-35"></a>    <span class="cf">return</span> <span class="st">""</span><span class="op">;</span>  </span>
-<span id="annotated-cell-6-36"><a href="#annotated-cell-6-36"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-6-37"><a href="#annotated-cell-6-37"></a><span class="op">}</span></span>
-<span id="annotated-cell-6-38"><a href="#annotated-cell-6-38"></a></span>
-<span id="annotated-cell-6-39"><a href="#annotated-cell-6-39"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
-<span id="annotated-cell-6-40"><a href="#annotated-cell-6-40"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="annotated-cell-6-41"><a href="#annotated-cell-6-41"></a>    Animale mioCane <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cane</span><span class="op">(</span><span class="st">"Fido"</span><span class="op">);</span></span>
-<span id="annotated-cell-6-42"><a href="#annotated-cell-6-42"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-6-43" class="code-annotation-target"><a href="#annotated-cell-6-43"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>mioCane<span class="op">.</span><span class="fu">descrizione</span><span class="op">());</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-6-44" class="code-annotation-target"><a href="#annotated-cell-6-44"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>mioCane<span class="op">.</span><span class="fu">faiVerso</span><span class="op">());</span></span>
-<span id="annotated-cell-6-45"><a href="#annotated-cell-6-45"></a></span>
-<span id="annotated-cell-6-46"><a href="#annotated-cell-6-46"></a>    Animale mioCoccodrillo <span class="op">=</span> <span class="kw">new</span> <span class="fu">Coccodrillo</span><span class="op">(</span><span class="st">"Crocky"</span><span class="op">);</span></span>
-<span id="annotated-cell-6-47"><a href="#annotated-cell-6-47"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-6-48" class="code-annotation-target"><a href="#annotated-cell-6-48"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>mioCoccodrillo<span class="op">.</span><span class="fu">descrizione</span><span class="op">());</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-6-49" class="code-annotation-target"><a href="#annotated-cell-6-49"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>mioCoccodrillo<span class="op">.</span><span class="fu">faiVerso</span><span class="op">());</span></span>
-<span id="annotated-cell-6-50"><a href="#annotated-cell-6-50"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-6-51"><a href="#annotated-cell-6-51"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="1" data-code-annotation="1">Definizione della classe astratta che ha il doppio compito di fornire una implementazione di default per una caratteristica comune (<code>nome</code>) e un vincolo di implementazione nelle classe derivate per una seconda caratteristica comune non implementabile nello stesso modo per tutte (<code>faiVerso()</code>).</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="27" data-code-annotation="5">Definizione della classe derivata <code>Coccodrillo</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="8" data-code-annotation="2">Metodo astratto <code>faiVerso()</code> che le classi corrispondenti ad animali reali dovranno implementare e che dovrà resituire una stringa.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="34" data-code-annotation="6">Il coccodrillo non emette versi!</span>
 </dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="10" data-code-annotation="3">Metodo concreto <code>faiVerso()</code> che restituisce una stringa.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="43" data-code-annotation="7">Stampa: <code>L'animale si chiama Fido</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="15" data-code-annotation="4">Definizione della classe derivata <code>Cane</code>.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="44" data-code-annotation="8">Stampa: <code>Il cane abbaia</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="9">9</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="27" data-code-annotation="5">Definizione della classe derivata <code>Coccodrillo</code>.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="48" data-code-annotation="9">Stampa: <code>L'animale si chiama Crocky</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="10">10</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="34" data-code-annotation="6">Il coccodrillo non emette versi!</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="7">7</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="43" data-code-annotation="7">Stampa: <code>L'animale si chiama Fido</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="8">8</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="44" data-code-annotation="8">Stampa: <code>Il cane abbaia</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="9">9</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="48" data-code-annotation="9">Stampa: <code>L'animale si chiama Crocky</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="10">10</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="49" data-code-annotation="10">Non stampa nulla perché il coccodrillo non emette versi!</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="49" data-code-annotation="10">Non stampa nulla perché il coccodrillo non emette versi!</span>
 </dd>
 </dl>
 </section>
@@ -994,131 +995,131 @@ STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="h
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="template"><span class="header-section-number">2.4.2</span> Template</h3>
 <p>I <strong>template</strong>, o generics, non sono specifici dell’OOP, anche se sono spesso associati a esso. I template permettono di scrivere funzioni, classi, e altri costrutti di codice in modo generico, cioè indipendente dal tipo dei dati che manipolano. Questo concetto è particolarmente utile per creare librerie e moduli riutilizzabili e flessibili.</p>
 <p>Ad esempio, definiamo la classe <code>Box</code> nel modo seguente:</p>
-<div class="sourceCode" id="annotated-cell-7"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> T<span class="op">&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2"></a><span class="kw">class</span> Box <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-7-3" class="code-annotation-target"><a href="#annotated-cell-7-3"></a>  T value<span class="op">;</span></span>
-<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a></span>
-<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5"></a><span class="kw">public</span><span class="op">:</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-7-6" class="code-annotation-target"><a href="#annotated-cell-7-6"></a>  <span class="dt">void</span> setValue<span class="op">(</span>T val<span class="op">)</span> <span class="op">{</span> value <span class="op">=</span> val<span class="op">;</span> <span class="op">}</span></span>
-<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-7-8" class="code-annotation-target"><a href="#annotated-cell-7-8"></a>  T getValue<span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> value<span class="op">;</span> <span class="op">}</span></span>
-<span id="annotated-cell-7-9"><a href="#annotated-cell-7-9"></a><span class="op">};</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> T<span class="op">&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2"></a><span class="kw">class</span> Box <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3"></a>  T value<span class="op">;</span></span>
+<span id="annotated-cell-6-4"><a href="#annotated-cell-6-4"></a></span>
+<span id="annotated-cell-6-5"><a href="#annotated-cell-6-5"></a><span class="kw">public</span><span class="op">:</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-6-6" class="code-annotation-target"><a href="#annotated-cell-6-6"></a>  <span class="dt">void</span> setValue<span class="op">(</span>T val<span class="op">)</span> <span class="op">{</span> value <span class="op">=</span> val<span class="op">;</span> <span class="op">}</span></span>
+<span id="annotated-cell-6-7"><a href="#annotated-cell-6-7"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-6-8" class="code-annotation-target"><a href="#annotated-cell-6-8"></a>  T getValue<span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="annotated-cell-6-9"><a href="#annotated-cell-6-9"></a><span class="op">};</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="1" data-code-annotation="1">La keyword <code>template</code> definisce un template di classe che può lavorare con qualsiasi tipo <code>T</code> specificato al momento dell’uso.</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="1" data-code-annotation="1">La keyword <code>template</code> definisce un template di classe che può lavorare con qualsiasi tipo <code>T</code> specificato al momento dell’uso.</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="2" data-code-annotation="2">Dichiarazione della classe <code>Box</code> che utilizza il template di tipo <code>T</code>.</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="2">Dichiarazione della classe <code>Box</code> che utilizza il template di tipo <code>T</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="3" data-code-annotation="3">Dichiarazione del membro dati <code>value</code> di tipo <code>T</code>, che rappresenta il valore contenuto nella scatola.</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="3">Dichiarazione del membro dati <code>value</code> di tipo <code>T</code>, che rappresenta il valore contenuto nella scatola.</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="6" data-code-annotation="4">Metodo pubblico <code>setValue</code> che imposta il valore del membro dati <code>value</code> con il parametro <code>val</code> di tipo <code>T</code>.</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="6" data-code-annotation="4">Metodo pubblico <code>setValue</code> che imposta il valore del membro dati <code>value</code> con il parametro <code>val</code> di tipo <code>T</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="8" data-code-annotation="5">Metodo pubblico <code>getValue</code> che restituisce il valore del membro dati <code>value</code> di tipo <code>T</code>.</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="8" data-code-annotation="5">Metodo pubblico <code>getValue</code> che restituisce il valore del membro dati <code>value</code> di tipo <code>T</code>.</span>
 </dd>
 </dl>
 <p><code>Box</code> può contenere un valore di qualsiasi tipo specificato al momento della creazione dell’istanza per mezzo del template <code>T</code>:</p>
-<div class="sourceCode" id="annotated-cell-8"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-1" class="code-annotation-target"><a href="#annotated-cell-8-1"></a>Box<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> intBox<span class="op">;</span></span>
-<span id="annotated-cell-8-2"><a href="#annotated-cell-8-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-8-3" class="code-annotation-target"><a href="#annotated-cell-8-3"></a>intBox<span class="op">.</span>setValue<span class="op">(</span><span class="dv">123</span><span class="op">);</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-8-4" class="code-annotation-target"><a href="#annotated-cell-8-4"></a><span class="dt">int</span> x <span class="op">=</span> intBox<span class="op">.</span>getValue<span class="op">();</span></span>
-<span id="annotated-cell-8-5"><a href="#annotated-cell-8-5"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-8-6" class="code-annotation-target"><a href="#annotated-cell-8-6"></a>Box<span class="op">&lt;</span><span class="bu">std::</span>string<span class="op">&gt;</span> stringBox<span class="op">;</span></span>
-<span id="annotated-cell-8-7"><a href="#annotated-cell-8-7"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-8-8" class="code-annotation-target"><a href="#annotated-cell-8-8"></a>stringBox<span class="op">.</span>setValue<span class="op">(</span><span class="st">"Hello, World!"</span><span class="op">);</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-8-9" class="code-annotation-target"><a href="#annotated-cell-8-9"></a><span class="bu">std::</span>string str <span class="op">=</span> stringBox<span class="op">.</span>getValue<span class="op">();</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-7"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1"></a>Box<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> intBox<span class="op">;</span></span>
+<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-3" class="code-annotation-target"><a href="#annotated-cell-7-3"></a>intBox<span class="op">.</span>setValue<span class="op">(</span><span class="dv">123</span><span class="op">);</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-7-4" class="code-annotation-target"><a href="#annotated-cell-7-4"></a><span class="dt">int</span> x <span class="op">=</span> intBox<span class="op">.</span>getValue<span class="op">();</span></span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-7-6" class="code-annotation-target"><a href="#annotated-cell-7-6"></a>Box<span class="op">&lt;</span><span class="bu">std::</span>string<span class="op">&gt;</span> stringBox<span class="op">;</span></span>
+<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-7-8" class="code-annotation-target"><a href="#annotated-cell-7-8"></a>stringBox<span class="op">.</span>setValue<span class="op">(</span><span class="st">"Hello, World!"</span><span class="op">);</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-7-9" class="code-annotation-target"><a href="#annotated-cell-7-9"></a><span class="bu">std::</span>string str <span class="op">=</span> stringBox<span class="op">.</span>getValue<span class="op">();</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="1" data-code-annotation="1">Creazione di un’istanza di <code>Box</code> con tipo <code>int</code>, chiamata <code>intBox</code>.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="1" data-code-annotation="1">Creazione di un’istanza di <code>Box</code> con tipo <code>int</code>, chiamata <code>intBox</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="3" data-code-annotation="2">Chiamata del metodo <code>setValue</code> per impostare il valore di <code>intBox</code> a <code>123</code>.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="3" data-code-annotation="2">Chiamata del metodo <code>setValue</code> per impostare il valore di <code>intBox</code> a <code>123</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="4" data-code-annotation="3">Chiamata del metodo <code>getValue</code> per ottenere il valore di <code>intBox</code> e assegnarlo alla variabile <code>x</code> di tipo <code>int</code>.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="4" data-code-annotation="3">Chiamata del metodo <code>getValue</code> per ottenere il valore di <code>intBox</code> e assegnarlo alla variabile <code>x</code> di tipo <code>int</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="6" data-code-annotation="4">Creazione di un’istanza di <code>Box</code> con tipo <code>std::string</code>, chiamata <code>stringBox</code>.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="6" data-code-annotation="4">Creazione di un’istanza di <code>Box</code> con tipo <code>std::string</code>, chiamata <code>stringBox</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="8" data-code-annotation="5">Chiamata del metodo <code>setValue</code> per impostare il valore di <code>stringBox</code> a <code>"Hello, World!"</code>.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="8" data-code-annotation="5">Chiamata del metodo <code>setValue</code> per impostare il valore di <code>stringBox</code> a <code>"Hello, World!"</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="9" data-code-annotation="6">Chiamata del metodo <code>getValue</code> per ottenere il valore di <code>stringBox</code> e assegnarlo alla variabile <code>str</code> di tipo <code>std::string</code>.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="9" data-code-annotation="6">Chiamata del metodo <code>getValue</code> per ottenere il valore di <code>stringBox</code> e assegnarlo alla variabile <code>str</code> di tipo <code>std::string</code>.</span>
 </dd>
 </dl>
 <p>Anche nei linguaggi non orientati agli oggetti, i template trovano applicazione. Ad esempio, in Rust, un linguaggio di programmazione sistemistica non puramente OOP, il codice seguente restituisce il valore più grande di una lista:</p>
-<div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode numberSource rust code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode rust"><a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1"></a><span class="kw">fn</span> largest<span class="op">&lt;</span>T<span class="op">:</span> <span class="bu">PartialOrd</span><span class="op">&gt;</span>(list<span class="op">:</span> <span class="op">&amp;</span>[T]) <span class="op">-&gt;</span> <span class="op">&amp;</span>T <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-2" class="code-annotation-target"><a href="#annotated-cell-9-2"></a>    <span class="kw">let</span> <span class="kw">mut</span> largest <span class="op">=</span> <span class="op">&amp;</span>list[<span class="dv">0</span>]<span class="op">;</span></span>
-<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-9-4" class="code-annotation-target"><a href="#annotated-cell-9-4"></a>    <span class="cf">for</span> item <span class="kw">in</span> list <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-9-5" class="code-annotation-target"><a href="#annotated-cell-9-5"></a>        <span class="cf">if</span> item <span class="op">&gt;</span> largest <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-9-6" class="code-annotation-target"><a href="#annotated-cell-9-6"></a>            largest <span class="op">=</span> item<span class="op">;</span></span>
-<span id="annotated-cell-9-7"><a href="#annotated-cell-9-7"></a>        <span class="op">}</span></span>
-<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8"></a>    <span class="op">}</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-9-9" class="code-annotation-target"><a href="#annotated-cell-9-9"></a>    largest</span>
-<span id="annotated-cell-9-10"><a href="#annotated-cell-9-10"></a><span class="op">}</span></span>
-<span id="annotated-cell-9-11"><a href="#annotated-cell-9-11"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-9-12" class="code-annotation-target"><a href="#annotated-cell-9-12"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-9-13" class="code-annotation-target"><a href="#annotated-cell-9-13"></a>    <span class="kw">let</span> numbers <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">34</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">65</span>]<span class="op">;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-9-14" class="code-annotation-target"><a href="#annotated-cell-9-14"></a>    <span class="kw">let</span> max <span class="op">=</span> largest(<span class="op">&amp;</span>numbers)<span class="op">;</span></span>
-<span id="annotated-cell-9-15"><a href="#annotated-cell-9-15"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-9-16" class="code-annotation-target"><a href="#annotated-cell-9-16"></a>    <span class="pp">println!</span>(<span class="st">"The largest number is {}"</span><span class="op">,</span> max)<span class="op">;</span></span>
-<span id="annotated-cell-9-17"><a href="#annotated-cell-9-17"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-8"><pre class="sourceCode numberSource rust code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode rust"><a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-1" class="code-annotation-target"><a href="#annotated-cell-8-1"></a><span class="kw">fn</span> largest<span class="op">&lt;</span>T<span class="op">:</span> <span class="bu">PartialOrd</span><span class="op">&gt;</span>(list<span class="op">:</span> <span class="op">&amp;</span>[T]) <span class="op">-&gt;</span> <span class="op">&amp;</span>T <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2"></a>    <span class="kw">let</span> <span class="kw">mut</span> largest <span class="op">=</span> <span class="op">&amp;</span>list[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-8-4" class="code-annotation-target"><a href="#annotated-cell-8-4"></a>    <span class="cf">for</span> item <span class="kw">in</span> list <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-8-5" class="code-annotation-target"><a href="#annotated-cell-8-5"></a>        <span class="cf">if</span> item <span class="op">&gt;</span> largest <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-8-6" class="code-annotation-target"><a href="#annotated-cell-8-6"></a>            largest <span class="op">=</span> item<span class="op">;</span></span>
+<span id="annotated-cell-8-7"><a href="#annotated-cell-8-7"></a>        <span class="op">}</span></span>
+<span id="annotated-cell-8-8"><a href="#annotated-cell-8-8"></a>    <span class="op">}</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-8-9" class="code-annotation-target"><a href="#annotated-cell-8-9"></a>    largest</span>
+<span id="annotated-cell-8-10"><a href="#annotated-cell-8-10"></a><span class="op">}</span></span>
+<span id="annotated-cell-8-11"><a href="#annotated-cell-8-11"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-8-12" class="code-annotation-target"><a href="#annotated-cell-8-12"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-8-13" class="code-annotation-target"><a href="#annotated-cell-8-13"></a>    <span class="kw">let</span> numbers <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">34</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">65</span>]<span class="op">;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-8-14" class="code-annotation-target"><a href="#annotated-cell-8-14"></a>    <span class="kw">let</span> max <span class="op">=</span> largest(<span class="op">&amp;</span>numbers)<span class="op">;</span></span>
+<span id="annotated-cell-8-15"><a href="#annotated-cell-8-15"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-8-16" class="code-annotation-target"><a href="#annotated-cell-8-16"></a>    <span class="pp">println!</span>(<span class="st">"The largest number is {}"</span><span class="op">,</span> max)<span class="op">;</span></span>
+<span id="annotated-cell-8-17"><a href="#annotated-cell-8-17"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="1" data-code-annotation="1">Definizione della funzione generica <code>largest</code> che accetta una lista di riferimenti a un tipo <code>T</code> che implementa il tratto <code>PartialOrd</code> e restituisce un riferimento a un valore di tipo <code>T</code>.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="1" data-code-annotation="1">Definizione della funzione generica <code>largest</code> che accetta una lista di riferimenti a un tipo <code>T</code> che implementa il tratto <code>PartialOrd</code> e restituisce un riferimento a un valore di tipo <code>T</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="2" data-code-annotation="2">Inizializzazione della variabile <code>largest</code> con il primo elemento della lista.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="2" data-code-annotation="2">Inizializzazione della variabile <code>largest</code> con il primo elemento della lista.</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="4" data-code-annotation="3">Iterazione attraverso ogni elemento della lista.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="4" data-code-annotation="3">Iterazione attraverso ogni elemento della lista.</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="5" data-code-annotation="4">Controllo se l’elemento corrente <code>item</code> è maggiore di <code>largest</code>.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="5" data-code-annotation="4">Controllo se l’elemento corrente <code>item</code> è maggiore di <code>largest</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="6" data-code-annotation="5">Se <code>item</code> è maggiore, aggiornamento della variabile <code>largest</code> con <code>item</code>.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="6" data-code-annotation="5">Se <code>item</code> è maggiore, aggiornamento della variabile <code>largest</code> con <code>item</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="9" data-code-annotation="6">Restituzione di <code>largest</code>, che è il riferimento al più grande elemento trovato nella lista.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="9" data-code-annotation="6">Restituzione di <code>largest</code>, che è il riferimento al più grande elemento trovato nella lista.</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="12" data-code-annotation="7">Definizione della funzione <code>main</code>, punto di ingresso del programma.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="12" data-code-annotation="7">Definizione della funzione <code>main</code>, punto di ingresso del programma.</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="8">8</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="13" data-code-annotation="8">Creazione di un vettore di numeri interi <code>numbers</code>.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="13" data-code-annotation="8">Creazione di un vettore di numeri interi <code>numbers</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="9">9</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="9">9</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="14" data-code-annotation="9">Chiamata della funzione <code>largest</code> con un riferimento a <code>numbers</code> e assegnazione del risultato a <code>max</code>.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="14" data-code-annotation="9">Chiamata della funzione <code>largest</code> con un riferimento a <code>numbers</code> e assegnazione del risultato a <code>max</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="10">10</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="10">10</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="16" data-code-annotation="10">Stampa del valore più grande trovato nella lista usando la macro <code>println!</code>.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="16" data-code-annotation="10">Stampa del valore più grande trovato nella lista usando la macro <code>println!</code>.</span>
 </dd>
 </dl>
 </section>
@@ -1126,29 +1127,29 @@ STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="h
 <h3 data-number="2.4.3" class="anchored" data-anchor-id="metaprogrammazione"><span class="header-section-number">2.4.3</span> Metaprogrammazione</h3>
 <p>La metaprogrammazione è un paradigma che consente al programma di trattare il codice come dati, permettendo al codice di generare, manipolare o eseguire altro codice. Anche questo concetto non è esclusivo dell’OOP. In C++, la metaprogrammazione è strettamente legata ai template. Un esempio classico è la template metaprogramming (TMP), che permette di eseguire calcoli a tempo di compilazione.</p>
 <p>Un esempio è il codice seguente di calcolo del fattoriale:</p>
-<div class="sourceCode" id="annotated-cell-10"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="dt">int</span> N<span class="op">&gt;</span></span>
-<span id="annotated-cell-10-2"><a href="#annotated-cell-10-2"></a><span class="kw">struct</span> Factorial <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3"></a>    <span class="at">static</span> <span class="at">const</span> <span class="dt">int</span> value <span class="op">=</span> N <span class="op">*</span> Factorial<span class="op">&lt;</span>N <span class="op">-</span> <span class="dv">1</span><span class="op">&gt;::</span>value<span class="op">;</span></span>
-<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4"></a><span class="op">};</span></span>
-<span id="annotated-cell-10-5"><a href="#annotated-cell-10-5"></a></span>
-<span id="annotated-cell-10-6"><a href="#annotated-cell-10-6"></a><span class="kw">template</span><span class="op">&lt;&gt;</span></span>
-<span id="annotated-cell-10-7"><a href="#annotated-cell-10-7"></a><span class="kw">struct</span> Factorial<span class="op">&lt;</span><span class="dv">0</span><span class="op">&gt;</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-10-8" class="code-annotation-target"><a href="#annotated-cell-10-8"></a>    <span class="at">static</span> <span class="at">const</span> <span class="dt">int</span> value <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="annotated-cell-10-9"><a href="#annotated-cell-10-9"></a><span class="op">};</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode numberSource cpp code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="dt">int</span> N<span class="op">&gt;</span></span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2"></a><span class="kw">struct</span> Factorial <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3"></a>    <span class="at">static</span> <span class="at">const</span> <span class="dt">int</span> value <span class="op">=</span> N <span class="op">*</span> Factorial<span class="op">&lt;</span>N <span class="op">-</span> <span class="dv">1</span><span class="op">&gt;::</span>value<span class="op">;</span></span>
+<span id="annotated-cell-9-4"><a href="#annotated-cell-9-4"></a><span class="op">};</span></span>
+<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5"></a></span>
+<span id="annotated-cell-9-6"><a href="#annotated-cell-9-6"></a><span class="kw">template</span><span class="op">&lt;&gt;</span></span>
+<span id="annotated-cell-9-7"><a href="#annotated-cell-9-7"></a><span class="kw">struct</span> Factorial<span class="op">&lt;</span><span class="dv">0</span><span class="op">&gt;</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-8" class="code-annotation-target"><a href="#annotated-cell-9-8"></a>    <span class="at">static</span> <span class="at">const</span> <span class="dt">int</span> value <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="annotated-cell-9-9"><a href="#annotated-cell-9-9"></a><span class="op">};</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="3" data-code-annotation="1">Questa riga definisce un membro statico <code>value</code> della struttura <code>Factorial</code>. Per un dato <code>N</code>, il valore viene calcolato come <code>N</code> moltiplicato per il valore del fattoriale di <code>N - 1</code>. Questo è un esempio di ricorsione a livello di metaprogrammazione template.</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="3" data-code-annotation="1">Questa riga definisce un membro statico <code>value</code> della struttura <code>Factorial</code>. Per un dato <code>N</code>, il valore viene calcolato come <code>N</code> moltiplicato per il valore del fattoriale di <code>N - 1</code>. Questo è un esempio di ricorsione a livello di metaprogrammazione template.</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="8" data-code-annotation="2">Questa riga è una specializzazione del template <code>Factorial</code> per il caso base quando <code>N</code> è 0. In questo caso, <code>value</code> è definito come <code>1</code>, terminando la ricorsione template.</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="8" data-code-annotation="2">Questa riga è una specializzazione del template <code>Factorial</code> per il caso base quando <code>N</code> è 0. In questo caso, <code>value</code> è definito come <code>1</code>, terminando la ricorsione template.</span>
 </dd>
 </dl>
 <p>La metaprogrammazione è presente anche in linguaggi non OOP come Lisp, che utilizza le macro per trasformare e generare codice. Un esempio è il codice proposto di seguito dove è definita la macro <code>when</code>, che prende due parametri in input, cioè <code>test</code> e <code>body</code>, ove <code>test</code> è un’espressione condizionale e <code>body</code> un insieme di istruzioni da eeseguire se la condizione è vera:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb6-1"><a href="#cb6-1"></a>(<span class="kw">defmacro</span><span class="fu"> when </span>(test &amp;<span class="kw">rest</span> body)  </span>
-<span id="cb6-2"><a href="#cb6-2"></a>  `(<span class="kw">if</span> ,test                      </span>
-<span id="cb6-3"><a href="#cb6-3"></a>       (<span class="kw">progn</span> ,@body)))           </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb5-1"><a href="#cb5-1"></a>(<span class="kw">defmacro</span><span class="fu"> when </span>(test &amp;<span class="kw">rest</span> body)  </span>
+<span id="cb5-2"><a href="#cb5-2"></a>  `(<span class="kw">if</span> ,test                      </span>
+<span id="cb5-3"><a href="#cb5-3"></a>       (<span class="kw">progn</span> ,@body)))           </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Commento riga per riga:</p>
 <ol type="1">
 <li>Definizione di una macro chiamata <code>when</code>, che accetta un <code>test</code> e un numero variabile di espressioni (<code>body</code>).</li>
@@ -1156,9 +1157,9 @@ STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="h
 <li><code>progn</code> è utilizzato per racchiudere ed eseguire tutte le espressioni in <code>body</code> in sequenza. L’operatore <code>,@</code> è usato per spalmare gli elementi di <code>body</code> nell’espressione <code>progn</code>.</li>
 </ol>
 <p>Vediamo un esempio pratico di come si utilizza la macro <code>when</code>. Il test è valutare se <code>x</code> è maggiore di <code>10</code> e, nel caso, stampare <code>"x is greater than 10"</code> e poi assegnare <code>x</code> a <code>0</code>. Chiamiamo la macro con i due parametri:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb7-1"><a href="#cb7-1"></a>(<span class="kw">when</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)                      </span>
-<span id="cb7-2"><a href="#cb7-2"></a>  (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>)     </span>
-<span id="cb7-3"><a href="#cb7-3"></a>  (<span class="kw">setf</span> x <span class="dv">0</span>))                        </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb6-1"><a href="#cb6-1"></a>(<span class="kw">when</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)                      </span>
+<span id="cb6-2"><a href="#cb6-2"></a>  (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>)     </span>
+<span id="cb6-3"><a href="#cb6-3"></a>  (<span class="kw">setf</span> x <span class="dv">0</span>))                        </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Commento riga per riga:</p>
 <ol type="1">
 <li>Invocazione della macro <code>when</code> con la condizione <code>&gt; x 10</code>.</li>
@@ -1166,10 +1167,10 @@ STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="h
 <li>Successivamente, viene eseguita l’istruzione <code>(setf x 0)</code>, che assegna il valore <code>0</code> a <code>x</code>.</li>
 </ol>
 <p>Questo viene espanso in:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb8-1"><a href="#cb8-1"></a>(<span class="kw">if</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)                        </span>
-<span id="cb8-2"><a href="#cb8-2"></a>    (<span class="kw">progn</span>                        </span>
-<span id="cb8-3"><a href="#cb8-3"></a>      (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>) </span>
-<span id="cb8-4"><a href="#cb8-4"></a>      (<span class="kw">setf</span> x <span class="dv">0</span>)))                   </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb7-1"><a href="#cb7-1"></a>(<span class="kw">if</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)                        </span>
+<span id="cb7-2"><a href="#cb7-2"></a>    (<span class="kw">progn</span>                        </span>
+<span id="cb7-3"><a href="#cb7-3"></a>      (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>) </span>
+<span id="cb7-4"><a href="#cb7-4"></a>      (<span class="kw">setf</span> x <span class="dv">0</span>)))                   </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Commento riga per riga:</p>
 <ol type="1">
 <li>L’istruzione <code>if</code> valuta la condizione <code>&gt; x 10</code>.</li>
@@ -1228,33 +1229,33 @@ Nota
 <h3 data-number="2.5.2" class="anchored" data-anchor-id="esempio-in-sql"><span class="header-section-number">2.5.2</span> Esempio in SQL</h3>
 <p>Esempio di una query SQL che estrae tutti i nomi degli utenti con età maggiore di 30:</p>
 <p>Certamente! Ecco il codice SQL con i commenti identificati da un ID progressivo e l’elenco esplicativo:</p>
-<div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode numberSource sql code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode sql"><a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-1" class="code-annotation-target"><a href="#annotated-cell-14-1"></a><span class="kw">SELECT</span> nome</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2"></a><span class="kw">FROM</span> utenti</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3"></a><span class="kw">WHERE</span> età <span class="op">&gt;</span> <span class="dv">30</span>;</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-13"><pre class="sourceCode numberSource sql code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode sql"><a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1"></a><span class="kw">SELECT</span> nome</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-13-2" class="code-annotation-target"><a href="#annotated-cell-13-2"></a><span class="kw">FROM</span> utenti</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-13-3" class="code-annotation-target"><a href="#annotated-cell-13-3"></a><span class="kw">WHERE</span> età <span class="op">&gt;</span> <span class="dv">30</span>;</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="1" data-code-annotation="1">Seleziona la colonna <code>nome</code>.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="1" data-code-annotation="1">Seleziona la colonna <code>nome</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="2" data-code-annotation="2">Dalla tabella <code>utenti</code>.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="2" data-code-annotation="2">Dalla tabella <code>utenti</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="3" data-code-annotation="3">Per le righe dove la colonna <code>età</code> è maggiore di 30.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="3" data-code-annotation="3">Per le righe dove la colonna <code>età</code> è maggiore di 30.</span>
 </dd>
 </dl>
 </section>
 <section id="esempio-in-prolog" class="level3" data-number="2.5.3">
 <h3 data-number="2.5.3" class="anchored" data-anchor-id="esempio-in-prolog"><span class="header-section-number">2.5.3</span> Esempio in Prolog</h3>
 <p>In Prolog, si definiscono fatti e regole che descrivono relazioni logiche. Il motore di inferenza di Prolog utilizza queste definizioni per risolvere query, senza richiedere un algoritmo dettagliato. Di seguito, sono definiti due fatti (le prime due righe) e due regole (la terza e la quarta) e quindi si effettua una query che dà come risultato <code>true</code>:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb9-1"><a href="#cb9-1"></a>genitore(padre<span class="kw">,</span> figlio)<span class="kw">.</span> </span>
-<span id="cb9-2"><a href="#cb9-2"></a>genitore(madre<span class="kw">,</span> figlio)<span class="kw">.</span>  </span>
-<span id="cb9-3"><a href="#cb9-3"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span>  </span>
-<span id="cb9-4"><a href="#cb9-4"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Z</span>)<span class="kw">,</span> antenato(<span class="dt">Z</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span>  </span>
-<span id="cb9-5"><a href="#cb9-5"></a></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="fu">?-</span> antenato(padre<span class="kw">,</span> figlio)<span class="kw">.</span> </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb8-1"><a href="#cb8-1"></a>genitore(padre<span class="kw">,</span> figlio)<span class="kw">.</span> </span>
+<span id="cb8-2"><a href="#cb8-2"></a>genitore(madre<span class="kw">,</span> figlio)<span class="kw">.</span>  </span>
+<span id="cb8-3"><a href="#cb8-3"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span>  </span>
+<span id="cb8-4"><a href="#cb8-4"></a>antenato(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Y</span>) <span class="kw">:-</span> genitore(<span class="dt">X</span><span class="kw">,</span> <span class="dt">Z</span>)<span class="kw">,</span> antenato(<span class="dt">Z</span><span class="kw">,</span> <span class="dt">Y</span>)<span class="kw">.</span>  </span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="fu">?-</span> antenato(padre<span class="kw">,</span> figlio)<span class="kw">.</span> </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Commento riga per riga:</p>
 <ol type="1">
 <li>Questa regola dichiara che <code>padre</code> è genitore di <code>figlio</code>.</li>
@@ -1312,31 +1313,31 @@ Nota
 <h3 data-number="2.6.2" class="anchored" data-anchor-id="esempio-in-haskell"><span class="header-section-number">2.6.2</span> Esempio in Haskell</h3>
 <p>Di seguito due funzioni, la prima <code>sumToN</code> è pura e somma i primi <code>n</code> numeri. <code>(*2)</code> è una funzione che prende un argomento e lo moltiplica per 2 e ciò rende la seconda funzione <code>applyFunction</code> una vera funzione di ordine superiore, poiché accetta <code>(*2)</code> come argomento oltre ad una lista, producendo come risultato il raddoppio di tutti i suoi elementi:</p>
 <p>Certamente! Ecco il codice con i commenti identificati da un ID progressivo e l’elenco esplicativo che include le descrizioni:</p>
-<div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode numberSource haskell code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode haskell"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1"></a><span class="ot">sumToN ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-2" class="code-annotation-target"><a href="#annotated-cell-16-2"></a>sumToN n <span class="ot">=</span> <span class="fu">sum</span> [<span class="dv">1</span><span class="op">..</span>n]</span>
-<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3"></a></span>
-<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4"></a><span class="ot">applyFunction ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-16-5" class="code-annotation-target"><a href="#annotated-cell-16-5"></a>applyFunction f lst <span class="ot">=</span> <span class="fu">map</span> f lst</span>
-<span id="annotated-cell-16-6"><a href="#annotated-cell-16-6"></a></span>
-<span id="annotated-cell-16-7"><a href="#annotated-cell-16-7"></a>main <span class="ot">=</span> <span class="kw">do</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-16-8" class="code-annotation-target"><a href="#annotated-cell-16-8"></a>    <span class="fu">print</span> (sumToN <span class="dv">10</span>)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-16-9" class="code-annotation-target"><a href="#annotated-cell-16-9"></a>    <span class="fu">print</span> (applyFunction (<span class="op">*</span><span class="dv">2</span>) [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-15"><pre class="sourceCode numberSource haskell code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode haskell"><span id="annotated-cell-15-1"><a href="#annotated-cell-15-1"></a><span class="ot">sumToN ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2"></a>sumToN n <span class="ot">=</span> <span class="fu">sum</span> [<span class="dv">1</span><span class="op">..</span>n]</span>
+<span id="annotated-cell-15-3"><a href="#annotated-cell-15-3"></a></span>
+<span id="annotated-cell-15-4"><a href="#annotated-cell-15-4"></a><span class="ot">applyFunction ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-15-5" class="code-annotation-target"><a href="#annotated-cell-15-5"></a>applyFunction f lst <span class="ot">=</span> <span class="fu">map</span> f lst</span>
+<span id="annotated-cell-15-6"><a href="#annotated-cell-15-6"></a></span>
+<span id="annotated-cell-15-7"><a href="#annotated-cell-15-7"></a>main <span class="ot">=</span> <span class="kw">do</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-15-8" class="code-annotation-target"><a href="#annotated-cell-15-8"></a>    <span class="fu">print</span> (sumToN <span class="dv">10</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-15-9" class="code-annotation-target"><a href="#annotated-cell-15-9"></a>    <span class="fu">print</span> (applyFunction (<span class="op">*</span><span class="dv">2</span>) [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="2" data-code-annotation="1">Definizione di una funzione pura che calcola la somma dei numeri da 1 a <code>n</code>.</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="2" data-code-annotation="1">Definizione di una funzione pura che calcola la somma dei numeri da 1 a <code>n</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="5" data-code-annotation="2">Funzione di ordine superiore che accetta una funzione e una lista.</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="5" data-code-annotation="2">Funzione di ordine superiore che accetta una funzione e una lista.</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="8" data-code-annotation="3">Nel <code>main</code>, stampa il risultato di <code>sumToN 10</code>, che è 55.</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="8" data-code-annotation="3">Nel <code>main</code>, stampa il risultato di <code>sumToN 10</code>, che è 55.</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="9" data-code-annotation="4">Nel <code>main</code>, stampa il risultato di <code>applyFunction (*2) [1, 2, 3, 4]</code>, che è <code>[2, 4, 6, 8]</code>.</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="9" data-code-annotation="4">Nel <code>main</code>, stampa il risultato di <code>applyFunction (*2) [1, 2, 3, 4]</code>, che è <code>[2, 4, 6, 8]</code>.</span>
 </dd>
 </dl>
 

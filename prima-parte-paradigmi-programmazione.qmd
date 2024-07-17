@@ -11,7 +11,7 @@ Una delle classificazioni più importanti è quella del **paradigma di programma
 
 Tuttavia, è importante notare che molti linguaggi moderni sfruttano efficacemente più di un paradigma di programmazione, rendendo difficile assegnare un linguaggio a una sola categoria. 
 
-Come ha affermato Bjarne Stroustrup, il creatore del C++:[1^prima-parte-paradigmi-programmazione] 
+Come ha affermato Bjarne Stroustrup, il creatore del C++ (@stroustrup2013, p.10):
 
 > Le funzionalità dei linguaggi esistono per fornire supporto agli stili di programmazione. Per favore, non considerate una singola funzionalità di linguaggio come una soluzione, ma come un mattoncino da un insieme variegato che può essere combinato per esprimere soluzioni.
 >  
@@ -29,16 +29,16 @@ Come ha affermato Bjarne Stroustrup, il creatore del C++:[1^prima-parte-paradigm
 >  
 > Questi sono ideali condivisi da molte persone, ma i linguaggi progettati per supportarli possono differire notevolmente. Una ragione fondamentale per questo è che un linguaggio incorpora una serie di compromessi ingegneristici che riflettono le diverse necessità, gusti e storie di vari individui e comunità. 
 
-[1^prima-parte-paradigmi-programmazione]: 
-  Languages features exist to provide support for programming styles. Please don’t look at an individual language feature as a solution, but as one building brick from a varied set which can be combined to express solutions.
-
-    The general ideals for design and programming can be expressed simply:
-  • Express ideas directly in code.
-  • Express independent ideas independently in code.
-  • Represent relationships among ideas directly in code.
-  • Combine ideas expressed in code freely – where and only where combinations make sense.
-  • Express simple ideas simply.
-  These are ideals shared by many people, but languages designed to support them can differ dramatically. A fundamental reason for that is that a language embodies a set of engineering tradeoffs reflecting differing needs, tastes, and histories of various individuals and communities.[@stroustrup2013, p. 10]
+::: {.column-margin}
+Languages features exist to provide support for programming styles. Please don’t look at an individual language feature as a solution, but as one building brick from a varied set which can be combined to express solutions.
+The general ideals for design and programming can be expressed simply:
+- Express ideas directly in code.
+- Express independent ideas independently in code.
+- Represent relationships among ideas directly in code.
+- Combine ideas expressed in code freely – where and only where combinations make sense.
+- Express simple ideas simply.
+These are ideals shared by many people, but languages designed to support them can differ dramatically. A fundamental reason for that is that a language embodies a set of engineering tradeoffs reflecting differing needs, tastes, and histories of various individuals and communities.
+:::
 
 ## L'importanza dei paradigmi di programmazione
 
@@ -64,50 +64,50 @@ L'implementazione hardware di quasi tutti i computer è imperativa perché è pr
 
 ### Esempio in assembly
 
-L'Assembly è una categoria di linguaggi di basso livello, cioè strettamente legati all'hardware del computer, tanto che ogni processore ha il suo _dialetto_. Un esempio di un semplice programma scritto per l'architettura x86, utilizzando la sintassi dell'assembler NASM (Netwide Assembler), è il seguente che effettua la somma di due numeri e stampa il risultato:
+L'Assembly è una categoria di linguaggi di basso livello, cioè strettamente legati all'hardware del computer, tanto che ogni processore ha il suo _dialetto_. Un esempio di un semplice programma scritto per l'architettura x86, utilizzando la sintassi dell'assembler NASM (Netwide Assembler), è il seguente. Il codice effettua la somma di due numeri e ne stampa il risultato:
 
 ```nasm
 section .data
-    num1 db 5           ; Definisce il primo numero
-    num2 db 3           ; Definisce il secondo numero
-    result db 0         ; Variabile per memorizzare il risultato
-    msg db 'Result: ', 0 ; Messaggio di output
+  num1 db 5           ; Definisce il primo numero
+  num2 db 3           ; Definisce il secondo numero
+  result db 0         ; Variabile per memorizzare il risultato
+  msg db 'Result: ', 0 ; Messaggio di output
 
 section .bss
-    result_str resb 4   ; Buffer per la stringa del risultato
+  result_str resb 4   ; Buffer per la stringa del risultato
 
 section .text
-    global _start
+  global _start
 
 _start:
-    ; Somma num1 e num2
-    mov al, [num1]      ; Carica il primo numero in AL
-    add al, [num2]      ; Aggiunge il secondo numero a AL
-    mov [result], al    ; Memorizza il risultato in result
+  ; Somma num1 e num2
+  mov al, [num1]      ; Carica il primo numero in AL
+  add al, [num2]      ; Aggiunge il secondo numero a AL
+  mov [result], al    ; Memorizza il risultato in result
 
-    ; Converti il risultato in stringa ASCII
-    mov eax, [result]   ; Carica il risultato in EAX
-    add eax, '0'        ; Converti il valore numerico in carattere ASCII
-    mov [result_str], eax ; Memorizza il carattere ASCII in result_str
+  ; Converti il risultato in stringa ASCII
+  mov eax, [result]   ; Carica il risultato in EAX
+  add eax, '0'        ; Converti il valore numerico in carattere ASCII
+  mov [result_str], eax ; Memorizza il carattere ASCII in result_str
 
-    ; Stampa il messaggio
-    mov eax, 4          ; syscall numero per sys_write
-    mov ebx, 1          ; file descriptor 1 (stdout)
-    mov ecx, msg        ; puntatore al messaggio
-    mov edx, 8          ; lunghezza del messaggio
-    int 0x80            ; chiamata di sistema
+  ; Stampa il messaggio
+  mov eax, 4          ; syscall numero per sys_write
+  mov ebx, 1          ; file descriptor 1 (stdout)
+  mov ecx, msg        ; puntatore al messaggio
+  mov edx, 8          ; lunghezza del messaggio
+  int 0x80            ; chiamata di sistema
 
-    ; Stampa il risultato
-    mov eax, 4          ; syscall numero per sys_write
-    mov ebx, 1          ; file descriptor 1 (stdout)
-    mov ecx, result_str ; puntatore alla stringa del risultato
-    mov edx, 1          ; lunghezza della stringa del risultato
-    int 0x80            ; chiamata di sistema
+  ; Stampa il risultato
+  mov eax, 4          ; syscall numero per sys_write
+  mov ebx, 1          ; file descriptor 1 (stdout)
+  mov ecx, result_str ; puntatore alla stringa del risultato
+  mov edx, 1          ; lunghezza della stringa del risultato
+  int 0x80            ; chiamata di sistema
 
-    ; Terminazione del programma
-    mov eax, 1          ; codice di sistema per l'uscita
-    xor ebx, ebx        ; codice di ritorno 0
-    int 0x80            ; interruzione per chiamare il kernel
+  ; Terminazione del programma
+  mov eax, 1          ; codice di sistema per l'uscita
+  xor ebx, ebx        ; codice di ritorno 0
+  int 0x80            ; interruzione per chiamare il kernel
 ```
 
 Le sezioni del codice:
@@ -124,19 +124,19 @@ Le sezioni del codice:
   - Utilizza chiamate al sistema operativo per scrivere il messaggio e il risultato su stdout.
   - Termina il programma.
 
-L'assembly è usato nello sviluppo di:
+Appare evidente che scrivere programmi complessi, ad esempio una rete neurale profonda o un application server, in Assembly è un compito che si potrebbe definire generalmente improbo, anche se è usato nello sviluppo di:
 
 - Sistemi operativi, ad esempio della componente di kernel, che ha il controllo del sistema e i driver, cioè i programmi utili alla comunicazione coll'hardware.
 
 - Applicazioni _embedded_: Microcontrollori di dispositivi medici, sistemi di controllo di veicoli, dispositivi IoT, ecc., cioè)dove è necessaria un'ottimizzazione estrema delle risorse computazionali.
 
-- Applicazioni HPC (_high performance computing_): Il focus qui è eseguire calcoli intensivi e complessi in tempi relativamente brevi. Queste applicazioni richiedono un numero di operazioni per unità di tempo elevato e sono ottimizzate per sfruttare al massimo le risorse hardware disponibili, come CPU, GPU e memoria.
+- Applicazioni HPC (di calcolo ad alte prestazioni, inglese: _high performance computing_): Il focus qui è eseguire calcoli intensivi e complessi in tempi relativamente brevi. Queste applicazioni richiedono un numero di operazioni per unità di tempo elevato e sono ottimizzate per sfruttare al massimo le risorse hardware disponibili, come CPU, GPU e memoria.
 
 ### Esempio in Python
 
-All'altro estremo della immediatezza di comprensione del testo del codice per un essere umano, troviamo Python, un linguaggio di alto livello noto per la leggibilità ed eleganza. 
+All'altro estremo della immediatezza di comprensione del testo del codice per un essere umano, troviamo Python, un linguaggio per tale ragione definito di alto livello, noto per la particolare leggibilità ed eleganza. 
 
-Ecco il medesimo esempio, visibilmente più conciso e certamente intuibile anche avendo basi limitate di programmazione:
+Infatti, ecco il medesimo esempio, visibilmente più conciso e certamente intuibile anche avendo basi limitate di programmazione e una basilare conoscenza dell'inglese:
 
 ```python
 num1 = 5 # <1>
