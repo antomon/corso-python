@@ -38,7 +38,6 @@ The general ideals for design and programming can be expressed simply:
 - Represent relationships among ideas directly in code.
 - Combine ideas expressed in code freely – where and only where combinations make sense.
 - Express simple ideas simply.
-
 These are ideals shared by many people, but languages designed to support them can differ dramatically. A fundamental reason for that is that a language embodies a set of engineering tradeoffs reflecting differing needs, tastes, and histories of various individuals and communities." (@stroustrup2013, p.10)
 :::
 
@@ -70,46 +69,47 @@ L'Assembly è una categoria di linguaggi di basso livello, cioè strettamente le
 
 ```nasm
 section .data
-  num1 db 5           ; Definisce il primo numero
-  num2 db 3           ; Definisce il secondo numero
-  result db 0         ; Variabile per memorizzare il risultato
-  msg db 'Result: ', 0 ; Messaggio di output
+  num1 db 5           ; Definisce il primo numero (byte)
+  num2 db 3           ; Definisce il secondo numero (byte)
+  result db 0         ; Variabile per memorizzare il risultato (byte)
+  msg db 'Result: ', 0 ; Messaggio di output (stringa terminata con NULL)
 
 section .bss
-  result_str resb 4   ; Buffer per la stringa del risultato
+  result_str resb 4   ; Buffer per la stringa del risultato (4 byte)
 
 section .text
-  global _start
+  global _start       ; Definisce l'etichetta _start come punto di ingresso globale
 
 _start:
   ; Somma num1 e num2
-  mov al, [num1]      ; Carica il primo numero in AL
+  mov al, [num1]      ; Carica il primo numero in AL (registro 8-bit)
   add al, [num2]      ; Aggiunge il secondo numero a AL
   mov [result], al    ; Memorizza il risultato in result
 
   ; Converti il risultato in stringa ASCII
-  mov eax, [result]   ; Carica il risultato in EAX
-  add eax, '0'        ; Converti il valore numerico in carattere ASCII
-  mov [result_str], eax ; Memorizza il carattere ASCII in result_str
+  movzx eax, byte [result] ; Carica il risultato in EAX (registro 32-bit), zero-extend da byte
+  add eax, '0'             ; Converti il valore numerico in carattere ASCII (aggiungendo il valore di '0')
+  mov [result_str], al     ; Memorizza il carattere ASCII in result_str
 
   ; Stampa il messaggio
-  mov eax, 4          ; syscall numero per sys_write
+  mov eax, 4          ; syscall numero per sys_write (4)
   mov ebx, 1          ; file descriptor 1 (stdout)
-  mov ecx, msg        ; puntatore al messaggio
-  mov edx, 8          ; lunghezza del messaggio
-  int 0x80            ; chiamata di sistema
+  mov ecx, msg        ; puntatore al messaggio da stampare
+  mov edx, 8          ; lunghezza del messaggio (8 byte)
+  int 0x80            ; chiamata di sistema (interruzione 0x80)
 
   ; Stampa il risultato
-  mov eax, 4          ; syscall numero per sys_write
+  mov eax, 4          ; syscall numero per sys_write (4)
   mov ebx, 1          ; file descriptor 1 (stdout)
-  mov ecx, result_str ; puntatore alla stringa del risultato
-  mov edx, 1          ; lunghezza della stringa del risultato
-  int 0x80            ; chiamata di sistema
+  mov ecx, result_str ; puntatore alla stringa del risultato da stampare
+  mov edx, 1          ; lunghezza della stringa del risultato (1 byte)
+  int 0x80            ; chiamata di sistema (interruzione 0x80)
 
   ; Terminazione del programma
-  mov eax, 1          ; codice di sistema per l'uscita
-  xor ebx, ebx        ; codice di ritorno 0
-  int 0x80            ; interruzione per chiamare il kernel
+  mov eax, 1          ; codice di sistema per l'uscita (1)
+  xor ebx, ebx        ; codice di ritorno 0 (pulire ebx impostandolo a 0)
+  int 0x80            ; chiamata di sistema (interruzione 0x80)
+  jj ; <1>
 ```
 
 Le sezioni del codice:
