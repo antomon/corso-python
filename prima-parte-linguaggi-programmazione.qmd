@@ -13,7 +13,9 @@ La **programmazione** è il processo di ideazione e scrittura di **istruzioni**,
 
 Un **programma** informatico è una sequenza di istruzioni scritte per eseguire una specifica operazione o un insieme di operazioni su un computer. Queste istruzioni sono codificate in uno dei linguaggi che il computer specifico può comprendere e utilizzare per eseguire attività come calcoli, manipolazione di dati, controllo di dispositivi e interazione con l'utente. Pensate a un programma come a una ricetta di cucina. La ricetta elenca gli ingredienti necessari (dati) e fornisce istruzioni passo-passo (algoritmo) per preparare un piatto. Allo stesso modo, un programma informatico specifica i dati da usare e le istruzioni da seguire per ottenere un risultato desiderato.
 
-Un linguaggio di programmazione è un linguaggio formale che fornisce un insieme di regole e sintassi per scrivere programmi informatici. Questi linguaggi permettono ai programmatori di comunicare con i computer e di creare software da distribuire al difuori di quello usato per la creazione. Alcuni esempi di linguaggi di programmazione includono Python, Java, C++, SQL, Rust, Haskell, Prolog, C, Assembly, Fortran, JavaScript e altre centinaia (o forse migliaia). Ad esempio Wikipedia ne ha una lista estesa [@wikipedia_languages_eng]. 
+Un linguaggio di programmazione è un linguaggio formale che fornisce un insieme di regole e sintassi per scrivere programmi informatici. Questi linguaggi permettono ai programmatori di comunicare con i computer e di creare software da distribuire al difuori di quello usato per la sua creazione. 
+
+Alcuni esempi di linguaggi di programmazione includono Python, Java, C++, SQL, Rust, Haskell, Prolog, C, Assembly, Fortran, JavaScript e altre centinaia (o forse migliaia). Ad esempio Wikipedia ne ha una lista estesa [@wikipedia_languages_eng]. 
 
 ## Linguaggi naturali e di programmazione
 
@@ -51,17 +53,15 @@ Possiamo quindi comporre una definzione di linguaggio di programmazione legata a
 
 > Un linguaggio di programmazione è uno strumento che consente all'essere umano di esprimere razionalmente i propri obiettivi e di realizzarli come algoritmi per l'esecuzione da parte di un computer. In sostanza, un linguaggio di programmazione è composto da due elementi fondamentali: un insieme di istruzioni e le regole per organizzarle in modo coerente e funzionale.
 
-Per un testo introduttivo sugli algoritmi si può far riferimento a [@erickson2019].
+Per un testo, introduttivo e liberamente disponibile, sugli algoritmi, si può far riferimento a [@erickson2019].
 
 ### Rappresentazione
 
-Un algoritmo è un concetto astratto, esistente come idea nella mente di chi lo crea. Quando si vuole condividere un algoritmo con qualcun altro, è cruciale scegliere una rappresentazione che lo comunichi in modo completo e accurato. Alcune rappresentazioni di algoritmi sono comprensibili solo dagli esseri umani, come quelle che utilizzano il linguaggio naturale o i diagrammi. Al contrario, un programma è una rappresentazione di un algoritmo destinata ad essere leggibile da una macchina, generalmente un computer. L'esecuzione di un programma da parte di un computer è detta processo.
+Un algoritmo è un concetto astratto, esistente come idea nella mente di chi lo crea. Quando si vuole condividere un algoritmo con qualcun altro, è cruciale scegliere una rappresentazione che lo comunichi in modo completo e accurato. Alcune rappresentazioni di algoritmi sono comprensibili solo dagli esseri umani, come quelle che utilizzano il linguaggio naturale o i diagrammi. Al contrario, un programma è una rappresentazione di un algoritmo destinata ad essere leggibile da una macchina, generalmente un computer. L'esecuzione di un programma, cioè l'applicazione di un algoritmo in un contesto particolare da parte di un computer, è detta processo.
 
-Rappresentare un algoritmo richiede, pertanto, l'uso di un insieme di simboli e di regole di combinazione dei medesimi. I simboli fondamentali utilizzati per rappresentare gli algoritmi sono chiamati primitivi. Questi primitivi rappresentano le operazioni base, le unità minime di lavoro che un algoritmo può eseguire. Devono essere combinati seguendo una specifica sintassi, che è l'insieme delle regole che definiscono come questi simboli possono essere correttamente organizzati per formare istruzioni.
+Rappresentare un algoritmo richiede, pertanto, l'uso di un insieme di simboli e di regole di combinazione dei medesimi. I simboli fondamentali utilizzati per rappresentare gli algoritmi sono chiamati primitivi. I simboli primitivi definiscono le operazioni base, le unità minime di lavoro che un algoritmo può eseguire. Devono essere combinati seguendo una specifica sintassi, che è l'insieme delle regole che definiscono come questi simboli possono essere correttamente organizzati per formare istruzioni, cioè comandi elementari.
 
-Quando i simboli primitivi sono assemblati secondo la sintassi corretta, il risultato è una rappresentazione significativa dell'algoritmo, ovvero la sua semantica. Le istruzioni create combinando questi primitivi costituiscono il codice sorgente di un programma, che può essere eseguito da un computer per realizzare l'algoritmo desiderato. 
-
-La sintassi di un linguaggio di programmazione determina come appare un programma, mentre la semantica determina cosa significa il programma e come esegue l'algoritmo.
+Quando i simboli primitivi sono assemblati secondo la sintassi corretta, il risultato è una rappresentazione significativa dell'algoritmo, ovvero la realizzazione del suo scopo astratto, pronto per essere applicato concretamente. Le istruzioni create combinando questi primitivi costituiscono il codice sorgente di un programma, che può essere eseguito da un computer per realizzare l'algoritmo desiderato. 
 
 Alcuni esempi di rappresentazione degli algoritmi includono:
 
@@ -73,26 +73,28 @@ Alcuni esempi di rappresentazione degli algoritmi includono:
 
 - Codice sorgente: Rappresentazioni formali in un linguaggio di programmazione specifico.
 
-Un esempio di algoritmo è dato dall'ordinamento di una lista di numeri interi. Le rappresentazioni di quello che ex-post è il Bubble Sort, sono:
+Un esempio di algoritmo è dato dall'ordinamento di una lista di numeri interi. Uno dei più semplici algoritmi di ordinamento è il _Bubble Sort_ [@wikipedia_bubble_sort], che può avere le seguenti rappresentazioni:
 
 - Linguaggio naturale: Gli elementi adiacenti vengono scambiati se sono nell'ordine sbagliato e ciò prosegue fino a quando tutto l'elenco risulti ordinato.
 
-- Diagramma di flusso:
+- Diagramma di flusso[^1-prima-parte-linguaggi-programmazione]:
 
-  ```{mermaid}
-  %%| fig-cap: Diagramma di flusso dell'algoritmo di Bubble Sort
-  %%| fig-align: center
+```{mermaid}
+%%| fig-cap: Diagramma di flusso dell'algoritmo di Bubble Sort
+%%| fig-align: center
 
-  flowchart TD
-    Start --> Controlla(Sono presenti elementi da confrontare?)
-    Controlla -- No --> End(Fine)
-    Controlla -- Sì --> Confronta(Confronta elementi adiacenti)
-    Confronta --> Scambia(Gli elementi sono nell'ordine sbagliato?)
-    Scambia -- Sì --> ScambiaElementi(Scambia gli elementi)
-    Scambia -- No --> ProssimoElemento(Passa al prossimo elemento)
-    ScambiaElementi --> ProssimoElemento
-    ProssimoElemento --> Controlla
-  ```
+flowchart TD
+  Start --> Controlla(Sono presenti elementi da confrontare?)
+  Controlla -- No --> End(Fine)
+  Controlla -- Sì --> Confronta(Confronta elementi adiacenti)
+  Confronta --> Scambia(Gli elementi sono nell'ordine sbagliato?)
+  Scambia -- Sì --> ScambiaElementi(Scambia gli elementi)
+  Scambia -- No --> ProssimoElemento(Passa al prossimo elemento)
+  ScambiaElementi --> ProssimoElemento
+  ProssimoElemento --> Controlla
+```
+
+[^1-prima-parte-linguaggi-programmazione]: Un diagramma di flusso è una rappresentazione grafica che mostra la sequenza di passaggi o decisioni necessarie per completare un processo o risolvere un problema, utilizzando simboli standardizzati come rettangoli, ovali e frecce per illustrare l'ordine e le relazioni tra le diverse fasi
 
 - Pseudocodice:
 
