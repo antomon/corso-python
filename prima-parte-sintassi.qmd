@@ -165,16 +165,21 @@ Di seguito un elenco di istruzioni semplici, alcune standard cioè presenti in t
 - Gestione della vita degli oggetti: Include la creazione, l'utilizzo e la distruzione dei dati presenti nella memoria del computer. In alcuni linguaggi ciò è parzialmente o totalmente a carico del programmatore, mentre, all'altro estremo, è completamente gestito dal linguaggio. Esempi:
 
   - Creazione di oggetti:
+
     - In C++: `int* ptr = new int;`.
     - In Java: `String str = new String("Hello, world!");`
     - In Python: Non è presente una istruzione specifica giacché l'espressione `MyClass()` crea un oggetto di tipo `MyClass`.
     - In C: La creazione di oggetti è spesso gestita manualmente attraverso l'allocazione di memoria dinamica con funzioni come `malloc`.
+
   - Distruzione di oggetti:
+
     - In Python: La gestione della memoria è automatica tramite il garbage collector.
     - In Java: In Java, la gestione della memoria è affidata al garbage collector.
     - In C++: `delete ptr;`.
     - In C: `free(ptr);` (richiede `#include <stdlib.h>`).
+
   - Eliminazione di variabili:
+
     - In Python: `del x`.
 
 - Ritorno di valori: Utilizzata all'interno di funzioni per restituire un valore. Esempi:
@@ -256,6 +261,7 @@ Alcuni esempi di istruzione e blocco di codice:
   ```c
   if (x > 0) { /* <1> */
     printf("x è positivo\n"); /* <2> */
+    
     y = x * 2;
   }
   ```
@@ -268,6 +274,7 @@ Alcuni esempi di istruzione e blocco di codice:
   ```python
   if x > 0: # <1>
     print("x è positivo") # <2>
+
     y = x * 2
   ```
   In questo esempio:
@@ -305,10 +312,13 @@ Di seguito sono elencate le istruzioni composte principali, con spiegazioni e se
     ```c
     if (x > 0) {
       printf("x è positivo\n");
+
     } else if (x == 0) {
       printf("x è zero\n");
+
     } else {
       printf("x è negativo\n");
+
     }
     ```
 
@@ -316,10 +326,13 @@ Di seguito sono elencate le istruzioni composte principali, con spiegazioni e se
     ```cpp
     if (x > 0) {
       std::cout << "x è positivo" << std::endl;
+
     } else if (x == 0) {
       std::cout << "x è zero" << std::endl;
+
     } else {
       std::cout << "x è negativo" << std::endl;
+
     }
     ```
 
@@ -427,7 +440,7 @@ Cicli (`while`): I cicli `while` ripetono l'esecuzione di un blocco di codice fi
     }
     ```
 
-  - C: C non ha un supporto nativo per la gestione delle eccezioni, ma si possono usare meccanismi come `setjmp` e `longjmp`.
+  - C: C non ha un supporto nativo per la gestione delle eccezioni, ma si possono usare meccanismi come `setjmp` e `longjmp`.[^3-prima-parte-sintassi]
 
     ```c
     #include <setjmp.h>
@@ -528,6 +541,8 @@ Cicli (`while`): I cicli `while` ripetono l'esecuzione di un blocco di codice fi
         break;
     }
     ```
+
+[^3-prima-parte-sintassi]: `setjmp` e `longjmp` sono funzioni della libreria standard del C utilizzate per implementare il salto non locale, consentendo a un programma di salvare e ripristinare l'ambiente di esecuzione. La funzione `setjmp` salva lo stato corrente del programma (inclusi registri e stack) in una struttura `jmp_buf`, mentre `longjmp` ripristina questo stato, causando un salto indietro nel flusso di controllo fino al punto in cui `setjmp` è stato chiamato. Queste funzioni permettono di uscire da contesti di funzioni annidate senza dover tornare manualmente attraverso ogni chiamata di funzione. 
 
 ## L'organizzazione delle istruzioni in un programma
 

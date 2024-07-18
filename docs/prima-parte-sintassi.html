@@ -562,21 +562,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p>Gestione della vita degli oggetti: Include la creazione, l’utilizzo e la distruzione dei dati presenti nella memoria del computer. In alcuni linguaggi ciò è parzialmente o totalmente a carico del programmatore, mentre, all’altro estremo, è completamente gestito dal linguaggio. Esempi:</p>
 <ul>
-<li>Creazione di oggetti:
+<li><p>Creazione di oggetti:</p>
 <ul>
 <li>In C++: <code>int* ptr = new int;</code>.</li>
 <li>In Java: <code>String str = new String("Hello, world!");</code></li>
 <li>In Python: Non è presente una istruzione specifica giacché l’espressione <code>MyClass()</code> crea un oggetto di tipo <code>MyClass</code>.</li>
 <li>In C: La creazione di oggetti è spesso gestita manualmente attraverso l’allocazione di memoria dinamica con funzioni come <code>malloc</code>.</li>
 </ul></li>
-<li>Distruzione di oggetti:
+<li><p>Distruzione di oggetti:</p>
 <ul>
 <li>In Python: La gestione della memoria è automatica tramite il garbage collector.</li>
 <li>In Java: In Java, la gestione della memoria è affidata al garbage collector.</li>
 <li>In C++: <code>delete ptr;</code>.</li>
 <li>In C: <code>free(ptr);</code> (richiede <code>#include &lt;stdlib.h&gt;</code>).</li>
 </ul></li>
-<li>Eliminazione di variabili:
+<li><p>Eliminazione di variabili:</p>
 <ul>
 <li>In Python: <code>del x</code>.</li>
 </ul></li>
@@ -618,7 +618,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 <div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Spiegheremo il concetto di tipo a breve, per ora si può pensare ad esso come l’insieme dei possibili valori e operazioni che si possono effettuare su di essi.</p></div></div></section>
-<section id="le-istruzioni-composte-e-i-blocchi-di-codice" class="level2" data-number="3.5">
+<section id="le-istruzioni-composte-e-i-blocchi-di-codice" class="level2 page-columns page-full" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="le-istruzioni-composte-e-i-blocchi-di-codice"><span class="header-section-number">3.5</span> Le istruzioni composte e i blocchi di codice</h2>
 <p>Le <strong>istruzioni composte</strong> sono costituite da più istruzioni semplici e possono includere strutture di controllo del flusso, come condizioni (<code>if</code>), cicli (<code>for</code>, <code>while</code>) ed eccezioni (<code>try</code>, <code>catch</code>). Queste istruzioni sono utilizzate per organizzare il flusso di esecuzione del programma e possono contenere altre istruzioni semplici o composte al loro interno.</p>
 <p>Un <strong>blocco di codice</strong> è una sezione del codice che raggruppa una serie di istruzioni che devono essere eseguite insieme. I blocchi di codice sono spesso utilizzati all’interno delle istruzioni composte per delimitare il gruppo di istruzioni che devono essere eseguite in determinate condizioni o iterazioni.</p>
@@ -693,19 +693,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>C:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>  printf<span class="op">(</span><span class="st">"x è positivo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>x <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>  printf<span class="op">(</span><span class="st">"x è zero</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a>  printf<span class="op">(</span><span class="st">"x è negativo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>x <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>  printf<span class="op">(</span><span class="st">"x è zero</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>  printf<span class="op">(</span><span class="st">"x è negativo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>C++:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è positivo"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>x <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è zero"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è negativo"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>x <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è zero"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è negativo"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 <li><p>Cicli (<code>for</code>): I cicli <code>for</code> permettono di iterare su un insieme di valori o di ripetere l’esecuzione di un blocco di codice per un numero specificato di volte.</p>
 <ul>
@@ -773,7 +779,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-4"><a href="#cb17-4"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="at">const</span> <span class="bu">std::</span>invalid_argument<span class="op">&amp;</span> e<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb17-5"><a href="#cb17-5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Input non valido"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
 <span id="cb17-6"><a href="#cb17-6"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>C: C non ha un supporto nativo per la gestione delle eccezioni, ma si possono usare meccanismi come <code>setjmp</code> e <code>longjmp</code>.</p>
+<li><p>C: C non ha un supporto nativo per la gestione delle eccezioni, ma si possono usare meccanismi come <code>setjmp</code> e <code>longjmp</code>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <div class="sourceCode" id="annotated-cell-24"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-24-1"><a href="#annotated-cell-24-1"></a><span class="pp">#include </span><span class="im">&lt;setjmp.h&gt;</span></span>
 <span id="annotated-cell-24-2"><a href="#annotated-cell-24-2"></a></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-24-3" class="code-annotation-target"><a href="#annotated-cell-24-3"></a>jmp_buf buf<span class="op">;</span></span>
@@ -879,7 +885,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb21-16"><a href="#cb21-16"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 </ul>
-</section>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;<code>setjmp</code> e <code>longjmp</code> sono funzioni della libreria standard del C utilizzate per implementare il salto non locale, consentendo a un programma di salvare e ripristinare l’ambiente di esecuzione. La funzione <code>setjmp</code> salva lo stato corrente del programma (inclusi registri e stack) in una struttura <code>jmp_buf</code>, mentre <code>longjmp</code> ripristina questo stato, causando un salto indietro nel flusso di controllo fino al punto in cui <code>setjmp</code> è stato chiamato. Queste funzioni permettono di uscire da contesti di funzioni annidate senza dover tornare manualmente attraverso ogni chiamata di funzione.</p></div></div></section>
 <section id="lorganizzazione-delle-istruzioni-in-un-programma" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="lorganizzazione-delle-istruzioni-in-un-programma"><span class="header-section-number">3.6</span> L’organizzazione delle istruzioni in un programma</h2>
 <p>Il programma è solitamente salvato in un file di testo in righe. Queste righe possono essere classificate in righe fisiche e righe logiche.</p>
