@@ -401,10 +401,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Indice</h2>
    
   <ul>
-  <li><a href="#i-token" id="toc-i-token" class="nav-link active" data-scroll-target="#i-token"><span class="header-section-number">3.1</span> I token</a></li>
+  <li><a href="#il-token-e-il-lessema" id="toc-il-token-e-il-lessema" class="nav-link active" data-scroll-target="#il-token-e-il-lessema"><span class="header-section-number">3.1</span> Il token e il lessema</a></li>
   <li><a href="#lanalizzatore-lessicale-e-il-parser" id="toc-lanalizzatore-lessicale-e-il-parser" class="nav-link" data-scroll-target="#lanalizzatore-lessicale-e-il-parser"><span class="header-section-number">3.2</span> L’analizzatore lessicale e il parser</a></li>
-  <li><a href="#le-espressioni" id="toc-le-espressioni" class="nav-link" data-scroll-target="#le-espressioni"><span class="header-section-number">3.3</span> Le espressioni</a></li>
-  <li><a href="#le-istruzioni-semplici" id="toc-le-istruzioni-semplici" class="nav-link" data-scroll-target="#le-istruzioni-semplici"><span class="header-section-number">3.4</span> Le istruzioni semplici</a></li>
+  <li><a href="#lespressione" id="toc-lespressione" class="nav-link" data-scroll-target="#lespressione"><span class="header-section-number">3.3</span> L’espressione</a>
+  <ul class="collapse">
+  <li><a href="#espressione" id="toc-espressione" class="nav-link" data-scroll-target="#espressione"><span class="header-section-number">3.3.1</span> Espressione</a></li>
+  </ul></li>
+  <li><a href="#listruzione" id="toc-listruzione" class="nav-link" data-scroll-target="#listruzione"><span class="header-section-number">3.4</span> L’istruzione</a>
+  <ul class="collapse">
+  <li><a href="#listruzione-semplice" id="toc-listruzione-semplice" class="nav-link" data-scroll-target="#listruzione-semplice"><span class="header-section-number">3.4.1</span> L’istruzione semplice</a></li>
+  </ul></li>
   <li><a href="#le-istruzioni-composte-e-i-blocchi-di-codice" id="toc-le-istruzioni-composte-e-i-blocchi-di-codice" class="nav-link" data-scroll-target="#le-istruzioni-composte-e-i-blocchi-di-codice"><span class="header-section-number">3.5</span> Le istruzioni composte e i blocchi di codice</a></li>
   <li><a href="#lorganizzazione-delle-istruzioni-in-un-programma" id="toc-lorganizzazione-delle-istruzioni-in-un-programma" class="nav-link" data-scroll-target="#lorganizzazione-delle-istruzioni-in-un-programma"><span class="header-section-number">3.6</span> L’organizzazione delle istruzioni in un programma</a></li>
   </ul>
@@ -434,17 +440,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Abbiamo visto come i linguaggi di programmazione siano degli insiemi di regole formali con cui si scrivono programmi eseguibili da computer. I linguaggio di programmazione ha due componenti principali: la <strong>sintassi</strong> e la <strong>semantica</strong>.</p>
 <p>Partiamo dalla <strong>sintassi</strong> di un linguaggio di programmazione che possiamo considerare come l’insieme di regole che definisce la struttura e la forma delle istruzioni, cioè le unità logiche di esecuzione del programma. È come la grammatica in una lingua naturale e stabilisce quali combinazioni di simboli sono considerate costrutti validi nel linguaggio.</p>
-<p>Per esempio, la sintassi determina quali parole chiave, operatori, separatori e altri elementi sono ammessi e in quale ordine devono apparire. Una sintassi corretta è fondamentale per garantire che il programma sia privo di errori formali e possa essere eseguito senza problemi.</p>
+<p>Per esempio, la sintassi determina quali parole chiave, operatori, separatori e altri elementi sono ammessi e in quale ordine devono apparire. Una sintassi corretta è fondamentale per garantire che il programma sia privo di errori formali e possa essere eseguito in modo non ambiguo.</p>
 <p>L’importanza della comprensione della sintassi è simile alla buona conoscenza della grammatica per un linguaggio naturale:</p>
-<ol type="1">
+<ul>
 <li><p>Leggibilità del codice: Una corretta comprensione della sintassi permette di scrivere codice più chiaro e comprensibile agli altri programmatori. Una buona formattazione e organizzazione del codice facilita la manutenzione e la collaborazione su progetti di programmazione.</p></li>
 <li><p>Efficienza nella risoluzione dei problemi: Conoscere bene la sintassi del linguaggio aiuta a trovare soluzioni efficienti ai problemi, poiché si è consapevoli delle strutture e delle funzionalità native del linguaggio che possono essere utilizzate per risolvere determinati compiti.</p></li>
 <li><p>Sviluppo di codice robusto e sicuro: Una comprensione approfondita della sintassi aiuta a scrivere codice più robusto e sicuro, riducendo il rischio di bug e vulnerabilità nel software.</p></li>
 <li><p>Adattabilità a nuovi contesti e tecnologie: Con una solida conoscenza della sintassi di base, è più facile imparare nuovi concetti, framework e librerie nel linguaggio di programmazione, consentendoci di sfruttare il lavoro e l’innovazione prodotta da altri.</p></li>
 <li><p>Possibilità di esplorazione creativa: Capire la sintassi di un linguaggio offre la flessibilità necessaria per sperimentare e innovare, consentendo ai programmatori di creare soluzioni originali e creative ai problemi.</p></li>
-</ol>
-<section id="i-token" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="i-token"><span class="header-section-number">3.1</span> I token</h2>
+</ul>
+<section id="il-token-e-il-lessema" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="il-token-e-il-lessema"><span class="header-section-number">3.1</span> Il token e il lessema</h2>
 <p>Gli elementi atomici della sintassi sono i <strong>token</strong>. Essi compongono tutte le istruzioni e possono essere sia prodotti dal programmatore che generati dall’analisi del testo da parte dell’interprete o compilatore. La comprensione di quali token siano validi, ci permette sia di scrivere istruzioni corrette, sia di sfruttare appieno i costrutti del linguaggio:</p>
 <ul>
 <li><p>Parole chiave: Sono termini riservati del linguaggio che hanno significati specifici e non possono essere utilizzati per altri scopi, come <code>if</code>, <code>else</code>, <code>while</code>, <code>for</code>, ecc.</p></li>
@@ -488,46 +494,163 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="lanalizzatore-lessicale-e-il-parser" class="level2 page-columns page-full" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="lanalizzatore-lessicale-e-il-parser"><span class="header-section-number">3.2</span> L’analizzatore lessicale e il parser</h2>
 <p>L’<strong>analizzatore lessicale</strong> (o <em>lexer</em>) è un componente del compilatore o interprete che prende in input il codice sorgente del programma e lo divide in lessemi. Esso confronta ciascun lessema con i pattern definiti per il linguaggio di programmazione e genera una sequenza di token. Questi token sono poi passati al parser.</p>
-<p>Ad esempio, il codice <code>if x == 10:</code> viene trasformato in una sequenza di token: <code>[IF, NAME(x), EQEQUAL, NUMBER(10), COLON]</code>.</p>
+<p>Ad esempio, il codice <code>if x == 10:</code> di Python, viene trasformato in una sequenza di token: <code>IF</code>, <code>NAME(x)</code>, <code>EQEQUAL</code>, <code>NUMBER(10)</code>, <code>COLON</code>.</p>
 <p>Il <strong>parser</strong> è un altro componente del compilatore o interprete che prende in input la sequenza di token generata dall’analizzatore lessicale e verifica che la sequenza rispetti le regole sintattiche del linguaggio di programmazione. Il parser analizza i token per formare una struttura gerarchica che rappresenti le relazioni grammaticali tra di essi. Questa struttura interna è spesso un albero di sintassi (<em>parse tree</em> o <em>syntax tree</em>), che riflette la struttura grammaticale del codice sorgente, solitamente descritta usando una forma standard di notazione come la BNF (Backus-Naur Form) o varianti di essa <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. L’albero di sintassi ottenuto viene utilizzato per le successive fasi di compilazione o interpretazione, come quella di analisi semantica e di generazione del codice eseguibile. Ad esempio, il parser può verificare che le espressioni aritmetiche siano ben formate, che le istruzioni siano correttamente annidate e che le dichiarazioni di variabili siano valide.</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;La BNF (Backus-Naur form o Backus normal form) è una metasintassi, ovvero un formalismo attraverso cui è possibile descrivere la sintassi di linguaggi formali (il prefisso meta ha proprio a che vedere con la natura circolare di questa definizione). Si tratta di uno strumento molto usato per descrivere in modo preciso e non ambiguo la sintassi dei linguaggi di programmazione, dei protocolli di rete e così via, benché non manchino in letteratura esempi di sue applicazioni a contesti anche non informatici e addirittura non tecnologici. Un esempio è la grammatica di <a href="https://docs.python.org/3/reference/grammar.html">Python</a>.</p></div></div></section>
-<section id="le-espressioni" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="le-espressioni"><span class="header-section-number">3.3</span> Le espressioni</h2>
-<p>Un’espressione è una combinazione di lessemi che viene valutata per produrre un risultato. Le espressioni sono fondamentali nei linguaggi di programmazione perché permettono di eseguire calcoli, prendere decisioni e manipolare dati.</p>
-<p>Ecco alcune tipologie di espressioni (notazioni in Python, ma non molto dissimili da altri linguaggi):</p>
-<ol type="1">
-<li><p>Espressioni aritmetiche: Combinano letterali numerici, identificatori valorizzabili in numeri e operatori aritmetici per eseguire calcoli matematici. Esempi: <code>5 + 3</code>, <code>y / 4.0</code>, <code>"Hello, " + "world!"</code>.</p></li>
-<li><p>Espressioni logiche: Applicano operatori logici per valutare condizioni e produrre valori booleani (vero o falso) a letterali e identificatori. Esempi: <code>x or 5</code>, <code>not y</code>, <code>a and b</code>.</p></li>
-<li><p>Espressioni di confronto: Confrontano due valori usando operatori di confronto e restituiscono valori booleani, sempre a partire da letterali e identificatori. Esempi: <code>x &lt; y</code>, <code>x != 42</code>, <code>a &gt;= b</code>.</p></li>
-<li><p>Espressioni di chiamata a funzione: Invocano identificatori particolari, funzioni e metodi di oggetti, spesso con parametri definiti da identificatori e letterali, per eseguire operazioni più complesse. Esempi: <code>max(a, b)</code>, <code>sin(theta)</code>, <code>my_function(x, 42)</code>.</p></li>
-<li><p>Espressioni di manipolazione di contenitori di dati: Creano e manipolano strutture dati come liste, dizionari, tuple e insiemi contenenti identificatori e letterali. Esempi: <code>[1, x, 3]</code>, <code>{ 'key': 'value' }</code>, <code>( 'y', 42 )</code></p></li>
-<li><p>Espressioni condizionali (ternarie): Valutano espressioni e restituiscono un valore basato sul risultato. Esempi: <code>x if x &gt; y else y</code>, <code>'Even' if n % 2 == 0 else 'Odd'</code>.</p></li>
-</ol>
-<p>Le espressioni si possono comporre in espressioni più complesse come accade per quelle matematiche pur che siano rispettate le regole di compatibilità tra operatori, identificatori e letterali; ad esempio <code>(x &lt; y) and sin(theta)</code> può una espressione valida in Python.</p>
-</section>
-<section id="le-istruzioni-semplici" class="level2 page-columns page-full" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="le-istruzioni-semplici"><span class="header-section-number">3.4</span> Le istruzioni semplici</h2>
-<p>Le <strong>istruzioni semplici</strong> sono operazioni atomiche secondo il linguaggio e sono costituite da tutti i tipi di lessemi per compiere operazioni di base. I linguaggi di programmazione presentano delle istruzioni <em>condivise</em> nel senso di fondamentali che hanno solo minime differenze ed altre più particolari, perché dipendenti da specificità dalla progettazione del linguaggio. Ciò potrebbe essere anche solo questione di sintassi più che rappresentanti nuovi concetti.</p>
-<p>Di seguito un elenco di istruzioni semplici, alcune standard cioè presenti in tutti o la gran parte dei linguaggi considerati, altre specifiche ma che mettono in evidenza aspetti rilevanti di progettazione:</p>
+<section id="lespressione" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="lespressione"><span class="header-section-number">3.3</span> L’espressione</h2>
+<p>La tua definizione di espressione è chiara e ben strutturata. Ecco la versione leggermente rivista per maggiore chiarezza e coerenza:</p>
+<section id="espressione" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="espressione"><span class="header-section-number">3.3.1</span> Espressione</h3>
+<p>Un’<strong>espressione</strong> è un costrutto fondamentale nei linguaggi di programmazione che presenta sia aspetti sintattici che semantici. Dal punto di vista sintattico, un’espressione può essere definita come una sequenza finita di lessemi che rispetta le regole grammaticali del linguaggio e che può essere valutata per produrre un valore, cioè un dato concreto che rappresenta un’informazione specifica all’interno di un programma.</p>
+<p>Un identificatore è un’espressione, così come un letterale. Inoltre, un’espressione più complessa è perlopiù una combinazione di identificatori, letterali e operatori, anche se parole chiave e delimitatori possono essere presenti (ad esempio in Python <code>True</code> è una parola chiave corrispondente al valore logico di verità). Componendo opportunamente espressioni per mezzo di operatori, si ottiene ancora un’espressione.</p>
+<p>Ecco alcune tipologie di espressioni (notazioni in Python, non molto dissimili da altri linguaggi):</p>
 <ul>
-<li><p>Espressioni: È eseguibile dal compilatore o interprete, quindi, è una delle istruzioni semplici più importanti quando a sé stante, ma sono presenti anche all’interno di istruzioni semplici e composte. Alcuni esempi in vari linguaggi di somma di due identificatori:</p>
+<li><p>Espressioni aritmetiche: Combinano letterali numerici, identificatori valorizzabili in numeri e operatori aritmetici per eseguire calcoli matematici. Sono estese ad altre tipologie di letterali quando gli operatori sono parimenti reinterpretati. Esempi:</p>
 <ul>
-<li>In Python: <code>x + y</code>.</li>
-<li>In Java: <code>x + y;</code>.</li>
-<li>In C: <code>x + y;</code>.</li>
-<li>In C++: <code>x + y;</code>.</li>
+<li><code>5 + 3</code>: Due letterali interi, <code>5</code> e <code>3</code>, con un operatore binario applicato, <code>+</code>.</li>
+<li><code>y / 4.0</code>: Un identificatore di variabile e un letterale a virgola mobile, rispettivamente <code>y</code> e <code>4.0</code>, con un operatore binario applicato, <code>/</code>.</li>
+<li><code>"Hello, " + "world!"</code>: Due letterali stringa, <code>"Hello, "</code> e <code>"world! "</code>, con un operatore binario di concatenazione, <code>+</code>.</li>
 </ul></li>
+<li><p>Espressioni logiche: Applicano operatori logici per valutare condizioni e produrre valori booleani (vero o falso) a letterali e identificatori. Esempi:</p>
+<ul>
+<li><code>x or 5</code>.</li>
+<li><code>not y</code>.</li>
+<li><code>a and "Hello"</code>.</li>
+</ul></li>
+<li><p>Espressioni di confronto: Sono caratterizzate da operatori di confronto e restituiscono valori booleani, sempre a partire da letterali e identificatori. Esempi:</p>
+<ul>
+<li><code>x &lt; y</code>.</li>
+<li><code>x != 42</code>.</li>
+<li><code>"Hello" &gt;= "world!"</code>: L’ordinamento dei letterali stringa predefinto in Python è quello lessicografico.</li>
+</ul></li>
+<li><p>Espressioni di chiamata a funzione: Invocano identificatori particolari, funzioni e metodi di classi o oggetti, spesso con argomenti definiti da identificatori e letterali, per eseguire operazioni più complesse. Esempi:</p>
+<ul>
+<li><code>max(a, b)</code>: La funzione con nome <code>max</code> riceve due argomenti, <code>a</code> e <code>b</code>.</li>
+<li><code>sin(30, "gradi")</code>.</li>
+<li><code>obj.my_function(x, 42)</code>: Si invoca il metodo individuato dall’identificatore <code>my_function</code>, dell’oggetto con identificatore <code>obj</code> per mezzo dell’operatore di accesso a membro <code>.</code>, passando i due argomenti <code>x</code> e <code>42</code>.</li>
+</ul></li>
+<li><p>Espressioni di manipolazione di contenitori di dati: Creano e manipolano strutture dati come liste, dizionari, tuple e insiemi contenenti identificatori e letterali. Esempi:</p>
+<ul>
+<li><code>[1, x, 3]</code>: Elenco di letterali e identificatori separati dal delimitatore <code>,</code>, racchiuso da una coppia delimitatori, <code>[</code> e <code>]</code>, per creare una lista.</li>
+<li><code>('y', 42, True)</code>: I delimitatori <code>(</code> e <code>)</code> creano una tupla.</li>
+<li><code>{0: "Vero", 1: "Falso"}</code>: Elenco di coppie di identificatori o letterali, con un delimitatore <code>:</code> a separarli, generante un dizionario. Un analogo con parole chiave potrebbe essere <code>{True: "Vero", False: "Falso"}</code>, dato che <code>True</code> e <code>False</code> sono parole chiave.</li>
+<li><code>contenitore[3]</code>, <code>contenitore[indice]</code>, <code>"Hello"[4]</code>: Un identificatore di un contenitore di dati seguito da una coppia di parentesi quadre che fungono da operatore di accesso all’elemento dell’elenco la cui posizione è determinata dal letterale o altro identificatore contenuto. Il letterale stringa crea un contenitore di caratteri e come tale può essere utilizzato per estrarne uno coll’operatore di accesso.</li>
+</ul></li>
+<li><p>Espressioni condizionali (ternarie): È una espressione in cui identificatori, letterali o espressioni più semplici sono separati da parole chiave, <code>if</code> e <code>else</code>. In pratica è un modo compatto di scrivere una istruzione condizionale. Esempi:</p>
+<ul>
+<li><code>1 if x else 0</code>: Se l’identificatore <code>x</code> è associato ad un dato con valore di verità allora l’espressione restituisce <code>1</code>, <code>0</code> in caso contrario.</li>
+<li><code>True if x &gt; 0.5 else False</code>: Abbiamo una espressione aritmetica <code>x &gt; 0.5</code> è in mezzo alle parole chiave <code>if</code> ed <code>else</code>, quindi è il valore di verità ottenuto dalla sua valutazione che determina se ad essere restituita dall’espressione ternaria, sarà la parola chiave che precede <code>if</code> o quella che segue <code>else</code>.</li>
+</ul></li>
+</ul>
+<p>Alcuni esempi di espressioni composte:</p>
+<ul>
+<li><code>(5 + 3) + x - y</code>: ???</li>
+</ul>
+</section>
+</section>
+<section id="listruzione" class="level2 page-columns page-full" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="listruzione"><span class="header-section-number">3.4</span> L’istruzione</h2>
+<p>Anche l’istruzione è sia un concetto sintattico che semantico, al pari dell’espressione. Nel primo caso, un’istruzione può essere definita come una unità sintattica completa che specifica un’azione da eseguire all’interno di un programma.</p>
+<p>I linguaggi di programmazione presentano delle istruzioni <em>condivise</em>, nel senso di fondamentali, che presentano solo minime differenze sintattiche tra l’uno e l’altro e costrutti più particolari, perché dipendenti da specificità dalla progettazione del linguaggio particolare. Ciò potrebbe essere anche solo questione di sintassi, più che effetto della introduzione di nuovi concetti.</p>
+<section id="listruzione-semplice" class="level3 page-columns page-full" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="listruzione-semplice"><span class="header-section-number">3.4.1</span> L’istruzione semplice</h3>
+<p>L’<strong>istruzione semplice</strong> è un’operazione atomica che consiste in una combinazione di lessemi. A seconda del linguaggio di programmazione, un’istruzione semplice può essere terminata da un delimitatore specifico, come un punto e virgola <code>;</code>. Ciò vale per Python e JavaScript, anche se è poco comune, mentre per Java, C e C++ è obbligatorio. In tutti questi linguaggi, è possibile mettere più istruzioni su una singola riga separandole con un punto e virgola <code>;</code>.</p>
+<p>Di seguito un elenco di istruzioni semplici, alcune standard cioè presenti in tutti o la gran parte dei linguaggi più diffusi, altre specifiche ma che mettono in evidenza aspetti rilevanti di progettazione:</p>
+<ul>
+<li><p>Espressioni: In alcuni linguaggi di programmazione un’espressione è anche una delle istruzioni semplici più importanti quando a sé stante, anche se, in generale, è presente all’interno di istruzioni semplici o composte. Alcuni esempi in vari linguaggi:</p>
+<ul>
+<li><p>In Python, l’uso principale dell’espressione come istruzione, è la produzione di effetti collaterali, cioè effetti diversi dalla restituzione di valore:</p>
+<ul>
+<li>Chiamate di funzione: <code>print("Hello")</code> e <code>list.append(5)</code>, ove le espressioni producono effetti collaterali come la stampa su schermo e la modifica di una lista.</li>
+<li>Valutazioni condizionali: <code>x &gt; 5 and fai_qualcosa()</code>, ove la funzione <code>fai_qualcosa()</code> è eseguita solo se <code>x &gt; 5</code>.</li>
+</ul></li>
+<li><p>In Java e C++ le chiamate a funzioni o metodi di classi o oggetti sono espressioni e istruzioni.</p></li>
+<li><p>In C le chiamate a funzioni.</p></li>
+<li><p>In Java, C e C++ l’applicazione dell’operatore unario di incremento e quello di decremento sono anch’esse istruzioni valide: <code>x++;</code> e <code>x--;</code>, ove, rispettivamente, <code>x</code> è incrementato e decrementato di una unità.</p></li>
+<li><p>Javascript ha anche il concetto di funzione anonima auto-invocata (inglese: <em>immediately invoked function expression</em>, IIFE), cioè espressioni a sé stanti che vengono invocate immediatamente dopo la loro definizione:</p></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource javascript number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1"></a>(<span class="kw">function</span>() {</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'Hello, World!'</span>)<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>})()<span class="op">;</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>In C++ sono definiti gli operatori di flusso <code>&lt;&lt;</code> e <code>&gt;&gt;</code> che permettono, rispettivamente, di inviare dati al flusso di output e ricevere dati dal flusso di input:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="bu">std::</span>string name<span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter your name: "</span><span class="op">;</span> <span class="co">/* &lt;1&gt; */</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>  <span class="bu">std::</span>getline<span class="op">(</span><span class="bu">std::</span>cin<span class="op">,</span> name<span class="op">);</span> <span class="co">/* &lt;2&gt; */</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Hello, "</span> <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">"!"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span>  <span class="co">/* &lt;3&gt; */</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter your name: "</span><span class="op">;</span> <span class="co">/* &lt;4&gt; */</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> name<span class="op">;</span> <span class="co">/* &lt;5&gt; */</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Hello, "</span> <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">"!"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span> <span class="co">/* &lt;6&gt; */</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a></span>
+<span id="cb3-15"><a href="#cb3-15"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li><code>std::cout &lt;&lt; "Enter your name: "</code>: Stampa il messaggio “Enter your name:” su console.</li>
+<li><code>std::getline(std::cin, name);</code>: Legge l’input dell’utente e lo memorizza nella variabile <code>name</code>.</li>
+<li><code>std::cout &lt;&lt; "Hello, " &lt;&lt; name &lt;&lt; "!" &lt;&lt; std::endl;</code>: Stampa un messaggio concatenato su console.</li>
+<li><code>std::cout &lt;&lt; "Enter your name: "</code>: Stampa il messaggio “Enter your name:” su console.</li>
+<li><code>std::cin &gt;&gt; name;</code>: Legge l’input dell’utente e lo memorizza nella variabile <code>name</code>.</li>
+<li><code>std::cout &lt;&lt; "Hello, " &lt;&lt; name &lt;&lt; "!" &lt;&lt; std::endl;</code>: Stampa un messaggio concatenato su console.</li>
+</ol>
+<p>Entrambi gli operatori <code>&lt;&lt;</code> e <code>&gt;&gt;</code> supportano la concatenazione (inglese: <em>chaining</em>), permettendo di inserire più operazioni in una singola istruzione. Ad esempio:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="bu">std::</span>string nome<span class="op">,</span> cognome<span class="op">;</span> <span class="co">/* &lt;1&gt; */</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="dt">int</span> età<span class="op">;</span> <span class="co">/* &lt;2&gt; */</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Inserisci il tuo nome, cognome ed età: "</span><span class="op">;</span> <span class="co">/* &lt;3&gt; */</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>  <span class="bu">std::</span>cin <span class="op">&gt;&gt;</span> nome <span class="op">&gt;&gt;</span> cognome <span class="op">&gt;&gt;</span> età<span class="op">;</span> <span class="co">/* &lt;4&gt; */</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a></span>
+<span id="cb4-11"><a href="#cb4-11"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Nome: "</span> <span class="op">&lt;&lt;</span> nome <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> cognome <span class="co">/* &lt;5&gt; */</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>            <span class="op">&lt;&lt;</span> <span class="st">", Età: "</span> <span class="op">&lt;&lt;</span> età <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span> <span class="co">/* &lt;6&gt; */</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a></span>
+<span id="cb4-14"><a href="#cb4-14"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>Dichiarazione delle variabili <code>nome</code> e <code>cognome</code> di tipo <code>std::string</code>.</li>
+<li>Dichiarazione della variabile <code>età</code> di tipo <code>int</code>.</li>
+<li>Richiesta di input all’utente per inserire il nome, il cognome e l’età.</li>
+<li>Lettura dell’input dell’utente e memorizzazione nelle variabili <code>nome</code>, <code>cognome</code> e <code>età</code>.</li>
+<li>Inizio della stampa del nome e del cognome dell’utente.</li>
+<li>Continuazione della stampa con l’età dell’utente e terminazione della riga.</li>
+</ol></li>
 <li><p>Dichiarazione di variabili: La dichiarazione di una variabile introduce una nuova variabile nel programma e specifica il suo tipo<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. La dichiarazione non assegna necessariamente un valore iniziale alla variabile. Esempi:</p>
 <ul>
-<li>In Python la dichiarazione avviene automaticamente con l’assegnazione, anche se è possibile annotare il tipo di una variabile, ad esempio <code>x: int = 5</code>, anche se ciò non costringe il programmatore a utilizzare <code>x</code> on interi.</li>
-<li>In Java: <code>int x;</code>.</li>
-<li>In C: <code>int x;</code>.</li>
-<li>In C++: <code>int x;</code>.</li>
-</ul></li>
-<li><p>Assegnazione: Utilizza un operatore di assegnazione (ad esempio, <code>=</code>) per attribuire un valore rappresentato da un letterale, una espressione o un identificatore, ad un identificatore di variabile, che possiamo pensare come un nome simbolico rappresentante una posizione dove è memorizzato un valore. In alcuni linguaggi deve essere preceduta dalla dichiarazione. Esempio:</p>
+<li>In Java, C e C++, la dichiarazione delle variabili richiede la specifica del tipo e può essere combinata con l’assegnazione: <code>int x;</code> oppure <code>int x = 5;</code>.</li>
+<li>In Python la dichiarazione avviene automaticamente con l’assegnazione, anche se è possibile annotare il tipo di una variabile, ad esempio <code>x: int = 5</code>, anche se ciò non costringe il programmatore a utilizzare <code>x</code> con interi.</li>
+<li>In Javascript la dichiarazione è combinata all’assegnazione e definisce anche l’ambito, cioè la regione di codice dove è accessibile, e la modificabilità della variabile:</li>
+</ul>
+<div class="sourceCode" id="annotated-cell-7"><pre class="sourceCode numberSource javascript code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode javascript"><a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1"></a><span class="kw">let</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2"></a><span class="kw">var</span> y <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-7-3" class="code-annotation-target"><a href="#annotated-cell-7-3"></a><span class="kw">const</span> z <span class="op">=</span> <span class="dv">15</span><span class="op">;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="1" data-code-annotation="1">Ambito di blocco di codice, variabile riassegnabile.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="2" data-code-annotation="2">Ambito di funzione, variabile riassegnabile.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="3" data-code-annotation="3">Ambito di blocco di codice, variabile non riassegnabile.</span>
+</dd>
+</dl></li>
+<li><p>Assegnazione: Utilizza un operatore di assegnazione (ad esempio, <code>=</code>) per attribuire un valore rappresentato da un letterale, una espressione o un identificatore, ad un identificatore di variabile, che possiamo pensare come un nome simbolico rappresentante una posizione dove è memorizzato un valore. In alcuni linguaggi deve essere preceduta dalla dichiarazione.</p>
 <ul>
 <li><p>In Python:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>z <span class="op">=</span> (x <span class="op">*</span> <span class="dv">2</span>) <span class="op">+</span> (y <span class="op">/</span> <span class="dv">2</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>z <span class="op">=</span> (x <span class="op">*</span> <span class="dv">2</span>) <span class="op">+</span> (y <span class="op">/</span> <span class="dv">2</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>z</code>: Identificatore della variabile.</li>
 <li><code>=</code>: Operatore di assegnazione.</li>
@@ -535,24 +658,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>(y / 2)</code>: Espressione che divide <code>y</code> per <code>2</code>.</li>
 <li><code>+</code>: Operatore aritmetico che somma i risultati delle due espressioni in una più complessa. L’esecuzione dell’istruzione produce un risultato valido solo se <code>x</code> e <code>y</code> sono associate a valori numerici e ciò perché non tutte le istruzioni sintatticamente corrette sono semanticamente corrette. D’altronde ciò non deve essere preso come regola, perché se <code>*</code> fosse un operatore che ripete quanto a sinistra un numero di volte definito dal valore di destra e <code>/</code> la divisione del valore di sinistra in parti di numero pari a quanto a destra, allora <code>x</code> e <code>y</code> potrebbero essere stringhe.</li>
 </ul></li>
-<li><p>In Java: <code>z = (x * 2) + (y / 2);</code>.</p></li>
-<li><p>In C: <code>z = (x * 2) + (y / 2);</code>.</p></li>
-<li><p>In C++: <code>z = (x * 2) + (y / 2);</code>.</p></li>
+<li><p>In Java, C e C++ l’assegnazione è preceduta dalla dichiarazione di tipo oppure è contestuale a quest’ultima: <code>z = (x * 2) + (y / 2);</code>.</p></li>
 </ul></li>
-<li><p>Assegnazione aumentata: Combina un’operazione e un’assegnazione in un’unica istruzione. Esempi per una assegnazione di una variabile del valore ottenuto dalla somma di quello proprio con il numero intero 1:</p>
+<li><p>Assegnazione aumentata: Combina un’operazione e un’assegnazione in un’unica istruzione.</p>
 <ul>
-<li>In Python: <code>x += 1</code> è come scrivere <code>x = x + 1</code>.</li>
-<li>In Java: <code>x += 1;</code>.</li>
-<li>In C: <code>x += 1;</code>.</li>
-<li>In C++: <code>x += 1;</code>.</li>
-</ul></li>
-<li><p>Istruzioni di input/output: Sono espressioni particolari ma generalmente evidenziate perché permettono di interagire con l’utente o di produrre output, spesso con sintassi ad hoc. Esempi:</p>
+<li>In Python, l’assegnazione aumentata è l’unico modo per incrementare o decrementare il valore di una variabile in modo conciso:</li>
+</ul>
+<div class="sourceCode" id="annotated-cell-9"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1"></a>x <span class="op">+=</span> <span class="dv">1</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-2" class="code-annotation-target"><a href="#annotated-cell-9-2"></a>x <span class="op">-=</span> <span class="dv">1</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="1" data-code-annotation="1">Incrementa <code>x</code> di 1 (<code>x = x + 1</code>)</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="2" data-code-annotation="2">Decrementa <code>x</code> di 1 (<code>x = x - 1</code>)</span>
+</dd>
+</dl>
 <ul>
-<li>In Python: <code>print("Hello, World!")</code>.</li>
-<li>In Java: <code>System.out.println("Hello, World!");</code>.</li>
-<li>In C: <code>printf("Hello, World!\n");</code>.</li>
-<li>In C++: <code>std::cout &lt;&lt; "Hello, World!" &lt;&lt; std::endl;</code>.</li>
-</ul></li>
+<li>In Java, C e C++ è possibile utilizzare sia l’assegnazione aumentata che gli operatori di incremento e decremento in modalità prefisso e suffisso:</li>
+</ul>
+<div class="sourceCode" id="annotated-cell-10"><pre class="sourceCode numberSource java code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode java"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1"></a><span class="co">// Assegnazione aumentata</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-10-2" class="code-annotation-target"><a href="#annotated-cell-10-2"></a>x <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3"></a>x <span class="op">-=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4"></a></span>
+<span id="annotated-cell-10-5"><a href="#annotated-cell-10-5"></a><span class="co">// Incremento e decremento prefisso</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-10-6" class="code-annotation-target"><a href="#annotated-cell-10-6"></a><span class="op">++</span>x<span class="op">;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-10-7" class="code-annotation-target"><a href="#annotated-cell-10-7"></a><span class="op">--</span>x<span class="op">;</span></span>
+<span id="annotated-cell-10-8"><a href="#annotated-cell-10-8"></a></span>
+<span id="annotated-cell-10-9"><a href="#annotated-cell-10-9"></a><span class="co">// Incremento e decremento suffisso</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-10-10" class="code-annotation-target"><a href="#annotated-cell-10-10"></a>x<span class="op">++;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-10-11" class="code-annotation-target"><a href="#annotated-cell-10-11"></a>x<span class="op">--;</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="2" data-code-annotation="1">Equivalente a <code>x = x + 1</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="3" data-code-annotation="2">Equivalente a <code>x = x - 1</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="6" data-code-annotation="3">Incrementa <code>x</code> di 1 e restituisce il nuovo valore di <code>x</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="7" data-code-annotation="4">Decrementa <code>x</code> di 1 e restituisce il nuovo valore di <code>x</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="10" data-code-annotation="5">Incrementa <code>x</code> di 1 e restituisce il valore precedente di <code>x</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="11" data-code-annotation="6">Decrementa <code>x</code> di 1 e restituisce il valore precedente di <code>x</code>.</span>
+</dd>
+</dl></li>
 <li><p>Istruzioni di controllo del flusso: Permettono di interrompere o continuare l’esecuzione di cicli o di saltare a una specifica etichetta nel codice. Esempi:</p>
 <ul>
 <li>In Python: <code>break</code>, <code>continue</code>.</li>
@@ -588,7 +751,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>In C: <code>return x;</code>.</li>
 <li>In C++: <code>return x;</code>.</li>
 </ul></li>
-<li><p>Generazione di eccezioni: Utilizzata per generare e inviare un’eccezione, cioè una interruzione della sequenza ordinaria delle istruzione per segnalare una anomalia occorsa durante l’esecuzione. Esempi:</p>
+<li><p>Generazione di eccezioni: Utilizzata per generare e inviare un’eccezione, cioè una interruzione della sequenza ordinaria delle istruzione per gestire gli effetti di una anomalia occorsa durante l’esecuzione. Esempi:</p>
 <ul>
 <li>In Python: <code>raise ValueError("Invalid input")</code>.</li>
 <li>In Java: <code>throw new IllegalArgumentException("Invalid input");</code>.</li>
@@ -618,6 +781,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 <div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Spiegheremo il concetto di tipo a breve, per ora si può pensare ad esso come l’insieme dei possibili valori e operazioni che si possono effettuare su di essi.</p></div></div></section>
+</section>
 <section id="le-istruzioni-composte-e-i-blocchi-di-codice" class="level2 page-columns page-full" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="le-istruzioni-composte-e-i-blocchi-di-codice"><span class="header-section-number">3.5</span> Le istruzioni composte e i blocchi di codice</h2>
 <p>Le <strong>istruzioni composte</strong> sono costituite da più istruzioni semplici e possono includere strutture di controllo del flusso, come condizioni (<code>if</code>), cicli (<code>for</code>, <code>while</code>) ed eccezioni (<code>try</code>, <code>catch</code>). Queste istruzioni sono utilizzate per organizzare il flusso di esecuzione del programma e possono contenere altre istruzioni semplici o composte al loro interno.</p>
@@ -626,21 +790,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Alcuni esempi di istruzione e blocco di codice:</p>
 <ul>
 <li><p>Esempio in C:</p>
-<div class="sourceCode" id="annotated-cell-5"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy"><code class="sourceCode c"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2"></a>  printf<span class="op">(</span><span class="st">"x è positivo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3"></a></span>
-<span id="annotated-cell-5-4"><a href="#annotated-cell-5-4"></a>  y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="annotated-cell-5-5"><a href="#annotated-cell-5-5"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy"><code class="sourceCode c"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2"></a>  printf<span class="op">(</span><span class="st">"x è positivo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="annotated-cell-11-3"><a href="#annotated-cell-11-3"></a></span>
+<span id="annotated-cell-11-4"><a href="#annotated-cell-11-4"></a>  y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="annotated-cell-11-5"><a href="#annotated-cell-11-5"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In questo esempio:</p>
 <ol type="1">
 <li><code>if (x &gt; 0)</code> e quanto nelle parentesi graffe è un’istruzione composta. <code>if</code> è una parola chiave seguita da una espressione tra delimitatori.</li>
 <li><code>{ printf("x è positivo\n"); y = x * 2; }</code> è un blocco di codice che viene eseguito se la condizione dell’istruzione <code>if</code> è vera. Sono presenti diversi delimitatori, una espressione e una istruzione di assegnamento.</li>
 </ol></li>
 <li><p>Esempio in Python:</p>
-<div class="sourceCode" id="annotated-cell-6"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy"><code class="sourceCode python"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="annotated-cell-6-2"><a href="#annotated-cell-6-2"></a>  <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span>
-<span id="annotated-cell-6-3"><a href="#annotated-cell-6-3"></a></span>
-<span id="annotated-cell-6-4"><a href="#annotated-cell-6-4"></a>  y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-12"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy"><code class="sourceCode python"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="annotated-cell-12-2"><a href="#annotated-cell-12-2"></a>  <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span>
+<span id="annotated-cell-12-3"><a href="#annotated-cell-12-3"></a></span>
+<span id="annotated-cell-12-4"><a href="#annotated-cell-12-4"></a>  y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In questo esempio:</p>
 <ol type="1">
 <li><code>if x &gt; 0:</code> è un’istruzione composta.</li>
@@ -650,19 +814,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Alcuni esempi di istruzione e blocco di codice:</p>
 <ul>
 <li><p>Esempio in C:</p>
-<div class="sourceCode" id="annotated-cell-7"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy"><code class="sourceCode c"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2"></a>  printf<span class="op">(</span><span class="st">"x è positivo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3"></a>  y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-13"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy"><code class="sourceCode c"><span id="annotated-cell-13-1"><a href="#annotated-cell-13-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="annotated-cell-13-2"><a href="#annotated-cell-13-2"></a>  printf<span class="op">(</span><span class="st">"x è positivo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="annotated-cell-13-3"><a href="#annotated-cell-13-3"></a></span>
+<span id="annotated-cell-13-4"><a href="#annotated-cell-13-4"></a>  y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="annotated-cell-13-5"><a href="#annotated-cell-13-5"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In questo esempio:</p>
 <ol type="1">
 <li><code>if (x &gt; 0)</code> e quanto nelle parentesi graffe è un’istruzione composta.</li>
 <li><code>{ printf("x è positivo\n"); y = x * 2; }</code> è un blocco di codice che viene eseguito se la condizione dell’istruzione <code>if</code> è vera.</li>
 </ol></li>
 <li><p>Esempio in Python:</p>
-<div class="sourceCode" id="annotated-cell-8"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy"><code class="sourceCode python"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="annotated-cell-8-2"><a href="#annotated-cell-8-2"></a>  <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span>
-<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3"></a>  y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-14"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy"><code class="sourceCode python"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2"></a>  <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span>
+<span id="annotated-cell-14-3"><a href="#annotated-cell-14-3"></a></span>
+<span id="annotated-cell-14-4"><a href="#annotated-cell-14-4"></a>  y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In questo esempio:</p>
 <ol type="1">
 <li><code>if x &gt; 0:</code> è un’istruzione composta.</li>
@@ -674,215 +840,215 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Condizionali (<code>if</code>, <code>else if</code>, <code>else</code>): Le istruzioni condizionali permettono l’esecuzione di blocchi di codice basati su espressioni logiche.</p>
 <ul>
 <li><p>Python:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb3-5"><a href="#cb3-5"></a>  <span class="bu">print</span>(<span class="st">"x è zero"</span>)</span>
-<span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="cf">else</span>:</span>
-<span id="cb3-8"><a href="#cb3-8"></a>  <span class="bu">print</span>(<span class="st">"x è negativo"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Java:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"x è positivo"</span><span class="op">);</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>x <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"x è zero"</span><span class="op">);</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>  <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"x è negativo"</span><span class="op">);</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>C:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  printf<span class="op">(</span><span class="st">"x è positivo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>x <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>  printf<span class="op">(</span><span class="st">"x è zero</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>  printf<span class="op">(</span><span class="st">"x è negativo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>C++:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è positivo"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="bu">print</span>(<span class="st">"x è positivo"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3"></a></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>x <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è zero"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="bu">print</span>(<span class="st">"x è zero"</span>)</span>
 <span id="cb6-6"><a href="#cb6-6"></a></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è negativo"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="cf">else</span>:</span>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="bu">print</span>(<span class="st">"x è negativo"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Java:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"x è positivo"</span><span class="op">);</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>x <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"x è zero"</span><span class="op">);</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"x è negativo"</span><span class="op">);</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>C:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  printf<span class="op">(</span><span class="st">"x è positivo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>x <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>  printf<span class="op">(</span><span class="st">"x è zero</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a>  printf<span class="op">(</span><span class="st">"x è negativo</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>C++:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è positivo"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>x <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è zero"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è negativo"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 <li><p>Cicli (<code>for</code>): I cicli <code>for</code> permettono di iterare su un insieme di valori o di ripetere l’esecuzione di un blocco di codice per un numero specificato di volte.</p>
 <ul>
 <li><p>Python:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="bu">print</span>(i)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="bu">print</span>(i)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Java:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>i<span class="op">);</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>i<span class="op">);</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>C:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>  printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> i<span class="op">);</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> i<span class="op">);</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>C++:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 </ul>
 <p>Cicli (<code>while</code>): I cicli <code>while</code> ripetono l’esecuzione di un blocco di codice finché una condizione specificata rimane vera.</p>
 <ul>
 <li><p>Python:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="cf">while</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb11-2"><a href="#cb11-2"></a>  <span class="bu">print</span>(x)</span>
-<span id="cb11-3"><a href="#cb11-3"></a></span>
-<span id="cb11-4"><a href="#cb11-4"></a>  x <span class="op">-=</span> <span class="dv">1</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Java:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb12-1"><a href="#cb12-1"></a><span class="cf">while</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>x<span class="op">);</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a></span>
-<span id="cb12-4"><a href="#cb12-4"></a>  x<span class="op">--;</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>C:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1"></a><span class="cf">while</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>  printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> x<span class="op">);</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a></span>
-<span id="cb13-4"><a href="#cb13-4"></a>  x<span class="op">--;</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>C++:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a><span class="cf">while</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> x <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="cf">while</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="bu">print</span>(x)</span>
 <span id="cb14-3"><a href="#cb14-3"></a></span>
-<span id="cb14-4"><a href="#cb14-4"></a>  x<span class="op">--;</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb14-4"><a href="#cb14-4"></a>  x <span class="op">-=</span> <span class="dv">1</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Java:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb15-1"><a href="#cb15-1"></a><span class="cf">while</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>x<span class="op">);</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a></span>
+<span id="cb15-4"><a href="#cb15-4"></a>  x<span class="op">--;</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>C:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb16-1"><a href="#cb16-1"></a><span class="cf">while</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a></span>
+<span id="cb16-4"><a href="#cb16-4"></a>  x<span class="op">--;</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>C++:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1"></a><span class="cf">while</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> x <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a></span>
+<span id="cb17-4"><a href="#cb17-4"></a>  x<span class="op">--;</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Gestione delle eccezioni (<code>try</code>, <code>catch</code>): Le istruzioni di gestione delle eccezioni permettono di gestire errori o condizioni anomale che possono verificarsi durante l’esecuzione del programma.</p>
 <ul>
 <li><p>Python:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="cf">try</span>:</span>
-<span id="cb15-2"><a href="#cb15-2"></a>  value <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Inserisci un numero: "</span>))</span>
-<span id="cb15-3"><a href="#cb15-3"></a></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="cf">except</span> <span class="pp">ValueError</span>:</span>
-<span id="cb15-5"><a href="#cb15-5"></a>  <span class="bu">print</span>(<span class="st">"Input non valido"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="cf">try</span>:</span>
+<span id="cb18-2"><a href="#cb18-2"></a>  value <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Inserisci un numero: "</span>))</span>
+<span id="cb18-3"><a href="#cb18-3"></a></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb18-5"><a href="#cb18-5"></a>  <span class="bu">print</span>(<span class="st">"Input non valido"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Java:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb16-1"><a href="#cb16-1"></a><span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="dt">int</span> value <span class="op">=</span> <span class="bu">Integer</span><span class="op">.</span><span class="fu">parseInt</span><span class="op">(</span>input<span class="op">);</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a></span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">NumberFormatException</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a>  <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Input non valido"</span><span class="op">);</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb19-1"><a href="#cb19-1"></a><span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="dt">int</span> value <span class="op">=</span> <span class="bu">Integer</span><span class="op">.</span><span class="fu">parseInt</span><span class="op">(</span>input<span class="op">);</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">NumberFormatException</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>  <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Input non valido"</span><span class="op">);</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>C++:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1"></a><span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="dt">int</span> value <span class="op">=</span> <span class="bu">std::</span>stoi<span class="op">(</span>input<span class="op">);</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a></span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="at">const</span> <span class="bu">std::</span>invalid_argument<span class="op">&amp;</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Input non valido"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb17-6"><a href="#cb17-6"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href="#cb20-1"></a><span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="dt">int</span> value <span class="op">=</span> <span class="bu">std::</span>stoi<span class="op">(</span>input<span class="op">);</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="at">const</span> <span class="bu">std::</span>invalid_argument<span class="op">&amp;</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Input non valido"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>C: C non ha un supporto nativo per la gestione delle eccezioni, ma si possono usare meccanismi come <code>setjmp</code> e <code>longjmp</code>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
-<div class="sourceCode" id="annotated-cell-24"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-24-1"><a href="#annotated-cell-24-1"></a><span class="pp">#include </span><span class="im">&lt;setjmp.h&gt;</span></span>
-<span id="annotated-cell-24-2"><a href="#annotated-cell-24-2"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-24-3" class="code-annotation-target"><a href="#annotated-cell-24-3"></a>jmp_buf buf<span class="op">;</span></span>
-<span id="annotated-cell-24-4"><a href="#annotated-cell-24-4"></a></span>
-<span id="annotated-cell-24-5"><a href="#annotated-cell-24-5"></a><span class="dt">void</span> error<span class="op">()</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-24-6" class="code-annotation-target"><a href="#annotated-cell-24-6"></a>  longjmp<span class="op">(</span>buf<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
-<span id="annotated-cell-24-7"><a href="#annotated-cell-24-7"></a><span class="op">}</span></span>
-<span id="annotated-cell-24-8"><a href="#annotated-cell-24-8"></a></span>
-<span id="annotated-cell-24-9"><a href="#annotated-cell-24-9"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-24-10" class="code-annotation-target"><a href="#annotated-cell-24-10"></a>  <span class="cf">if</span> <span class="op">(</span>setjmp<span class="op">(</span>buf<span class="op">))</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-24-11" class="code-annotation-target"><a href="#annotated-cell-24-11"></a>    printf<span class="op">(</span><span class="st">"Errore rilevato</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="annotated-cell-24-12"><a href="#annotated-cell-24-12"></a></span>
-<span id="annotated-cell-24-13"><a href="#annotated-cell-24-13"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-24-14" class="code-annotation-target"><a href="#annotated-cell-24-14"></a>    error<span class="op">();</span></span>
-<span id="annotated-cell-24-15"><a href="#annotated-cell-24-15"></a>  <span class="op">}</span></span>
-<span id="annotated-cell-24-16"><a href="#annotated-cell-24-16"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="annotated-cell-24-17"><a href="#annotated-cell-24-17"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-30"><pre class="sourceCode numberSource c code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode c"><span id="annotated-cell-30-1"><a href="#annotated-cell-30-1"></a><span class="pp">#include </span><span class="im">&lt;setjmp.h&gt;</span></span>
+<span id="annotated-cell-30-2"><a href="#annotated-cell-30-2"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-30-3" class="code-annotation-target"><a href="#annotated-cell-30-3"></a>jmp_buf buf<span class="op">;</span></span>
+<span id="annotated-cell-30-4"><a href="#annotated-cell-30-4"></a></span>
+<span id="annotated-cell-30-5"><a href="#annotated-cell-30-5"></a><span class="dt">void</span> error<span class="op">()</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-30-6" class="code-annotation-target"><a href="#annotated-cell-30-6"></a>  longjmp<span class="op">(</span>buf<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="annotated-cell-30-7"><a href="#annotated-cell-30-7"></a><span class="op">}</span></span>
+<span id="annotated-cell-30-8"><a href="#annotated-cell-30-8"></a></span>
+<span id="annotated-cell-30-9"><a href="#annotated-cell-30-9"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-30-10" class="code-annotation-target"><a href="#annotated-cell-30-10"></a>  <span class="cf">if</span> <span class="op">(</span>setjmp<span class="op">(</span>buf<span class="op">))</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-30-11" class="code-annotation-target"><a href="#annotated-cell-30-11"></a>    printf<span class="op">(</span><span class="st">"Errore rilevato</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="annotated-cell-30-12"><a href="#annotated-cell-30-12"></a></span>
+<span id="annotated-cell-30-13"><a href="#annotated-cell-30-13"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-30-14" class="code-annotation-target"><a href="#annotated-cell-30-14"></a>    error<span class="op">();</span></span>
+<span id="annotated-cell-30-15"><a href="#annotated-cell-30-15"></a>  <span class="op">}</span></span>
+<span id="annotated-cell-30-16"><a href="#annotated-cell-30-16"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="annotated-cell-30-17"><a href="#annotated-cell-30-17"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-24" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-30" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="3" data-code-annotation="1">Dichiarazione di una variabile di tipo <code>jmp_buf</code>.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="3" data-code-annotation="1">Dichiarazione di una variabile di tipo <code>jmp_buf</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-24" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-30" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="6" data-code-annotation="2">Salta al punto salvato in buf con valore di ritorno 1.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="6" data-code-annotation="2">Salta al punto salvato in buf con valore di ritorno 1.</span>
 </dd>
-<dt data-target-cell="annotated-cell-24" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-30" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="10" data-code-annotation="3">Salva il contesto di esecuzione attuale in <code>buf</code>.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="10" data-code-annotation="3">Salva il contesto di esecuzione attuale in <code>buf</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-24" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-30" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="11" data-code-annotation="4">Esegue se <code>longjmp</code> viene chiamato.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="11" data-code-annotation="4">Esegue se <code>longjmp</code> viene chiamato.</span>
 </dd>
-<dt data-target-cell="annotated-cell-24" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-30" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="14" data-code-annotation="5">Chiama la funzione error, che salta indietro al punto <code>setjmp</code>.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="14" data-code-annotation="5">Chiama la funzione error, che salta indietro al punto <code>setjmp</code>.</span>
 </dd>
 </dl></li>
 </ul></li>
 <li><p>Selezione multipla (<code>switch</code>, <code>case</code>, <code>default</code>): Le istruzioni di selezione multipla permettono di eseguire uno tra diversi blocchi di codice basati sul valore di un’espressione.</p>
 <ul>
 <li><p>Python (a partire da Python 3.10 con <code>match</code>):</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="cf">match</span> x:</span>
-<span id="cb18-2"><a href="#cb18-2"></a>  <span class="cf">case</span> <span class="dv">0</span>:</span>
-<span id="cb18-3"><a href="#cb18-3"></a>    <span class="bu">print</span>(<span class="st">"x è zero"</span>)</span>
-<span id="cb18-4"><a href="#cb18-4"></a></span>
-<span id="cb18-5"><a href="#cb18-5"></a>  <span class="cf">case</span> <span class="dv">1</span>:</span>
-<span id="cb18-6"><a href="#cb18-6"></a>    <span class="bu">print</span>(<span class="st">"x è uno"</span>)</span>
-<span id="cb18-7"><a href="#cb18-7"></a></span>
-<span id="cb18-8"><a href="#cb18-8"></a>  <span class="cf">case</span> _:</span>
-<span id="cb18-9"><a href="#cb18-9"></a>    <span class="bu">print</span>(<span class="st">"x è un altro numero"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Java:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb19-1"><a href="#cb19-1"></a><span class="cf">switch</span> <span class="op">(</span>x<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>  <span class="cf">case</span> <span class="dv">0</span><span class="op">:</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"x è zero"</span><span class="op">);</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a></span>
-<span id="cb19-5"><a href="#cb19-5"></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb19-6"><a href="#cb19-6"></a></span>
-<span id="cb19-7"><a href="#cb19-7"></a>  <span class="cf">case</span> <span class="dv">1</span><span class="op">:</span></span>
-<span id="cb19-8"><a href="#cb19-8"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"x è uno"</span><span class="op">);</span></span>
-<span id="cb19-9"><a href="#cb19-9"></a></span>
-<span id="cb19-10"><a href="#cb19-10"></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb19-11"><a href="#cb19-11"></a></span>
-<span id="cb19-12"><a href="#cb19-12"></a>  <span class="kw">default</span><span class="op">:</span></span>
-<span id="cb19-13"><a href="#cb19-13"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"x è un altro numero"</span><span class="op">);</span></span>
-<span id="cb19-14"><a href="#cb19-14"></a></span>
-<span id="cb19-15"><a href="#cb19-15"></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb19-16"><a href="#cb19-16"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>C:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb20-1"><a href="#cb20-1"></a><span class="cf">switch</span> <span class="op">(</span>x<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="cf">case</span> <span class="dv">0</span><span class="op">:</span></span>
-<span id="cb20-3"><a href="#cb20-3"></a>    printf<span class="op">(</span><span class="st">"x è zero</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a></span>
-<span id="cb20-5"><a href="#cb20-5"></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb20-6"><a href="#cb20-6"></a></span>
-<span id="cb20-7"><a href="#cb20-7"></a>  <span class="cf">case</span> <span class="dv">1</span><span class="op">:</span></span>
-<span id="cb20-8"><a href="#cb20-8"></a>    printf<span class="op">(</span><span class="st">"x è uno</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb20-9"><a href="#cb20-9"></a></span>
-<span id="cb20-10"><a href="#cb20-10"></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb20-11"><a href="#cb20-11"></a></span>
-<span id="cb20-12"><a href="#cb20-12"></a>  <span class="cf">default</span><span class="op">:</span></span>
-<span id="cb20-13"><a href="#cb20-13"></a>    printf<span class="op">(</span><span class="st">"x è un altro numero</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb20-14"><a href="#cb20-14"></a></span>
-<span id="cb20-15"><a href="#cb20-15"></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb20-16"><a href="#cb20-16"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>C++:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a href="#cb21-1"></a><span class="cf">switch</span> <span class="op">(</span>x<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="cf">case</span> <span class="dv">0</span><span class="op">:</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è zero"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="cf">match</span> x:</span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="cf">case</span> <span class="dv">0</span>:</span>
+<span id="cb21-3"><a href="#cb21-3"></a>    <span class="bu">print</span>(<span class="st">"x è zero"</span>)</span>
 <span id="cb21-4"><a href="#cb21-4"></a></span>
-<span id="cb21-5"><a href="#cb21-5"></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb21-6"><a href="#cb21-6"></a></span>
-<span id="cb21-7"><a href="#cb21-7"></a>  <span class="cf">case</span> <span class="dv">1</span><span class="op">:</span></span>
-<span id="cb21-8"><a href="#cb21-8"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è uno"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb21-9"><a href="#cb21-9"></a></span>
-<span id="cb21-10"><a href="#cb21-10"></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb21-11"><a href="#cb21-11"></a></span>
-<span id="cb21-12"><a href="#cb21-12"></a>  <span class="cf">default</span><span class="op">:</span></span>
-<span id="cb21-13"><a href="#cb21-13"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è un altro numero"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb21-14"><a href="#cb21-14"></a></span>
-<span id="cb21-15"><a href="#cb21-15"></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb21-16"><a href="#cb21-16"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb21-5"><a href="#cb21-5"></a>  <span class="cf">case</span> <span class="dv">1</span>:</span>
+<span id="cb21-6"><a href="#cb21-6"></a>    <span class="bu">print</span>(<span class="st">"x è uno"</span>)</span>
+<span id="cb21-7"><a href="#cb21-7"></a></span>
+<span id="cb21-8"><a href="#cb21-8"></a>  <span class="cf">case</span> _:</span>
+<span id="cb21-9"><a href="#cb21-9"></a>    <span class="bu">print</span>(<span class="st">"x è un altro numero"</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Java:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb22-1"><a href="#cb22-1"></a><span class="cf">switch</span> <span class="op">(</span>x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="cf">case</span> <span class="dv">0</span><span class="op">:</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"x è zero"</span><span class="op">);</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a></span>
+<span id="cb22-5"><a href="#cb22-5"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a></span>
+<span id="cb22-7"><a href="#cb22-7"></a>  <span class="cf">case</span> <span class="dv">1</span><span class="op">:</span></span>
+<span id="cb22-8"><a href="#cb22-8"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"x è uno"</span><span class="op">);</span></span>
+<span id="cb22-9"><a href="#cb22-9"></a></span>
+<span id="cb22-10"><a href="#cb22-10"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb22-11"><a href="#cb22-11"></a></span>
+<span id="cb22-12"><a href="#cb22-12"></a>  <span class="kw">default</span><span class="op">:</span></span>
+<span id="cb22-13"><a href="#cb22-13"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"x è un altro numero"</span><span class="op">);</span></span>
+<span id="cb22-14"><a href="#cb22-14"></a></span>
+<span id="cb22-15"><a href="#cb22-15"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb22-16"><a href="#cb22-16"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>C:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb23-1"><a href="#cb23-1"></a><span class="cf">switch</span> <span class="op">(</span>x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="cf">case</span> <span class="dv">0</span><span class="op">:</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>    printf<span class="op">(</span><span class="st">"x è zero</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a></span>
+<span id="cb23-5"><a href="#cb23-5"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a></span>
+<span id="cb23-7"><a href="#cb23-7"></a>  <span class="cf">case</span> <span class="dv">1</span><span class="op">:</span></span>
+<span id="cb23-8"><a href="#cb23-8"></a>    printf<span class="op">(</span><span class="st">"x è uno</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb23-9"><a href="#cb23-9"></a></span>
+<span id="cb23-10"><a href="#cb23-10"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb23-11"><a href="#cb23-11"></a></span>
+<span id="cb23-12"><a href="#cb23-12"></a>  <span class="cf">default</span><span class="op">:</span></span>
+<span id="cb23-13"><a href="#cb23-13"></a>    printf<span class="op">(</span><span class="st">"x è un altro numero</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb23-14"><a href="#cb23-14"></a></span>
+<span id="cb23-15"><a href="#cb23-15"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb23-16"><a href="#cb23-16"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>C++:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a href="#cb24-1"></a><span class="cf">switch</span> <span class="op">(</span>x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="cf">case</span> <span class="dv">0</span><span class="op">:</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è zero"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a></span>
+<span id="cb24-5"><a href="#cb24-5"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a></span>
+<span id="cb24-7"><a href="#cb24-7"></a>  <span class="cf">case</span> <span class="dv">1</span><span class="op">:</span></span>
+<span id="cb24-8"><a href="#cb24-8"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è uno"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb24-9"><a href="#cb24-9"></a></span>
+<span id="cb24-10"><a href="#cb24-10"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb24-11"><a href="#cb24-11"></a></span>
+<span id="cb24-12"><a href="#cb24-12"></a>  <span class="cf">default</span><span class="op">:</span></span>
+<span id="cb24-13"><a href="#cb24-13"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"x è un altro numero"</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
+<span id="cb24-14"><a href="#cb24-14"></a></span>
+<span id="cb24-15"><a href="#cb24-15"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb24-16"><a href="#cb24-16"></a><span class="op">}</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 </ul>
 <div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;<code>setjmp</code> e <code>longjmp</code> sono funzioni della libreria standard del C utilizzate per implementare il salto non locale, consentendo a un programma di salvare e ripristinare l’ambiente di esecuzione. La funzione <code>setjmp</code> salva lo stato corrente del programma (inclusi registri e stack) in una struttura <code>jmp_buf</code>, mentre <code>longjmp</code> ripristina questo stato, causando un salto indietro nel flusso di controllo fino al punto in cui <code>setjmp</code> è stato chiamato. Queste funzioni permettono di uscire da contesti di funzioni annidate senza dover tornare manualmente attraverso ogni chiamata di funzione.</p></div></div></section>
@@ -915,14 +1081,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Il concetto di righe fisiche e logiche esiste perché le istruzioni (o righe logiche) possono essere lunghe e composte, richiedendo più righe fisiche per migliorare la leggibilità e la gestione del codice.</p>
 <p>In molti linguaggi di programmazione, l’uso di righe fisiche e logiche facilita l’organizzazione e la formattazione del codice. Ad esempio:</p>
 <ul>
-<li><p><strong>Python</strong> utilizza l’indentazione per definire i blocchi di codice, quindi una riga logica che si estende su più righe fisiche deve continuare con una corretta indentazione. Inoltre, è possibile usare il carattere di continuazione (<code>\</code>) per indicare che una riga logica prosegue sulla riga successiva:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>result <span class="op">=</span> (<span class="dv">10</span> <span class="op">+</span> <span class="dv">20</span> <span class="op">+</span> <span class="dv">30</span> <span class="op">+</span> <span class="op">\</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a>          <span class="dv">40</span> <span class="op">+</span> <span class="dv">50</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p><strong>Java</strong> e <strong>C</strong> utilizzano le parentesi graffe (<code>{}</code>) per delimitare i blocchi di codice, e le istruzioni possono estendersi su più righe fisiche senza il bisogno di un carattere di continuazione, grazie al punto e virgola (<code>;</code>) che termina le istruzioni:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb23-1"><a href="#cb23-1"></a><span class="dt">int</span> y <span class="op">=</span> <span class="op">(</span><span class="dv">10</span> <span class="op">+</span> <span class="dv">20</span> <span class="op">+</span> <span class="dv">30</span> <span class="op">+</span> </span>
-<span id="cb23-2"><a href="#cb23-2"></a>         <span class="dv">40</span> <span class="op">+</span> <span class="dv">50</span><span class="op">);</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb24-1"><a href="#cb24-1"></a><span class="dt">int</span> y <span class="op">=</span> <span class="op">(</span><span class="dv">10</span> <span class="op">+</span> <span class="dv">20</span> <span class="op">+</span> <span class="dv">30</span> <span class="op">+</span> </span>
-<span id="cb24-2"><a href="#cb24-2"></a>         <span class="dv">40</span> <span class="op">+</span> <span class="dv">50</span><span class="op">);</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Python utilizza l’indentazione per definire i blocchi di codice, quindi una riga logica che si estende su più righe fisiche deve continuare con una corretta indentazione. Inoltre, è possibile usare il carattere di continuazione (<code>\</code>) per indicare che una riga logica prosegue sulla riga successiva:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>result <span class="op">=</span> (<span class="dv">10</span> <span class="op">+</span> <span class="dv">20</span> <span class="op">+</span> <span class="dv">30</span> <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>          <span class="dv">40</span> <span class="op">+</span> <span class="dv">50</span>)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Java e C utilizzano le parentesi graffe (<code>{}</code>) per delimitare i blocchi di codice, e le istruzioni possono estendersi su più righe fisiche senza il bisogno di un carattere di continuazione, grazie al punto e virgola (<code>;</code>) che termina le istruzioni:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb26-1"><a href="#cb26-1"></a><span class="dt">int</span> y <span class="op">=</span> <span class="op">(</span><span class="dv">10</span> <span class="op">+</span> <span class="dv">20</span> <span class="op">+</span> <span class="dv">30</span> <span class="op">+</span> </span>
+<span id="cb26-2"><a href="#cb26-2"></a>         <span class="dv">40</span> <span class="op">+</span> <span class="dv">50</span><span class="op">);</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb27-1"><a href="#cb27-1"></a><span class="dt">int</span> y <span class="op">=</span> <span class="op">(</span><span class="dv">10</span> <span class="op">+</span> <span class="dv">20</span> <span class="op">+</span> <span class="dv">30</span> <span class="op">+</span> </span>
+<span id="cb27-2"><a href="#cb27-2"></a>         <span class="dv">40</span> <span class="op">+</span> <span class="dv">50</span><span class="op">);</span></span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <p>L’uso corretto di righe fisiche e logiche migliora la leggibilità del codice, rendendolo più facile da capire e mantenere. Inoltre, una buona formattazione del codice facilita il lavoro di squadra, poiché gli sviluppatori possono facilmente seguire e comprendere la logica implementata da altri.</p>
 
