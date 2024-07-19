@@ -84,15 +84,24 @@ format:
       light: [pulse, theme-light.scss]
       dark: [pulse, theme-dark.scss]
     code-line-numbers: true
+    reference-location: margin
+    citation-location: margin
+    toc-depth: 4
     include-in-header:
       - text: |  
           <script src="https://cdn.jsdelivr.net/pyodide/v0.26.0/full/pyodide.js"></script>
   pdf:
     documentclass: scrbook
     geometry: "left=1.5cm,right=1.5cm,top=2cm,bottom=2cm"
-    cover-image: red-python.png
+    code-line-numbers: true
+    reference-location: block
+    citation-location: block
+    toc-depth: 4
   epub:
-    cover-image: red-python.png
+    code-line-numbers: true
+    reference-location: block
+    citation-location: block
+    toc-depth: 4
 
 comments:
   hypothesis: true
