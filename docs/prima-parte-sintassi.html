@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.54">
+<meta name="generator" content="quarto-1.5.55">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -512,11 +512,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>y / 4.0</code>: Un identificatore di variabile e un letterale a virgola mobile, rispettivamente <code>y</code> e <code>4.0</code>, con un operatore binario applicato, <code>/</code>.</li>
 <li><code>"Hello, " + "world!"</code>: Due letterali stringa, <code>"Hello, "</code> e <code>"world! "</code>, con un operatore binario di concatenazione, <code>+</code>.</li>
 </ul></li>
-<li><p>Espressioni logiche: Applicano operatori logici per valutare condizioni e produrre valori booleani (vero o falso) a letterali e identificatori. Esempi:</p>
+<li><p>Espressioni logiche: Qui gli operatori sono logici e gli operandi qualsiasi letterale o identificatore. Il risultato è un valore booleano, cioè vero o falso. Esempi:</p>
 <ul>
-<li><code>x or 5</code>.</li>
-<li><code>not y</code>.</li>
-<li><code>a and "Hello"</code>.</li>
+<li><code>x or 5</code>: <code>x</code> è un identificatore, <code>or</code> un operatore logico binario e <code>5</code> un letterale intero (che ha un valore di verità).</li>
+<li><code>not y</code>: <code>not</code> è un operatore logico unario e <code>y</code> un identificatore.</li>
+<li><code>a and "Hello"</code>: <code>a</code> è un identificatore, <code>and</code> un operatore logico binario e <code>"Hello"</code> un letterale stringa (che ha un valore di verità).</li>
 </ul></li>
 <li><p>Espressioni di confronto: Sono caratterizzate da operatori di confronto e restituiscono valori booleani, sempre a partire da letterali e identificatori. Esempi:</p>
 <ul>
@@ -524,13 +524,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>x != 42</code>.</li>
 <li><code>"Hello" &gt;= "world!"</code>: L’ordinamento dei letterali stringa predefinto in Python è quello lessicografico.</li>
 </ul></li>
-<li><p>Espressioni di chiamata a funzione: Invocano identificatori particolari, funzioni e metodi di classi o oggetti, spesso con argomenti definiti da identificatori e letterali, per eseguire operazioni più complesse. Esempi:</p>
+<li><p>Espressioni di chiamata a funzione: Invocano identificatori particolari, funzioni e metodi di classi o oggetti, con un elenco opzionale di argomenti definiti da identificatori e letterali. I delimitatori sono usati sia per definire l’inizio e la fine dell’elenco di argomenti, sia per separare gli argomenti. Esempi:</p>
 <ul>
-<li><code>max(a, b)</code>: La funzione con nome <code>max</code> riceve due argomenti, <code>a</code> e <code>b</code>.</li>
+<li><code>max(a, b)</code>: La funzione con identificatore <code>max</code> riceve due argomenti, <code>a</code> e <code>b</code>.</li>
 <li><code>sin(30, "gradi")</code>.</li>
 <li><code>obj.my_function(x, 42)</code>: Si invoca il metodo individuato dall’identificatore <code>my_function</code>, dell’oggetto con identificatore <code>obj</code> per mezzo dell’operatore di accesso a membro <code>.</code>, passando i due argomenti <code>x</code> e <code>42</code>.</li>
 </ul></li>
-<li><p>Espressioni di manipolazione di contenitori di dati: Creano e manipolano strutture dati come liste, dizionari, tuple e insiemi contenenti identificatori e letterali. Esempi:</p>
+<li><p>Espressioni di manipolazione di contenitori di dati: Creano e manipolano strutture dati presenti in molti linguaggi di programmazione come liste, dizionari, tuple e insiemi. Delimitatori individuano l’inizio e la fine dell’elenco di elementi e sono utilizzati anche per definire il tipo di struttura. Ogni elemento può essere un identificatore o un letterale. Esempi:</p>
 <ul>
 <li><code>[1, x, 3]</code>: Elenco di letterali e identificatori separati dal delimitatore <code>,</code>, racchiuso da una coppia delimitatori, <code>[</code> e <code>]</code>, per creare una lista.</li>
 <li><code>('y', 42, True)</code>: I delimitatori <code>(</code> e <code>)</code> creano una tupla.</li>
@@ -542,10 +542,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>1 if x else 0</code>: Se l’identificatore <code>x</code> è associato ad un dato con valore di verità allora l’espressione restituisce <code>1</code>, <code>0</code> in caso contrario.</li>
 <li><code>True if x &gt; 0.5 else False</code>: Abbiamo una espressione aritmetica <code>x &gt; 0.5</code> è in mezzo alle parole chiave <code>if</code> ed <code>else</code>, quindi è il valore di verità ottenuto dalla sua valutazione che determina se ad essere restituita dall’espressione ternaria, sarà la parola chiave che precede <code>if</code> o quella che segue <code>else</code>.</li>
 </ul></li>
-</ul>
-<p>Alcuni esempi di espressioni composte:</p>
+<li><p>Espressioni composte:</p>
 <ul>
-<li><code>(5 + 3) + x - y</code>: ???</li>
+<li><code>(x + y) * (a - b)</code>: Combinazione di espressioni aritmetiche.</li>
+<li><code>max(a, b) if a &gt; b else min(a, b)</code>: Espressione condizionale con confronto e chiamate a funzione.</li>
+<li><code>[x**2 for x in range(10) if x % 2 == 0]</code>:</li>
+</ul></li>
 </ul>
 </section>
 </section>

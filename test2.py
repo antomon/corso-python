@@ -1,1 +1,1 @@
-print()
+print(True != 42)
