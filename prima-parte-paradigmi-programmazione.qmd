@@ -27,7 +27,7 @@ Come ha affermato Bjarne Stroustrup, il creatore del C++:
 [^1-prima-parte-paradigmi-programmazione]: Languages features exist to provide support for programming styles. Please don’t look at an individual language feature as a solution, but as one building brick from a varied set which can be combined to express solutions.
 The general ideals for design and programming can be expressed simply:
 &nbsp;&nbsp;
-&nbsp;&nbsp;- Express ideas directly in code.
+  - Express ideas directly in code.
   - Express independent ideas independently in code.
   - Represent relationships among ideas directly in code.
   - Combine ideas expressed in code freely – where and only where combinations make sense.
@@ -657,8 +657,8 @@ Commento riga per riga:
 Vediamo un esempio pratico di come si utilizza la macro `when`. Il test è valutare se `x` è maggiore di `10` e, nel caso, stampare `"x is greater than 10"` e poi assegnare `x` a `0`. Chiamiamo la macro con i due parametri:
 
 ```commonlisp
-(when (> x 10)   ; <1>                   
-  (print "x is greater than 10")   #|  <2> |#
+(when (> x 10)   #; <1>                   
+  (print "x is greater than 10")  ;;;   <2> 
   (setf x 0))                        
 ```
 1. ffff
