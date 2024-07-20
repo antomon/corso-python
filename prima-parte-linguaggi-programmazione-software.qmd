@@ -1,9 +1,4 @@
----
-reference-location: margin
-citation-location: margin
----
-
-# I linguaggi di programmazione, i programmi e i programmatori
+# Il linguaggio di programmazione e il software
 
 Partiamo da alcuni concetti basilari che ci permettono di contestualizzare più facilmente quelli che introdurremo via via nel corso.
 
@@ -17,7 +12,7 @@ Un linguaggio di programmazione è un linguaggio formale che fornisce un insieme
 
 Alcuni esempi di linguaggi di programmazione includono Python, Java, C++, SQL, Rust, Haskell, Prolog, C, Assembly, Fortran, JavaScript e altre centinaia (o forse migliaia). Ad esempio Wikipedia ne ha una lista estesa [@wikipedia_languages_eng]. 
 
-## Linguaggi naturali e di programmazione
+## Il linguaggio naturale e di programmazione
 
 I linguaggi di programmazione hanno dei punti in comune e delle differenze coi linguaggi naturali (come l'italiano o l'inglese). Quest'ultime sono principalmente:
 
@@ -29,7 +24,7 @@ I linguaggi di programmazione hanno dei punti in comune e delle differenze coi l
 
 4. Forma di mediazione: I linguaggi naturali sono direttamente utilizzati per comunicare, quelli di programmazione non sono comprensibili immediatamente dai computer, ma devono essere tradotti in una forma opportuna per mezzo di programmi ad hoc.
 
-## Algoritmi
+## L'algoritmo
 
 Un **algoritmo** è 
 
@@ -55,9 +50,9 @@ Possiamo quindi comporre una definzione di linguaggio di programmazione legata a
 
 Per un testo, introduttivo e liberamente disponibile, sugli algoritmi, si può far riferimento a [@erickson2019].
 
-### Rappresentazione
+### La rappresentazione
 
-Un algoritmo è un concetto astratto, esistente come idea nella mente di chi lo crea. Quando si vuole condividere un algoritmo con qualcun altro, è cruciale scegliere una rappresentazione che lo comunichi in modo completo e accurato. Alcune rappresentazioni di algoritmi sono comprensibili solo dagli esseri umani, come quelle che utilizzano il linguaggio naturale o i diagrammi. Al contrario, un programma è una rappresentazione di un algoritmo destinata ad essere leggibile da una macchina, generalmente un computer. L'esecuzione di un programma, cioè l'applicazione di un algoritmo in un contesto particolare da parte di un computer, è detta processo.
+Un algoritmo è un concetto astratto, esistente come idea nella mente di chi lo crea. Quando si vuole condividere un algoritmo con qualcun altro, è cruciale scegliere una **rappresentazione** che lo comunichi in modo completo e accurato. Alcune rappresentazioni di algoritmi sono comprensibili solo dagli esseri umani, come quelle che utilizzano il linguaggio naturale o i diagrammi. Al contrario, un programma è una rappresentazione di un algoritmo destinata ad essere leggibile da una macchina, generalmente un computer. L'esecuzione di un programma, cioè l'applicazione di un algoritmo in un contesto particolare da parte di un computer, è detta processo.
 
 Rappresentare un algoritmo richiede, pertanto, l'uso di un insieme di simboli e di regole di combinazione dei medesimi. I simboli fondamentali utilizzati per rappresentare gli algoritmi sono chiamati primitivi. I simboli primitivi definiscono le operazioni base, le unità minime di lavoro che un algoritmo può eseguire. Devono essere combinati seguendo una specifica sintassi, che è l'insieme delle regole che definiscono come questi simboli possono essere correttamente organizzati per formare istruzioni, cioè comandi elementari.
 
@@ -77,7 +72,7 @@ Un esempio di algoritmo è dato dall'ordinamento di una lista di numeri interi. 
 
 - Linguaggio naturale: Gli elementi adiacenti vengono scambiati se sono nell'ordine sbagliato e ciò prosegue fino a quando tutto l'elenco risulti ordinato.
 
-- Diagramma di flusso[^1-prima-parte-linguaggi-programmazione], come da figura seguente:
+- Diagramma di flusso[^1-prima-parte-linguaggi-programmazione-software], come da figura seguente:
 
 ```{mermaid}
 %%| fig-cap: Diagramma di flusso dell'algoritmo di Bubble Sort
@@ -94,39 +89,41 @@ flowchart TD
   ProssimoElemento --> Controlla
 ```
 
-[^1-prima-parte-linguaggi-programmazione]: Un diagramma di flusso è una rappresentazione grafica che mostra la sequenza di passaggi o decisioni necessarie per completare un processo o risolvere un problema, utilizzando simboli standardizzati come rettangoli, ovali e frecce per illustrare l'ordine e le relazioni tra le diverse fasi.
+[^1-prima-parte-linguaggi-programmazione-software]: Un diagramma di flusso è una rappresentazione grafica che mostra la sequenza di passaggi o decisioni necessarie per completare un processo o risolvere un problema, utilizzando simboli standardizzati come rettangoli, ovali e frecce per illustrare l'ordine e le relazioni tra le diverse fasi.
 
-- Pseudocodice[^2-prima-parte-linguaggi-programmazione] nella forma di una sequenza ordinata di definizioni e comandi:
+- Pseudocodice[^2-prima-parte-linguaggi-programmazione-software] nella forma di una sequenza ordinata di definizioni e comandi:
 
   ```plaintext
-  procedure BubbleSort(A: lista di elementi ordinabili)
+  procedura BubbleSort(A: lista di elementi ordinabili)
     n := lunghezza(A)
 
-    repeat
+    ripeti
       scambiato := falso
 
-      for i := 1 to n-1 inclusive do
-        if A[i-1] > A[i] then
-          scambia(A[i-1], A[i])
+      per i := 1 a n-1 incluso esegui
+        se A[i-1] > A[i] allora
+          temp := A[i-1]
+          A[i-1] := A[i]
+          A[i] := temp
 
           scambiato := vero
 
-        end if
+        fine se
 
-      end for
+      fine per
 
       n := n - 1
 
-    until not scambiato
+    fino a scambiato == falso
 
-  end procedure
+  fine procedura
   ```
 
-[^2-prima-parte-linguaggi-programmazione]: Lo pseudocodice è una descrizione informale di un algoritmo, scritta in un linguaggio simile a quello naturale, che combina elementi di linguaggi di programmazione per rendere comprensibili i passaggi logici, senza preoccuparsi della sintassi specifica di un linguaggio di programmazione.
+[^2-prima-parte-linguaggi-programmazione-software]: Lo pseudocodice è una descrizione informale di un algoritmo, scritta in un linguaggio simile a quello naturale, che combina elementi di linguaggi di programmazione per rendere comprensibili i passaggi logici, senza preoccuparsi della sintassi specifica di un linguaggio formalizzato.
 
 Nel seguito sarà data anche un'ulteriore rappresentazione in codice sorgente Python. In questo esempio, abbiamo dato più rappresentazioni dell'algoritmo Bubble Sort per illustrare le diverse finalità di comunicazione tese a scopi diversi. Infatti, generalmente, si creano prima delle rappresentazioni _informali_ allo scopo di ideazione e progettazione, per poi procedere con il programma vero e proprio, di cui le altre rappresentazioni potrebbero essere viste a mo' di documentazione.
 
-### Generazione
+### Le strategie di generazione
 
 La generazione degli algoritmi è un'arte in sé, non esistendo una ricetta garantita per trovarne almeno uno corretto. Tuttavia, alcune strategie generali possono aumentare le probabilità di successo. La capacità di ideare algoritmi efficaci richiede creatività, pensiero analitico e una profonda comprensione del problema da risolvere.
 
@@ -140,7 +137,7 @@ Alcune strategie:
 
 - Contraddizione: La contraddizione è un'altra tecnica matematica che può essere utilizzata nella definizone di algoritmi. Consiste nel dimostrare che l'assunzione opposta porta a una contraddizione, e quindi l'assunzione iniziale deve essere vera. Questa tecnica è utile per provare che certi problemi non possono essere risolti o che certe proprietà devono essere vere per un algoritmo efficace.
 
-### Metodologia di Polya
+### La metodologia di Polya
 
 George Polya, nel suo libro _How to Solve It_ [@polya1945], propone una metodologia strutturata per la risoluzione dei problemi che può essere applicata alla scoperta degli algoritmi. 
 
@@ -232,9 +229,9 @@ Per comprendere come un programma scritto in un linguaggio di programmazione pas
 
 - Un **interprete**, invece, è un programma che esegue il codice sorgente direttamente, istruzione per istruzione, senza produrre un file eseguibile separato. L'interprete legge una riga di codice, la traduce in codice macchina e la esegue immediatamente. Questo processo viene ripetuto per ogni riga del codice sorgente.
 
-È importante notare che alcuni linguaggi di programmazione possono essere sia compilati che interpretati, a seconda dell'implementazione disponibile. Ad esempio, Java utilizza sia la compilazione (per generare bytecode) che l'interpretazione, e la Java Virtual Machine (JVM) spesso utilizza anche la compilazione just-in-time (JIT) per tradurre il bytecode in codice macchina nativo durante l'esecuzione[^3-prima-parte-linguaggi-programmazione]. 
+È importante notare che alcuni linguaggi di programmazione possono essere sia compilati che interpretati, a seconda dell'implementazione disponibile. Ad esempio, Java utilizza sia la compilazione (per generare bytecode) che l'interpretazione, e la Java Virtual Machine (JVM) spesso utilizza anche la compilazione just-in-time (JIT) per tradurre il bytecode in codice macchina nativo durante l'esecuzione[^3-prima-parte-linguaggi-programmazione-software]. 
 
-[^3-prima-parte-linguaggi-programmazione]: Java utilizza un approccio ibrido che coinvolge sia la compilazione che l'interpretazione. Inizialmente, il codice sorgente Java viene compilato in bytecode da un compilatore Java. Questo bytecode è un codice intermedio indipendente dalla piattaforma che può essere eseguito su qualsiasi sistema dotato di una Java Virtual Machine (JVM). La JVM è un ambiente di esecuzione virtuale che consente l'esecuzione del bytecode Java su qualsiasi dispositivo o sistema operativo, garantendo così la portabilità del codice. Durante l'esecuzione, la JVM interpreta il bytecode e, per ottimizzare le prestazioni, spesso utilizza la compilazione just-in-time (JIT). La compilazione JIT traduce dinamicamente il bytecode in codice macchina nativo specifico per la piattaforma in uso, migliorando così la velocità di esecuzione delle applicazioni Java. Anche altri linguaggi di programmazione adottano un approccio simile. Ad esempio, C# utilizza il Common Intermediate Language (CIL), che viene eseguito sulla Common Language Runtime (CLR), un componente del .NET Framework. Python, invece, utilizza un bytecode che viene interpretato dalla Python Virtual Machine (PVM), con alcune implementazioni che supportano la compilazione JIT, come PyPy. Questi approcci condividono l'obiettivo di rendere il codice portabile e di ottimizzare le prestazioni attraverso tecniche di compilazione e interpretazione.
+[^3-prima-parte-linguaggi-programmazione-software]: Java utilizza un approccio ibrido che coinvolge sia la compilazione che l'interpretazione. Inizialmente, il codice sorgente Java viene compilato in bytecode da un compilatore Java. Questo bytecode è un codice intermedio indipendente dalla piattaforma che può essere eseguito su qualsiasi sistema dotato di una Java Virtual Machine (JVM). La JVM è un ambiente di esecuzione virtuale che consente l'esecuzione del bytecode Java su qualsiasi dispositivo o sistema operativo, garantendo così la portabilità del codice. Durante l'esecuzione, la JVM interpreta il bytecode e, per ottimizzare le prestazioni, spesso utilizza la compilazione just-in-time (JIT). La compilazione JIT traduce dinamicamente il bytecode in codice macchina nativo specifico per la piattaforma in uso, migliorando così la velocità di esecuzione delle applicazioni Java. Anche altri linguaggi di programmazione adottano un approccio simile. Ad esempio, C# utilizza il Common Intermediate Language (CIL), che viene eseguito sulla Common Language Runtime (CLR), un componente del .NET Framework. Python, invece, utilizza un bytecode che viene interpretato dalla Python Virtual Machine (PVM), con alcune implementazioni che supportano la compilazione JIT, come PyPy. Questi approcci condividono l'obiettivo di rendere il codice portabile e di ottimizzare le prestazioni attraverso tecniche di compilazione e interpretazione.
 
 Detto ciò, i passaggi macro perché un programma sia eseguito e possa produrre gli effetti pronosticati, sono:
 
@@ -258,13 +255,15 @@ Detto ciò, i passaggi macro perché un programma sia eseguito e possa produrre 
 
 Nel caso di un interprete, i passaggi di generazione del codice intermedio e macchina possono essere sostituiti da una valutazione diretta delle istruzioni del programma, eseguendole una per una. In pratica, l'interprete traduce ogni singola istruzione del codice sorgente in un formato conprensibile dalla CPU e passa questa istruzione alla CPU stessa per l'esecuzione. Questo processo continua fino a quando tutte le istruzioni del programma non sono state eseguite.
 
-## Ciclo di vita del software
+## Il ciclo di vita del software
 
 Un **software** è composto da uno o più programmi e, quando eseguito, realizza un compito con un grado di utilità specifico. La gerarchia concettuale, dal più generale all'elemento più granulare, è: software, programmi, moduli, istruzioni. 
 
 Un **modulo** è una componente autonoma di un programma che contiene una parte specifica della logica o delle funzionalità del sistema. I moduli facilitano la gestione della complessità, permettono il riutilizzo del codice e migliorano la manutenibilità del software. 
 
-Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi e nei relativi moduli. Per creare il software, quindi, è necessario percorrere una sequenza di fasi ben definita che, concisamente, è data da:
+Così come il disegno dei programmi è quello computazionale degli algoritmi, il disegno del software è funzionale per determinare i suoi obiettivi e architetturale per la decomposizione nei programmi e nei relativi moduli. 
+
+Per creare il software, quindi, è necessario percorrere una sequenza di fasi ben definita che, concisamente, è data da:
 
 - La progettazione di un'applicazione inizia con la fase di **analisi dei requisiti**, in cui si identificano cosa deve fare il software, chi sono gli utenti e quali sono i requisiti funzionali e non funzionali che deve soddisfare.
 

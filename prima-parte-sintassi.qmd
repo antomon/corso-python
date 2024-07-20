@@ -80,10 +80,6 @@ Il **parser** è un altro componente del compilatore o interprete che prende in 
 
 ## L'espressione
 
-La tua definizione di espressione è chiara e ben strutturata. Ecco la versione leggermente rivista per maggiore chiarezza e coerenza:
-
-### Espressione
-
 Un'**espressione** è un costrutto fondamentale nei linguaggi di programmazione che presenta sia aspetti sintattici che semantici. Dal punto di vista sintattico, un'espressione può essere definita come una sequenza finita di lessemi che rispetta le regole grammaticali del linguaggio e che può essere valutata per produrre un valore, cioè un dato concreto che rappresenta un'informazione specifica all'interno di un programma.
 
 Un identificatore è un'espressione, così come un letterale. Inoltre, un'espressione più complessa è perlopiù una combinazione di identificatori, letterali e operatori, anche se parole chiave e delimitatori possono essere presenti (ad esempio in Python `True` è una parola chiave corrispondente al valore logico di verità). Componendo opportunamente espressioni per mezzo di operatori, si ottiene ancora un'espressione.
@@ -127,6 +123,12 @@ Ecco alcune tipologie di espressioni (notazioni in Python, non molto dissimili d
   - `True if x > 0.5 else False`: Abbiamo una espressione aritmetica `x > 0.5` è in mezzo alle parole chiave `if` ed `else`, quindi è il valore di verità ottenuto dalla sua valutazione che determina se ad essere restituita dall'espressione ternaria, sarà la parola chiave che precede `if` o quella che segue `else`. 
 
 
+
+- **Espressioni di creazione di contenitori di dati per comprensione**: Utilizzano una sintassi compatta per generare nuovi contenitori di dati a partire da elementi esistenti, applicando una funzione e una condizione. Esempi:
+
+  - `[x**2 for x in range(10) if x % 2 == 0]`: Genera una lista dei quadrati dei numeri pari da 0 a 9.
+  - `{x: x**2 for x in range(10) if x % 2 == 0}`: Genera un dizionario dove le chiavi sono numeri pari da 0 a 9 e i valori sono i loro quadrati.
+  - `{x**2 for x in range(10) if x % 2 == 0}`: Genera un set dei quadrati dei numeri pari da 0 a 9.
 
 - Espressioni composte:
 

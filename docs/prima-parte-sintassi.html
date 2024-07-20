@@ -224,8 +224,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prima-parte-linguaggi-programmazione.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">I linguaggi di programmazione, i programmi e i programmatori</span></span></a>
+  <a href="./prima-parte-linguaggi-programmazione-software.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Il linguaggio di programmazione e il software</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -403,10 +403,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#il-token-e-il-lessema" id="toc-il-token-e-il-lessema" class="nav-link active" data-scroll-target="#il-token-e-il-lessema"><span class="header-section-number">3.1</span> Il token e il lessema</a></li>
   <li><a href="#lanalizzatore-lessicale-e-il-parser" id="toc-lanalizzatore-lessicale-e-il-parser" class="nav-link" data-scroll-target="#lanalizzatore-lessicale-e-il-parser"><span class="header-section-number">3.2</span> L’analizzatore lessicale e il parser</a></li>
-  <li><a href="#lespressione" id="toc-lespressione" class="nav-link" data-scroll-target="#lespressione"><span class="header-section-number">3.3</span> L’espressione</a>
-  <ul>
-  <li><a href="#espressione" id="toc-espressione" class="nav-link" data-scroll-target="#espressione"><span class="header-section-number">3.3.1</span> Espressione</a></li>
-  </ul></li>
+  <li><a href="#lespressione" id="toc-lespressione" class="nav-link" data-scroll-target="#lespressione"><span class="header-section-number">3.3</span> L’espressione</a></li>
   <li><a href="#listruzione" id="toc-listruzione" class="nav-link" data-scroll-target="#listruzione"><span class="header-section-number">3.4</span> L’istruzione</a>
   <ul>
   <li><a href="#listruzione-semplice" id="toc-listruzione-semplice" class="nav-link" data-scroll-target="#listruzione-semplice"><span class="header-section-number">3.4.1</span> L’istruzione semplice</a></li>
@@ -499,9 +496,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;La BNF (Backus-Naur form o Backus normal form) è una metasintassi, ovvero un formalismo attraverso cui è possibile descrivere la sintassi di linguaggi formali (il prefisso meta ha proprio a che vedere con la natura circolare di questa definizione). Si tratta di uno strumento molto usato per descrivere in modo preciso e non ambiguo la sintassi dei linguaggi di programmazione, dei protocolli di rete e così via, benché non manchino in letteratura esempi di sue applicazioni a contesti anche non informatici e addirittura non tecnologici. Un esempio è la grammatica di <a href="https://docs.python.org/3/reference/grammar.html">Python</a>.</p></div></div></section>
 <section id="lespressione" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="lespressione"><span class="header-section-number">3.3</span> L’espressione</h2>
-<p>La tua definizione di espressione è chiara e ben strutturata. Ecco la versione leggermente rivista per maggiore chiarezza e coerenza:</p>
-<section id="espressione" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="espressione"><span class="header-section-number">3.3.1</span> Espressione</h3>
 <p>Un’<strong>espressione</strong> è un costrutto fondamentale nei linguaggi di programmazione che presenta sia aspetti sintattici che semantici. Dal punto di vista sintattico, un’espressione può essere definita come una sequenza finita di lessemi che rispetta le regole grammaticali del linguaggio e che può essere valutata per produrre un valore, cioè un dato concreto che rappresenta un’informazione specifica all’interno di un programma.</p>
 <p>Un identificatore è un’espressione, così come un letterale. Inoltre, un’espressione più complessa è perlopiù una combinazione di identificatori, letterali e operatori, anche se parole chiave e delimitatori possono essere presenti (ad esempio in Python <code>True</code> è una parola chiave corrispondente al valore logico di verità). Componendo opportunamente espressioni per mezzo di operatori, si ottiene ancora un’espressione.</p>
 <p>Ecco alcune tipologie di espressioni (notazioni in Python, non molto dissimili da altri linguaggi):</p>
@@ -542,6 +536,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>1 if x else 0</code>: Se l’identificatore <code>x</code> è associato ad un dato con valore di verità allora l’espressione restituisce <code>1</code>, <code>0</code> in caso contrario.</li>
 <li><code>True if x &gt; 0.5 else False</code>: Abbiamo una espressione aritmetica <code>x &gt; 0.5</code> è in mezzo alle parole chiave <code>if</code> ed <code>else</code>, quindi è il valore di verità ottenuto dalla sua valutazione che determina se ad essere restituita dall’espressione ternaria, sarà la parola chiave che precede <code>if</code> o quella che segue <code>else</code>.</li>
 </ul></li>
+<li><p><strong>Espressioni di creazione di contenitori di dati per comprensione</strong>: Utilizzano una sintassi compatta per generare nuovi contenitori di dati a partire da elementi esistenti, applicando una funzione e una condizione. Esempi:</p>
+<ul>
+<li><code>[x**2 for x in range(10) if x % 2 == 0]</code>: Genera una lista dei quadrati dei numeri pari da 0 a 9.</li>
+<li><code>{x: x**2 for x in range(10) if x % 2 == 0}</code>: Genera un dizionario dove le chiavi sono numeri pari da 0 a 9 e i valori sono i loro quadrati.</li>
+<li><code>{x**2 for x in range(10) if x % 2 == 0}</code>: Genera un set dei quadrati dei numeri pari da 0 a 9.</li>
+</ul></li>
 <li><p>Espressioni composte:</p>
 <ul>
 <li><code>(x + y) * (a - b)</code>: Combinazione di espressioni aritmetiche.</li>
@@ -549,7 +549,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>[x**2 for x in range(10) if x % 2 == 0]</code>:</li>
 </ul></li>
 </ul>
-</section>
 </section>
 <section id="listruzione" class="level2 page-columns page-full" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="listruzione"><span class="header-section-number">3.4</span> L’istruzione</h2>
