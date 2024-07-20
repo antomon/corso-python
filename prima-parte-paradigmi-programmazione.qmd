@@ -22,18 +22,7 @@ Come ha affermato Bjarne Stroustrup, il creatore del C++:
 >   
 > - Esprimere idee semplici in modo semplice.
 >  
-> Questi sono ideali condivisi da molte persone, ma i linguaggi progettati per supportarli possono differire notevolmente. Una ragione fondamentale per questo è che un linguaggio incorpora una serie di compromessi ingegneristici che riflettono le diverse necessità, gusti e storie di vari individui e comunità.[^1-prima-parte-paradigmi-programmazione]
-
-[^1-prima-parte-paradigmi-programmazione]: Languages features exist to provide support for programming styles. Please don’t look at an individual language feature as a solution, but as one building brick from a varied set which can be combined to express solutions.
-The general ideals for design and programming can be expressed simply:
-&nbsp;&nbsp;
-&nbsp;&nbsp;- Express ideas directly in code.
-&nbsp;&nbsp;- Express independent ideas independently in code.
-&nbsp;&nbsp;- Represent relationships among ideas directly in code.
-&nbsp;&nbsp;- Combine ideas expressed in code freely – where and only where combinations make sense.
-&nbsp;&nbsp;- Express simple ideas simply.
-&nbsp;&nbsp;
-  These are ideals shared by many people, but languages designed to support them can differ dramatically. A fundamental reason for that is that a language embodies a set of engineering tradeoffs reflecting differing needs, tastes, and histories of various individuals and communities. (@stroustrup2013, p.10)
+> Questi sono ideali condivisi da molte persone, ma i linguaggi progettati per supportarli possono differire notevolmente. Una ragione fondamentale per questo è che un linguaggio incorpora una serie di compromessi ingegneristici che riflettono le diverse necessità, gusti e storie di vari individui e comunità. (@stroustrup2013, p.10)
 
 ## L'importanza dei paradigmi di programmazione
 
@@ -648,6 +637,7 @@ La metaprogrammazione è presente anche in linguaggi non OOP come Lisp, che util
   `(if ,test                      
        (progn ,@body)))           
 ```
+
 Commento riga per riga:
 
 1. Definizione di una macro chiamata `when`, che accetta un `test` e un numero variabile di espressioni (`body`).
@@ -657,12 +647,10 @@ Commento riga per riga:
 Vediamo un esempio pratico di come si utilizza la macro `when`. Il test è valutare se `x` è maggiore di `10` e, nel caso, stampare `"x is greater than 10"` e poi assegnare `x` a `0`. Chiamiamo la macro con i due parametri:
 
 ```commonlisp
-(when (> x 10)   ;;;; <1>                   
-  (print "x is greater than 10")  ;;;   <2> 
+(when (> x 10)       
+  (print "x is greater than 10") 
   (setf x 0))                        
 ```
-1. ffff
-2. llll
 
 Commento riga per riga:
 
@@ -674,9 +662,9 @@ Questo viene espanso in:
 
 ```commonlisp
 (if (> x 10)                        
-    (progn                        
-      (print "x is greater than 10") 
-      (setf x 0)))                   
+  (progn                        
+    (print "x is greater than 10") 
+    (setf x 0)))                   
 ```
 Commento riga per riga:
 
@@ -769,6 +757,7 @@ antenato(X, Y) :- genitore(X, Z), antenato(Z, Y).
 
 ?- antenato(padre, figlio). 
 ```
+
 Commento riga per riga:
 
 1. Questa regola dichiara che `padre` è genitore di `figlio`.
@@ -844,8 +833,6 @@ Oltre a Haskell, ci sono molti altri linguaggi funzionali, tra cui:
 
 Di seguito due funzioni, la prima `sumToN` è pura e somma i primi `n` numeri. `(*2)` è una funzione che prende un argomento e lo moltiplica per 2 e ciò rende la seconda funzione `applyFunction` una vera funzione di ordine superiore, poiché accetta `(*2)` come argomento oltre ad una lista, producendo come risultato il raddoppio di tutti i suoi elementi:
 
-Certamente! Ecco il codice con i commenti identificati da un ID progressivo e l'elenco esplicativo che include le descrizioni:
-
 ```haskell
 sumToN :: Integer -> Integer
 sumToN n = sum [1..n] -- <1>
@@ -854,8 +841,8 @@ applyFunction :: (a -> b) -> [a] -> [b]
 applyFunction f lst = map f lst -- <2>
 
 main = do
-    print (sumToN 10) -- <3>
-    print (applyFunction (*2) [1, 2, 3, 4]) -- <4>
+  print (sumToN 10) -- <3>
+  print (applyFunction (*2) [1, 2, 3, 4]) -- <4>
 ```
 1. Definizione di una funzione pura che calcola la somma dei numeri da 1 a `n`.
 2. Funzione di ordine superiore che accetta una funzione e una lista.
