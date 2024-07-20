@@ -489,14 +489,7 @@ div.csl-indent {
 <li><p>Esprimere idee semplici in modo semplice.</p></li>
 </ul>
 <p>Questi sono ideali condivisi da molte persone, ma i linguaggi progettati per supportarli possono differire notevolmente. Una ragione fondamentale per questo è che un linguaggio incorpora una serie di compromessi ingegneristici che riflettono le diverse necessità, gusti e storie di vari individui e comunità.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-</blockquote><div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Languages features exist to provide support for programming styles. Please don’t look at an individual language feature as a solution, but as one building brick from a varied set which can be combined to express solutions. The general ideals for design and programming can be expressed simply:</p></div></div></div>
-<ul>
-<li>Express ideas directly in code.</li>
-<li>Express independent ideas independently in code.</li>
-<li>Represent relationships among ideas directly in code.</li>
-<li>Combine ideas expressed in code freely – where and only where combinations make sense.</li>
-<li>Express simple ideas simply.</li>
-</ul>
+</blockquote><div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Languages features exist to provide support for programming styles. Please don’t look at an individual language feature as a solution, but as one building brick from a varied set which can be combined to express solutions. The general ideals for design and programming can be expressed simply: &nbsp;&nbsp; &nbsp;&nbsp;- Express ideas directly in code. - Express independent ideas independently in code. - Represent relationships among ideas directly in code. - Combine ideas expressed in code freely – where and only where combinations make sense. - Express simple ideas simply.</p></div></div></div>
 <p>These are ideals shared by many people, but languages designed to support them can differ dramatically. A fundamental reason for that is that a language embodies a set of engineering tradeoffs reflecting differing needs, tastes, and histories of various individuals and communities. (<span class="citation" data-cites="stroustrup2013">Stroustrup (<a href="appendice-riferimenti.html#ref-stroustrup2013" role="doc-biblioref">2013</a>)</span>, p.10)</p>
 <div class="no-row-height column-margin column-container"><div id="ref-stroustrup2013" class="csl-entry" role="listitem">
 STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="https://dl.acm.org/doi/10.5555/2543987" class="uri">https://dl.acm.org/doi/10.5555/2543987</a>; Addison-Wesley Professional. ISBN&nbsp;0321563840. <div class="csl-block">Il libro "The C++ Programming Language" di Bjarne Stroustrup, inventore del C++, nella sua quarta edizione, è una risorsa imprescindibile per padroneggiare il linguaggio C++ fino alla versione C++11. Stroustrup fornisce una guida dettagliata e autorevole su come utilizzare le funzionalità del linguaggio per migliorare le prestazioni, la leggibilità e l’affidabilità del codice.Punti chiave del libro includono:- Copertura approfondita di tutte le caratteristiche del linguaggio C++, dalle fondamenta alle novità del C++11.- Descrizione dettagliata della struttura e dell’interpretazione del linguaggio.- Tecniche avanzate come smart pointers e move semantics.- Utilizzo efficace delle librerie C++.- Uso dei template per codice generico.- Strumenti per la programmazione concorrente.</div>
@@ -1202,11 +1195,12 @@ STROUSTRUP, Bjarne, 2013. <em>The C++ Programming Language</em>. 4th. <a href="h
 <li><code>progn</code> è utilizzato per racchiudere ed eseguire tutte le espressioni in <code>body</code> in sequenza. L’operatore <code>,@</code> è usato per spalmare gli elementi di <code>body</code> nell’espressione <code>progn</code>.</li>
 </ol>
 <p>Vediamo un esempio pratico di come si utilizza la macro <code>when</code>. Il test è valutare se <code>x</code> è maggiore di <code>10</code> e, nel caso, stampare <code>"x is greater than 10"</code> e poi assegnare <code>x</code> a <code>0</code>. Chiamiamo la macro con i due parametri:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb6-1"><a href="#cb6-1"></a>(<span class="kw">when</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)   <span class="co">;; &lt;1&gt;                   </span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>)     </span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource commonlisp number-lines code-with-copy"><code class="sourceCode commonlisp"><span id="cb6-1"><a href="#cb6-1"></a>(<span class="kw">when</span> (<span class="op">&gt;</span> x <span class="dv">10</span>)   <span class="co">; &lt;1&gt;                   </span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  (<span class="kw">print</span> <span class="st">"x is greater than 10"</span>)   <span class="co">#|  &lt;2&gt; |#</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>  (<span class="kw">setf</span> x <span class="dv">0</span>))                        </span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
 <li>ffff</li>
+<li>llll</li>
 </ol>
 <p>Commento riga per riga:</p>
 <ol type="1">
