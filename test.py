@@ -1,53 +1,56 @@
-import json  # <1>
+import os
+import subprocess
+from pdf2image import convert_from_path
+from PIL import Image
 
-def converti_valore(valore):
-  if isinstance(valore, str):
-    try:
-      valore_convertito = int(valore)  # <2> 
+# Corrected LaTeX code for the monad diagram with accurate arrows
+latex_code = r"""
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{xcolor}
 
-    except ValueError:
-      try:
-        valore_convertito = float(valore)  # <3>
-      except ValueError:
-        valore_convertito = valore  # <4>
+\begin{document}
+\begin{tikzpicture}[>=stealth, node distance=4cm, thick]
+    % Black background
+    \fill[black] (-2, -2) rectangle (6, 6);
 
-  else:
-    valore_convertito = valore
+    \node[green!30!black] (T) at (0, 0) {$\color{green!30!black} T$};
+    \node[red] (TT1) at (4, 0) {$\color{red} T^2$};
+    \node[red] (TT2) at (0, 4) {$\color{red} T^2$};
+    \node[blue] (TTT) at (4, 4) {$\color{blue} T^3$};
 
-  return valore_convertito
+    \draw[->, red] (TT1) to node [above, red] {$\mu$} (T);
+    \draw[->, red] (TT2) to node [right, red] {$\mu$} (T);
+    \draw[->, blue] (TTT) to node [left, blue] {$\mu T$} (TT1);
+    \draw[->, blue] (TTT) to node [below, blue] {$T\mu$} (TT2);
+\end{tikzpicture}
+\end{document}
+"""
 
-def leggi_file_json(nome_file):
-  with open(nome_file, 'r') as file:  # <5>
-    dati = json.load(file)  # <6>
-    
-    dati_convertiti = {}
+# Save the LaTeX code to a .tex file
+latex_file_path = "monad_diagram.tex"
+with open(latex_file_path, "w") as f:
+    f.write(latex_code)
 
-    for chiave, valore in dati.items():
-      chiave_convertita = converti_valore(chiave)
+# Compile the LaTeX file to PDF
+subprocess.run(["pdflatex", latex_file_path], check=True)
 
-      if isinstance(valore, list):
-        valore_convertito = [converti_valore(v) for v in valore]
+# Convert the PDF to a PNG image
+pdf_path = "monad_diagram.pdf"
+png_path = "monad_diagram.png"
+images = convert_from_path(pdf_path, dpi=300)
+for image in images:
+    image.save(png_path, "PNG")
 
-      else:
-        valore_convertito = converti_valore(valore)
-          
-      dati_convertiti[chiave_convertita] = valore_convertito
-  
-    print(dati_convertiti)  # <7>
+# Resize the image to 1792x1792
+img = Image.open(png_path)
+img_resized = img.resize((1792, 1792), Image.LANCZOS)
 
-def crea_file_json(nome_file):
-  dati = {
-    "nome": "Mario",
-    "cognome": "Rossi",
-    "eta": 30,  
-    "altezza": 1.75,  
-    "hobby": ["lettura", "pittura", "ciclismo"],  
-    "punteggi": [8, 90, 78],  
-    "info": {"stato_civile": "sposato", "figli": 2}  
-  }
-  with open(nome_file, 'w') as file:  # <8>
-    json.dump(dati, file, indent=2)  # <9>
+# Convert the resized image to WEBP format
+webp_path = "monad_diagram.webp"
+img_resized.save(webp_path, "webp")
 
-crea_file_json("esempio.json")
-
-leggi_file_json("esempio.json")
+print("Conversion complete. Files saved as:")
+print(f"PDF: {pdf_path}")
+print(f"PNG: {png_path}")
+print(f"WEBP: {webp_path}")
